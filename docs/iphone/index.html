@@ -11,6 +11,7 @@
     <link rel="apple-touch-icon" href="../assets/icon.png" />
     <title>影視 OKTV iPhone</title>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js" defer></script>
     <style>
       :root {
         color-scheme: dark;
@@ -963,6 +964,8 @@
         live: [],
         health: { failed: [] },
         healthIndex: { sources: new Set(), posters: new Set(), live: new Set() },
+        detailCache: new Map(),
+        loadedSourceIds: new Set(),
         activeItem: null,
         playerUrl: '',
       };
@@ -1001,9 +1004,30 @@
       }
 
       function onlineDataUrl(url) {
-        const match = String(url || '').match(/(?:^|\/)data\/([^/?#]+)(?:[?#].*)?$/);
+        const match = String(url || '').match(/(?:^|\/)data\/(.+?)(?:[?#].*)?$/);
         if (!match) return '';
         return `${ONLINE_DATA_BASE}${match[1]}?ts=${Date.now()}`;
+      }
+
+      async function responseJson(res, target) {
+        if (!/\.gz(?:$|[?#])/i.test(target)) return await res.json();
+        const buffer = await res.arrayBuffer();
+        try {
+          if ('DecompressionStream' in window) {
+            const stream = new Blob([buffer]).stream().pipeThrough(new DecompressionStream('gzip'));
+            return JSON.parse(await new Response(stream).text());
+          }
+        } catch {
+          undefined;
+        }
+        try {
+          if (window.pako?.ungzip) {
+            return JSON.parse(new TextDecoder().decode(window.pako.ungzip(new Uint8Array(buffer))));
+          }
+        } catch {
+          undefined;
+        }
+        return JSON.parse(new TextDecoder().decode(buffer));
       }
 
       async function getJson(url, fallback) {
@@ -1013,12 +1037,66 @@
           try {
             const res = await fetch(target, { cache: 'no-store' });
             if (!res.ok) continue;
-            return await res.json();
+            return await responseJson(res, target);
           } catch {
             undefined;
           }
         }
         return fallback;
+      }
+
+      async function hydrateItemDetail(item) {
+        if (!item?.lazyEpisodes && Array.isArray(item?.episodes) && item.episodes.length) return item;
+        if (!item?.detailPath) return item;
+        if (state.detailCache.has(item.detailPath)) {
+          const cached = state.detailCache.get(item.detailPath);
+          const found = (cached.items || []).find((entry) => entry.id === item.id || (entry.vodId && entry.vodId === item.vodId));
+          if (found) {
+            Object.assign(item, found, { lazyEpisodes: false });
+            return item;
+          }
+        }
+        const detail = await getJson(`../data/${item.detailPath}`, null);
+        if (!detail) throw new Error('detail-not-found');
+        state.detailCache.set(item.detailPath, detail);
+        const found = (detail.items || []).find((entry) => entry.id === item.id || (entry.vodId && entry.vodId === item.vodId));
+        if (!found) throw new Error('detail-item-not-found');
+        Object.assign(item, found, { lazyEpisodes: false });
+        return item;
+      }
+
+      async function ensureSourceIndex(source) {
+        if (!source?.indexPath || state.loadedSourceIds.has(source.id)) return;
+        const payload = await getJson(`../data/${source.indexPath}`, null);
+        const rows = Array.isArray(payload?.items) ? payload.items : [];
+        if (!rows.length && source.itemCount) throw new Error('source-index-empty');
+        state.catalog.items = state.catalog.items.filter((item) => item.sourceId !== source.id).concat(rows);
+        state.loadedSourceIds.add(source.id);
+      }
+
+      async function mapAsyncLimit(items, limit, worker) {
+        let next = 0;
+        const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+          while (next < items.length) {
+            const index = next++;
+            await worker(items[index], index);
+          }
+        });
+        await Promise.all(workers);
+      }
+
+      async function ensureSelectedSourceItems(sourceId) {
+        if (!['all', 'normal', 'adult18'].includes(sourceId)) {
+          await ensureSourceIndex(sourceById(sourceId));
+          return;
+        }
+        const rows = state.catalog.sources.filter((source) => {
+          if (!source.indexed) return false;
+          if (sourceId === 'normal') return !source.adult;
+          if (sourceId === 'adult18') return source.adult;
+          return true;
+        });
+        await mapAsyncLimit(rows, 3, ensureSourceIndex);
       }
 
       function escapeHtml(value) {
@@ -3753,22 +3831,28 @@
         });
       }
 
-      function openDetail(id) {
+      async function openDetail(id) {
         const item = state.catalog.items.find((entry) => entry.id === id);
         if (!item) return;
         state.activeItem = item;
         detailTitle.textContent = displayText(item.title);
         detailMeta.textContent = displayText([item.sourceName, item.year, item.area, item.categoryName].filter(Boolean).join(' / '));
-        renderDetailBody(item, 0);
+        renderDetailLoading(item);
         openSheet(detailSheet);
+        try {
+          const hydrated = await hydrateItemDetail(item);
+          if (state.activeItem?.id === item.id) renderDetailBody(hydrated, 0);
+        } catch {
+          if (state.activeItem?.id === item.id) renderDetailBody(item, 0);
+        }
       }
 
       function episodePageCount(item) {
-        return Math.max(1, Math.ceil((item.episodes?.length || 0) / EPISODES_PER_PAGE));
+        return Math.max(1, Math.ceil((item.episodes?.length || item.episodeCount || 0) / EPISODES_PER_PAGE));
       }
 
       function renderEpisodePager(item, page) {
-        const total = item.episodes?.length || 0;
+        const total = item.episodes?.length || item.episodeCount || 0;
         const pages = episodePageCount(item);
         if (pages <= 1) return '';
         return `
@@ -3797,8 +3881,21 @@
         });
       }
 
+      function renderDetailLoading(item) {
+        detailBody.innerHTML = `
+          <div class="detail-grid">
+            ${renderPosterArt(item)}
+            <div class="detail-copy">
+              <h2>${displayHtml(item.title)}</h2>
+              <div class="item-meta">${displayHtml([item.remarks, item.episodeCount ? `${item.episodeCount} 集` : '', item.updatedAt].filter(Boolean).join(' / '))}</div>
+              <p>${displayHtml('正在讀取播放資料...')}</p>
+            </div>
+          </div>
+        `;
+      }
+
       function renderDetailBody(item, page = 0) {
-        const total = item.episodes?.length || 0;
+        const total = item.episodes?.length || item.episodeCount || 0;
         const pages = episodePageCount(item);
         const safePage = Math.min(Math.max(Number(page) || 0, 0), pages - 1);
         const start = safePage * EPISODES_PER_PAGE;
@@ -3874,8 +3971,7 @@
         const allSourceId = mode === 'adult' ? 'adult18' : 'normal';
         const allLabel = mode === 'adult' ? '成人 18+ 全部' : '全部一般來源';
         const allIcon = mode === 'adult' ? adultIcon() : generatedSourceIcon();
-        const sourceIds = new Set(rows.map((source) => source.id));
-        const itemCount = state.catalog.items.filter((item) => sourceIds.has(item.sourceId)).length;
+        const itemCount = rows.reduce((sum, source) => sum + Number(source.itemCount || 0), 0);
         sourceSheetMeta.textContent = mode === 'adult' ? '成人 18+ 已獨立分類，不混入一般來源' : '一般來源，不含成人 18+';
         sourceSheetBody.innerHTML = `
           <div class="source-mode-row">
@@ -3899,8 +3995,8 @@
           });
         });
         sourceSheetBody.querySelectorAll('[data-sheet-source]').forEach((button) => {
-          button.addEventListener('click', () => {
-            selectSource(button.dataset.sheetSource || 'all');
+          button.addEventListener('click', async () => {
+            await selectSource(button.dataset.sheetSource || 'all');
             closeSheet(sourceSheet);
           });
         });
@@ -3973,12 +4069,13 @@
         openSheet(filterSheet);
       }
 
-      function selectSource(sourceId) {
+      async function selectSource(sourceId) {
         state.selectedSource = sourceId;
         localStorage.setItem(SOURCE_STORAGE_KEY, sourceId);
         state.tab = state.tab === 'sources' ? 'movie' : state.tab;
         resetVisibleLimit();
         resetPageViewport();
+        await ensureSelectedSourceItems(sourceId);
         render();
       }
 
@@ -4046,6 +4143,7 @@
         state.selectedSource = fallbackSource?.id || 'all';
         localStorage.setItem(SOURCE_STORAGE_KEY, state.selectedSource);
       }
+      await ensureSelectedSourceItems(state.selectedSource);
       window.addEventListener('scroll', maybeLoadMore, { passive: true });
       resetVisibleLimit();
       render();

@@ -17,7 +17,7 @@ concurrency:
 jobs:
   update:
     runs-on: windows-latest
-    timeout-minutes: 35
+    timeout-minutes: 240
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -93,6 +93,23 @@ jobs:
             --maxCategoriesPerSource 8 `
             --includeAdult true `
             --timeoutMs 8000
+          node .\tools\build-full-vod-chunked-catalog.mjs `
+            --tvRoot . `
+            --catalog .\docs\data\iphone-vod-catalog.json `
+            --report .\docs\data\iphone-vod-catalog-report.json `
+            --detailRoot .\docs\data\vod-detail `
+            --includeAdult true `
+            --pageSize 100 `
+            --sourceConcurrency 2 `
+            --pageConcurrency 8 `
+            --timeoutMs 20000 `
+            --detailOnly true
+          node .\tools\assemble-vod-index-from-detail.mjs `
+            --tvRoot . `
+            --catalog .\docs\data\iphone-vod-catalog.json `
+            --report .\docs\data\iphone-vod-catalog-report.json `
+            --detailRoot .\docs\data\vod-detail `
+            --indexRoot .\docs\data\vod-index
           node .\tools\check-iphone-catalog-health.mjs `
             --tvRoot . `
             --catalog .\docs\data\iphone-vod-catalog.json `
@@ -143,6 +160,8 @@ jobs:
             docs/data/vod-sources.json docs/data/iphone-vod-catalog.json docs/data/iphone-vod-catalog-report.json `
             docs/data/iphone-health-check-latest.json docs/data/iphone-health-check-latest.csv `
             docs/data/lunatv-vod-update-state.json `
+            docs/data/vod-detail `
+            docs/data/vod-index `
             docs/iphone/index.html `
             docs/assets/source-signal-icon.svg docs/assets/adult-18-badge.svg
           if (git diff --cached --quiet) {

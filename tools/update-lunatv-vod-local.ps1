@@ -215,6 +215,8 @@ try {
     $allOnDemandScript = Join-Path $repoRootText "tools\build-all-on-demand-sources.mjs"
     $adultSortScript = Join-Path $repoRootText "tools\build-lunatv-adult18-sorted.mjs"
     $iphoneCatalogScript = Join-Path $repoRootText "tools\build-iphone-vod-catalog.mjs"
+    $fullChunkedCatalogScript = Join-Path $repoRootText "tools\build-full-vod-chunked-catalog.mjs"
+    $assembleChunkedCatalogScript = Join-Path $repoRootText "tools\assemble-vod-index-from-detail.mjs"
     $iphoneHealthScript = Join-Path $repoRootText "tools\check-iphone-catalog-health.mjs"
     $sourceNames = @($SourceName -split "," | ForEach-Object { $_.Trim() } | Where-Object { $_ })
     foreach ($name in $sourceNames) {
@@ -258,6 +260,31 @@ try {
             --timeoutMs 8000
     }
 
+    if (Test-Path -LiteralPath $fullChunkedCatalogScript) {
+        Write-Log "Building full chunked iPhone OKTV VOD catalog for all readable sources."
+        node $fullChunkedCatalogScript `
+            --tvRoot $repoRootText `
+            --catalog (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
+            --report (Join-Path $repoRootText "docs\data\iphone-vod-catalog-report.json") `
+            --detailRoot (Join-Path $repoRootText "docs\data\vod-detail") `
+            --includeAdult true `
+            --pageSize 100 `
+            --sourceConcurrency 2 `
+            --pageConcurrency 8 `
+            --timeoutMs 20000 `
+            --detailOnly true
+    }
+
+    if (Test-Path -LiteralPath $assembleChunkedCatalogScript) {
+        Write-Log "Assembling compressed source indexes from VOD detail chunks."
+        node $assembleChunkedCatalogScript `
+            --tvRoot $repoRootText `
+            --catalog (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
+            --report (Join-Path $repoRootText "docs\data\iphone-vod-catalog-report.json") `
+            --detailRoot (Join-Path $repoRootText "docs\data\vod-detail") `
+            --indexRoot (Join-Path $repoRootText "docs\data\vod-index")
+    }
+
     if (Test-Path -LiteralPath $iphoneHealthScript) {
         Write-Log "Checking iPhone VOD names, posters, VOD sources and live sources."
         node $iphoneHealthScript `
@@ -279,6 +306,9 @@ try {
         "tools/build-all-on-demand-sources.mjs" `
         "tools/build-lunatv-adult18-sorted.mjs" `
         "tools/build-iphone-vod-catalog.mjs" `
+        "tools/build-full-vod-chunked-catalog.mjs" `
+        "tools/assemble-vod-index-from-detail.mjs" `
+        "tools/build-iqiyi-full-catalog.mjs" `
         "tools/check-iphone-catalog-health.mjs" `
         "sources/current-sources.json" `
         "sources/All on-demand sources" `
@@ -298,6 +328,8 @@ try {
         "docs/data/iphone-health-check-latest.json" `
         "docs/data/iphone-health-check-latest.csv" `
         "docs/data/lunatv-vod-update-state.json" `
+        "docs/data/vod-detail" `
+        "docs/data/vod-index" `
         "docs/iphone/index.html" `
         "docs/assets/source-signal-icon.svg" `
         "docs/assets/adult-18-badge.svg" `

@@ -1,5 +1,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import zlib from 'node:zlib';
+import { promisify } from 'node:util';
+
+const gunzip = promisify(zlib.gunzip);
 
 const args = new Map();
 for (let i = 2; i < process.argv.length; i += 1) {
@@ -27,10 +31,25 @@ function withTimeout() {
 
 async function readJson(file, fallback) {
   try {
-    return JSON.parse(await fs.readFile(file, 'utf8'));
+    const data = await fs.readFile(file);
+    const text = /\.gz$/i.test(file) ? (await gunzip(data)).toString('utf8') : data.toString('utf8');
+    return JSON.parse(text);
   } catch {
     return fallback;
   }
+}
+
+const detailCache = new Map();
+
+async function hydrateLazyItem(item) {
+  if (!item?.lazyEpisodes || !item.detailPath) return item;
+  const detailPath = path.resolve(path.dirname(catalogPath), item.detailPath);
+  if (!detailCache.has(detailPath)) {
+    detailCache.set(detailPath, await readJson(detailPath, null));
+  }
+  const detail = detailCache.get(detailPath);
+  const found = (detail?.items || []).find((entry) => entry.id === item.id || (entry.vodId && entry.vodId === item.vodId));
+  return found ? { ...item, ...found, lazyEpisodes: false } : item;
 }
 
 function addVodQuery(api, query) {
@@ -178,6 +197,7 @@ async function checkSource(source) {
 }
 
 async function checkPoster(item) {
+  item = await hydrateLazyItem(item);
   const target = imageProbeUrl(item.poster);
   const probe = target ? await fetchProbe(target, { accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*' }) : null;
   const titleOk = Boolean(String(item.title || '').trim());
