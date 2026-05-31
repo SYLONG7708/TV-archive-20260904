@@ -149,6 +149,90 @@ function normalizeDedupeApi(api) {
   }
 }
 
+const EXPLICIT_ADULT_SOURCE_APIS = [
+  'https://91md.me/api.php/provide/vod/',
+  'http://lbapiby.com/api.php/provide/vod/',
+  'https://155api.com/api.php/provide/vod/',
+  'https://apiyutu.com/api.php/provide/vod/',
+  'http://fhapi9.com/api.php/provide/vod/',
+  'https://apilsbzy1.com/api.php/provide/vod/',
+  'https://www.yytv4.cc/api.php/provide/vod/',
+  'https://api.xiaojizy.live/provide/vod/',
+  'https://hsckzy.xyz/api.php/provide/vod/',
+  'https://apidanaizi.com/api.php/provide/vod/',
+  'https://jkunzyapi.com/api.php/provide/vod/',
+  'https://lbapi9.com/api.php/provide/vod/',
+  'https://Naixxzy.com/api.php/provide/vod/',
+  'https://beiyong.slapibf.com/api.php/provide/vod/',
+  'https://pz.v88.qzz.io/?url=https://apilj.com/api.php/provide/vod',
+  'https://apilj.com/api.php/provide/vod',
+  'https://shayuapi.com/api.php/provide/vod/',
+  'https://api.douapi.cc/api.php/provide/vod/',
+  'https://api.ddapi.cc/api.php/provide/vod/',
+  'https://www.heiliaozyapi.com/api.php/provide/vod/',
+  'https://api.bwzyz.com/api.php/provide/vod/',
+  'https://thzy1.me/api.php/provide/vod/',
+  'https://www.jingpinx.com/api.php/provide/vod/',
+  'https://ckzy.me/api.php/provide/vod/',
+  'https://api.souavzyw.net/api.php/provide/vod/',
+  'https://www.xxibaozyw.com/api.php/provide/vod/',
+  'https://www.xiangjiaozyw.com/api.php/provide/vod/',
+  'https://www.msnii.com/api/json.php',
+  'https://www.pgxdy.com/api/json.php',
+  'https://www.kxgav.com/api/json.php',
+  'https://xingba222.com/api.php/provide/vod/',
+  'https://dadiapi.com/feifei',
+  'https://caiji.semaozy.net/inc/apijson_vod.php/provide/vod/',
+  'https://aosikazy.com/api.php/provide/vod/',
+  'https://siwazyw.tv/api.php/provide/vod/',
+  'https://od.lk/s/NjFfMTI2OTY0NTk3Xw/truvaze.py',
+  'https://dadiapi.com/apple_m3u8.php',
+  'https://hsckzy.vip/api.php/provide/vod/',
+  'https://fqzy.me//api.php/provide/vod/?ac=list',
+];
+
+const ADULT_SOURCE_API_KEYS = new Set(EXPLICIT_ADULT_SOURCE_APIS.map(normalizeAdultApiKey));
+const ADULT_SOURCE_TEXT_RE =
+  /18\+|avzy|souav|swag|91md|155api|apiyutu|fhapi|apilsb|yytv4|xiaojizy|hsck|apidanaizi|jkunzy|lbapi|naixxzy|slapibf|apilj|shayuapi|douapi|ddapi|heiliao|bwzyz|thzy|jingpin|ckzy|xxibao|xiangjiao|msnii|pgxdy|kxgav|xingba|dadiapi|semaozy|aosika|siwazy|truvaze|fqzy|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u60c5\u8272|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u4ed3\u5e93|\u5009\u5eab|\u674f\u5427|\u8272\u732b|\u6843\u82b1|\u9999\u8549|\u5976\u9999|\u68ee\u6797|\u8fa3\u6912|\u9ca8\u9c7c|\u9bca\u9b5a|\u9ed1\u6599|\u7cbe\u54c1|\u7ec6\u80de|\u7d30\u80de|\u5965\u65af\u5361|\u5967\u65af\u5361|\u65e0\u7801|\u7121\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u4e3b\u64ad|\u5f3a\u5978|\u841d\u8389|\u863f\u8389|\u5236\u670d|\u4f26\u7406|\u502b\u7406|\u6deb|AV/i;
+
+function normalizeAdultApiKey(value) {
+  const raw = normalizeText(value).toLowerCase();
+  if (!raw) return '';
+  try {
+    const url = new URL(raw);
+    url.hash = '';
+    if (url.searchParams.has('ac') && url.searchParams.size === 1) url.search = '';
+    return url.toString().replace(/\/$/g, '');
+  } catch {
+    return raw.replace(/\/$/g, '');
+  }
+}
+
+function adultApiCandidates(site) {
+  const candidates = [site?.api, site?.ext].map(normalizeAdultApiKey).filter(Boolean);
+  for (const raw of [site?.api, site?.ext]) {
+    try {
+      const nested = new URL(String(raw || '')).searchParams.get('url');
+      if (nested) candidates.push(normalizeAdultApiKey(nested));
+    } catch {
+      // Ignore malformed URLs from third-party configs.
+    }
+  }
+  return [...new Set(candidates)];
+}
+
+function adultText(site) {
+  return [
+    site?.key,
+    site?.name,
+    site?.api,
+    site?.ext,
+    Array.isArray(site?.categories) ? site.categories.join(' ') : '',
+  ]
+    .map((value) => String(value || ''))
+    .join(' ');
+}
+
 function sourceDedupeKey(row) {
   return `${normalizeDedupeApi(row.api)}|${normalizeText(row.ext).toLowerCase()}`;
 }
@@ -198,7 +282,7 @@ function parseReportTable(markdown) {
       failedCount: Number(cells[6] || 0),
       successRate: cells[7],
       trend: cells[8],
-      adult: /🔞|成人|麻豆|番号|黄色|情色|大奶|丝袜|仓库|杏吧|色猫|桃花|香蕉|AV|91md|hsck|xgav|fhapi|dadiapi|lbapi/i.test(cells[1] + api),
+      adult: isAdultSource({ name, api }),
     });
   }
   return rows;
@@ -272,10 +356,7 @@ function hostOf(value) {
 }
 
 function isAdultSource(site) {
-  const text = `${site.key || ''} ${site.name || ''} ${site.api || ''} ${site.ext || ''}`;
-  return /🔞|18\+|成人|麻豆|番号|黃色|黄色|情色|大奶|丝袜|絲襪|仓库|倉庫|杏吧|色猫|桃花|香蕉|AV|91md|hsck|xgav|fhapi|dadiapi|lbapi/i.test(
-    text,
-  );
+  return adultApiCandidates(site).some((api) => ADULT_SOURCE_API_KEYS.has(api)) || ADULT_SOURCE_TEXT_RE.test(adultText(site));
 }
 
 function configSiteRow(site, index, originUrl) {
@@ -351,6 +432,7 @@ const categoryChecks = await mapLimit(dedupedRows, concurrency, async (row) => f
 const sites = dedupedRows.map((row, index) => {
   const categories = categoryChecks[index]?.categories || DEFAULT_CATEGORIES;
   const key = row.key ? cleanSourceName(row.key) : sourceKey(row.name, index);
+  row.adult = isAdultSource({ ...row, key, name: row.name || key, categories });
   const site = {
     key,
     name: row.name && /[｜|]/.test(row.name) ? row.name : `${cleanConfigSourceName(row.name || key, key)}｜追劇`,
