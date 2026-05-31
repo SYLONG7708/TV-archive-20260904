@@ -132,7 +132,7 @@
 
       .toolbar {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto auto;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 8px;
         align-items: center;
         margin-bottom: 12px;
@@ -360,7 +360,8 @@
 
       .chip-row,
       .source-rail,
-      .area-rail {
+      .area-rail,
+      .quick-filter-row {
         display: flex;
         gap: 8px;
         overflow-x: auto;
@@ -383,6 +384,24 @@
         border-color: rgba(216, 23, 105, 0.76);
         background: rgba(216, 23, 105, 0.24);
         color: #fff;
+      }
+
+      .quick-filters {
+        display: grid;
+        gap: 2px;
+        margin-bottom: 12px;
+      }
+
+      .quick-filter-block {
+        min-width: 0;
+      }
+
+      .quick-filter-label {
+        display: block;
+        margin: 0 0 6px 2px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 800;
       }
 
       .source-pill {
@@ -425,32 +444,66 @@
       }
 
       .source-toggle {
-        width: 100%;
-        min-height: 46px;
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr) auto;
-        gap: 10px;
+        width: 52px;
+        height: 52px;
+        min-height: 52px;
+        display: inline-flex;
         align-items: center;
+        justify-content: center;
         border: 1px solid rgba(50, 214, 231, 0.44);
-        border-radius: 8px;
+        border-radius: 16px;
         background: rgba(8, 12, 16, 0.96);
         color: #fff;
-        padding: 0 12px;
+        padding: 5px;
         margin-bottom: 12px;
         cursor: pointer;
+        box-shadow: 0 0 18px rgba(50, 214, 231, 0.14);
       }
 
-      .source-toggle strong,
-      .source-toggle span {
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+      .source-toggle-icon {
+        width: 100%;
+        height: 100%;
       }
 
-      .source-toggle span {
+      .source-section-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 8px 2px 2px;
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+
+      .source-section-label > span {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .source-section-label small {
         color: var(--muted);
-        font-size: 0.8rem;
+        font-size: 0.76rem;
+        font-weight: 650;
+      }
+
+      .source-section-label.is-adult {
+        color: #ffd166;
+      }
+
+      .source-mode-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .source-mode-row .chip {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .floating-filter {
@@ -712,7 +765,7 @@
         }
 
         .toolbar {
-          grid-template-columns: minmax(0, 1fr) 42px 42px;
+          grid-template-columns: minmax(0, 1fr) 42px;
         }
 
         .text-icon-btn span {
@@ -801,6 +854,9 @@
           genre: 'all',
           sort: 'hot',
         },
+        sourceSheetMode: 'normal',
+        searchComposing: false,
+        refocusSearch: false,
         catalog: { totals: {}, sources: [], items: [], filters: { years: [], areas: [], genres: [] } },
         live: [],
         health: { failed: [] },
@@ -812,6 +868,7 @@
       const topNav = document.querySelector('#topNav');
       const screen = document.querySelector('#screen');
       const sourceSheet = document.querySelector('#sourceSheet');
+      const sourceSheetMeta = document.querySelector('#sourceSheetMeta');
       const sourceSheetBody = document.querySelector('#sourceSheetBody');
       const filterSheet = document.querySelector('#filterSheet');
       const filterSheetBody = document.querySelector('#filterSheetBody');
@@ -824,6 +881,7 @@
       const playerTitle = document.querySelector('#playerTitle');
       const playerMeta = document.querySelector('#playerMeta');
       let hls = null;
+      let searchRenderTimer = null;
 
       function icon(name) {
         const paths = {
@@ -868,13 +926,31 @@
         return raw.replace(/^http:/i, 'https:');
       }
 
+      function normalizedText(value) {
+        return String(value || '').trim().replace(/\s+/g, ' ').toLowerCase();
+      }
+
+      function normalizedPoster(value) {
+        return imageSrc(value).split(/[?#]/)[0].toLowerCase();
+      }
+
       function activeSource() {
-        if (state.selectedSource === 'all') return null;
+        if (['all', 'normal', 'adult18'].includes(state.selectedSource)) return null;
         return state.catalog.sources.find((source) => source.id === state.selectedSource) || null;
       }
 
       function sourceLabel() {
+        if (state.selectedSource === 'normal') return '全部一般來源';
+        if (state.selectedSource === 'adult18') return '成人 18+';
         return activeSource()?.name || '全部來源';
+      }
+
+      function sourceById(sourceId) {
+        return state.catalog.sources.find((source) => source.id === sourceId) || null;
+      }
+
+      function itemGenres(item) {
+        return Array.isArray(item.genre) ? item.genre : [];
       }
 
       function generatedSourceIcon(className = 'source-icon') {
@@ -897,8 +973,31 @@
         state.visibleLimit = baseVisibleLimit();
       }
 
+      function resetPageViewport() {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+
+      function itemDuplicateKey(item) {
+        const title = normalizedText(item.title);
+        const poster = normalizedPoster(item.poster);
+        if (title) return title;
+        if (poster) return `poster:${poster}`;
+        return item.id || '';
+      }
+
+      function uniqueItems(items) {
+        const seen = new Set();
+        return items.filter((item) => {
+          const key = itemDuplicateKey(item);
+          if (!key) return true;
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+      }
+
       function visibleItems() {
-        return sortedItems(sourceItems());
+        return uniqueItems(sortedItems(sourceItems()));
       }
 
       function maybeLoadMore() {
@@ -906,27 +1005,38 @@
         const all = visibleItems();
         if (state.visibleLimit >= all.length) return;
         if (window.innerHeight + window.scrollY < document.documentElement.scrollHeight - 900) return;
-        state.visibleLimit += state.tab === 'home' ? 36 : 72;
+        state.visibleLimit = Math.min(all.length, state.visibleLimit + baseVisibleLimit());
         render();
+        requestAnimationFrame(() => {
+          if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 900) maybeLoadMore();
+        });
       }
 
-      function sourceItems(sourceId = state.selectedSource) {
-        const query = state.query.trim().toLowerCase();
-        const matches = (item, enforceSource) => {
-          if (state.healthIndex.posters.has(item.id)) return false;
-          if (enforceSource && sourceId !== 'all' && item.sourceId !== sourceId) return false;
-          if (state.tab !== 'home' && state.tab !== 'rank' && item.kind !== state.tab) return false;
-          if (state.filters.year !== 'all' && item.year !== state.filters.year) return false;
-          if (state.filters.area !== 'all' && item.area !== state.filters.area) return false;
-          if (state.filters.genre !== 'all' && !item.genre.includes(state.filters.genre)) return false;
-          if (!query) return true;
-          return `${item.title} ${item.categoryName} ${item.year} ${item.area} ${item.genre.join(' ')} ${item.sourceName}`
-            .toLowerCase()
-            .includes(query);
-        };
-        const rows = state.catalog.items.filter((item) => matches(item, true));
-        if (rows.length || sourceId === 'all' || state.tab === 'home' || state.tab === 'rank') return rows;
-        return state.catalog.items.filter((item) => matches(item, false));
+      function itemMatches(item, sourceId, enforceSource, skipFilter = '') {
+        const source = sourceById(item.sourceId);
+        if (state.healthIndex.posters.has(item.id)) return false;
+        if (sourceId === 'normal' && source?.adult) return false;
+        if (sourceId === 'adult18' && !source?.adult) return false;
+        if (enforceSource && !['all', 'normal', 'adult18'].includes(sourceId) && item.sourceId !== sourceId) return false;
+        if (state.tab !== 'home' && state.tab !== 'rank' && item.kind !== state.tab) return false;
+        if (skipFilter !== 'year' && state.filters.year !== 'all' && item.year !== state.filters.year) return false;
+        if (skipFilter !== 'area' && state.filters.area !== 'all' && item.area !== state.filters.area) return false;
+        if (skipFilter !== 'genre' && state.filters.genre !== 'all' && !itemGenres(item).includes(state.filters.genre)) return false;
+        const query = normalizedText(state.query);
+        if (!query) return true;
+        return normalizedText(`${item.title} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`).includes(query);
+      }
+
+      function sourceItems(sourceId = state.selectedSource, skipFilter = '') {
+        const rows = state.catalog.items.filter((item) => itemMatches(item, sourceId, true, skipFilter));
+        if (['all', 'normal', 'adult18'].includes(sourceId)) return rows;
+        const selected = sourceById(sourceId);
+        const seen = new Set(rows.map((item) => item.id));
+        const supplemental = state.catalog.items.filter((item) => {
+          if (seen.has(item.id)) return false;
+          return itemMatches(item, sourceId, false, skipFilter) && Boolean(sourceById(item.sourceId)?.adult) === Boolean(selected?.adult);
+        });
+        return [...rows, ...supplemental];
       }
 
       function sortedItems(items) {
@@ -941,14 +1051,15 @@
       }
 
       function renderNav() {
-        topNav.innerHTML = `${tabs
+        topNav.innerHTML = `<button class="nav-source-btn" type="button" data-open-source-nav aria-label="點播訊號源">${generatedSourceIcon()}</button>${tabs
           .map(([id, label]) => `<button class="nav-btn ${state.tab === id ? 'is-active' : ''}" type="button" data-tab="${id}">${escapeHtml(label)}</button>`)
-          .join('')}<button class="nav-source-btn" type="button" data-open-source-nav aria-label="點播訊號源">${generatedSourceIcon()}</button>`;
+          .join('')}`;
         topNav.querySelectorAll('[data-tab]').forEach((button) => {
           button.addEventListener('click', () => {
             state.tab = button.dataset.tab || 'home';
             state.query = '';
             resetVisibleLimit();
+            resetPageViewport();
             render();
           });
         });
@@ -965,26 +1076,53 @@
       function renderToolbar(placeholder = '搜尋片名、類型、年份') {
         return `
           <div class="toolbar">
-            <input class="search" id="searchBox" value="${escapeHtml(state.query)}" placeholder="${escapeHtml(placeholder)}" />
-            <button class="icon-btn" type="button" data-open-source aria-label="點播訊號源">${icon('signal')}</button>
+            <input class="search" id="searchBox" type="search" value="${escapeHtml(state.query)}" placeholder="${escapeHtml(placeholder)}" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" />
             <button class="icon-btn" type="button" data-open-filter aria-label="篩選器">${icon('filter')}</button>
           </div>
         `;
       }
 
-      function bindToolbar() {
-        document.querySelector('#searchBox')?.addEventListener('input', (event) => {
-          state.query = event.target.value;
-          resetVisibleLimit();
-          render();
-          setTimeout(() => {
-            const input = document.querySelector('#searchBox');
-            input?.focus();
-            input?.setSelectionRange(state.query.length, state.query.length);
-          }, 0);
+      function focusSearchBox() {
+        if (!state.refocusSearch) return;
+        state.refocusSearch = false;
+        requestAnimationFrame(() => {
+          const input = document.querySelector('#searchBox');
+          if (!input) return;
+          input.focus({ preventScroll: true });
+          try {
+            input.setSelectionRange(state.query.length, state.query.length);
+          } catch {
+            undefined;
+          }
         });
-        document.querySelector('[data-open-source]')?.addEventListener('click', openSourceSheet);
+      }
+
+      function scheduleSearchRender(value, delay = 120) {
+        state.query = value;
+        state.refocusSearch = true;
+        resetVisibleLimit();
+        window.clearTimeout(searchRenderTimer);
+        searchRenderTimer = window.setTimeout(() => {
+          if (!state.searchComposing) render();
+        }, delay);
+      }
+
+      function bindToolbar() {
+        const input = document.querySelector('#searchBox');
+        input?.addEventListener('compositionstart', () => {
+          state.searchComposing = true;
+          window.clearTimeout(searchRenderTimer);
+        });
+        input?.addEventListener('compositionend', (event) => {
+          state.searchComposing = false;
+          scheduleSearchRender(event.target.value, 0);
+        });
+        input?.addEventListener('input', (event) => {
+          if (state.searchComposing || event.isComposing) return;
+          scheduleSearchRender(event.target.value);
+        });
         document.querySelector('[data-open-filter]')?.addEventListener('click', openFilterSheet);
+        focusSearchBox();
       }
 
       function renderFilterSummary() {
@@ -999,13 +1137,13 @@
       }
 
       function renderVodScreen() {
+        ensureAvailableFilters();
         const allRows = visibleItems();
         const rows = allRows.slice(0, state.visibleLimit);
         const title = tabs.find(([id]) => id === state.tab)?.[1] || '主頁';
-        const controls = `${renderSourceRail()}${state.tab === 'short' ? renderShortAreaRail() : ''}`;
         screen.innerHTML = `
           ${renderToolbar()}
-          ${controls}
+          ${renderQuickFilters()}
           <section class="section-head">
             <div><h1>${escapeHtml(title)}</h1><span>${rows.length} / ${allRows.length} 部內容，${state.catalog.totals.playableItems || 0} 部有播放項</span></div>
             <span class="status-pill ok">${icon('check')} OKTV</span>
@@ -1017,8 +1155,7 @@
         `;
         bindToolbar();
         bindPosters();
-        bindSourceRail();
-        bindShortAreaRail();
+        bindQuickFilters();
         bindFloatingFilter();
       }
 
@@ -1039,21 +1176,77 @@
       }
 
       function renderSourceRail() {
-        const selected = activeSource();
-        const indexedCount = state.catalog.sources.filter((source) => source.indexed).length;
+        return '';
+      }
+
+      function filterValues(key) {
+        const values = sourceItems(state.selectedSource, key)
+          .map((item) => (key === 'genre' ? itemGenres(item) : [item[key]]))
+          .flat()
+          .filter(Boolean);
+        const unique = [...new Set(values)];
+        return unique.sort((a, b) => (key === 'year' ? b.localeCompare(a) : a.localeCompare(b, 'zh-Hant')));
+      }
+
+      function ensureAvailableFilters() {
+        for (let index = 0; index < 2; index += 1) {
+          for (const key of ['year', 'area', 'genre']) {
+            if (state.filters[key] !== 'all' && !filterValues(key).includes(state.filters[key])) state.filters[key] = 'all';
+          }
+        }
+      }
+
+      function quickFilterRows() {
+        const rows = [
+          {
+            label: '排序',
+            key: 'sort',
+            values: [
+              ['hot', '全部'],
+              ['views', '熱播榜'],
+              ['score', '好評榜'],
+              ['latest', '新上線'],
+            ],
+          },
+        ];
+        const years = filterValues('year').slice(0, 24);
+        const areas = filterValues('area').slice(0, 28);
+        const genres = filterValues('genre').slice(0, 36);
+        if (years.length) rows.push({ label: '年分', key: 'year', values: [['all', '全部'], ...years.map((year) => [year, year])] });
+        if (areas.length) rows.push({ label: '地區', key: 'area', values: [['all', '全部'], ...areas.map((area) => [area, area])] });
+        if (genres.length) rows.push({ label: '類型', key: 'genre', values: [['all', '全部'], ...genres.map((genre) => [genre, genre])] });
+        return rows;
+      }
+
+      function renderQuickFilterRow(label, key, values) {
         return `
-          <div class="source-rail">
-            <button class="source-toggle" type="button" data-open-source>
-              ${generatedSourceIcon()}
-              <span><strong>${escapeHtml(sourceLabel())}</strong><span>${selected ? `${selected.itemCount || 0} 部 / ${selected.playableCount || 0} 可播放` : `${indexedCount} 個來源 / ${state.catalog.totals.playableItems || 0} 部可播放`}</span></span>
-              ${icon('chevron')}
-            </button>
+          <div class="quick-filter-block" aria-label="${escapeHtml(label)}">
+            <div class="quick-filter-row">
+              ${values
+                .map(
+                  ([value, text]) =>
+                    `<button class="chip ${state.filters[key] === value ? 'is-active' : ''}" type="button" data-quick-filter-key="${key}" data-quick-filter-value="${escapeHtml(value)}">${escapeHtml(text)}</button>`,
+                )
+                .join('')}
+            </div>
           </div>
         `;
       }
 
-      function bindSourceRail() {
-        document.querySelectorAll('[data-open-source]').forEach((button) => button.addEventListener('click', openSourceSheet));
+      function renderQuickFilters() {
+        const rows = quickFilterRows();
+        return `<div class="quick-filters">${rows.map((row) => renderQuickFilterRow(row.label, row.key, row.values)).join('')}</div>`;
+      }
+
+      function bindQuickFilters() {
+        document.querySelectorAll('[data-quick-filter-key]').forEach((button) => {
+          button.addEventListener('click', () => {
+            state.filters[button.dataset.quickFilterKey] = button.dataset.quickFilterValue || 'all';
+            resetVisibleLimit();
+            resetPageViewport();
+            render();
+          });
+        });
       }
 
       function shortAreas() {
@@ -1082,6 +1275,7 @@
           button.addEventListener('click', () => {
             state.filters.area = button.dataset.shortArea || 'all';
             resetVisibleLimit();
+            resetPageViewport();
             render();
           });
         });
@@ -1096,11 +1290,12 @@
       }
 
       function renderRank() {
+        ensureAvailableFilters();
         const allRows = visibleItems();
         const rows = allRows.slice(0, state.visibleLimit);
         screen.innerHTML = `
           ${renderToolbar('搜尋榜單內容')}
-          ${renderSourceRail()}
+          ${renderQuickFilters()}
           <section class="section-head">
             <div><h1>排行</h1><span>${rows.length} / ${allRows.length} 部內容，觀看人數與評分排序</span></div>
           </section>
@@ -1110,7 +1305,7 @@
           ${renderFloatingFilter()}
         `;
         bindToolbar();
-        bindSourceRail();
+        bindQuickFilters();
         bindFloatingFilter();
         document.querySelectorAll('[data-open-detail]').forEach((button) => {
           button.addEventListener('click', () => openDetail(button.dataset.openDetail));
@@ -1124,8 +1319,7 @@
           .filter((item) => !query || `${item.name} ${item.group} ${item.kind}`.toLowerCase().includes(query));
         screen.innerHTML = `
           <div class="toolbar">
-            <input class="search" id="searchBox" value="${escapeHtml(state.query)}" placeholder="搜尋直播頻道" />
-            <button class="icon-btn" type="button" data-open-source aria-label="點播訊號源">${icon('signal')}</button>
+            <input class="search" id="searchBox" type="search" value="${escapeHtml(state.query)}" placeholder="搜尋直播頻道" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" />
             <button class="icon-btn" type="button" data-open-filter aria-label="篩選器">${icon('filter')}</button>
           </div>
           <section class="section-head">
@@ -1307,23 +1501,50 @@
       }
 
       function openSourceSheet() {
+        const current = activeSource();
+        state.sourceSheetMode = state.selectedSource === 'adult18' || current?.adult ? 'adult' : 'normal';
+        renderSourceSheetBody();
+        openSheet(sourceSheet);
+      }
+
+      function renderSourceSheetBody() {
+        const normalSources = state.catalog.sources.filter((source) => !source.adult);
+        const adultSources = state.catalog.sources.filter((source) => source.adult);
+        const mode = state.sourceSheetMode === 'adult' ? 'adult' : 'normal';
+        const rows = mode === 'adult' ? adultSources : normalSources;
+        const allSourceId = mode === 'adult' ? 'adult18' : 'normal';
+        const allLabel = mode === 'adult' ? '成人 18+ 全部' : '全部一般來源';
+        const allIcon = mode === 'adult' ? adultIcon() : generatedSourceIcon();
+        const sourceIds = new Set(rows.map((source) => source.id));
+        const itemCount = state.catalog.items.filter((item) => sourceIds.has(item.sourceId)).length;
+        sourceSheetMeta.textContent = mode === 'adult' ? '成人 18+ 已獨立分類，不混入一般來源' : '一般來源，不含成人 18+';
         sourceSheetBody.innerHTML = `
+          <div class="source-mode-row">
+            <button class="chip ${mode === 'normal' ? 'is-active' : ''}" type="button" data-source-mode="normal">一般點播源</button>
+            <button class="chip ${mode === 'adult' ? 'is-active' : ''}" type="button" data-source-mode="adult">${adultIcon()} 成人 18+</button>
+          </div>
           <section class="source-list">
+            <div class="source-section-label ${mode === 'adult' ? 'is-adult' : ''}"><span>${mode === 'adult' ? adultIcon() : ''}${mode === 'adult' ? '成人 18+' : '一般點播源'}</span><small>${rows.length} 個來源</small></div>
             <article class="source-row">
-              <div class="avatar">ALL</div>
-              <div class="row-main"><strong>全部來源</strong><span>${state.catalog.items.length} 部手機索引內容</span></div>
-              <button class="play-btn" type="button" data-sheet-source="all">${icon(state.selectedSource === 'all' ? 'check' : 'signal')}${state.selectedSource === 'all' ? '使用中' : '切換'}</button>
+              <div class="avatar">${allIcon}</div>
+              <div class="row-main"><strong>${allIcon} ${allLabel}</strong><span>${itemCount} 部手機索引內容</span></div>
+              <button class="play-btn" type="button" data-sheet-source="${allSourceId}">${icon(state.selectedSource === allSourceId ? 'check' : 'signal')}${state.selectedSource === allSourceId ? '使用中' : '切換'}</button>
             </article>
-            ${state.catalog.sources.map((source) => renderSheetSourceRow(source)).join('')}
+            ${rows.map((source) => renderSheetSourceRow(source)).join('') || emptyState('目前沒有此分類來源')}
           </section>
         `;
+        sourceSheetBody.querySelectorAll('[data-source-mode]').forEach((button) => {
+          button.addEventListener('click', () => {
+            state.sourceSheetMode = button.dataset.sourceMode || 'normal';
+            renderSourceSheetBody();
+          });
+        });
         sourceSheetBody.querySelectorAll('[data-sheet-source]').forEach((button) => {
           button.addEventListener('click', () => {
             selectSource(button.dataset.sheetSource || 'all');
             closeSheet(sourceSheet);
           });
         });
-        openSheet(sourceSheet);
       }
 
       function renderSheetSourceRow(source) {
@@ -1357,9 +1578,9 @@
               .join('')}
           </div>
         `;
-        const years = [['all', '全部年份'], ...state.catalog.filters.years.map((year) => [year, year])];
-        const areas = [['all', '全部地區'], ...state.catalog.filters.areas.map((area) => [area, area])];
-        const genres = [['all', '全部類型'], ...state.catalog.filters.genres.map((genre) => [genre, genre])];
+        const years = filterValues('year').slice(0, 36);
+        const areas = filterValues('area').slice(0, 36);
+        const genres = filterValues('genre').slice(0, 48);
         const sorts = [
           ['hot', '熱門'],
           ['views', '觀看人數'],
@@ -1368,9 +1589,9 @@
           ['name', '名稱'],
         ];
         filterSheetBody.innerHTML = `
-          ${filter('年份', 'year', years)}
-          ${filter('地區', 'area', areas)}
-          ${filter('類型', 'genre', genres)}
+          ${years.length ? filter('年份', 'year', [['all', '全部年份'], ...years.map((year) => [year, year])]) : ''}
+          ${areas.length ? filter('地區', 'area', [['all', '全部地區'], ...areas.map((area) => [area, area])]) : ''}
+          ${genres.length ? filter('類型', 'genre', [['all', '全部類型'], ...genres.map((genre) => [genre, genre])]) : ''}
           ${filter('排序', 'sort', sorts)}
           <button class="play-btn" type="button" data-reset-filter style="width:100%;margin-top:10px">重設篩選</button>
         `;
@@ -1378,6 +1599,7 @@
           button.addEventListener('click', () => {
             state.filters[button.dataset.filterKey] = button.dataset.filterValue || 'all';
             resetVisibleLimit();
+            resetPageViewport();
             openFilterSheet();
             render();
           });
@@ -1385,6 +1607,7 @@
         filterSheetBody.querySelector('[data-reset-filter]')?.addEventListener('click', () => {
           state.filters = { year: 'all', area: 'all', genre: 'all', sort: 'hot' };
           resetVisibleLimit();
+          resetPageViewport();
           closeSheet(filterSheet);
           render();
         });
@@ -1396,6 +1619,7 @@
         localStorage.setItem(SOURCE_STORAGE_KEY, sourceId);
         state.tab = state.tab === 'sources' ? 'movie' : state.tab;
         resetVisibleLimit();
+        resetPageViewport();
         render();
       }
 
@@ -1456,7 +1680,7 @@
         }
       }
       if (
-        state.selectedSource !== 'all' &&
+        !['all', 'normal', 'adult18'].includes(state.selectedSource) &&
         !state.catalog.sources.some((source) => source.id === state.selectedSource && source.indexed)
       ) {
         const fallbackSource = state.catalog.sources.find((source) => source.indexed && DEFAULT_SOURCE_RE.test(source.name)) || state.catalog.sources.find((source) => source.indexed);
