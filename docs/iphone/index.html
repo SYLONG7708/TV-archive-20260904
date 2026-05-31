@@ -907,6 +907,14 @@
         return raw.replace(/^http:/i, 'https:');
       }
 
+      function normalizedText(value) {
+        return String(value || '').trim().replace(/\s+/g, ' ').toLowerCase();
+      }
+
+      function normalizedPoster(value) {
+        return imageSrc(value).split(/[?#]/)[0].toLowerCase();
+      }
+
       function activeSource() {
         if (['all', 'normal', 'adult18'].includes(state.selectedSource)) return null;
         return state.catalog.sources.find((source) => source.id === state.selectedSource) || null;
@@ -942,8 +950,27 @@
         state.visibleLimit = baseVisibleLimit();
       }
 
+      function itemDuplicateKey(item) {
+        const title = normalizedText(item.title);
+        const poster = normalizedPoster(item.poster);
+        if (title) return title;
+        if (poster) return `poster:${poster}`;
+        return item.id || '';
+      }
+
+      function uniqueItems(items) {
+        const seen = new Set();
+        return items.filter((item) => {
+          const key = itemDuplicateKey(item);
+          if (!key) return true;
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+      }
+
       function visibleItems() {
-        return sortedItems(sourceItems());
+        return uniqueItems(sortedItems(sourceItems()));
       }
 
       function maybeLoadMore() {
