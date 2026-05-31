@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-05-31T19:28:20.752Z",
+  "generatedAt": "2026-05-31T20:06:26.907Z",
   "totals": {
     "sources": 90,
-    "indexedSources": 62,
-    "items": 3548,
-    "playableItems": 3548,
-    "movies": 534,
-    "series": 475,
-    "variety": 298,
-    "anime": 244,
-    "short": 297,
-    "adult": 1700
+    "indexedSources": 64,
+    "items": 2264635,
+    "playableItems": 2264635,
+    "movies": 278488,
+    "series": 54501,
+    "variety": 17925,
+    "anime": 59515,
+    "short": 149722,
+    "adult": 1704484
   },
   "sourceChecks": [
     {
@@ -22,42 +22,19 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 61557,
+      "playableCount": 61557,
       "sourceTotalCount": 61648,
+      "indexPath": "vod-index/iqiyizyapi-com-all-on-demand-sources-爱奇艺-https-iqiyizyapi-com-api-php-provide-vo.json.gz",
+      "detailPathPattern": "vod-detail/iqiyizyapi-com-all-on-demand-sources-爱奇艺-https-iqiyizyapi-com-api-php-provide-vo/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 3083,
+          "count": 61557,
+          "pages": 617,
           "total": 61648
-        },
-        {
-          "label": "记录片",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 58,
-          "total": 1144
-        },
-        {
-          "label": "国产剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 113,
-          "total": 2242
-        },
-        {
-          "label": "大陆综艺",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 52,
-          "total": 1027
         }
       ]
     },
@@ -69,51 +46,17 @@
       "origin": "All on-demand sources",
       "adult": false,
       "indexable": true,
-      "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
-      "sourceTotalCount": 129338,
-      "error": "",
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "error": "分類讀取失敗: HTTP 701",
       "checks": [
         {
           "label": "最新",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 6467,
-          "total": 129338
-        },
-        {
-          "label": "现代都市",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1032,
-          "total": 20622
-        },
-        {
-          "label": "国产剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 364,
-          "total": 7274
-        },
-        {
-          "label": "大陆综艺",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 85,
-          "total": 1683
-        },
-        {
-          "label": "国产动漫",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 131,
-          "total": 2612
+          "ok": false,
+          "count": 0,
+          "error": "HTTP 701"
         }
       ]
     },
@@ -177,7 +120,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "error": "分類讀取失敗: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "error": "分類讀取失敗: The operation was aborted due to timeout",
       "checks": [
         {
           "label": "最新",
@@ -243,83 +186,20 @@
       "origin": "All on-demand sources",
       "adult": false,
       "indexable": true,
-      "indexed": false,
-      "itemCount": 0,
-      "playableCount": 0,
+      "indexed": true,
+      "itemCount": 1,
+      "playableCount": 1,
       "sourceTotalCount": 81853,
+      "indexPath": "vod-index/caiji-dyttzyapi-com-all-on-demand-sources-电影天堂-http-caiji-dyttzyapi-com-api-php-.json.gz",
+      "detailPathPattern": "vod-detail/caiji-dyttzyapi-com-all-on-demand-sources-电影天堂-http-caiji-dyttzyapi-com-api-php-/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 4093,
+          "count": 1,
+          "pages": 819,
           "total": 81853
-        },
-        {
-          "label": "韩国剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 69,
-          "total": 1361
-        },
-        {
-          "label": "欧美剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 305,
-          "total": 6090
-        },
-        {
-          "label": "港台综艺",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 10,
-          "total": 197
-        },
-        {
-          "label": "日韩动漫",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 246,
-          "total": 4918
-        },
-        {
-          "label": "国产动漫",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 91,
-          "total": 1814
-        },
-        {
-          "label": "泰国剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 20,
-          "total": 395
-        },
-        {
-          "label": "日本剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 89,
-          "total": 1775
-        },
-        {
-          "label": "恐怖片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 120,
-          "total": 2398
         }
       ]
     },
@@ -332,34 +212,19 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 33071,
+      "playableCount": 33071,
       "sourceTotalCount": 33080,
+      "indexPath": "vod-index/api-maoyanapi-top-all-on-demand-sources-猫眼资源-https-api-maoyanapi-top-api-php-pro.json.gz",
+      "detailPathPattern": "vod-detail/api-maoyanapi-top-all-on-demand-sources-猫眼资源-https-api-maoyanapi-top-api-php-pro/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 30,
-          "pages": 1,
-          "pagecount": 1103,
+          "count": 33071,
+          "pages": 331,
           "total": 33080
-        },
-        {
-          "label": "国产剧",
-          "ok": true,
-          "count": 30,
-          "pages": 1,
-          "pagecount": 41,
-          "total": 1216
-        },
-        {
-          "label": "大陆综艺",
-          "ok": true,
-          "count": 30,
-          "pages": 1,
-          "pagecount": 13,
-          "total": 373
         }
       ]
     },
@@ -371,83 +236,20 @@
       "origin": "All on-demand sources",
       "adult": true,
       "indexable": true,
-      "indexed": false,
-      "itemCount": 0,
-      "playableCount": 0,
+      "indexed": true,
+      "itemCount": 59,
+      "playableCount": 59,
       "sourceTotalCount": 135827,
+      "indexPath": "vod-index/cj-lzcaiji-com-all-on-demand-sources-量子资源-https-cj-lzcaiji-com-api-php-provide-v.json.gz",
+      "detailPathPattern": "vod-detail/cj-lzcaiji-com-all-on-demand-sources-量子资源-https-cj-lzcaiji-com-api-php-provide-v/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 6792,
+          "count": 59,
+          "pages": 6792,
           "total": 135827
-        },
-        {
-          "label": "伦理片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 68,
-          "total": 1357
-        },
-        {
-          "label": "日本剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 98,
-          "total": 1960
-        },
-        {
-          "label": "泰国剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 37,
-          "total": 724
-        },
-        {
-          "label": "欧美剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 283,
-          "total": 5654
-        },
-        {
-          "label": "韩国剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 89,
-          "total": 1764
-        },
-        {
-          "label": "国产动漫",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 98,
-          "total": 1949
-        },
-        {
-          "label": "科幻片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 68,
-          "total": 1343
-        },
-        {
-          "label": "剧情片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 689,
-          "total": 13776
         }
       ]
     },
@@ -460,42 +262,19 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 63536,
+      "playableCount": 63536,
       "sourceTotalCount": 63582,
+      "indexPath": "vod-index/360zyzz-com-all-on-demand-sources-360资源-https-360zyzz-com-api-php-provide-vod-9.json.gz",
+      "detailPathPattern": "vod-detail/360zyzz-com-all-on-demand-sources-360资源-https-360zyzz-com-api-php-provide-vod-9/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 3180,
+          "count": 63536,
+          "pages": 636,
           "total": 63582
-        },
-        {
-          "label": "韩国剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 14,
-          "total": 273
-        },
-        {
-          "label": "国产剧",
-          "ok": true,
-          "count": 19,
-          "pages": 1,
-          "pagecount": 212,
-          "total": 4223
-        },
-        {
-          "label": "大陆综艺",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 73,
-          "total": 1448
         }
       ]
     },
@@ -596,42 +375,19 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 82802,
+      "playableCount": 82802,
       "sourceTotalCount": 82834,
+      "indexPath": "vod-index/www-mdzyapi-com-all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide.json.gz",
+      "detailPathPattern": "vod-detail/www-mdzyapi-com-all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 4142,
+          "count": 82802,
+          "pages": 829,
           "total": 82834
-        },
-        {
-          "label": "韩国剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 75,
-          "total": 1485
-        },
-        {
-          "label": "国产剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 228,
-          "total": 4556
-        },
-        {
-          "label": "日韩综艺",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 28,
-          "total": 555
         }
       ]
     },
@@ -643,83 +399,20 @@
       "origin": "All on-demand sources",
       "adult": false,
       "indexable": true,
-      "indexed": false,
-      "itemCount": 0,
-      "playableCount": 0,
+      "indexed": true,
+      "itemCount": 1,
+      "playableCount": 1,
       "sourceTotalCount": 96473,
+      "indexPath": "vod-index/api-ffzyapi-com-all-on-demand-sources-非凡资源-https-api-ffzyapi-com-api-php-provide.json.gz",
+      "detailPathPattern": "vod-detail/api-ffzyapi-com-all-on-demand-sources-非凡资源-https-api-ffzyapi-com-api-php-provide/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 4824,
+          "count": 1,
+          "pages": 965,
           "total": 96473
-        },
-        {
-          "label": "恐怖片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 255,
-          "total": 5082
-        },
-        {
-          "label": "欧美剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 259,
-          "total": 5168
-        },
-        {
-          "label": "大陆综艺",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 121,
-          "total": 2405
-        },
-        {
-          "label": "日韩动漫",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 266,
-          "total": 5318
-        },
-        {
-          "label": "韩国剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 62,
-          "total": 1233
-        },
-        {
-          "label": "日韩综艺",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 23,
-          "total": 446
-        },
-        {
-          "label": "泰国剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 38,
-          "total": 750
-        },
-        {
-          "label": "日本剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 86,
-          "total": 1710
         }
       ]
     },
@@ -734,7 +427,7 @@
       "indexed": true,
       "itemCount": 70,
       "playableCount": 70,
-      "sourceTotalCount": 144166,
+      "sourceTotalCount": 144146,
       "error": "",
       "checks": [
         {
@@ -742,16 +435,16 @@
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 7209,
-          "total": 144166
+          "pagecount": 7208,
+          "total": 144146
         },
         {
-          "label": "反转爽文",
+          "label": "重生民国",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 194,
-          "total": 3862
+          "pagecount": 18,
+          "total": 344
         },
         {
           "label": "日韩动漫",
@@ -762,12 +455,12 @@
           "total": 6227
         },
         {
-          "label": "闪婚离婚",
+          "label": "反转爽文",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 10,
-          "total": 188
+          "pagecount": 193,
+          "total": 3858
         }
       ]
     },
@@ -958,7 +651,7 @@
       "indexed": true,
       "itemCount": 20,
       "playableCount": 20,
-      "sourceTotalCount": 33510,
+      "sourceTotalCount": 33507,
       "error": "",
       "checks": [
         {
@@ -967,7 +660,7 @@
           "count": 20,
           "pages": 1,
           "pagecount": 1676,
-          "total": 33510
+          "total": 33507
         },
         {
           "label": "短剧",
@@ -975,7 +668,7 @@
           "count": 20,
           "pages": 1,
           "pagecount": 1676,
-          "total": 33510
+          "total": 33507
         }
       ]
     },
@@ -1186,12 +879,12 @@
           "total": 6201
         },
         {
-          "label": "海外剧",
+          "label": "国产剧",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 108,
-          "total": 2152
+          "pagecount": 281,
+          "total": 5615
         },
         {
           "label": "综艺",
@@ -1206,12 +899,12 @@
           "error": "The operation was aborted due to timeout"
         },
         {
-          "label": "韩国剧",
+          "label": "海外剧",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 91,
-          "total": 1810
+          "pagecount": 108,
+          "total": 2152
         }
       ]
     },
@@ -1472,42 +1165,19 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 82802,
+      "playableCount": 82802,
       "sourceTotalCount": 82834,
+      "indexPath": "vod-index/caiji-moduapi-cc-all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provi.json.gz",
+      "detailPathPattern": "vod-detail/caiji-moduapi-cc-all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provi/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 4142,
+          "count": 82802,
+          "pages": 829,
           "total": 82834
-        },
-        {
-          "label": "韩国剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 75,
-          "total": 1485
-        },
-        {
-          "label": "国产剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 228,
-          "total": 4556
-        },
-        {
-          "label": "日韩综艺",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 28,
-          "total": 555
         }
       ]
     },
@@ -1658,7 +1328,7 @@
       "indexed": true,
       "itemCount": 70,
       "playableCount": 70,
-      "sourceTotalCount": 46841,
+      "sourceTotalCount": 46840,
       "error": "",
       "checks": [
         {
@@ -1666,8 +1336,8 @@
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 2343,
-          "total": 46841
+          "pagecount": 2342,
+          "total": 46840
         },
         {
           "label": "大陆剧",
@@ -1686,12 +1356,20 @@
           "total": 807
         },
         {
-          "label": "大陆综艺",
+          "label": "日剧",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 64,
-          "total": 1273
+          "pagecount": 26,
+          "total": 510
+        },
+        {
+          "label": "韩剧",
+          "ok": true,
+          "count": 20,
+          "pages": 1,
+          "pagecount": 42,
+          "total": 824
         }
       ]
     },
@@ -1718,14 +1396,6 @@
           "total": 167416
         },
         {
-          "label": "剧情片",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1227,
-          "total": 24528
-        },
-        {
           "label": "短剧",
           "ok": true,
           "count": 20,
@@ -1742,12 +1412,12 @@
           "total": 10832
         },
         {
-          "label": "国产动漫",
+          "label": "大陆综艺",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 210,
-          "total": 4181
+          "pagecount": 165,
+          "total": 3287
         }
       ]
     },
@@ -1847,43 +1517,17 @@
       "origin": "All on-demand sources",
       "adult": false,
       "indexable": true,
-      "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
-      "sourceTotalCount": 118563,
-      "error": "",
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "error": "分類讀取失敗: HTTP 520",
       "checks": [
         {
           "label": "最新",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 5929,
-          "total": 118563
-        },
-        {
-          "label": "篮球",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 127,
-          "total": 2537
-        },
-        {
-          "label": "欧美剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 169,
-          "total": 3368
-        },
-        {
-          "label": "大陆综艺",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 112,
-          "total": 2234
+          "ok": false,
+          "count": 0,
+          "error": "HTTP 520"
         }
       ]
     },
@@ -1946,7 +1590,7 @@
       "indexed": true,
       "itemCount": 20,
       "playableCount": 20,
-      "sourceTotalCount": 33510,
+      "sourceTotalCount": 33508,
       "error": "",
       "checks": [
         {
@@ -1955,7 +1599,7 @@
           "count": 20,
           "pages": 1,
           "pagecount": 1676,
-          "total": 33510
+          "total": 33508
         },
         {
           "label": "短剧",
@@ -1963,7 +1607,7 @@
           "count": 20,
           "pages": 1,
           "pagecount": 1676,
-          "total": 33510
+          "total": 33508
         }
       ]
     },
@@ -1976,42 +1620,19 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 62,
-      "playableCount": 62,
+      "itemCount": 93763,
+      "playableCount": 93763,
       "sourceTotalCount": 93820,
+      "indexPath": "vod-index/api-yzzy-api-com-all-on-demand-sources-优质资源-https-api-yzzy-api-com-inc-apijson-p.json.gz",
+      "detailPathPattern": "vod-detail/api-yzzy-api-com-all-on-demand-sources-优质资源-https-api-yzzy-api-com-inc-apijson-p/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 4691,
+          "count": 93763,
+          "pages": 4691,
           "total": 93820
-        },
-        {
-          "label": "分類 19",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 163,
-          "total": 3244
-        },
-        {
-          "label": "短剧大全",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 712,
-          "total": 14222
-        },
-        {
-          "label": "分類 20",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 163,
-          "total": 3244
         }
       ]
     },
@@ -2174,36 +1795,28 @@
           "total": 137048
         },
         {
-          "label": "古装仙侠",
+          "label": "国产剧",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 204,
-          "total": 4065
+          "pagecount": 423,
+          "total": 8459
         },
         {
-          "label": "现代都市",
+          "label": "港台综艺",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 510,
-          "total": 10193
+          "pagecount": 9,
+          "total": 175
         },
         {
-          "label": "反转爽剧",
+          "label": "日韩动漫",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 231,
-          "total": 4620
-        },
-        {
-          "label": "女频恋爱",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 463,
-          "total": 9248
+          "pagecount": 221,
+          "total": 4415
         }
       ]
     },
@@ -2408,50 +2021,19 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
-      "sourceTotalCount": 313640,
+      "itemCount": 313464,
+      "playableCount": 313464,
+      "sourceTotalCount": 313521,
+      "indexPath": "vod-index/lbapiby-com-all-on-demand-sources-aivin-http-lbapiby-com-api-php-provide-vod-41.json.gz",
+      "detailPathPattern": "vod-detail/lbapiby-com-all-on-demand-sources-aivin-http-lbapiby-com-api-php-provide-vod-41/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 15682,
-          "total": 313640
-        },
-        {
-          "label": "福利姬",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 527,
-          "total": 10526
-        },
-        {
-          "label": "国产主播",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1765,
-          "total": 35293
-        },
-        {
-          "label": "国产自拍",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1199,
-          "total": 23968
-        },
-        {
-          "label": "亚洲情色",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 2215,
-          "total": 44295
+          "count": 313464,
+          "pages": 3135,
+          "total": 313521
         }
       ]
     },
@@ -2576,42 +2158,19 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 215126,
+      "playableCount": 215126,
       "sourceTotalCount": 215130,
+      "indexPath": "vod-index/fhapi9-com-all-on-demand-sources-番号资源-http-fhapi9-com-api-php-provide-vod-44.json.gz",
+      "detailPathPattern": "vod-detail/fhapi9-com-all-on-demand-sources-番号资源-http-fhapi9-com-api-php-provide-vod-44/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 10757,
+          "count": 215126,
+          "pages": 2152,
           "total": 215130
-        },
-        {
-          "label": "无码专区",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 875,
-          "total": 17492
-        },
-        {
-          "label": "国产自拍",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1616,
-          "total": 32303
-        },
-        {
-          "label": "中文字幕",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 651,
-          "total": 13018
         }
       ]
     },
@@ -2672,7 +2231,29 @@
       ]
     },
     {
-      "id": "all-on-demand-sources-小鸡资源-https-api-xiaojizy-live-provide-vod-46",
+      "id": "all-on-demand-sources-优优资源-https-www-yytv4-cc-api-php-provide-vod-46",
+      "name": "优优资源｜追劇",
+      "type": 1,
+      "api": "https://www.yytv4.cc/api.php/provide/vod/",
+      "origin": "All on-demand sources",
+      "adult": true,
+      "indexable": true,
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "error": "分類讀取失敗: HTTP 502",
+      "checks": [
+        {
+          "label": "最新",
+          "ok": false,
+          "count": 0,
+          "error": "HTTP 502"
+        }
+      ]
+    },
+    {
+      "id": "all-on-demand-sources-小鸡资源-https-api-xiaojizy-live-provide-vod-47",
       "name": "小鸡资源｜追劇",
       "type": 1,
       "api": "https://api.xiaojizy.live/provide/vod/",
@@ -2680,47 +2261,24 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 80196,
+      "playableCount": 80196,
       "sourceTotalCount": 80196,
+      "indexPath": "vod-index/api-xiaojizy-live-all-on-demand-sources-小鸡资源-https-api-xiaojizy-live-provide-vod.json.gz",
+      "detailPathPattern": "vod-detail/api-xiaojizy-live-all-on-demand-sources-小鸡资源-https-api-xiaojizy-live-provide-vod/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 4010,
+          "count": 80196,
+          "pages": 4010,
           "total": 80196
-        },
-        {
-          "label": "主播网红",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 95,
-          "total": 1894
-        },
-        {
-          "label": "国产厂牌",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 138,
-          "total": 2747
-        },
-        {
-          "label": "自拍偷拍",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 972,
-          "total": 19424
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-黄色仓库-https-hsckzy-xyz-api-php-provide-vod-47",
+      "id": "all-on-demand-sources-黄色仓库-https-hsckzy-xyz-api-php-provide-vod-48",
       "name": "黄色仓库｜追劇",
       "type": 1,
       "api": "https://hsckzy.xyz/api.php/provide/vod/",
@@ -2800,7 +2358,7 @@
       ]
     },
     {
-      "id": "all-on-demand-sources-大奶子-https-apidanaizi-com-api-php-provide-vod-48",
+      "id": "all-on-demand-sources-大奶子-https-apidanaizi-com-api-php-provide-vod-49",
       "name": "大奶子｜追劇",
       "type": 1,
       "api": "https://apidanaizi.com/api.php/provide/vod/",
@@ -2848,7 +2406,7 @@
       ]
     },
     {
-      "id": "all-on-demand-sources-jkun资源-https-jkunzyapi-com-api-php-provide-vod-49",
+      "id": "all-on-demand-sources-jkun资源-https-jkunzyapi-com-api-php-provide-vod-50",
       "name": "jkun资源｜追劇",
       "type": 1,
       "api": "https://jkunzyapi.com/api.php/provide/vod/",
@@ -2880,7 +2438,7 @@
       ]
     },
     {
-      "id": "all-on-demand-sources-乐播资源-https-lbapi9-com-api-php-provide-vod-50",
+      "id": "all-on-demand-sources-乐播资源-https-lbapi9-com-api-php-provide-vod-51",
       "name": "乐播资源｜追劇",
       "type": 1,
       "api": "https://lbapi9.com/api.php/provide/vod/",
@@ -2888,55 +2446,24 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 313488,
+      "playableCount": 313488,
       "sourceTotalCount": 313640,
+      "indexPath": "vod-index/lbapi9-com-all-on-demand-sources-乐播资源-https-lbapi9-com-api-php-provide-vod-51.json.gz",
+      "detailPathPattern": "vod-detail/lbapi9-com-all-on-demand-sources-乐播资源-https-lbapi9-com-api-php-provide-vod-51/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 15682,
+          "count": 313488,
+          "pages": 3136,
           "total": 313640
-        },
-        {
-          "label": "福利姬",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 527,
-          "total": 10526
-        },
-        {
-          "label": "国产主播",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1765,
-          "total": 35293
-        },
-        {
-          "label": "国产自拍",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1199,
-          "total": 23968
-        },
-        {
-          "label": "亚洲情色",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 2215,
-          "total": 44295
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-52",
       "name": "奶香资源｜追劇",
       "type": 1,
       "api": "https://Naixxzy.com/api.php/provide/vod/",
@@ -2968,7 +2495,7 @@
       ]
     },
     {
-      "id": "all-on-demand-sources-森林资源-https-beiyong-slapibf-com-api-php-provide-vod-52",
+      "id": "all-on-demand-sources-森林资源-https-beiyong-slapibf-com-api-php-provide-vod-53",
       "name": "森林资源｜追劇",
       "type": 1,
       "api": "https://beiyong.slapibf.com/api.php/provide/vod/",
@@ -2976,47 +2503,24 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 238207,
+      "playableCount": 238207,
       "sourceTotalCount": 238207,
+      "indexPath": "vod-index/beiyong-slapibf-com-all-on-demand-sources-森林资源-https-beiyong-slapibf-com-api-php.json.gz",
+      "detailPathPattern": "vod-detail/beiyong-slapibf-com-all-on-demand-sources-森林资源-https-beiyong-slapibf-com-api-php/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 11911,
+          "count": 238207,
+          "pages": 2383,
           "total": 238207
-        },
-        {
-          "label": "女同性恋",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 101,
-          "total": 2018
-        },
-        {
-          "label": "闷骚护士",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 126,
-          "total": 2503
-        },
-        {
-          "label": "恋腿狂魔",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 202,
-          "total": 4022
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-辣椒资源-https-pz-v88-qzz-io-url-https-apilj-com-api-php-provide-vod-53",
+      "id": "all-on-demand-sources-辣椒资源-https-pz-v88-qzz-io-url-https-apilj-com-api-php-provide-vod-54",
       "name": "辣椒资源｜追劇",
       "type": 1,
       "api": "https://pz.v88.qzz.io/?url=https://apilj.com/api.php/provide/vod",
@@ -3026,7 +2530,7 @@
       "indexed": true,
       "itemCount": 70,
       "playableCount": 70,
-      "sourceTotalCount": 211854,
+      "sourceTotalCount": 211689,
       "error": "",
       "checks": [
         {
@@ -3034,8 +2538,8 @@
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 10593,
-          "total": 211854
+          "pagecount": 10585,
+          "total": 211689
         },
         {
           "label": "日韩无码",
@@ -3043,36 +2547,36 @@
           "count": 20,
           "pages": 1,
           "pagecount": 944,
-          "total": 18874
+          "total": 18863
         },
         {
           "label": "国产自拍",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 3206,
-          "total": 64108
+          "pagecount": 3202,
+          "total": 64027
         },
         {
-          "label": "中文字幕",
+          "label": "童颜巨乳",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 653,
-          "total": 13046
+          "pagecount": 708,
+          "total": 14141
         },
         {
-          "label": "AV明星",
+          "label": "强奸乱伦",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 1263,
-          "total": 25241
+          "pagecount": 222,
+          "total": 4438
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-鲨鱼资源-https-shayuapi-com-api-php-provide-vod-54",
+      "id": "all-on-demand-sources-鲨鱼资源-https-shayuapi-com-api-php-provide-vod-55",
       "name": "鲨鱼资源｜追劇",
       "type": 1,
       "api": "https://shayuapi.com/api.php/provide/vod/",
@@ -3128,7 +2632,7 @@
       ]
     },
     {
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-56",
       "name": "豆豆资源｜追劇",
       "type": 1,
       "api": "https://api.douapi.cc/api.php/provide/vod/",
@@ -3136,16 +2640,18 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 20,
-      "playableCount": 20,
-      "sourceTotalCount": 32585,
+      "itemCount": 22,
+      "playableCount": 22,
+      "sourceTotalCount": 51734,
       "error": "",
       "checks": [
         {
           "label": "最新",
-          "ok": false,
-          "count": 0,
-          "error": "fetch failed"
+          "ok": true,
+          "count": 20,
+          "pages": 1,
+          "pagecount": 2587,
+          "total": 51734
         },
         {
           "label": "国产视频",
@@ -3159,12 +2665,12 @@
           "label": "主播大秀",
           "ok": false,
           "count": 0,
-          "error": "The operation was aborted due to timeout"
+          "error": "fetch failed"
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-57",
       "name": "滴滴资源｜追劇",
       "type": 1,
       "api": "https://api.ddapi.cc/api.php/provide/vod/",
@@ -3172,39 +2678,24 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 40,
-      "playableCount": 40,
-      "sourceTotalCount": 40896,
+      "itemCount": 40881,
+      "playableCount": 40881,
+      "sourceTotalCount": 40882,
+      "indexPath": "vod-index/api-ddapi-cc-all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-5.json.gz",
+      "detailPathPattern": "vod-detail/api-ddapi-cc-all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-5/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 2045,
-          "total": 40896
-        },
-        {
-          "label": "国产专区",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1599,
-          "total": 31975
-        },
-        {
-          "label": "主播视讯",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 95,
-          "total": 1884
+          "count": 40881,
+          "pages": 409,
+          "total": 40882
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-黑料资源-https-www-heiliaozyapi-com-api-php-provide-vod-57",
+      "id": "all-on-demand-sources-黑料资源-https-www-heiliaozyapi-com-api-php-provide-vod-58",
       "name": "黑料资源｜追劇",
       "type": 1,
       "api": "https://www.heiliaozyapi.com/api.php/provide/vod/",
@@ -3212,71 +2703,64 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 93085,
+      "playableCount": 93085,
       "sourceTotalCount": 93085,
+      "indexPath": "vod-index/www-heiliaozyapi-com-all-on-demand-sources-黑料资源-https-www-heiliaozyapi-com-api-p.json.gz",
+      "detailPathPattern": "vod-detail/www-heiliaozyapi-com-all-on-demand-sources-黑料资源-https-www-heiliaozyapi-com-api-p/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 50,
-          "pages": 1,
-          "pagecount": 1862,
+          "count": 93085,
+          "pages": 931,
           "total": 93085
-        },
-        {
-          "label": "自拍偷拍",
-          "ok": true,
-          "count": 50,
-          "pages": 1,
-          "pagecount": 304,
-          "total": 15187
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-百万资源-https-api-bwzyz-com-api-php-provide-vod-58",
+      "id": "all-on-demand-sources-百万资源-https-api-bwzyz-com-api-php-provide-vod-59",
       "name": "百万资源｜追劇",
       "type": 1,
       "api": "https://api.bwzyz.com/api.php/provide/vod/",
       "origin": "All on-demand sources",
       "adult": true,
       "indexable": true,
-      "indexed": false,
-      "itemCount": 0,
-      "playableCount": 0,
-      "sourceTotalCount": 0,
+      "indexed": true,
+      "itemCount": 40,
+      "playableCount": 40,
+      "sourceTotalCount": 94851,
       "error": "",
       "checks": [
         {
           "label": "最新",
-          "ok": false,
-          "count": 0,
-          "error": "The operation was aborted due to timeout"
+          "ok": true,
+          "count": 20,
+          "pages": 1,
+          "pagecount": 4743,
+          "total": 94851
         },
         {
-          "label": "日本无码",
-          "ok": false,
-          "count": 0,
-          "error": "The operation was aborted due to timeout"
-        },
-        {
-          "label": "中文字幕",
-          "ok": false,
-          "count": 0,
-          "error": "The operation was aborted due to timeout"
+          "label": "国产主播",
+          "ok": true,
+          "count": 20,
+          "pages": 1,
+          "pagecount": 492,
+          "total": 9828
         },
         {
           "label": "国产视频",
-          "ok": false,
-          "count": 0,
-          "error": "The operation was aborted due to timeout"
+          "ok": true,
+          "count": 20,
+          "pages": 1,
+          "pagecount": 1313,
+          "total": 26242
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-桃花资源-https-thzy1-me-api-php-provide-vod-59",
+      "id": "all-on-demand-sources-桃花资源-https-thzy1-me-api-php-provide-vod-60",
       "name": "桃花资源｜追劇",
       "type": 1,
       "api": "https://thzy1.me/api.php/provide/vod/",
@@ -3284,47 +2768,24 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 60,
-      "playableCount": 60,
+      "itemCount": 129395,
+      "playableCount": 129395,
       "sourceTotalCount": 129405,
+      "indexPath": "vod-index/thzy1-me-all-on-demand-sources-桃花资源-https-thzy1-me-api-php-provide-vod-60.json.gz",
+      "detailPathPattern": "vod-detail/thzy1-me-all-on-demand-sources-桃花资源-https-thzy1-me-api-php-provide-vod-60/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 6471,
+          "count": 129395,
+          "pages": 1295,
           "total": 129405
-        },
-        {
-          "label": "日本有码",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 737,
-          "total": 14739
-        },
-        {
-          "label": "日本无码",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1071,
-          "total": 21410
-        },
-        {
-          "label": "欧美",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 605,
-          "total": 12081
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-精品资源-https-www-jingpinx-com-api-php-provide-vod-60",
+      "id": "all-on-demand-sources-精品资源-https-www-jingpinx-com-api-php-provide-vod-61",
       "name": "精品资源｜追劇",
       "type": 1,
       "api": "https://www.jingpinx.com/api.php/provide/vod/",
@@ -3332,47 +2793,24 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 60,
-      "playableCount": 60,
+      "itemCount": 43491,
+      "playableCount": 43491,
       "sourceTotalCount": 43496,
+      "indexPath": "vod-index/www-jingpinx-com-all-on-demand-sources-精品资源-https-www-jingpinx-com-api-php-provi.json.gz",
+      "detailPathPattern": "vod-detail/www-jingpinx-com-all-on-demand-sources-精品资源-https-www-jingpinx-com-api-php-provi/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 2175,
+          "count": 43491,
+          "pages": 435,
           "total": 43496
-        },
-        {
-          "label": "高清无码",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 79,
-          "total": 1561
-        },
-        {
-          "label": "中文字幕",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 148,
-          "total": 2959
-        },
-        {
-          "label": "燃烧荷尔蒙",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 161,
-          "total": 3204
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-ck-资源-https-ckzy-me-api-php-provide-vod-61",
+      "id": "all-on-demand-sources-ck-资源-https-ckzy-me-api-php-provide-vod-62",
       "name": "CK-资源｜追劇",
       "type": 1,
       "api": "https://ckzy.me/api.php/provide/vod/",
@@ -3380,31 +2818,24 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 20,
-      "playableCount": 20,
+      "itemCount": 7134,
+      "playableCount": 7134,
       "sourceTotalCount": 7137,
+      "indexPath": "vod-index/ckzy-me-all-on-demand-sources-ck-资源-https-ckzy-me-api-php-provide-vod-62.json.gz",
+      "detailPathPattern": "vod-detail/ckzy-me-all-on-demand-sources-ck-资源-https-ckzy-me-api-php-provide-vod-62/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 357,
-          "total": 7137
-        },
-        {
-          "label": "伦理片",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 357,
+          "count": 7134,
+          "pages": 72,
           "total": 7137
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-souavzy-https-api-souavzyw-net-api-php-provide-vod-62",
+      "id": "all-on-demand-sources-souavzy-https-api-souavzyw-net-api-php-provide-vod-63",
       "name": "souavZY｜追劇",
       "type": 1,
       "api": "https://api.souavzyw.net/api.php/provide/vod/",
@@ -3436,7 +2867,7 @@
       ]
     },
     {
-      "id": "all-on-demand-sources-细胞资源-https-www-xxibaozyw-com-api-php-provide-vod-63",
+      "id": "all-on-demand-sources-细胞资源-https-www-xxibaozyw-com-api-php-provide-vod-64",
       "name": "细胞资源｜追劇",
       "type": 1,
       "api": "https://www.xxibaozyw.com/api.php/provide/vod/",
@@ -3446,7 +2877,7 @@
       "indexed": true,
       "itemCount": 70,
       "playableCount": 70,
-      "sourceTotalCount": 16674,
+      "sourceTotalCount": 16665,
       "error": "",
       "checks": [
         {
@@ -3455,27 +2886,7 @@
           "count": 20,
           "pages": 1,
           "pagecount": 834,
-          "total": 16674
-        },
-        {
-          "label": "传媒原创",
-          "ok": false,
-          "count": 0,
-          "error": "The operation was aborted due to timeout"
-        },
-        {
-          "label": "卡通动漫",
-          "ok": false,
-          "count": 0,
-          "error": "The operation was aborted due to timeout"
-        },
-        {
-          "label": "自拍偷拍",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 28,
-          "total": 554
+          "total": 16665
         },
         {
           "label": "国产色情",
@@ -3483,20 +2894,28 @@
           "count": 20,
           "pages": 1,
           "pagecount": 61,
-          "total": 1206
+          "total": 1205
         },
         {
-          "label": "乱伦中出",
+          "label": "吃瓜爆料",
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 75,
-          "total": 1481
+          "pagecount": 136,
+          "total": 2703
+        },
+        {
+          "label": "户外打野",
+          "ok": true,
+          "count": 20,
+          "pages": 1,
+          "pagecount": 12,
+          "total": 228
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-64",
+      "id": "all-on-demand-sources-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-65",
       "name": "香蕉资源｜追劇",
       "type": 1,
       "api": "https://www.xiangjiaozyw.com/api.php/provide/vod/",
@@ -3506,7 +2925,7 @@
       "indexed": true,
       "itemCount": 70,
       "playableCount": 70,
-      "sourceTotalCount": 15866,
+      "sourceTotalCount": 15855,
       "error": "",
       "checks": [
         {
@@ -3514,37 +2933,37 @@
           "ok": true,
           "count": 20,
           "pages": 1,
-          "pagecount": 794,
-          "total": 15866
+          "pagecount": 793,
+          "total": 15855
         },
         {
-          "label": "传媒原创",
+          "label": "户外打野",
+          "ok": true,
+          "count": 20,
+          "pages": 1,
+          "pagecount": 11,
+          "total": 211
+        },
+        {
+          "label": "乱伦中出",
+          "ok": true,
+          "count": 20,
+          "pages": 1,
+          "pagecount": 68,
+          "total": 1359
+        },
+        {
+          "label": "国产色情",
           "ok": true,
           "count": 20,
           "pages": 1,
           "pagecount": 58,
-          "total": 1153
-        },
-        {
-          "label": "吃瓜爆料",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 131,
-          "total": 2616
-        },
-        {
-          "label": "岛国女优",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 10,
-          "total": 191
+          "total": 1156
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-美少女-https-www-msnii-com-api-json-php-65",
+      "id": "all-on-demand-sources-美少女-https-www-msnii-com-api-json-php-66",
       "name": "美少女｜追劇",
       "type": 1,
       "api": "https://www.msnii.com/api/json.php",
@@ -3552,47 +2971,24 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
-      "sourceTotalCount": 23762,
+      "itemCount": 23753,
+      "playableCount": 23753,
+      "sourceTotalCount": 23763,
+      "indexPath": "vod-index/www-msnii-com-all-on-demand-sources-美少女-https-www-msnii-com-api-json-php-66.json.gz",
+      "detailPathPattern": "vod-detail/www-msnii-com-all-on-demand-sources-美少女-https-www-msnii-com-api-json-php-66/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1189,
-          "total": 23762
-        },
-        {
-          "label": "分類 1",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 32,
-          "total": 622
-        },
-        {
-          "label": "分類 2",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 152,
-          "total": 3040
-        },
-        {
-          "label": "分類 3",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 152,
-          "total": 3040
+          "count": 23753,
+          "pages": 1189,
+          "total": 23763
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-黄avzy-https-www-pgxdy-com-api-json-php-66",
+      "id": "all-on-demand-sources-黄avzy-https-www-pgxdy-com-api-json-php-67",
       "name": "黄AVZY｜追劇",
       "type": 1,
       "api": "https://www.pgxdy.com/api/json.php",
@@ -3602,7 +2998,7 @@
       "indexed": true,
       "itemCount": 70,
       "playableCount": 70,
-      "sourceTotalCount": 22635,
+      "sourceTotalCount": 22634,
       "error": "",
       "checks": [
         {
@@ -3611,18 +3007,10 @@
           "count": 20,
           "pages": 1,
           "pagecount": 1132,
-          "total": 22635
+          "total": 22634
         },
         {
           "label": "分類 1",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 132,
-          "total": 2640
-        },
-        {
-          "label": "分類 2",
           "ok": true,
           "count": 20,
           "pages": 1,
@@ -3630,17 +3018,25 @@
           "total": 3600
         },
         {
-          "label": "分類 3",
+          "label": "分類 2",
           "ok": true,
           "count": 20,
           "pages": 1,
           "pagecount": 96,
           "total": 1904
+        },
+        {
+          "label": "分類 3",
+          "ok": true,
+          "count": 20,
+          "pages": 1,
+          "pagecount": 132,
+          "total": 2639
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-白嫖资源-https-www-kxgav-com-api-json-php-67",
+      "id": "all-on-demand-sources-白嫖资源-https-www-kxgav-com-api-json-php-68",
       "name": "白嫖资源｜追劇",
       "type": 1,
       "api": "https://www.kxgav.com/api/json.php",
@@ -3648,47 +3044,24 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
-      "sourceTotalCount": 22469,
+      "itemCount": 22469,
+      "playableCount": 22469,
+      "sourceTotalCount": 22470,
+      "indexPath": "vod-index/www-kxgav-com-all-on-demand-sources-白嫖资源-https-www-kxgav-com-api-json-php-68.json.gz",
+      "detailPathPattern": "vod-detail/www-kxgav-com-all-on-demand-sources-白嫖资源-https-www-kxgav-com-api-json-php-68/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1124,
-          "total": 22469
-        },
-        {
-          "label": "分類 1",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 103,
-          "total": 2050
-        },
-        {
-          "label": "分類 2",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 93,
-          "total": 1856
-        },
-        {
-          "label": "分類 3",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 77,
-          "total": 1529
+          "count": 22469,
+          "pages": 1124,
+          "total": 22470
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-杏吧资源-https-xingba222-com-api-php-provide-vod-68",
+      "id": "all-on-demand-sources-杏吧资源-https-xingba222-com-api-php-provide-vod-69",
       "name": "杏吧资源｜追劇",
       "type": 1,
       "api": "https://xingba222.com/api.php/provide/vod/",
@@ -3736,7 +3109,7 @@
       ]
     },
     {
-      "id": "all-on-demand-sources-大地资源-https-dadiapi-com-feifei-69",
+      "id": "all-on-demand-sources-大地资源-https-dadiapi-com-feifei-70",
       "name": "大地资源｜追劇",
       "type": 0,
       "api": "https://dadiapi.com/feifei",
@@ -3747,84 +3120,21 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
+      "indexPath": "vod-index/dadiapi-com-all-on-demand-sources-大地资源-https-dadiapi-com-feifei-70.json.gz",
+      "detailPathPattern": "vod-detail/dadiapi-com-all-on-demand-sources-大地资源-https-dadiapi-com-feifei-70/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
           "count": 0,
           "pages": 1,
-          "pagecount": 1,
-          "total": 0
-        },
-        {
-          "label": "分類 1",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 1,
-          "total": 0
-        },
-        {
-          "label": "分類 2",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 1,
-          "total": 0
-        },
-        {
-          "label": "分類 3",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 1,
-          "total": 0
-        },
-        {
-          "label": "分類 4",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 1,
-          "total": 0
-        },
-        {
-          "label": "分類 5",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 1,
-          "total": 0
-        },
-        {
-          "label": "分類 6",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 1,
-          "total": 0
-        },
-        {
-          "label": "分類 7",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 1,
-          "total": 0
-        },
-        {
-          "label": "分類 8",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 1,
           "total": 0
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-色猫资源-https-caiji-semaozy-net-inc-apijson-vod-php-provide-vod-70",
+      "id": "all-on-demand-sources-色猫资源-https-caiji-semaozy-net-inc-apijson-vod-php-provide-vod-71",
       "name": "色猫资源｜追劇",
       "type": 1,
       "api": "https://caiji.semaozy.net/inc/apijson_vod.php/provide/vod/",
@@ -3835,20 +3145,21 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
+      "indexPath": "vod-index/caiji-semaozy-net-all-on-demand-sources-色猫资源-https-caiji-semaozy-net-inc-apijson.json.gz",
+      "detailPathPattern": "vod-detail/caiji-semaozy-net-all-on-demand-sources-色猫资源-https-caiji-semaozy-net-inc-apijson/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
           "count": 0,
           "pages": 1,
-          "pagecount": 1,
           "total": 0
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-71",
+      "id": "all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-72",
       "name": "奥斯卡｜追劇",
       "type": 1,
       "api": "https://aosikazy.com/api.php/provide/vod/",
@@ -3856,55 +3167,24 @@
       "adult": true,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 182804,
+      "playableCount": 182804,
       "sourceTotalCount": 204537,
+      "indexPath": "vod-index/aosikazy-com-all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-72.json.gz",
+      "detailPathPattern": "vod-detail/aosikazy-com-all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-72/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 10227,
+          "count": 182804,
+          "pages": 2046,
           "total": 204537
-        },
-        {
-          "label": "日本有码",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1175,
-          "total": 23493
-        },
-        {
-          "label": "强奸乱伦",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 1020,
-          "total": 20395
-        },
-        {
-          "label": "女优明星",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 261,
-          "total": 5220
-        },
-        {
-          "label": "日本无码",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 295,
-          "total": 5884
         }
       ]
     },
     {
-      "id": "all-on-demand-sources-丝袜资源-https-siwazyw-tv-api-php-provide-vod-72",
+      "id": "all-on-demand-sources-丝袜资源-https-siwazyw-tv-api-php-provide-vod-73",
       "name": "丝袜资源｜追劇",
       "type": 1,
       "api": "https://siwazyw.tv/api.php/provide/vod/",
@@ -3922,28 +3202,6 @@
           "ok": false,
           "count": 0,
           "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-        }
-      ]
-    },
-    {
-      "id": "all-on-demand-sources-优优资源-https-www-yytv4-cc-api-php-provide-vod-73",
-      "name": "优优资源｜追劇",
-      "type": 1,
-      "api": "https://www.yytv4.cc/api.php/provide/vod/",
-      "origin": "All on-demand sources",
-      "adult": true,
-      "indexable": true,
-      "indexed": false,
-      "itemCount": 0,
-      "playableCount": 0,
-      "sourceTotalCount": 0,
-      "error": "分類讀取失敗: HTTP 502",
-      "checks": [
-        {
-          "label": "最新",
-          "ok": false,
-          "count": 0,
-          "error": "HTTP 502"
         }
       ]
     },
@@ -4262,42 +3520,19 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 77918,
+      "playableCount": 77918,
       "sourceTotalCount": 77984,
+      "indexPath": "vod-index/cj-rycjapi-com-all-on-demand-sources-api-如意-https-cj-rycjapi-com-api-php-provide.json.gz",
+      "detailPathPattern": "vod-detail/cj-rycjapi-com-all-on-demand-sources-api-如意-https-cj-rycjapi-com-api-php-provide/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 3900,
+          "count": 77918,
+          "pages": 780,
           "total": 77984
-        },
-        {
-          "label": "泰国剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 30,
-          "total": 584
-        },
-        {
-          "label": "欧美剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 110,
-          "total": 2196
-        },
-        {
-          "label": "日韩动漫",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 152,
-          "total": 3028
         }
       ]
     },
@@ -4325,42 +3560,19 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
+      "itemCount": 63544,
+      "playableCount": 63544,
       "sourceTotalCount": 63590,
+      "indexPath": "vod-index/360zy-com-all-on-demand-sources-cj-360资源-https-360zy-com-api-php-provide-vod-84.json.gz",
+      "detailPathPattern": "vod-detail/360zy-com-all-on-demand-sources-cj-360资源-https-360zy-com-api-php-provide-vod-84/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 3180,
+          "count": 63544,
+          "pages": 636,
           "total": 63590
-        },
-        {
-          "label": "泰国剧",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 12,
-          "total": 233
-        },
-        {
-          "label": "国产剧",
-          "ok": true,
-          "count": 19,
-          "pages": 1,
-          "pagecount": 212,
-          "total": 4223
-        },
-        {
-          "label": "日韩综艺",
-          "ok": true,
-          "count": 20,
-          "pages": 1,
-          "pagecount": 7,
-          "total": 137
         }
       ]
     },
@@ -4523,31 +3735,16 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 98865,
+      "indexPath": "vod-index/fqzy-me-all-on-demand-sources-fqzy资源-https-fqzy-me-api-php-provide-vod-ac-list-9.json.gz",
+      "detailPathPattern": "vod-detail/fqzy-me-all-on-demand-sources-fqzy资源-https-fqzy-me-api-php-provide-vod-ac-list-9/page-{page}.json.gz",
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "source-index-gzip",
           "ok": true,
           "count": 0,
-          "pages": 1,
-          "pagecount": 4944,
+          "pages": 989,
           "total": 98865
-        },
-        {
-          "label": "无码流出",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 72,
-          "total": 1437
-        },
-        {
-          "label": "中文字幕",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 243,
-          "total": 4849
         }
       ]
     }
