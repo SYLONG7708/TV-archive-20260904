@@ -2,24 +2,10 @@ name: Update LunaTV VOD sources
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - "tools/update-lunatv-vod.ps1"
-      - "tools/update-lunatv-vod-local.ps1"
-      - "tools/install-lunatv-vod-autoupdate-task.ps1"
-      - "tools/build-all-on-demand-sources.mjs"
-      - "tools/build-iphone-vod-catalog.mjs"
-      - "tools/check-iphone-catalog-health.mjs"
-      - "docs/iphone/index.html"
-      - "docs/assets/source-signal-icon.svg"
-      - "docs/assets/adult-18-badge.svg"
-      - "sources/current-sources.json"
-      - "sources/All on-demand sources"
-      - ".github/workflows/update-lunatv-vod.yml"
   schedule:
-    - cron: "17 * * * *"
+    # 02:00 Asia/Shanghai. The job checks the last successful update state
+    # and only refreshes after five days; failed attempts retry the next day.
+    - cron: "0 18 * * *"
 
 permissions:
   contents: write
@@ -36,7 +22,51 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check five-day update window
+        id: gate
+        shell: pwsh
+        run: |
+          $statePath = ".\docs\data\lunatv-vod-update-state.json"
+          $intervalDays = 5
+          $scheduleHour = 2
+          $timeZone = [TimeZoneInfo]::FindSystemTimeZoneById("China Standard Time")
+          $nowUtc = [DateTimeOffset]::UtcNow
+          $shouldRun = $true
+          $reason = "manual"
+
+          if ("${{ github.event_name }}" -ne "workflow_dispatch") {
+            $reason = "no previous success state"
+            if (Test-Path -LiteralPath $statePath) {
+              try {
+                $state = Get-Content -LiteralPath $statePath -Raw -Encoding UTF8 | ConvertFrom-Json
+                if ($state.nextDueAt) {
+                  $nextDue = [DateTimeOffset]::Parse([string]$state.nextDueAt)
+                } elseif ($state.lastSuccessAt) {
+                  $lastSuccess = [DateTimeOffset]::Parse([string]$state.lastSuccessAt)
+                  $localSuccess = [TimeZoneInfo]::ConvertTime($lastSuccess, $timeZone)
+                  $nextLocal = $localSuccess.Date.AddDays($intervalDays).AddHours($scheduleHour)
+                  if ($nextLocal -le $localSuccess.DateTime) { $nextLocal = $nextLocal.AddDays(1) }
+                  $nextDue = [DateTimeOffset]::new($nextLocal, $timeZone.GetUtcOffset($nextLocal))
+                }
+
+                if ($nextDue -and $nowUtc -lt $nextDue.ToUniversalTime()) {
+                  $shouldRun = $false
+                  $reason = "next due $($nextDue.ToString("yyyy-MM-dd HH:mm:ss zzz"))"
+                } else {
+                  $reason = "due"
+                }
+              } catch {
+                $reason = "state unreadable, run update: $($_.Exception.Message)"
+              }
+            }
+          }
+
+          "should_run=$($shouldRun.ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          "reason=$reason" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          Write-Host "should_run=$shouldRun; $reason"
+
       - name: Refresh LunaTV VOD sources
+        if: steps.gate.outputs.should_run == 'true'
         shell: pwsh
         run: |
           powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\update-lunatv-vod.ps1 `
@@ -72,7 +102,35 @@ jobs:
             --timeoutMs 8000 `
             --concurrency 18
 
+      - name: Mark successful update
+        if: steps.gate.outputs.should_run == 'true'
+        shell: pwsh
+        run: |
+          $statePath = ".\docs\data\lunatv-vod-update-state.json"
+          $intervalDays = 5
+          $scheduleHour = 2
+          $timeZone = [TimeZoneInfo]::FindSystemTimeZoneById("China Standard Time")
+          $nowUtc = [DateTimeOffset]::UtcNow
+          $localNow = [TimeZoneInfo]::ConvertTime($nowUtc, $timeZone)
+          $nextLocal = $localNow.Date.AddDays($intervalDays).AddHours($scheduleHour)
+          if ($nextLocal -le $localNow.DateTime) { $nextLocal = $nextLocal.AddDays(1) }
+          $nextDue = [DateTimeOffset]::new($nextLocal, $timeZone.GetUtcOffset($nextLocal))
+          $state = [ordered]@{
+            status = "success"
+            lastSuccessAt = $nowUtc.ToString("o")
+            nextDueAt = $nextDue.ToString("o")
+            intervalDays = $intervalDays
+            scheduleHour = $scheduleHour
+            timeZone = "Asia/Shanghai"
+            updatedBy = "github-actions"
+            runId = "${{ github.run_id }}"
+          }
+          New-Item -ItemType Directory -Force -Path (Split-Path -Parent $statePath) | Out-Null
+          Set-Content -LiteralPath $statePath -Value (($state | ConvertTo-Json -Depth 4) + "`n") -Encoding UTF8
+          Write-Host "Next VOD update: $($nextDue.ToString("yyyy-MM-dd HH:mm:ss zzz"))"
+
       - name: Commit changes
+        if: steps.gate.outputs.should_run == 'true'
         shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
@@ -84,6 +142,7 @@ jobs:
             sources/vod-lunatv-adult18-sorted-oktv.json sources/vod-lunatv-adult18-sorted-report.json sources/vod-lunatv-adult18-sorted-analysis.csv `
             docs/data/vod-sources.json docs/data/iphone-vod-catalog.json docs/data/iphone-vod-catalog-report.json `
             docs/data/iphone-health-check-latest.json docs/data/iphone-health-check-latest.csv `
+            docs/data/lunatv-vod-update-state.json `
             docs/iphone/index.html `
             docs/assets/source-signal-icon.svg docs/assets/adult-18-badge.svg
           if (git diff --cached --quiet) {
@@ -94,6 +153,7 @@ jobs:
           }
 
       - name: Publish GitHub Pages data
+        if: steps.gate.outputs.should_run == 'true'
         shell: pwsh
         run: |
           git fetch origin gh-pages

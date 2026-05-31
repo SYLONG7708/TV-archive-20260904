@@ -1,6 +1,7 @@
 param(
     [string]$TaskName = "OKTV LunaTV VOD Auto Update",
     [string]$RepoRoot = "",
+    [int]$AtHour = 2,
     [switch]$RunNow
 )
 
@@ -19,10 +20,12 @@ if (-not (Test-Path -LiteralPath $scriptPath)) {
 
 $actionArgs = '-NoProfile -ExecutionPolicy Bypass -File "{0}" -RepoRoot "{1}" -SourceName "jin18,full"' -f $scriptPath, $RepoRoot
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $actionArgs
+$triggerAt = (Get-Date).Date.AddHours($AtHour)
+if ($triggerAt -le (Get-Date)) {
+    $triggerAt = $triggerAt.AddDays(1)
+}
 $triggers = @(
-    (New-ScheduledTaskTrigger -AtLogOn),
-    (New-ScheduledTaskTrigger -AtStartup),
-    (New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(5) -RepetitionInterval (New-TimeSpan -Hours 1) -RepetitionDuration (New-TimeSpan -Days 3650))
+    (New-ScheduledTaskTrigger -Daily -At $triggerAt)
 )
 $settings = New-ScheduledTaskSettingsSet `
     -StartWhenAvailable `
@@ -39,12 +42,13 @@ Register-ScheduledTask `
     -Trigger $triggers `
     -Settings $settings `
     -Principal $principal `
-    -Description "Refresh OKTV LunaTV VOD, iPhone catalog, poster/name checks and live checks at startup/logon and every hour, then push to GitHub." `
+    -Description "Check OKTV LunaTV VOD sources daily at 02:00; refresh only after five days since the last successful update, and retry the next day if the update fails." `
     -Force | Out-Null
 
 Write-Host "Registered scheduled task: $TaskName"
 Write-Host "Repo: $RepoRoot"
 Write-Host "Script: $scriptPath"
+Write-Host "Trigger: daily at $($triggerAt.ToString("HH:mm")) with five-day success gate"
 
 if ($RunNow) {
     Start-ScheduledTask -TaskName $TaskName

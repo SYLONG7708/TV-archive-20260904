@@ -4,6 +4,9 @@ param(
     [string]$SourceName = "jin18,full",
     [int]$TimeoutSec = 12,
     [int]$MaxDetailProbe = 3,
+    [int]$UpdateIntervalDays = 5,
+    [int]$ScheduleHour = 2,
+    [switch]$ForceUpdate,
     [switch]$NoGitPush
 )
 
@@ -28,6 +31,7 @@ $logDir = Join-Path $repoRootText ".patch-work"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 $logPath = Join-Path $logDir "lunatv-vod-local-update.log"
 $lockPath = Join-Path $logDir "lunatv-vod-local-update.lock"
+$scheduleStatePath = Join-Path $repoRootText "docs\data\lunatv-vod-update-state.json"
 
 function Write-Log([string]$Message) {
     $line = "{0} {1}" -f (Get-Date).ToString("yyyy-MM-dd HH:mm:ss"), $Message
@@ -40,6 +44,90 @@ function Invoke-Git {
 
 function Invoke-PagesGit {
     git -c "safe.directory=$pagesSafeDir" @args
+}
+
+function Get-ScheduleTimeZone {
+    try {
+        return [TimeZoneInfo]::FindSystemTimeZoneById("China Standard Time")
+    } catch {
+        return [TimeZoneInfo]::Local
+    }
+}
+
+function Get-NextDueAt([DateTimeOffset]$SuccessAt) {
+    $tz = Get-ScheduleTimeZone
+    $localSuccess = [TimeZoneInfo]::ConvertTime($SuccessAt, $tz)
+    $nextLocalDateTime = $localSuccess.Date.AddDays($UpdateIntervalDays).AddHours($ScheduleHour)
+    if ($nextLocalDateTime -le $localSuccess.DateTime) {
+        $nextLocalDateTime = $nextLocalDateTime.AddDays(1)
+    }
+    $offset = $tz.GetUtcOffset($nextLocalDateTime)
+    return [DateTimeOffset]::new($nextLocalDateTime, $offset)
+}
+
+function Get-ScheduleState {
+    if (-not (Test-Path -LiteralPath $scheduleStatePath)) {
+        return $null
+    }
+
+    try {
+        return Get-Content -LiteralPath $scheduleStatePath -Raw -Encoding UTF8 | ConvertFrom-Json
+    } catch {
+        Write-Log "Schedule state is unreadable; update will run. $($_.Exception.Message)"
+        return $null
+    }
+}
+
+function Test-UpdateDue {
+    if ($ForceUpdate) {
+        Write-Log "ForceUpdate set; update will run now."
+        return $true
+    }
+
+    $state = Get-ScheduleState
+    if (-not $state) {
+        Write-Log "No successful VOD update state found; update is due."
+        return $true
+    }
+
+    $nextDueText = [string]$state.nextDueAt
+    if ([string]::IsNullOrWhiteSpace($nextDueText) -and -not [string]::IsNullOrWhiteSpace([string]$state.lastSuccessAt)) {
+        $lastSuccess = [DateTimeOffset]::Parse([string]$state.lastSuccessAt)
+        $nextDueText = (Get-NextDueAt $lastSuccess).ToString("o")
+    }
+
+    if ([string]::IsNullOrWhiteSpace($nextDueText)) {
+        Write-Log "Schedule state has no nextDueAt; update is due."
+        return $true
+    }
+
+    $nextDue = [DateTimeOffset]::Parse($nextDueText)
+    $now = [DateTimeOffset]::UtcNow
+    if ($now -lt $nextDue.ToUniversalTime()) {
+        Write-Log "VOD update is not due. Next due: $($nextDue.ToString("yyyy-MM-dd HH:mm:ss zzz"))."
+        return $false
+    }
+
+    Write-Log "VOD update is due. Last success: $($state.lastSuccessAt); next due: $nextDueText."
+    return $true
+}
+
+function Write-ScheduleSuccess {
+    $successAt = [DateTimeOffset]::Now
+    $nextDue = Get-NextDueAt $successAt
+    $state = [ordered]@{
+        status = "success"
+        lastSuccessAt = $successAt.ToString("o")
+        nextDueAt = $nextDue.ToString("o")
+        intervalDays = $UpdateIntervalDays
+        scheduleHour = $ScheduleHour
+        timeZone = (Get-ScheduleTimeZone).Id
+        updatedBy = "tools/update-lunatv-vod-local.ps1"
+    }
+
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $scheduleStatePath) | Out-Null
+    Set-Content -LiteralPath $scheduleStatePath -Value (($state | ConvertTo-Json -Depth 4) + "`n") -Encoding UTF8
+    Write-Log "VOD update marked successful. Next scheduled update: $($nextDue.ToString("yyyy-MM-dd HH:mm:ss zzz"))."
 }
 
 function Sync-GhPages {
@@ -94,9 +182,15 @@ if (Test-Path -LiteralPath $lockPath) {
 }
 
 Set-Content -LiteralPath $lockPath -Value ([DateTime]::Now.ToString("o")) -Encoding UTF8
+$pushedLocation = $false
 try {
     Write-Log "Starting LunaTV VOD update. Repo: $repoRootText"
+    if (-not (Test-UpdateDue)) {
+        return
+    }
+
     Push-Location $repoRootText
+    $pushedLocation = $true
 
     try {
         Invoke-Git config user.name | Out-Null
@@ -176,6 +270,8 @@ try {
             --concurrency 18
     }
 
+    Write-ScheduleSuccess
+
     Invoke-Git add `
         "tools/update-lunatv-vod.ps1" `
         "tools/update-lunatv-vod-local.ps1" `
@@ -201,6 +297,7 @@ try {
         "docs/data/vod-sources.json" `
         "docs/data/iphone-health-check-latest.json" `
         "docs/data/iphone-health-check-latest.csv" `
+        "docs/data/lunatv-vod-update-state.json" `
         "docs/iphone/index.html" `
         "docs/assets/source-signal-icon.svg" `
         "docs/assets/adult-18-badge.svg" `
@@ -225,6 +322,8 @@ try {
     Write-Log "ERROR: $($_.Exception.Message)"
     throw
 } finally {
-    Pop-Location
+    if ($pushedLocation) {
+        Pop-Location
+    }
     Remove-Item -LiteralPath $lockPath -Force -ErrorAction SilentlyContinue
 }
