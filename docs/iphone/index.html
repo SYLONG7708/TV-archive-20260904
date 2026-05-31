@@ -973,7 +973,7 @@
             .includes(query);
         };
         const rows = state.catalog.items.filter((item) => matches(item, true));
-        if (['all', 'normal', 'adult18'].includes(sourceId) || state.tab === 'home') return rows;
+        if (['all', 'normal', 'adult18'].includes(sourceId)) return rows;
         const selected = sourceById(sourceId);
         if (rows.length >= baseVisibleLimit()) return rows;
         const seen = new Set(rows.map((item) => item.id));
