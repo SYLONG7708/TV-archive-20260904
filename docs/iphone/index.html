@@ -43,7 +43,7 @@
       body {
         background:
           linear-gradient(90deg, rgba(5, 5, 7, 0.97), rgba(5, 5, 7, 0.9)),
-          url("../assets/hero-cinema.png") right top / auto 100vh fixed no-repeat,
+          url("../assets/hero-cinema.png") right top / auto 100vh no-repeat,
           var(--bg);
         color: var(--text);
         font-family:
@@ -79,7 +79,7 @@
         overflow-x: auto;
         padding: 8px 0 12px;
         background: linear-gradient(180deg, rgba(5, 5, 7, 0.99), rgba(5, 5, 7, 0.74));
-        backdrop-filter: blur(16px);
+        backdrop-filter: none;
         scrollbar-width: none;
       }
 
@@ -260,6 +260,8 @@
         padding: 0;
         text-align: left;
         cursor: pointer;
+        content-visibility: auto;
+        contain-intrinsic-size: 260px 150px;
       }
 
       .poster-art {
@@ -630,7 +632,7 @@
         position: absolute;
         inset: 0;
         background: rgba(0, 0, 0, 0.68);
-        backdrop-filter: blur(8px);
+        backdrop-filter: none;
       }
 
       .sheet-panel {
@@ -966,6 +968,11 @@
         healthIndex: { sources: new Set(), posters: new Set(), live: new Set() },
         detailCache: new Map(),
         loadedSourceIds: new Set(),
+        sourceMap: new Map(),
+        itemById: new Map(),
+        sourcePageState: new Map(),
+        viewCache: new Map(),
+        itemsRevision: 0,
         activeItem: null,
         playerUrl: '',
       };
@@ -986,8 +993,10 @@
       const playerTitle = document.querySelector('#playerTitle');
       const playerMeta = document.querySelector('#playerMeta');
       const EPISODES_PER_PAGE = 20;
+      const SOURCE_DETAIL_PAGE_SIZE = 100;
       let hls = null;
       let searchRenderTimer = null;
+      let loadMoreInFlight = null;
 
       function icon(name) {
         const paths = {
@@ -1045,8 +1054,96 @@
         return fallback;
       }
 
+      function clearViewCache() {
+        state.viewCache.clear();
+      }
+
+      function prepareCatalogItem(item) {
+        if (!item) return item;
+        item._posterKey = normalizedPoster(item.poster);
+        item._duplicateKey = normalizedText(item.title) || (item._posterKey ? `poster:${item._posterKey}` : item.id || '');
+        item._searchText = normalizedText(`${item.title} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`);
+        return item;
+      }
+
+      function registerCatalogItems(rows) {
+        if (!Array.isArray(rows) || !rows.length) return 0;
+        let changed = 0;
+        for (const row of rows) {
+          if (!row?.id) continue;
+          const prepared = prepareCatalogItem(row);
+          const existing = state.itemById.get(prepared.id);
+          if (existing) {
+            Object.assign(existing, prepared);
+            prepareCatalogItem(existing);
+          } else {
+            state.itemById.set(prepared.id, prepared);
+            state.catalog.items.push(prepared);
+          }
+          changed += 1;
+        }
+        if (changed) {
+          state.itemsRevision += 1;
+          clearViewCache();
+        }
+        return changed;
+      }
+
+      function sourcePageCount(source) {
+        const checkPages = source?.checks?.find?.((check) => Number(check.pages) > 0)?.pages;
+        return Math.max(0, Number(checkPages || Math.ceil(Number(source?.itemCount || source?.sourceTotalCount || 0) / SOURCE_DETAIL_PAGE_SIZE)));
+      }
+
+      function sourceDetailPath(source, page) {
+        if (!source?.detailPathPattern) return '';
+        return source.detailPathPattern.replace('{page}', String(page).padStart(4, '0'));
+      }
+
+      function getSourcePageState(source) {
+        if (!source?.id) return null;
+        if (!state.sourcePageState.has(source.id)) {
+          state.sourcePageState.set(source.id, {
+            loaded: new Set(),
+            loading: new Map(),
+            nextPage: 1,
+            totalPages: sourcePageCount(source),
+          });
+        }
+        return state.sourcePageState.get(source.id);
+      }
+
+      async function ensureSourcePage(source, page) {
+        const pageState = getSourcePageState(source);
+        const path = sourceDetailPath(source, page);
+        if (!pageState || !path || page < 1 || (pageState.totalPages && page > pageState.totalPages)) return false;
+        if (pageState.loaded.has(page)) return true;
+        if (pageState.loading.has(page)) return await pageState.loading.get(page);
+        const promise = (async () => {
+          const payload = await getJson(`../data/${path}`, null);
+          const rows = Array.isArray(payload?.items) ? payload.items : [];
+          if (!rows.length) return false;
+          state.detailCache.set(path, payload);
+          registerCatalogItems(rows);
+          pageState.loaded.add(page);
+          while (pageState.loaded.has(pageState.nextPage)) pageState.nextPage += 1;
+          return true;
+        })()
+          .catch(() => false)
+          .finally(() => pageState.loading.delete(page));
+        pageState.loading.set(page, promise);
+        return await promise;
+      }
+
+      async function ensureNextSourcePage() {
+        if (['all', 'normal', 'adult18'].includes(state.selectedSource)) return false;
+        const source = sourceById(state.selectedSource);
+        const pageState = getSourcePageState(source);
+        if (!source?.detailPathPattern || !pageState || !pageState.nextPage || pageState.nextPage > pageState.totalPages) return false;
+        return await ensureSourcePage(source, pageState.nextPage);
+      }
+
       async function hydrateItemDetail(item) {
-        if (!item?.lazyEpisodes && Array.isArray(item?.episodes) && item.episodes.length) return item;
+        if (Array.isArray(item?.episodes) && item.episodes.length) return item;
         if (!item?.detailPath) return item;
         if (state.detailCache.has(item.detailPath)) {
           const cached = state.detailCache.get(item.detailPath);
@@ -1066,11 +1163,16 @@
       }
 
       async function ensureSourceIndex(source) {
-        if (!source?.indexPath || state.loadedSourceIds.has(source.id)) return;
+        if (!source || state.loadedSourceIds.has(source.id)) return;
+        if (source.detailPathPattern) {
+          await ensureSourcePage(source, 1);
+          return;
+        }
+        if (!source.indexPath) return;
         const payload = await getJson(`../data/${source.indexPath}`, null);
         const rows = Array.isArray(payload?.items) ? payload.items : [];
         if (!rows.length && source.itemCount) throw new Error('source-index-empty');
-        state.catalog.items = state.catalog.items.filter((item) => item.sourceId !== source.id).concat(rows);
+        registerCatalogItems(rows);
         state.loadedSourceIds.add(source.id);
       }
 
@@ -1090,13 +1192,6 @@
           await ensureSourceIndex(sourceById(sourceId));
           return;
         }
-        const rows = state.catalog.sources.filter((source) => {
-          if (!source.indexed) return false;
-          if (sourceId === 'normal') return !source.adult;
-          if (sourceId === 'adult18') return source.adult;
-          return true;
-        });
-        await mapAsyncLimit(rows, 3, ensureSourceIndex);
       }
 
       function escapeHtml(value) {
@@ -3334,7 +3429,7 @@
 
       function activeSource() {
         if (['all', 'normal', 'adult18'].includes(state.selectedSource)) return null;
-        return state.catalog.sources.find((source) => source.id === state.selectedSource) || null;
+        return sourceById(state.selectedSource);
       }
 
       function sourceLabel() {
@@ -3344,7 +3439,7 @@
       }
 
       function sourceById(sourceId) {
-        return state.catalog.sources.find((source) => source.id === sourceId) || null;
+        return state.sourceMap.get(sourceId) || null;
       }
 
       function itemGenres(item) {
@@ -3376,6 +3471,7 @@
       }
 
       function itemDuplicateKey(item) {
+        if (item._duplicateKey) return item._duplicateKey;
         const title = normalizedText(item.title);
         const poster = normalizedPoster(item.poster);
         if (title) return title;
@@ -3395,19 +3491,58 @@
       }
 
       function visibleItems() {
-        return uniqueItems(sortedItems(sourceItems()));
+        const cacheKey = viewCacheKey('visible');
+        if (state.viewCache.has(cacheKey)) return state.viewCache.get(cacheKey);
+        const rows = uniqueItems(sortedItems(sourceItems()));
+        state.viewCache.set(cacheKey, rows);
+        return rows;
       }
 
-      function maybeLoadMore() {
+      async function maybeLoadMore() {
         if (state.tab === 'live') return;
-        const all = visibleItems();
-        if (state.visibleLimit >= all.length) return;
         if (window.innerHeight + window.scrollY < document.documentElement.scrollHeight - 900) return;
-        state.visibleLimit = Math.min(all.length, state.visibleLimit + baseVisibleLimit());
-        render();
-        requestAnimationFrame(() => {
-          if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 900) maybeLoadMore();
+        const all = visibleItems();
+        if (state.visibleLimit < all.length) {
+          state.visibleLimit = Math.min(all.length, state.visibleLimit + baseVisibleLimit());
+          render();
+          requestAnimationFrame(() => {
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 900) maybeLoadMore();
+          });
+          return;
+        }
+        if (loadMoreInFlight) return;
+        loadMoreInFlight = ensureNextSourcePage().finally(() => {
+          loadMoreInFlight = null;
         });
+        const loaded = await loadMoreInFlight;
+        if (!loaded) return;
+        const nextRows = visibleItems();
+        if (!nextRows.length) {
+          render();
+          return;
+        }
+        state.visibleLimit = Math.min(nextRows.length, state.visibleLimit + baseVisibleLimit());
+        render();
+        if (state.visibleLimit < nextRows.length) {
+          requestAnimationFrame(() => {
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 900) maybeLoadMore();
+          });
+        }
+      }
+
+      function viewCacheKey(kind, sourceId = state.selectedSource, skipFilter = '') {
+        return [
+          kind,
+          state.itemsRevision,
+          state.tab,
+          sourceId,
+          skipFilter,
+          state.query,
+          state.filters.year,
+          state.filters.area,
+          state.filters.genre,
+          state.filters.sort,
+        ].join('\u001f');
       }
 
       function itemMatches(item, sourceId, enforceSource, skipFilter = '') {
@@ -3422,19 +3557,19 @@
         if (skipFilter !== 'genre' && state.filters.genre !== 'all' && !itemGenres(item).includes(state.filters.genre)) return false;
         const query = normalizedText(state.query);
         if (!query) return true;
-        return normalizedText(`${item.title} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`).includes(query);
+        return (item._searchText || normalizedText(`${item.title} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`)).includes(query);
       }
 
       function sourceItems(sourceId = state.selectedSource, skipFilter = '') {
+        const cacheKey = viewCacheKey('source', sourceId, skipFilter);
+        if (state.viewCache.has(cacheKey)) return state.viewCache.get(cacheKey);
         const rows = state.catalog.items.filter((item) => itemMatches(item, sourceId, true, skipFilter));
-        if (['all', 'normal', 'adult18'].includes(sourceId)) return rows;
-        const selected = sourceById(sourceId);
-        const seen = new Set(rows.map((item) => item.id));
-        const supplemental = state.catalog.items.filter((item) => {
-          if (seen.has(item.id)) return false;
-          return itemMatches(item, sourceId, false, skipFilter) && Boolean(sourceById(item.sourceId)?.adult) === Boolean(selected?.adult);
-        });
-        return [...rows, ...supplemental];
+        if (['all', 'normal', 'adult18'].includes(sourceId)) {
+          state.viewCache.set(cacheKey, rows);
+          return rows;
+        }
+        state.viewCache.set(cacheKey, rows);
+        return rows;
       }
 
       function sortedItems(items) {
@@ -3456,6 +3591,7 @@
           button.addEventListener('click', () => {
             state.tab = button.dataset.tab || 'home';
             state.query = '';
+            clearViewCache();
             resetVisibleLimit();
             resetPageViewport();
             render();
@@ -3497,6 +3633,7 @@
 
       function scheduleSearchRender(value, delay = 120) {
         state.query = value;
+        clearViewCache();
         state.refocusSearch = true;
         resetVisibleLimit();
         window.clearTimeout(searchRenderTimer);
@@ -3578,12 +3715,16 @@
       }
 
       function filterValues(key) {
+        const cacheKey = viewCacheKey(`filter:${key}`, state.selectedSource, key);
+        if (state.viewCache.has(cacheKey)) return state.viewCache.get(cacheKey);
         const values = sourceItems(state.selectedSource, key)
           .map((item) => (key === 'genre' ? itemGenres(item) : [item[key]]))
           .flat()
           .filter(Boolean);
         const unique = [...new Set(values)];
-        return unique.sort((a, b) => (key === 'year' ? b.localeCompare(a) : a.localeCompare(b, 'zh-Hant')));
+        const result = unique.sort((a, b) => (key === 'year' ? b.localeCompare(a) : a.localeCompare(b, 'zh-Hant')));
+        state.viewCache.set(cacheKey, result);
+        return result;
       }
 
       function ensureAvailableFilters() {
@@ -3640,6 +3781,7 @@
         document.querySelectorAll('[data-quick-filter-key]').forEach((button) => {
           button.addEventListener('click', () => {
             state.filters[button.dataset.quickFilterKey] = button.dataset.quickFilterValue || 'all';
+            clearViewCache();
             resetVisibleLimit();
             resetPageViewport();
             render();
@@ -3672,6 +3814,7 @@
         document.querySelectorAll('[data-short-area]').forEach((button) => {
           button.addEventListener('click', () => {
             state.filters.area = button.dataset.shortArea || 'all';
+            clearViewCache();
             resetVisibleLimit();
             resetPageViewport();
             render();
@@ -3771,7 +3914,7 @@
         const poster = imageSrc(item.poster);
         return `
           <div class="poster-art">
-            ${poster ? `<img src="${escapeHtml(poster)}" alt="${displayHtml(item.title)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.classList.add('is-broken')" />` : ''}
+            ${poster ? `<img src="${escapeHtml(poster)}" alt="${displayHtml(item.title)}" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" onerror="this.classList.add('is-broken')" />` : ''}
             <div class="poster-fallback">${displayHtml(initials(item.title))}</div>
             <span class="score">${displayHtml(item.score ? `評分 ${item.score}` : item.remarks || item.year || 'OKTV')}</span>
             <span class="badge">${displayHtml(item.remarks || item.categoryName || item.kind)}</span>
@@ -3832,7 +3975,7 @@
       }
 
       async function openDetail(id) {
-        const item = state.catalog.items.find((entry) => entry.id === id);
+        const item = state.itemById.get(id);
         if (!item) return;
         state.activeItem = item;
         detailTitle.textContent = displayText(item.title);
@@ -3937,7 +4080,14 @@
         openSheet(playerSheet);
 
         if (/\.m3u8(?:$|\?)/i.test(url) && window.Hls?.isSupported?.()) {
-          hls = new window.Hls({ lowLatencyMode: true, enableWorker: true });
+          hls = new window.Hls({
+            lowLatencyMode: false,
+            enableWorker: true,
+            backBufferLength: 30,
+            maxBufferLength: 30,
+            manifestLoadingTimeOut: 15000,
+            fragLoadingTimeOut: 20000,
+          });
           hls.loadSource(url);
           hls.attachMedia(player);
         } else {
@@ -4053,6 +4203,7 @@
         filterSheetBody.querySelectorAll('[data-filter-key]').forEach((button) => {
           button.addEventListener('click', () => {
             state.filters[button.dataset.filterKey] = button.dataset.filterValue || 'all';
+            clearViewCache();
             resetVisibleLimit();
             resetPageViewport();
             openFilterSheet();
@@ -4061,6 +4212,7 @@
         });
         filterSheetBody.querySelector('[data-reset-filter]')?.addEventListener('click', () => {
           state.filters = { year: 'all', area: 'all', genre: 'all', sort: 'hot' };
+          clearViewCache();
           resetVisibleLimit();
           resetPageViewport();
           closeSheet(filterSheet);
@@ -4073,6 +4225,7 @@
         state.selectedSource = sourceId;
         localStorage.setItem(SOURCE_STORAGE_KEY, sourceId);
         state.tab = state.tab === 'sources' ? 'movie' : state.tab;
+        clearViewCache();
         resetVisibleLimit();
         resetPageViewport();
         await ensureSelectedSourceItems(sourceId);
@@ -4105,6 +4258,16 @@
         if (close) closeSheet(detailSheet);
       }
 
+      function applyHealthIndex(health) {
+        state.health = health || { failed: [] };
+        state.healthIndex = {
+          sources: new Set((state.health.failed || []).filter((row) => row.kind === 'source').map((row) => row.id)),
+          posters: new Set((state.health.failed || []).filter((row) => row.kind === 'poster').map((row) => row.id)),
+          live: new Set((state.health.failed || []).filter((row) => row.kind === 'live').map((row) => row.id)),
+        };
+        clearViewCache();
+      }
+
       document.querySelectorAll('[data-close-sheet]').forEach((item) => item.addEventListener('click', () => closeSheet(sourceSheet)));
       document.querySelectorAll('[data-close-filter]').forEach((item) => item.addEventListener('click', () => closeSheet(filterSheet)));
       document.querySelectorAll('[data-close-detail]').forEach((item) => item.addEventListener('click', () => closeDetail(true)));
@@ -4114,16 +4277,17 @@
       document.querySelector('#detailSheet [data-close-detail].icon-btn').innerHTML = icon('close');
       document.querySelector('#playerSheet [data-close-player].icon-btn').innerHTML = icon('close');
 
-      [state.catalog, state.live, state.health] = await Promise.all([
+      [state.catalog, state.live] = await Promise.all([
         getJson('../data/iphone-vod-catalog.json', state.catalog),
         getJson('../data/live-channels.json', []),
-        getJson('../data/iphone-health-check-latest.json', { failed: [] }),
       ]);
-      state.healthIndex = {
-        sources: new Set((state.health.failed || []).filter((row) => row.kind === 'source').map((row) => row.id)),
-        posters: new Set((state.health.failed || []).filter((row) => row.kind === 'poster').map((row) => row.id)),
-        live: new Set((state.health.failed || []).filter((row) => row.kind === 'live').map((row) => row.id)),
-      };
+      state.catalog.sources = Array.isArray(state.catalog.sources) ? state.catalog.sources : [];
+      state.sourceMap = new Map(state.catalog.sources.map((source) => [source.id, source]));
+      const initialCatalogItems = Array.isArray(state.catalog.items) ? state.catalog.items : [];
+      state.catalog.items = [];
+      state.itemById.clear();
+      registerCatalogItems(initialCatalogItems);
+      applyHealthIndex({ failed: [] });
       localStorage.removeItem('oktv:iphone:selectedSource');
       const storedSource = localStorage.getItem(SOURCE_STORAGE_KEY);
       if (!storedSource || storedSource === 'all' || state.selectedSource === 'default') {
@@ -4147,6 +4311,10 @@
       window.addEventListener('scroll', maybeLoadMore, { passive: true });
       resetVisibleLimit();
       render();
+      getJson('../data/iphone-health-check-latest.json', { failed: [] }).then((health) => {
+        applyHealthIndex(health);
+        render();
+      });
     </script>
   </body>
 </html>
