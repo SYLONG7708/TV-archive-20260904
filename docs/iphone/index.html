@@ -132,7 +132,7 @@
 
       .toolbar {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto auto;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 8px;
         align-items: center;
         margin-bottom: 12px;
@@ -360,7 +360,8 @@
 
       .chip-row,
       .source-rail,
-      .area-rail {
+      .area-rail,
+      .quick-filter-row {
         display: flex;
         gap: 8px;
         overflow-x: auto;
@@ -383,6 +384,24 @@
         border-color: rgba(216, 23, 105, 0.76);
         background: rgba(216, 23, 105, 0.24);
         color: #fff;
+      }
+
+      .quick-filters {
+        display: grid;
+        gap: 2px;
+        margin-bottom: 12px;
+      }
+
+      .quick-filter-block {
+        min-width: 0;
+      }
+
+      .quick-filter-label {
+        display: block;
+        margin: 0 0 6px 2px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 800;
       }
 
       .source-pill {
@@ -732,7 +751,7 @@
         }
 
         .toolbar {
-          grid-template-columns: minmax(0, 1fr) 42px 42px;
+          grid-template-columns: minmax(0, 1fr) 42px;
         }
 
         .text-icon-btn span {
@@ -954,9 +973,15 @@
             .includes(query);
         };
         const rows = state.catalog.items.filter((item) => matches(item, true));
-        if (rows.length || ['all', 'normal', 'adult18'].includes(sourceId) || state.tab === 'home' || state.tab === 'rank') return rows;
+        if (['all', 'normal', 'adult18'].includes(sourceId) || state.tab === 'home') return rows;
         const selected = sourceById(sourceId);
-        return state.catalog.items.filter((item) => matches(item, false) && Boolean(sourceById(item.sourceId)?.adult) === Boolean(selected?.adult));
+        if (rows.length >= baseVisibleLimit()) return rows;
+        const seen = new Set(rows.map((item) => item.id));
+        const supplemental = state.catalog.items.filter((item) => {
+          if (seen.has(item.id)) return false;
+          return matches(item, false) && Boolean(sourceById(item.sourceId)?.adult) === Boolean(selected?.adult);
+        });
+        return [...rows, ...supplemental];
       }
 
       function sortedItems(items) {
@@ -971,9 +996,9 @@
       }
 
       function renderNav() {
-        topNav.innerHTML = `${tabs
+        topNav.innerHTML = `<button class="nav-source-btn" type="button" data-open-source-nav aria-label="點播訊號源">${generatedSourceIcon()}</button>${tabs
           .map(([id, label]) => `<button class="nav-btn ${state.tab === id ? 'is-active' : ''}" type="button" data-tab="${id}">${escapeHtml(label)}</button>`)
-          .join('')}<button class="nav-source-btn" type="button" data-open-source-nav aria-label="點播訊號源">${generatedSourceIcon()}</button>`;
+          .join('')}`;
         topNav.querySelectorAll('[data-tab]').forEach((button) => {
           button.addEventListener('click', () => {
             state.tab = button.dataset.tab || 'home';
@@ -996,7 +1021,6 @@
         return `
           <div class="toolbar">
             <input class="search" id="searchBox" value="${escapeHtml(state.query)}" placeholder="${escapeHtml(placeholder)}" />
-            <button class="icon-btn" type="button" data-open-source aria-label="點播訊號源">${icon('signal')}</button>
             <button class="icon-btn" type="button" data-open-filter aria-label="篩選器">${icon('filter')}</button>
           </div>
         `;
@@ -1013,7 +1037,6 @@
             input?.setSelectionRange(state.query.length, state.query.length);
           }, 0);
         });
-        document.querySelector('[data-open-source]')?.addEventListener('click', openSourceSheet);
         document.querySelector('[data-open-filter]')?.addEventListener('click', openFilterSheet);
       }
 
@@ -1032,10 +1055,9 @@
         const allRows = visibleItems();
         const rows = allRows.slice(0, state.visibleLimit);
         const title = tabs.find(([id]) => id === state.tab)?.[1] || '主頁';
-        const controls = `${renderSourceRail()}${state.tab === 'short' ? renderShortAreaRail() : ''}`;
         screen.innerHTML = `
           ${renderToolbar()}
-          ${controls}
+          ${renderQuickFilters()}
           <section class="section-head">
             <div><h1>${escapeHtml(title)}</h1><span>${rows.length} / ${allRows.length} 部內容，${state.catalog.totals.playableItems || 0} 部有播放項</span></div>
             <span class="status-pill ok">${icon('check')} OKTV</span>
@@ -1047,8 +1069,7 @@
         `;
         bindToolbar();
         bindPosters();
-        bindSourceRail();
-        bindShortAreaRail();
+        bindQuickFilters();
         bindFloatingFilter();
       }
 
@@ -1080,6 +1101,46 @@
 
       function bindSourceRail() {
         document.querySelectorAll('[data-open-source]').forEach((button) => button.addEventListener('click', openSourceSheet));
+      }
+
+      function quickFilterRows() {
+        const years = state.catalog.filters.years || [];
+        const areas = state.catalog.filters.areas || [];
+        return {
+          years: [['all', '全部年分'], ...years.map((year) => [year, year])],
+          areas: [['all', '全部地區'], ...areas.map((area) => [area, area])],
+        };
+      }
+
+      function renderQuickFilterRow(label, key, values) {
+        return `
+          <div class="quick-filter-block">
+            <span class="quick-filter-label">${escapeHtml(label)}</span>
+            <div class="quick-filter-row">
+              ${values
+                .map(
+                  ([value, text]) =>
+                    `<button class="chip ${state.filters[key] === value ? 'is-active' : ''}" type="button" data-quick-filter-key="${key}" data-quick-filter-value="${escapeHtml(value)}">${escapeHtml(text)}</button>`,
+                )
+                .join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      function renderQuickFilters() {
+        const rows = quickFilterRows();
+        return `<div class="quick-filters">${renderQuickFilterRow('地區', 'area', rows.areas)}${renderQuickFilterRow('年分', 'year', rows.years)}</div>`;
+      }
+
+      function bindQuickFilters() {
+        document.querySelectorAll('[data-quick-filter-key]').forEach((button) => {
+          button.addEventListener('click', () => {
+            state.filters[button.dataset.quickFilterKey] = button.dataset.quickFilterValue || 'all';
+            resetVisibleLimit();
+            render();
+          });
+        });
       }
 
       function shortAreas() {
@@ -1126,7 +1187,7 @@
         const rows = allRows.slice(0, state.visibleLimit);
         screen.innerHTML = `
           ${renderToolbar('搜尋榜單內容')}
-          ${renderSourceRail()}
+          ${renderQuickFilters()}
           <section class="section-head">
             <div><h1>排行</h1><span>${rows.length} / ${allRows.length} 部內容，觀看人數與評分排序</span></div>
           </section>
@@ -1136,7 +1197,7 @@
           ${renderFloatingFilter()}
         `;
         bindToolbar();
-        bindSourceRail();
+        bindQuickFilters();
         bindFloatingFilter();
         document.querySelectorAll('[data-open-detail]').forEach((button) => {
           button.addEventListener('click', () => openDetail(button.dataset.openDetail));
@@ -1151,7 +1212,6 @@
         screen.innerHTML = `
           <div class="toolbar">
             <input class="search" id="searchBox" value="${escapeHtml(state.query)}" placeholder="搜尋直播頻道" />
-            <button class="icon-btn" type="button" data-open-source aria-label="點播訊號源">${icon('signal')}</button>
             <button class="icon-btn" type="button" data-open-filter aria-label="篩選器">${icon('filter')}</button>
           </div>
           <section class="section-head">
