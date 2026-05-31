@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-05-31T13:45:09.353Z",
+  "generatedAt": "2026-05-31T14:04:05.774Z",
   "totals": {
     "sources": 90,
-    "indexedSources": 62,
-    "items": 3539,
-    "playableItems": 3539,
-    "movies": 1414,
-    "series": 508,
-    "variety": 395,
-    "anime": 265,
-    "short": 212,
-    "adult": 745
+    "indexedSources": 63,
+    "items": 3455,
+    "playableItems": 3455,
+    "movies": 1382,
+    "series": 531,
+    "variety": 387,
+    "anime": 203,
+    "short": 208,
+    "adult": 744
   },
   "sourceChecks": [
     {
@@ -72,17 +72,17 @@
           "count": 20
         },
         {
-          "label": "古装仙侠",
+          "label": "国产剧",
           "ok": true,
           "count": 20
         },
         {
-          "label": "穿越现代",
+          "label": "大陆综艺",
           "ok": true,
           "count": 20
         },
         {
-          "label": "重生民国",
+          "label": "国产动漫",
           "ok": true,
           "count": 20
         }
@@ -97,14 +97,36 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 12,
-      "playableCount": 12,
-      "error": "分類讀取失敗: HTTP 429",
+      "itemCount": 23,
+      "playableCount": 23,
+      "error": "",
       "checks": [
         {
           "label": "最新",
           "ok": true,
           "count": 12
+        },
+        {
+          "label": "现代都市",
+          "ok": true,
+          "count": 15
+        },
+        {
+          "label": "古装仙侠",
+          "ok": true,
+          "count": 8
+        },
+        {
+          "label": "穿越现代",
+          "ok": false,
+          "count": 0,
+          "error": "HTTP 429"
+        },
+        {
+          "label": "重生民国",
+          "ok": false,
+          "count": 0,
+          "error": "HTTP 429"
         }
       ]
     },
@@ -119,13 +141,13 @@
       "indexed": false,
       "itemCount": 0,
       "playableCount": 0,
-      "error": "分類讀取失敗: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "error": "分類讀取失敗: fetch failed",
       "checks": [
         {
           "label": "最新",
           "ok": false,
           "count": 0,
-          "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+          "error": "fetch failed"
         }
       ]
     },
@@ -233,22 +255,12 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
-      "error": "",
+      "itemCount": 30,
+      "playableCount": 30,
+      "error": "分類讀取失敗: The operation was aborted due to timeout",
       "checks": [
         {
           "label": "最新",
-          "ok": true,
-          "count": 30
-        },
-        {
-          "label": "大陆综艺",
-          "ok": true,
-          "count": 30
-        },
-        {
-          "label": "日韩动漫",
           "ok": true,
           "count": 30
         }
@@ -383,17 +395,17 @@
           "count": 0
         },
         {
+          "label": "大陆综艺",
+          "ok": true,
+          "count": 0
+        },
+        {
           "label": "中国动漫",
           "ok": true,
           "count": 0
         },
         {
           "label": "欧美剧",
-          "ok": true,
-          "count": 0
-        },
-        {
-          "label": "内地剧",
           "ok": true,
           "count": 0
         }
@@ -453,7 +465,7 @@
           "count": 0
         },
         {
-          "label": "日本剧",
+          "label": "韩国剧",
           "ok": true,
           "count": 0
         },
@@ -473,6 +485,11 @@
           "count": 0
         },
         {
+          "label": "日本剧",
+          "ok": true,
+          "count": 0
+        },
+        {
           "label": "国产剧",
           "ok": true,
           "count": 0
@@ -484,11 +501,6 @@
         },
         {
           "label": "日韩动漫",
-          "ok": true,
-          "count": 0
-        },
-        {
-          "label": "日韩综艺",
           "ok": true,
           "count": 0
         }
@@ -513,7 +525,7 @@
           "count": 20
         },
         {
-          "label": "日本剧",
+          "label": "韩国剧",
           "ok": true,
           "count": 20
         },
@@ -523,7 +535,12 @@
           "count": 20
         },
         {
-          "label": "港台综艺",
+          "label": "大陆综艺",
+          "ok": true,
+          "count": 20
+        },
+        {
+          "label": "日韩动漫",
           "ok": true,
           "count": 20
         }
@@ -553,17 +570,12 @@
           "count": 20
         },
         {
-          "label": "国产剧",
+          "label": "欧美剧",
           "ok": true,
           "count": 20
         },
         {
           "label": "大陆综艺",
-          "ok": true,
-          "count": 20
-        },
-        {
-          "label": "日韩动漫",
           "ok": true,
           "count": 20
         }
@@ -588,7 +600,7 @@
           "count": 20
         },
         {
-          "label": "日本剧",
+          "label": "韩国剧",
           "ok": true,
           "count": 20
         },
@@ -634,8 +646,9 @@
         },
         {
           "label": "日剧",
-          "ok": true,
-          "count": 0
+          "ok": false,
+          "count": 0,
+          "error": "The operation was aborted due to timeout"
         },
         {
           "label": "综艺",
@@ -753,8 +766,8 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 5,
-      "playableCount": 5,
+      "itemCount": 6,
+      "playableCount": 6,
       "error": "",
       "checks": [
         {
@@ -776,6 +789,11 @@
           "label": "日剧",
           "ok": true,
           "count": 0
+        },
+        {
+          "label": "综艺",
+          "ok": true,
+          "count": 1
         },
         {
           "label": "中国动漫",
@@ -829,12 +847,6 @@
         },
         {
           "label": "综艺",
-          "ok": false,
-          "count": 0,
-          "error": "The operation was aborted due to timeout"
-        },
-        {
-          "label": "动漫",
           "ok": true,
           "count": 20
         }
@@ -894,8 +906,8 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 1,
-      "playableCount": 1,
+      "itemCount": 2,
+      "playableCount": 2,
       "error": "",
       "checks": [
         {
@@ -917,6 +929,11 @@
           "label": "日剧",
           "ok": true,
           "count": 0
+        },
+        {
+          "label": "综艺",
+          "ok": true,
+          "count": 1
         },
         {
           "label": "动漫",
@@ -943,9 +960,9 @@
       "origin": "All on-demand sources",
       "adult": false,
       "indexable": true,
-      "indexed": false,
-      "itemCount": 0,
-      "playableCount": 0,
+      "indexed": true,
+      "itemCount": 1,
+      "playableCount": 1,
       "error": "",
       "checks": [
         {
@@ -967,6 +984,11 @@
           "label": "日剧",
           "ok": true,
           "count": 0
+        },
+        {
+          "label": "综艺",
+          "ok": true,
+          "count": 1
         },
         {
           "label": "中国动漫",
@@ -1099,9 +1121,15 @@
           "count": 0
         },
         {
-          "label": "中国动漫",
+          "label": "大陆综艺",
           "ok": true,
           "count": 0
+        },
+        {
+          "label": "中国动漫",
+          "ok": false,
+          "count": 0,
+          "error": "The operation was aborted due to timeout"
         },
         {
           "label": "欧美剧",
@@ -1144,7 +1172,7 @@
           "count": 20
         },
         {
-          "label": "日剧",
+          "label": "欧美剧",
           "ok": true,
           "count": 20
         },
@@ -1154,7 +1182,7 @@
           "count": 20
         },
         {
-          "label": "欧美剧",
+          "label": "日剧",
           "ok": true,
           "count": 20
         }
@@ -1184,12 +1212,17 @@
           "count": 20
         },
         {
-          "label": "欧美剧",
+          "label": "短剧",
           "ok": true,
           "count": 20
         },
         {
-          "label": "大陆综艺",
+          "label": "国产剧",
+          "ok": true,
+          "count": 20
+        },
+        {
+          "label": "港台综艺",
           "ok": true,
           "count": 20
         }
@@ -1295,11 +1328,12 @@
       "checks": [
         {
           "label": "最新",
-          "ok": true,
-          "count": 20
+          "ok": false,
+          "count": 0,
+          "error": "The operation was aborted due to timeout"
         },
         {
-          "label": "日本剧",
+          "label": "韩国剧",
           "ok": true,
           "count": 20
         },
@@ -1310,6 +1344,11 @@
         },
         {
           "label": "大陆综艺",
+          "ok": true,
+          "count": 20
+        },
+        {
+          "label": "日韩动漫",
           "ok": true,
           "count": 20
         }
@@ -1359,7 +1398,7 @@
           "count": 20
         },
         {
-          "label": "分類 2",
+          "label": "分類 1",
           "ok": true,
           "count": 20
         },
@@ -1454,7 +1493,7 @@
           "count": 20
         },
         {
-          "label": "剧情片",
+          "label": "篮球",
           "ok": true,
           "count": 20
         },
@@ -1529,7 +1568,7 @@
           "count": 20
         },
         {
-          "label": "剧情片",
+          "label": "篮球",
           "ok": true,
           "count": 20
         },
@@ -1589,32 +1628,12 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 70,
-      "playableCount": 70,
-      "error": "",
+      "itemCount": 20,
+      "playableCount": 20,
+      "error": "分類讀取失敗: The operation was aborted due to timeout",
       "checks": [
         {
           "label": "最新",
-          "ok": true,
-          "count": 20
-        },
-        {
-          "label": "日本剧",
-          "ok": true,
-          "count": 20
-        },
-        {
-          "label": "国产剧",
-          "ok": true,
-          "count": 20
-        },
-        {
-          "label": "日本动漫",
-          "ok": true,
-          "count": 20
-        },
-        {
-          "label": "韩国剧",
           "ok": true,
           "count": 20
         }
@@ -2136,9 +2155,8 @@
         },
         {
           "label": "国产自拍",
-          "ok": false,
-          "count": 0,
-          "error": "The operation was aborted due to timeout"
+          "ok": true,
+          "count": 20
         },
         {
           "label": "童颜巨乳",
@@ -2207,9 +2225,8 @@
         },
         {
           "label": "国产视频",
-          "ok": false,
-          "count": 0,
-          "error": "fetch failed"
+          "ok": true,
+          "count": 20
         }
       ]
     },
@@ -2273,8 +2290,8 @@
       "adult": false,
       "indexable": true,
       "indexed": true,
-      "itemCount": 40,
-      "playableCount": 40,
+      "itemCount": 32,
+      "playableCount": 32,
       "error": "",
       "checks": [
         {
@@ -2289,8 +2306,9 @@
         },
         {
           "label": "国产视频",
-          "ok": true,
-          "count": 20
+          "ok": false,
+          "count": 0,
+          "error": "The operation was aborted due to timeout"
         }
       ]
     },
@@ -2429,26 +2447,27 @@
       "checks": [
         {
           "label": "最新",
-          "ok": true,
-          "count": 20
+          "ok": false,
+          "count": 0,
+          "error": "The operation was aborted due to timeout"
         },
         {
-          "label": "萝莉少女",
-          "ok": true,
-          "count": 20
-        },
-        {
-          "label": "日本无码",
-          "ok": true,
-          "count": 20
-        },
-        {
-          "label": "吃瓜爆料",
+          "label": "欧美精品",
           "ok": true,
           "count": 20
         },
         {
           "label": "国产直播",
+          "ok": true,
+          "count": 20
+        },
+        {
+          "label": "乱伦中出",
+          "ok": true,
+          "count": 20
+        },
+        {
+          "label": "萝莉少女",
           "ok": true,
           "count": 20
         }
@@ -2473,23 +2492,17 @@
           "count": 20
         },
         {
-          "label": "吃瓜爆料",
-          "ok": false,
-          "count": 0,
-          "error": "The operation was aborted due to timeout"
-        },
-        {
-          "label": "萝莉少女",
-          "ok": true,
-          "count": 20
-        },
-        {
-          "label": "传媒原创",
-          "ok": true,
-          "count": 20
-        },
-        {
           "label": "乱伦中出",
+          "ok": true,
+          "count": 20
+        },
+        {
+          "label": "国产直播",
+          "ok": true,
+          "count": 20
+        },
+        {
+          "label": "吃瓜爆料",
           "ok": true,
           "count": 20
         }
@@ -2977,6 +2990,11 @@
           "count": 0
         },
         {
+          "label": "大陆综艺",
+          "ok": true,
+          "count": 0
+        },
+        {
           "label": "中国动漫",
           "ok": true,
           "count": 0
@@ -3081,7 +3099,7 @@
           "count": 20
         },
         {
-          "label": "日韩综艺",
+          "label": "港台综艺",
           "ok": true,
           "count": 20
         }
