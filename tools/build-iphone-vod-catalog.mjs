@@ -292,8 +292,7 @@ function parseEpisodes(playUrl) {
         url: cleanUrl,
       };
     })
-    .filter(Boolean)
-    .slice(0, 60);
+    .filter(Boolean);
 }
 
 function normalizeCategory(item, index, adult) {
