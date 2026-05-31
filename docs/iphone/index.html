@@ -132,7 +132,7 @@
 
       .toolbar {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr) auto auto;
         gap: 8px;
         align-items: center;
         margin-bottom: 12px;
@@ -360,8 +360,7 @@
 
       .chip-row,
       .source-rail,
-      .area-rail,
-      .quick-filter-row {
+      .area-rail {
         display: flex;
         gap: 8px;
         overflow-x: auto;
@@ -384,24 +383,6 @@
         border-color: rgba(216, 23, 105, 0.76);
         background: rgba(216, 23, 105, 0.24);
         color: #fff;
-      }
-
-      .quick-filters {
-        display: grid;
-        gap: 2px;
-        margin-bottom: 12px;
-      }
-
-      .quick-filter-block {
-        min-width: 0;
-      }
-
-      .quick-filter-label {
-        display: block;
-        margin: 0 0 6px 2px;
-        color: var(--muted);
-        font-size: 0.78rem;
-        font-weight: 800;
       }
 
       .source-pill {
@@ -444,52 +425,32 @@
       }
 
       .source-toggle {
-        width: 52px;
-        height: 52px;
-        min-height: 52px;
-        display: inline-flex;
+        width: 100%;
+        min-height: 46px;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 10px;
         align-items: center;
-        justify-content: center;
         border: 1px solid rgba(50, 214, 231, 0.44);
-        border-radius: 16px;
+        border-radius: 8px;
         background: rgba(8, 12, 16, 0.96);
         color: #fff;
-        padding: 5px;
+        padding: 0 12px;
         margin-bottom: 12px;
         cursor: pointer;
-        box-shadow: 0 0 18px rgba(50, 214, 231, 0.14);
       }
 
-      .source-toggle-icon {
-        width: 100%;
-        height: 100%;
+      .source-toggle strong,
+      .source-toggle span {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
-      .source-section-label {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 8px 2px 2px;
-        color: #fff;
-        font-size: 0.9rem;
-        font-weight: 900;
-      }
-
-      .source-section-label > span {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-      }
-
-      .source-section-label small {
+      .source-toggle span {
         color: var(--muted);
-        font-size: 0.76rem;
-        font-weight: 650;
-      }
-
-      .source-section-label.is-adult {
-        color: #ffd166;
+        font-size: 0.8rem;
       }
 
       .floating-filter {
@@ -751,7 +712,7 @@
         }
 
         .toolbar {
-          grid-template-columns: minmax(0, 1fr) 42px;
+          grid-template-columns: minmax(0, 1fr) 42px 42px;
         }
 
         .text-icon-btn span {
@@ -908,18 +869,12 @@
       }
 
       function activeSource() {
-        if (['all', 'normal', 'adult18'].includes(state.selectedSource)) return null;
+        if (state.selectedSource === 'all') return null;
         return state.catalog.sources.find((source) => source.id === state.selectedSource) || null;
       }
 
       function sourceLabel() {
-        if (state.selectedSource === 'normal') return '全部一般來源';
-        if (state.selectedSource === 'adult18') return '成人 18+';
         return activeSource()?.name || '全部來源';
-      }
-
-      function sourceById(sourceId) {
-        return state.catalog.sources.find((source) => source.id === sourceId) || null;
       }
 
       function generatedSourceIcon(className = 'source-icon') {
@@ -958,11 +913,8 @@
       function sourceItems(sourceId = state.selectedSource) {
         const query = state.query.trim().toLowerCase();
         const matches = (item, enforceSource) => {
-          const source = sourceById(item.sourceId);
           if (state.healthIndex.posters.has(item.id)) return false;
-          if (sourceId === 'normal' && source?.adult) return false;
-          if (sourceId === 'adult18' && !source?.adult) return false;
-          if (enforceSource && !['all', 'normal', 'adult18'].includes(sourceId) && item.sourceId !== sourceId) return false;
+          if (enforceSource && sourceId !== 'all' && item.sourceId !== sourceId) return false;
           if (state.tab !== 'home' && state.tab !== 'rank' && item.kind !== state.tab) return false;
           if (state.filters.year !== 'all' && item.year !== state.filters.year) return false;
           if (state.filters.area !== 'all' && item.area !== state.filters.area) return false;
@@ -973,15 +925,8 @@
             .includes(query);
         };
         const rows = state.catalog.items.filter((item) => matches(item, true));
-        if (['all', 'normal', 'adult18'].includes(sourceId) || state.tab === 'home') return rows;
-        const selected = sourceById(sourceId);
-        if (rows.length >= baseVisibleLimit()) return rows;
-        const seen = new Set(rows.map((item) => item.id));
-        const supplemental = state.catalog.items.filter((item) => {
-          if (seen.has(item.id)) return false;
-          return matches(item, false) && Boolean(sourceById(item.sourceId)?.adult) === Boolean(selected?.adult);
-        });
-        return [...rows, ...supplemental];
+        if (rows.length || sourceId === 'all' || state.tab === 'home' || state.tab === 'rank') return rows;
+        return state.catalog.items.filter((item) => matches(item, false));
       }
 
       function sortedItems(items) {
@@ -996,9 +941,9 @@
       }
 
       function renderNav() {
-        topNav.innerHTML = `<button class="nav-source-btn" type="button" data-open-source-nav aria-label="點播訊號源">${generatedSourceIcon()}</button>${tabs
+        topNav.innerHTML = `${tabs
           .map(([id, label]) => `<button class="nav-btn ${state.tab === id ? 'is-active' : ''}" type="button" data-tab="${id}">${escapeHtml(label)}</button>`)
-          .join('')}`;
+          .join('')}<button class="nav-source-btn" type="button" data-open-source-nav aria-label="點播訊號源">${generatedSourceIcon()}</button>`;
         topNav.querySelectorAll('[data-tab]').forEach((button) => {
           button.addEventListener('click', () => {
             state.tab = button.dataset.tab || 'home';
@@ -1021,6 +966,7 @@
         return `
           <div class="toolbar">
             <input class="search" id="searchBox" value="${escapeHtml(state.query)}" placeholder="${escapeHtml(placeholder)}" />
+            <button class="icon-btn" type="button" data-open-source aria-label="點播訊號源">${icon('signal')}</button>
             <button class="icon-btn" type="button" data-open-filter aria-label="篩選器">${icon('filter')}</button>
           </div>
         `;
@@ -1037,6 +983,7 @@
             input?.setSelectionRange(state.query.length, state.query.length);
           }, 0);
         });
+        document.querySelector('[data-open-source]')?.addEventListener('click', openSourceSheet);
         document.querySelector('[data-open-filter]')?.addEventListener('click', openFilterSheet);
       }
 
@@ -1055,9 +1002,10 @@
         const allRows = visibleItems();
         const rows = allRows.slice(0, state.visibleLimit);
         const title = tabs.find(([id]) => id === state.tab)?.[1] || '主頁';
+        const controls = `${renderSourceRail()}${state.tab === 'short' ? renderShortAreaRail() : ''}`;
         screen.innerHTML = `
           ${renderToolbar()}
-          ${renderQuickFilters()}
+          ${controls}
           <section class="section-head">
             <div><h1>${escapeHtml(title)}</h1><span>${rows.length} / ${allRows.length} 部內容，${state.catalog.totals.playableItems || 0} 部有播放項</span></div>
             <span class="status-pill ok">${icon('check')} OKTV</span>
@@ -1069,7 +1017,8 @@
         `;
         bindToolbar();
         bindPosters();
-        bindQuickFilters();
+        bindSourceRail();
+        bindShortAreaRail();
         bindFloatingFilter();
       }
 
@@ -1090,10 +1039,14 @@
       }
 
       function renderSourceRail() {
+        const selected = activeSource();
+        const indexedCount = state.catalog.sources.filter((source) => source.indexed).length;
         return `
           <div class="source-rail">
-            <button class="source-toggle" type="button" data-open-source aria-label="點播訊號源：${escapeHtml(sourceLabel())}" title="${escapeHtml(sourceLabel())}">
-              ${generatedSourceIcon('source-icon source-toggle-icon')}
+            <button class="source-toggle" type="button" data-open-source>
+              ${generatedSourceIcon()}
+              <span><strong>${escapeHtml(sourceLabel())}</strong><span>${selected ? `${selected.itemCount || 0} 部 / ${selected.playableCount || 0} 可播放` : `${indexedCount} 個來源 / ${state.catalog.totals.playableItems || 0} 部可播放`}</span></span>
+              ${icon('chevron')}
             </button>
           </div>
         `;
@@ -1101,46 +1054,6 @@
 
       function bindSourceRail() {
         document.querySelectorAll('[data-open-source]').forEach((button) => button.addEventListener('click', openSourceSheet));
-      }
-
-      function quickFilterRows() {
-        const years = state.catalog.filters.years || [];
-        const areas = state.catalog.filters.areas || [];
-        return {
-          years: [['all', '全部年分'], ...years.map((year) => [year, year])],
-          areas: [['all', '全部地區'], ...areas.map((area) => [area, area])],
-        };
-      }
-
-      function renderQuickFilterRow(label, key, values) {
-        return `
-          <div class="quick-filter-block">
-            <span class="quick-filter-label">${escapeHtml(label)}</span>
-            <div class="quick-filter-row">
-              ${values
-                .map(
-                  ([value, text]) =>
-                    `<button class="chip ${state.filters[key] === value ? 'is-active' : ''}" type="button" data-quick-filter-key="${key}" data-quick-filter-value="${escapeHtml(value)}">${escapeHtml(text)}</button>`,
-                )
-                .join('')}
-            </div>
-          </div>
-        `;
-      }
-
-      function renderQuickFilters() {
-        const rows = quickFilterRows();
-        return `<div class="quick-filters">${renderQuickFilterRow('地區', 'area', rows.areas)}${renderQuickFilterRow('年分', 'year', rows.years)}</div>`;
-      }
-
-      function bindQuickFilters() {
-        document.querySelectorAll('[data-quick-filter-key]').forEach((button) => {
-          button.addEventListener('click', () => {
-            state.filters[button.dataset.quickFilterKey] = button.dataset.quickFilterValue || 'all';
-            resetVisibleLimit();
-            render();
-          });
-        });
       }
 
       function shortAreas() {
@@ -1187,7 +1100,7 @@
         const rows = allRows.slice(0, state.visibleLimit);
         screen.innerHTML = `
           ${renderToolbar('搜尋榜單內容')}
-          ${renderQuickFilters()}
+          ${renderSourceRail()}
           <section class="section-head">
             <div><h1>排行</h1><span>${rows.length} / ${allRows.length} 部內容，觀看人數與評分排序</span></div>
           </section>
@@ -1197,7 +1110,7 @@
           ${renderFloatingFilter()}
         `;
         bindToolbar();
-        bindQuickFilters();
+        bindSourceRail();
         bindFloatingFilter();
         document.querySelectorAll('[data-open-detail]').forEach((button) => {
           button.addEventListener('click', () => openDetail(button.dataset.openDetail));
@@ -1212,6 +1125,7 @@
         screen.innerHTML = `
           <div class="toolbar">
             <input class="search" id="searchBox" value="${escapeHtml(state.query)}" placeholder="搜尋直播頻道" />
+            <button class="icon-btn" type="button" data-open-source aria-label="點播訊號源">${icon('signal')}</button>
             <button class="icon-btn" type="button" data-open-filter aria-label="篩選器">${icon('filter')}</button>
           </div>
           <section class="section-head">
@@ -1393,30 +1307,14 @@
       }
 
       function openSourceSheet() {
-        const normalSources = state.catalog.sources.filter((source) => !source.adult);
-        const adultSources = state.catalog.sources.filter((source) => source.adult);
-        const normalSourceIds = new Set(normalSources.map((source) => source.id));
-        const normalItemCount = state.catalog.items.filter((item) => normalSourceIds.has(item.sourceId)).length;
         sourceSheetBody.innerHTML = `
           <section class="source-list">
-            <div class="source-section-label"><span>一般點播源</span><small>${normalSources.length} 個來源</small></div>
             <article class="source-row">
-              <div class="avatar">${generatedSourceIcon()}</div>
-              <div class="row-main"><strong>全部一般來源</strong><span>${normalItemCount} 部手機索引內容</span></div>
-              <button class="play-btn" type="button" data-sheet-source="normal">${icon(state.selectedSource === 'normal' ? 'check' : 'signal')}${state.selectedSource === 'normal' ? '使用中' : '切換'}</button>
+              <div class="avatar">ALL</div>
+              <div class="row-main"><strong>全部來源</strong><span>${state.catalog.items.length} 部手機索引內容</span></div>
+              <button class="play-btn" type="button" data-sheet-source="all">${icon(state.selectedSource === 'all' ? 'check' : 'signal')}${state.selectedSource === 'all' ? '使用中' : '切換'}</button>
             </article>
-            ${normalSources.map((source) => renderSheetSourceRow(source)).join('')}
-            ${
-              adultSources.length
-                ? `<div class="source-section-label is-adult"><span>${adultIcon()} 成人 18+</span><small>${adultSources.length} 個來源</small></div>
-            <article class="source-row">
-              <div class="avatar">${adultIcon()}</div>
-              <div class="row-main"><strong>${adultIcon()} 成人 18+ 全部</strong><span>${state.catalog.totals.adult || 0} 部手機索引內容</span></div>
-              <button class="play-btn" type="button" data-sheet-source="adult18">${icon(state.selectedSource === 'adult18' ? 'check' : 'signal')}${state.selectedSource === 'adult18' ? '使用中' : '切換'}</button>
-            </article>
-            ${adultSources.map((source) => renderSheetSourceRow(source)).join('')}`
-                : ''
-            }
+            ${state.catalog.sources.map((source) => renderSheetSourceRow(source)).join('')}
           </section>
         `;
         sourceSheetBody.querySelectorAll('[data-sheet-source]').forEach((button) => {
@@ -1558,7 +1456,7 @@
         }
       }
       if (
-        !['all', 'normal', 'adult18'].includes(state.selectedSource) &&
+        state.selectedSource !== 'all' &&
         !state.catalog.sources.some((source) => source.id === state.selectedSource && source.indexed)
       ) {
         const fallbackSource = state.catalog.sources.find((source) => source.indexed && DEFAULT_SOURCE_RE.test(source.name)) || state.catalog.sources.find((source) => source.indexed);
