@@ -22,6 +22,12 @@ const concurrency = Number(args.get('concurrency') || 6);
 const maxSources = Number(args.get('maxSources') || 90);
 const maxItemsPerSource = Number(args.get('maxItemsPerSource') || 90);
 const maxCategoriesPerSource = Number(args.get('maxCategoriesPerSource') || 8);
+const maxPagesPerQuery = Number(args.get('maxPagesPerQuery') || 1);
+const maxPagesPerSource = Number(args.get('maxPagesPerSource') || Math.max(1, maxPagesPerQuery * Math.max(1, maxCategoriesPerSource + 1)));
+const pageSize = Number(args.get('pageSize') || 0);
+const fetchPageConcurrency = Number(args.get('fetchPageConcurrency') || Math.max(1, Math.min(6, concurrency)));
+const sourceMatch = normalizeText(args.get('sourceMatch') || '');
+const mergeExisting = args.get('mergeExisting') === 'true';
 const includeAdult = args.get('includeAdult') !== 'false';
 
 const currentSourcesPath = path.join(tvRoot, 'sources', 'current-sources.json');
@@ -184,6 +190,13 @@ function addVodQuery(api, query) {
   if (!value) return '';
   if (value.endsWith('?') || value.endsWith('&')) return `${value}${query}`;
   return `${value}?${query}`;
+}
+
+function vodQueryWithPage(query, page) {
+  const params = new URLSearchParams(String(query || ''));
+  params.set('pg', String(page));
+  if (pageSize > 0) params.set('pagesize', String(pageSize));
+  return params.toString();
 }
 
 function textId(input, index = 0) {
@@ -367,6 +380,12 @@ function sourceFromSite(site, index, origin) {
   };
 }
 
+function sourceMatchesFilter(source) {
+  if (!sourceMatch) return true;
+  const haystack = normalizeText([source.id, source.key, source.name, source.api, source.host, source.origin].join(' '));
+  return haystack.includes(sourceMatch.toLowerCase());
+}
+
 async function loadSources() {
   const rawSources = [];
   const seen = new Set();
@@ -444,11 +463,40 @@ function pickCategoryFetches(categories) {
   return [...preferred, ...rest].slice(0, maxCategoriesPerSource);
 }
 
-async function fetchList(source, query, category = null) {
-  const payload = await fetchJson(addVodQuery(source.api, query));
-  return extractArray(payload)
-    .map((item) => normalizeVodItem(item, source, category))
-    .filter((item) => item && item.poster && item.playable);
+function pageMeta(payload) {
+  return {
+    page: Number(payload?.page || 1) || 1,
+    pagecount: Number(payload?.pagecount || payload?.pageCount || 1) || 1,
+    total: Number(payload?.total || payload?.totalCount || 0) || 0,
+    limit: Number(payload?.limit || 0) || 0,
+  };
+}
+
+async function fetchListPage(source, query, category = null, page = 1) {
+  const payload = await fetchJson(addVodQuery(source.api, vodQueryWithPage(query, page)));
+  return {
+    rows: extractArray(payload)
+      .map((item) => normalizeVodItem(item, source, category))
+      .filter((item) => item && item.poster && item.playable),
+    meta: pageMeta(payload),
+  };
+}
+
+async function fetchList(source, query, category = null, pageBudget = maxPagesPerQuery) {
+  const first = await fetchListPage(source, query, category, 1);
+  const pageLimit = Math.max(1, Math.min(maxPagesPerQuery, pageBudget, first.meta.pagecount || 1));
+  const remainingPages = Array.from({ length: Math.max(0, pageLimit - 1) }, (_, index) => index + 2);
+  const rest = await mapLimit(remainingPages, fetchPageConcurrency, (page) => fetchListPage(source, query, category, page));
+  const pages = [first, ...rest];
+  return {
+    rows: pages.flatMap((page) => page.rows),
+    pages: pages.length,
+    meta: {
+      ...first.meta,
+      pagecount: Math.max(first.meta.pagecount || 1, ...pages.map((page) => page.meta.pagecount || 1)),
+      total: Math.max(first.meta.total || 0, ...pages.map((page) => page.meta.total || 0)),
+    },
+  };
 }
 
 async function indexSource(source) {
@@ -465,50 +513,106 @@ async function indexSource(source) {
     })),
   ];
 
+  let remainingPageBudget = Math.max(1, maxPagesPerSource);
   for (const entry of queries) {
     try {
-      const rows = await fetchList(source, entry.query, entry.category);
-      checks.push({ label: entry.label, ok: true, count: rows.length });
+      const result = await fetchList(source, entry.query, entry.category, remainingPageBudget);
+      remainingPageBudget -= result.pages;
+      const rows = result.rows;
+      checks.push({
+        label: entry.label,
+        ok: true,
+        count: rows.length,
+        pages: result.pages,
+        pagecount: result.meta.pagecount,
+        total: result.meta.total,
+      });
       for (const row of rows) {
         const key = `${row.vodId || row.title}|${row.poster}|${row.categoryName}`;
         if (!itemMap.has(key)) itemMap.set(key, row);
+        if (itemMap.size >= maxItemsPerSource) break;
       }
     } catch (error) {
       checks.push({ label: entry.label, ok: false, count: 0, error: error.message });
     }
-    if (itemMap.size >= maxItemsPerSource) break;
+    if (itemMap.size >= maxItemsPerSource || remainingPageBudget <= 0) break;
   }
 
   const items = [...itemMap.values()].slice(0, maxItemsPerSource);
   source.itemCount = items.length;
   source.playableCount = items.filter((item) => item.playable).length;
   source.checks = checks;
+  source.sourceTotalCount = Math.max(0, ...checks.map((check) => Number(check.total || 0)));
   source.indexed = items.length > 0;
   return { source, items };
 }
 
 const allSources = await loadSources();
+const existingCatalog = mergeExisting ? await readJson(output, null) : null;
 const indexableSources = allSources
   .filter((source) => source.indexable)
   .filter((source) => includeAdult || !source.adult)
+  .filter(sourceMatchesFilter)
   .slice(0, maxSources);
 
 const indexed = await mapLimit(indexableSources, concurrency, indexSource);
 const indexedById = new Map(indexed.map(({ source }) => [source.id, source]));
-const sources = allSources.map((source) => {
+const existingSourceById = new Map((existingCatalog?.sources || []).map((source) => [source.id, source]));
+const updatedSourceIds = new Set(indexed.map(({ source }) => source.id));
+
+function sourceView(source) {
   const indexedSource = indexedById.get(source.id);
+  if (indexedSource) {
+    return {
+      ...source,
+      categories: indexedSource.categories || [],
+      itemCount: indexedSource.itemCount || 0,
+      playableCount: indexedSource.playableCount || 0,
+      sourceTotalCount: indexedSource.sourceTotalCount || 0,
+      indexed: Boolean(indexedSource.indexed),
+      checks: indexedSource.checks || [],
+      error: indexedSource.error || source.error || '',
+    };
+  }
+
+  const existingSource = existingSourceById.get(source.id);
+  if (mergeExisting && existingSource) {
+    return {
+      ...source,
+      categories: existingSource.categories || [],
+      itemCount: existingSource.itemCount || 0,
+      playableCount: existingSource.playableCount || 0,
+      sourceTotalCount: existingSource.sourceTotalCount || 0,
+      indexed: Boolean(existingSource.indexed),
+      checks: existingSource.checks || [],
+      error: existingSource.error || source.error || '',
+    };
+  }
+
   return {
     ...source,
-    categories: indexedSource?.categories || [],
-    itemCount: indexedSource?.itemCount || 0,
-    playableCount: indexedSource?.playableCount || 0,
-    indexed: Boolean(indexedSource?.indexed),
-    checks: indexedSource?.checks || [],
-    error: indexedSource?.error || source.error || '',
+    categories: [],
+    itemCount: 0,
+    playableCount: 0,
+    sourceTotalCount: 0,
+    indexed: false,
+    checks: [],
+    error: source.error || '',
   };
-});
+}
 
-const items = indexed.flatMap(({ items }) => items);
+const sources = allSources.map(sourceView);
+if (mergeExisting) {
+  const sourceIds = new Set(sources.map((source) => source.id));
+  for (const source of existingCatalog?.sources || []) {
+    if (!sourceIds.has(source.id)) sources.push(source);
+  }
+}
+
+const indexedItems = indexed.flatMap(({ items }) => items);
+const items = mergeExisting
+  ? [...(existingCatalog?.items || []).filter((item) => !updatedSourceIds.has(item.sourceId)), ...indexedItems]
+  : indexedItems;
 const filters = {
   years: [...new Set(items.map((item) => item.year).filter(Boolean))].sort((a, b) => b.localeCompare(a)).slice(0, 24),
   areas: [...new Set(items.map((item) => item.area).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'zh-Hant')).slice(0, 28),
@@ -525,6 +629,11 @@ const catalog = {
     lunaFullPath,
     maxSources,
     maxItemsPerSource,
+    maxPagesPerQuery,
+    maxPagesPerSource,
+    pageSize,
+    sourceMatch,
+    mergeExisting,
     includeAdult,
   },
   totals: {
@@ -558,6 +667,7 @@ const report = {
     indexed: source.indexed,
     itemCount: source.itemCount,
     playableCount: source.playableCount,
+    sourceTotalCount: source.sourceTotalCount,
     error: source.error,
     checks: source.checks,
   })),
