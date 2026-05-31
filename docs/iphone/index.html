@@ -941,6 +941,7 @@
       ];
       const SOURCE_ICON = '../assets/source-signal-icon.svg';
       const ADULT_ICON = '../assets/adult-18-badge.svg';
+      const ONLINE_DATA_BASE = 'https://sylong7708.github.io/TV/docs/data/';
       const SOURCE_STORAGE_KEY = 'oktv:iphone:selectedSource:v3';
       const DEFAULT_SOURCE_RE = /爱奇艺|愛奇藝/i;
 
@@ -999,14 +1000,25 @@
         return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] || paths.play}</svg>`;
       }
 
+      function onlineDataUrl(url) {
+        const match = String(url || '').match(/(?:^|\/)data\/([^/?#]+)(?:[?#].*)?$/);
+        if (!match) return '';
+        return `${ONLINE_DATA_BASE}${match[1]}?ts=${Date.now()}`;
+      }
+
       async function getJson(url, fallback) {
-        try {
-          const res = await fetch(url, { cache: 'no-store' });
-          if (!res.ok) return fallback;
-          return await res.json();
-        } catch {
-          return fallback;
+        const online = onlineDataUrl(url);
+        const urls = location.hostname === 'sylong7708.github.io' || !online ? [url] : [online, url];
+        for (const target of urls) {
+          try {
+            const res = await fetch(target, { cache: 'no-store' });
+            if (!res.ok) continue;
+            return await res.json();
+          } catch {
+            undefined;
+          }
         }
+        return fallback;
       }
 
       function escapeHtml(value) {
