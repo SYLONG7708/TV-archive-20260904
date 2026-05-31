@@ -215,7 +215,7 @@ try {
             Write-Log "NoGitPush set; commit created but not pushed."
         } else {
             Write-Log "Pushing update to GitHub."
-            Invoke-Git push origin main
+            Invoke-Git push origin HEAD:main
         }
     }
 
