@@ -2,15 +2,16 @@
   "generatedAt": "2026-05-31T20:06:26.907Z",
   "totals": {
     "sources": 90,
-    "indexedSources": 64,
-    "items": 2264635,
-    "playableItems": 2264635,
-    "movies": 278488,
-    "series": 54501,
-    "variety": 17925,
-    "anime": 59515,
-    "short": 149722,
-    "adult": 1704484
+    "indexedSources": 65,
+    "items": 2400439,
+    "playableItems": 2400406,
+    "movies": 335574,
+    "series": 71445,
+    "variety": 23324,
+    "anime": 71132,
+    "short": 169502,
+    "adult": 1706135,
+    "quantumLziIncluded": true
   },
   "sourceChecks": [
     {
@@ -1423,89 +1424,25 @@
     },
     {
       "id": "all-on-demand-sources-量子影视-https-cj-lziapi-com-api-php-provide-vod-29",
-      "name": "量子影视｜追劇",
+      "name": "量子影視｜追劇",
       "type": 1,
       "api": "https://cj.lziapi.com/api.php/provide/vod/",
       "origin": "All on-demand sources",
-      "adult": true,
+      "adult": false,
       "indexable": true,
-      "indexed": false,
-      "itemCount": 0,
-      "playableCount": 0,
-      "sourceTotalCount": 135827,
+      "indexed": true,
+      "itemCount": 135804,
+      "playableCount": 135771,
+      "sourceTotalCount": 135829,
       "error": "",
       "checks": [
         {
-          "label": "最新",
+          "label": "全量索引",
           "ok": true,
-          "count": 0,
-          "pages": 1,
+          "count": 135804,
+          "pages": 6792,
           "pagecount": 6792,
-          "total": 135827
-        },
-        {
-          "label": "伦理片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 68,
-          "total": 1357
-        },
-        {
-          "label": "日本剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 98,
-          "total": 1960
-        },
-        {
-          "label": "泰国剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 37,
-          "total": 724
-        },
-        {
-          "label": "欧美剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 283,
-          "total": 5654
-        },
-        {
-          "label": "韩国剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 89,
-          "total": 1764
-        },
-        {
-          "label": "国产动漫",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 98,
-          "total": 1949
-        },
-        {
-          "label": "科幻片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 68,
-          "total": 1343
-        },
-        {
-          "label": "剧情片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 689,
-          "total": 13776
+          "total": 135829
         }
       ]
     },
@@ -3748,5 +3685,64 @@
         }
       ]
     }
-  ]
+  ],
+  "quantumLziFullIndex": {
+    "manifest": "docs/data/quantum-lzi/manifest.json",
+    "total": 135829,
+    "normalizedItems": 135804,
+    "playableItems": 135771,
+    "chunks": [
+      {
+        "kind": "adult",
+        "file": "adult.json",
+        "count": 1651,
+        "playable": 1651
+      },
+      {
+        "kind": "anime",
+        "file": "anime.json",
+        "count": 11617,
+        "playable": 11611
+      },
+      {
+        "kind": "movie",
+        "file": "movie.json",
+        "count": 57086,
+        "playable": 57070
+      },
+      {
+        "kind": "other",
+        "file": "other.json",
+        "count": 23327,
+        "playable": 23327
+      },
+      {
+        "kind": "series",
+        "file": "series.json",
+        "count": 16944,
+        "playable": 16943
+      },
+      {
+        "kind": "short",
+        "file": "short.json",
+        "count": 19780,
+        "playable": 19771
+      },
+      {
+        "kind": "variety",
+        "file": "variety.json",
+        "count": 5399,
+        "playable": 5398
+      }
+    ],
+    "shortAreas": [
+      "韓國",
+      "大陸",
+      "日本",
+      "台灣",
+      "美國",
+      "泰國",
+      "墨西哥"
+    ]
+  }
 }
