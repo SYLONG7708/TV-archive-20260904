@@ -397,15 +397,65 @@ const markdown = await fetchText(reportUrl, 'text/markdown,text/plain,*/*');
 const parsedRows = parseReportTable(markdown);
 const iqiyiIndex = parsedRows.findIndex((row) => /爱奇艺|愛奇藝/i.test(row.name));
 const reportRows = iqiyiIndex > 0 ? [...parsedRows.slice(iqiyiIndex), ...parsedRows.slice(0, iqiyiIndex)] : parsedRows;
+const pinnedRows = [
+  {
+    status: 'ok',
+    key: 'TX',
+    name: '腾讯视频｜追劇',
+    site: '',
+    api: 'https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js',
+    ext: 'https://cdn.waimaimingtang.com/file/images/bwc/20251023002144-0e40887294.js',
+    type: 3,
+    searchable: 1,
+    quickSearch: 1,
+    categories: DEFAULT_CATEGORIES,
+    successRate: 'pinned',
+    trend: '',
+    origin: 'pinned:user-request',
+    adult: false,
+  },
+  {
+    status: 'ok',
+    key: '雲飛影视',
+    name: '雲飛影视｜追劇',
+    site: '',
+    api: 'http://cj.lziapi.com/api.php/provide/vod/',
+    ext: '',
+    type: 1,
+    searchable: 1,
+    quickSearch: 1,
+    filterable: 1,
+    categories: [],
+    successRate: 'pinned',
+    trend: '',
+    origin: 'pinned:user-request',
+    adult: false,
+  },
+];
 const dedupedRows = [];
 const duplicateRows = [];
 const extraConfigErrors = [];
 const seenSourceKeys = new Set();
 const seenNameBases = new Set();
 
-function addSourceRow(row, { enforceName = false } = {}) {
+function rowIdentity(row) {
+  return cleanSourceName(row.key || row.name || '').replace(/\s+/g, '').toLowerCase();
+}
+
+function addSourceRow(row, { enforceName = false, pinned = false } = {}) {
   const sourceKeyValue = sourceDedupeKey(row);
   const nameBase = displayNameBase(row.name || row.key);
+  if (pinned) {
+    const identity = rowIdentity(row);
+    const existingIndex = dedupedRows.findIndex((item) => rowIdentity(item) === identity);
+    if (existingIndex >= 0) {
+      duplicateRows.push({ ...dedupedRows[existingIndex], duplicateReason: 'replaced_by_pinned_source' });
+      dedupedRows[existingIndex] = row;
+      return;
+    }
+    dedupedRows.push(row);
+    return;
+  }
   if (!sourceKeyValue.replace(/\|$/g, '') || seenSourceKeys.has(sourceKeyValue)) {
     duplicateRows.push({ ...row, duplicateReason: 'duplicate_api_or_ext' });
     return;
@@ -430,6 +480,10 @@ for (const url of extraConfigUrls) {
   } catch (error) {
     extraConfigErrors.push({ url, error: error.message });
   }
+}
+
+for (const row of pinnedRows) {
+  addSourceRow(row, { pinned: true });
 }
 
 const categoryChecks = await mapLimit(dedupedRows, concurrency, async (row) => fetchCategories(row));

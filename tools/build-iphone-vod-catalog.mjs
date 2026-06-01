@@ -20,7 +20,7 @@ const reportOutput = path.resolve(
 );
 const timeoutMs = Number(args.get('timeoutMs') || 9000);
 const concurrency = Number(args.get('concurrency') || 6);
-const maxSources = Number(args.get('maxSources') || 90);
+const maxSources = Number(args.get('maxSources') || 120);
 const maxItemsPerSource = Number(args.get('maxItemsPerSource') || 90);
 const maxCategoriesPerSource = Number(args.get('maxCategoriesPerSource') || 8);
 const maxPagesPerQuery = Number(args.get('maxPagesPerQuery') || 1);

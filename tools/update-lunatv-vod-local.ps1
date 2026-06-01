@@ -255,7 +255,7 @@ try {
             --tvRoot $repoRootText `
             --output (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
             --reportOutput (Join-Path $repoRootText "docs\data\iphone-vod-catalog-report.json") `
-            --maxSources 90 `
+            --maxSources 120 `
             --maxItemsPerSource 70 `
             --maxCategoriesPerSource 8 `
             --includeAdult true `
