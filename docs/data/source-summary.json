@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T17:02:30.020Z",
+  "generatedAt": "2026-06-01T13:25:59.110Z",
   "input": {
     "vod": "C:\\Users\\Administrator\\TV\\sources\\All on-demand sources",
     "live": "C:\\Users\\Administrator\\TV\\sources\\live-stable.txt"
@@ -20,28 +20,28 @@
     "externalCount": 0,
     "networkOnlyCount": 0,
     "kinds": {
-      "hls": 79
+      "youtube": 79
     },
     "groups": [
-      "YouTube互動娛樂",
-      "YouTube文化紀實",
-      "YouTube台灣節目",
+      "YouTube新聞台",
+      "YouTube購物台",
+      "YouTube綜合娛樂",
+      "YouTube國際新聞",
       "YouTube亞洲新聞",
       "YouTube兒童動畫",
+      "YouTube文化紀實",
       "YouTube音樂體育風景",
+      "YouTube韓綜娛樂",
+      "YouTube台灣節目",
+      "YouTube互動娛樂",
       "YouTube動漫台",
-      "YouTube國際新聞",
-      "YouTube新聞台",
-      "YouTube電影劇集",
-      "YouTube綜合娛樂",
-      "YouTube購物台",
-      "YouTube韓綜娛樂"
+      "YouTube電影劇集"
     ]
   },
   "notes": [
     "已解析 hafrey1/LunaTV-config report.md，輸出為影視 OKTV 與 iPhone 影視 OKTV 使用的全部點播源。",
     "點播源保存於 sources/All on-demand sources，並由本機 Windows 工作排程與 GitHub Actions 每小時更新。",
-    "YouTube 類直播以 external 標記，App 以外部開啟處理，不偽裝成直連串流。"
+    "直播來源由 sources/live-stable.txt 重建為 docs/data/live-channels.json，YouTube 簽名 HLS 過期前會被本機排程重新刷新。"
   ],
   "adult18": {
     "count": 34,

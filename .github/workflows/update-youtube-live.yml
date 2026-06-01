@@ -47,7 +47,7 @@ jobs:
         shell: pwsh
         run: |
           if ([string]::IsNullOrWhiteSpace($env:YOUTUBE_COOKIES_FILE)) {
-            Write-Host "No YouTube cookies on GitHub runner. Keeping current live-stable.txt unchanged; local Windows task can refresh and push playable HLS URLs."
+            Write-Host "No YouTube cookies on GitHub runner. Scheduled runs will wait for the local updater; push/manual runs can rebuild checked-in public JSON."
             exit 0
           }
           $args = @(
@@ -68,15 +68,50 @@ jobs:
           $args += @("-CookiesFile", $env:YOUTUBE_COOKIES_FILE)
           powershell @args
 
+      - name: Rebuild public live JSON
+        if: env.YOUTUBE_COOKIES_FILE != '' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        shell: pwsh
+        run: |
+          node .\tools\build-live-channels-json.mjs `
+            --tvRoot . `
+            --input .\sources\live-stable.txt `
+            --output .\docs\data\live-channels.json `
+            --summary .\docs\data\source-summary.json `
+            --minValidSeconds 600
+
       - name: Commit changes
+        if: env.YOUTUBE_COOKIES_FILE != '' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add sources/live-stable.txt sources/live-youtube-stable.txt sources/live-youtube-report.json
+          git add sources/live-stable.txt sources/live-youtube-stable.txt sources/live-youtube-report.json `
+            docs/data/live-channels.json docs/data/source-summary.json tools/build-live-channels-json.mjs
           if (git diff --cached --quiet) {
             Write-Host "No live source changes."
           } else {
             git commit -m "Auto update YouTube live sources"
             git push
           }
+
+      - name: Publish GitHub Pages live data
+        if: env.YOUTUBE_COOKIES_FILE != '' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        shell: pwsh
+        run: |
+          git fetch origin gh-pages
+          $pages = Join-Path $env:RUNNER_TEMP "gh-pages"
+          git worktree add $pages origin/gh-pages
+          New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\data") | Out-Null
+          Copy-Item -LiteralPath ".\docs\data\live-channels.json" -Destination (Join-Path $pages "docs\data\live-channels.json") -Force
+          Copy-Item -LiteralPath ".\docs\data\source-summary.json" -Destination (Join-Path $pages "docs\data\source-summary.json") -Force
+          Push-Location $pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/live-channels.json docs/data/source-summary.json
+          if (git diff --cached --quiet) {
+            Write-Host "No gh-pages live data changes."
+          } else {
+            git commit -m "Publish refreshed live data"
+            git push origin HEAD:gh-pages
+          }
+          Pop-Location
