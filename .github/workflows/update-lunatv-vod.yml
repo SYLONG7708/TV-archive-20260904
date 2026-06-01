@@ -110,6 +110,7 @@ jobs:
             --report .\docs\data\iphone-vod-catalog-report.json `
             --detailRoot .\docs\data\vod-detail `
             --indexRoot .\docs\data\vod-index
+          node .\tools\apply-vod-kind-rules.mjs --tvRoot .
           node .\tools\check-iphone-catalog-health.mjs `
             --tvRoot . `
             --catalog .\docs\data\iphone-vod-catalog.json `
@@ -162,7 +163,9 @@ jobs:
             docs/data/lunatv-vod-update-state.json `
             docs/data/vod-detail `
             docs/data/vod-index `
+            docs/data/quantum-lzi `
             docs/iphone/index.html `
+            tools/vod-kind-rules.mjs tools/apply-vod-kind-rules.mjs tools/build-quantum-lzi-full.mjs `
             docs/assets/source-signal-icon.svg docs/assets/adult-18-badge.svg
           if (git diff --cached --quiet) {
             Write-Host "No LunaTV VOD source changes."

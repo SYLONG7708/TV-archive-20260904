@@ -217,6 +217,7 @@ try {
     $iphoneCatalogScript = Join-Path $repoRootText "tools\build-iphone-vod-catalog.mjs"
     $fullChunkedCatalogScript = Join-Path $repoRootText "tools\build-full-vod-chunked-catalog.mjs"
     $assembleChunkedCatalogScript = Join-Path $repoRootText "tools\assemble-vod-index-from-detail.mjs"
+    $applyVodKindRulesScript = Join-Path $repoRootText "tools\apply-vod-kind-rules.mjs"
     $iphoneHealthScript = Join-Path $repoRootText "tools\check-iphone-catalog-health.mjs"
     $sourceNames = @($SourceName -split "," | ForEach-Object { $_.Trim() } | Where-Object { $_ })
     foreach ($name in $sourceNames) {
@@ -285,6 +286,11 @@ try {
             --indexRoot (Join-Path $repoRootText "docs\data\vod-index")
     }
 
+    if (Test-Path -LiteralPath $applyVodKindRulesScript) {
+        Write-Log "Applying persistent VOD category rules to all public indexes."
+        node $applyVodKindRulesScript --tvRoot $repoRootText
+    }
+
     if (Test-Path -LiteralPath $iphoneHealthScript) {
         Write-Log "Checking iPhone VOD names, posters, VOD sources and live sources."
         node $iphoneHealthScript `
@@ -308,7 +314,10 @@ try {
         "tools/build-iphone-vod-catalog.mjs" `
         "tools/build-full-vod-chunked-catalog.mjs" `
         "tools/assemble-vod-index-from-detail.mjs" `
+        "tools/vod-kind-rules.mjs" `
+        "tools/apply-vod-kind-rules.mjs" `
         "tools/build-iqiyi-full-catalog.mjs" `
+        "tools/build-quantum-lzi-full.mjs" `
         "tools/check-iphone-catalog-health.mjs" `
         "sources/current-sources.json" `
         "sources/All on-demand sources" `
@@ -330,6 +339,7 @@ try {
         "docs/data/lunatv-vod-update-state.json" `
         "docs/data/vod-detail" `
         "docs/data/vod-index" `
+        "docs/data/quantum-lzi" `
         "docs/iphone/index.html" `
         "docs/assets/source-signal-icon.svg" `
         "docs/assets/adult-18-badge.svg" `

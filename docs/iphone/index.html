@@ -943,6 +943,7 @@
       const tabs = [
         ['home', '主頁'],
         ['movie', '電影'],
+        ['series', '劇集'],
         ['short', '短劇'],
         ['anime', '動漫'],
         ['variety', '綜藝'],
@@ -3491,7 +3492,7 @@
         if (state.tab === 'short') return ['short'];
         if (!isQuantumSelected()) return [];
         if (state.tab === 'home') return ['movie'];
-        if (['movie', 'anime', 'variety'].includes(state.tab)) return [state.tab];
+        if (['movie', 'series', 'anime', 'variety'].includes(state.tab)) return [state.tab];
         if (state.tab === 'rank') return ['movie', 'series', 'short', 'anime', 'variety'];
         return [];
       }

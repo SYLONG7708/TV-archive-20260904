@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { promisify } from 'node:util';
+import { classifyVodKind } from './vod-kind-rules.mjs';
 
 const gzip = promisify(zlib.gzip);
 
@@ -130,15 +131,7 @@ function splitClasses(value, fallback = '') {
 }
 
 function kindFromTypeName(typeName, sourceAdult = false) {
-  const text = normalizeText(typeName);
-  if (sourceAdult) return 'adult';
-  if (/动漫|動漫|動畫|动画|番剧|番劇|卡通/i.test(text)) return 'anime';
-  if (/综艺|綜藝|真人秀|脱口秀|脫口秀/i.test(text)) return 'variety';
-  if (/短剧|短劇|微短剧|微短劇/i.test(text)) return 'short';
-  if (/连续剧|連續劇|电视剧|電視劇|国产剧|國產劇|港台剧|日剧|韓剧|韩剧|泰剧|欧美剧|劇集|剧集/i.test(text)) {
-    return 'series';
-  }
-  return 'movie';
+  return classifyVodKind(typeName, sourceAdult);
 }
 
 function isDirectMediaUrl(value) {
@@ -206,7 +199,7 @@ function normalizeVodItem(item, source, sourceSlug, page) {
     vodId,
     title,
     originalName: normalizeText(item.vod_en || item.original_name || ''),
-    kind: kindFromTypeName(`${typeName} ${genre.join(' ')}`, source.adult),
+    kind: classifyVodKind({ categoryName: typeName, genre, sourceAdult: source.adult }),
     categoryId: String(item.type_id || ''),
     categoryName: typeName,
     year,

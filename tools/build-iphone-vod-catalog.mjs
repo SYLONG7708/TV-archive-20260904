@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { classifyVodKind } from './vod-kind-rules.mjs';
 
 const args = new Map();
 for (let i = 2; i < process.argv.length; i += 1) {
@@ -213,16 +214,7 @@ function isAdultSource(site) {
 }
 
 function kindFromTypeName(typeName, sourceAdult = false) {
-  const text = normalizeText(typeName);
-  if (sourceAdult || /伦理|写真|福利|成人|情色|麻豆|番号|AV|直播秀/i.test(text)) return 'adult';
-  if (/动漫|动画|番剧|番|少儿|卡通/i.test(text)) return 'anime';
-  if (/综艺|真人秀|脱口秀|选秀/i.test(text)) return 'variety';
-  if (/短剧|短劇|微短剧|微短劇/i.test(text)) return 'short';
-  if (/连续剧|电视剧|国产剧|港台剧|日韩剧|欧美剧|海外剧|泰剧|日剧|韩剧|美剧|剧集/i.test(text)) return 'series';
-  if (/电影|动作|喜剧|爱情|科幻|恐怖|剧情|战争|纪录|犯罪|悬疑|惊悚|冒险|奇幻|灾难/i.test(text)) {
-    return 'movie';
-  }
-  return 'movie';
+  return classifyVodKind(typeName, sourceAdult);
 }
 
 function normalizeImage(baseUrl, value) {
@@ -339,7 +331,7 @@ function normalizeVodItem(item, source, category = null) {
   const views = parseNumber(item.vod_hits || item.hits || item.views || item.play_count || item.vod_up);
   const updatedAt = normalizeText(item.vod_time || item.update_time || item.vod_pubdate || item.created_at || '');
   const episodes = parseEpisodes(item.vod_play_url || item.play_url || item.url);
-  const kind = kindFromTypeName(`${typeName} ${genre.join(' ')}`, source.adult);
+  const kind = classifyVodKind({ categoryName: typeName || category?.name || '', genre, sourceAdult: source.adult });
   const id = `${source.id}::${normalizeText(item.vod_id ?? item.id ?? title)}`;
 
   return {

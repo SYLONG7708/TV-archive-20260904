@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-01T05:37:12.137Z",
+  "generatedAt": "2026-06-01T14:13:46.150Z",
   "source": {
     "key": "量子影視",
     "name": "量子影視｜追劇",
@@ -55,7 +55,9 @@
     ],
     "areas": [
       "韓國",
+      "马来西亚 / 香港 / 美國 / 韩",
       "日本 / 韓國",
+      "日韩",
       "美國 / 日本 / 韓國",
       "香港 / 马来西亚 / 韓國",
       "韓國 / 日本",
@@ -80,7 +82,6 @@
       "大陸大陸",
       "大陸国语",
       "马来西亚",
-      "马来西亚 / 香港 / 美國 / 韩",
       "中国",
       "中国 / 法国",
       "丹麦",
@@ -104,7 +105,6 @@
       "日本 / 美國",
       "日本 / 英國 / 波兰",
       "日语",
-      "日韩",
       "比利时",
       "比利时 / 卢森堡 / 法国 / 德国",
       "比利时 / 法国",
@@ -714,47 +714,48 @@
   ],
   "chunks": [
     {
-      "kind": "adult",
-      "file": "adult.json",
-      "count": 1651,
-      "playable": 1651
-    },
-    {
-      "kind": "anime",
-      "file": "anime.json",
-      "count": 11617,
-      "playable": 11611
-    },
-    {
       "kind": "movie",
       "file": "movie.json",
-      "count": 57086,
-      "playable": 57070
-    },
-    {
-      "kind": "other",
-      "file": "other.json",
-      "count": 23327,
-      "playable": 23327
+      "count": 61137,
+      "playable": 61116
     },
     {
       "kind": "series",
       "file": "series.json",
-      "count": 16944,
-      "playable": 16943
+      "count": 17626,
+      "playable": 17625
     },
     {
       "kind": "short",
       "file": "short.json",
-      "count": 19780,
-      "playable": 19771
+      "count": 19779,
+      "playable": 19770
     },
     {
       "kind": "variety",
       "file": "variety.json",
-      "count": 5399,
-      "playable": 5398
+      "count": 5280,
+      "playable": 5279
+    },
+    {
+      "kind": "anime",
+      "file": "anime.json",
+      "count": 7248,
+      "playable": 7247
+    },
+    {
+      "kind": "adult",
+      "file": "adult.json",
+      "count": 1652,
+      "playable": 1652
+    },
+    {
+      "kind": "other",
+      "file": "other.json",
+      "count": 23082,
+      "playable": 23082
     }
   ],
-  "errors": []
+  "errors": [],
+  "classificationRule": "tools/vod-kind-rules.mjs"
 }
