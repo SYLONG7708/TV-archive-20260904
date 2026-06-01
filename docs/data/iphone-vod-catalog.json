@@ -18,15 +18,16 @@
   },
   "totals": {
     "sources": 90,
-    "indexedSources": 64,
-    "items": 2264635,
-    "playableItems": 2264635,
-    "movies": 278488,
-    "series": 54501,
-    "variety": 17925,
-    "anime": 59515,
-    "short": 149722,
-    "adult": 1704484
+    "indexedSources": 65,
+    "items": 2400439,
+    "playableItems": 2400406,
+    "movies": 335574,
+    "series": 71445,
+    "variety": 23324,
+    "anime": 71132,
+    "short": 169502,
+    "adult": 1706135,
+    "quantumLziIncluded": true
   },
   "filters": {
     "years": [
@@ -2715,151 +2716,302 @@
     },
     {
       "id": "all-on-demand-sources-量子影视-https-cj-lziapi-com-api-php-provide-vod-29",
-      "key": "量子影视",
-      "name": "量子影视｜追劇",
+      "key": "量子影視",
+      "name": "量子影視｜追劇",
       "type": 1,
       "api": "https://cj.lziapi.com/api.php/provide/vod/",
       "ext": "",
       "host": "cj.lziapi.com",
       "origin": "All on-demand sources",
       "indexable": true,
-      "adult": true,
+      "adult": false,
       "categories": [
+        {
+          "id": "1",
+          "name": "电影片",
+          "kind": "movie"
+        },
+        {
+          "id": "2",
+          "name": "连续剧",
+          "kind": "series"
+        },
+        {
+          "id": "3",
+          "name": "综艺片",
+          "kind": "variety"
+        },
+        {
+          "id": "4",
+          "name": "动漫片",
+          "kind": "anime"
+        },
+        {
+          "id": "6",
+          "name": "动作片",
+          "kind": "movie"
+        },
+        {
+          "id": "7",
+          "name": "喜剧片",
+          "kind": "series"
+        },
+        {
+          "id": "8",
+          "name": "爱情片",
+          "kind": "movie"
+        },
+        {
+          "id": "9",
+          "name": "科幻片",
+          "kind": "movie"
+        },
+        {
+          "id": "10",
+          "name": "恐怖片",
+          "kind": "movie"
+        },
+        {
+          "id": "11",
+          "name": "剧情片",
+          "kind": "series"
+        },
+        {
+          "id": "12",
+          "name": "战争片",
+          "kind": "movie"
+        },
+        {
+          "id": "13",
+          "name": "国产剧",
+          "kind": "series"
+        },
+        {
+          "id": "14",
+          "name": "香港剧",
+          "kind": "series"
+        },
+        {
+          "id": "15",
+          "name": "韩国剧",
+          "kind": "series"
+        },
+        {
+          "id": "16",
+          "name": "欧美剧",
+          "kind": "series"
+        },
+        {
+          "id": "20",
+          "name": "记录片",
+          "kind": "movie"
+        },
+        {
+          "id": "21",
+          "name": "台湾剧",
+          "kind": "series"
+        },
+        {
+          "id": "22",
+          "name": "日本剧",
+          "kind": "series"
+        },
+        {
+          "id": "23",
+          "name": "海外剧",
+          "kind": "series"
+        },
+        {
+          "id": "24",
+          "name": "泰国剧",
+          "kind": "series"
+        },
+        {
+          "id": "25",
+          "name": "大陆综艺",
+          "kind": "variety"
+        },
+        {
+          "id": "26",
+          "name": "港台综艺",
+          "kind": "variety"
+        },
+        {
+          "id": "27",
+          "name": "日韩综艺",
+          "kind": "variety"
+        },
+        {
+          "id": "28",
+          "name": "欧美综艺",
+          "kind": "variety"
+        },
+        {
+          "id": "29",
+          "name": "国产动漫",
+          "kind": "anime"
+        },
+        {
+          "id": "30",
+          "name": "日韩动漫",
+          "kind": "anime"
+        },
+        {
+          "id": "31",
+          "name": "欧美动漫",
+          "kind": "anime"
+        },
+        {
+          "id": "32",
+          "name": "港台动漫",
+          "kind": "anime"
+        },
+        {
+          "id": "33",
+          "name": "海外动漫",
+          "kind": "anime"
+        },
         {
           "id": "34",
           "name": "伦理片",
           "kind": "adult"
         },
         {
-          "id": "22",
-          "name": "日本剧",
-          "kind": "adult"
+          "id": "35",
+          "name": "电影解说",
+          "kind": "movie"
         },
         {
-          "id": "24",
-          "name": "泰国剧",
-          "kind": "adult"
+          "id": "36",
+          "name": "体育",
+          "kind": "other"
         },
         {
-          "id": "16",
-          "name": "欧美剧",
-          "kind": "adult"
+          "id": "37",
+          "name": "足球",
+          "kind": "other"
         },
         {
-          "id": "15",
-          "name": "韩国剧",
-          "kind": "adult"
+          "id": "38",
+          "name": "篮球",
+          "kind": "other"
         },
         {
-          "id": "29",
-          "name": "国产动漫",
-          "kind": "adult"
+          "id": "39",
+          "name": "网球",
+          "kind": "other"
         },
         {
-          "id": "9",
-          "name": "科幻片",
-          "kind": "adult"
+          "id": "40",
+          "name": "斯诺克",
+          "kind": "other"
         },
         {
-          "id": "11",
-          "name": "剧情片",
-          "kind": "adult"
+          "id": "41",
+          "name": "演员",
+          "kind": "other"
         },
         {
-          "id": "10",
-          "name": "恐怖片",
-          "kind": "adult"
+          "id": "42",
+          "name": "新闻资讯",
+          "kind": "other"
+        },
+        {
+          "id": "43",
+          "name": "电影资讯",
+          "kind": "movie"
+        },
+        {
+          "id": "44",
+          "name": "娱乐新闻",
+          "kind": "other"
+        },
+        {
+          "id": "45",
+          "name": "预告片",
+          "kind": "movie"
+        },
+        {
+          "id": "46",
+          "name": "短剧",
+          "kind": "short"
         },
         {
           "id": "49",
           "name": "动画片",
-          "kind": "adult"
+          "kind": "anime"
         },
         {
-          "id": "30",
-          "name": "日韩动漫",
-          "kind": "adult"
+          "id": "52",
+          "name": "AI漫剧",
+          "kind": "anime"
         }
       ],
-      "itemCount": 0,
-      "playableCount": 0,
+      "itemCount": 135804,
+      "playableCount": 135771,
       "checks": [
         {
-          "label": "最新",
+          "label": "全量索引",
           "ok": true,
-          "count": 0,
-          "pages": 1,
+          "count": 135804,
+          "pages": 6792,
           "pagecount": 6792,
-          "total": 135827
-        },
-        {
-          "label": "伦理片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 68,
-          "total": 1357
-        },
-        {
-          "label": "日本剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 98,
-          "total": 1960
-        },
-        {
-          "label": "泰国剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 37,
-          "total": 724
-        },
-        {
-          "label": "欧美剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 283,
-          "total": 5654
-        },
-        {
-          "label": "韩国剧",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 89,
-          "total": 1764
-        },
-        {
-          "label": "国产动漫",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 98,
-          "total": 1949
-        },
-        {
-          "label": "科幻片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 68,
-          "total": 1343
-        },
-        {
-          "label": "剧情片",
-          "ok": true,
-          "count": 0,
-          "pages": 1,
-          "pagecount": 689,
-          "total": 13776
+          "total": 135829
         }
       ],
-      "sourceTotalCount": 135827,
-      "indexed": false,
-      "error": ""
+      "sourceTotalCount": 135829,
+      "indexed": true,
+      "error": "",
+      "quantumFullIndex": {
+        "manifest": "quantum-lzi/manifest.json",
+        "total": 135829,
+        "normalizedItems": 135804,
+        "playableItems": 135771,
+        "chunks": [
+          {
+            "kind": "adult",
+            "file": "adult.json",
+            "count": 1651,
+            "playable": 1651
+          },
+          {
+            "kind": "anime",
+            "file": "anime.json",
+            "count": 11617,
+            "playable": 11611
+          },
+          {
+            "kind": "movie",
+            "file": "movie.json",
+            "count": 57086,
+            "playable": 57070
+          },
+          {
+            "kind": "other",
+            "file": "other.json",
+            "count": 23327,
+            "playable": 23327
+          },
+          {
+            "kind": "series",
+            "file": "series.json",
+            "count": 16944,
+            "playable": 16943
+          },
+          {
+            "kind": "short",
+            "file": "short.json",
+            "count": 19780,
+            "playable": 19771
+          },
+          {
+            "kind": "variety",
+            "file": "variety.json",
+            "count": 5399,
+            "playable": 5398
+          }
+        ]
+      }
     },
     {
       "id": "all-on-demand-sources-最大点播-https-zuidazy-me-api-php-provide-vod-30",
@@ -14765,7 +14917,7 @@
       "categoryId": "32",
       "categoryName": "港台综艺",
       "year": "2026",
-      "area": "中国香港",
+      "area": "香港",
       "genre": [
         "真人秀",
         "港台综艺"
@@ -49514,7 +49666,7 @@
       "categoryId": "14",
       "categoryName": "香港剧",
       "year": "2026",
-      "area": "中国香港",
+      "area": "香港",
       "genre": [
         "中国香港",
         "香港剧"
@@ -49584,7 +49736,7 @@
       "categoryId": "14",
       "categoryName": "香港剧",
       "year": "2026",
-      "area": "中国香港",
+      "area": "香港",
       "genre": [
         "中国香港",
         "香港剧"
@@ -52654,7 +52806,7 @@
       "categoryId": "14",
       "categoryName": "港澳剧",
       "year": "2009",
-      "area": "中国香港",
+      "area": "香港",
       "genre": [
         "香港",
         "喜剧",
@@ -62147,7 +62299,7 @@
       "categoryId": "18",
       "categoryName": "港澳剧",
       "year": "2009",
-      "area": "中国香港",
+      "area": "香港",
       "genre": [
         "香港",
         "港澳",
@@ -66221,7 +66373,7 @@
       "categoryId": "4",
       "categoryName": "香港剧",
       "year": "2001",
-      "area": "中国香港 / 大陸",
+      "area": "香港 / 大陸",
       "genre": [
         "香港",
         "香港剧"
@@ -100466,7 +100618,7 @@
       "categoryId": "13",
       "categoryName": "港澳剧",
       "year": "2009",
-      "area": "中国香港",
+      "area": "香港",
       "genre": [
         "香港",
         "港澳剧"
@@ -132886,7 +133038,7 @@
       "categoryId": "14",
       "categoryName": "香港剧",
       "year": "2026",
-      "area": "中国香港",
+      "area": "香港",
       "genre": [
         "中国香港",
         "香港剧"
@@ -132956,7 +133108,7 @@
       "categoryId": "14",
       "categoryName": "香港剧",
       "year": "2026",
-      "area": "中国香港",
+      "area": "香港",
       "genre": [
         "中国香港",
         "香港剧"
@@ -143526,7 +143678,7 @@
       "categoryId": "4",
       "categoryName": "香港剧",
       "year": "2001",
-      "area": "中国香港 / 大陸",
+      "area": "香港 / 大陸",
       "genre": [
         "香港",
         "香港剧"
@@ -174350,7 +174502,7 @@
       "categoryId": "27",
       "categoryName": "港台综艺",
       "year": "2011",
-      "area": "中国台灣",
+      "area": "台灣",
       "genre": [
         "真人秀",
         "港台综艺"
@@ -178185,7 +178337,7 @@
       "categoryId": "27",
       "categoryName": "港台综艺",
       "year": "2009",
-      "area": "中国台灣",
+      "area": "台灣",
       "genre": [
         "脱口秀",
         "港台综艺"
@@ -183832,7 +183984,7 @@
       "categoryId": "27",
       "categoryName": "港台综艺",
       "year": "2022",
-      "area": "中国台灣",
+      "area": "台灣",
       "genre": [
         "脱口秀",
         "港台综艺"
@@ -199169,7 +199321,7 @@
       "categoryId": "27",
       "categoryName": "港台综艺",
       "year": "2023",
-      "area": "中国台灣",
+      "area": "台灣",
       "genre": [
         "真人秀",
         "港台综艺"

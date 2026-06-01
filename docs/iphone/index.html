@@ -947,6 +947,9 @@
       const ONLINE_DATA_BASE = 'https://sylong7708.github.io/TV/docs/data/';
       const SOURCE_STORAGE_KEY = 'oktv:iphone:selectedSource:v3';
       const DEFAULT_SOURCE_RE = /爱奇艺|愛奇藝/i;
+      const QUANTUM_MANIFEST_URL = '../data/quantum-lzi/manifest.json';
+      const QUANTUM_BASE_URL = '../data/quantum-lzi/';
+      const QUANTUM_API_RE = /cj\.lziapi\.com/i;
 
       const state = {
         tab: 'home',
@@ -963,6 +966,11 @@
         searchComposing: false,
         refocusSearch: false,
         catalog: { totals: {}, sources: [], items: [], filters: { years: [], areas: [], genres: [] } },
+        quantum: {
+          manifest: null,
+          loadedKinds: new Set(),
+          loadingKinds: new Map(),
+        },
         live: [],
         health: { failed: [] },
         healthIndex: { sources: new Set(), posters: new Set(), live: new Set() },
@@ -3432,6 +3440,87 @@
         return sourceById(state.selectedSource);
       }
 
+      function quantumSource() {
+        return state.catalog.sources.find((source) => QUANTUM_API_RE.test(source.api || '')) || null;
+      }
+
+      function isQuantumSelected() {
+        const source = activeSource();
+        return Boolean(source && QUANTUM_API_RE.test(source.api || ''));
+      }
+
+      function areaWeight(value) {
+        const text = String(value || '');
+        if (text === '韓國') return -100;
+        if (text.includes('韓')) return -90;
+        return 0;
+      }
+
+      async function loadQuantumManifest() {
+        if (state.quantum.manifest) return state.quantum.manifest;
+        const manifest = await getJson(QUANTUM_MANIFEST_URL, null);
+        if (!manifest) return null;
+        state.quantum.manifest = manifest;
+        const source = quantumSource();
+        if (source) {
+          source.indexed = true;
+          source.adult = false;
+          source.itemCount = manifest.totals?.normalizedItems || source.itemCount || 0;
+          source.playableCount = manifest.totals?.playableItems || source.playableCount || 0;
+          source.sourceTotalCount = manifest.totals?.apiTotal || source.sourceTotalCount || source.itemCount || 0;
+          source.categories = (manifest.classes || []).map((item) => ({
+            id: String(item.type_id || item.id || item.type_name || item.name || ''),
+            name: item.type_name || item.name || String(item),
+            kind: item.type_name || item.name || String(item),
+          }));
+          source.checks = [{ label: '全量索引', ok: true, count: source.itemCount, total: source.sourceTotalCount }];
+          source.error = '';
+        }
+        return manifest;
+      }
+
+      function quantumKindsForCurrentView() {
+        if (state.tab === 'short') return ['short'];
+        if (!isQuantumSelected()) return [];
+        if (state.tab === 'home') return ['movie'];
+        if (['movie', 'anime', 'variety'].includes(state.tab)) return [state.tab];
+        if (state.tab === 'rank') return ['movie', 'series', 'short', 'anime', 'variety'];
+        return [];
+      }
+
+      async function loadQuantumKind(kind) {
+        if (state.quantum.loadedKinds.has(kind)) return;
+        if (state.quantum.loadingKinds.has(kind)) return state.quantum.loadingKinds.get(kind);
+        const task = (async () => {
+          const manifest = await loadQuantumManifest();
+          const chunk = manifest?.chunks?.find((item) => item.kind === kind);
+          if (!chunk?.file) return;
+          const payload = await getJson(`${QUANTUM_BASE_URL}${chunk.file}`, null);
+          const source = quantumSource();
+          const sourceId = source?.id || 'quantum-lzi';
+          const sourceName = source?.name || '量子影視｜追劇';
+          const rows = (payload?.items || []).map((item) => ({
+            ...item,
+            sourceId,
+            sourceName,
+            adult: item.kind === 'adult' || Boolean(item.adult),
+            genre: Array.isArray(item.genre) ? item.genre : [],
+            episodes: Array.isArray(item.episodes) ? item.episodes : [],
+            lazyEpisodes: false,
+          }));
+          registerCatalogItems(rows);
+          state.quantum.loadedKinds.add(kind);
+        })().finally(() => state.quantum.loadingKinds.delete(kind));
+        state.quantum.loadingKinds.set(kind, task);
+        return task;
+      }
+
+      function ensureQuantumForCurrentView() {
+        const kinds = quantumKindsForCurrentView().filter((kind) => !state.quantum.loadedKinds.has(kind) && !state.quantum.loadingKinds.has(kind));
+        if (!kinds.length) return;
+        Promise.all(kinds.map(loadQuantumKind)).then(render).catch(() => undefined);
+      }
+
       function sourceLabel() {
         if (state.selectedSource === 'normal') return '全部一般來源';
         if (state.selectedSource === 'adult18') return '成人 18+';
@@ -3568,6 +3657,11 @@
           state.viewCache.set(cacheKey, rows);
           return rows;
         }
+        if (!rows.length && state.tab === 'short' && state.filters.area !== 'all') {
+          const fallbackRows = state.catalog.items.filter((item) => itemMatches(item, 'normal', true, skipFilter));
+          state.viewCache.set(cacheKey, fallbackRows);
+          return fallbackRows;
+        }
         state.viewCache.set(cacheKey, rows);
         return rows;
       }
@@ -3672,6 +3766,7 @@
       }
 
       function renderVodScreen() {
+        ensureQuantumForCurrentView();
         ensureAvailableFilters();
         const allRows = visibleItems();
         const rows = allRows.slice(0, state.visibleLimit);
@@ -3679,6 +3774,7 @@
         screen.innerHTML = `
           ${renderToolbar()}
           ${renderQuickFilters()}
+          ${state.tab === 'short' ? renderShortAreaRail() : ''}
           <section class="section-head">
             <div><h1>${displayHtml(title)}</h1><span>${rows.length} / ${allRows.length} 部內容，${state.catalog.totals.playableItems || 0} 部有播放項</span></div>
             <span class="status-pill ok">${icon('check')} OKTV</span>
@@ -3691,6 +3787,7 @@
         bindToolbar();
         bindPosters();
         bindQuickFilters();
+        bindShortAreaRail();
         bindFloatingFilter();
       }
 
@@ -3730,7 +3827,8 @@
       function ensureAvailableFilters() {
         for (let index = 0; index < 2; index += 1) {
           for (const key of ['year', 'area', 'genre']) {
-            if (state.filters[key] !== 'all' && !filterValues(key).includes(state.filters[key])) state.filters[key] = 'all';
+            const values = key === 'area' && state.tab === 'short' ? shortAreas() : filterValues(key);
+            if (state.filters[key] !== 'all' && !values.includes(state.filters[key])) state.filters[key] = 'all';
           }
         }
       }
@@ -3792,8 +3890,7 @@
       function shortAreas() {
         const areas = [...new Set(state.catalog.items.filter((item) => item.kind === 'short').map((item) => item.area).filter(Boolean))];
         return areas.sort((a, b) => {
-          const score = (value) => (value.includes('韓國') ? -2 : value.includes('韓') ? -1 : 0);
-          return score(a) - score(b) || a.localeCompare(b, 'zh-Hant');
+          return areaWeight(a) - areaWeight(b) || a.localeCompare(b, 'zh-Hant');
         });
       }
 
@@ -3831,6 +3928,7 @@
       }
 
       function renderRank() {
+        ensureQuantumForCurrentView();
         ensureAvailableFilters();
         const allRows = visibleItems();
         const rows = allRows.slice(0, state.visibleLimit);
@@ -4283,6 +4381,7 @@
       ]);
       state.catalog.sources = Array.isArray(state.catalog.sources) ? state.catalog.sources : [];
       state.sourceMap = new Map(state.catalog.sources.map((source) => [source.id, source]));
+      await loadQuantumManifest();
       const initialCatalogItems = Array.isArray(state.catalog.items) ? state.catalog.items : [];
       state.catalog.items = [];
       state.itemById.clear();

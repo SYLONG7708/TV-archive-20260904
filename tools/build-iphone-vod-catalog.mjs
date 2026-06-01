@@ -262,6 +262,9 @@ function parseYear(value) {
 function normalizeArea(value) {
   return normalizeText(value)
     .replace(/韩国/g, '韓國')
+    .replace(/中国台湾|中国台灣|中国臺灣|中國台湾|中國台灣|中國臺灣/g, '台灣')
+    .replace(/中国香港|中國香港|香港地区/g, '香港')
+    .replace(/中国澳门|中國澳門|澳门|澳門/g, '澳門')
     .replace(/中国大陆|中國大陸|大陆/g, '大陸')
     .replace(/台湾|台灣/g, '台灣')
     .replace(/日本/g, '日本')
@@ -290,8 +293,15 @@ function parseEpisodes(playUrl) {
   const raw = String(playUrl || '').trim();
   if (!raw) return [];
   const groups = raw.split('$$$').filter(Boolean);
-  const firstUsableGroup = groups.find((group) => /https?:\/\//i.test(group)) || groups[0] || '';
-  return firstUsableGroup
+  const directGroup =
+    groups.find((group) =>
+      group.split('#').some((part) => {
+        const url = part.split('$').at(-1) || part;
+        return /^https?:\/\//i.test(url) && isDirectMediaUrl(url);
+      }),
+    ) || '';
+  const group = directGroup || groups.find((entry) => /https?:\/\//i.test(entry)) || groups[0] || '';
+  return group
     .split('#')
     .map((part, index) => {
       const bits = part.split('$');
