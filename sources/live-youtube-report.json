@@ -1,18 +1,18 @@
 {
-    "generatedAt":  "2026-06-01T06:22:06.8170776+08:00",
+    "generatedAt":  "2026-06-01T08:22:00.2391785+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  78,
-    "fallback":  34,
-    "failed":  34,
+    "playable":  77,
+    "fallback":  35,
+    "failed":  35,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  69.64,
-    "playlistEntries":  78,
-    "removedFromPlaylist":  34,
+    "hlsSuccessRate":  68.75,
+    "playlistEntries":  77,
+    "removedFromPlaylist":  35,
     "playlistPolicy":  "playable-only",
     "mode":  "best-effort-hls-resolve",
     "note":  "",
@@ -319,7 +319,14 @@
                          "Group":  "YouTube動漫台",
                          "Name":  "Muse 異世界流浪美食家馬拉松",
                          "PageUrl":  "https://www.youtube.com/watch?v=fK1M3oM7ZPQ",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 63544 bytes, 3783.9 kbps."
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 51512 bytes, 6669.4 kbps."
+                     },
+                     {
+                         "Order":  103,
+                         "Group":  "YouTube動漫台",
+                         "Name":  "Muse 獵人馬拉松",
+                         "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 42488 bytes, 6972.2 kbps."
                      }
                  ]
 }
