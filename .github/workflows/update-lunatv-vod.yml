@@ -93,6 +93,13 @@ jobs:
             --maxCategoriesPerSource 8 `
             --includeAdult true `
             --timeoutMs 8000
+          node .\tools\build-quantum-lzi-full.mjs `
+            --repoRoot . `
+            --api "https://cj.lziapi.com/api.php/provide/vod/" `
+            --outputDir .\docs\data\quantum-lzi `
+            --concurrency 18 `
+            --timeoutMs 20000 `
+            --episodePreviewLimit 3
           node .\tools\build-full-vod-chunked-catalog.mjs `
             --tvRoot . `
             --catalog .\docs\data\iphone-vod-catalog.json `

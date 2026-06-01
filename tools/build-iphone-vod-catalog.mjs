@@ -180,7 +180,6 @@ function adultText(site) {
     site?.name,
     site?.api,
     site?.ext,
-    Array.isArray(site?.categories) ? site.categories.join(' ') : '',
   ]
     .map((value) => String(value || ''))
     .join(' ');
@@ -234,6 +233,11 @@ function extractArray(payload) {
   if (Array.isArray(payload?.videos)) return payload.videos;
   if (Array.isArray(payload)) return payload;
   return [];
+}
+
+function extractCategories(payload) {
+  if (Array.isArray(payload?.class)) return payload.class;
+  return extractArray(payload);
 }
 
 function parseScore(value) {
@@ -441,7 +445,7 @@ async function getSourceCategories(source) {
   try {
     const payload = await fetchJson(addVodQuery(source.api, 'ac=list'));
     const seen = new Set();
-    return extractArray(payload)
+    return extractCategories(payload)
       .map((item, index) => normalizeCategory(item, index, source.adult))
       .filter((item) => {
         const key = `${item.id}|${item.name}`;

@@ -227,7 +227,6 @@ function adultText(site) {
     site?.name,
     site?.api,
     site?.ext,
-    Array.isArray(site?.categories) ? site.categories.join(' ') : '',
   ]
     .map((value) => String(value || ''))
     .join(' ');
@@ -295,6 +294,11 @@ function extractArray(payload) {
   return [];
 }
 
+function extractCategories(payload) {
+  if (Array.isArray(payload?.class)) return payload.class;
+  return extractArray(payload);
+}
+
 function normalizeCategories(rows, fallbackAdult = false) {
   const categories = rows
     .map((item) => normalizeText(typeof item === 'string' ? item : item.type_name ?? item.name ?? item.type ?? item.title))
@@ -319,7 +323,7 @@ async function fetchCategories(row) {
     const text = await fetchText(addVodQuery(row.api, 'ac=list'), 'application/json,text/plain,*/*');
     const json = JSON.parse(text);
     return {
-      categories: normalizeCategories(extractArray(json), row.adult),
+      categories: normalizeCategories(extractCategories(json), row.adult),
       ok: true,
       error: '',
     };

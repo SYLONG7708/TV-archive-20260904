@@ -215,6 +215,7 @@ try {
     $allOnDemandScript = Join-Path $repoRootText "tools\build-all-on-demand-sources.mjs"
     $adultSortScript = Join-Path $repoRootText "tools\build-lunatv-adult18-sorted.mjs"
     $iphoneCatalogScript = Join-Path $repoRootText "tools\build-iphone-vod-catalog.mjs"
+    $quantumLziScript = Join-Path $repoRootText "tools\build-quantum-lzi-full.mjs"
     $fullChunkedCatalogScript = Join-Path $repoRootText "tools\build-full-vod-chunked-catalog.mjs"
     $assembleChunkedCatalogScript = Join-Path $repoRootText "tools\assemble-vod-index-from-detail.mjs"
     $applyVodKindRulesScript = Join-Path $repoRootText "tools\apply-vod-kind-rules.mjs"
@@ -259,6 +260,17 @@ try {
             --maxCategoriesPerSource 8 `
             --includeAdult true `
             --timeoutMs 8000
+    }
+
+    if (Test-Path -LiteralPath $quantumLziScript) {
+        Write-Log "Building full cj.lziapi.com VOD catalog for Quantum/Yunfei source."
+        node $quantumLziScript `
+            --repoRoot $repoRootText `
+            --api "https://cj.lziapi.com/api.php/provide/vod/" `
+            --outputDir (Join-Path $repoRootText "docs\data\quantum-lzi") `
+            --concurrency 18 `
+            --timeoutMs 20000 `
+            --episodePreviewLimit 3
     }
 
     if (Test-Path -LiteralPath $fullChunkedCatalogScript) {
