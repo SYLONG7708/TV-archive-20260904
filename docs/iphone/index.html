@@ -768,7 +768,8 @@
         white-space: nowrap;
       }
 
-      video {
+      video,
+      .player-frame {
         display: block;
         width: 100%;
         max-height: calc(100dvh - 112px);
@@ -776,6 +777,10 @@
         border-radius: 8px;
         background: #000;
         object-fit: contain;
+      }
+
+      .player-frame {
+        border: 0;
       }
 
       .hidden {
@@ -875,7 +880,8 @@
           align-items: center;
         }
 
-        #playerSheet video {
+        #playerSheet video,
+        #playerSheet .player-frame {
           max-height: calc(100dvh - 74px);
           aspect-ratio: auto;
         }
@@ -929,6 +935,7 @@
           <button class="icon-btn" type="button" data-close-player aria-label="關閉"></button>
         </div>
         <video id="player" controls playsinline preload="metadata" poster="../assets/hero-cinema.png"></video>
+        <iframe id="playerFrame" class="player-frame hidden" title="直播播放器" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </section>
     </div>
 
@@ -998,6 +1005,7 @@
       const detailMeta = document.querySelector('#detailMeta');
       const playerSheet = document.querySelector('#playerSheet');
       const player = document.querySelector('#player');
+      const playerFrame = document.querySelector('#playerFrame');
       const playerTitle = document.querySelector('#playerTitle');
       const playerMeta = document.querySelector('#playerMeta');
       const EPISODES_PER_PAGE = 20;
@@ -3975,8 +3983,8 @@
           button.addEventListener('click', () => {
             const item = state.live.find((entry) => entry.id === button.dataset.livePlay);
             if (!item) return;
-            if (item.kind === 'external') return window.open(item.url, '_blank', 'noopener,noreferrer');
-            if (item.playable) openPlayer(item.name, `${item.group} / ${kindLabel(item.kind)}`, item.url);
+            if (item.kind === 'external' && !item.embedUrl) return window.open(item.url, '_blank', 'noopener,noreferrer');
+            if (item.playable || item.embedUrl) openPlayer(item.name, `${item.group} / ${kindLabel(item.kind)}`, item.url, item.embedUrl || '');
           });
         });
       }
@@ -4034,7 +4042,7 @@
       }
 
       function renderLiveRow(item) {
-        const playable = item.playable || item.kind === 'external';
+        const playable = item.playable || item.kind === 'external' || item.embedUrl;
         return `
           <article class="row">
             <div class="avatar">${displayHtml(initials(item.name))}</div>
@@ -4042,7 +4050,7 @@
               <strong>${displayHtml(item.name)}</strong>
               <span>${displayHtml(item.group)} / ${displayHtml(kindLabel(item.kind))}</span>
             </div>
-            <button class="play-btn" type="button" data-live-play="${escapeHtml(item.id)}" ${playable ? '' : 'disabled'}>${icon(item.kind === 'external' ? 'signal' : 'play')}${item.kind === 'external' ? '外部' : '播放'}</button>
+            <button class="play-btn" type="button" data-live-play="${escapeHtml(item.id)}" ${playable ? '' : 'disabled'}>${icon(item.kind === 'external' && !item.embedUrl ? 'signal' : 'play')}${item.kind === 'external' && !item.embedUrl ? '外部' : '播放'}</button>
           </article>
         `;
       }
@@ -4165,17 +4173,27 @@
         bindDetailEpisodeControls(item);
       }
 
-      function openPlayer(title, meta, url) {
+      function openPlayer(title, meta, url, embedUrl = '') {
         closeDetail(false);
         hls?.destroy?.();
         hls = null;
         player.pause();
         player.removeAttribute('src');
         player.load();
+        playerFrame.removeAttribute('src');
+        playerFrame.classList.add('hidden');
+        player.classList.remove('hidden');
         playerTitle.textContent = displayText(title);
         playerMeta.textContent = displayText(meta);
         state.playerUrl = url;
         openSheet(playerSheet);
+
+        if (embedUrl) {
+          player.classList.add('hidden');
+          playerFrame.classList.remove('hidden');
+          playerFrame.src = embedUrl;
+          return;
+        }
 
         if (/\.m3u8(?:$|\?)/i.test(url) && window.Hls?.isSupported?.()) {
           hls = new window.Hls({
@@ -4197,6 +4215,9 @@
       function closePlayer() {
         hls?.destroy?.();
         hls = null;
+        playerFrame.removeAttribute('src');
+        playerFrame.classList.add('hidden');
+        player.classList.remove('hidden');
         player.pause();
         player.removeAttribute('src');
         player.load();
@@ -4335,7 +4356,7 @@
       }
 
       function kindLabel(kind) {
-        return { hls: 'M3U8', stream: 'HTTP', external: '外部', network: '內網', unknown: '未知' }[kind] || kind;
+        return { hls: 'M3U8', youtube: 'YouTube', stream: 'HTTP', external: '外部', network: '內網', unknown: '未知' }[kind] || kind;
       }
 
       function emptyState(text) {
@@ -4358,10 +4379,15 @@
 
       function applyHealthIndex(health) {
         state.health = health || { failed: [] };
+        const currentLiveUrls = new Map(state.live.map((item) => [item.id, item.url]));
         state.healthIndex = {
           sources: new Set((state.health.failed || []).filter((row) => row.kind === 'source').map((row) => row.id)),
           posters: new Set((state.health.failed || []).filter((row) => row.kind === 'poster').map((row) => row.id)),
-          live: new Set((state.health.failed || []).filter((row) => row.kind === 'live').map((row) => row.id)),
+          live: new Set(
+            (state.health.failed || [])
+              .filter((row) => row.kind === 'live' && currentLiveUrls.get(row.id) === row.url)
+              .map((row) => row.id),
+          ),
         };
         clearViewCache();
       }
