@@ -1,18 +1,18 @@
 {
-    "generatedAt":  "2026-06-02T10:22:26.3429675+08:00",
+    "generatedAt":  "2026-06-02T12:22:36.6092113+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  78,
-    "fallback":  34,
-    "failed":  34,
+    "playable":  77,
+    "fallback":  35,
+    "failed":  35,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  69.64,
-    "playlistEntries":  78,
-    "removedFromPlaylist":  34,
+    "hlsSuccessRate":  68.75,
+    "playlistEntries":  77,
+    "removedFromPlaylist":  35,
     "playlistPolicy":  "playable-only",
     "mode":  "best-effort-hls-resolve",
     "note":  "",
@@ -320,6 +320,13 @@
                          "Name":  "Best of MLB",
                          "PageUrl":  "https://www.youtube.com/watch?v=wKiClrFLjZs",
                          "Error":  "ERROR: [youtube] wKiClrFLjZs: Requested format is not available. Use --list-formats for a list of available formats"
+                     },
+                     {
+                         "Order":  102,
+                         "Group":  "YouTube動漫台",
+                         "Name":  "Muse 異世界流浪美食家馬拉松",
+                         "PageUrl":  "https://www.youtube.com/watch?v=fK1M3oM7ZPQ",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 57528 bytes, 9260.4 kbps."
                      }
                  ]
 }
