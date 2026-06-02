@@ -1,18 +1,18 @@
 {
-    "generatedAt":  "2026-06-02T20:22:44.6763824+08:00",
+    "generatedAt":  "2026-06-02T22:30:31.9539917+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  76,
-    "fallback":  36,
-    "failed":  36,
+    "playable":  74,
+    "fallback":  38,
+    "failed":  38,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  67.86,
-    "playlistEntries":  76,
-    "removedFromPlaylist":  36,
+    "hlsSuccessRate":  66.07,
+    "playlistEntries":  74,
+    "removedFromPlaylist":  38,
     "playlistPolicy":  "playable-only",
     "mode":  "best-effort-hls-resolve",
     "note":  "",
@@ -334,6 +334,20 @@
                          "Name":  "Anileap 動漫歌曲24小時",
                          "PageUrl":  "https://www.youtube.com/watch?v=4FBW3mkdKOs",
                          "Error":  "ERROR: [youtube] 4FBW3mkdKOs: This live stream recording is not available."
+                     },
+                     {
+                         "Order":  102,
+                         "Group":  "YouTube動漫台",
+                         "Name":  "Muse 異世界流浪美食家馬拉松",
+                         "PageUrl":  "https://www.youtube.com/watch?v=fK1M3oM7ZPQ",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 45496 bytes, 5739 kbps."
+                     },
+                     {
+                         "Order":  103,
+                         "Group":  "YouTube動漫台",
+                         "Name":  "Muse 獵人馬拉松",
+                         "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 42488 bytes, 2069.2 kbps."
                      }
                  ]
 }
