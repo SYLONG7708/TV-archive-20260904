@@ -173,6 +173,7 @@ jobs:
             docs/data/quantum-lzi `
             docs/iphone/index.html `
             tools/vod-kind-rules.mjs tools/apply-vod-kind-rules.mjs tools/build-quantum-lzi-full.mjs `
+            tools/build-pages-public-catalog.mjs `
             docs/assets/source-signal-icon.svg docs/assets/adult-18-badge.svg
           if (git diff --cached --quiet) {
             Write-Host "No LunaTV VOD source changes."
@@ -189,9 +190,25 @@ jobs:
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages"
           git worktree add $pages origin/gh-pages
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs") | Out-Null
+          New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\data") | Out-Null
           Copy-Item -Path .\docs\iphone -Destination (Join-Path $pages "docs") -Recurse -Force
-          Copy-Item -Path .\docs\data -Destination (Join-Path $pages "docs") -Recurse -Force
           Copy-Item -Path .\docs\assets -Destination (Join-Path $pages "docs") -Recurse -Force
+          Get-ChildItem -Path .\docs\data -File | Where-Object {
+            $_.Name -notin @("iphone-vod-catalog.json", "iphone-vod-catalog-report.json")
+          } | ForEach-Object {
+            Copy-Item -Path $_.FullName -Destination (Join-Path $pages "docs\data") -Force
+          }
+          if (Test-Path -Path .\docs\data\quantum-lzi) {
+            Copy-Item -Path .\docs\data\quantum-lzi -Destination (Join-Path $pages "docs\data") -Recurse -Force
+          }
+          Write-Host "Skipping full vod-detail/vod-index copy for lean GitHub Pages publish."
+          node .\tools\build-pages-public-catalog.mjs `
+            --tvRoot . `
+            --pagesRoot $pages `
+            --catalog .\docs\data\iphone-vod-catalog.json `
+            --smallCatalog (Join-Path $pages "docs\data\iphone-vod-catalog.json") `
+            --output (Join-Path $pages "docs\data\iphone-vod-catalog.json") `
+            --reportOutput (Join-Path $pages "docs\data\iphone-vod-catalog-report.json")
           Push-Location $pages
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

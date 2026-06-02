@@ -7,7 +7,8 @@ param(
     [int]$UpdateIntervalDays = 5,
     [int]$ScheduleHour = 2,
     [switch]$ForceUpdate,
-    [switch]$NoGitPush
+    [switch]$NoGitPush,
+    [switch]$PublishFullData
 )
 
 $ErrorActionPreference = "Stop"
@@ -153,9 +154,33 @@ function Sync-GhPages {
         Invoke-PagesGit pull --ff-only origin gh-pages
 
         New-Item -ItemType Directory -Force -Path (Join-Path $pagesRootText "docs") | Out-Null
+        New-Item -ItemType Directory -Force -Path (Join-Path $pagesRootText "docs\data") | Out-Null
         Copy-Item -LiteralPath (Join-Path $repoRootText "docs\iphone") -Destination (Join-Path $pagesRootText "docs") -Recurse -Force
-        Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data") -Destination (Join-Path $pagesRootText "docs") -Recurse -Force
         Copy-Item -LiteralPath (Join-Path $repoRootText "docs\assets") -Destination (Join-Path $pagesRootText "docs") -Recurse -Force
+        Get-ChildItem -LiteralPath (Join-Path $repoRootText "docs\data") -File | Where-Object {
+            $_.Name -notin @("iphone-vod-catalog.json", "iphone-vod-catalog-report.json")
+        } | ForEach-Object {
+            Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $pagesRootText "docs\data") -Force
+        }
+        if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi")) {
+            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
+        }
+        if ($PublishFullData) {
+            Write-Log "PublishFullData set; copying full vod-detail and vod-index to gh-pages."
+            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\vod-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
+            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\vod-index") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
+        } else {
+            Write-Log "Skipping full vod-detail/vod-index copy for lean gh-pages publish."
+        }
+
+        $publicCatalogScript = Join-Path $repoRootText "tools\build-pages-public-catalog.mjs"
+        & node $publicCatalogScript `
+            --tvRoot $repoRootText `
+            --pagesRoot $pagesRootText `
+            --catalog (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
+            --smallCatalog (Join-Path $pagesRootText "docs\data\iphone-vod-catalog.json") `
+            --output (Join-Path $pagesRootText "docs\data\iphone-vod-catalog.json") `
+            --reportOutput (Join-Path $pagesRootText "docs\data\iphone-vod-catalog-report.json")
 
         Invoke-PagesGit add "docs/iphone" "docs/data" "docs/assets"
         if (Invoke-PagesGit diff --cached --quiet) {
@@ -186,7 +211,7 @@ $pushedLocation = $false
 try {
     Write-Log "Starting LunaTV VOD update. Repo: $repoRootText"
     if (-not (Test-UpdateDue)) {
-        return
+        exit 0
     }
 
     Push-Location $repoRootText
