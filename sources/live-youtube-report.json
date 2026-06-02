@@ -1,18 +1,18 @@
 {
-    "generatedAt":  "2026-06-03T00:22:13.6471659+08:00",
+    "generatedAt":  "2026-06-03T02:22:00.4369293+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  75,
-    "fallback":  37,
-    "failed":  37,
+    "playable":  76,
+    "fallback":  36,
+    "failed":  36,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  66.96,
-    "playlistEntries":  75,
-    "removedFromPlaylist":  37,
+    "hlsSuccessRate":  67.86,
+    "playlistEntries":  76,
+    "removedFromPlaylist":  36,
     "playlistPolicy":  "playable-only",
     "mode":  "best-effort-hls-resolve",
     "note":  "",
@@ -277,7 +277,7 @@
                          "Group":  "YouTube兒童動畫",
                          "Name":  "Dave and Ava",
                          "PageUrl":  "https://www.youtube.com/watch?v=NU-7Xmj514E",
-                         "Error":  "ERROR: [youtube] NU-7Xmj514E: This video is not available"
+                         "Error":  "ERROR: [youtube] NU-7Xmj514E: This live stream recording is not available."
                      },
                      {
                          "Order":  83,
@@ -334,13 +334,6 @@
                          "Name":  "Anileap 動漫歌曲24小時",
                          "PageUrl":  "https://www.youtube.com/watch?v=4FBW3mkdKOs",
                          "Error":  "ERROR: [youtube] 4FBW3mkdKOs: This live stream recording is not available."
-                     },
-                     {
-                         "Order":  103,
-                         "Group":  "YouTube動漫台",
-                         "Name":  "Muse 獵人馬拉松",
-                         "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 48504 bytes, 3805.9 kbps."
                      }
                  ]
 }
