@@ -376,6 +376,7 @@ function configSiteRow(site, index, originUrl) {
     ext: normalizeText(site.ext),
     type,
     searchable: Number(site.searchable ?? 1),
+    changeable: site.changeable === undefined ? undefined : Number(site.changeable),
     quickSearch: Number(site.quickSearch ?? 1),
     filterable: site.filterable === undefined ? undefined : Number(site.filterable),
     categories: Array.isArray(site.categories) ? site.categories : [],
@@ -426,6 +427,24 @@ const pinnedRows = [
     quickSearch: 1,
     filterable: 1,
     categories: [],
+    successRate: 'pinned',
+    trend: '',
+    origin: 'pinned:user-request',
+    adult: false,
+  },
+  {
+    status: 'ok',
+    key: '七星短剧',
+    name: '七星丨短剧',
+    site: '',
+    api: 'https://mpimg.cn/down.php/48e9d346cdf6da376c53136693bec95a.py',
+    ext: '',
+    type: 3,
+    searchable: 1,
+    changeable: 1,
+    quickSearch: 1,
+    filterable: 1,
+    categories: DEFAULT_CATEGORIES,
     successRate: 'pinned',
     trend: '',
     origin: 'pinned:user-request',
@@ -501,9 +520,16 @@ const sites = dedupedRows.map((row, index) => {
     categories,
   };
   if (row.ext) site.ext = row.ext;
+  if (row.changeable !== undefined) site.changeable = row.changeable;
   if (row.filterable !== undefined) site.filterable = row.filterable;
   return site;
 });
+
+function typeLabel(type) {
+  if (type === 0) return 'CMS XML/API';
+  if (type === 3) return 'Spider/API';
+  return 'CMS JSON/API';
+}
 
 const outputJson = {
   spider: '',
@@ -531,6 +557,7 @@ const report = {
     name: sites[index].name,
     api: sites[index].api,
     ext: sites[index].ext || '',
+    changeable: sites[index].changeable,
     host: hostOf(sites[index].api),
     adult: row.adult,
     origin: row.origin || reportUrl,
@@ -546,6 +573,7 @@ const report = {
     name: row.name,
     api: row.api,
     ext: row.ext || '',
+    changeable: row.changeable,
     origin: row.origin || '',
     adult: row.adult,
     duplicateReason: row.duplicateReason,
@@ -557,14 +585,15 @@ const docsVod = sites.map((site, index) => ({
   key: site.key,
   name: site.name,
   type: site.type,
-  typeLabel: site.type === 0 ? 'CMS XML/API' : 'CMS JSON/API',
+  typeLabel: typeLabel(site.type),
   mode: 'api',
   api: site.api,
   searchable: true,
+  changeable: Boolean(site.changeable),
   quickSearch: true,
   categories: site.categories,
   endpointHost: hostOf(site.api),
-  hasExt: false,
+  hasExt: Boolean(site.ext),
   enabled: true,
   status: 'enabled',
   origin: 'All on-demand sources',
