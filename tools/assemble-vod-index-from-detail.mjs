@@ -45,6 +45,14 @@ async function readJson(file) {
   return JSON.parse(text);
 }
 
+async function readJsonIfExists(file, fallback = {}) {
+  try {
+    return await readJson(file);
+  } catch {
+    return fallback;
+  }
+}
+
 function compactItem(item) {
   const { episodes, ...rest } = item;
   return rest;
@@ -172,6 +180,7 @@ for (const source of catalog.sources || []) {
   processedIds.add(source.id);
   indexedItemsTotal += compact.length;
   playableItemsTotal += compact.filter((item) => item.playable).length;
+  const checks = Array.isArray(source.checks) ? source.checks.filter((check) => check?.label !== 'source-index-gzip') : [];
   updatedSources.push({
     ...source,
     itemCount: compact.length,
@@ -183,6 +192,7 @@ for (const source of catalog.sources || []) {
     detailMode: 'chunked-json-gzip',
     detailPathPattern: `vod-detail/${slug}/page-{page}.json.gz`,
     checks: [
+      ...checks,
       {
         label: 'source-index-gzip',
         ok: true,
@@ -232,7 +242,9 @@ const nextCatalog = {
   items: inlineItems,
 };
 
+const existingReport = await readJsonIfExists(reportPath, {});
 const report = {
+  ...existingReport,
   generatedAt: nextCatalog.generatedAt,
   totals,
   sourceChecks: updatedSources.map(sourceCheck),

@@ -111,6 +111,13 @@ jobs:
             --pageConcurrency 8 `
             --timeoutMs 20000 `
             --detailOnly true
+          node .\tools\build-type3-spider-catalog.mjs `
+            --tvRoot . `
+            --catalog .\docs\data\iphone-vod-catalog.json `
+            --report .\docs\data\iphone-vod-catalog-report.json `
+            --detailRoot .\docs\data\vod-detail `
+            --maxPagesPerCategory 3 `
+            --timeoutMs 15000
           node .\tools\assemble-vod-index-from-detail.mjs `
             --tvRoot . `
             --catalog .\docs\data\iphone-vod-catalog.json `
@@ -173,6 +180,7 @@ jobs:
             docs/data/quantum-lzi `
             docs/iphone/index.html `
             tools/vod-kind-rules.mjs tools/apply-vod-kind-rules.mjs tools/build-quantum-lzi-full.mjs `
+            tools/build-type3-spider-catalog.mjs `
             tools/build-pages-public-catalog.mjs `
             docs/assets/source-signal-icon.svg docs/assets/adult-18-badge.svg
           if (git diff --cached --quiet) {

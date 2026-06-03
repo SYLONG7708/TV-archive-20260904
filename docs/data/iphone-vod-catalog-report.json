@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-06-01T16:45:06.645Z",
+  "generatedAt": "2026-06-03T00:31:52.944Z",
   "totals": {
     "sources": 90,
-    "indexedSources": 71,
-    "items": 1892994,
-    "playableItems": 1892994,
+    "indexedSources": 72,
+    "items": 1893360,
+    "playableItems": 1893360,
     "movies": 381576,
     "series": 132934,
     "variety": 30135,
     "anime": 63010,
-    "short": 176988,
+    "short": 177354,
     "adult": 1747645,
     "other": 58109
   },
@@ -3974,8 +3974,19 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "error": "",
-      "checks": []
+      "error": "type3 spider requires proxy parser; direct playable URLs unavailable",
+      "checks": [
+        {
+          "label": "spider-drpy-probe",
+          "ok": false,
+          "apiBytes": 65776,
+          "extBytes": 15923,
+          "hasSearchApi": true,
+          "usesProxyParse": true,
+          "officialUrlsOnly": true,
+          "error": "drpy source needs a local proxy/parser and does not expose direct m3u8/mp4 URLs"
+        }
+      ]
     },
     {
       "id": "all-on-demand-sources-mg-https-file-icve-com-cn-file-doc-249-899-3e7e0c8a023b624cec6bdcc200f06f02-js-76",
@@ -4255,12 +4266,112 @@
       "origin": "All on-demand sources",
       "adult": false,
       "indexable": false,
-      "indexed": false,
-      "itemCount": 0,
-      "playableCount": 0,
-      "sourceTotalCount": 0,
+      "indexed": true,
+      "itemCount": 366,
+      "playableCount": 366,
+      "sourceTotalCount": 366,
+      "indexPath": "vod-index/mpimg-cn-all-on-demand-sources-七星短剧-https-mpimg-cn-down-php-48e9d346cdf6da376c53.json.gz",
+      "detailPathPattern": "vod-detail/mpimg-cn-all-on-demand-sources-七星短剧-https-mpimg-cn-down-php-48e9d346cdf6da376c53/page-{page}.json.gz",
       "error": "",
-      "checks": []
+      "checks": [
+        {
+          "label": "spider-qixing-login",
+          "ok": true
+        },
+        {
+          "label": "spider-qixing-snapshot",
+          "ok": true,
+          "count": 366,
+          "playable": 366,
+          "rawRows": 882,
+          "uniqueRows": 366,
+          "failedDetails": 0,
+          "categoryPages": [
+            {
+              "category": "七星劇場",
+              "page": 1,
+              "count": 24
+            },
+            {
+              "category": "七星劇場",
+              "page": 2,
+              "count": 24
+            },
+            {
+              "category": "七星劇場",
+              "page": 3,
+              "count": 24
+            },
+            {
+              "category": "七星新劇",
+              "page": 1,
+              "count": 24
+            },
+            {
+              "category": "七星新劇",
+              "page": 2,
+              "count": 24
+            },
+            {
+              "category": "七星新劇",
+              "page": 3,
+              "count": 24
+            },
+            {
+              "category": "七星熱播",
+              "page": 1,
+              "count": 24
+            },
+            {
+              "category": "七星熱播",
+              "page": 2,
+              "count": 24
+            },
+            {
+              "category": "七星熱播",
+              "page": 3,
+              "count": 24
+            },
+            {
+              "category": "七星星選",
+              "page": 1,
+              "count": 204
+            },
+            {
+              "category": "七星星選",
+              "page": 2,
+              "count": 204
+            },
+            {
+              "category": "七星星選",
+              "page": 3,
+              "count": 204
+            },
+            {
+              "category": "七星陽光",
+              "page": 1,
+              "count": 18
+            },
+            {
+              "category": "七星陽光",
+              "page": 2,
+              "count": 18
+            },
+            {
+              "category": "七星陽光",
+              "page": 3,
+              "count": 18
+            }
+          ]
+        },
+        {
+          "label": "source-index-gzip",
+          "ok": true,
+          "count": 366,
+          "pages": 5,
+          "total": 366
+        }
+      ]
     },
     {
       "id": "all-on-demand-sources-cj-360资源-https-360zy-com-api-php-provide-vod-84",
@@ -4459,5 +4570,154 @@
         }
       ]
     }
-  ]
+  ],
+  "type3SpiderEngine": {
+    "generatedAt": "2026-06-03T00:28:39.647Z",
+    "targets": 2,
+    "indexedSources": 1,
+    "playableItems": 366,
+    "checks": [
+      {
+        "id": "all-on-demand-sources-tx-https-file-icve-com-cn-file-doc-249-899-3e7e0c8a023b624cec6bdcc200f06f02-js-75",
+        "name": "腾讯视频｜追劇",
+        "type": 3,
+        "api": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
+        "ext": "https://cdn.waimaimingtang.com/file/images/bwc/20251023002144-0e40887294.js",
+        "origin": "All on-demand sources",
+        "adult": false,
+        "indexable": false,
+        "spiderIndexable": false,
+        "spiderEngine": "drpy-proxy-required",
+        "indexed": false,
+        "itemCount": 0,
+        "playableCount": 0,
+        "sourceTotalCount": 0,
+        "error": "type3 spider requires proxy parser; direct playable URLs unavailable",
+        "checks": [
+          {
+            "label": "spider-drpy-probe",
+            "ok": false,
+            "apiBytes": 65776,
+            "extBytes": 15923,
+            "hasSearchApi": true,
+            "usesProxyParse": true,
+            "officialUrlsOnly": true,
+            "error": "drpy source needs a local proxy/parser and does not expose direct m3u8/mp4 URLs"
+          }
+        ]
+      },
+      {
+        "id": "all-on-demand-sources-七星短剧-https-mpimg-cn-down-php-48e9d346cdf6da376c53136693bec95a-py-83",
+        "name": "七星丨短剧｜追劇",
+        "type": 3,
+        "api": "https://mpimg.cn/down.php/48e9d346cdf6da376c53136693bec95a.py",
+        "ext": "",
+        "origin": "All on-demand sources",
+        "adult": false,
+        "indexable": false,
+        "spiderIndexable": true,
+        "spiderEngine": "qixing-short-drama-v1",
+        "indexed": true,
+        "itemCount": 366,
+        "playableCount": 366,
+        "sourceTotalCount": 366,
+        "detailPageCount": 5,
+        "detailExpectedPages": 5,
+        "detailPathPattern": "vod-detail/mpimg-cn-all-on-demand-sources-七星短剧-https-mpimg-cn-down-php-48e9d346cdf6da376c53/page-{page}.json.gz",
+        "error": "",
+        "checks": [
+          {
+            "label": "spider-qixing-login",
+            "ok": true
+          },
+          {
+            "label": "spider-qixing-snapshot",
+            "ok": true,
+            "count": 366,
+            "playable": 366,
+            "rawRows": 882,
+            "uniqueRows": 366,
+            "failedDetails": 0,
+            "categoryPages": [
+              {
+                "category": "七星劇場",
+                "page": 1,
+                "count": 24
+              },
+              {
+                "category": "七星劇場",
+                "page": 2,
+                "count": 24
+              },
+              {
+                "category": "七星劇場",
+                "page": 3,
+                "count": 24
+              },
+              {
+                "category": "七星新劇",
+                "page": 1,
+                "count": 24
+              },
+              {
+                "category": "七星新劇",
+                "page": 2,
+                "count": 24
+              },
+              {
+                "category": "七星新劇",
+                "page": 3,
+                "count": 24
+              },
+              {
+                "category": "七星熱播",
+                "page": 1,
+                "count": 24
+              },
+              {
+                "category": "七星熱播",
+                "page": 2,
+                "count": 24
+              },
+              {
+                "category": "七星熱播",
+                "page": 3,
+                "count": 24
+              },
+              {
+                "category": "七星星選",
+                "page": 1,
+                "count": 204
+              },
+              {
+                "category": "七星星選",
+                "page": 2,
+                "count": 204
+              },
+              {
+                "category": "七星星選",
+                "page": 3,
+                "count": 204
+              },
+              {
+                "category": "七星陽光",
+                "page": 1,
+                "count": 18
+              },
+              {
+                "category": "七星陽光",
+                "page": 2,
+                "count": 18
+              },
+              {
+                "category": "七星陽光",
+                "page": 3,
+                "count": 18
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }

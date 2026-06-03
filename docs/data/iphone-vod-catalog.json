@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-01T16:45:06.645Z",
+  "generatedAt": "2026-06-03T00:31:52.944Z",
   "source": {
     "currentSourcesPath": "C:\\Users\\Administrator\\TV\\sources\\current-sources.json",
     "allOnDemandSourcesPath": "C:\\Users\\Administrator\\TV\\sources\\All on-demand sources",
@@ -14,18 +14,19 @@
     "includeAdult": true,
     "fullChunkedCatalog": true,
     "detailRoot": "docs/data/vod-detail",
-    "indexRoot": "docs/data/vod-index"
+    "indexRoot": "docs/data/vod-index",
+    "type3SpiderEngine": true
   },
   "totals": {
     "sources": 90,
-    "indexedSources": 71,
-    "items": 1892994,
-    "playableItems": 1892994,
+    "indexedSources": 72,
+    "items": 1893360,
+    "playableItems": 1893360,
     "movies": 381576,
     "series": 132934,
     "variety": 30135,
     "anime": 63010,
-    "short": 176988,
+    "short": 177354,
     "adult": 1747645,
     "other": 58109
   },
@@ -120,15 +121,15 @@
       "100",
       "100%",
       "1000",
+      "100集全",
+      "101集全",
+      "102集全",
+      "103集全",
+      "104集全",
+      "105集全",
       "1080P",
-      "11",
-      "110",
-      "12",
-      "1200",
-      "123",
-      "12luolishaonv",
-      "13nvtongxingai",
-      "15meirujuru"
+      "108集全",
+      "11"
     ]
   },
   "sources": [
@@ -16775,8 +16776,21 @@
       "playableCount": 0,
       "sourceTotalCount": 0,
       "indexed": false,
-      "checks": [],
-      "error": ""
+      "checks": [
+        {
+          "label": "spider-drpy-probe",
+          "ok": false,
+          "apiBytes": 65776,
+          "extBytes": 15923,
+          "hasSearchApi": true,
+          "usesProxyParse": true,
+          "officialUrlsOnly": true,
+          "error": "drpy source needs a local proxy/parser and does not expose direct m3u8/mp4 URLs"
+        }
+      ],
+      "error": "type3 spider requires proxy parser; direct playable URLs unavailable",
+      "spiderEngine": "drpy-proxy-required",
+      "spiderIndexable": false
     },
     {
       "id": "all-on-demand-sources-mg-https-file-icve-com-cn-file-doc-249-899-3e7e0c8a023b624cec6bdcc200f06f02-js-76",
@@ -18000,13 +18014,145 @@
       "origin": "All on-demand sources",
       "indexable": false,
       "adult": false,
-      "categories": [],
-      "itemCount": 0,
-      "playableCount": 0,
-      "sourceTotalCount": 0,
-      "indexed": false,
-      "checks": [],
-      "error": ""
+      "categories": [
+        {
+          "id": "1",
+          "name": "七星劇場",
+          "kind": "movie"
+        },
+        {
+          "id": "3",
+          "name": "七星新劇",
+          "kind": "movie"
+        },
+        {
+          "id": "2",
+          "name": "七星熱播",
+          "kind": "movie"
+        },
+        {
+          "id": "7",
+          "name": "七星星選",
+          "kind": "movie"
+        },
+        {
+          "id": "5",
+          "name": "七星陽光",
+          "kind": "movie"
+        }
+      ],
+      "itemCount": 366,
+      "playableCount": 366,
+      "sourceTotalCount": 366,
+      "indexed": true,
+      "checks": [
+        {
+          "label": "spider-qixing-login",
+          "ok": true
+        },
+        {
+          "label": "spider-qixing-snapshot",
+          "ok": true,
+          "count": 366,
+          "playable": 366,
+          "rawRows": 882,
+          "uniqueRows": 366,
+          "failedDetails": 0,
+          "categoryPages": [
+            {
+              "category": "七星劇場",
+              "page": 1,
+              "count": 24
+            },
+            {
+              "category": "七星劇場",
+              "page": 2,
+              "count": 24
+            },
+            {
+              "category": "七星劇場",
+              "page": 3,
+              "count": 24
+            },
+            {
+              "category": "七星新劇",
+              "page": 1,
+              "count": 24
+            },
+            {
+              "category": "七星新劇",
+              "page": 2,
+              "count": 24
+            },
+            {
+              "category": "七星新劇",
+              "page": 3,
+              "count": 24
+            },
+            {
+              "category": "七星熱播",
+              "page": 1,
+              "count": 24
+            },
+            {
+              "category": "七星熱播",
+              "page": 2,
+              "count": 24
+            },
+            {
+              "category": "七星熱播",
+              "page": 3,
+              "count": 24
+            },
+            {
+              "category": "七星星選",
+              "page": 1,
+              "count": 204
+            },
+            {
+              "category": "七星星選",
+              "page": 2,
+              "count": 204
+            },
+            {
+              "category": "七星星選",
+              "page": 3,
+              "count": 204
+            },
+            {
+              "category": "七星陽光",
+              "page": 1,
+              "count": 18
+            },
+            {
+              "category": "七星陽光",
+              "page": 2,
+              "count": 18
+            },
+            {
+              "category": "七星陽光",
+              "page": 3,
+              "count": 18
+            }
+          ]
+        },
+        {
+          "label": "source-index-gzip",
+          "ok": true,
+          "count": 366,
+          "pages": 5,
+          "total": 366
+        }
+      ],
+      "error": "",
+      "spiderEngine": "qixing-short-drama-v1",
+      "spiderIndexable": true,
+      "detailMode": "chunked-json-gzip",
+      "detailPathPattern": "vod-detail/mpimg-cn-all-on-demand-sources-七星短剧-https-mpimg-cn-down-php-48e9d346cdf6da376c53/page-{page}.json.gz",
+      "detailPageCount": 5,
+      "detailExpectedPages": 5,
+      "indexMode": "chunked-json-gzip",
+      "indexPath": "vod-index/mpimg-cn-all-on-demand-sources-七星短剧-https-mpimg-cn-down-php-48e9d346cdf6da376c53.json.gz"
     },
     {
       "id": "all-on-demand-sources-cj-360资源-https-360zy-com-api-php-provide-vod-84",

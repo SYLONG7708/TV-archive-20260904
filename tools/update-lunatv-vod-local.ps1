@@ -242,6 +242,7 @@ try {
     $iphoneCatalogScript = Join-Path $repoRootText "tools\build-iphone-vod-catalog.mjs"
     $quantumLziScript = Join-Path $repoRootText "tools\build-quantum-lzi-full.mjs"
     $fullChunkedCatalogScript = Join-Path $repoRootText "tools\build-full-vod-chunked-catalog.mjs"
+    $type3SpiderCatalogScript = Join-Path $repoRootText "tools\build-type3-spider-catalog.mjs"
     $assembleChunkedCatalogScript = Join-Path $repoRootText "tools\assemble-vod-index-from-detail.mjs"
     $applyVodKindRulesScript = Join-Path $repoRootText "tools\apply-vod-kind-rules.mjs"
     $iphoneHealthScript = Join-Path $repoRootText "tools\check-iphone-catalog-health.mjs"
@@ -313,6 +314,17 @@ try {
             --detailOnly true
     }
 
+    if (Test-Path -LiteralPath $type3SpiderCatalogScript) {
+        Write-Log "Building playable type 3 spider catalog snapshots."
+        node $type3SpiderCatalogScript `
+            --tvRoot $repoRootText `
+            --catalog (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
+            --report (Join-Path $repoRootText "docs\data\iphone-vod-catalog-report.json") `
+            --detailRoot (Join-Path $repoRootText "docs\data\vod-detail") `
+            --maxPagesPerCategory 3 `
+            --timeoutMs 15000
+    }
+
     if (Test-Path -LiteralPath $assembleChunkedCatalogScript) {
         Write-Log "Assembling compressed source indexes from VOD detail chunks."
         node $assembleChunkedCatalogScript `
@@ -350,6 +362,7 @@ try {
         "tools/build-lunatv-adult18-sorted.mjs" `
         "tools/build-iphone-vod-catalog.mjs" `
         "tools/build-full-vod-chunked-catalog.mjs" `
+        "tools/build-type3-spider-catalog.mjs" `
         "tools/assemble-vod-index-from-detail.mjs" `
         "tools/vod-kind-rules.mjs" `
         "tools/apply-vod-kind-rules.mjs" `

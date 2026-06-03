@@ -45,6 +45,19 @@ function sourceSlug(source) {
   return slugify(`${source.host || source.key || source.name}-${source.id}`, 'source');
 }
 
+function normalizeApi(value) {
+  const raw = normalizeText(value).toLowerCase();
+  if (!raw) return '';
+  try {
+    const url = new URL(raw);
+    url.hash = '';
+    url.search = '';
+    return url.toString().replace(/\/$/g, '');
+  } catch {
+    return raw.replace(/\/$/g, '');
+  }
+}
+
 async function readJson(file, fallback = null) {
   try {
     return JSON.parse(await fs.readFile(file, 'utf8'));
@@ -104,22 +117,85 @@ function sourceCheck(source) {
   };
 }
 
+function detailDirFromPattern(pattern) {
+  const match = normalizeText(pattern).match(/vod-detail\/([^/]+)\/page-\{page\}\.json\.gz/i);
+  return match?.[1] || '';
+}
+
+async function copyDirIfExists(from, to) {
+  try {
+    await fs.access(from);
+  } catch {
+    return false;
+  }
+  await fs.mkdir(path.dirname(to), { recursive: true });
+  await fs.cp(from, to, { recursive: true, force: true });
+  return true;
+}
+
+async function copyFileIfExists(from, to) {
+  try {
+    await fs.access(from);
+  } catch {
+    return false;
+  }
+  await fs.mkdir(path.dirname(to), { recursive: true });
+  await fs.copyFile(from, to);
+  return true;
+}
+
+async function publishIndexedSpiderData(fullCatalog, pagesDataRoot) {
+  const repoDataRoot = path.join(tvRoot, 'docs', 'data');
+  let detailDirs = 0;
+  let indexFiles = 0;
+  for (const source of fullCatalog.sources || []) {
+    if (Number(source.type) !== 3 || !source.indexed || !source.spiderEngine) continue;
+    const slug = detailDirFromPattern(source.detailPathPattern) || sourceSlug(source);
+    if (await copyDirIfExists(path.join(repoDataRoot, 'vod-detail', slug), path.join(pagesDataRoot, 'vod-detail', slug))) {
+      detailDirs += 1;
+    }
+    if (source.indexPath) {
+      const indexFile = path.basename(source.indexPath);
+      if (await copyFileIfExists(path.join(repoDataRoot, 'vod-index', indexFile), path.join(pagesDataRoot, 'vod-index', indexFile))) {
+        indexFiles += 1;
+      }
+    }
+  }
+  return { detailDirs, indexFiles };
+}
+
 const fullCatalog = await readJson(catalogPath);
 if (!fullCatalog) throw new Error(`Catalog not found: ${catalogPath}`);
 const smallCatalog = (await readJson(smallCatalogPath)) || { items: [] };
+const previousPublicSourceById = new Map((smallCatalog.sources || []).map((source) => [source.id, source]));
+const previousPublicSourceBySlug = new Map();
+const previousPublicSourceByApi = new Map();
+for (const source of smallCatalog.sources || []) {
+  const slug = detailDirFromPattern(source.detailPathPattern) || sourceSlug(source);
+  if (slug && !previousPublicSourceBySlug.has(slug)) previousPublicSourceBySlug.set(slug, source);
+  const api = normalizeApi(source.api);
+  if (api && !previousPublicSourceByApi.has(api)) previousPublicSourceByApi.set(api, source);
+}
 
 const pagesDataRoot = path.join(pagesRoot, 'docs', 'data');
+const publishedSpiderData = await publishIndexedSpiderData(fullCatalog, pagesDataRoot);
 const detailRoot = path.join(pagesDataRoot, 'vod-detail');
 const indexRoot = path.join(pagesDataRoot, 'vod-index');
 const publishedDetailDirs = new Set(await listNames(detailRoot));
 const publishedIndexFiles = new Set(await listNames(indexRoot, { files: true }));
 
 const publishedSourceIds = new Set();
+const usedPreviousPublicSourceIds = new Set();
 const sources = (fullCatalog.sources || []).map((source) => {
   const slug = sourceSlug(source);
   const hasDetail = publishedDetailDirs.has(slug);
   const indexFile = source.indexPath ? path.basename(source.indexPath) : `${slug}.json.gz`;
   const hasIndex = publishedIndexFiles.has(indexFile);
+  const previousPublicSource =
+    previousPublicSourceById.get(source.id) ||
+    previousPublicSourceBySlug.get(slug) ||
+    previousPublicSourceByApi.get(normalizeApi(source.api));
+  if (previousPublicSource) usedPreviousPublicSourceIds.add(previousPublicSource.id);
 
   if (!hasDetail) {
     const next = {
@@ -138,23 +214,59 @@ const sources = (fullCatalog.sources || []).map((source) => {
     return next;
   }
 
-  publishedSourceIds.add(source.id);
+  const previousSlug = previousPublicSource ? detailDirFromPattern(previousPublicSource.detailPathPattern) || sourceSlug(previousPublicSource) : '';
+  const preservePreviousIdentity = Boolean(
+    previousPublicSource?.indexed && previousPublicSource.id !== source.id && previousSlug === slug,
+  );
+  const sourceForPublish = preservePreviousIdentity
+    ? {
+        ...source,
+        id: previousPublicSource.id,
+        key: previousPublicSource.key || source.key,
+        detailPathPattern: previousPublicSource.detailPathPattern || source.detailPathPattern,
+        indexPath: previousPublicSource.indexPath || source.indexPath,
+      }
+    : source;
+
+  publishedSourceIds.add(sourceForPublish.id);
   const next = {
-    ...source,
+    ...sourceForPublish,
     indexed: true,
     publishMode: 'static-detail',
     detailMode: 'chunked-json-gzip',
-    detailPathPattern: source.detailPathPattern || `vod-detail/${slug}/page-{page}.json.gz`,
+    detailPathPattern: sourceForPublish.detailPathPattern || `vod-detail/${slug}/page-{page}.json.gz`,
   };
+  if (previousPublicSource?.indexed) {
+    for (const key of ['itemCount', 'playableCount', 'sourceTotalCount', 'detailPageCount', 'detailExpectedPages']) {
+      next[key] = Math.max(Number(next[key] || 0), Number(previousPublicSource[key] || 0));
+    }
+    if (previousPublicSource.complete && !next.complete) next.complete = previousPublicSource.complete;
+  }
   if (hasIndex) {
     next.indexMode = 'chunked-json-gzip';
-    next.indexPath = source.indexPath || `vod-index/${indexFile}`;
+    next.indexPath = sourceForPublish.indexPath || `vod-index/${indexFile}`;
   } else {
     delete next.indexMode;
     delete next.indexPath;
   }
   return next;
 });
+
+const sourceIds = new Set(sources.map((source) => source.id));
+for (const previous of smallCatalog.sources || []) {
+  if (sourceIds.has(previous.id) || usedPreviousPublicSourceIds.has(previous.id)) continue;
+  const slug = detailDirFromPattern(previous.detailPathPattern) || sourceSlug(previous);
+  if (!publishedDetailDirs.has(slug)) continue;
+  publishedSourceIds.add(previous.id);
+  sources.push({
+    ...previous,
+    indexed: true,
+    publishMode: 'static-detail',
+    detailMode: previous.detailMode || 'chunked-json-gzip',
+    detailPathPattern: previous.detailPathPattern || `vod-detail/${slug}/page-{page}.json.gz`,
+    preservedFromPublicCatalog: true,
+  });
+}
 
 const kindTotals = emptyKindTotals();
 let indexedItems = 0;
@@ -201,6 +313,7 @@ const report = {
   publicTotals: nextCatalog.totals,
   publishedDetailDirs: publishedDetailDirs.size,
   publishedIndexFiles: publishedIndexFiles.size,
+  publishedSpiderData,
   sourceChecks: sources.map(sourceCheck),
 };
 
@@ -217,6 +330,7 @@ console.log(
       publicTotals: nextCatalog.totals,
       publishedDetailDirs: publishedDetailDirs.size,
       publishedIndexFiles: publishedIndexFiles.size,
+      publishedSpiderData,
       seedItems: seedItems.length,
     },
     null,
