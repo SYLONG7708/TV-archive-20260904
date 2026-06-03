@@ -1,18 +1,18 @@
 {
-    "generatedAt":  "2026-06-03T14:22:31.4748640+08:00",
+    "generatedAt":  "2026-06-03T16:22:31.0626262+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  75,
-    "fallback":  37,
-    "failed":  37,
+    "playable":  74,
+    "fallback":  38,
+    "failed":  38,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  66.96,
-    "playlistEntries":  75,
-    "removedFromPlaylist":  37,
+    "hlsSuccessRate":  66.07,
+    "playlistEntries":  74,
+    "removedFromPlaylist":  38,
     "playlistPolicy":  "playable-only",
     "mode":  "best-effort-hls-resolve",
     "note":  "",
@@ -117,6 +117,13 @@
                          "Name":  "中天2台",
                          "PageUrl":  "https://www.youtube.com/watch?v=6LNCDdQpv-w",
                          "Error":  "ERROR: [youtube] 6LNCDdQpv-w: Requested format is not available. Use --list-formats for a list of available formats"
+                     },
+                     {
+                         "Order":  39,
+                         "Group":  "YouTube綜合娛樂",
+                         "Name":  "大陸尋奇",
+                         "PageUrl":  "https://www.youtube.com/watch?v=Kc5OXLZ9NEw",
+                         "Error":  "ERROR: [youtube] Kc5OXLZ9NEw: This live stream recording is not available."
                      },
                      {
                          "Order":  41,
@@ -336,11 +343,11 @@
                          "Error":  "ERROR: [youtube] 4FBW3mkdKOs: This live stream recording is not available."
                      },
                      {
-                         "Order":  103,
+                         "Order":  102,
                          "Group":  "YouTube動漫台",
-                         "Name":  "Muse 獵人馬拉松",
-                         "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 48504 bytes, 2512.3 kbps."
+                         "Name":  "Muse 異世界流浪美食家馬拉松",
+                         "PageUrl":  "https://www.youtube.com/watch?v=fK1M3oM7ZPQ",
+                         "Error":  "ERROR: [youtube] fK1M3oM7ZPQ: Private video. Sign in if you\u0027ve been granted access to this video. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
                      }
                  ]
 }
