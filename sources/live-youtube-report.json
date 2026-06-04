@@ -1,5 +1,5 @@
 {
-    "generatedAt":  "2026-06-04T20:23:11.6495570+08:00",
+    "generatedAt":  "2026-06-04T22:23:12.2771613+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
@@ -231,13 +231,6 @@
                          "Error":  "ERROR: [youtube] hGs-nKaNc88: Requested format is not available. Use --list-formats for a list of available formats"
                      },
                      {
-                         "Order":  70,
-                         "Group":  "YouTube亞洲新聞",
-                         "Name":  "Malayalam News",
-                         "PageUrl":  "https://www.youtube.com/watch?v=1wECsnGZcfc",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 272628 bytes, 577.4 kbps."
-                     },
-                     {
                          "Order":  73,
                          "Group":  "YouTube亞洲新聞",
                          "Name":  "KBS News",
@@ -257,6 +250,13 @@
                          "Name":  "TIMES NOW",
                          "PageUrl":  "https://www.youtube.com/watch?v=6lrvdOedqgk",
                          "Error":  "ERROR: [youtube] 6lrvdOedqgk: Requested format is not available. Use --list-formats for a list of available formats"
+                     },
+                     {
+                         "Order":  76,
+                         "Group":  "YouTube兒童動畫",
+                         "Name":  "123 GO! Live",
+                         "PageUrl":  "https://www.youtube.com/watch?v=8FHerid3vag",
+                         "Error":  "ERROR: [youtube] 8FHerid3vag: This live stream recording is not available."
                      },
                      {
                          "Order":  78,
