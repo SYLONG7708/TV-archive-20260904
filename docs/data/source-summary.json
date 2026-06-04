@@ -1,18 +1,22 @@
 {
-  "generatedAt": "2026-06-04T10:23:17.693Z",
+  "generatedAt": "2026-06-04T12:23:13.761Z",
   "input": {
-    "vod": "C:\\Users\\Administrator\\TV\\sources\\All on-demand sources",
-    "live": "C:\\Users\\Administrator\\TV-iphone-source-categories\\sources\\live-stable.txt"
+    "live": "C:\\Users\\Administrator\\TV-iphone-source-categories\\sources\\live-stable.txt",
+    "vodUrl": "https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json",
+    "includeLegacySources": false
   },
   "vod": {
-    "count": 73,
+    "count": 26,
     "typeCounts": {
-      "CMS JSON/API": 72,
-      "CMS XML/API": 1
+      "Spider/API": 8,
+      "CMS JSON/API": 14,
+      "CMS XML/API": 3,
+      "Proxy/API": 1
     },
-    "enabledCount": 73,
-    "categoriesOk": 70,
-    "categoriesFailed": 3
+    "enabledCount": 26,
+    "indexedCount": 11,
+    "categoriesOk": 13,
+    "categoriesFailed": 4
   },
   "live": {
     "count": 70,
@@ -39,9 +43,9 @@
     ]
   },
   "notes": [
-    "點播源地址已改為指定外部 raw JSON。",
-    "sources/All on-demand sources 已解除 GitHub Actions 自動更新與本機 Windows 工作排程更新。",
-    "直播來源仍由 sources/live-stable.txt 與 YouTube 直播更新流程維護。",
+    "VOD source is loaded from sources/current-sources.json vod.url.",
+    "Legacy All on-demand and LunaTV VOD data is excluded unless --includeLegacySources true is set.",
+    "Live data continues to use docs/data/live-channels.json.",
     "直播來源由 sources/live-stable.txt 重建為 docs/data/live-channels.json，YouTube 簽名 HLS 過期前會被本機排程重新刷新。"
   ],
   "adult18": {
