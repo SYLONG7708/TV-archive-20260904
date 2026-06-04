@@ -1,5 +1,5 @@
 {
-    "generatedAt":  "2026-06-04T18:23:16.6704862+08:00",
+    "generatedAt":  "2026-06-04T20:23:11.6495570+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
@@ -231,6 +231,13 @@
                          "Error":  "ERROR: [youtube] hGs-nKaNc88: Requested format is not available. Use --list-formats for a list of available formats"
                      },
                      {
+                         "Order":  70,
+                         "Group":  "YouTube亞洲新聞",
+                         "Name":  "Malayalam News",
+                         "PageUrl":  "https://www.youtube.com/watch?v=1wECsnGZcfc",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 272628 bytes, 577.4 kbps."
+                     },
+                     {
                          "Order":  73,
                          "Group":  "YouTube亞洲新聞",
                          "Name":  "KBS News",
@@ -329,13 +336,6 @@
                          "Error":  "ERROR: [youtube] kyjN8rvSnio: Requested format is not available. Use --list-formats for a list of available formats"
                      },
                      {
-                         "Order":  94,
-                         "Group":  "YouTube音樂體育風景",
-                         "Name":  "earthTV",
-                         "PageUrl":  "https://www.youtube.com/watch?v=r1K7DyQn3jg",
-                         "Error":  "ERROR: [youtube] r1K7DyQn3jg: We\u0027re experiencing technical difficulties."
-                     },
-                     {
                          "Order":  95,
                          "Group":  "YouTube音樂體育風景",
                          "Name":  "Best of MLB",
@@ -368,7 +368,7 @@
                          "Group":  "YouTube動漫台",
                          "Name":  "Muse 蠟筆小新馬拉松",
                          "PageUrl":  "https://www.youtube.com/watch?v=ENnjj7jQ23g",
-                         "Error":  "ERROR: [youtube] ENnjj7jQ23g: This live stream recording is not available."
+                         "Error":  "ERROR: [youtube] ENnjj7jQ23g: Private video. Sign in if you\u0027ve been granted access to this video. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
                      },
                      {
                          "Order":  125,
