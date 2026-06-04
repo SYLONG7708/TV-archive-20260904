@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { classifyVodKind } from './vod-kind-rules.mjs';
+import { parseVodPayload } from './vod-payload-parser.mjs';
 
 const args = new Map();
 for (let i = 2; i < process.argv.length; i += 1) {
@@ -70,6 +71,10 @@ async function fetchText(url) {
 
 async function fetchJson(url) {
   return JSON.parse(await fetchText(url));
+}
+
+async function fetchVodPayload(url) {
+  return parseVodPayload(await fetchText(url));
 }
 
 function normalizeText(value, fallback = '') {
@@ -404,7 +409,7 @@ async function loadSources() {
     const sites = Array.isArray(config?.sites) ? config.sites : [];
     for (const site of sites) {
       const apiKey = normalizeApi(site.api || `${origin}:${site.key || site.name}`);
-      const dedupeKey = `${apiKey}|${site.ext || ''}|${site.key || site.name || ''}`;
+      const dedupeKey = `${apiKey}|${site.ext || ''}`;
       if (!apiKey || seen.has(dedupeKey)) continue;
       seen.add(dedupeKey);
       rawSources.push(sourceFromSite(site, rawSources.length, origin));
@@ -447,7 +452,7 @@ async function mapLimit(items, limit, worker) {
 
 async function getSourceCategories(source) {
   try {
-    const payload = await fetchJson(addVodQuery(source.api, 'ac=list'));
+    const payload = await fetchVodPayload(addVodQuery(source.api, 'ac=list'));
     const seen = new Set();
     return extractCategories(payload)
       .map((item, index) => normalizeCategory(item, index, source.adult))
@@ -483,7 +488,7 @@ function pageMeta(payload) {
 }
 
 async function fetchListPage(source, query, category = null, page = 1) {
-  const payload = await fetchJson(addVodQuery(source.api, vodQueryWithPage(query, page)));
+  const payload = await fetchVodPayload(addVodQuery(source.api, vodQueryWithPage(query, page)));
   return {
     rows: extractArray(payload)
       .map((item) => normalizeVodItem(item, source, category))

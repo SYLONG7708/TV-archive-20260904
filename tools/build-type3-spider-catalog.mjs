@@ -25,8 +25,10 @@ const sourceMatch = normalizeText(args.get('sourceMatch') || '').toLowerCase();
 const maxSources = Number(args.get('maxSources') || 0);
 const pageSize = Number(args.get('pageSize') || 24);
 const maxPagesPerCategory = Number(args.get('maxPagesPerCategory') || 3);
+const maxCategoryPageSafetyLimit = Number(args.get('maxCategoryPageSafetyLimit') || 200);
 const detailConcurrency = Number(args.get('detailConcurrency') || 8);
 const outputPageSize = Number(args.get('outputPageSize') || 80);
+const fetchRetries = Math.max(1, Number(args.get('fetchRetries') || 3));
 const keepExistingOnFailure = args.get('keepExistingOnFailure') !== 'false';
 
 const USER_AGENT = 'OKTV-type3-spider-engine/1.0';
@@ -45,6 +47,10 @@ function withTimeout() {
   return AbortSignal.timeout(timeoutMs);
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function readJson(file, fallback = null) {
   try {
     return JSON.parse(await fs.readFile(file, 'utf8'));
@@ -59,20 +65,30 @@ async function writeJson(file, value) {
 }
 
 async function fetchText(url, options = {}) {
-  const res = await fetch(url, {
-    redirect: 'follow',
-    signal: withTimeout(),
-    headers: {
-      accept: 'application/json,text/plain,*/*',
-      'user-agent': USER_AGENT,
-      ...(options.headers || {}),
-    },
-    method: options.method || 'GET',
-    body: options.body,
-  });
-  const text = await res.text();
-  if (!res.ok) throw new Error(`HTTP ${res.status}: ${text.slice(0, 160)}`);
-  return text;
+  let lastError = null;
+  for (let attempt = 1; attempt <= fetchRetries; attempt += 1) {
+    try {
+      const res = await fetch(url, {
+        redirect: 'follow',
+        signal: withTimeout(),
+        headers: {
+          accept: 'application/json,text/plain,*/*',
+          'user-agent': USER_AGENT,
+          ...(options.headers || {}),
+        },
+        method: options.method || 'GET',
+        body: options.body,
+      });
+      const text = await res.text();
+      if (!res.ok) throw new Error(`HTTP ${res.status}: ${text.slice(0, 160)}`);
+      return text;
+    } catch (error) {
+      lastError = error;
+      if (attempt === fetchRetries) break;
+      await sleep(500 * attempt);
+    }
+  }
+  throw lastError;
 }
 
 async function fetchJson(url, options = {}) {
@@ -337,13 +353,15 @@ async function indexQixingSource(source) {
   const token = await qixingLogin();
   const categoryPages = [];
   const rawRows = [];
+  const categoryPageLimit = Math.max(1, maxPagesPerCategory > 0 ? maxPagesPerCategory : maxCategoryPageSafetyLimit);
 
   for (const category of QIXING_CATEGORIES) {
-    for (let page = 1; page <= Math.max(1, maxPagesPerCategory); page += 1) {
+    for (let page = 1; page <= categoryPageLimit; page += 1) {
       const rows = await qixingCategoryPage(token, category, page);
       categoryPages.push({ category: category.name, page, count: rows.length });
       rawRows.push(...rows);
       if (rows.length === 0) break;
+      if (maxPagesPerCategory <= 0 && rows.length < pageSize) break;
     }
   }
 
@@ -379,6 +397,8 @@ async function indexQixingSource(source) {
       rawRows: rawRows.length,
       uniqueRows: uniqueRows.length,
       failedDetails: failedDetails.length,
+      pageLimitMode: maxPagesPerCategory > 0 ? 'capped' : 'until-empty-or-short-page',
+      maxCategoryPageSafetyLimit,
       categoryPages,
     },
   ];

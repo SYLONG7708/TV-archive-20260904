@@ -102,6 +102,8 @@ jobs:
             --pageSize 100 `
             --sourceConcurrency 2 `
             --pageConcurrency 8 `
+            --outputPageSize 500 `
+            --fetchRetries 3 `
             --timeoutMs 20000 `
             --detailOnly true
           node .\tools\build-type3-spider-catalog.mjs `
@@ -109,14 +111,17 @@ jobs:
             --catalog .\docs\data\iphone-vod-catalog.json `
             --report .\docs\data\iphone-vod-catalog-report.json `
             --detailRoot .\docs\data\vod-detail `
-            --maxPagesPerCategory 3 `
-            --timeoutMs 15000
+            --maxPagesPerCategory 0 `
+            --maxCategoryPageSafetyLimit 200 `
+            --fetchRetries 5 `
+            --timeoutMs 30000
           node .\tools\assemble-vod-index-from-detail.mjs `
             --tvRoot . `
             --catalog .\docs\data\iphone-vod-catalog.json `
             --report .\docs\data\iphone-vod-catalog-report.json `
             --detailRoot .\docs\data\vod-detail `
-            --indexRoot .\docs\data\vod-index
+            --indexRoot .\docs\data\vod-index `
+            --dropEmptySources true
           node .\tools\apply-vod-kind-rules.mjs --tvRoot .
           node .\tools\check-iphone-catalog-health.mjs `
             --tvRoot . `
@@ -173,6 +178,7 @@ jobs:
             docs/iphone/index.html `
             tools/vod-kind-rules.mjs tools/apply-vod-kind-rules.mjs tools/build-quantum-lzi-full.mjs `
             tools/build-type3-spider-catalog.mjs `
+            tools/vod-payload-parser.mjs `
             tools/build-pages-public-catalog.mjs `
             docs/assets/source-signal-icon.svg docs/assets/adult-18-badge.svg
           if (git diff --cached --quiet) {
@@ -207,7 +213,7 @@ jobs:
           if (Test-Path -Path .\docs\data\quantum-lzi) {
             Copy-Item -Path .\docs\data\quantum-lzi -Destination (Join-Path $pages "docs\data") -Recurse -Force
           }
-          Write-Host "Skipping full vod-detail/vod-index copy for lean GitHub Pages publish."
+          Write-Host "Publishing indexed vod-detail/vod-index for iPhone lazy loading."
           node .\tools\build-pages-public-catalog.mjs `
             --tvRoot . `
             --pagesRoot $pages `

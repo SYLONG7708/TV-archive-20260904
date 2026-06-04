@@ -21,6 +21,7 @@ const catalogPath = path.resolve(args.get('catalog') || path.join(tvRoot, 'docs'
 const reportPath = path.resolve(args.get('report') || path.join(tvRoot, 'docs', 'data', 'iphone-vod-catalog-report.json'));
 const detailRoot = path.resolve(args.get('detailRoot') || path.join(tvRoot, 'docs', 'data', 'vod-detail'));
 const indexRoot = path.resolve(args.get('indexRoot') || path.join(tvRoot, 'docs', 'data', 'vod-index'));
+const dropEmptySources = args.get('dropEmptySources') === 'true';
 
 function normalizeText(value, fallback = '') {
   return String(value ?? fallback)
@@ -214,9 +215,26 @@ for (const item of inlineItems) {
 }
 
 const inlinePlayable = inlineItems.filter((item) => item.playable).length;
+const publishedSources = dropEmptySources
+  ? updatedSources.filter((source) => source.indexed || Number(source.itemCount || 0) > 0 || Number(source.playableCount || 0) > 0)
+  : updatedSources;
+const droppedSources = dropEmptySources
+  ? updatedSources
+      .filter((source) => !publishedSources.includes(source))
+      .map((source) => ({
+        id: source.id,
+        name: source.name,
+        type: source.type,
+        api: source.api,
+        origin: source.origin,
+        itemCount: source.itemCount || 0,
+        playableCount: source.playableCount || 0,
+        error: source.error || '',
+      }))
+  : [];
 const totals = {
-  sources: updatedSources.length,
-  indexedSources: updatedSources.filter((source) => source.indexed).length,
+  sources: publishedSources.length,
+  indexedSources: publishedSources.filter((source) => source.indexed).length,
   items: indexedItemsTotal + inlineItems.length,
   playableItems: playableItemsTotal + inlinePlayable,
   movies: kindTotals.movie,
@@ -238,7 +256,7 @@ const nextCatalog = {
   },
   totals,
   filters: buildFilters(filterSets),
-  sources: updatedSources,
+  sources: publishedSources,
   items: inlineItems,
 };
 
@@ -247,7 +265,8 @@ const report = {
   ...existingReport,
   generatedAt: nextCatalog.generatedAt,
   totals,
-  sourceChecks: updatedSources.map(sourceCheck),
+  sourceChecks: publishedSources.map(sourceCheck),
+  droppedSources,
 };
 
 await fs.writeFile(catalogPath, `${JSON.stringify(nextCatalog, null, 2)}\n`, 'utf8');
@@ -263,6 +282,7 @@ console.log(
       processedSources: processedIds.size,
       inlineItems: inlineItems.length,
       totals,
+      droppedSources: droppedSources.length,
     },
     null,
     2,

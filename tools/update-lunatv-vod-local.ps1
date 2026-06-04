@@ -176,7 +176,7 @@ function Sync-GhPages {
             Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\vod-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
             Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\vod-index") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
         } else {
-            Write-Log "Skipping full vod-detail/vod-index copy for lean gh-pages publish."
+            Write-Log "Publishing indexed vod-detail/vod-index via public catalog builder."
         }
 
         $publicCatalogScript = Join-Path $repoRootText "tools\build-pages-public-catalog.mjs"
@@ -309,6 +309,8 @@ try {
             --pageSize 100 `
             --sourceConcurrency 2 `
             --pageConcurrency 8 `
+            --outputPageSize 500 `
+            --fetchRetries 3 `
             --timeoutMs 20000 `
             --detailOnly true
     }
@@ -320,8 +322,10 @@ try {
             --catalog (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
             --report (Join-Path $repoRootText "docs\data\iphone-vod-catalog-report.json") `
             --detailRoot (Join-Path $repoRootText "docs\data\vod-detail") `
-            --maxPagesPerCategory 3 `
-            --timeoutMs 15000
+            --maxPagesPerCategory 0 `
+            --maxCategoryPageSafetyLimit 200 `
+            --fetchRetries 5 `
+            --timeoutMs 30000
     }
 
     if (Test-Path -LiteralPath $assembleChunkedCatalogScript) {
@@ -331,7 +335,8 @@ try {
             --catalog (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
             --report (Join-Path $repoRootText "docs\data\iphone-vod-catalog-report.json") `
             --detailRoot (Join-Path $repoRootText "docs\data\vod-detail") `
-            --indexRoot (Join-Path $repoRootText "docs\data\vod-index")
+            --indexRoot (Join-Path $repoRootText "docs\data\vod-index") `
+            --dropEmptySources true
     }
 
     if (Test-Path -LiteralPath $applyVodKindRulesScript) {
@@ -361,6 +366,7 @@ try {
         "tools/build-iphone-vod-catalog.mjs" `
         "tools/build-full-vod-chunked-catalog.mjs" `
         "tools/build-type3-spider-catalog.mjs" `
+        "tools/vod-payload-parser.mjs" `
         "tools/assemble-vod-index-from-detail.mjs" `
         "tools/vod-kind-rules.mjs" `
         "tools/apply-vod-kind-rules.mjs" `

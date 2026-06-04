@@ -145,12 +145,12 @@ async function copyFileIfExists(from, to) {
   return true;
 }
 
-async function publishIndexedSpiderData(fullCatalog, pagesDataRoot) {
+async function publishIndexedSourceData(fullCatalog, pagesDataRoot) {
   const repoDataRoot = path.join(tvRoot, 'docs', 'data');
   let detailDirs = 0;
   let indexFiles = 0;
   for (const source of fullCatalog.sources || []) {
-    if (Number(source.type) !== 3 || !source.indexed || !source.spiderEngine) continue;
+    if (!source.indexed || !source.detailPathPattern) continue;
     const slug = detailDirFromPattern(source.detailPathPattern) || sourceSlug(source);
     if (await copyDirIfExists(path.join(repoDataRoot, 'vod-detail', slug), path.join(pagesDataRoot, 'vod-detail', slug))) {
       detailDirs += 1;
@@ -180,7 +180,7 @@ for (const source of previousPublicSources) {
 }
 
 const pagesDataRoot = path.join(pagesRoot, 'docs', 'data');
-const publishedSpiderData = await publishIndexedSpiderData(fullCatalog, pagesDataRoot);
+const publishedIndexedData = await publishIndexedSourceData(fullCatalog, pagesDataRoot);
 const detailRoot = path.join(pagesDataRoot, 'vod-detail');
 const indexRoot = path.join(pagesDataRoot, 'vod-index');
 const publishedDetailDirs = new Set(await listNames(detailRoot));
@@ -190,7 +190,7 @@ const publishedSourceIds = new Set();
 const usedPreviousPublicSourceIds = new Set();
 const inlineSourceIds = new Set((fullCatalog.items || []).map((item) => item.sourceId).filter(Boolean));
 const sources = (fullCatalog.sources || []).map((source) => {
-  const slug = sourceSlug(source);
+  const slug = detailDirFromPattern(source.detailPathPattern) || sourceSlug(source);
   const hasDetail = publishedDetailDirs.has(slug);
   const indexFile = source.indexPath ? path.basename(source.indexPath) : `${slug}.json.gz`;
   const hasIndex = publishedIndexFiles.has(indexFile);
@@ -322,7 +322,8 @@ const report = {
   publishedDetailDirs: publishedDetailDirs.size,
   publishedIndexFiles: publishedIndexFiles.size,
   preservePreviousPublicSources,
-  publishedSpiderData,
+  publishedIndexedData,
+  publishedSpiderData: publishedIndexedData,
   sourceChecks: sources.map(sourceCheck),
 };
 
@@ -339,7 +340,7 @@ console.log(
       publicTotals: nextCatalog.totals,
       publishedDetailDirs: publishedDetailDirs.size,
       publishedIndexFiles: publishedIndexFiles.size,
-      publishedSpiderData,
+      publishedIndexedData,
       seedItems: seedItems.length,
     },
     null,

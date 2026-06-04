@@ -3,6 +3,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { promisify } from 'node:util';
 import { classifyVodKind } from './vod-kind-rules.mjs';
+import { parseVodPayload } from './vod-payload-parser.mjs';
 
 const gzip = promisify(zlib.gzip);
 
@@ -25,9 +26,12 @@ const sourceMatch = String(args.get('sourceMatch') || '').trim().toLowerCase();
 const pageSize = Number(args.get('pageSize') || 100);
 const maxSources = Number(args.get('maxSources') || 0);
 const maxPagesPerSource = Number(args.get('maxPagesPerSource') || 0);
+const includeEmptySeedSources = args.get('includeEmptySeedSources') === 'true';
 const sourceConcurrency = Number(args.get('sourceConcurrency') || 2);
 const pageConcurrency = Number(args.get('pageConcurrency') || 8);
+const outputPageSize = Number(args.get('outputPageSize') || 500);
 const timeoutMs = Number(args.get('timeoutMs') || 20000);
+const fetchRetries = Number(args.get('fetchRetries') || 3);
 const keepExistingOnFailure = args.get('keepExistingOnFailure') !== 'false';
 const detailOnly = args.get('detailOnly') === 'true';
 
@@ -45,22 +49,40 @@ async function readJson(file, fallback = null) {
   }
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function fetchText(url) {
-  const res = await fetch(url, {
-    redirect: 'follow',
-    signal: withTimeout(),
-    headers: {
-      accept: 'application/json,text/plain,*/*',
-      'user-agent': USER_AGENT,
-    },
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return await res.text();
+  let lastError = null;
+  for (let attempt = 0; attempt <= fetchRetries; attempt += 1) {
+    try {
+      const res = await fetch(url, {
+        redirect: 'follow',
+        signal: withTimeout(),
+        headers: {
+          accept: 'application/json,text/plain,*/*',
+          'user-agent': USER_AGENT,
+        },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.text();
+    } catch (error) {
+      lastError = error;
+      if (attempt >= fetchRetries) break;
+      await sleep(400 * (attempt + 1));
+    }
+  }
+  throw lastError || new Error('fetch failed');
 }
 
 async function fetchJson(url) {
   const text = await fetchText(url);
   return JSON.parse(text);
+}
+
+async function fetchVodPayload(url) {
+  return parseVodPayload(await fetchText(url));
 }
 
 function normalizeText(value, fallback = '') {
@@ -240,18 +262,30 @@ function extractArray(payload) {
 async function mapLimit(items, limit, worker) {
   const results = new Array(items.length);
   let next = 0;
+  let aborted = false;
+  const errors = [];
   const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
-    while (next < items.length) {
+    while (next < items.length && !aborted) {
       const current = next++;
-      results[current] = await worker(items[current], current);
+      try {
+        results[current] = await worker(items[current], current);
+      } catch (error) {
+        errors.push({ index: current, error });
+        aborted = true;
+      }
     }
   });
   await Promise.all(workers);
+  if (errors.length > 0) {
+    const first = errors[0].error;
+    if (errors.length > 1) first.message = `${first.message} (${errors.length} page failures)`;
+    throw first;
+  }
   return results;
 }
 
 async function fetchSourcePage(source, sourceSlug, page) {
-  const payload = await fetchJson(addVodQuery(source.api, `ac=detail&pg=${page}&pagesize=${pageSize}`));
+  const payload = await fetchVodPayload(addVodQuery(source.api, `ac=detail&pg=${page}&pagesize=${pageSize}`));
   const rows = extractArray(payload)
     .map((item) => normalizeVodItem(item, source, sourceSlug, page))
     .filter((item) => item && item.poster);
@@ -264,22 +298,29 @@ async function fetchSourcePage(source, sourceSlug, page) {
   };
 }
 
-async function writeDetailPage(source, sourceSlug, pageResult, pagecount) {
+async function writeDetailChunk(source, sourceSlug, page, rows, total) {
   const sourceDir = path.join(detailRoot, sourceSlug);
   await fs.mkdir(sourceDir, { recursive: true });
+  const detailPath = `vod-detail/${sourceSlug}/page-${String(page).padStart(4, '0')}.json.gz`;
+  const items = rows.map((item) => ({
+    ...item,
+    detailPage: page,
+    detailPath,
+  }));
   const detailPayload = {
     generatedAt: new Date().toISOString(),
     sourceId: source.id,
     sourceName: source.name,
     sourceKey: source.key,
     api: source.api,
-    page: pageResult.page,
-    pagecount,
-    total: pageResult.total,
-    items: pageResult.rows,
+    page,
+    pagecount: 0,
+    total,
+    items,
   };
   const compressed = await gzip(Buffer.from(JSON.stringify(detailPayload), 'utf8'), { level: 9 });
-  await fs.writeFile(path.join(sourceDir, `page-${String(pageResult.page).padStart(4, '0')}.json.gz`), compressed);
+  await fs.writeFile(path.join(sourceDir, `page-${String(page).padStart(4, '0')}.json.gz`), compressed);
+  return items;
 }
 
 function matchesSource(source) {
@@ -295,26 +336,54 @@ async function indexSource(source) {
   const first = await fetchSourcePage(source, sourceSlug, 1);
   const pagecount = maxPagesPerSource > 0 ? Math.min(first.pagecount, maxPagesPerSource) : first.pagecount;
   const remainingPages = Array.from({ length: Math.max(0, pagecount - 1) }, (_, index) => index + 2);
-  const rest = await mapLimit(remainingPages, pageConcurrency, (page) => fetchSourcePage(source, sourceSlug, page));
-  const pages = [first, ...rest].sort((a, b) => a.page - b.page);
   const compact = [];
   const seen = new Set();
+  const pendingRows = [];
   let playableCount = 0;
   let total = 0;
+  let completedSourcePages = 0;
+  let writtenDetailPages = 0;
 
-  for (const page of pages) {
-    await writeDetailPage(source, sourceSlug, page, pagecount);
-    total = Math.max(total, page.total);
-    for (const item of page.rows) {
-      const key = item.vodId || `${item.title}|${item.poster}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
+  const flushChunk = async (force = false) => {
+    if (pendingRows.length === 0 || (!force && pendingRows.length < outputPageSize)) return;
+    const rows = pendingRows.splice(0, outputPageSize);
+    writtenDetailPages += 1;
+    const chunkItems = await writeDetailChunk(source, sourceSlug, writtenDetailPages, rows, total);
+    for (const item of chunkItems) {
       compact.push(compactItem(item));
       playableCount += 1;
     }
-  }
+  };
 
-  console.log(`${source.name}: ${compact.length}/${total || compact.length} items, ${pages.length} pages`);
+  const consumePage = async (pageResult) => {
+    total = Math.max(total, pageResult.total);
+    for (const item of pageResult.rows) {
+      const key = item.vodId || `${item.title}|${item.poster}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      pendingRows.push(item);
+      await flushChunk(false);
+    }
+    completedSourcePages += 1;
+    if (completedSourcePages === 1 || completedSourcePages % 50 === 0 || completedSourcePages === pagecount) {
+      console.log(
+        `${source.name}: fetched ${completedSourcePages}/${pagecount} source pages, wrote ${writtenDetailPages} detail pages, ${
+          compact.length + pendingRows.length
+        } items`,
+      );
+    }
+  };
+
+  await consumePage(first);
+  await mapLimit(remainingPages, pageConcurrency, async (page) => {
+    const pageResult = await fetchSourcePage(source, sourceSlug, page);
+    await consumePage(pageResult);
+  });
+  await flushChunk(true);
+
+  console.log(
+    `${source.name}: ${compact.length}/${total || compact.length} items, ${completedSourcePages} source pages, ${writtenDetailPages} detail pages`,
+  );
   return {
     source: {
       ...source,
@@ -323,14 +392,18 @@ async function indexSource(source) {
       sourceTotalCount: total || compact.length,
       indexed: compact.length > 0,
       detailMode: 'chunked-json-gzip',
+      detailPageCount: writtenDetailPages,
+      detailExpectedPages: writtenDetailPages,
       detailPathPattern: `vod-detail/${sourceSlug}/page-{page}.json.gz`,
       checks: [
         {
           label: 'full-latest-pages',
           ok: true,
           count: compact.length,
-          pages: pages.length,
-          pagecount,
+          pages: writtenDetailPages,
+          sourcePages: completedSourcePages,
+          pagecount: writtenDetailPages,
+          sourcePagecount: pagecount,
           total: total || compact.length,
         },
       ],
@@ -389,6 +462,7 @@ if (!existingCatalog) throw new Error(`Catalog not found: ${catalogPath}`);
 await fs.mkdir(detailRoot, { recursive: true });
 const candidateSources = (existingCatalog.sources || [])
   .filter((source) => source.indexable && /^https?:\/\//i.test(source.api || ''))
+  .filter((source) => includeEmptySeedSources || Number(source.playableCount || source.itemCount || 0) > 0)
   .filter((source) => includeAdult || !source.adult)
   .filter(matchesSource);
 const targetSources = maxSources > 0 ? candidateSources.slice(0, maxSources) : candidateSources;
@@ -404,6 +478,8 @@ const results = await mapLimit(targetSources, sourceConcurrency, async (source) 
     return await indexSource(source);
   } catch (error) {
     console.warn(`${source.name}: failed: ${error.message}`);
+    const failedSlug = slugify(`${source.host || source.key || source.name}-${source.id}`, 'source');
+    await fs.rm(path.join(detailRoot, failedSlug), { recursive: true, force: true });
     const keptItems = keepExistingOnFailure ? existingItemsBySource.get(source.id) || [] : [];
     return {
       source: {
@@ -450,6 +526,7 @@ const catalog = {
     fullChunkedCatalog: true,
     detailRoot: 'docs/data/vod-detail',
     pageSize,
+    outputPageSize,
   },
   totals: recomputeTotals(newItems, sources),
   filters: recomputeFilters(newItems),
