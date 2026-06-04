@@ -2,10 +2,6 @@ name: Update LunaTV VOD sources
 
 on:
   workflow_dispatch:
-  schedule:
-    # 02:00 Asia/Shanghai. The job checks the last successful update state
-    # and only refreshes after five days; failed attempts retry the next day.
-    - cron: "0 18 * * *"
 
 permissions:
   contents: write

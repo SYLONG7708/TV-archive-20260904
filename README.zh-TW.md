@@ -65,7 +65,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\update-oktv-sources.
 
 請只使用自己有權使用或可合法分享的來源。
 
-## LunaTV 點播候選源自動更新
+## LunaTV 點播候選源手動維護
 
 LunaTV `jin18` 與 `full` 來源會從 `https://github.com/hafrey1/LunaTV-config` 的最新 raw JSON 讀取，轉成 OKTV/FongMi 可讀格式，並與 `sources/current-sources.json` 裡的 `vod.compareUrl` 做 API/host 去重。腳本會實測 `ac=list`、詳情資料、`vod_play_url` 與搜尋 `ac=detail&wd=...`，重複或不可用來源不會寫入候選源。
 
@@ -88,7 +88,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\update-lunatv-vod.ps
 node .\tools\build-lunatv-adult18-sorted.mjs --repoRoot .
 ```
 
-關閉 Codex 後仍會自動更新：本機 Windows 工作排程 `OKTV LunaTV VOD Auto Update` 會在開機、登入、以及每 2 小時執行 `tools/update-lunatv-vod-local.ps1`，同時刷新 `jin18` 與 `full`，更新後自動 commit / push 到 GitHub。GitHub Actions 也會每 6 小時自動複測。
+目前已依需求停用 LunaTV 點播自動更新：本機 Windows 工作排程 `OKTV LunaTV VOD Auto Update` 已停用，GitHub Actions 的 LunaTV 點播 workflow 已移除排程觸發，只保留需要時手動執行。
 
 注意：這些檔案是「候選點播源 / 技術檢測報告」，已驗活與去重，但內容授權需人工確認後才可設為 APK 預設播放源。`full` 包含 18+ 上游項目，只保留在全量報告與候選檔中，不作為一般影視預設播放源。
 
