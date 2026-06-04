@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T15:24:37.789Z",
+  "generatedAt": "2026-06-04T16:23:37.186Z",
   "input": {
     "live": "C:\\Users\\Administrator\\TV-iphone-source-categories\\sources\\live-stable.txt",
     "vodUrl": "https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json",
@@ -45,7 +45,8 @@
   "notes": [
     "VOD source is loaded from sources/current-sources.json vod.url.",
     "Legacy All on-demand and LunaTV VOD data is excluded unless --includeLegacySources true is set.",
-    "Live data continues to use docs/data/live-channels.json."
+    "Live data continues to use docs/data/live-channels.json.",
+    "直播來源由 sources/live-stable.txt 重建為 docs/data/live-channels.json，YouTube 簽名 HLS 過期前會被本機排程重新刷新。"
   ],
   "adult18": {
     "count": 34,
