@@ -1,52 +1,53 @@
 {
-    "generatedAt":  "2026-06-04T00:23:00.393Z",
-    "input":  {
-                  "vod":  "C:\\Users\\Administrator\\TV\\sources\\All on-demand sources",
-                  "live":  "C:\\Users\\Administrator\\TV-iphone-source-categories\\sources\\live-stable.txt"
-              },
-    "vod":  {
-                "count":  73,
-                "typeCounts":  {
-                                   "CMS JSON/API":  72,
-                                   "CMS XML/API":  1
-                               },
-                "enabledCount":  73,
-                "categoriesOk":  70,
-                "categoriesFailed":  3
-            },
-    "live":  {
-                 "count":  72,
-                 "playableCount":  72,
-                 "externalCount":  0,
-                 "networkOnlyCount":  0,
-                 "kinds":  {
-                               "youtube":  72
-                           },
-                 "groups":  [
-                                "YouTube新聞台",
-                                "YouTube購物台",
-                                "YouTube綜合娛樂",
-                                "YouTube國際新聞",
-                                "YouTube亞洲新聞",
-                                "YouTube兒童動畫",
-                                "YouTube文化紀實",
-                                "YouTube音樂體育風景",
-                                "YouTube韓綜娛樂",
-                                "YouTube台灣節目",
-                                "YouTube互動娛樂",
-                                "YouTube動漫台",
-                                "YouTube電影劇集"
-                            ]
-             },
-    "notes":  [
-                  "點播源地址已改為指定外部 raw JSON。",
-                  "sources/All on-demand sources 已解除 GitHub Actions 自動更新與本機 Windows 工作排程更新。",
-                  "直播來源仍由 sources/live-stable.txt 與 YouTube 直播更新流程維護。"
-              ],
-    "adult18":  {
-                    "count":  34,
-                    "usableCount":  34,
-                    "duplicateCount":  0,
-                    "failedCount":  0
-                }
+  "generatedAt": "2026-06-04T02:22:17.867Z",
+  "input": {
+    "vod": "C:\\Users\\Administrator\\TV\\sources\\All on-demand sources",
+    "live": "C:\\Users\\Administrator\\TV-iphone-source-categories\\sources\\live-stable.txt"
+  },
+  "vod": {
+    "count": 73,
+    "typeCounts": {
+      "CMS JSON/API": 72,
+      "CMS XML/API": 1
+    },
+    "enabledCount": 73,
+    "categoriesOk": 70,
+    "categoriesFailed": 3
+  },
+  "live": {
+    "count": 73,
+    "playableCount": 73,
+    "externalCount": 0,
+    "networkOnlyCount": 0,
+    "kinds": {
+      "youtube": 73
+    },
+    "groups": [
+      "YouTube新聞台",
+      "YouTube購物台",
+      "YouTube綜合娛樂",
+      "YouTube國際新聞",
+      "YouTube亞洲新聞",
+      "YouTube兒童動畫",
+      "YouTube文化紀實",
+      "YouTube音樂體育風景",
+      "YouTube韓綜娛樂",
+      "YouTube台灣節目",
+      "YouTube互動娛樂",
+      "YouTube動漫台",
+      "YouTube電影劇集"
+    ]
+  },
+  "notes": [
+    "點播源地址已改為指定外部 raw JSON。",
+    "sources/All on-demand sources 已解除 GitHub Actions 自動更新與本機 Windows 工作排程更新。",
+    "直播來源仍由 sources/live-stable.txt 與 YouTube 直播更新流程維護。",
+    "直播來源由 sources/live-stable.txt 重建為 docs/data/live-channels.json，YouTube 簽名 HLS 過期前會被本機排程重新刷新。"
+  ],
+  "adult18": {
+    "count": 34,
+    "usableCount": 34,
+    "duplicateCount": 0,
+    "failedCount": 0
+  }
 }
