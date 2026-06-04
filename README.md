@@ -17,7 +17,7 @@
 
 ## 目前內置來源
 
-- 點播：`https://raw.githubusercontent.com/FGBLH/GHK/refs/heads/main/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json`
+- 點播：`https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json`
 - 直播穩定版：`https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt`
 - 直播私密頻道密碼：`7708`
 

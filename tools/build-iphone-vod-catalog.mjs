@@ -18,6 +18,8 @@ const output = path.resolve(args.get('output') || path.join(appRoot, 'public', '
 const reportOutput = path.resolve(
   args.get('reportOutput') || path.join(appRoot, 'public', 'data', 'iphone-vod-catalog-report.json'),
 );
+const vodSourcesOutput = path.resolve(args.get('vodSourcesOutput') || path.join(path.dirname(output), 'vod-sources.json'));
+const summaryOutput = path.resolve(args.get('summaryOutput') || path.join(path.dirname(output), 'source-summary.json'));
 const timeoutMs = Number(args.get('timeoutMs') || 9000);
 const concurrency = Number(args.get('concurrency') || 6);
 const maxSources = Number(args.get('maxSources') || 120);
@@ -30,6 +32,7 @@ const fetchPageConcurrency = Number(args.get('fetchPageConcurrency') || Math.max
 const sourceMatch = normalizeText(args.get('sourceMatch') || '');
 const mergeExisting = args.get('mergeExisting') === 'true';
 const includeAdult = args.get('includeAdult') !== 'false';
+const includeLegacySources = args.get('includeLegacySources') === 'true';
 
 const currentSourcesPath = path.join(tvRoot, 'sources', 'current-sources.json');
 const fallbackCurrentVodPath = path.join(tvRoot, '.patch-work', 'current-vod.json');
@@ -38,6 +41,7 @@ const lunaFullPath = path.join(tvRoot, 'sources', 'vod-lunatv-full-oktv.json');
 
 const INDEXABLE_TYPES = new Set([0, 1]);
 const USER_AGENT = 'OKTV-iPhone-catalog-builder/1.0';
+let loadedCurrentVodUrl = '';
 
 function withTimeout() {
   return AbortSignal.timeout(timeoutMs);
@@ -407,23 +411,23 @@ async function loadSources() {
     }
   };
 
-  const allOnDemand = await readJson(allOnDemandSourcesPath, {});
-  addSites(allOnDemand, 'All on-demand sources');
-  if (rawSources.length > 0) return rawSources;
-
   const currentSources = await readJson(currentSourcesPath, {});
   const currentVodUrl = currentSources?.vod?.url || '';
+  loadedCurrentVodUrl = currentVodUrl;
   if (currentVodUrl) {
     try {
-      addSites(await fetchJson(currentVodUrl), 'OKTV 內建點播源');
+      addSites(await fetchJson(currentVodUrl), 'current-vod-url');
     } catch {
-      addSites(await readJson(fallbackCurrentVodPath, {}), 'OKTV 內建點播源');
+      addSites(await readJson(fallbackCurrentVodPath, {}), 'current-vod-fallback');
     }
   } else {
-    addSites(await readJson(fallbackCurrentVodPath, {}), 'OKTV 內建點播源');
+    addSites(await readJson(fallbackCurrentVodPath, {}), 'current-vod-fallback');
   }
 
-  addSites(await readJson(lunaFullPath, {}), 'LunaTV full 技術檢測');
+  if (includeLegacySources) {
+    addSites(await readJson(allOnDemandSourcesPath, {}), 'legacy-all-on-demand');
+    addSites(await readJson(lunaFullPath, {}), 'legacy-lunatv-full');
+  }
 
   return rawSources;
 }
@@ -607,6 +611,42 @@ function sourceView(source) {
   };
 }
 
+function typeLabel(type) {
+  if (type === 0) return 'CMS XML/API';
+  if (type === 3) return 'Spider/API';
+  if (type === 4) return 'Proxy/API';
+  return 'CMS JSON/API';
+}
+
+function modeLabel(type) {
+  if (type === 3) return 'spider';
+  if (type === 2) return 'parse';
+  if (type === 4) return 'proxy';
+  return 'api';
+}
+
+function vodSourceEntry(source) {
+  return {
+    id: source.id,
+    key: source.key,
+    name: source.name,
+    type: source.type,
+    typeLabel: typeLabel(source.type),
+    mode: modeLabel(source.type),
+    api: source.api,
+    searchable: true,
+    changeable: false,
+    quickSearch: true,
+    categories: source.categories || [],
+    endpointHost: source.host,
+    hasExt: Boolean(source.ext),
+    enabled: true,
+    status: source.indexed ? 'indexed' : source.indexable ? 'enabled' : 'listed',
+    origin: source.origin,
+    adult: Boolean(source.adult),
+  };
+}
+
 const sources = allSources.map(sourceView);
 if (mergeExisting) {
   const sourceIds = new Set(sources.map((source) => source.id));
@@ -631,8 +671,7 @@ const catalog = {
   generatedAt: new Date().toISOString(),
   source: {
     currentSourcesPath,
-    allOnDemandSourcesPath,
-    lunaFullPath,
+    ...(includeLegacySources ? { allOnDemandSourcesPath, lunaFullPath } : {}),
     maxSources,
     maxItemsPerSource,
     maxPagesPerQuery,
@@ -641,6 +680,7 @@ const catalog = {
     sourceMatch,
     mergeExisting,
     includeAdult,
+    includeLegacySources,
   },
   totals: {
     sources: sources.length,
@@ -679,16 +719,51 @@ const report = {
   })),
 };
 
+const vodSources = sources.map(vodSourceEntry);
+const existingSummary = await readJson(summaryOutput, {});
+const typeCounts = vodSources.reduce((acc, source) => {
+  acc[source.typeLabel] = (acc[source.typeLabel] || 0) + 1;
+  return acc;
+}, {});
+const summary = {
+  ...existingSummary,
+  generatedAt: catalog.generatedAt,
+  input: {
+    live: existingSummary?.input?.live || '',
+    vodUrl: loadedCurrentVodUrl,
+    includeLegacySources,
+  },
+  vod: {
+    count: vodSources.length,
+    typeCounts,
+    enabledCount: vodSources.length,
+    indexedCount: sources.filter((source) => source.indexed).length,
+    categoriesOk: sources.filter((source) => (source.categories || []).length > 0).length,
+    categoriesFailed: sources.filter((source) => source.indexable && !(source.categories || []).length).length,
+  },
+  notes: [
+    'VOD source is loaded from sources/current-sources.json vod.url.',
+    'Legacy All on-demand and LunaTV VOD data is excluded unless --includeLegacySources true is set.',
+    'Live data continues to use docs/data/live-channels.json.',
+  ],
+};
+
 await fs.mkdir(path.dirname(output), { recursive: true });
 await fs.mkdir(path.dirname(reportOutput), { recursive: true });
+await fs.mkdir(path.dirname(vodSourcesOutput), { recursive: true });
+await fs.mkdir(path.dirname(summaryOutput), { recursive: true });
 await fs.writeFile(output, `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
 await fs.writeFile(reportOutput, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
+await fs.writeFile(vodSourcesOutput, `${JSON.stringify(vodSources, null, 2)}\n`, 'utf8');
+await fs.writeFile(summaryOutput, `${JSON.stringify(summary, null, 2)}\n`, 'utf8');
 
 console.log(
   JSON.stringify(
     {
       output,
       reportOutput,
+      vodSourcesOutput,
+      summaryOutput,
       totals: catalog.totals,
     },
     null,

@@ -155,6 +155,12 @@ function Sync-GhPages {
 
         New-Item -ItemType Directory -Force -Path (Join-Path $pagesRootText "docs") | Out-Null
         New-Item -ItemType Directory -Force -Path (Join-Path $pagesRootText "docs\data") | Out-Null
+        foreach ($staleDir in @("vod-detail", "vod-index")) {
+            $stalePath = Join-Path $pagesRootText "docs\data\$staleDir"
+            if (Test-Path -LiteralPath $stalePath) {
+                Remove-Item -LiteralPath $stalePath -Recurse -Force
+            }
+        }
         Copy-Item -LiteralPath (Join-Path $repoRootText "docs\iphone") -Destination (Join-Path $pagesRootText "docs") -Recurse -Force
         Copy-Item -LiteralPath (Join-Path $repoRootText "docs\assets") -Destination (Join-Path $pagesRootText "docs") -Recurse -Force
         Get-ChildItem -LiteralPath (Join-Path $repoRootText "docs\data") -File | Where-Object {
@@ -180,7 +186,8 @@ function Sync-GhPages {
             --catalog (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
             --smallCatalog (Join-Path $pagesRootText "docs\data\iphone-vod-catalog.json") `
             --output (Join-Path $pagesRootText "docs\data\iphone-vod-catalog.json") `
-            --reportOutput (Join-Path $pagesRootText "docs\data\iphone-vod-catalog-report.json")
+            --reportOutput (Join-Path $pagesRootText "docs\data\iphone-vod-catalog-report.json") `
+            --preservePreviousPublicSources false
 
         Invoke-PagesGit add "docs/iphone" "docs/data" "docs/assets"
         if (Invoke-PagesGit diff --cached --quiet) {
@@ -237,7 +244,6 @@ try {
     }
 
     $updateScript = Join-Path $repoRootText "tools\update-lunatv-vod.ps1"
-    $allOnDemandScript = Join-Path $repoRootText "tools\build-all-on-demand-sources.mjs"
     $adultSortScript = Join-Path $repoRootText "tools\build-lunatv-adult18-sorted.mjs"
     $iphoneCatalogScript = Join-Path $repoRootText "tools\build-iphone-vod-catalog.mjs"
     $quantumLziScript = Join-Path $repoRootText "tools\build-quantum-lzi-full.mjs"
@@ -262,14 +268,6 @@ try {
         }
     }
 
-    if (Test-Path -LiteralPath $allOnDemandScript) {
-        Write-Log "Building all on-demand sources from LunaTV-config report.md."
-        node $allOnDemandScript `
-            --repoRoot $repoRootText `
-            --timeoutMs ($TimeoutSec * 1000) `
-            --concurrency 10
-    }
-
     if (Test-Path -LiteralPath $adultSortScript) {
         Write-Log "Building sorted adult 18+ resource area."
         node $adultSortScript --repoRoot $repoRootText
@@ -285,6 +283,7 @@ try {
             --maxItemsPerSource 70 `
             --maxCategoriesPerSource 8 `
             --includeAdult true `
+            --includeLegacySources false `
             --timeoutMs 8000
     }
 
@@ -358,7 +357,6 @@ try {
         "tools/update-lunatv-vod.ps1" `
         "tools/update-lunatv-vod-local.ps1" `
         "tools/install-lunatv-vod-autoupdate-task.ps1" `
-        "tools/build-all-on-demand-sources.mjs" `
         "tools/build-lunatv-adult18-sorted.mjs" `
         "tools/build-iphone-vod-catalog.mjs" `
         "tools/build-full-vod-chunked-catalog.mjs" `
@@ -370,8 +368,6 @@ try {
         "tools/build-quantum-lzi-full.mjs" `
         "tools/check-iphone-catalog-health.mjs" `
         "sources/current-sources.json" `
-        "sources/All on-demand sources" `
-        "sources/All on-demand sources-report.json" `
         "sources/vod-lunatv-jin18-oktv.json" `
         "sources/vod-lunatv-jin18-report.json" `
         "sources/vod-lunatv-jin18-analysis.csv" `
@@ -384,6 +380,7 @@ try {
         "docs/data/iphone-vod-catalog.json" `
         "docs/data/iphone-vod-catalog-report.json" `
         "docs/data/vod-sources.json" `
+        "docs/data/source-summary.json" `
         "docs/data/iphone-health-check-latest.json" `
         "docs/data/iphone-health-check-latest.csv" `
         "docs/data/lunatv-vod-update-state.json" `

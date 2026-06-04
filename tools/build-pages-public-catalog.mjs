@@ -23,6 +23,7 @@ const output = path.resolve(args.get('output') || path.join(pagesRoot, 'docs', '
 const reportOutput = path.resolve(
   args.get('reportOutput') || path.join(pagesRoot, 'docs', 'data', 'iphone-vod-catalog-report.json'),
 );
+const preservePreviousPublicSources = args.get('preservePreviousPublicSources') === 'true';
 
 function normalizeText(value, fallback = '') {
   return String(value ?? fallback)
@@ -167,10 +168,11 @@ async function publishIndexedSpiderData(fullCatalog, pagesDataRoot) {
 const fullCatalog = await readJson(catalogPath);
 if (!fullCatalog) throw new Error(`Catalog not found: ${catalogPath}`);
 const smallCatalog = (await readJson(smallCatalogPath)) || { items: [] };
-const previousPublicSourceById = new Map((smallCatalog.sources || []).map((source) => [source.id, source]));
+const previousPublicSources = preservePreviousPublicSources ? smallCatalog.sources || [] : [];
+const previousPublicSourceById = new Map(previousPublicSources.map((source) => [source.id, source]));
 const previousPublicSourceBySlug = new Map();
 const previousPublicSourceByApi = new Map();
-for (const source of smallCatalog.sources || []) {
+for (const source of previousPublicSources) {
   const slug = detailDirFromPattern(source.detailPathPattern) || sourceSlug(source);
   if (slug && !previousPublicSourceBySlug.has(slug)) previousPublicSourceBySlug.set(slug, source);
   const api = normalizeApi(source.api);
@@ -186,6 +188,7 @@ const publishedIndexFiles = new Set(await listNames(indexRoot, { files: true }))
 
 const publishedSourceIds = new Set();
 const usedPreviousPublicSourceIds = new Set();
+const inlineSourceIds = new Set((fullCatalog.items || []).map((item) => item.sourceId).filter(Boolean));
 const sources = (fullCatalog.sources || []).map((source) => {
   const slug = sourceSlug(source);
   const hasDetail = publishedDetailDirs.has(slug);
@@ -198,14 +201,15 @@ const sources = (fullCatalog.sources || []).map((source) => {
   if (previousPublicSource) usedPreviousPublicSourceIds.add(previousPublicSource.id);
 
   if (!hasDetail) {
+    const hasInlineItems = inlineSourceIds.has(source.id);
     const next = {
       ...source,
-      indexed: false,
+      indexed: hasInlineItems ? Boolean(source.indexed) : false,
       complete: false,
-      itemCount: 0,
-      playableCount: 0,
-      publishMode: 'not-published',
-      error: source.error || '未發布到 Pages：大型資料採精簡發布',
+      itemCount: hasInlineItems ? source.itemCount || 0 : 0,
+      playableCount: hasInlineItems ? source.playableCount || 0 : 0,
+      publishMode: hasInlineItems ? 'inline-seed' : 'not-published',
+      error: hasInlineItems ? source.error || '' : source.error || '未發布到 Pages：大型資料採精簡發布',
     };
     delete next.indexPath;
     delete next.detailPathPattern;
@@ -253,19 +257,21 @@ const sources = (fullCatalog.sources || []).map((source) => {
 });
 
 const sourceIds = new Set(sources.map((source) => source.id));
-for (const previous of smallCatalog.sources || []) {
-  if (sourceIds.has(previous.id) || usedPreviousPublicSourceIds.has(previous.id)) continue;
-  const slug = detailDirFromPattern(previous.detailPathPattern) || sourceSlug(previous);
-  if (!publishedDetailDirs.has(slug)) continue;
-  publishedSourceIds.add(previous.id);
-  sources.push({
-    ...previous,
-    indexed: true,
-    publishMode: 'static-detail',
-    detailMode: previous.detailMode || 'chunked-json-gzip',
-    detailPathPattern: previous.detailPathPattern || `vod-detail/${slug}/page-{page}.json.gz`,
-    preservedFromPublicCatalog: true,
-  });
+if (preservePreviousPublicSources) {
+  for (const previous of previousPublicSources) {
+    if (sourceIds.has(previous.id) || usedPreviousPublicSourceIds.has(previous.id)) continue;
+    const slug = detailDirFromPattern(previous.detailPathPattern) || sourceSlug(previous);
+    if (!publishedDetailDirs.has(slug)) continue;
+    publishedSourceIds.add(previous.id);
+    sources.push({
+      ...previous,
+      indexed: true,
+      publishMode: 'static-detail',
+      detailMode: previous.detailMode || 'chunked-json-gzip',
+      detailPathPattern: previous.detailPathPattern || `vod-detail/${slug}/page-{page}.json.gz`,
+      preservedFromPublicCatalog: true,
+    });
+  }
 }
 
 const kindTotals = emptyKindTotals();
@@ -284,7 +290,8 @@ for (const source of sources) {
   }
 }
 
-const seedItems = (smallCatalog.items || []).filter((item) => publishedSourceIds.has(item.sourceId));
+const seedCatalog = preservePreviousPublicSources ? smallCatalog : fullCatalog;
+const seedItems = (seedCatalog.items || []).filter((item) => publishedSourceIds.has(item.sourceId) || sourceIds.has(item.sourceId));
 for (const item of seedItems) addKind(kindTotals, item);
 
 const nextCatalog = {
@@ -293,6 +300,7 @@ const nextCatalog = {
   source: {
     ...(fullCatalog.source || {}),
     pagesLeanPublish: true,
+    preservePreviousPublicSources,
     fullCatalogItems: fullCatalog.totals?.items || 0,
   },
   totals: {
@@ -313,6 +321,7 @@ const report = {
   publicTotals: nextCatalog.totals,
   publishedDetailDirs: publishedDetailDirs.size,
   publishedIndexFiles: publishedIndexFiles.size,
+  preservePreviousPublicSources,
   publishedSpiderData,
   sourceChecks: sources.map(sourceCheck),
 };

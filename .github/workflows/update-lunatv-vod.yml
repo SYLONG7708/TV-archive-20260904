@@ -75,10 +75,6 @@ jobs:
             -TimeoutSec 12 `
             -MaxDetailProbe 2 `
             -RedactSampleNames
-          node .\tools\build-all-on-demand-sources.mjs `
-            --repoRoot . `
-            --timeoutMs 12000 `
-            --concurrency 10
           node .\tools\build-lunatv-adult18-sorted.mjs --repoRoot .
           node .\tools\build-iphone-vod-catalog.mjs `
             --tvRoot . `
@@ -88,6 +84,7 @@ jobs:
             --maxItemsPerSource 70 `
             --maxCategoriesPerSource 8 `
             --includeAdult true `
+            --includeLegacySources false `
             --timeoutMs 8000
           node .\tools\build-quantum-lzi-full.mjs `
             --repoRoot . `
@@ -164,11 +161,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add sources/current-sources.json `
-            "sources/All on-demand sources" "sources/All on-demand sources-report.json" `
             sources/vod-lunatv-jin18-oktv.json sources/vod-lunatv-jin18-report.json sources/vod-lunatv-jin18-analysis.csv `
             sources/vod-lunatv-full-oktv.json sources/vod-lunatv-full-report.json sources/vod-lunatv-full-analysis.csv `
             sources/vod-lunatv-adult18-sorted-oktv.json sources/vod-lunatv-adult18-sorted-report.json sources/vod-lunatv-adult18-sorted-analysis.csv `
-            docs/data/vod-sources.json docs/data/iphone-vod-catalog.json docs/data/iphone-vod-catalog-report.json `
+            docs/data/vod-sources.json docs/data/source-summary.json docs/data/iphone-vod-catalog.json docs/data/iphone-vod-catalog-report.json `
             docs/data/iphone-health-check-latest.json docs/data/iphone-health-check-latest.csv `
             docs/data/lunatv-vod-update-state.json `
             docs/data/vod-detail `
@@ -195,6 +191,12 @@ jobs:
           git worktree add $pages origin/gh-pages
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs") | Out-Null
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\data") | Out-Null
+          foreach ($staleDir in @("vod-detail", "vod-index")) {
+            $stalePath = Join-Path $pages "docs\data\$staleDir"
+            if (Test-Path -LiteralPath $stalePath) {
+              Remove-Item -LiteralPath $stalePath -Recurse -Force
+            }
+          }
           Copy-Item -Path .\docs\iphone -Destination (Join-Path $pages "docs") -Recurse -Force
           Copy-Item -Path .\docs\assets -Destination (Join-Path $pages "docs") -Recurse -Force
           Get-ChildItem -Path .\docs\data -File | Where-Object {
@@ -212,7 +214,8 @@ jobs:
             --catalog .\docs\data\iphone-vod-catalog.json `
             --smallCatalog (Join-Path $pages "docs\data\iphone-vod-catalog.json") `
             --output (Join-Path $pages "docs\data\iphone-vod-catalog.json") `
-            --reportOutput (Join-Path $pages "docs\data\iphone-vod-catalog-report.json")
+            --reportOutput (Join-Path $pages "docs\data\iphone-vod-catalog-report.json") `
+            --preservePreviousPublicSources false
           Push-Location $pages
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

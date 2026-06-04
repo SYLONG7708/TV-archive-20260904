@@ -341,7 +341,7 @@
             <tr>
               <td>點播</td>
               <td>點播</td>
-              <td><code id="currentVod">https://raw.githubusercontent.com/FGBLH/GHK/refs/heads/main/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json</code></td>
+              <td><code id="currentVod">https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json</code></td>
             </tr>
             <tr>
               <td>直播</td>
@@ -422,7 +422,7 @@
         <div class="notice">請只填入你自己有權使用、維護或可合法分享的來源 URL。</div>
         <div class="form">
           <label for="vodUrl">點播 JSON URL</label>
-          <input id="vodUrl" value="https://raw.githubusercontent.com/FGBLH/GHK/refs/heads/main/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json">
+          <input id="vodUrl" value="https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json">
           <label for="liveUrl">直播 TXT / M3U URL</label>
           <input id="liveUrl" value="https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt">
           <button class="button primary" type="button" onclick="generateCommand()">產生修改指令</button>
@@ -517,7 +517,7 @@
     const defaultCommand = `powershell -NoProfile -ExecutionPolicy Bypass -File .\\tools\\update-oktv-sources.ps1 \`
   -InputApk .\\releases\\OKTV_5.1.6_builtin_sources.apk \`
   -OutputApk .\\releases\\OKTV_5.1.6_custom_sources.apk \`
-  -VodUrl "https://raw.githubusercontent.com/FGBLH/GHK/refs/heads/main/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json" \`
+  -VodUrl "https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json" \`
   -LiveUrl "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt"`;
 
     function safe(value) {
