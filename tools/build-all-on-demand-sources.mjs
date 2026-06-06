@@ -18,6 +18,7 @@ const reportOutput = path.resolve(args.get('reportOutput') || path.join(repoRoot
 const docsVodOutput = path.resolve(args.get('docsVodOutput') || path.join(repoRoot, 'docs', 'data', 'vod-sources.json'));
 const timeoutMs = Number(args.get('timeoutMs') || 10000);
 const concurrency = Number(args.get('concurrency') || 10);
+const retries = Number(args.get('retries') || 2);
 const defaultExtraConfigUrls = [
   'https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json',
 ];
@@ -26,7 +27,8 @@ const extraConfigUrls = String(args.get('extraConfigUrls') || defaultExtraConfig
   .map((item) => item.trim())
   .filter(Boolean);
 
-const USER_AGENT = 'OKTV-all-on-demand-builder/1.0';
+const USER_AGENT =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36 OKTV/1.0';
 const DEFAULT_CATEGORIES = [
   '国产剧',
   '短剧',
@@ -62,7 +64,11 @@ function withTimeout() {
   return AbortSignal.timeout(timeoutMs);
 }
 
-async function fetchText(url, accept = 'text/plain,*/*') {
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function fetchTextOnce(url, accept = 'text/plain,*/*') {
   const res = await fetch(url, {
     redirect: 'follow',
     signal: withTimeout(),
@@ -73,6 +79,21 @@ async function fetchText(url, accept = 'text/plain,*/*') {
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return await res.text();
+}
+
+async function fetchText(url, accept = 'text/plain,*/*') {
+  let lastError = null;
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    try {
+      return await fetchTextOnce(url, accept);
+    } catch (error) {
+      lastError = error;
+      if (attempt >= retries) break;
+      const rateLimited = /HTTP (?:429|701|502|503)/i.test(error.message);
+      await sleep((rateLimited ? 5000 : 750) * (attempt + 1));
+    }
+  }
+  throw lastError;
 }
 
 function normalizeText(value, fallback = '') {
@@ -239,8 +260,49 @@ function sourceDedupeKey(row) {
 function addVodQuery(api, query) {
   const value = String(api || '').trim();
   if (!value) return '';
+  if (/[?&]url=/i.test(value)) {
+    if (value.endsWith('?') || value.endsWith('&')) return `${value}${query}`;
+    return `${value}?${query}`;
+  }
+  try {
+    const url = new URL(value);
+    const params = new URLSearchParams(query);
+    for (const [key, paramValue] of params.entries()) url.searchParams.set(key, paramValue);
+    return url.toString();
+  } catch {
+    // Keep support for non-standard third-party proxy URLs.
+  }
   if (value.endsWith('?') || value.endsWith('&')) return `${value}${query}`;
+  if (value.includes('?')) return `${value}&${query}`;
   return `${value}?${query}`;
+}
+
+function decodeEntities(value) {
+  return String(value || '')
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'");
+}
+
+function xmlAttr(value, name) {
+  return decodeEntities(String(value || '').match(new RegExp(`${name}="([^"]*)"`, 'i'))?.[1] || '');
+}
+
+function parseXmlPayload(text) {
+  const categories = [...String(text || '').matchAll(/<ty\b([^>]*)>([\s\S]*?)<\/ty>/gi)].map((match, index) => ({
+    type_id: xmlAttr(match[1], 'id') || String(index + 1),
+    type_name: decodeEntities(match[2]),
+  }));
+  return { class: categories };
+}
+
+function parsePayload(text) {
+  const trimmed = String(text || '').trim();
+  if (/^</.test(trimmed)) return parseXmlPayload(trimmed);
+  return JSON.parse(trimmed);
 }
 
 function extractLink(cell) {
@@ -301,7 +363,9 @@ function extractCategories(payload) {
 
 function normalizeCategories(rows, fallbackAdult = false) {
   const categories = rows
-    .map((item) => normalizeText(typeof item === 'string' ? item : item.type_name ?? item.name ?? item.type ?? item.title))
+    .map((item) =>
+      normalizeText(typeof item === 'string' ? item : item.type_name ?? item.list_name ?? item.name ?? item.type ?? item.title),
+    )
     .filter(Boolean);
   const unique = [...new Set(categories)];
   if (unique.length) return unique.slice(0, 80);
@@ -321,7 +385,7 @@ async function fetchCategories(row) {
   }
   try {
     const text = await fetchText(addVodQuery(row.api, 'ac=list'), 'application/json,text/plain,*/*');
-    const json = JSON.parse(text);
+    const json = parsePayload(text);
     return {
       categories: normalizeCategories(extractCategories(json), row.adult),
       ok: true,
@@ -398,6 +462,110 @@ const markdown = await fetchText(reportUrl, 'text/markdown,text/plain,*/*');
 const parsedRows = parseReportTable(markdown);
 const iqiyiIndex = parsedRows.findIndex((row) => /爱奇艺|愛奇藝/i.test(row.name));
 const reportRows = iqiyiIndex > 0 ? [...parsedRows.slice(iqiyiIndex), ...parsedRows.slice(0, iqiyiIndex)] : parsedRows;
+const requiredRows = [
+  {
+    status: 'ok',
+    key: '爱奇艺',
+    name: '爱奇艺｜追劇',
+    site: 'https://iqiyizyapi.com/',
+    api: 'https://iqiyizyapi.com/api.php/provide/vod/',
+    ext: '',
+    type: 1,
+    searchable: 1,
+    quickSearch: 1,
+    filterable: 1,
+    categories: [],
+    successRate: 'required',
+    trend: '',
+    origin: 'pinned:user-request:iqiyizyapi.com',
+    adult: false,
+  },
+  {
+    status: 'ok',
+    key: '豆瓣资源',
+    name: '豆瓣资源｜追劇',
+    site: 'https://dbzy.tv/',
+    api: 'https://dbzy.tv/api.php/provide/vod/',
+    ext: '',
+    type: 1,
+    searchable: 1,
+    quickSearch: 1,
+    filterable: 1,
+    categories: [],
+    successRate: 'required',
+    trend: '',
+    origin: 'pinned:user-request:dbzy.tv',
+    adult: false,
+  },
+  {
+    status: 'ok',
+    key: '天涯资源',
+    name: '天涯资源｜追劇',
+    site: 'https://tyyszy.com/',
+    api: 'https://tyyszy.com/api.php/provide/vod/',
+    ext: '',
+    type: 1,
+    searchable: 1,
+    quickSearch: 1,
+    filterable: 1,
+    categories: [],
+    successRate: 'required',
+    trend: '',
+    origin: 'pinned:user-request:tyyszy.com',
+    adult: false,
+  },
+  {
+    status: 'ok',
+    key: '黑料资源',
+    name: '黑料资源｜追劇',
+    site: 'https://heiliaozy.cc/',
+    api: 'https://www.heiliaozyapi.com/api.php/provide/vod/',
+    ext: '',
+    type: 1,
+    searchable: 1,
+    quickSearch: 1,
+    filterable: 1,
+    categories: [],
+    successRate: 'required',
+    trend: '',
+    origin: 'pinned:user-request:heiliaozy.cc',
+    adult: true,
+  },
+  {
+    status: 'ok',
+    key: '精品资源',
+    name: '精品资源｜追劇',
+    site: 'https://www.jingpinx.com/',
+    api: 'https://www.jingpinx.com/api.php/provide/vod/',
+    ext: '',
+    type: 1,
+    searchable: 1,
+    quickSearch: 1,
+    filterable: 1,
+    categories: [],
+    successRate: 'required',
+    trend: '',
+    origin: 'pinned:user-request:jingpinx.com',
+    adult: true,
+  },
+  {
+    status: 'ok',
+    key: '155-资源',
+    name: '155-资源｜追劇',
+    site: 'https://155zy2.com/',
+    api: 'https://155api.com/api.php/provide/vod/',
+    ext: '',
+    type: 1,
+    searchable: 1,
+    quickSearch: 1,
+    filterable: 1,
+    categories: [],
+    successRate: 'required',
+    trend: '',
+    origin: 'pinned:user-request:155zy2.com',
+    adult: true,
+  },
+];
 const pinnedRows = [
   {
     status: 'ok',
@@ -501,9 +669,21 @@ for (const url of extraConfigUrls) {
   }
 }
 
+for (const row of requiredRows) {
+  addSourceRow(row, { pinned: true });
+}
+
 for (const row of pinnedRows) {
   addSourceRow(row, { pinned: true });
 }
+
+const requiredOrder = new Map(requiredRows.map((row, index) => [rowIdentity(row), index]));
+dedupedRows.sort((left, right) => {
+  const leftOrder = requiredOrder.has(rowIdentity(left)) ? requiredOrder.get(rowIdentity(left)) : Number.POSITIVE_INFINITY;
+  const rightOrder = requiredOrder.has(rowIdentity(right)) ? requiredOrder.get(rowIdentity(right)) : Number.POSITIVE_INFINITY;
+  if (leftOrder !== rightOrder) return leftOrder - rightOrder;
+  return 0;
+});
 
 const categoryChecks = await mapLimit(dedupedRows, concurrency, async (row) => fetchCategories(row));
 const sites = dedupedRows.map((row, index) => {
@@ -535,7 +715,7 @@ const outputJson = {
   spider: '',
   logo: 'https://raw.githubusercontent.com/SYLONG7708/TV/main/branding/icon-tech-20260528.png',
   wallpaper: 'http://tool.teyonds.com/api',
-  warningText: '影視OKTV all on-demand sources. Auto refreshed from LunaTV-config report.md every hour.',
+  warningText: 'OKTV all on-demand sources. Auto refreshed every 3 days; full VOD pages are stored under docs/data/vod-detail.',
   sites,
 };
 
@@ -546,6 +726,14 @@ const report = {
   totalSources: sites.length,
   extraConfigUrls,
   extraConfigErrors,
+  requiredSources: requiredRows.map((row) => ({
+    key: row.key,
+    name: row.name,
+    site: row.site,
+    api: row.api,
+    adult: row.adult,
+    origin: row.origin,
+  })),
   duplicateSources: duplicateRows.length,
   adultSources: dedupedRows.filter((row) => row.adult).length,
   okRows: dedupedRows.filter((row) => row.status === 'ok').length,

@@ -4,7 +4,7 @@ param(
     [string]$SourceName = "jin18,full",
     [int]$TimeoutSec = 12,
     [int]$MaxDetailProbe = 3,
-    [int]$UpdateIntervalDays = 5,
+    [int]$UpdateIntervalDays = 3,
     [int]$ScheduleHour = 2,
     [switch]$ForceUpdate,
     [switch]$NoGitPush,
@@ -36,7 +36,7 @@ $scheduleStatePath = Join-Path $repoRootText "docs\data\lunatv-vod-update-state.
 
 function Write-Log([string]$Message) {
     $line = "{0} {1}" -f (Get-Date).ToString("yyyy-MM-dd HH:mm:ss"), $Message
-    $line | Tee-Object -FilePath $logPath -Append
+    $line | Tee-Object -FilePath $logPath -Append | Out-Null
 }
 
 function Invoke-Git {
@@ -155,12 +155,6 @@ function Sync-GhPages {
 
         New-Item -ItemType Directory -Force -Path (Join-Path $pagesRootText "docs") | Out-Null
         New-Item -ItemType Directory -Force -Path (Join-Path $pagesRootText "docs\data") | Out-Null
-        foreach ($staleDir in @("vod-detail", "vod-index")) {
-            $stalePath = Join-Path $pagesRootText "docs\data\$staleDir"
-            if (Test-Path -LiteralPath $stalePath) {
-                Remove-Item -LiteralPath $stalePath -Recurse -Force
-            }
-        }
         Copy-Item -LiteralPath (Join-Path $repoRootText "docs\iphone") -Destination (Join-Path $pagesRootText "docs") -Recurse -Force
         Copy-Item -LiteralPath (Join-Path $repoRootText "docs\assets") -Destination (Join-Path $pagesRootText "docs") -Recurse -Force
         Get-ChildItem -LiteralPath (Join-Path $repoRootText "docs\data") -File | Where-Object {
@@ -188,6 +182,20 @@ function Sync-GhPages {
             --output (Join-Path $pagesRootText "docs\data\iphone-vod-catalog.json") `
             --reportOutput (Join-Path $pagesRootText "docs\data\iphone-vod-catalog-report.json") `
             --preservePreviousPublicSources false
+
+        Get-ChildItem -LiteralPath (Join-Path $repoRootText "docs\data") -File | ForEach-Object {
+            Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $pagesRootText "docs\data") -Force
+        }
+        if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi")) {
+            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
+        }
+        if ($PublishFullData) {
+            Write-Log "PublishFullData set; copying full vod-detail and vod-index to gh-pages."
+            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\vod-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
+            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\vod-index") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
+        } else {
+            Write-Log "Skipping full vod-detail/vod-index copy for lean gh-pages publish."
+        }
 
         Invoke-PagesGit add "docs/iphone" "docs/data" "docs/assets"
         if (Invoke-PagesGit diff --cached --quiet) {
@@ -252,6 +260,7 @@ try {
     $assembleChunkedCatalogScript = Join-Path $repoRootText "tools\assemble-vod-index-from-detail.mjs"
     $applyVodKindRulesScript = Join-Path $repoRootText "tools\apply-vod-kind-rules.mjs"
     $iphoneHealthScript = Join-Path $repoRootText "tools\check-iphone-catalog-health.mjs"
+    $tvboxApiHistoryScript = Join-Path $repoRootText "tools\build-tvbox-api-history.mjs"
     $sourceNames = @($SourceName -split "," | ForEach-Object { $_.Trim() } | Where-Object { $_ })
     foreach ($name in $sourceNames) {
         Write-Log "Refreshing LunaTV VOD sources from GitHub raw $name."
@@ -344,6 +353,14 @@ try {
         node $applyVodKindRulesScript --tvRoot $repoRootText
     }
 
+    if (Test-Path -LiteralPath $tvboxApiHistoryScript) {
+        Write-Log "Saving TVBOX API source check history."
+        node $tvboxApiHistoryScript `
+            --repoRoot $repoRootText `
+            --output (Join-Path $repoRootText "sources\TVBOX") `
+            --keyword "$([char]0x4F60)$([char]0x597D)"
+    }
+
     if (Test-Path -LiteralPath $iphoneHealthScript) {
         Write-Log "Checking iPhone VOD names, posters, VOD sources and live sources."
         node $iphoneHealthScript `
@@ -370,10 +387,14 @@ try {
         "tools/assemble-vod-index-from-detail.mjs" `
         "tools/vod-kind-rules.mjs" `
         "tools/apply-vod-kind-rules.mjs" `
+        "tools/build-tvbox-api-history.mjs" `
         "tools/build-iqiyi-full-catalog.mjs" `
         "tools/build-quantum-lzi-full.mjs" `
         "tools/check-iphone-catalog-health.mjs" `
         "sources/current-sources.json" `
+        "sources/TVBOX" `
+        "sources/All on-demand sources" `
+        "sources/All on-demand sources-report.json" `
         "sources/vod-lunatv-jin18-oktv.json" `
         "sources/vod-lunatv-jin18-report.json" `
         "sources/vod-lunatv-jin18-analysis.csv" `
