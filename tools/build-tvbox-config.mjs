@@ -43,6 +43,16 @@ function normalizeCategories(value) {
 }
 
 const TVBOX_CATEGORY_KIND_ORDER = ['movie', 'anime', 'short', 'variety'];
+const IQIYI_ORIGIN_API = 'https://iqiyizyapi.com/api.php/provide/vod/';
+const IQIYI_RECOMMEND_JS_API =
+  'https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/oktv-iqiyi-latest.js';
+const IQIYI_TVBOX_CATEGORIES = [
+  '\u52a8\u4f5c\u7247',
+  '\u56fd\u4ea7\u52a8\u6f2b',
+  '\u77ed\u5267',
+  '\u5927\u9646\u7efc\u827a',
+];
+const IQIYI_API_RE = /^https?:\/\/iqiyizyapi\.com\/api\.php\/provide\/vod\/?/i;
 
 const HENTAI_CATEGORY_RE = /里番|裏番|成人动漫|成人動漫/i;
 const ADULT_ANIME_CATEGORY_RE =
@@ -160,6 +170,10 @@ function adultName(name) {
   return /^\s*\uD83D\uDD1E/u.test(name) ? name : `\uD83D\uDD1E ${name}`;
 }
 
+function isIqiyiVodSite(key, api) {
+  return key === '\u7231\u5947\u827a' || IQIYI_API_RE.test(api);
+}
+
 function normalizeSite(site, index) {
   const key = trimString(site.key || site.name || `vod-${index + 1}`);
   const adult = Boolean(site.adult || isAdultSite(site));
@@ -184,6 +198,13 @@ function normalizeSite(site, index) {
   if (site.changeable !== undefined) normalized.changeable = normalizeInt(site.changeable, site.changeable);
   if (site.playerType !== undefined) normalized.playerType = normalizeInt(site.playerType, site.playerType);
   if (site.timeout !== undefined) normalized.timeout = normalizeInt(site.timeout, site.timeout);
+
+  if (!adult && isIqiyiVodSite(key, api)) {
+    normalized.type = 3;
+    normalized.api = IQIYI_RECOMMEND_JS_API;
+    normalized.ext = api || IQIYI_ORIGIN_API;
+    normalized.categories = IQIYI_TVBOX_CATEGORIES;
+  }
 
   return normalized;
 }
