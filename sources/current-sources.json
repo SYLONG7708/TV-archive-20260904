@@ -5,11 +5,11 @@
     "icon":  "branding/icon-tech-20260528.png",
     "privateLivePassword":  "7708",
     "vod":  {
-                "name":  "External VOD source",
+                "name":  "點播",
                 "type":  0,
-                "url":  "https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json",
-                "compareUrl":  "https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json",
-                "autoRefresh":  "點播源地址已改為指定外部 raw JSON；SYLONG7708/TV 的 All on-demand sources 自動更新與排程更新已停用，後續不再由 LunaTV-config 自動覆蓋。"
+                "url":  "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX",
+                "compareUrl":  "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX",
+                "autoRefresh":  "APK 與 iPhone 網頁點播源固定讀取本 repo 的 sources/TVBOX；TVBOX 由 tools/build-tvbox-config.mjs 從 All on-demand sources 產生，成人 18+ 來源與分類由工具自動檢測。"
             },
     "vodCandidate":  {
                          "name":  "LunaTV 點播候選源",
@@ -20,13 +20,13 @@
                          "note":  "已驗活與去重，但內容授權需人工確認後才可設為預設播放源。"
                      },
     "vodFullCandidate":  {
-                             "name":  "External VOD source",
+                             "name":  "TVBOX 全量點播源",
                              "type":  0,
-                             "url":  "https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json",
+                             "url":  "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX",
                              "report":  "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/All%20on-demand%20sources-report.json",
                              "analysis":  "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/vod-lunatv-full-analysis.csv",
                              "status":  "enabled",
-                             "note":  "影視 OKTV 與 iPhone 影視 OKTV 使用指定外部點播源；本倉庫全量點播源已停用自動更新。"
+                             "note":  "影視 OKTV 與 iPhone 影視 OKTV 使用 sources/TVBOX；成人 18+ 來源保留獨立分類。"
                          },
     "vodAdult18Sorted":  {
                              "name":  "LunaTV 成人 18+ 分類排序資源區",
@@ -40,7 +40,8 @@
     "live":  {
                  "name":  "直播",
                  "type":  1,
-                 "url":  "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt"
+                 "url":  "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt",
+                 "saveLocation":  "APK 預設值寫在 classes.dex 的 com.fongmi.android.tv.bean.Config.live()；使用者在 App 設定畫面修改後，會保存到 Android App 私有資料庫。repo 內保存位置為 sources/current-sources.json 的 live.url。"
              },
     "youtubeLive":  {
                         "channelCsv":  "sources/youtube-live-channels.csv",

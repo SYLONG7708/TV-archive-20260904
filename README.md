@@ -17,11 +17,11 @@
 
 ## 目前內置來源
 
-- 點播：`https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json`
-- 直播穩定版：`https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt`
+- 點播：`https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX`
+- 直播穩定版：`https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt`
 - 直播私密頻道密碼：`7708`
 
-設定檔在 [`sources/current-sources.json`](sources/current-sources.json)。
+設定檔在 [`sources/current-sources.json`](sources/current-sources.json)。APK 預設值寫入 `classes.dex` 的 `com.fongmi.android.tv.bean.Config.vod()` 與 `Config.live()`；使用者在 App 設定畫面修改後，會保存到 Android App 私有資料庫。
 
 ## 直播穩定加強
 
@@ -98,7 +98,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\update-oktv-sources.
   -InputApk .\releases\OKTV_5.1.6_builtin_sources.apk `
   -OutputApk .\releases\OKTV_5.1.6_custom_sources.apk `
   -VodUrl "你的點播 JSON URL" `
-  -LiveUrl "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt"
+  -LiveUrl "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt"
 ```
 
 請只使用自己有權使用或可合法分享的來源。

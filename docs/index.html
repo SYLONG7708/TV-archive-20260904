@@ -341,12 +341,12 @@
             <tr>
               <td>點播</td>
               <td>點播</td>
-              <td><code id="currentVod">https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json</code></td>
+              <td><code id="currentVod">https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX</code></td>
             </tr>
             <tr>
               <td>直播</td>
               <td>直播</td>
-              <td><code id="currentLive">https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt</code></td>
+              <td><code id="currentLive">https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt</code></td>
             </tr>
             <tr>
               <td>私密頻道</td>
@@ -371,7 +371,7 @@
             <p>頻道表：<code>sources/youtube-live-channels.csv</code></p>
             <p>解析直播源：<code>sources/live-youtube-stable.txt</code></p>
             <p>解析報告：<code>sources/live-youtube-report.json</code></p>
-            <p>APK 直播 URL 不變：<code>https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt</code></p>
+            <p>APK 直播 URL 不變：<code>https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt</code></p>
           </div>
         </div>
         <h3>手動立即更新</h3>
@@ -419,12 +419,13 @@
       <section id="modify">
         <h2>修改來源</h2>
         <p>下面輸入新的點播與直播 URL，頁面會自動產生 PowerShell 指令。點播通常是 JSON，直播建議使用本 repo 的穩定版 <code>sources/live-stable.txt</code>。</p>
+        <p>來源保存位置：repo 內固定記錄在 <code>sources/current-sources.json</code>；APK 預設值會寫進 <code>classes.dex</code> 的 <code>Config.vod()</code> 與 <code>Config.live()</code>；使用者在 App 設定畫面手動修改後，會保存於 Android App 私有資料庫。</p>
         <div class="notice">請只填入你自己有權使用、維護或可合法分享的來源 URL。</div>
         <div class="form">
           <label for="vodUrl">點播 JSON URL</label>
-          <input id="vodUrl" value="https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json">
+          <input id="vodUrl" value="https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX">
           <label for="liveUrl">直播 TXT / M3U URL</label>
-          <input id="liveUrl" value="https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt">
+          <input id="liveUrl" value="https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt">
           <button class="button primary" type="button" onclick="generateCommand()">產生修改指令</button>
         </div>
         <pre id="generatedCommand"></pre>
@@ -479,7 +480,7 @@
           <div class="num">1</div>
           <div>
             <strong>更新來源設定</strong>
-            <p>修改 <code>sources/current-sources.json</code> 裡的 <code>vod.url</code> 與 <code>live.url</code>。</p>
+            <p>修改 <code>sources/current-sources.json</code> 裡的 <code>vod.url</code> 與 <code>live.url</code>；本次預設點播為 <code>sources/TVBOX</code>，直播為 <code>sources/live-stable.txt</code>。</p>
           </div>
         </div>
         <div class="step">
@@ -517,8 +518,8 @@
     const defaultCommand = `powershell -NoProfile -ExecutionPolicy Bypass -File .\\tools\\update-oktv-sources.ps1 \`
   -InputApk .\\releases\\OKTV_5.1.6_builtin_sources.apk \`
   -OutputApk .\\releases\\OKTV_5.1.6_custom_sources.apk \`
-  -VodUrl "https://raw.githubusercontent.com/FGBLH/GHK/a1c46cb76810cd6d53b73e1c6f0a0789586151c5/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json" \`
-  -LiveUrl "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt"`;
+  -VodUrl "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX" \`
+  -LiveUrl "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt"`;
 
     function safe(value) {
       return String(value).replace(/"/g, "");
