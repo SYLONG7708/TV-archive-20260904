@@ -1005,6 +1005,7 @@
       const REMOTE_SEARCH_MIN_CHARS = 2;
       const REMOTE_SEARCH_SOURCE_LIMIT = 8;
       const REMOTE_SEARCH_RESULT_LIMIT = 24;
+      const REMOTE_SEARCH_TIMEOUT_MS = 8000;
       const ADULT_ITEM_TEXT_RE =
         /18\+|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u60c5\u8272|\u4e09\u7ea7|\u4e09\u7d1a|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u65e0\u7801|\u7121\u78bc|\u6709\u7801|\u6709\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u5f3a\u5978|\u5f37\u59e6|\u841d\u8389|\u863f\u8389|\u91cc\u756a|\u88cf\u756a|\u5236\u670d\u8bf1\u60d1|\u5236\u670d\u8a98\u60d1|\u4f26\u7406|\u502b\u7406|\u5199\u771f|\u5beb\u771f|\u5973\u512a|\u5973\u4f18|\u5de8\u4e73|\u4e73\u4ea4|\u53e3\u4ea4|\u6deb|\u5077\u62cd|\u4eba\u59bb|\u56fd\u4ea7\u81ea\u62cd|\u570b\u7522\u81ea\u62cd|\bAV\b/i;
 
@@ -4118,7 +4119,10 @@
       async function fetchRemoteVodSearch(source, query) {
         const action = Number(source?.type) === 0 ? 'videolist' : 'detail';
         const url = addVodApiQuery(source.api, { ac: action, wd: query, pg: '1' });
-        const res = await fetch(url, { cache: 'no-store' });
+        const res = await Promise.race([
+          fetch(url, { cache: 'no-store' }),
+          new Promise((_, reject) => window.setTimeout(() => reject(new Error('remote-search-timeout')), REMOTE_SEARCH_TIMEOUT_MS)),
+        ]);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const payload = parseRemoteVodPayload(await res.text());
         return remoteExtractRows(payload)
