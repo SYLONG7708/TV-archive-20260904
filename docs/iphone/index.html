@@ -1001,6 +1001,10 @@
       const QUANTUM_MANIFEST_URL = '../data/quantum-lzi/manifest.json';
       const QUANTUM_BASE_URL = '../data/quantum-lzi/';
       const QUANTUM_API_RE = /cj\.lziapi\.com/i;
+      const REMOTE_SEARCH_API_RE = /(?:bfzyapi\.com|maotaizy\.cc|lzcaiji\.com|lziapi\.com)/i;
+      const REMOTE_SEARCH_MIN_CHARS = 2;
+      const REMOTE_SEARCH_SOURCE_LIMIT = 8;
+      const REMOTE_SEARCH_RESULT_LIMIT = 24;
       const ADULT_ITEM_TEXT_RE =
         /18\+|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u60c5\u8272|\u4e09\u7ea7|\u4e09\u7d1a|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u65e0\u7801|\u7121\u78bc|\u6709\u7801|\u6709\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u5f3a\u5978|\u5f37\u59e6|\u841d\u8389|\u863f\u8389|\u91cc\u756a|\u88cf\u756a|\u5236\u670d\u8bf1\u60d1|\u5236\u670d\u8a98\u60d1|\u4f26\u7406|\u502b\u7406|\u5199\u771f|\u5beb\u771f|\u5973\u512a|\u5973\u4f18|\u5de8\u4e73|\u4e73\u4ea4|\u53e3\u4ea4|\u6deb|\u5077\u62cd|\u4eba\u59bb|\u56fd\u4ea7\u81ea\u62cd|\u570b\u7522\u81ea\u62cd|\bAV\b/i;
 
@@ -1029,6 +1033,10 @@
         healthIndex: { sources: new Set(), posters: new Set(), live: new Set() },
         detailCache: new Map(),
         loadedSourceIds: new Set(),
+        remoteSearch: {
+          loading: new Set(),
+          completed: new Set(),
+        },
         sourceMap: new Map(),
         itemById: new Map(),
         sourcePageState: new Map(),
@@ -1124,7 +1132,7 @@
         if (!item) return item;
         item._posterKey = normalizedPoster(item.poster);
         item._duplicateKey = normalizedText(item.title) || (item._posterKey ? `poster:${item._posterKey}` : item.id || '');
-        item._searchText = normalizedText(`${item.title} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`);
+        item._searchText = searchableText(`${item.title} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`);
         return item;
       }
 
@@ -3499,6 +3507,66 @@
         return [...displayText(value || '影視').replace(/\s+/g, '')].slice(0, 2).join('');
       }
 
+      const SEARCH_TO_SIMPLIFIED_CHARS = {
+        '\u96e3': '\u96be',
+        '\u5287': '\u5267',
+        '\u96fb': '\u7535',
+        '\u8996': '\u89c6',
+        '\u52d5': '\u52a8',
+        '\u756b': '\u753b',
+        '\u7d9c': '\u7efc',
+        '\u85dd': '\u827a',
+        '\u97d3': '\u97e9',
+        '\u570b': '\u56fd',
+        '\u611b': '\u7231',
+        '\u8ffd': '\u8ffd',
+        '\u64ad': '\u64ad',
+        '\u8cc7': '\u8d44',
+        '\u6e90': '\u6e90',
+        '\u8a0a': '\u8baf',
+        '\u865f': '\u53f7',
+        '\u8c93': '\u732b',
+        '\u8a31': '\u8bb8',
+        '\u8ac7': '\u8c08',
+        '\u6200': '\u604b',
+        '\u54c4': '\u54c4',
+        '\u54ed': '\u54ed',
+        '\u6de8': '\u51c0',
+        '\u51b7': '\u51b7',
+        '\u5085': '\u5085',
+        '\u723a': '\u7237',
+        '\u9ecf': '\u9ecf',
+        '\u8457': '\u7740',
+        '\u5b0c': '\u5a07',
+        '\u5931': '\u5931',
+        '\u61b6': '\u5fc6',
+        '\u9752': '\u9752',
+        '\u6885': '\u6885',
+        '\u738b': '\u738b',
+        '\u5983': '\u5983',
+        '\u6dea': '\u6ca6',
+        '\u9677': '\u9677',
+      };
+      let searchSimplifiedCharMap = null;
+
+      function simplifiedCharMap() {
+        if (searchSimplifiedCharMap) return searchSimplifiedCharMap;
+        const entries = Object.entries(ZH_CHAR_MAP || {});
+        searchSimplifiedCharMap = new Map();
+        for (const [simplified, traditional] of entries) {
+          if (traditional && !searchSimplifiedCharMap.has(traditional)) searchSimplifiedCharMap.set(traditional, simplified);
+        }
+        for (const [traditional, simplified] of Object.entries(SEARCH_TO_SIMPLIFIED_CHARS)) {
+          searchSimplifiedCharMap.set(traditional, simplified);
+        }
+        return searchSimplifiedCharMap;
+      }
+
+      function toSimplifiedSearchText(value) {
+        const map = simplifiedCharMap();
+        return String(value || '').replace(/[\u3400-\u9fff]/g, (char) => map.get(char) || char);
+      }
+
       function imageSrc(value) {
         const raw = String(value || '').trim();
         if (!raw) return '';
@@ -3507,6 +3575,29 @@
 
       function normalizedText(value) {
         return String(value || '').trim().replace(/\s+/g, ' ').toLowerCase();
+      }
+
+      function searchTextVariants(value) {
+        const raw = normalizedText(value);
+        if (!raw) return [];
+        const simplified = normalizedText(toSimplifiedSearchText(raw));
+        return [...new Set([raw, simplified].filter(Boolean))];
+      }
+
+      function searchableText(value) {
+        return searchTextVariants(value).join(' ');
+      }
+
+      function activeQueryVariants() {
+        return searchTextVariants(state.query);
+      }
+
+      function remoteQueryVariants() {
+        const raw = normalizedText(state.query);
+        if (!raw) return [];
+        const simplified = normalizedText(toSimplifiedSearchText(raw));
+        if (simplified && simplified !== raw) return [simplified];
+        return [raw];
       }
 
       function normalizedPoster(value) {
@@ -3790,9 +3881,10 @@
         if (skipFilter !== 'year' && state.filters.year !== 'all' && item.year !== state.filters.year) return false;
         if (skipFilter !== 'area' && state.filters.area !== 'all' && item.area !== state.filters.area) return false;
         if (skipFilter !== 'genre' && state.filters.genre !== 'all' && !itemGenres(item).includes(state.filters.genre)) return false;
-        const query = normalizedText(state.query);
-        if (!query) return true;
-        return (item._searchText || normalizedText(`${item.title} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`)).includes(query);
+        const queries = activeQueryVariants();
+        if (!queries.length) return true;
+        const haystack = item._searchText || searchableText(`${item.title} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`);
+        return queries.some((query) => haystack.includes(query));
       }
 
       function sourceItems(sourceId = state.selectedSource, skipFilter = '') {
@@ -3810,6 +3902,259 @@
         }
         state.viewCache.set(cacheKey, rows);
         return rows;
+      }
+
+      function remoteSearchAllowed(source) {
+        const api = String(source?.api || '');
+        if (!/^https:\/\//i.test(api)) return false;
+        return REMOTE_SEARCH_API_RE.test(api);
+      }
+
+      function remoteSearchSourcePriority(source) {
+        const api = String(source?.api || '');
+        if (/bfzyapi\.com/i.test(api)) return 0;
+        if (/maotaizy\.cc/i.test(api)) return 1;
+        if (/lzcaiji\.com/i.test(api)) return 2;
+        if (/lziapi\.com/i.test(api)) return 3;
+        return 9;
+      }
+
+      function remoteSearchSources() {
+        const active = activeSource();
+        if (active) return remoteSearchAllowed(active) ? [active] : [];
+        if (state.selectedSource === 'adult18') return [];
+        return state.catalog.sources
+          .filter((source) => source.indexed && !source.adult && remoteSearchAllowed(source))
+          .sort((a, b) => remoteSearchSourcePriority(a) - remoteSearchSourcePriority(b))
+          .slice(0, REMOTE_SEARCH_SOURCE_LIMIT);
+      }
+
+      function remoteSearchKey(queries, sources) {
+        return [state.tab, state.selectedSource, queries.join('|'), sources.map((source) => source.id).join('|')].join('\u001f');
+      }
+
+      function addVodApiQuery(api, params) {
+        const url = new URL(api);
+        for (const [key, value] of Object.entries(params)) url.searchParams.set(key, value);
+        return url.toString();
+      }
+
+      function remoteExtractRows(payload) {
+        if (Array.isArray(payload?.list)) return payload.list;
+        if (Array.isArray(payload?.data) && payload.data.some((item) => item?.vod_name || item?.name || item?.title)) return payload.data;
+        if (Array.isArray(payload?.data)) return payload.data;
+        if (Array.isArray(payload?.videos)) return payload.videos;
+        if (Array.isArray(payload)) return payload;
+        return [];
+      }
+
+      function remoteXmlText(node, names) {
+        for (const name of names) {
+          const found = node.querySelector(name);
+          const text = found?.textContent?.trim() || '';
+          if (text) return text;
+        }
+        return '';
+      }
+
+      function parseRemoteXml(text) {
+        const doc = new DOMParser().parseFromString(text, 'text/xml');
+        const rows = [...doc.querySelectorAll('video')].map((node) => {
+          const playGroups = [...node.querySelectorAll('dd')].map((dd) => dd.textContent.trim()).filter(Boolean);
+          return {
+            vod_id: remoteXmlText(node, ['vod_id', 'id']),
+            id: remoteXmlText(node, ['vod_id', 'id']),
+            type_id: remoteXmlText(node, ['type_id', 'tid', 'cid']),
+            type_name: remoteXmlText(node, ['type_name', 'type', 'category']),
+            vod_name: remoteXmlText(node, ['vod_name', 'name', 'title']),
+            vod_pic: remoteXmlText(node, ['vod_pic', 'pic', 'cover']),
+            vod_year: remoteXmlText(node, ['vod_year', 'year']),
+            vod_area: remoteXmlText(node, ['vod_area', 'area']),
+            vod_remarks: remoteXmlText(node, ['vod_remarks', 'remarks', 'note', 'state']),
+            vod_actor: remoteXmlText(node, ['vod_actor', 'actor']),
+            vod_director: remoteXmlText(node, ['vod_director', 'director']),
+            vod_content: remoteXmlText(node, ['vod_content', 'content', 'des', 'desc']),
+            vod_time: remoteXmlText(node, ['vod_time', 'last', 'time', 'addtime']),
+            vod_class: remoteXmlText(node, ['vod_class', 'class', 'tag']),
+            vod_play_url: playGroups.join('$$$') || remoteXmlText(node, ['vod_play_url', 'play_url', 'playurl', 'url']),
+          };
+        });
+        return { list: rows };
+      }
+
+      function parseRemoteVodPayload(text) {
+        const trimmed = String(text || '').replace(/^\uFEFF/, '').trim();
+        if (!trimmed) return {};
+        if (/^</.test(trimmed)) return parseRemoteXml(trimmed);
+        return JSON.parse(trimmed);
+      }
+
+      function remoteParseNumber(value) {
+        const number = Number(String(value || '').match(/\d+(?:\.\d+)?/)?.[0] || 0);
+        return Number.isFinite(number) ? number : 0;
+      }
+
+      function remoteParseYear(value) {
+        return String(value || '').match(/(?:19|20)\d{2}/)?.[0] || '';
+      }
+
+      function remoteParseEpoch(value) {
+        const time = Date.parse(String(value || '').replace(/-/g, '/'));
+        return Number.isFinite(time) ? time : 0;
+      }
+
+      function remoteSplitClasses(value, fallback = '') {
+        return [
+          ...new Set(
+            `${value || ''},${fallback || ''}`
+              .split(/[,\s/、，]+/)
+              .map(normalizedText)
+              .filter(Boolean),
+          ),
+        ];
+      }
+
+      function remoteKind(item, source, categoryName, genre, title) {
+        if (source?.adult) return 'adult';
+        const text = [title, categoryName, ...(genre || []), item.vod_class, item.class, item.tag].join(' ');
+        if (ADULT_ITEM_TEXT_RE.test(text)) return 'adult';
+        if (/短劇|短剧|微短/i.test(text)) return 'short';
+        if (/動漫|动漫|動畫|动画|卡通/i.test(text)) return 'anime';
+        if (/綜藝|综艺|真人秀/i.test(text)) return 'variety';
+        if (/電視劇|电视剧|劇集|剧集|連續劇|连续剧|國產劇|国产剧|大陸劇|大陆剧|韓劇|韩剧|日劇|日剧|美劇|美剧|泰劇|泰剧|港劇|港剧|台劇|台剧/i.test(text)) return 'series';
+        return 'movie';
+      }
+
+      function remoteImageUrl(baseUrl, value) {
+        const raw = String(value || '').trim();
+        if (!raw) return '';
+        const first = raw.split(/[,\s]+/).find(Boolean) || raw;
+        try {
+          return imageSrc(new URL(first, baseUrl).toString());
+        } catch {
+          return imageSrc(first);
+        }
+      }
+
+      function isDirectMediaUrl(value) {
+        return /\.(m3u8|mp4|m4v|webm|mov|flv|ts)(?:$|[?#])/i.test(String(value || '').trim());
+      }
+
+      function parseRemoteEpisodes(playUrl) {
+        const groups = String(playUrl || '').split('$$$').filter(Boolean);
+        const directGroup =
+          groups.find((group) =>
+            group.split('#').some((part) => {
+              const url = part.split('$').at(-1) || part;
+              return /^https?:\/\//i.test(url) && isDirectMediaUrl(url);
+            }),
+          ) || '';
+        const group = directGroup || groups.find((entry) => /https?:\/\//i.test(entry)) || groups[0] || '';
+        return group
+          .split('#')
+          .map((part, index) => {
+            const bits = part.split('$');
+            const url = normalizedText(bits.length > 1 ? bits.at(-1) : part);
+            if (!/^https?:\/\//i.test(url) || !isDirectMediaUrl(url)) return null;
+            return {
+              name: normalizedText(bits.length > 1 ? bits.slice(0, -1).join('$') : `第 ${index + 1} 集`),
+              url,
+            };
+          })
+          .filter(Boolean);
+      }
+
+      function stableItemId(value) {
+        return (
+          normalizedText(value, 'item')
+            .normalize('NFKD')
+            .replace(/[^\p{Letter}\p{Number}]+/gu, '-')
+            .replace(/^-+|-+$/g, '')
+            .slice(0, 180) || 'item'
+        );
+      }
+
+      function normalizeRemoteVodItem(item, source) {
+        const title = normalizedText(item.vod_name ?? item.name ?? item.title);
+        if (!title) return null;
+        const categoryName = normalizedText(item.type_name || item.list_name || item.category || '');
+        const genre = remoteSplitClasses(item.vod_class || item.class || item.tag, categoryName);
+        const episodes = parseRemoteEpisodes(item.vod_play_url || item.vod_url || item.play_url || item.url);
+        const updatedAt = normalizedText(item.vod_time || item.update_time || item.vod_pubdate || item.created_at || '');
+        const score = remoteParseNumber(item.vod_score || item.score || item.douban_score);
+        const views = remoteParseNumber(item.vod_hits || item.hits || item.views || item.play_count || item.vod_up);
+        const vodId = String(item.vod_id ?? item.id ?? title);
+        const kind = remoteKind(item, source, categoryName, genre, title);
+        return {
+          id: `remote-${stableItemId(source.id)}-${stableItemId(vodId || title)}`,
+          sourceId: source.id,
+          sourceName: source.name,
+          vodId,
+          title,
+          originalName: normalizedText(item.vod_en || item.original_name || ''),
+          kind,
+          categoryId: String(item.type_id || ''),
+          categoryName,
+          year: remoteParseYear(item.vod_year || item.year || updatedAt),
+          area: normalizedText(item.vod_area || item.area || item.region || ''),
+          genre,
+          remarks: normalizedText(item.vod_remarks || item.remarks || item.note || ''),
+          actor: normalizedText(item.vod_actor || item.actor || ''),
+          director: normalizedText(item.vod_director || item.director || ''),
+          content: normalizedText(item.vod_content || item.content || item.desc || '').slice(0, 220),
+          score,
+          views,
+          hot: views + score * 100 + remoteParseEpoch(updatedAt) / 100000000,
+          updatedAt,
+          poster: remoteImageUrl(source.api, item.vod_pic || item.pic || item.cover || item.logo || item.vod_pic_thumb),
+          episodes,
+          episodeCount: episodes.length,
+          playable: episodes.length > 0,
+          adult: kind === 'adult' || Boolean(source.adult),
+          lazyEpisodes: false,
+        };
+      }
+
+      async function fetchRemoteVodSearch(source, query) {
+        const action = Number(source?.type) === 0 ? 'videolist' : 'detail';
+        const url = addVodApiQuery(source.api, { ac: action, wd: query, pg: '1' });
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const payload = parseRemoteVodPayload(await res.text());
+        return remoteExtractRows(payload)
+          .slice(0, REMOTE_SEARCH_RESULT_LIMIT)
+          .map((item) => normalizeRemoteVodItem(item, source))
+          .filter(Boolean);
+      }
+
+      function ensureRemoteSearchForCurrentView(currentCount) {
+        const queries = remoteQueryVariants();
+        if (state.tab === 'live' || queries.join('').length < REMOTE_SEARCH_MIN_CHARS || currentCount >= 12) return false;
+        const sources = remoteSearchSources();
+        if (!sources.length) return false;
+        const key = remoteSearchKey(queries, sources);
+        if (state.remoteSearch.loading.has(key)) return true;
+        if (state.remoteSearch.completed.has(key)) return false;
+        state.remoteSearch.loading.add(key);
+        Promise.all(
+          sources.flatMap((source) =>
+            queries.map((query) =>
+              fetchRemoteVodSearch(source, query).catch(() => []),
+            ),
+          ),
+        )
+          .then((groups) => {
+            const rows = groups.flat();
+            if (rows.length) registerCatalogItems(rows);
+          })
+          .finally(() => {
+            state.remoteSearch.loading.delete(key);
+            state.remoteSearch.completed.add(key);
+            const nextSources = remoteSearchSources();
+            const nextKey = remoteSearchKey(remoteQueryVariants(), nextSources);
+            if (nextKey === key) render();
+          });
+        return true;
       }
 
       function sortedItems(items) {
@@ -3915,6 +4260,7 @@
         ensureQuantumForCurrentView();
         ensureAvailableFilters();
         const allRows = visibleItems();
+        const remoteSearchLoading = ensureRemoteSearchForCurrentView(allRows.length);
         const rows = allRows.slice(0, state.visibleLimit);
         const title = tabs.find(([id]) => id === state.tab)?.[1] || '主頁';
         screen.innerHTML = `
@@ -3926,7 +4272,7 @@
             <span class="status-pill ok">${icon('check')} OKTV</span>
           </section>
           <section class="poster-grid">
-            ${rows.map(renderPoster).join('') || emptyState('目前沒有符合篩選的影片')}
+            ${rows.map(renderPoster).join('') || emptyState(remoteSearchLoading ? '正在讀取線上信號源...' : '目前沒有符合篩選的影片')}
           </section>
           ${renderFloatingFilter()}
         `;
