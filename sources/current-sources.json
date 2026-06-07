@@ -1,15 +1,18 @@
 {
-  "app": "OKTV",
+  "app": "影視",
   "versionName": "5.1.6",
   "versionCode": 516,
+  "privateLivePassword": "7708",
   "vod": {
     "name": "點播",
     "type": 0,
-    "url": "https://raw.githubusercontent.com/FGBLH/GHK/refs/heads/main/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json"
+    "url": "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX",
+    "saveLocation": "repo 內保存於 sources/current-sources.json 的 vod.url；APK 預設值寫入 classes.dex 的 com.fongmi.android.tv.bean.Config.vod()。"
   },
   "live": {
     "name": "直播",
     "type": 1,
-    "url": "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt"
+    "url": "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt",
+    "saveLocation": "repo 內保存於 sources/current-sources.json 的 live.url；APK 預設值寫入 classes.dex 的 com.fongmi.android.tv.bean.Config.live()，App 設定畫面修改後保存於 Android App 私有資料庫。"
   }
 }

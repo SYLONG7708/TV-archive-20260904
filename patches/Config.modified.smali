@@ -644,7 +644,7 @@
 .method public static live()Lcom/fongmi/android/tv/bean/Config;
     .registers 3
 
-    const-string v0, "https://raw.githubusercontent.com/FGBLH/GHK/refs/heads/main/%E5%AE%89%E5%8D%9A.txt"
+    const-string v0, "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt"
 
     const-string v1, "直播"
 
@@ -691,7 +691,7 @@
 .method public static vod()Lcom/fongmi/android/tv/bean/Config;
     .registers 3
 
-    const-string v0, "https://raw.githubusercontent.com/FGBLH/GHK/refs/heads/main/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json"
+    const-string v0, "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX"
 
     const-string v1, "點播"
 

@@ -13,10 +13,10 @@
 
 ## 目前內置來源
 
-- 點播：`https://raw.githubusercontent.com/FGBLH/GHK/refs/heads/main/%E6%B5%B7%E8%B1%9A%E5%BD%B1%E8%A7%86.json`
-- 直播穩定版：`https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/live-stable.txt`
+- 點播：`https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX`
+- 直播穩定版：`https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt`
 
-設定檔在 [`sources/current-sources.json`](sources/current-sources.json)。
+設定檔在 [`sources/current-sources.json`](sources/current-sources.json)。APK 預設值寫入 `classes.dex` 的 `com.fongmi.android.tv.bean.Config.vod()` 與 `Config.live()`；App 設定畫面修改後會保存到 Android App 私有資料庫。
 
 ## 直播穩定加強
 
