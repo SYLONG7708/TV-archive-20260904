@@ -42,7 +42,7 @@ function normalizeCategories(value) {
   return categories.length ? categories : undefined;
 }
 
-const TVBOX_CATEGORY_KIND_ORDER = ['movie', 'anime', 'short', 'variety', 'hentai'];
+const TVBOX_CATEGORY_KIND_ORDER = ['movie', 'anime', 'short', 'variety'];
 
 const HENTAI_CATEGORY_RE = /里番|裏番|成人动漫|成人動漫/i;
 const ADULT_ANIME_CATEGORY_RE =
