@@ -193,6 +193,8 @@ const EXPLICIT_ADULT_SOURCE_APIS = [
 const ADULT_SOURCE_API_KEYS = new Set(EXPLICIT_ADULT_SOURCE_APIS.map(normalizeAdultApiKey));
 const ADULT_SOURCE_TEXT_RE =
   /18\+|avzy|souav|swag|91md|155api|apiyutu|fhapi|apilsb|yytv4|xiaojizy|hsck|apidanaizi|jkunzy|lbapi|naixxzy|slapibf|apilj|shayuapi|douapi|ddapi|heiliao|bwzyz|thzy|jingpin|ckzy|xxibao|xiangjiao|msnii|pgxdy|kxgav|xingba|dadiapi|semaozy|aosika|siwazy|truvaze|fqzy|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u60c5\u8272|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u4ed3\u5e93|\u5009\u5eab|\u674f\u5427|\u8272\u732b|\u6843\u82b1|\u9999\u8549|\u5976\u9999|\u68ee\u6797|\u8fa3\u6912|\u9ca8\u9c7c|\u9bca\u9b5a|\u9ed1\u6599|\u7cbe\u54c1|\u7ec6\u80de|\u7d30\u80de|\u5965\u65af\u5361|\u5967\u65af\u5361|\u65e0\u7801|\u7121\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u4e3b\u64ad|\u5f3a\u5978|\u841d\u8389|\u863f\u8389|\u5236\u670d|\u4f26\u7406|\u502b\u7406|\u6deb|AV/i;
+const ADULT_ITEM_TEXT_RE =
+  /18\+|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u60c5\u8272|\u4e09\u7ea7|\u4e09\u7d1a|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u65e0\u7801|\u7121\u78bc|\u6709\u7801|\u6709\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u5f3a\u5978|\u5f37\u59e6|\u841d\u8389|\u863f\u8389|\u91cc\u756a|\u88cf\u756a|\u5236\u670d\u8bf1\u60d1|\u5236\u670d\u8a98\u60d1|\u4f26\u7406|\u502b\u7406|\u5199\u771f|\u5beb\u771f|\u5973\u512a|\u5973\u4f18|\u5de8\u4e73|\u4e73\u4ea4|\u53e3\u4ea4|\u6deb|\u5077\u62cd|\u4eba\u59bb|\u56fd\u4ea7\u81ea\u62cd|\u570b\u7522\u81ea\u62cd|\bAV\b/i;
 
 function normalizeAdultApiKey(value) {
   const raw = normalizeText(value).toLowerCase();
@@ -276,6 +278,29 @@ function textId(input, index = 0) {
 
 function isAdultSource(site) {
   return adultApiCandidates(site).some((api) => ADULT_SOURCE_API_KEYS.has(api)) || ADULT_SOURCE_TEXT_RE.test(adultText(site));
+}
+
+function isAdultVodItem(item, source, typeName, genre, title) {
+  if (source.adult) return true;
+  const text = [
+    title,
+    typeName,
+    Array.isArray(genre) ? genre.join(' ') : '',
+    item.vod_class,
+    item.class,
+    item.tag,
+    item.vod_actor,
+    item.actor,
+    item.vod_director,
+    item.director,
+    item.vod_content,
+    item.content,
+    item.vod_remarks,
+    item.remarks,
+  ]
+    .map((value) => String(value || ''))
+    .join(' ');
+  return ADULT_ITEM_TEXT_RE.test(text);
 }
 
 function kindFromTypeName(typeName, sourceAdult = false) {
@@ -464,7 +489,8 @@ function normalizeVodItem(item, source, category = null) {
   const views = parseNumber(item.vod_hits || item.hits || item.views || item.play_count || item.vod_up);
   const updatedAt = normalizeText(item.vod_time || item.update_time || item.vod_pubdate || item.created_at || item.vod_addtime || '');
   const episodes = parseEpisodes(item.vod_play_url || item.vod_url || item.vod_play_url_with_player || item.play_url || item.url);
-  const kind = classifyVodKind({ categoryName: typeName || category?.name || '', genre, sourceAdult: source.adult });
+  const adult = isAdultVodItem(item, source, typeName || category?.name || '', genre, title);
+  const kind = classifyVodKind({ categoryName: typeName || category?.name || '', genre, title, sourceAdult: adult, adult });
   const id = `${source.id}::${normalizeText(item.vod_id ?? item.id ?? title)}`;
 
   return {
@@ -491,7 +517,8 @@ function normalizeVodItem(item, source, category = null) {
     poster: normalizeImage(source.api, item.vod_pic || item.pic || item.cover || item.logo || item.vod_pic_thumb),
     episodes,
     playable: episodes.length > 0,
-    adult: source.adult,
+    adult,
+    adultDetected: adult && !source.adult,
   };
 }
 
