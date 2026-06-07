@@ -313,7 +313,8 @@
       }
 
       .badge,
-      .score {
+      .score,
+      .adult-content-badge {
         position: absolute;
         z-index: 2;
         min-height: 28px;
@@ -340,8 +341,24 @@
         bottom: 8px;
       }
 
+      .adult-content-badge {
+        top: 8px;
+        right: 8px;
+        gap: 5px;
+        background: rgba(216, 23, 105, 0.92);
+        font-weight: 900;
+      }
+
+      .adult-content-badge img,
+      .poster-title .adult-source-icon {
+        width: 22px;
+        height: 22px;
+      }
+
       .poster-title {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 6px;
         margin-top: 8px;
         color: #fff;
         font-size: 1rem;
@@ -353,6 +370,7 @@
 
       .poster-sub {
         display: flex;
+        flex-wrap: wrap;
         gap: 7px;
         margin-top: 4px;
         color: var(--muted);
@@ -726,6 +744,31 @@
         white-space: nowrap;
       }
 
+      .signal-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 10px 0 12px;
+      }
+
+      .signal-chip {
+        min-height: 34px;
+        border: 1px solid rgba(50, 214, 231, 0.35);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        padding: 0 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+      }
+
+      .signal-chip.is-active {
+        border-color: rgba(50, 214, 231, 0.8);
+        background: rgba(50, 214, 231, 0.2);
+      }
+
       .episode-pages {
         min-width: 0;
         display: flex;
@@ -958,6 +1001,8 @@
       const QUANTUM_MANIFEST_URL = '../data/quantum-lzi/manifest.json';
       const QUANTUM_BASE_URL = '../data/quantum-lzi/';
       const QUANTUM_API_RE = /cj\.lziapi\.com/i;
+      const ADULT_ITEM_TEXT_RE =
+        /18\+|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u60c5\u8272|\u4e09\u7ea7|\u4e09\u7d1a|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u65e0\u7801|\u7121\u78bc|\u6709\u7801|\u6709\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u5f3a\u5978|\u5f37\u59e6|\u841d\u8389|\u863f\u8389|\u91cc\u756a|\u88cf\u756a|\u5236\u670d\u8bf1\u60d1|\u5236\u670d\u8a98\u60d1|\u4f26\u7406|\u502b\u7406|\u5199\u771f|\u5beb\u771f|\u5973\u512a|\u5973\u4f18|\u5de8\u4e73|\u4e73\u4ea4|\u53e3\u4ea4|\u6deb|\u5077\u62cd|\u4eba\u59bb|\u56fd\u4ea7\u81ea\u62cd|\u570b\u7522\u81ea\u62cd|\bAV\b/i;
 
       const state = {
         tab: 'home',
@@ -1214,11 +1259,25 @@
         await Promise.all(workers);
       }
 
+      async function ensureSourceListItems(sources) {
+        if (!sources.length) return;
+        await mapAsyncLimit(sources, 4, async (source) => {
+          try {
+            await ensureSourceIndex(source);
+          } catch {
+            // Keep the combined catalog usable even when one remote source is temporarily empty.
+          }
+        });
+      }
+
       async function ensureSelectedSourceItems(sourceId) {
         if (!['all', 'normal', 'adult18'].includes(sourceId)) {
           await ensureSourceIndex(sourceById(sourceId));
           return;
         }
+        const wantAdult = sourceId === 'adult18';
+        const sources = state.catalog.sources.filter((source) => source.indexed && Boolean(source.adult) === wantAdult);
+        await ensureSourceListItems(sources);
       }
 
       function escapeHtml(value) {
@@ -3558,12 +3617,53 @@
         return `<img class="${className}" src="${SOURCE_ICON}" alt="" aria-hidden="true" />`;
       }
 
-      function adultIcon() {
-        return `<img class="adult-source-icon" src="${ADULT_ICON}" alt="18+" />`;
+      function adultIcon(className = 'adult-source-icon') {
+        return `<img class="${className}" src="${ADULT_ICON}" alt="18+" />`;
       }
 
       function sourceNameMarkup(source) {
         return `<span class="source-name">${source.adult ? adultIcon() : ''}<span>${displayHtml(source.name)}</span></span>`;
+      }
+
+      function itemIsAdult(item, source = sourceById(item?.sourceId)) {
+        if (item?.adult || item?.kind === 'adult' || source?.adult) return true;
+        const text = [
+          item?.title,
+          item?.categoryName,
+          item?.year,
+          item?.area,
+          Array.isArray(item?.genre) ? item.genre.join(' ') : '',
+          item?.actor,
+          item?.director,
+          item?.content,
+          item?.remarks,
+          item?.sourceName,
+        ]
+          .map((value) => String(value || ''))
+          .join(' ');
+        return ADULT_ITEM_TEXT_RE.test(text);
+      }
+
+      function signalSourceEntry(item) {
+        const source = sourceById(item.sourceId);
+        return {
+          itemId: item.id,
+          sourceId: item.sourceId,
+          sourceName: item.sourceName || source?.name || '',
+          adult: itemIsAdult(item, source),
+          episodeCount: item.episodeCount || item.episodes?.length || 0,
+          remarks: item.remarks || '',
+        };
+      }
+
+      function signalSourcesFor(item) {
+        return Array.isArray(item?.signalSources) && item.signalSources.length ? item.signalSources : [signalSourceEntry(item)];
+      }
+
+      function signalSourceLabel(item) {
+        const signals = signalSourcesFor(item);
+        if (signals.length > 1) return `${signals.length} 個信號源`;
+        return signals[0]?.sourceName || item.sourceName || '';
       }
 
       function baseVisibleLimit() {
@@ -3588,14 +3688,40 @@
       }
 
       function uniqueItems(items) {
-        const seen = new Set();
-        return items.filter((item) => {
+        const groups = new Map();
+        const passthrough = [];
+        for (const item of items) {
           const key = itemDuplicateKey(item);
-          if (!key) return true;
-          if (seen.has(key)) return false;
-          seen.add(key);
-          return true;
-        });
+          if (!key) {
+            passthrough.push(item);
+            continue;
+          }
+          if (!groups.has(key)) groups.set(key, []);
+          groups.get(key).push(item);
+        }
+        const rows = [];
+        for (const group of groups.values()) {
+          const primary = group.find((item) => item.playable) || group[0];
+          const signalSources = [];
+          const seenSignals = new Set();
+          for (const item of group) {
+            const signal = signalSourceEntry(item);
+            const signalKey = `${signal.sourceId || ''}\u001f${signal.itemId || ''}`;
+            if (seenSignals.has(signalKey)) continue;
+            seenSignals.add(signalKey);
+            signalSources.push(signal);
+          }
+          primary.signalSources = signalSources;
+          primary.signalCount = signalSources.length;
+          primary._duplicateKey = itemDuplicateKey(primary);
+          rows.push(primary);
+        }
+        for (const item of passthrough) {
+          item.signalSources = [signalSourceEntry(item)];
+          item.signalCount = 1;
+          rows.push(item);
+        }
+        return rows;
       }
 
       function visibleItems() {
@@ -3656,8 +3782,9 @@
       function itemMatches(item, sourceId, enforceSource, skipFilter = '') {
         const source = sourceById(item.sourceId);
         if (state.healthIndex.posters.has(item.id)) return false;
-        if (sourceId === 'normal' && source?.adult) return false;
-        if (sourceId === 'adult18' && !source?.adult) return false;
+        const adult = itemIsAdult(item, source);
+        if ((sourceId === 'all' || sourceId === 'normal') && adult) return false;
+        if (sourceId === 'adult18' && !adult) return false;
         if (enforceSource && !['all', 'normal', 'adult18'].includes(sourceId) && item.sourceId !== sourceId) return false;
         if (state.tab !== 'home' && state.tab !== 'rank' && item.kind !== state.tab) return false;
         if (skipFilter !== 'year' && state.filters.year !== 'all' && item.year !== state.filters.year) return false;
@@ -4018,11 +4145,13 @@
       }
 
       function renderPoster(item) {
+        const adult = itemIsAdult(item);
+        const signalLabel = signalSourceLabel(item);
         return `
           <button class="poster-card" type="button" data-open-detail="${escapeHtml(item.id)}">
             ${renderPosterArt(item)}
-            <strong class="poster-title">${displayHtml(item.title)}</strong>
-            <div class="poster-sub"><span>${displayHtml(item.year || item.categoryName || item.kind)}</span><span>${displayHtml(item.area || item.sourceName)}</span></div>
+            <strong class="poster-title">${adult ? adultIcon() : ''}<span>${displayHtml(item.title)}</span></strong>
+            <div class="poster-sub"><span>${displayHtml(item.year || item.categoryName || item.kind)}</span><span>${displayHtml(item.area || signalLabel)}</span>${item.signalCount > 1 ? `<span>${displayHtml(`${item.signalCount} 個信號源`)}</span>` : ''}</div>
           </button>
         `;
       }
@@ -4033,6 +4162,7 @@
           <div class="poster-art">
             ${poster ? `<img src="${escapeHtml(poster)}" alt="${displayHtml(item.title)}" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" onerror="this.classList.add('is-broken')" />` : ''}
             <div class="poster-fallback">${displayHtml(initials(item.title))}</div>
+            ${itemIsAdult(item) ? `<span class="adult-content-badge">${adultIcon('adult-content-icon')}18+</span>` : ''}
             <span class="score">${displayHtml(item.score ? `評分 ${item.score}` : item.remarks || item.year || 'OKTV')}</span>
             <span class="badge">${displayHtml(item.remarks || item.categoryName || item.kind)}</span>
           </div>
@@ -4096,7 +4226,7 @@
         if (!item) return;
         state.activeItem = item;
         detailTitle.textContent = displayText(item.title);
-        detailMeta.textContent = displayText([item.sourceName, item.year, item.area, item.categoryName].filter(Boolean).join(' / '));
+        detailMeta.textContent = displayText([signalSourceLabel(item), item.year, item.area, item.categoryName].filter(Boolean).join(' / '));
         renderDetailLoading(item);
         openSheet(detailSheet);
         try {
@@ -4129,7 +4259,41 @@
         `;
       }
 
+      function renderSignalSourceControls(item) {
+        const signals = signalSourcesFor(item);
+        if (signals.length <= 1) return '';
+        return `
+          <section class="section-head"><h2>信號源</h2><span>${signals.length} 個來源</span></section>
+          <div class="signal-strip">
+            ${signals
+              .map(
+                (signal) =>
+                  `<button class="signal-chip ${signal.itemId === item.id ? 'is-active' : ''}" type="button" data-signal-item="${escapeHtml(signal.itemId)}">${signal.adult ? adultIcon('adult-content-icon') : icon('signal')}${displayHtml(signal.sourceName || 'OKTV')}</button>`,
+              )
+              .join('')}
+          </div>
+        `;
+      }
+
       function bindDetailEpisodeControls(item) {
+        detailBody.querySelectorAll('[data-signal-item]').forEach((button) => {
+          button.addEventListener('click', async () => {
+            const next = state.itemById.get(button.dataset.signalItem);
+            if (!next) return;
+            next.signalSources = signalSourcesFor(item);
+            next.signalCount = next.signalSources.length;
+            state.activeItem = next;
+            detailTitle.textContent = displayText(next.title);
+            detailMeta.textContent = displayText([signalSourceLabel(next), next.year, next.area, next.categoryName].filter(Boolean).join(' / '));
+            renderDetailLoading(next);
+            try {
+              const hydrated = await hydrateItemDetail(next);
+              if (state.activeItem?.id === next.id) renderDetailBody(hydrated, 0);
+            } catch {
+              if (state.activeItem?.id === next.id) renderDetailBody(next, 0);
+            }
+          });
+        });
         detailBody.querySelectorAll('[data-episode-page]').forEach((button) => {
           button.addEventListener('click', () => renderDetailBody(item, Number(button.dataset.episodePage || 0)));
         });
@@ -4169,6 +4333,7 @@
               <p>${displayHtml(item.content || item.actor || item.director || '此內容已建立 OKTV 手機索引。')}</p>
             </div>
           </div>
+          ${renderSignalSourceControls(item)}
           <section class="section-head"><h2>播放</h2><span>${total} 集</span></section>
           ${renderEpisodePager(item, safePage)}
           <div class="episode-grid">
@@ -4427,20 +4592,14 @@
       localStorage.removeItem('oktv:iphone:selectedSource');
       const storedSource = localStorage.getItem(SOURCE_STORAGE_KEY);
       if (!storedSource || storedSource === 'all' || state.selectedSource === 'default') {
-        const iqiyiSource =
-          state.catalog.sources.find((source) => source.indexed && DEFAULT_SOURCE_RE.test(source.name)) ||
-          state.catalog.sources.find((source) => source.indexed);
-        if (iqiyiSource) {
-          state.selectedSource = iqiyiSource.id;
-          localStorage.setItem(SOURCE_STORAGE_KEY, state.selectedSource);
-        }
+        state.selectedSource = 'normal';
+        localStorage.setItem(SOURCE_STORAGE_KEY, state.selectedSource);
       }
       if (
         !['all', 'normal', 'adult18'].includes(state.selectedSource) &&
         !state.catalog.sources.some((source) => source.id === state.selectedSource && source.indexed)
       ) {
-        const fallbackSource = state.catalog.sources.find((source) => source.indexed && DEFAULT_SOURCE_RE.test(source.name)) || state.catalog.sources.find((source) => source.indexed);
-        state.selectedSource = fallbackSource?.id || 'all';
+        state.selectedSource = 'normal';
         localStorage.setItem(SOURCE_STORAGE_KEY, state.selectedSource);
       }
       await ensureSelectedSourceItems(state.selectedSource);
