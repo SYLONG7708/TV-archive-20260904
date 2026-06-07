@@ -42,7 +42,7 @@ function normalizeCategories(value) {
   return categories.length ? categories : undefined;
 }
 
-const TVBOX_CATEGORY_ORDER = ['电影', '动漫', '短剧', '综艺', '里番动漫'];
+const TVBOX_CATEGORY_KIND_ORDER = ['movie', 'anime', 'short', 'variety', 'hentai'];
 
 const HENTAI_CATEGORY_RE = /里番|裏番|成人动漫|成人動漫/i;
 const ADULT_ANIME_CATEGORY_RE =
@@ -58,35 +58,77 @@ const MOVIE_OR_SERIES_CATEGORY_RE =
 const SPORTS_OR_UTILITY_CATEGORY_RE =
   /体育|體育|足球|篮球|籃球|网球|網球|斯诺克|斯諾克|排球|棒球|电竞|電競|公告|头条|頭條|资讯|資訊|新闻|新聞|演员|演員|科普|学习|學習|未分类|未分類|其他赛事|其他賽事/i;
 
-function addDetectedCategory(categories, category) {
-  if (!category) return;
-  if (!categories.includes(category)) categories.push(category);
-}
-
-function detectTvboxCategory(category, sourceAdult) {
+function detectTvboxCategoryKind(category, sourceAdult) {
   const text = trimString(category).normalize('NFKC');
   if (!text) return '';
   if (HENTAI_CATEGORY_RE.test(text) || (sourceAdult && ADULT_ANIME_CATEGORY_RE.test(text))) {
-    return '里番动漫';
+    return 'hentai';
   }
-  if (SHORT_CATEGORY_RE.test(text)) return '短剧';
-  if (VARIETY_CATEGORY_RE.test(text)) return '综艺';
-  if (ANIME_CATEGORY_RE.test(text)) return '动漫';
-  if (MOVIE_OR_SERIES_CATEGORY_RE.test(text)) return '电影';
-  if (sourceAdult && !SPORTS_OR_UTILITY_CATEGORY_RE.test(text)) return '电影';
+  if (SHORT_CATEGORY_RE.test(text)) return 'short';
+  if (VARIETY_CATEGORY_RE.test(text)) return 'variety';
+  if (ANIME_CATEGORY_RE.test(text)) return 'anime';
+  if (MOVIE_OR_SERIES_CATEGORY_RE.test(text)) return 'movie';
+  if (sourceAdult && !SPORTS_OR_UTILITY_CATEGORY_RE.test(text)) return 'movie';
   return '';
+}
+
+function categoryPreference(category, kind) {
+  const text = trimString(category).normalize('NFKC');
+  if (!text) return 100;
+  if (kind === 'hentai') {
+    if (/^里番动漫$|^里番動漫$|^裏番动漫$|^裏番動漫$/i.test(text)) return 0;
+    if (/成人动漫|成人動漫/i.test(text)) return 1;
+    if (/动漫精品|動漫精品|动漫精选|動漫精選|卡通动漫|卡通動漫|动漫区|動漫區|3D动漫|3D動漫|同人动漫|同人動漫|激情动漫|激情動漫/i.test(text)) return 2;
+    if (ADULT_ANIME_CATEGORY_RE.test(text)) return 8;
+    return 20;
+  }
+  if (kind === 'anime') {
+    if (/^(国产动漫|國產動漫|中国动漫|中國動漫|日韩动漫|日韓動漫|日本动漫|日本動漫|欧美动漫|歐美動漫|港台动漫|港台動漫|海外动漫|海外動漫)$/i.test(text)) return 0;
+    if (/动漫片|動漫片|动画片|動畫片|动漫电影|動漫電影|动画电影|動畫電影|有声动漫|有聲動漫|番剧|番劇|漫剧|漫劇|卡通/i.test(text)) return 2;
+    if (/^动漫$|^動漫$/i.test(text)) return 20;
+    return 10;
+  }
+  if (kind === 'short') {
+    if (/^短剧$|^短劇$/i.test(text)) return 0;
+    if (/短剧大全|短劇大全/i.test(text)) return 1;
+    return 2;
+  }
+  if (kind === 'variety') {
+    if (/^(大陆综艺|大陸綜藝|国产综艺|國產綜藝|港台综艺|港台綜藝|日韩综艺|日韓綜藝|欧美综艺|歐美綜藝|韩国综艺|韓國綜藝)$/i.test(text)) return 0;
+    if (/综艺片|綜藝片|真人秀|脱口秀|脫口秀|演唱会|演唱會/i.test(text)) return 2;
+    if (/^综艺$|^綜藝$/i.test(text)) return 20;
+    return 10;
+  }
+  if (kind === 'movie') {
+    if (/电影片|電影片/i.test(text)) return 0;
+    if (/动作片|動作片|喜剧片|喜劇片|爱情片|愛情片|科幻片|恐怖片|剧情片|劇情片|战争片|戰爭片|纪录片|紀錄片|记录片|犯罪片|悬疑片|懸疑片|惊悚片|驚悚片|冒险片|冒險片|奇幻片|灾难片|災難片|西部片|家庭片|短片|预告片|預告片|邵氏电影|邵氏電影|4K电影|4K電影/i.test(text)) return 2;
+    if (/连续剧|連續劇|电视剧|電視劇|剧集|劇集|国产剧|國產劇|香港剧|香港劇|台湾剧|台灣劇|日本剧|日本劇|韩国剧|韓國劇|欧美剧|歐美劇|泰剧|泰劇|海外剧|海外劇/i.test(text)) return 8;
+    if (/^电影$|^電影$/i.test(text)) return 20;
+    return 10;
+  }
+  return 100;
 }
 
 function normalizeTvboxCategories(value, sourceAdult) {
   const sourceCategories = normalizeCategories(value);
   if (!sourceCategories) return undefined;
 
-  const detected = [];
-  for (const category of sourceCategories) {
-    addDetectedCategory(detected, detectTvboxCategory(category, sourceAdult));
-  }
+  const selected = new Map();
+  sourceCategories.forEach((category, index) => {
+    const kind = detectTvboxCategoryKind(category, sourceAdult);
+    if (!kind) return;
+    const score = categoryPreference(category, kind);
+    const existing = selected.get(kind);
+    if (!existing || score < existing.score || (score === existing.score && index < existing.index)) {
+      selected.set(kind, { category, score, index });
+    }
+  });
 
-  const categories = TVBOX_CATEGORY_ORDER.filter((category) => detected.includes(category));
+  const categories = [];
+  for (const kind of TVBOX_CATEGORY_KIND_ORDER) {
+    const selectedCategory = selected.get(kind)?.category;
+    if (selectedCategory && !categories.includes(selectedCategory)) categories.push(selectedCategory);
+  }
   return categories.length ? categories : undefined;
 }
 
