@@ -260,7 +260,7 @@ try {
     $assembleChunkedCatalogScript = Join-Path $repoRootText "tools\assemble-vod-index-from-detail.mjs"
     $applyVodKindRulesScript = Join-Path $repoRootText "tools\apply-vod-kind-rules.mjs"
     $iphoneHealthScript = Join-Path $repoRootText "tools\check-iphone-catalog-health.mjs"
-    $tvboxApiHistoryScript = Join-Path $repoRootText "tools\build-tvbox-api-history.mjs"
+    $tvboxConfigScript = Join-Path $repoRootText "tools\build-tvbox-config.mjs"
     $sourceNames = @($SourceName -split "," | ForEach-Object { $_.Trim() } | Where-Object { $_ })
     foreach ($name in $sourceNames) {
         Write-Log "Refreshing LunaTV VOD sources from GitHub raw $name."
@@ -353,12 +353,11 @@ try {
         node $applyVodKindRulesScript --tvRoot $repoRootText
     }
 
-    if (Test-Path -LiteralPath $tvboxApiHistoryScript) {
-        Write-Log "Saving TVBOX API source check history."
-        node $tvboxApiHistoryScript `
+    if (Test-Path -LiteralPath $tvboxConfigScript) {
+        Write-Log "Saving TVBOX on-demand source config."
+        node $tvboxConfigScript `
             --repoRoot $repoRootText `
-            --output (Join-Path $repoRootText "sources\TVBOX") `
-            --keyword "$([char]0x4F60)$([char]0x597D)"
+            --output (Join-Path $repoRootText "sources\TVBOX")
     }
 
     if (Test-Path -LiteralPath $iphoneHealthScript) {
@@ -387,6 +386,7 @@ try {
         "tools/assemble-vod-index-from-detail.mjs" `
         "tools/vod-kind-rules.mjs" `
         "tools/apply-vod-kind-rules.mjs" `
+        "tools/build-tvbox-config.mjs" `
         "tools/build-tvbox-api-history.mjs" `
         "tools/build-iqiyi-full-catalog.mjs" `
         "tools/build-quantum-lzi-full.mjs" `
