@@ -328,7 +328,9 @@
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.16);
         background:
+          radial-gradient(circle at 50% 26%, rgba(255, 255, 255, 0.1), transparent 36%),
           linear-gradient(135deg, #153746, #60183c 52%, #120911);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
       }
 
       .poster-art img {
@@ -336,6 +338,20 @@
         height: 100%;
         display: block;
         object-fit: cover;
+        image-rendering: auto;
+        filter: saturate(1.16) contrast(1.07) brightness(1.03);
+        transform: translateZ(0) scale(1.002);
+        transform-origin: center;
+        backface-visibility: hidden;
+        opacity: 0;
+        transition:
+          opacity 180ms ease,
+          filter 180ms ease;
+        will-change: opacity;
+      }
+
+      .poster-art img.is-loaded {
+        opacity: 1;
       }
 
       .poster-art img.is-broken {
@@ -346,8 +362,8 @@
         content: "";
         position: absolute;
         inset: auto 0 0;
-        height: 42%;
-        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7));
+        height: 38%;
+        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.46) 100%);
         pointer-events: none;
       }
 
@@ -384,7 +400,7 @@
         letter-spacing: 0;
       }
 
-      .poster-art img:not(.is-broken) + .poster-fallback {
+      .poster-art img.is-loaded:not(.is-broken) + .poster-fallback {
         display: none;
       }
 
@@ -3720,6 +3736,22 @@
         return raw.replace(/^http:/i, 'https:');
       }
 
+      function posterImageSources(value) {
+        const fallback = imageSrc(value);
+        if (!fallback) return { primary: '', fallback: '' };
+        let primary = fallback;
+        try {
+          const url = new URL(fallback, location.href);
+          if (/(?:x-oss-process|imageView2|imageMogr2|thumbnail|resize|quality|width=|height=|w=|h=)/i.test(url.search)) {
+            url.search = '';
+            primary = url.toString();
+          }
+        } catch {
+          primary = fallback;
+        }
+        return { primary, fallback: primary !== fallback ? fallback : '' };
+      }
+
       function normalizedText(value) {
         return String(value || '').trim().replace(/\s+/g, ' ').toLowerCase();
       }
@@ -4509,7 +4541,7 @@
                 <button class="play-btn" type="button" data-open-detail="${escapeHtml(item.id)}">${icon('play')}播放</button>
               </div>
             </div>
-            <div class="hero-poster">${renderPosterArt(item)}</div>
+            <div class="hero-poster">${renderPosterArt(item, { priority: true })}</div>
           </section>
         `;
       }
@@ -4706,7 +4738,7 @@
         });
       }
 
-      function renderPoster(item) {
+      function renderPoster(item, index = 0) {
         const adult = itemIsAdult(item);
         const signalLabel = signalSourceLabel(item);
         const meta = [
@@ -4716,7 +4748,7 @@
         ].filter(Boolean);
         return `
           <button class="poster-card" type="button" data-open-detail="${escapeHtml(item.id)}">
-            ${renderPosterArt(item)}
+            ${renderPosterArt(item, { priority: index < 8 })}
             <strong class="poster-title">${adult ? adultIcon() : ''}<span>${displayHtml(item.title)}</span></strong>
             <div class="poster-sub">
               ${meta.slice(0, 3).map((value) => `<span>${displayHtml(value)}</span>`).join('')}
@@ -4726,11 +4758,16 @@
         `;
       }
 
-      function renderPosterArt(item) {
-        const poster = imageSrc(item.poster);
+      function renderPosterArt(item, options = {}) {
+        const { primary: poster, fallback } = posterImageSources(item.poster);
+        const priority = Boolean(options.priority);
         return `
           <div class="poster-art">
-            ${poster ? `<img src="${escapeHtml(poster)}" alt="${displayHtml(item.title)}" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" onerror="this.classList.add('is-broken')" />` : ''}
+            ${
+              poster
+                ? `<img data-poster-img src="${escapeHtml(poster)}" ${fallback ? `data-poster-fallback-src="${escapeHtml(fallback)}"` : ''} alt="${displayHtml(item.title)}" loading="${priority ? 'eager' : 'lazy'}" decoding="async" fetchpriority="${priority ? 'high' : 'low'}" referrerpolicy="no-referrer" />`
+                : ''
+            }
             <div class="poster-fallback">${displayHtml(initials(item.title))}</div>
             ${itemIsAdult(item) ? `<span class="adult-content-badge">${adultIcon('adult-content-icon')}18+</span>` : ''}
             <span class="score">${displayHtml(item.score ? `評分 ${item.score}` : item.remarks || item.year || 'OKTV')}</span>
@@ -4786,8 +4823,42 @@
       }
 
       function bindPosters() {
+        bindPosterImages(document);
         document.querySelectorAll('[data-open-detail]').forEach((button) => {
           button.addEventListener('click', () => openDetail(button.dataset.openDetail));
+        });
+      }
+
+      function usePosterFallback(img) {
+        const fallback = img.dataset.posterFallbackSrc || '';
+        if (fallback) {
+          img.removeAttribute('data-poster-fallback-src');
+          img.classList.remove('is-broken');
+          img.src = fallback;
+          return true;
+        }
+        img.classList.add('is-broken');
+        return false;
+      }
+
+      function bindPosterImages(root = document) {
+        root.querySelectorAll('img[data-poster-img]').forEach((img) => {
+          if (img.dataset.posterBound === '1') return;
+          img.dataset.posterBound = '1';
+          img.addEventListener('load', () => {
+            img.classList.add('is-loaded');
+            img.classList.remove('is-broken');
+          });
+          img.addEventListener('error', () => {
+            usePosterFallback(img);
+          });
+          if (img.complete) {
+            if (img.naturalWidth > 0) {
+              img.classList.add('is-loaded');
+            } else {
+              usePosterFallback(img);
+            }
+          }
         });
       }
 
@@ -4878,7 +4949,7 @@
       function renderDetailLoading(item) {
         detailBody.innerHTML = `
           <div class="detail-grid">
-            ${renderPosterArt(item)}
+            ${renderPosterArt(item, { priority: true })}
             <div class="detail-copy">
               <h2>${displayHtml(item.title)}</h2>
               <div class="item-meta">${displayHtml([item.remarks, item.episodeCount ? `${item.episodeCount} 集` : '', item.updatedAt].filter(Boolean).join(' / '))}</div>
@@ -4886,6 +4957,7 @@
             </div>
           </div>
         `;
+        bindPosterImages(detailBody);
       }
 
       function renderDetailBody(item, page = 0) {
@@ -4896,7 +4968,7 @@
         const rows = (item.episodes || []).slice(start, start + EPISODES_PER_PAGE);
         detailBody.innerHTML = `
           <div class="detail-grid">
-            ${renderPosterArt(item)}
+            ${renderPosterArt(item, { priority: true })}
             <div class="detail-copy">
               <h2>${displayHtml(item.title)}</h2>
               <div class="item-meta">${displayHtml([item.remarks, item.score ? `評分 ${item.score}` : '', item.updatedAt].filter(Boolean).join(' / '))}</div>
@@ -4916,6 +4988,7 @@
             }
           </div>
         `;
+        bindPosterImages(detailBody);
         bindDetailEpisodeControls(item);
       }
 
