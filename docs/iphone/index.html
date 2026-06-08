@@ -9,6 +9,7 @@
     <meta name="theme-color" content="#050507" />
     <link rel="icon" href="../assets/icon.png" />
     <link rel="apple-touch-icon" href="../assets/icon.png" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <title>影視 OKTV iPhone</title>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js" defer></script>
@@ -301,10 +302,13 @@
 
       .poster-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
       }
 
       .poster-card {
         min-width: 0;
+        display: grid;
+        grid-template-rows: auto 2.5em 52px;
         border: 0;
         background: transparent;
         color: inherit;
@@ -312,7 +316,7 @@
         text-align: left;
         cursor: pointer;
         content-visibility: auto;
-        contain-intrinsic-size: 260px 150px;
+        contain-intrinsic-size: 332px 150px;
       }
 
       .poster-card:focus-visible .poster-art,
@@ -323,7 +327,8 @@
 
       .poster-art {
         position: relative;
-        aspect-ratio: 0.72;
+        width: 100%;
+        aspect-ratio: 2 / 3;
         overflow: hidden;
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.16);
@@ -338,6 +343,7 @@
         height: 100%;
         display: block;
         object-fit: cover;
+        object-position: center center;
         image-rendering: auto;
         filter: saturate(1.16) contrast(1.07) brightness(1.03);
         transform: translateZ(0) scale(1.002);
@@ -456,6 +462,7 @@
         font-size: 1rem;
         line-height: 1.25;
         overflow: hidden;
+        height: 2.5em;
         min-height: 2.5em;
       }
 
@@ -470,11 +477,13 @@
       .poster-sub {
         display: flex;
         flex-wrap: wrap;
+        align-content: flex-start;
         gap: 5px;
         margin-top: 5px;
         color: var(--muted);
         font-size: 0.78rem;
         overflow: hidden;
+        height: 49px;
         min-height: 24px;
       }
 
@@ -747,6 +756,9 @@
 
       .skeleton-card {
         min-width: 0;
+        display: grid;
+        grid-template-rows: auto 14px 14px;
+        gap: 9px;
       }
 
       .skeleton-art,
@@ -758,13 +770,12 @@
       }
 
       .skeleton-art {
-        aspect-ratio: 0.72;
+        aspect-ratio: 2 / 3;
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       .skeleton-line {
         height: 14px;
-        margin-top: 9px;
       }
 
       .skeleton-line.is-short {
@@ -1156,6 +1167,7 @@
       const SOURCE_ICON = '../assets/source-signal-icon.svg';
       const ADULT_ICON = '../assets/adult-18-badge.svg';
       const ONLINE_DATA_BASE = 'https://sylong7708.github.io/TV/docs/data/';
+      const APP_DATA_VERSION = new URLSearchParams(location.search).get('v') || '20260608-fastlayout';
       const SOURCE_STORAGE_KEY = 'oktv:iphone:selectedSource:v3';
       const DEFAULT_SOURCE_RE = /爱奇艺|愛奇藝/i;
       const QUANTUM_MANIFEST_URL = '../data/quantum-lzi/manifest.json';
@@ -1181,6 +1193,7 @@
           sort: 'hot',
         },
         sourceSheetMode: 'normal',
+        sourceLoading: false,
         searchComposing: false,
         refocusSearch: false,
         catalog: { totals: {}, sources: [], items: [], filters: { years: [], areas: [], genres: [] } },
@@ -1248,7 +1261,19 @@
       function onlineDataUrl(url) {
         const match = String(url || '').match(/(?:^|\/)data\/(.+?)(?:[?#].*)?$/);
         if (!match) return '';
-        return `${ONLINE_DATA_BASE}${match[1]}?ts=${Date.now()}`;
+        return `${ONLINE_DATA_BASE}${match[1]}?v=${encodeURIComponent(APP_DATA_VERSION)}`;
+      }
+
+      function versionedDataUrl(url) {
+        const raw = String(url || '');
+        if (!raw.startsWith('../data/')) return raw;
+        try {
+          const target = new URL(raw, location.href);
+          if (!target.searchParams.has('v')) target.searchParams.set('v', APP_DATA_VERSION);
+          return `${target.pathname}${target.search}${target.hash}`;
+        } catch {
+          return raw;
+        }
       }
 
       async function responseJson(res, target) {
@@ -1273,11 +1298,12 @@
       }
 
       async function getJson(url, fallback) {
+        const local = versionedDataUrl(url);
         const online = onlineDataUrl(url);
-        const urls = location.hostname === 'sylong7708.github.io' || !online ? [url] : [online, url];
+        const urls = location.hostname === 'sylong7708.github.io' || !online ? [local] : [online, local];
         for (const target of urls) {
           try {
-            const res = await fetch(target, { cache: 'no-store' });
+            const res = await fetch(target, { cache: 'default' });
             if (!res.ok) continue;
             return await responseJson(res, target);
           } catch {
@@ -4501,11 +4527,26 @@
         `).join('');
       }
 
+      function renderBootScreen() {
+        renderNav();
+        screen.innerHTML = `
+          ${renderToolbar()}
+          <section class="section-head">
+            <div><h1>OKTV</h1><span>Loading</span></div>
+            <span class="status-pill warn">${icon('signal')}Loading</span>
+          </section>
+          <section class="poster-grid">${renderSearchSkeleton()}</section>
+        `;
+        bindToolbar();
+        bindFloatingFilter();
+      }
+
       function renderVodScreen() {
         ensureQuantumForCurrentView();
         ensureAvailableFilters();
         const allRows = visibleItems();
         const remoteSearchLoading = ensureRemoteSearchForCurrentView(allRows.length);
+        const pageLoading = state.sourceLoading || remoteSearchLoading;
         const searchStatus = renderSearchStatus(allRows.length, remoteSearchLoading);
         const rows = allRows.slice(0, state.visibleLimit);
         const title = tabs.find(([id]) => id === state.tab)?.[1] || '主頁';
@@ -4516,10 +4557,10 @@
           ${searchStatus}
           <section class="section-head">
             <div><h1>${displayHtml(title)}</h1><span>${rows.length} / ${allRows.length} 部內容，${state.catalog.totals.playableItems || 0} 部有播放項</span></div>
-            <span class="status-pill ${remoteSearchLoading ? 'warn' : 'ok'}">${icon(remoteSearchLoading ? 'signal' : 'check')}${remoteSearchLoading ? '搜尋中' : 'OKTV'}</span>
+            <span class="status-pill ${pageLoading ? 'warn' : 'ok'}">${icon(pageLoading ? 'signal' : 'check')}${pageLoading ? '載入中' : 'OKTV'}</span>
           </section>
           <section class="poster-grid">
-            ${rows.map(renderPoster).join('') || (remoteSearchLoading ? renderSearchSkeleton() : emptyState('目前沒有符合篩選的影片'))}
+            ${rows.map(renderPoster).join('') || (pageLoading ? renderSearchSkeleton() : emptyState('目前沒有符合篩選的影片'))}
           </section>
           ${renderFloatingFilter()}
         `;
@@ -5166,8 +5207,16 @@
         clearViewCache();
         resetVisibleLimit();
         resetPageViewport();
-        await ensureSelectedSourceItems(sourceId);
+        state.sourceLoading = true;
         render();
+        try {
+          await ensureSelectedSourceItems(sourceId);
+        } finally {
+          if (state.selectedSource === sourceId) {
+            state.sourceLoading = false;
+            render();
+          }
+        }
       }
 
       function sortLabel(value) {
@@ -5220,19 +5269,21 @@
       document.querySelector('#detailSheet [data-close-detail].icon-btn').innerHTML = icon('close');
       document.querySelector('#playerSheet [data-close-player].icon-btn').innerHTML = icon('close');
 
+      window.addEventListener('scroll', maybeLoadMore, { passive: true });
+      resetVisibleLimit();
+      renderBootScreen();
+
       [state.catalog, state.live] = await Promise.all([
         getJson('../data/iphone-vod-catalog.json', state.catalog),
         getJson('../data/live-channels.json', []),
       ]);
       state.catalog.sources = Array.isArray(state.catalog.sources) ? state.catalog.sources : [];
       state.sourceMap = new Map(state.catalog.sources.map((source) => [source.id, source]));
-      await loadQuantumManifest();
       const initialCatalogItems = Array.isArray(state.catalog.items) ? state.catalog.items : [];
       state.catalog.items = [];
       state.itemById.clear();
       registerCatalogItems(initialCatalogItems);
       applyHealthIndex({ failed: [] });
-      localStorage.removeItem('oktv:iphone:selectedSource');
       const storedSource = localStorage.getItem(SOURCE_STORAGE_KEY);
       if (!storedSource || storedSource === 'all' || state.selectedSource === 'default') {
         state.selectedSource = 'normal';
@@ -5245,10 +5296,20 @@
         state.selectedSource = 'normal';
         localStorage.setItem(SOURCE_STORAGE_KEY, state.selectedSource);
       }
-      await ensureSelectedSourceItems(state.selectedSource);
-      window.addEventListener('scroll', maybeLoadMore, { passive: true });
-      resetVisibleLimit();
+      state.sourceLoading = true;
       render();
+      const selectedSourceAtBoot = state.selectedSource;
+      (async () => {
+        await loadQuantumManifest();
+        await ensureSelectedSourceItems(selectedSourceAtBoot);
+      })()
+        .catch(() => undefined)
+        .finally(() => {
+          if (state.selectedSource !== selectedSourceAtBoot) return;
+          state.sourceLoading = false;
+          resetVisibleLimit();
+          render();
+        });
       getJson('../data/iphone-health-check-latest.json', { failed: [] }).then((health) => {
         applyHealthIndex(health);
         render();
