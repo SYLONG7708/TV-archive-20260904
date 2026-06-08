@@ -30,10 +30,12 @@ const maxPagesPerQuery = Number(args.get('maxPagesPerQuery') || 1);
 const maxPagesPerSource = Number(args.get('maxPagesPerSource') || Math.max(1, maxPagesPerQuery * Math.max(1, maxCategoriesPerSource + 1)));
 const pageSize = Number(args.get('pageSize') || 0);
 const fetchPageConcurrency = Number(args.get('fetchPageConcurrency') || Math.max(1, Math.min(6, concurrency)));
+const retries = Number(args.get('retries') || 2);
 const sourceMatch = normalizeText(args.get('sourceMatch') || '');
 const mergeExisting = args.get('mergeExisting') === 'true';
 const includeAdult = args.get('includeAdult') !== 'false';
 const includeLegacySources = args.get('includeLegacySources') === 'true';
+let loadedCurrentVodUrl = '';
 
 const currentSourcesPath = path.join(tvRoot, 'sources', 'current-sources.json');
 const fallbackCurrentVodPath = path.join(tvRoot, '.patch-work', 'current-vod.json');
@@ -41,11 +43,15 @@ const allOnDemandSourcesPath = path.join(tvRoot, 'sources', 'All on-demand sourc
 const lunaFullPath = path.join(tvRoot, 'sources', 'vod-lunatv-full-oktv.json');
 
 const INDEXABLE_TYPES = new Set([0, 1]);
-const USER_AGENT = 'OKTV-iPhone-catalog-builder/1.0';
-let loadedCurrentVodUrl = '';
+const USER_AGENT =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36 OKTV/1.0';
 
 function withTimeout() {
   return AbortSignal.timeout(timeoutMs);
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function readJson(file, fallback = null) {
@@ -56,12 +62,25 @@ async function readJson(file, fallback = null) {
   }
 }
 
-async function fetchText(url) {
+async function writeTextAtomic(file, text) {
+  const dir = path.dirname(file);
+  const temp = path.join(dir, `.${path.basename(file)}.${process.pid}.${Date.now()}.tmp`);
+  await fs.mkdir(dir, { recursive: true });
+  await fs.writeFile(temp, text, 'utf8');
+  try {
+    await fs.rename(temp, file);
+  } catch (error) {
+    await fs.rm(temp, { force: true });
+    throw error;
+  }
+}
+
+async function fetchTextOnce(url) {
   const res = await fetch(url, {
     redirect: 'follow',
     signal: withTimeout(),
     headers: {
-      accept: 'application/json,text/plain,*/*',
+      accept: 'application/json,text/xml,application/xml,text/plain,*/*',
       'user-agent': USER_AGENT,
     },
   });
@@ -69,12 +88,30 @@ async function fetchText(url) {
   return await res.text();
 }
 
+async function fetchText(url) {
+  let lastError = null;
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    try {
+      return await fetchTextOnce(url);
+    } catch (error) {
+      lastError = error;
+      if (attempt >= retries) break;
+      const rateLimited = /HTTP (?:429|701|502|503)/i.test(error.message);
+      await sleep((rateLimited ? 5000 : 750) * (attempt + 1));
+    }
+  }
+  throw lastError;
+}
+
 async function fetchJson(url) {
   return JSON.parse(await fetchText(url));
 }
 
-async function fetchVodPayload(url) {
-  return parseVodPayload(await fetchText(url));
+async function fetchPayload(url) {
+  const text = await fetchText(url);
+  const trimmed = text.trim();
+  if (/^</.test(trimmed)) return parseXmlPayload(trimmed);
+  return JSON.parse(trimmed);
 }
 
 function normalizeText(value, fallback = '') {
@@ -156,6 +193,8 @@ const EXPLICIT_ADULT_SOURCE_APIS = [
 const ADULT_SOURCE_API_KEYS = new Set(EXPLICIT_ADULT_SOURCE_APIS.map(normalizeAdultApiKey));
 const ADULT_SOURCE_TEXT_RE =
   /18\+|avzy|souav|swag|91md|155api|apiyutu|fhapi|apilsb|yytv4|xiaojizy|hsck|apidanaizi|jkunzy|lbapi|naixxzy|slapibf|apilj|shayuapi|douapi|ddapi|heiliao|bwzyz|thzy|jingpin|ckzy|xxibao|xiangjiao|msnii|pgxdy|kxgav|xingba|dadiapi|semaozy|aosika|siwazy|truvaze|fqzy|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u60c5\u8272|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u4ed3\u5e93|\u5009\u5eab|\u674f\u5427|\u8272\u732b|\u6843\u82b1|\u9999\u8549|\u5976\u9999|\u68ee\u6797|\u8fa3\u6912|\u9ca8\u9c7c|\u9bca\u9b5a|\u9ed1\u6599|\u7cbe\u54c1|\u7ec6\u80de|\u7d30\u80de|\u5965\u65af\u5361|\u5967\u65af\u5361|\u65e0\u7801|\u7121\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u4e3b\u64ad|\u5f3a\u5978|\u841d\u8389|\u863f\u8389|\u5236\u670d|\u4f26\u7406|\u502b\u7406|\u6deb|AV/i;
+const ADULT_ITEM_TEXT_RE =
+  /18\+|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u60c5\u8272|\u4e09\u7ea7|\u4e09\u7d1a|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u65e0\u7801|\u7121\u78bc|\u6709\u7801|\u6709\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u5f3a\u5978|\u5f37\u59e6|\u841d\u8389|\u863f\u8389|\u91cc\u756a|\u88cf\u756a|\u5236\u670d\u8bf1\u60d1|\u5236\u670d\u8a98\u60d1|\u4f26\u7406|\u502b\u7406|\u5199\u771f|\u5beb\u771f|\u5973\u512a|\u5973\u4f18|\u5de8\u4e73|\u4e73\u4ea4|\u53e3\u4ea4|\u6deb|\u5077\u62cd|\u4eba\u59bb|\u56fd\u4ea7\u81ea\u62cd|\u570b\u7522\u81ea\u62cd|\bAV\b/i;
 
 function normalizeAdultApiKey(value) {
   const raw = normalizeText(value).toLowerCase();
@@ -197,15 +236,35 @@ function adultText(site) {
 function addVodQuery(api, query) {
   const value = String(api || '').trim();
   if (!value) return '';
+  if (/[?&]url=/i.test(value)) {
+    if (value.endsWith('?') || value.endsWith('&')) return `${value}${query}`;
+    return `${value}?${query}`;
+  }
+  try {
+    const url = new URL(value);
+    const params = new URLSearchParams(query);
+    for (const [key, paramValue] of params.entries()) url.searchParams.set(key, paramValue);
+    return url.toString();
+  } catch {
+    // Keep support for non-standard third-party proxy URLs.
+  }
   if (value.endsWith('?') || value.endsWith('&')) return `${value}${query}`;
+  if (value.includes('?')) return `${value}&${query}`;
   return `${value}?${query}`;
 }
 
 function vodQueryWithPage(query, page) {
   const params = new URLSearchParams(String(query || ''));
   params.set('pg', String(page));
-  if (pageSize > 0) params.set('pagesize', String(pageSize));
+  if (pageSize > 0) {
+    params.set('pagesize', String(pageSize));
+    params.set('limit', String(pageSize));
+  }
   return params.toString();
+}
+
+function vodAction(source) {
+  return Number(source?.type) === 0 ? 'videolist' : 'detail';
 }
 
 function textId(input, index = 0) {
@@ -219,6 +278,29 @@ function textId(input, index = 0) {
 
 function isAdultSource(site) {
   return adultApiCandidates(site).some((api) => ADULT_SOURCE_API_KEYS.has(api)) || ADULT_SOURCE_TEXT_RE.test(adultText(site));
+}
+
+function isAdultVodItem(item, source, typeName, genre, title) {
+  if (source.adult) return true;
+  const text = [
+    title,
+    typeName,
+    Array.isArray(genre) ? genre.join(' ') : '',
+    item.vod_class,
+    item.class,
+    item.tag,
+    item.vod_actor,
+    item.actor,
+    item.vod_director,
+    item.director,
+    item.vod_content,
+    item.content,
+    item.vod_remarks,
+    item.remarks,
+  ]
+    .map((value) => String(value || ''))
+    .join(' ');
+  return ADULT_ITEM_TEXT_RE.test(text);
 }
 
 function kindFromTypeName(typeName, sourceAdult = false) {
@@ -236,7 +318,70 @@ function normalizeImage(baseUrl, value) {
   }
 }
 
+function decodeEntities(value) {
+  return String(value || '')
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'");
+}
+
+function xmlAttr(value, name) {
+  return decodeEntities(String(value || '').match(new RegExp(`${name}="([^"]*)"`, 'i'))?.[1] || '');
+}
+
+function xmlTag(value, name) {
+  return decodeEntities(String(value || '').match(new RegExp(`<${name}\\b[^>]*>([\\s\\S]*?)<\\/${name}>`, 'i'))?.[1] || '');
+}
+
+function xmlTags(value, name) {
+  return [...String(value || '').matchAll(new RegExp(`<${name}\\b[^>]*>([\\s\\S]*?)<\\/${name}>`, 'gi'))].map((match) =>
+    decodeEntities(match[1]),
+  );
+}
+
+function parseXmlPayload(text) {
+  const listOpen = String(text || '').match(/<list\b([^>]*)>/i)?.[1] || '';
+  const videos = [...String(text || '').matchAll(/<video\b[^>]*>([\s\S]*?)<\/video>/gi)].map((match) => {
+    const node = match[1];
+    const playGroups = xmlTags(node, 'dd');
+    const typeName = xmlTag(node, 'type');
+    return {
+      vod_id: xmlTag(node, 'id'),
+      id: xmlTag(node, 'id'),
+      type_id: xmlTag(node, 'tid'),
+      type_name: typeName,
+      vod_name: xmlTag(node, 'name'),
+      vod_pic: xmlTag(node, 'pic'),
+      vod_area: xmlTag(node, 'area'),
+      vod_year: xmlTag(node, 'year'),
+      vod_remarks: xmlTag(node, 'note'),
+      vod_actor: xmlTag(node, 'actor'),
+      vod_director: xmlTag(node, 'director'),
+      vod_content: xmlTag(node, 'des') || xmlTag(node, 'content'),
+      vod_time: xmlTag(node, 'last'),
+      vod_class: typeName,
+      vod_play_url: playGroups.join('$$$'),
+    };
+  });
+  const categories = [...String(text || '').matchAll(/<ty\b([^>]*)>([\s\S]*?)<\/ty>/gi)].map((match, index) => ({
+    type_id: xmlAttr(match[1], 'id') || String(index + 1),
+    type_name: decodeEntities(match[2]),
+  }));
+  return {
+    list: videos,
+    class: categories,
+    page: Number(xmlAttr(listOpen, 'page') || 1) || 1,
+    pagecount: Number(xmlAttr(listOpen, 'pagecount') || 1) || 1,
+    limit: Number(xmlAttr(listOpen, 'pagesize') || 0) || 0,
+    total: Number(xmlAttr(listOpen, 'recordcount') || 0) || 0,
+  };
+}
+
 function extractArray(payload) {
+  if (Array.isArray(payload?.data) && payload.data.some((item) => item?.vod_name || item?.name || item?.title)) return payload.data;
   if (Array.isArray(payload?.list)) return payload.list;
   if (Array.isArray(payload?.data)) return payload.data;
   if (Array.isArray(payload?.videos)) return payload.videos;
@@ -324,8 +469,8 @@ function parseEpisodes(playUrl) {
 }
 
 function normalizeCategory(item, index, adult) {
-  const id = normalizeText(item.type_id ?? item.id ?? item.type ?? index + 1);
-  const name = normalizeText(item.type_name ?? item.name ?? item.type ?? `分類 ${index + 1}`);
+  const id = normalizeText(item.type_id ?? item.list_id ?? item.id ?? item.type ?? index + 1);
+  const name = normalizeText(item.type_name ?? item.list_name ?? item.name ?? item.type ?? `分類 ${index + 1}`);
   return {
     id: String(id),
     name,
@@ -336,15 +481,16 @@ function normalizeCategory(item, index, adult) {
 function normalizeVodItem(item, source, category = null) {
   const title = normalizeText(item.vod_name ?? item.name ?? item.title);
   if (!title) return null;
-  const typeName = normalizeText(item.type_name || category?.name || '');
-  const year = parseYear(item.vod_year || item.year || item.vod_time || item.update_time || item.vod_pubdate);
-  const area = normalizeArea(item.vod_area || item.area || item.region || '');
+  const typeName = normalizeText(item.type_name || item.list_name || category?.name || '');
+  const year = parseYear(item.vod_year || item.year || item.vod_time || item.update_time || item.vod_pubdate || item.vod_addtime);
+  const area = normalizeArea(item.vod_area || item.area || item.region || item.vod_area_name || '');
   const genre = splitClasses(item.vod_class || item.class || item.tag, typeName);
   const score = parseScore(item.vod_score || item.score || item.douban_score);
   const views = parseNumber(item.vod_hits || item.hits || item.views || item.play_count || item.vod_up);
-  const updatedAt = normalizeText(item.vod_time || item.update_time || item.vod_pubdate || item.created_at || '');
-  const episodes = parseEpisodes(item.vod_play_url || item.play_url || item.url);
-  const kind = classifyVodKind({ categoryName: typeName || category?.name || '', genre, sourceAdult: source.adult });
+  const updatedAt = normalizeText(item.vod_time || item.update_time || item.vod_pubdate || item.created_at || item.vod_addtime || '');
+  const episodes = parseEpisodes(item.vod_play_url || item.vod_url || item.vod_play_url_with_player || item.play_url || item.url);
+  const adult = isAdultVodItem(item, source, typeName || category?.name || '', genre, title);
+  const kind = classifyVodKind({ categoryName: typeName || category?.name || '', genre, title, sourceAdult: adult, adult });
   const id = `${source.id}::${normalizeText(item.vod_id ?? item.id ?? title)}`;
 
   return {
@@ -368,10 +514,11 @@ function normalizeVodItem(item, source, category = null) {
     views,
     hot: views + score * 100 + parseEpoch(updatedAt) / 100000000,
     updatedAt,
-    poster: normalizeImage(source.api, item.vod_pic || item.pic || item.cover || item.logo),
+    poster: normalizeImage(source.api, item.vod_pic || item.pic || item.cover || item.logo || item.vod_pic_thumb),
     episodes,
     playable: episodes.length > 0,
-    adult: source.adult,
+    adult,
+    adultDetected: adult && !source.adult,
   };
 }
 
@@ -452,7 +599,7 @@ async function mapLimit(items, limit, worker) {
 
 async function getSourceCategories(source) {
   try {
-    const payload = await fetchVodPayload(addVodQuery(source.api, 'ac=list'));
+    const payload = await fetchPayload(addVodQuery(source.api, 'ac=list'));
     const seen = new Set();
     return extractCategories(payload)
       .map((item, index) => normalizeCategory(item, index, source.adult))
@@ -481,14 +628,14 @@ function pickCategoryFetches(categories) {
 function pageMeta(payload) {
   return {
     page: Number(payload?.page || 1) || 1,
-    pagecount: Number(payload?.pagecount || payload?.pageCount || 1) || 1,
-    total: Number(payload?.total || payload?.totalCount || 0) || 0,
-    limit: Number(payload?.limit || 0) || 0,
+    pagecount: Number(payload?.pagecount || payload?.pageCount || payload?.page?.pagecount || 1) || 1,
+    total: Number(payload?.total || payload?.totalCount || payload?.page?.recordcount || 0) || 0,
+    limit: Number(payload?.limit || payload?.page?.pagesize || 0) || 0,
   };
 }
 
 async function fetchListPage(source, query, category = null, page = 1) {
-  const payload = await fetchVodPayload(addVodQuery(source.api, vodQueryWithPage(query, page)));
+  const payload = await fetchPayload(addVodQuery(source.api, vodQueryWithPage(query, page)));
   return {
     rows: extractArray(payload)
       .map((item) => normalizeVodItem(item, source, category))
@@ -519,10 +666,11 @@ async function indexSource(source) {
   source.categories = categories;
   const itemMap = new Map();
   const checks = [];
+  const action = vodAction(source);
   const queries = [
-    { query: 'ac=detail&pg=1', category: null, label: '最新' },
+    { query: `ac=${action}&pg=1`, category: null, label: '最新' },
     ...pickCategoryFetches(categories).map((category) => ({
-      query: `ac=detail&t=${encodeURIComponent(category.id)}&pg=1`,
+      query: `ac=${action}&t=${encodeURIComponent(category.id)}&pg=1`,
       category,
       label: category.name,
     })),
@@ -724,43 +872,8 @@ const report = {
   })),
 };
 
-const vodSources = sources.map(vodSourceEntry);
-const existingSummary = await readJson(summaryOutput, {});
-const typeCounts = vodSources.reduce((acc, source) => {
-  acc[source.typeLabel] = (acc[source.typeLabel] || 0) + 1;
-  return acc;
-}, {});
-const summary = {
-  ...existingSummary,
-  generatedAt: catalog.generatedAt,
-  input: {
-    live: existingSummary?.input?.live || '',
-    vodUrl: loadedCurrentVodUrl,
-    includeLegacySources,
-  },
-  vod: {
-    count: vodSources.length,
-    typeCounts,
-    enabledCount: vodSources.length,
-    indexedCount: sources.filter((source) => source.indexed).length,
-    categoriesOk: sources.filter((source) => (source.categories || []).length > 0).length,
-    categoriesFailed: sources.filter((source) => source.indexable && !(source.categories || []).length).length,
-  },
-  notes: [
-    'VOD source is loaded from sources/current-sources.json vod.url.',
-    'Legacy All on-demand and LunaTV VOD data is excluded unless --includeLegacySources true is set.',
-    'Live data continues to use docs/data/live-channels.json.',
-  ],
-};
-
-await fs.mkdir(path.dirname(output), { recursive: true });
-await fs.mkdir(path.dirname(reportOutput), { recursive: true });
-await fs.mkdir(path.dirname(vodSourcesOutput), { recursive: true });
-await fs.mkdir(path.dirname(summaryOutput), { recursive: true });
-await fs.writeFile(output, `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
-await fs.writeFile(reportOutput, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
-await fs.writeFile(vodSourcesOutput, `${JSON.stringify(vodSources, null, 2)}\n`, 'utf8');
-await fs.writeFile(summaryOutput, `${JSON.stringify(summary, null, 2)}\n`, 'utf8');
+await writeTextAtomic(output, `${JSON.stringify(catalog, null, 2)}\n`);
+await writeTextAtomic(reportOutput, `${JSON.stringify(report, null, 2)}\n`);
 
 console.log(
   JSON.stringify(

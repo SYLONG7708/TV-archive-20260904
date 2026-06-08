@@ -51,6 +51,14 @@
 
 直播內的「私密頻道」已設為密碼群組，密碼為 `7708`。
 
+## 目前內置來源與保存位置
+
+- 點播：`https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX`
+- 直播：`https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/live-stable.txt`
+- repo 保存位置：`sources/current-sources.json`
+- APK 內建位置：`classes.dex` 的 `com.fongmi.android.tv.bean.Config.vod()` 與 `Config.live()`
+- App 內手動修改後：保存到 Android App 私有資料庫，重裝或清除資料會回到 APK 內建預設值。
+
 ## 修改來源
 
 請看 `docs/index.html`，或直接執行：

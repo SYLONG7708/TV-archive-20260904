@@ -18,14 +18,15 @@ if (-not (Test-Path -LiteralPath $scriptPath)) {
     throw "Local updater script not found: $scriptPath"
 }
 
-$actionArgs = '-NoProfile -ExecutionPolicy Bypass -File "{0}" -RepoRoot "{1}" -SourceName "jin18,full"' -f $scriptPath, $RepoRoot
+$actionArgs = '-NoProfile -ExecutionPolicy Bypass -File "{0}" -RepoRoot "{1}" -SourceName "jin18,full" -UpdateIntervalDays 3' -f $scriptPath, $RepoRoot
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $actionArgs
 $triggerAt = (Get-Date).Date.AddHours($AtHour)
 if ($triggerAt -le (Get-Date)) {
     $triggerAt = $triggerAt.AddDays(1)
 }
 $triggers = @(
-    (New-ScheduledTaskTrigger -Daily -At $triggerAt)
+    (New-ScheduledTaskTrigger -Daily -At $triggerAt),
+    (New-ScheduledTaskTrigger -AtStartup)
 )
 $settings = New-ScheduledTaskSettingsSet `
     -StartWhenAvailable `
@@ -42,13 +43,13 @@ Register-ScheduledTask `
     -Trigger $triggers `
     -Settings $settings `
     -Principal $principal `
-    -Description "Check OKTV LunaTV VOD sources daily at 02:00; refresh only after five days since the last successful update, and retry the next day if the update fails." `
+    -Description "Check OKTV LunaTV VOD sources at startup and daily at 02:00; refresh only after three days since the last successful update, and retry on the next trigger if the update fails." `
     -Force | Out-Null
 
 Write-Host "Registered scheduled task: $TaskName"
 Write-Host "Repo: $RepoRoot"
 Write-Host "Script: $scriptPath"
-Write-Host "Trigger: daily at $($triggerAt.ToString("HH:mm")) with five-day success gate"
+Write-Host "Trigger: startup and daily at $($triggerAt.ToString("HH:mm")) with three-day success gate"
 
 if ($RunNow) {
     Start-ScheduledTask -TaskName $TaskName
