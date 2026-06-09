@@ -1,18 +1,18 @@
 {
-    "generatedAt":  "2026-06-09T14:22:29.9330175+08:00",
+    "generatedAt":  "2026-06-09T16:22:43.8412647+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  69,
-    "fallback":  43,
-    "failed":  43,
+    "playable":  68,
+    "fallback":  44,
+    "failed":  44,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  61.61,
-    "playlistEntries":  69,
-    "removedFromPlaylist":  43,
+    "hlsSuccessRate":  60.71,
+    "playlistEntries":  68,
+    "removedFromPlaylist":  44,
     "playlistPolicy":  "playable-only",
     "mode":  "best-effort-hls-resolve",
     "note":  "",
@@ -83,6 +83,13 @@
                    }
                ],
     "failures":  [
+                     {
+                         "Order":  8,
+                         "Group":  "YouTube新聞台",
+                         "Name":  "三立新聞台",
+                         "PageUrl":  "https://www.youtube.com/watch?v=QsGswQvRmtU",
+                         "Error":  "ERROR: [youtube] QsGswQvRmtU: This live stream recording is not available."
+                     },
                      {
                          "Order":  14,
                          "Group":  "YouTube新聞台",
