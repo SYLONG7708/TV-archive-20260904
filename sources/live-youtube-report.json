@@ -1,18 +1,18 @@
 {
-    "generatedAt":  "2026-06-09T18:24:24.8782768+08:00",
+    "generatedAt":  "2026-06-09T20:24:58.3961778+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  63,
-    "fallback":  49,
-    "failed":  49,
+    "playable":  67,
+    "fallback":  45,
+    "failed":  45,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  56.25,
-    "playlistEntries":  63,
-    "removedFromPlaylist":  49,
+    "hlsSuccessRate":  59.82,
+    "playlistEntries":  67,
+    "removedFromPlaylist":  45,
     "playlistPolicy":  "playable-only",
     "mode":  "best-effort-hls-resolve",
     "note":  "",
@@ -147,13 +147,6 @@
                          "Error":  "ERROR: [youtube] RvSOIM620bA: Private video. Sign in if you\u0027ve been granted access to this video. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
                      },
                      {
-                         "Order":  47,
-                         "Group":  "YouTube國際新聞",
-                         "Name":  "Al Jazeera Arabic",
-                         "PageUrl":  "https://www.youtube.com/watch?v=N8xxOD0nT1Y",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 264788 bytes, 373.2 kbps."
-                     },
-                     {
                          "Order":  48,
                          "Group":  "YouTube國際新聞",
                          "Name":  "ABC News",
@@ -173,13 +166,6 @@
                          "Name":  "Sky News",
                          "PageUrl":  "https://www.youtube.com/watch?v=paEJskVBz_M",
                          "Error":  "ERROR: [youtube] paEJskVBz_M: Requested format is not available. Use --list-formats for a list of available formats"
-                     },
-                     {
-                         "Order":  53,
-                         "Group":  "YouTube國際新聞",
-                         "Name":  "Euronews English",
-                         "PageUrl":  "https://www.youtube.com/watch?v=pykpO5kQJ98",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 265268 bytes, 588.5 kbps."
                      },
                      {
                          "Order":  55,
@@ -217,13 +203,6 @@
                          "Error":  "ERROR: [youtube] vpZ5af6irzA: Requested format is not available. Use --list-formats for a list of available formats"
                      },
                      {
-                         "Order":  62,
-                         "Group":  "YouTube亞洲新聞",
-                         "Name":  "Asianet News",
-                         "PageUrl":  "https://www.youtube.com/watch?v=s0LLVQeMmtU",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 263012 bytes, 566.9 kbps."
-                     },
-                     {
                          "Order":  63,
                          "Group":  "YouTube亞洲新聞",
                          "Name":  "JapaNews24",
@@ -257,13 +236,6 @@
                          "Name":  "NewsTamil24x7",
                          "PageUrl":  "https://www.youtube.com/watch?v=hGs-nKaNc88",
                          "Error":  "ERROR: [youtube] hGs-nKaNc88: Requested format is not available. Use --list-formats for a list of available formats"
-                     },
-                     {
-                         "Order":  70,
-                         "Group":  "YouTube亞洲新聞",
-                         "Name":  "Malayalam News",
-                         "PageUrl":  "https://www.youtube.com/watch?v=1wECsnGZcfc",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 263012 bytes, 251.5 kbps."
                      },
                      {
                          "Order":  73,
@@ -378,13 +350,6 @@
                          "Error":  "ERROR: [youtube] wKiClrFLjZs: Requested format is not available. Use --list-formats for a list of available formats"
                      },
                      {
-                         "Order":  97,
-                         "Group":  "YouTube台灣節目",
-                         "Name":  "飢餓遊戲",
-                         "PageUrl":  "https://www.youtube.com/watch?v=6TsaEYaKueE",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 273380 bytes, 584.6 kbps."
-                     },
-                     {
                          "Order":  98,
                          "Group":  "YouTube互動娛樂",
                          "Name":  "InquizeX",
@@ -404,6 +369,13 @@
                          "Name":  "Muse 異世界流浪美食家馬拉松",
                          "PageUrl":  "https://www.youtube.com/watch?v=fK1M3oM7ZPQ",
                          "Error":  "ERROR: [youtube] fK1M3oM7ZPQ: Private video. Sign in if you\u0027ve been granted access to this video. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
+                     },
+                     {
+                         "Order":  103,
+                         "Group":  "YouTube動漫台",
+                         "Name":  "Muse 獵人馬拉松",
+                         "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 57528 bytes, 2601.1 kbps."
                      },
                      {
                          "Order":  107,
