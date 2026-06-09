@@ -1,18 +1,18 @@
 {
-    "generatedAt":  "2026-06-09T06:22:03.5185328+08:00",
+    "generatedAt":  "2026-06-09T08:22:10.1366110+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  70,
-    "fallback":  42,
-    "failed":  42,
+    "playable":  68,
+    "fallback":  44,
+    "failed":  44,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  62.5,
-    "playlistEntries":  70,
-    "removedFromPlaylist":  42,
+    "hlsSuccessRate":  60.71,
+    "playlistEntries":  68,
+    "removedFromPlaylist":  44,
     "playlistPolicy":  "playable-only",
     "mode":  "best-effort-hls-resolve",
     "note":  "",
@@ -343,6 +343,13 @@
                          "Error":  "ERROR: [youtube] wKiClrFLjZs: Requested format is not available. Use --list-formats for a list of available formats"
                      },
                      {
+                         "Order":  98,
+                         "Group":  "YouTube互動娛樂",
+                         "Name":  "InquizeX",
+                         "PageUrl":  "https://www.youtube.com/watch?v=Sa0UpjTdJT4",
+                         "Error":  "ERROR: [youtube] Sa0UpjTdJT4: This live stream recording is not available."
+                     },
+                     {
                          "Order":  99,
                          "Group":  "YouTube動漫台",
                          "Name":  "Anileap 動漫歌曲24小時",
@@ -355,6 +362,13 @@
                          "Name":  "Muse 異世界流浪美食家馬拉松",
                          "PageUrl":  "https://www.youtube.com/watch?v=fK1M3oM7ZPQ",
                          "Error":  "ERROR: [youtube] fK1M3oM7ZPQ: Private video. Sign in if you\u0027ve been granted access to this video. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
+                     },
+                     {
+                         "Order":  103,
+                         "Group":  "YouTube動漫台",
+                         "Name":  "Muse 獵人馬拉松",
+                         "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 54520 bytes, 1614.9 kbps."
                      },
                      {
                          "Order":  107,
