@@ -327,6 +327,8 @@ function toCsv(rows) {
     'bytes',
     'sha256',
     'categoryCount',
+    'apiCategoryCount',
+    'usedFallbackCategories',
     'host',
     'error',
     'rawResponsePath',
@@ -384,7 +386,10 @@ async function refreshSite(site, index) {
         parseError = error.message;
       }
     }
-    const categories = parsed ? normalizeCategories(parsed, site.categories) : normalizeCategories(null, site.categories);
+    const apiCategories = parsed ? normalizeCategories(parsed, []) : [];
+    const fallbackCategories = normalizeCategories(null, site.categories);
+    const categories = apiCategories.length > 0 ? apiCategories : fallbackCategories;
+    const usedFallbackCategories = apiCategories.length === 0 && fallbackCategories.length > 0;
     return {
       index: index + 1,
       key: normalizeText(site.key),
@@ -397,11 +402,13 @@ async function refreshSite(site, index) {
       infoUrl: target.url,
       infoSourceField: target.sourceField,
       host: hostOf(target.baseApi),
-      ok: target.parseCategories ? categories.length > 0 && !parseError : text.length > 0,
+      ok: target.parseCategories ? apiCategories.length > 0 && !parseError : text.length > 0,
       httpLike: /^https?:\/\//i.test(target.url),
       bytes: Buffer.byteLength(text, 'utf8'),
       sha256: sha256(text),
       categoryCount: categories.length,
+      apiCategoryCount: apiCategories.length,
+      usedFallbackCategories,
       categories,
       rawResponsePath,
       startedAt,
