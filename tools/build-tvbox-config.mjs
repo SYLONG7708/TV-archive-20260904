@@ -14,6 +14,19 @@ for (let i = 2; i < process.argv.length; i += 1) {
 const repoRoot = path.resolve(args.get('repoRoot') || path.resolve(import.meta.dirname, '..'));
 const input = path.resolve(args.get('input') || path.join(repoRoot, 'sources', 'All on-demand sources'));
 const output = path.resolve(args.get('output') || path.join(repoRoot, 'sources', 'TVBOX'));
+const EXCLUDED_TVBOX_SOURCE_KEYS = new Set([
+  '旺旺资源',
+  '旺旺短剧',
+  '卧龙资源',
+  '金鹰点播',
+  '华视影院',
+  '百万资源',
+  '美少女',
+  '黄AVZY',
+  '白嫖资源',
+  '丝袜资源',
+  '优优资源',
+]);
 
 async function readJson(file) {
   const text = await fs.readFile(file, 'utf8');
@@ -220,6 +233,7 @@ const sites = [];
 
 for (const sourceSite of sourceSites) {
   const site = normalizeSite(sourceSite, sites.length);
+  if (EXCLUDED_TVBOX_SOURCE_KEYS.has(site.key)) continue;
   if (!site.key || !site.api || seenKeys.has(site.key)) continue;
   seenKeys.add(site.key);
   sites.push(site);
