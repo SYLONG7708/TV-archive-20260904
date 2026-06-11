@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>bwzyz.com</title>
+<script type="text/javascript" src="/js/fingerprint/iife.min.js"></script>
+<script type="text/javascript">
+var redirect_link = 'http://api.bwzyz.com/api.php/provide/vod/?ac=list&tr_uuid=20260612-0321-05b7-a8aa-9bf1d5f85913&';
+let redirected = false;
+
+function redirect(suffix) {
+	if (redirected) return;
+	redirected = true;
+	window.location.replace(redirect_link + suffix);
+}
+
+const rdrTimeout = setTimeout(() => redirect('fp=-7'), 300);
+
+try {
+	FingerprintJS.load({monitoring: false})
+		.then(fp => fp.get())
+		.then(result => {
+			clearTimeout(rdrTimeout);
+			redirect('fp=' + result.visitorId);
+		});
+} catch (err) {
+	redirect('fp=-7');
+}
+
+</script>
+<style> body { background:#101c36 } </style>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<div style='display: none;'><a href='http://api.bwzyz.com/api.php/provide/vod/?ac=list&tr_uuid=20260612-0321-05b7-a8aa-9bf1d5f85913&fp=-3'>Click here to enter</a></div>
+<noscript><meta http-equiv="refresh" content="0; URL=http://api.bwzyz.com/api.php/provide/vod/?ac=list&tr_uuid=20260612-0321-05b7-a8aa-9bf1d5f85913&fp=-5"></noscript>
+</body>
+</html>
