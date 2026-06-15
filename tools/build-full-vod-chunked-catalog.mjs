@@ -26,19 +26,33 @@ const sourceMatch = String(args.get('sourceMatch') || '').trim().toLowerCase();
 const pageSize = Number(args.get('pageSize') || 100);
 const maxSources = Number(args.get('maxSources') || 0);
 const maxPagesPerSource = Number(args.get('maxPagesPerSource') || 0);
-const includeEmptySeedSources = args.get('includeEmptySeedSources') === 'true';
+const startPage = Math.max(1, Number(args.get('startPage') || 1));
+const endPage = Math.max(0, Number(args.get('endPage') || 0));
 const sourceConcurrency = Number(args.get('sourceConcurrency') || 2);
 const pageConcurrency = Number(args.get('pageConcurrency') || 8);
 const outputPageSize = Number(args.get('outputPageSize') || 500);
 const timeoutMs = Number(args.get('timeoutMs') || 20000);
-const fetchRetries = Number(args.get('fetchRetries') || 3);
+const retries = Number(args.get('retries') || args.get('fetchRetries') || 2);
+const retryDelayMs = Number(args.get('retryDelayMs') || 750);
+const rateLimitDelayMs = Number(args.get('rateLimitDelayMs') || 8000);
+const pageDelayMs = Number(args.get('pageDelayMs') || 0);
 const keepExistingOnFailure = args.get('keepExistingOnFailure') !== 'false';
 const detailOnly = args.get('detailOnly') === 'true';
+const appendDetailPages = args.get('appendDetailPages') === 'true' || startPage > 1 || endPage > 0;
+const skipExistingPages = args.get('skipExistingPages') !== 'false';
+const keepPartialPages = args.get('keepPartialPages') === 'true';
+const includeEmptySeedSources = args.get('includeEmptySeedSources') === 'true';
+const refreshLeadingPages = Math.max(0, Number(args.get('refreshLeadingPages') || 0));
 
-const USER_AGENT = 'OKTV-full-chunked-catalog-builder/1.0';
+const USER_AGENT =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36 OKTV/1.0';
 
 function withTimeout() {
   return AbortSignal.timeout(timeoutMs);
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function readJson(file, fallback = null) {
@@ -49,31 +63,32 @@ async function readJson(file, fallback = null) {
   }
 }
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+async function fetchTextOnce(url) {
+  const res = await fetch(url, {
+    redirect: 'follow',
+    signal: withTimeout(),
+    headers: {
+      accept: 'application/json,text/xml,application/xml,text/plain,*/*',
+      'user-agent': USER_AGENT,
+    },
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return await res.text();
 }
 
 async function fetchText(url) {
   let lastError = null;
-  for (let attempt = 0; attempt <= fetchRetries; attempt += 1) {
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
     try {
-      const res = await fetch(url, {
-        redirect: 'follow',
-        signal: withTimeout(),
-        headers: {
-          accept: 'application/json,text/plain,*/*',
-          'user-agent': USER_AGENT,
-        },
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.text();
+      return await fetchTextOnce(url);
     } catch (error) {
       lastError = error;
-      if (attempt >= fetchRetries) break;
-      await sleep(400 * (attempt + 1));
+      if (attempt >= retries) break;
+      const rateLimited = /HTTP (?:429|520|521|522|523|524|525|701|502|503|504)/i.test(error.message);
+      await sleep((rateLimited ? rateLimitDelayMs : retryDelayMs) * (attempt + 1));
     }
   }
-  throw lastError || new Error('fetch failed');
+  throw lastError;
 }
 
 async function fetchJson(url) {
@@ -94,8 +109,96 @@ function normalizeText(value, fallback = '') {
 function addVodQuery(api, query) {
   const value = String(api || '').trim();
   if (!value) return '';
+  if (/[?&]url=/i.test(value)) {
+    if (value.endsWith('?') || value.endsWith('&')) return `${value}${query}`;
+    return `${value}?${query}`;
+  }
+  try {
+    const url = new URL(value);
+    const params = new URLSearchParams(query);
+    for (const [key, paramValue] of params.entries()) url.searchParams.set(key, paramValue);
+    return url.toString();
+  } catch {
+    // Fall back to the historical concatenation for non-standard proxy URLs.
+  }
   if (value.endsWith('?') || value.endsWith('&')) return `${value}${query}`;
+  if (value.includes('?')) return `${value}&${query}`;
   return `${value}?${query}`;
+}
+
+function vodAction(source) {
+  return Number(source?.type) === 0 ? 'videolist' : 'detail';
+}
+
+function decodeEntities(value) {
+  return String(value || '')
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'");
+}
+
+function xmlAttr(value, name) {
+  return decodeEntities(String(value || '').match(new RegExp(`${name}="([^"]*)"`, 'i'))?.[1] || '');
+}
+
+function xmlTag(value, name) {
+  return decodeEntities(String(value || '').match(new RegExp(`<${name}\\b[^>]*>([\\s\\S]*?)<\\/${name}>`, 'i'))?.[1] || '');
+}
+
+function xmlTags(value, name) {
+  return [...String(value || '').matchAll(new RegExp(`<${name}\\b[^>]*>([\\s\\S]*?)<\\/${name}>`, 'gi'))].map((match) =>
+    decodeEntities(match[1]),
+  );
+}
+
+function parseXmlPayload(text) {
+  const listOpen = String(text || '').match(/<list\b([^>]*)>/i)?.[1] || '';
+  const videos = [...String(text || '').matchAll(/<video\b[^>]*>([\s\S]*?)<\/video>/gi)].map((match) => {
+    const node = match[1];
+    const playGroups = xmlTags(node, 'dd');
+    const typeName = xmlTag(node, 'type');
+    return {
+      vod_id: xmlTag(node, 'id'),
+      id: xmlTag(node, 'id'),
+      type_id: xmlTag(node, 'tid'),
+      type_name: typeName,
+      vod_name: xmlTag(node, 'name'),
+      vod_pic: xmlTag(node, 'pic'),
+      vod_area: xmlTag(node, 'area'),
+      vod_year: xmlTag(node, 'year'),
+      vod_remarks: xmlTag(node, 'note'),
+      vod_actor: xmlTag(node, 'actor'),
+      vod_director: xmlTag(node, 'director'),
+      vod_content: xmlTag(node, 'des') || xmlTag(node, 'content'),
+      vod_time: xmlTag(node, 'last'),
+      vod_class: typeName,
+      vod_play_url: playGroups.join('$$$'),
+    };
+  });
+  const categories = [...String(text || '').matchAll(/<ty\b([^>]*)>([\s\S]*?)<\/ty>/gi)].map((match, index) => ({
+    type_id: xmlAttr(match[1], 'id') || String(index + 1),
+    type_name: decodeEntities(match[2]),
+  }));
+  return {
+    list: videos,
+    class: categories,
+    page: Number(xmlAttr(listOpen, 'page') || 1) || 1,
+    pagecount: Number(xmlAttr(listOpen, 'pagecount') || 1) || 1,
+    limit: Number(xmlAttr(listOpen, 'pagesize') || 0) || 0,
+    total: Number(xmlAttr(listOpen, 'recordcount') || 0) || 0,
+  };
+}
+
+function normalizePayload(payload) {
+  if (typeof payload === 'string') {
+    const text = payload.trim();
+    if (/^</.test(text)) return parseXmlPayload(text);
+    return JSON.parse(text);
+  }
+  return payload || {};
 }
 
 function slugify(value, fallback = 'source') {
@@ -201,16 +304,16 @@ function textId(input, index = 0) {
 function normalizeVodItem(item, source, sourceSlug, page) {
   const title = normalizeText(item.vod_name ?? item.name ?? item.title);
   if (!title) return null;
-  const typeName = normalizeText(item.type_name || '');
-  const episodes = parseEpisodes(item.vod_play_url || item.play_url || item.url);
-  if (episodes.length === 0) return null;
+  const typeName = normalizeText(item.type_name || item.list_name || '');
+  const playUrl = item.vod_play_url || item.vod_url || item.vod_play_url_with_player || item.play_url || item.url;
+  const episodes = parseEpisodes(playUrl);
 
-  const year = parseYear(item.vod_year || item.year || item.vod_time || item.update_time || item.vod_pubdate);
-  const area = normalizeArea(item.vod_area || item.area || item.region || '');
+  const year = parseYear(item.vod_year || item.year || item.vod_time || item.update_time || item.vod_pubdate || item.vod_addtime);
+  const area = normalizeArea(item.vod_area || item.area || item.region || item.vod_area_name || '');
   const genre = splitClasses(item.vod_class || item.class || item.tag, typeName);
   const score = parseNumber(item.vod_score || item.score || item.douban_score);
   const views = parseNumber(item.vod_hits || item.hits || item.views || item.play_count || item.vod_up);
-  const updatedAt = normalizeText(item.vod_time || item.update_time || item.vod_pubdate || item.created_at || '');
+  const updatedAt = normalizeText(item.vod_time || item.update_time || item.vod_pubdate || item.created_at || item.vod_addtime || '');
   const vodId = String(item.vod_id ?? item.id ?? '');
   const id = `${source.id}::${normalizeText(vodId || title)}`;
 
@@ -230,15 +333,16 @@ function normalizeVodItem(item, source, sourceSlug, page) {
     remarks: normalizeText(item.vod_remarks || item.remarks || item.note || ''),
     actor: normalizeText(item.vod_actor || item.actor || ''),
     director: normalizeText(item.vod_director || item.director || ''),
-    content: normalizeText(item.vod_content || item.content || item.desc || '').slice(0, 220),
+    content: normalizeText(item.vod_content || item.content || item.desc || ''),
+    rawPlayUrl: normalizeText(playUrl),
     score,
     views,
     hot: views + score * 100 + parseEpoch(updatedAt) / 100000000,
     updatedAt,
-    poster: imageUrl(source.api, item.vod_pic || item.pic || item.cover || item.logo),
+    poster: imageUrl(source.api, item.vod_pic || item.pic || item.cover || item.logo || item.vod_pic_thumb),
     episodes,
     episodeCount: episodes.length,
-    playable: true,
+    playable: episodes.length > 0,
     adult: Boolean(source.adult),
     lazyEpisodes: true,
     detailPage: page,
@@ -252,6 +356,7 @@ function compactItem(item) {
 }
 
 function extractArray(payload) {
+  if (Array.isArray(payload?.data) && payload.data.some((item) => item?.vod_name || item?.name || item?.title)) return payload.data;
   if (Array.isArray(payload?.list)) return payload.list;
   if (Array.isArray(payload?.data)) return payload.data;
   if (Array.isArray(payload?.videos)) return payload.videos;
@@ -285,20 +390,26 @@ async function mapLimit(items, limit, worker) {
 }
 
 async function fetchSourcePage(source, sourceSlug, page) {
-  const payload = await fetchVodPayload(addVodQuery(source.api, `ac=detail&pg=${page}&pagesize=${pageSize}`));
-  const rows = extractArray(payload)
+  if (pageDelayMs > 0) await sleep(pageDelayMs);
+  const payload = normalizePayload(
+    await fetchText(addVodQuery(source.api, `ac=${vodAction(source)}&pg=${page}&pagesize=${pageSize}&limit=${pageSize}`)),
+  );
+  const rawRows = extractArray(payload);
+  const rows = rawRows
     .map((item) => normalizeVodItem(item, source, sourceSlug, page))
-    .filter((item) => item && item.poster);
+    .filter(Boolean);
   return {
     page,
-    pagecount: Number(payload.pagecount || payload.pageCount || 1) || 1,
-    total: Number(payload.total || payload.totalCount || 0) || 0,
-    limit: Number(payload.limit || 0) || 0,
+    pagecount: Number(payload.pagecount || payload.pageCount || payload.page?.pagecount || 1) || 1,
+    total: Number(payload.total || payload.totalCount || payload.page?.recordcount || 0) || 0,
+    limit: Number(payload.limit || payload.page?.pagesize || 0) || 0,
+    rawCount: rawRows.length,
     rows,
   };
 }
 
-async function writeDetailChunk(source, sourceSlug, page, rows, total) {
+async function writeDetailPage(source, sourceSlug, pageResult, pagecount) {
+  const { page, rows, total, rawCount } = pageResult;
   const sourceDir = path.join(detailRoot, sourceSlug);
   await fs.mkdir(sourceDir, { recursive: true });
   const detailPath = `vod-detail/${sourceSlug}/page-${String(page).padStart(4, '0')}.json.gz`;
@@ -314,13 +425,32 @@ async function writeDetailChunk(source, sourceSlug, page, rows, total) {
     sourceKey: source.key,
     api: source.api,
     page,
-    pagecount: 0,
+    pagecount,
     total,
+    rawCount,
     items,
   };
   const compressed = await gzip(Buffer.from(JSON.stringify(detailPayload), 'utf8'), { level: 9 });
   await fs.writeFile(path.join(sourceDir, `page-${String(page).padStart(4, '0')}.json.gz`), compressed);
   return items;
+}
+
+async function fileExists(file) {
+  try {
+    await fs.access(file);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function countDetailFiles(sourceDir) {
+  try {
+    const files = await fs.readdir(sourceDir);
+    return files.filter((file) => /^page-\d+\.json(?:\.gz)?$/i.test(file)).length;
+  } catch {
+    return 0;
+  }
 }
 
 function matchesSource(source) {
@@ -331,11 +461,83 @@ function matchesSource(source) {
 async function indexSource(source) {
   const sourceSlug = slugify(`${source.host || source.key || source.name}-${source.id}`, 'source');
   const sourceDir = path.join(detailRoot, sourceSlug);
-  await fs.rm(sourceDir, { recursive: true, force: true });
+  const tempDir = path.join(detailRoot, `.tmp-${sourceSlug}-${process.pid}-${Date.now()}`);
 
+  try {
   const first = await fetchSourcePage(source, sourceSlug, 1);
-  const pagecount = maxPagesPerSource > 0 ? Math.min(first.pagecount, maxPagesPerSource) : first.pagecount;
-  const remainingPages = Array.from({ length: Math.max(0, pagecount - 1) }, (_, index) => index + 2);
+  const fullPagecount = first.pagecount;
+  let lastPage = endPage > 0 ? Math.min(fullPagecount, endPage) : fullPagecount;
+  if (maxPagesPerSource > 0) lastPage = Math.min(lastPage, startPage + maxPagesPerSource - 1);
+  const requestedPages = Array.from({ length: Math.max(0, lastPage - startPage + 1) }, (_, index) => startPage + index);
+  const targetPages = [];
+  for (const page of requestedPages) {
+    const targetFile = path.join(sourceDir, `page-${String(page).padStart(4, '0')}.json.gz`);
+    if (appendDetailPages && skipExistingPages && page > refreshLeadingPages && (await fileExists(targetFile))) continue;
+    targetPages.push(page);
+  }
+
+  if (targetPages.length === 0) {
+    const detailFileCount = await countDetailFiles(sourceDir);
+    console.log(`${source.name}: no missing pages in requested range ${startPage}-${lastPage}`);
+    return {
+      source: {
+        ...source,
+        indexed: true,
+        complete: detailFileCount >= fullPagecount,
+        detailMode: 'chunked-json-gzip',
+        detailPageCount: detailFileCount,
+        detailExpectedPages: fullPagecount,
+        detailPathPattern: `vod-detail/${sourceSlug}/page-{page}.json.gz`,
+        checks: [
+          {
+            label: 'full-latest-pages',
+            ok: true,
+            count: 0,
+            pages: detailFileCount,
+            pagecount: fullPagecount,
+            total: first.total,
+          },
+        ],
+        error: '',
+      },
+      items: [],
+    };
+  }
+
+  let fetchedPages = 0;
+  if (targetPages.length > 1) {
+    console.log(`${source.name}: fetching range ${targetPages[0]}-${targetPages[targetPages.length - 1]} of ${fullPagecount}`);
+  }
+  const pageResults = [];
+  const failures = [];
+  const writeSlug = appendDetailPages ? sourceSlug : path.basename(tempDir);
+  if (targetPages.includes(1)) {
+    pageResults.push(first);
+    await writeDetailPage(source, writeSlug, first, fullPagecount);
+    fetchedPages += 1;
+    console.log(`${source.name}: fetched ${fetchedPages}/${targetPages.length} requested pages`);
+  }
+  const restPageNumbers = targetPages.filter((page) => page !== 1);
+  const rest = await mapLimit(restPageNumbers, pageConcurrency, async (page) => {
+    try {
+      const result = await fetchSourcePage(source, sourceSlug, page);
+      await writeDetailPage(source, writeSlug, result, fullPagecount);
+      fetchedPages += 1;
+      if (fetchedPages % 50 === 0 || fetchedPages === targetPages.length) {
+        console.log(`${source.name}: fetched ${fetchedPages}/${targetPages.length} requested pages`);
+      }
+      return { ok: true, result };
+    } catch (error) {
+      if (!keepPartialPages) throw error;
+      failures.push({ page, error: error.message });
+      console.warn(`${source.name}: page ${page} failed: ${error.message}`);
+      return { ok: false, page, error: error.message };
+    }
+  });
+  for (const row of rest) {
+    if (row?.ok) pageResults.push(row.result);
+  }
+  const pages = pageResults.sort((a, b) => a.page - b.page);
   const compact = [];
   const seen = new Set();
   const pendingRows = [];
@@ -344,46 +546,27 @@ async function indexSource(source) {
   let completedSourcePages = 0;
   let writtenDetailPages = 0;
 
-  const flushChunk = async (force = false) => {
-    if (pendingRows.length === 0 || (!force && pendingRows.length < outputPageSize)) return;
-    const rows = pendingRows.splice(0, outputPageSize);
-    writtenDetailPages += 1;
-    const chunkItems = await writeDetailChunk(source, sourceSlug, writtenDetailPages, rows, total);
-    for (const item of chunkItems) {
-      compact.push(compactItem(item));
-      playableCount += 1;
-    }
-  };
-
-  const consumePage = async (pageResult) => {
-    total = Math.max(total, pageResult.total);
-    for (const item of pageResult.rows) {
+  for (const page of pages) {
+    total = Math.max(total, page.total);
+    for (const item of page.rows) {
       const key = item.vodId || `${item.title}|${item.poster}`;
       if (seen.has(key)) continue;
       seen.add(key);
-      pendingRows.push(item);
-      await flushChunk(false);
-    }
-    completedSourcePages += 1;
-    if (completedSourcePages === 1 || completedSourcePages % 50 === 0 || completedSourcePages === pagecount) {
-      console.log(
-        `${source.name}: fetched ${completedSourcePages}/${pagecount} source pages, wrote ${writtenDetailPages} detail pages, ${
-          compact.length + pendingRows.length
-        } items`,
-      );
+      compact.push(compactItem(item));
+      if (item.playable) playableCount += 1;
     }
   };
 
-  await consumePage(first);
-  await mapLimit(remainingPages, pageConcurrency, async (page) => {
-    const pageResult = await fetchSourcePage(source, sourceSlug, page);
-    await consumePage(pageResult);
-  });
-  await flushChunk(true);
+  if (!appendDetailPages) {
+    await fs.rm(sourceDir, { recursive: true, force: true });
+    await fs.rename(tempDir, sourceDir);
+  }
 
-  console.log(
-    `${source.name}: ${compact.length}/${total || compact.length} items, ${completedSourcePages} source pages, ${writtenDetailPages} detail pages`,
-  );
+  const detailFileCount = await countDetailFiles(sourceDir);
+  console.log(`${source.name}: ${compact.length}/${total || compact.length} items, ${pages.length} pages`);
+  if (failures.length > 0) {
+    throw new Error(`partial range saved; failed pages: ${failures.map((failure) => `${failure.page} ${failure.error}`).join(', ')}`);
+  }
   return {
     source: {
       ...source,
@@ -391,19 +574,18 @@ async function indexSource(source) {
       playableCount,
       sourceTotalCount: total || compact.length,
       indexed: compact.length > 0,
+      complete: detailFileCount >= fullPagecount,
       detailMode: 'chunked-json-gzip',
-      detailPageCount: writtenDetailPages,
-      detailExpectedPages: writtenDetailPages,
+      detailPageCount: detailFileCount,
+      detailExpectedPages: fullPagecount,
       detailPathPattern: `vod-detail/${sourceSlug}/page-{page}.json.gz`,
       checks: [
         {
           label: 'full-latest-pages',
           ok: true,
           count: compact.length,
-          pages: writtenDetailPages,
-          sourcePages: completedSourcePages,
-          pagecount: writtenDetailPages,
-          sourcePagecount: pagecount,
+          pages: detailFileCount,
+          pagecount: fullPagecount,
           total: total || compact.length,
         },
       ],
@@ -411,6 +593,10 @@ async function indexSource(source) {
     },
     items: detailOnly ? [] : compact,
   };
+  } catch (error) {
+    await fs.rm(tempDir, { recursive: true, force: true });
+    throw error;
+  }
 }
 
 function recomputeTotals(items, sources) {
@@ -479,7 +665,9 @@ const results = await mapLimit(targetSources, sourceConcurrency, async (source) 
   } catch (error) {
     console.warn(`${source.name}: failed: ${error.message}`);
     const failedSlug = slugify(`${source.host || source.key || source.name}-${source.id}`, 'source');
-    await fs.rm(path.join(detailRoot, failedSlug), { recursive: true, force: true });
+    if (!appendDetailPages) {
+      await fs.rm(path.join(detailRoot, failedSlug), { recursive: true, force: true });
+    }
     const keptItems = keepExistingOnFailure ? existingItemsBySource.get(source.id) || [] : [];
     return {
       source: {
@@ -508,51 +696,49 @@ if (detailOnly) {
       2,
     ),
   );
-  process.exit(0);
-}
+} else {
+  const updatedSourceById = new Map(results.map((result) => [result.source.id, result.source]));
+  const sources = (existingCatalog.sources || []).map((source) => updatedSourceById.get(source.id) || source);
+  const newItems = [
+    ...(existingCatalog.items || []).filter((item) => !targetIds.has(item.sourceId)),
+    ...results.flatMap((result) => result.items),
+  ];
 
-const updatedSourceById = new Map(results.map((result) => [result.source.id, result.source]));
-const sources = (existingCatalog.sources || []).map((source) => updatedSourceById.get(source.id) || source);
-const newItems = [
-  ...(existingCatalog.items || []).filter((item) => !targetIds.has(item.sourceId)),
-  ...results.flatMap((result) => result.items),
-];
-
-const catalog = {
-  ...existingCatalog,
-  generatedAt: new Date().toISOString(),
-  source: {
-    ...(existingCatalog.source || {}),
-    fullChunkedCatalog: true,
-    detailRoot: 'docs/data/vod-detail',
-    pageSize,
-    outputPageSize,
-  },
-  totals: recomputeTotals(newItems, sources),
-  filters: recomputeFilters(newItems),
-  sources,
-  items: newItems,
-};
-
-const report = {
-  generatedAt: catalog.generatedAt,
-  totals: catalog.totals,
-  sourceChecks: sources.map(sourceCheck),
-};
-
-await fs.writeFile(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
-await fs.writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
-
-console.log(
-  JSON.stringify(
-    {
-      catalogPath,
-      reportPath,
-      detailRoot,
-      sources: targetSources.length,
-      totals: catalog.totals,
+  const catalog = {
+    ...existingCatalog,
+    generatedAt: new Date().toISOString(),
+    source: {
+      ...(existingCatalog.source || {}),
+      fullChunkedCatalog: true,
+      detailRoot: 'docs/data/vod-detail',
+      pageSize,
     },
-    null,
-    2,
-  ),
-);
+    totals: recomputeTotals(newItems, sources),
+    filters: recomputeFilters(newItems),
+    sources,
+    items: newItems,
+  };
+
+  const report = {
+    generatedAt: catalog.generatedAt,
+    totals: catalog.totals,
+    sourceChecks: sources.map(sourceCheck),
+  };
+
+  await fs.writeFile(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
+  await fs.writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
+
+  console.log(
+    JSON.stringify(
+      {
+        catalogPath,
+        reportPath,
+        detailRoot,
+        sources: targetSources.length,
+        totals: catalog.totals,
+      },
+      null,
+      2,
+    ),
+  );
+}

@@ -228,6 +228,9 @@ function normalizeList(value) {
 
 const source = await readJson(input);
 const sourceSites = Array.isArray(source) ? source : normalizeList(source.sites);
+const warningText =
+  trimString(source.warningText).replace(/every\s+3\s+days/i, 'every 2 days') ||
+  'OKTV TVBox on-demand sources. Auto refreshed every 2 days.';
 const seenKeys = new Set();
 const sites = [];
 
@@ -245,9 +248,7 @@ const tvbox = {
     trimString(source.logo) ||
     'https://raw.githubusercontent.com/SYLONG7708/TV/main/branding/icon-tech-20260528.png',
   wallpaper: trimString(source.wallpaper) || 'http://tool.teyonds.com/api',
-  warningText:
-    trimString(source.warningText) ||
-    'OKTV TVBox on-demand sources. Auto refreshed every 3 days.',
+  warningText,
   sites,
   parses: normalizeList(source.parses),
   lives: normalizeList(source.lives),
