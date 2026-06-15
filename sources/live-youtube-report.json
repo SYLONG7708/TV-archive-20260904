@@ -1,18 +1,18 @@
 {
-    "generatedAt":  "2026-06-16T00:25:37.3143309+08:00",
+    "generatedAt":  "2026-06-16T02:25:57.3829240+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  68,
-    "fallback":  44,
-    "failed":  44,
+    "playable":  66,
+    "fallback":  46,
+    "failed":  46,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  60.71,
-    "playlistEntries":  68,
-    "removedFromPlaylist":  44,
+    "hlsSuccessRate":  58.93,
+    "playlistEntries":  66,
+    "removedFromPlaylist":  46,
     "playlistPolicy":  "playable-only",
     "mode":  "best-effort-hls-resolve",
     "note":  "",
@@ -165,14 +165,28 @@
                          "Group":  "YouTube國際新聞",
                          "Name":  "Sky News",
                          "PageUrl":  "https://www.youtube.com/watch?v=paEJskVBz_M",
-                         "Error":  "ERROR: [youtube] paEJskVBz_M: Requested format is not available. Use --list-formats for a list of available formats"
+                         "Error":  "yt-dlp timed out after 25 seconds."
+                     },
+                     {
+                         "Order":  53,
+                         "Group":  "YouTube國際新聞",
+                         "Name":  "Euronews English",
+                         "PageUrl":  "https://www.youtube.com/watch?v=pykpO5kQJ98",
+                         "Error":  "yt-dlp timed out after 25 seconds."
+                     },
+                     {
+                         "Order":  54,
+                         "Group":  "YouTube國際新聞",
+                         "Name":  "FRANCE 24 English",
+                         "PageUrl":  "https://www.youtube.com/watch?v=HvZt-nh9sGg",
+                         "Error":  "yt-dlp timed out after 25 seconds."
                      },
                      {
                          "Order":  55,
                          "Group":  "YouTube國際新聞",
                          "Name":  "NBC News",
                          "PageUrl":  "https://www.youtube.com/watch?v=fDYFTkFJtdM",
-                         "Error":  "ERROR: [youtube] fDYFTkFJtdM: Requested format is not available. Use --list-formats for a list of available formats"
+                         "Error":  "yt-dlp timed out after 25 seconds."
                      },
                      {
                          "Order":  57,
@@ -256,7 +270,7 @@
                          "Group":  "YouTube亞洲新聞",
                          "Name":  "TIMES NOW",
                          "PageUrl":  "https://www.youtube.com/watch?v=6lrvdOedqgk",
-                         "Error":  "yt-dlp timed out after 25 seconds."
+                         "Error":  "ERROR: [youtube] 6lrvdOedqgk: Requested format is not available. Use --list-formats for a list of available formats"
                      },
                      {
                          "Order":  76,
