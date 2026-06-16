@@ -3,18 +3,23 @@ param(
     [string]$TvboxUrl = "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/TVBOX",
     [int]$UpdateIntervalDays = 2,
     [int]$ScheduleHour = 2,
-    [int]$PageSize = 20,
+    [int]$PageSize = 100,
     [int]$PageConcurrency = 3,
     [int]$TimeoutMs = 60000,
-    [int]$Retries = 6,
+    [int]$Retries = 2,
     [int]$RetryDelayMs = 1000,
-    [int]$RateLimitDelayMs = 10000,
+    [int]$RateLimitDelayMs = 3000,
     [int]$PageDelayMs = 250,
     [int]$MinSourceSeconds = 600,
     [int]$MaxSourceSeconds = 10800,
     [double]$SecondsPerPageEstimate = 1.0,
     [int]$IdleSourceSeconds = 900,
     [int]$RefreshLeadingPages = 3,
+    [int]$MaxFailedPagesPerSource = 120,
+    [bool]$CheckUpstreamFreshness = $true,
+    [int]$FreshnessTimeoutMs = 12000,
+    [int]$FreshnessConcurrency = 8,
+    [int]$FreshnessMaxSources = 0,
     [switch]$ForceUpdate
 )
 
@@ -39,9 +44,11 @@ $sourceSnapshotPath = Join-Path $repoRootText "docs\data\tvbox-source-latest.jso
 $localTvboxPath = Join-Path $repoRootText "sources\TVBOX"
 $seedCatalogPath = Join-Path $repoRootText "docs\data\tvbox-vod-catalog.json"
 $seedReportPath = Join-Path $repoRootText "docs\data\tvbox-vod-catalog-report.json"
+$freshnessReportPath = Join-Path $repoRootText "docs\data\tvbox-vod-freshness-report.json"
 $detailRoot = Join-Path $repoRootText "docs\data\vod-detail"
 $indexRoot = Join-Path $repoRootText "docs\data\vod-index"
 $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+$script:LastTriggerReason = "schedule"
 
 New-Item -ItemType Directory -Force -Path $workDir | Out-Null
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $sourceSnapshotPath) | Out-Null
@@ -87,6 +94,7 @@ function Get-ScheduleState {
 function Test-UpdateDue {
     if ($ForceUpdate) {
         Write-Log "ForceUpdate set; TVBOX VOD update will run now."
+        $script:LastTriggerReason = "manual-force"
         return $true
     }
 
@@ -115,7 +123,72 @@ function Test-UpdateDue {
     }
 
     Write-Log "TVBOX VOD update is due. Last success: $($state.lastSuccessAt); next due: $nextDueText."
+    $script:LastTriggerReason = "schedule"
     return $true
+}
+
+function Test-UpstreamFreshnessDue {
+    if (-not $CheckUpstreamFreshness) {
+        Write-Log "Upstream freshness check disabled; TVBOX VOD update remains skipped until the next schedule."
+        return $false
+    }
+
+    $freshnessScript = Join-Path $repoRootText "tools\check-tvbox-vod-freshness.mjs"
+    if (-not (Test-Path -LiteralPath $freshnessScript)) {
+        Write-Log "Freshness checker missing; TVBOX VOD update remains skipped until the next schedule: $freshnessScript"
+        return $false
+    }
+
+    if (-not (Test-Path -LiteralPath $localTvboxPath)) {
+        Write-Log "Local TVBOX config missing; cannot check upstream freshness before the next schedule: $localTvboxPath"
+        return $false
+    }
+
+    Write-Log "Checking upstream VOD update dates before skipping scheduled update."
+    $nodeArgs = @(
+        $freshnessScript,
+        "--repoRoot", $repoRootText,
+        "--input", $localTvboxPath,
+        "--indexRoot", $indexRoot,
+        "--output", $freshnessReportPath,
+        "--timeoutMs", [string]$FreshnessTimeoutMs,
+        "--concurrency", [string]$FreshnessConcurrency,
+        "--pageSize", [string]$PageSize,
+        "--maxSources", [string]$FreshnessMaxSources
+    )
+
+    $outputLines = & node @nodeArgs 2>&1
+    $exitCode = $LASTEXITCODE
+    foreach ($line in $outputLines) {
+        if (-not [string]::IsNullOrWhiteSpace([string]$line)) {
+            Write-Log "Freshness: $line"
+        }
+    }
+
+    if ($exitCode -ne 0) {
+        Write-Log "Freshness check failed with exit code $exitCode; TVBOX VOD update remains skipped until the next schedule."
+        return $false
+    }
+
+    if (-not (Test-Path -LiteralPath $freshnessReportPath)) {
+        Write-Log "Freshness check produced no report; TVBOX VOD update remains skipped until the next schedule."
+        return $false
+    }
+
+    try {
+        $report = Get-Content -LiteralPath $freshnessReportPath -Raw -Encoding UTF8 | ConvertFrom-Json
+        if ([bool]$report.hasNewerUpstream) {
+            $script:LastTriggerReason = "upstream-date"
+            Write-Log "Upstream VOD dates are newer than saved indexes; update will run before the 2-day schedule."
+            return $true
+        }
+
+        Write-Log "No newer upstream VOD dates found; TVBOX VOD update remains skipped until the next schedule."
+        return $false
+    } catch {
+        Write-Log "Freshness report is unreadable; TVBOX VOD update remains skipped until the next schedule. $($_.Exception.Message)"
+        return $false
+    }
 }
 
 function Write-ScheduleSuccess {
@@ -128,6 +201,9 @@ function Write-ScheduleSuccess {
         intervalDays = $UpdateIntervalDays
         scheduleHour = $ScheduleHour
         timeZone = (Get-ScheduleTimeZone).Id
+        triggerReason = $script:LastTriggerReason
+        checkUpstreamFreshness = $CheckUpstreamFreshness
+        freshnessReport = "docs/data/tvbox-vod-freshness-report.json"
         updatedBy = "tools/update-tvbox-vod-detail-local.ps1"
         source = $TvboxUrl
     }
@@ -167,7 +243,8 @@ Set-Content -LiteralPath $legacyVodLockPath -Value ([DateTime]::Now.ToString("o"
 $pushedLocation = $false
 try {
     Write-Log "Starting TVBOX VOD detail update. Repo: $repoRootText"
-    if (-not (Test-UpdateDue)) {
+    $dueBySchedule = Test-UpdateDue
+    if (-not $dueBySchedule -and -not (Test-UpstreamFreshnessDue)) {
         exit 0
     }
 
@@ -179,7 +256,7 @@ try {
         $response = Invoke-WebRequest -Uri $TvboxUrl -UseBasicParsing -TimeoutSec 60
         $text = [string]$response.Content
         $tvboxConfig = $text | ConvertFrom-Json
-        $tvboxConfig.warningText = "OKTV all on-demand sources. Auto refreshed every 2 days; full VOD pages are stored under docs/data/vod-detail."
+        $tvboxConfig.warningText = "OKTV all on-demand sources. Auto refreshed every 2 days or sooner when upstream VOD update dates change; full VOD pages are stored under docs/data/vod-detail."
         $text = $tvboxConfig | ConvertTo-Json -Depth 16
         [System.IO.File]::WriteAllText($sourceSnapshotPath, $text, $utf8NoBom)
         [System.IO.File]::WriteAllText($localTvboxPath, $text, $utf8NoBom)
@@ -223,6 +300,7 @@ try {
         "--keepPartialPages", "true",
         "--includeEmptySeedSources", "true",
         "--refreshLeadingPages", [string]$RefreshLeadingPages,
+        "--maxFailedPages", [string]$MaxFailedPagesPerSource,
         "--allowPartialSources", "true"
     )
 

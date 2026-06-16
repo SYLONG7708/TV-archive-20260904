@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-15T16:55:25.402Z",
+  "generatedAt": "2026-06-16T08:05:38.921Z",
   "source": {
     "name": "TVBOX all VOD sources",
-    "input": "sources/TVBOX",
+    "input": "docs/data/tvbox-source-latest.json",
     "detailRoot": "docs/data/vod-detail",
     "fullChunkedCatalog": true,
     "indexRoot": "docs/data/vod-index"
@@ -10,14 +10,14 @@
   "totals": {
     "sources": 91,
     "indexedSources": 77,
-    "items": 8667255,
-    "playableItems": 8654654,
-    "movies": 2095097,
-    "series": 649456,
-    "variety": 123820,
-    "anime": 287722,
-    "short": 1042103,
-    "adult": 4469057
+    "items": 8668065,
+    "playableItems": 8655463,
+    "movies": 2095278,
+    "series": 649690,
+    "variety": 124276,
+    "anime": 288109,
+    "short": 1041673,
+    "adult": 4469039
   },
   "filters": {
     "years": [
@@ -85,6 +85,7 @@
       "，犯罪",
       "，动作",
       "，动作武侠",
+      "，科幻",
       "，家庭",
       "，恐怖",
       "，悬疑",
@@ -117,8 +118,7 @@
       "(q朴妮唛)秋千上啪啪",
       "(WS-0003)色誘外送員",
       "）",
-      "[db:分类名称]",
-      "[db:扩展分类]"
+      "[db:分类名称]"
     ]
   },
   "sources": [
@@ -139,9 +139,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 61561,
-      "playableCount": 61561,
-      "sourceTotalCount": 62358,
+      "itemCount": 61618,
+      "playableCount": 61618,
+      "sourceTotalCount": 62410,
       "complete": true,
       "detailPageCount": 624,
       "detailExpectedPages": 624,
@@ -157,10 +157,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 61561,
-          "pages": 624,
-          "pagecount": 624,
-          "total": 62358
+          "count": 61618,
+          "pages": 625,
+          "total": 62410
         }
       ],
       "error": ""
@@ -182,9 +181,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 130233,
-      "playableCount": 130233,
-      "sourceTotalCount": 131632,
+      "itemCount": 130220,
+      "playableCount": 130219,
+      "sourceTotalCount": 131740,
       "complete": true,
       "detailPageCount": 1317,
       "detailExpectedPages": 1317,
@@ -200,10 +199,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 130233,
-          "pages": 1317,
-          "pagecount": 1317,
-          "total": 131632
+          "count": 130220,
+          "pages": 1318,
+          "total": 131740
         }
       ],
       "error": ""
@@ -225,9 +223,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 55865,
-      "playableCount": 55865,
-      "sourceTotalCount": 56259,
+      "itemCount": 55851,
+      "playableCount": 55851,
+      "sourceTotalCount": 56307,
       "complete": true,
       "detailPageCount": 2813,
       "detailExpectedPages": 2813,
@@ -243,10 +241,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 55865,
-          "pages": 2813,
-          "pagecount": 2813,
-          "total": 56259
+          "count": 55851,
+          "pages": 2816,
+          "total": 56307
         }
       ],
       "error": ""
@@ -267,7 +264,7 @@
       "indexed": true,
       "itemCount": 93268,
       "playableCount": 93268,
-      "sourceTotalCount": 94066,
+      "sourceTotalCount": 94211,
       "complete": true,
       "detailPageCount": 941,
       "detailExpectedPages": 941,
@@ -284,9 +281,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 93268,
-          "pages": 941,
-          "pagecount": 941,
-          "total": 94066
+          "pages": 943,
+          "total": 94211
         }
       ],
       "error": ""
@@ -306,9 +302,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 43743,
-      "playableCount": 43743,
-      "sourceTotalCount": 44823,
+      "itemCount": 43750,
+      "playableCount": 43750,
+      "sourceTotalCount": 44913,
       "complete": true,
       "detailPageCount": 449,
       "detailExpectedPages": 449,
@@ -324,10 +320,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 43743,
-          "pages": 449,
-          "pagecount": 449,
-          "total": 44823
+          "count": 43750,
+          "pages": 450,
+          "total": 44913
         }
       ],
       "error": ""
@@ -349,7 +344,7 @@
       "indexed": true,
       "itemCount": 172597,
       "playableCount": 172597,
-      "sourceTotalCount": 174017,
+      "sourceTotalCount": 174189,
       "complete": true,
       "detailPageCount": 1741,
       "detailExpectedPages": 1741,
@@ -366,9 +361,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 172597,
-          "pages": 1741,
-          "pagecount": 1741,
-          "total": 174017
+          "pages": 1742,
+          "total": 174189
         }
       ],
       "error": ""
@@ -410,7 +404,6 @@
           "ok": true,
           "count": 131477,
           "pages": 1332,
-          "pagecount": 1332,
           "total": 133138
         }
       ],
@@ -436,7 +429,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "complete": false,
+      "complete": true,
       "detailPageCount": 1,
       "detailExpectedPages": 1,
       "detailPathPattern": "vod-detail/wolongzyw-com-all-on-demand-sources-卧龙资源-https-wolongzyw-com-api-php-provide-vod/page-{page}.json.gz",
@@ -450,14 +443,13 @@
       "checks": [
         {
           "label": "source-index-gzip",
-          "ok": false,
+          "ok": true,
           "count": 0,
           "pages": 1,
-          "pagecount": 1,
           "total": 0
         }
       ],
-      "error": "遠端回傳 0 筆或目前格式無可播放資料"
+      "error": ""
     },
     {
       "id": "all-on-demand-sources-ikun资源-https-ikunzyapi-com-api-php-provide-vod-5",
@@ -476,9 +468,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 65490,
-      "playableCount": 65490,
-      "sourceTotalCount": 65737,
+      "itemCount": 65528,
+      "playableCount": 65528,
+      "sourceTotalCount": 65761,
       "complete": true,
       "detailPageCount": 658,
       "detailExpectedPages": 658,
@@ -494,10 +486,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 65490,
+          "count": 65528,
           "pages": 658,
-          "pagecount": 658,
-          "total": 65737
+          "total": 65761
         }
       ],
       "error": ""
@@ -519,9 +510,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 81778,
-      "playableCount": 81778,
-      "sourceTotalCount": 82214,
+      "itemCount": 81835,
+      "playableCount": 81835,
+      "sourceTotalCount": 82266,
       "complete": true,
       "detailPageCount": 823,
       "detailExpectedPages": 823,
@@ -537,10 +528,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 81778,
+          "count": 81835,
           "pages": 823,
-          "pagecount": 823,
-          "total": 82214
+          "total": 82266
         }
       ],
       "error": ""
@@ -562,9 +552,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 32986,
-      "playableCount": 32986,
-      "sourceTotalCount": 33183,
+      "itemCount": 33025,
+      "playableCount": 33025,
+      "sourceTotalCount": 33190,
       "complete": true,
       "detailPageCount": 332,
       "detailExpectedPages": 332,
@@ -580,10 +570,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 32986,
+          "count": 33025,
           "pages": 332,
-          "pagecount": 332,
-          "total": 33183
+          "total": 33190
         }
       ],
       "error": ""
@@ -605,9 +594,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 136514,
-      "playableCount": 136514,
-      "sourceTotalCount": 138747,
+      "itemCount": 136550,
+      "playableCount": 136550,
+      "sourceTotalCount": 139071,
       "complete": true,
       "detailPageCount": 6938,
       "detailExpectedPages": 6938,
@@ -623,10 +612,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 136514,
-          "pages": 6938,
-          "pagecount": 6938,
-          "total": 138747
+          "count": 136550,
+          "pages": 6954,
+          "total": 139071
         }
       ],
       "error": ""
@@ -648,9 +636,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 63657,
-      "playableCount": 63657,
-      "sourceTotalCount": 64558,
+      "itemCount": 63710,
+      "playableCount": 63710,
+      "sourceTotalCount": 64637,
       "complete": true,
       "detailPageCount": 646,
       "detailExpectedPages": 646,
@@ -666,10 +654,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 63657,
-          "pages": 646,
-          "pagecount": 646,
-          "total": 64558
+          "count": 63710,
+          "pages": 647,
+          "total": 64637
         }
       ],
       "error": ""
@@ -691,9 +678,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 103089,
-      "playableCount": 103089,
-      "sourceTotalCount": 103996,
+      "itemCount": 103131,
+      "playableCount": 103131,
+      "sourceTotalCount": 104106,
       "complete": true,
       "detailPageCount": 1040,
       "detailExpectedPages": 1040,
@@ -709,10 +696,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 103089,
-          "pages": 1040,
-          "pagecount": 1040,
-          "total": 103996
+          "count": 103131,
+          "pages": 1042,
+          "total": 104106
         }
       ],
       "error": ""
@@ -734,9 +720,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 82831,
-      "playableCount": 82831,
-      "sourceTotalCount": 83545,
+      "itemCount": 82907,
+      "playableCount": 82907,
+      "sourceTotalCount": 83635,
       "complete": true,
       "detailPageCount": 836,
       "detailExpectedPages": 836,
@@ -752,10 +738,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 82831,
-          "pages": 836,
-          "pagecount": 836,
-          "total": 83545
+          "count": 82907,
+          "pages": 837,
+          "total": 83635
         }
       ],
       "error": ""
@@ -777,9 +762,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 96426,
-      "playableCount": 96426,
-      "sourceTotalCount": 96745,
+      "itemCount": 96460,
+      "playableCount": 96460,
+      "sourceTotalCount": 96792,
       "complete": true,
       "detailPageCount": 968,
       "detailExpectedPages": 968,
@@ -795,10 +780,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 96426,
+          "count": 96460,
           "pages": 968,
-          "pagecount": 968,
-          "total": 96745
+          "total": 96792
         }
       ],
       "error": ""
@@ -820,9 +804,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 144449,
-      "playableCount": 144449,
-      "sourceTotalCount": 146950,
+      "itemCount": 144395,
+      "playableCount": 144395,
+      "sourceTotalCount": 147107,
       "complete": true,
       "detailPageCount": 7348,
       "detailExpectedPages": 7348,
@@ -838,10 +822,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 144449,
-          "pages": 7348,
-          "pagecount": 7348,
-          "total": 146950
+          "count": 144395,
+          "pages": 7356,
+          "total": 147107
         }
       ],
       "error": ""
@@ -863,9 +846,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 118494,
-      "playableCount": 118494,
-      "sourceTotalCount": 119149,
+      "itemCount": 118478,
+      "playableCount": 118478,
+      "sourceTotalCount": 119205,
       "complete": true,
       "detailPageCount": 5958,
       "detailExpectedPages": 5958,
@@ -881,10 +864,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 118494,
-          "pages": 5958,
-          "pagecount": 5958,
-          "total": 119149
+          "count": 118478,
+          "pages": 5961,
+          "total": 119205
         }
       ],
       "error": ""
@@ -906,9 +888,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 110500,
-      "playableCount": 110500,
-      "sourceTotalCount": 113237,
+      "itemCount": 110499,
+      "playableCount": 110499,
+      "sourceTotalCount": 113337,
       "complete": true,
       "detailPageCount": 5662,
       "detailExpectedPages": 5662,
@@ -924,10 +906,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 110500,
-          "pages": 5662,
-          "pagecount": 5662,
-          "total": 113237
+          "count": 110499,
+          "pages": 5667,
+          "total": 113337
         }
       ],
       "error": ""
@@ -949,9 +930,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 104453,
-      "playableCount": 104355,
-      "sourceTotalCount": 105837,
+      "itemCount": 104496,
+      "playableCount": 104398,
+      "sourceTotalCount": 105947,
       "complete": true,
       "detailPageCount": 1059,
       "detailExpectedPages": 1059,
@@ -967,10 +948,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 104453,
-          "pages": 1059,
-          "pagecount": 1059,
-          "total": 105837
+          "count": 104496,
+          "pages": 1060,
+          "total": 105947
         }
       ],
       "error": ""
@@ -995,7 +975,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "complete": false,
+      "complete": true,
       "detailPageCount": 1,
       "detailExpectedPages": 1,
       "detailPathPattern": "vod-detail/api-wwzy-tv-all-on-demand-sources-旺旺资源-https-api-wwzy-tv-api-php-provide-vod-17/page-{page}.json.gz",
@@ -1009,14 +989,13 @@
       "checks": [
         {
           "label": "source-index-gzip",
-          "ok": false,
+          "ok": true,
           "count": 0,
           "pages": 1,
-          "pagecount": 1,
           "total": 0
         }
       ],
-      "error": "遠端回傳 0 筆或目前格式無可播放資料"
+      "error": ""
     },
     {
       "id": "all-on-demand-sources-速播资源-https-subocaiji-com-api-php-provide-vod-18",
@@ -1035,9 +1014,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 104899,
-      "playableCount": 104321,
-      "sourceTotalCount": 105821,
+      "itemCount": 104942,
+      "playableCount": 104364,
+      "sourceTotalCount": 105931,
       "complete": true,
       "detailPageCount": 1059,
       "detailExpectedPages": 1059,
@@ -1053,10 +1032,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 104899,
-          "pages": 1059,
-          "pagecount": 1059,
-          "total": 105821
+          "count": 104942,
+          "pages": 1060,
+          "total": 105931
         }
       ],
       "error": ""
@@ -1078,12 +1056,12 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 94506,
-      "playableCount": 83284,
-      "sourceTotalCount": 95121,
+      "itemCount": 94512,
+      "playableCount": 83290,
+      "sourceTotalCount": 95166,
       "complete": true,
       "detailPageCount": 4757,
-      "detailExpectedPages": 4757,
+      "detailExpectedPages": 4756,
       "detailPathPattern": "vod-detail/p2100-net-all-on-demand-sources-飘零资源-https-p2100-net-api-php-provide-vod-20/page-{page}.json.gz",
       "mappedDetailDir": "p2100-net-all-on-demand-sources-飘零资源-https-p2100-net-api-php-provide-vod-20",
       "tvboxType": 1,
@@ -1096,10 +1074,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 94506,
-          "pages": 4757,
-          "pagecount": 4757,
-          "total": 95121
+          "count": 94512,
+          "pages": 4759,
+          "total": 95166
         }
       ],
       "error": ""
@@ -1121,9 +1098,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 53430,
-      "playableCount": 53430,
-      "sourceTotalCount": 54043,
+      "itemCount": 53444,
+      "playableCount": 53444,
+      "sourceTotalCount": 54103,
       "complete": true,
       "detailPageCount": 2703,
       "detailExpectedPages": 2703,
@@ -1139,10 +1116,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 53430,
-          "pages": 2703,
-          "pagecount": 2703,
-          "total": 54043
+          "count": 53444,
+          "pages": 2706,
+          "total": 54103
         }
       ],
       "error": ""
@@ -1164,9 +1140,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 104593,
-      "playableCount": 104593,
-      "sourceTotalCount": 106074,
+      "itemCount": 104633,
+      "playableCount": 104633,
+      "sourceTotalCount": 106182,
       "complete": true,
       "detailPageCount": 1061,
       "detailExpectedPages": 1061,
@@ -1182,10 +1158,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 104593,
-          "pages": 1061,
-          "pagecount": 1061,
-          "total": 106074
+          "count": 104633,
+          "pages": 1062,
+          "total": 106182
         }
       ],
       "error": ""
@@ -1207,9 +1182,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 103929,
-      "playableCount": 103929,
-      "sourceTotalCount": 105412,
+      "itemCount": 103969,
+      "playableCount": 103969,
+      "sourceTotalCount": 105520,
       "complete": true,
       "detailPageCount": 1055,
       "detailExpectedPages": 1055,
@@ -1225,10 +1200,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 103929,
-          "pages": 1055,
-          "pagecount": 1055,
-          "total": 105412
+          "count": 103969,
+          "pages": 1056,
+          "total": 105520
         }
       ],
       "error": ""
@@ -1250,9 +1224,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 82834,
-      "playableCount": 82834,
-      "sourceTotalCount": 83549,
+      "itemCount": 82907,
+      "playableCount": 82907,
+      "sourceTotalCount": 83635,
       "complete": true,
       "detailPageCount": 836,
       "detailExpectedPages": 836,
@@ -1268,10 +1242,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 82834,
-          "pages": 836,
-          "pagecount": 836,
-          "total": 83549
+          "count": 82907,
+          "pages": 837,
+          "total": 83635
         }
       ],
       "error": ""
@@ -1293,9 +1266,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 77715,
-      "playableCount": 77715,
-      "sourceTotalCount": 78985,
+      "itemCount": 77736,
+      "playableCount": 77736,
+      "sourceTotalCount": 79049,
       "complete": true,
       "detailPageCount": 790,
       "detailExpectedPages": 790,
@@ -1311,10 +1284,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 77715,
-          "pages": 790,
-          "pagecount": 790,
-          "total": 78985
+          "count": 77736,
+          "pages": 791,
+          "total": 79049
         }
       ],
       "error": ""
@@ -1336,9 +1308,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 103861,
-      "playableCount": 103861,
-      "sourceTotalCount": 104755,
+      "itemCount": 103901,
+      "playableCount": 103901,
+      "sourceTotalCount": 104863,
       "complete": true,
       "detailPageCount": 1048,
       "detailExpectedPages": 1048,
@@ -1354,10 +1326,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 103861,
-          "pages": 1048,
-          "pagecount": 1048,
-          "total": 104755
+          "count": 103901,
+          "pages": 1049,
+          "total": 104863
         }
       ],
       "error": ""
@@ -1379,9 +1350,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 46814,
-      "playableCount": 46814,
-      "sourceTotalCount": 47000,
+      "itemCount": 46824,
+      "playableCount": 46824,
+      "sourceTotalCount": 47018,
       "complete": true,
       "detailPageCount": 2350,
       "detailExpectedPages": 2350,
@@ -1397,10 +1368,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 46814,
-          "pages": 2350,
-          "pagecount": 2350,
-          "total": 47000
+          "count": 46824,
+          "pages": 2351,
+          "total": 47018
         }
       ],
       "error": ""
@@ -1422,9 +1392,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 167793,
-      "playableCount": 167788,
-      "sourceTotalCount": 169711,
+      "itemCount": 167812,
+      "playableCount": 167807,
+      "sourceTotalCount": 169858,
       "complete": true,
       "detailPageCount": 1698,
       "detailExpectedPages": 1698,
@@ -1440,10 +1410,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 167793,
-          "pages": 1698,
-          "pagecount": 1698,
-          "total": 169711
+          "count": 167812,
+          "pages": 1699,
+          "total": 169858
         }
       ],
       "error": ""
@@ -1465,9 +1434,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 136514,
-      "playableCount": 136514,
-      "sourceTotalCount": 138750,
+      "itemCount": 136550,
+      "playableCount": 136550,
+      "sourceTotalCount": 139071,
       "complete": true,
       "detailPageCount": 6938,
       "detailExpectedPages": 6938,
@@ -1483,10 +1452,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 136514,
-          "pages": 6938,
-          "pagecount": 6938,
-          "total": 138750
+          "count": 136550,
+          "pages": 6954,
+          "total": 139071
         }
       ],
       "error": ""
@@ -1508,9 +1476,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 118346,
-      "playableCount": 118230,
-      "sourceTotalCount": 119158,
+      "itemCount": 118336,
+      "playableCount": 118220,
+      "sourceTotalCount": 119205,
       "complete": true,
       "detailPageCount": 5958,
       "detailExpectedPages": 5958,
@@ -1526,10 +1494,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 118346,
-          "pages": 5958,
-          "pagecount": 5958,
-          "total": 119158
+          "count": 118336,
+          "pages": 5961,
+          "total": 119205
         }
       ],
       "error": ""
@@ -1551,9 +1518,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 110500,
-      "playableCount": 110500,
-      "sourceTotalCount": 113238,
+      "itemCount": 110499,
+      "playableCount": 110499,
+      "sourceTotalCount": 113337,
       "complete": true,
       "detailPageCount": 5662,
       "detailExpectedPages": 5662,
@@ -1569,10 +1536,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 110500,
-          "pages": 5662,
-          "pagecount": 5662,
-          "total": 113238
+          "count": 110499,
+          "pages": 5667,
+          "total": 113337
         }
       ],
       "error": ""
@@ -1597,7 +1563,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "complete": false,
+      "complete": true,
       "detailPageCount": 1,
       "detailExpectedPages": 1,
       "detailPathPattern": "vod-detail/wwzy-tv-all-on-demand-sources-旺旺短剧-https-wwzy-tv-api-php-provide-vod-32/page-{page}.json.gz",
@@ -1611,14 +1577,13 @@
       "checks": [
         {
           "label": "source-index-gzip",
-          "ok": false,
+          "ok": true,
           "count": 0,
           "pages": 1,
-          "pagecount": 1,
           "total": 0
         }
       ],
-      "error": "遠端回傳 0 筆或目前格式無可播放資料"
+      "error": ""
     },
     {
       "id": "all-on-demand-sources-优质资源-https-api-yzzy-api-com-inc-apijson-php-33",
@@ -1637,9 +1602,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 93882,
-      "playableCount": 93880,
-      "sourceTotalCount": 94362,
+      "itemCount": 93883,
+      "playableCount": 93881,
+      "sourceTotalCount": 94474,
       "complete": true,
       "detailPageCount": 4719,
       "detailExpectedPages": 4719,
@@ -1655,10 +1620,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 93882,
-          "pages": 4719,
-          "pagecount": 4719,
-          "total": 94362
+          "count": 93883,
+          "pages": 4724,
+          "total": 94474
         }
       ],
       "error": ""
@@ -1680,9 +1644,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 103756,
-      "playableCount": 103178,
-      "sourceTotalCount": 104665,
+      "itemCount": 103796,
+      "playableCount": 103218,
+      "sourceTotalCount": 104773,
       "complete": true,
       "detailPageCount": 1047,
       "detailExpectedPages": 1047,
@@ -1698,10 +1662,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 103756,
-          "pages": 1047,
-          "pagecount": 1047,
-          "total": 104665
+          "count": 103796,
+          "pages": 1048,
+          "total": 104773
         }
       ],
       "error": ""
@@ -1723,9 +1686,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 116495,
-      "playableCount": 116495,
-      "sourceTotalCount": 117140,
+      "itemCount": 116483,
+      "playableCount": 116483,
+      "sourceTotalCount": 117195,
       "complete": true,
       "detailPageCount": 5857,
       "detailExpectedPages": 5857,
@@ -1741,10 +1704,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 116495,
-          "pages": 5857,
-          "pagecount": 5857,
-          "total": 117140
+          "count": 116483,
+          "pages": 5860,
+          "total": 117195
         }
       ],
       "error": ""
@@ -1766,9 +1728,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 135586,
-      "playableCount": 135586,
-      "sourceTotalCount": 137998,
+      "itemCount": 135582,
+      "playableCount": 135582,
+      "sourceTotalCount": 138098,
       "complete": true,
       "detailPageCount": 6900,
       "detailExpectedPages": 6900,
@@ -1784,10 +1746,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 135586,
-          "pages": 6900,
-          "pagecount": 6900,
-          "total": 137998
+          "count": 135582,
+          "pages": 6905,
+          "total": 138098
         }
       ],
       "error": ""
@@ -1809,9 +1770,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 119890,
-      "playableCount": 119890,
-      "sourceTotalCount": 120503,
+      "itemCount": 119878,
+      "playableCount": 119878,
+      "sourceTotalCount": 120557,
       "complete": true,
       "detailPageCount": 6026,
       "detailExpectedPages": 6026,
@@ -1827,10 +1788,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 119890,
-          "pages": 6026,
-          "pagecount": 6026,
-          "total": 120503
+          "count": 119878,
+          "pages": 6028,
+          "total": 120557
         }
       ],
       "error": ""
@@ -1852,9 +1812,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 118195,
-      "playableCount": 118195,
-      "sourceTotalCount": 118884,
+      "itemCount": 118183,
+      "playableCount": 118183,
+      "sourceTotalCount": 118939,
       "complete": true,
       "detailPageCount": 5945,
       "detailExpectedPages": 5945,
@@ -1870,10 +1830,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 118195,
-          "pages": 5945,
-          "pagecount": 5945,
-          "total": 118884
+          "count": 118183,
+          "pages": 5947,
+          "total": 118939
         }
       ],
       "error": ""
@@ -1914,7 +1873,6 @@
           "ok": true,
           "count": 98108,
           "pages": 4944,
-          "pagecount": 4944,
           "total": 98864
         }
       ],
@@ -1936,7 +1894,7 @@
       "indexed": true,
       "itemCount": 34794,
       "playableCount": 34794,
-      "sourceTotalCount": 35159,
+      "sourceTotalCount": 35201,
       "complete": true,
       "detailPageCount": 352,
       "detailExpectedPages": 352,
@@ -1953,9 +1911,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 34794,
-          "pages": 352,
-          "pagecount": 352,
-          "total": 35159
+          "pages": 353,
+          "total": 35201
         }
       ],
       "error": ""
@@ -1977,7 +1934,7 @@
       "indexed": true,
       "itemCount": 314152,
       "playableCount": 314152,
-      "sourceTotalCount": 315673,
+      "sourceTotalCount": 315839,
       "complete": true,
       "detailPageCount": 3157,
       "detailExpectedPages": 3157,
@@ -1994,9 +1951,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 314152,
-          "pages": 3157,
-          "pagecount": 3157,
-          "total": 315673
+          "pages": 3159,
+          "total": 315839
         }
       ],
       "error": ""
@@ -2017,7 +1973,7 @@
       "indexed": true,
       "itemCount": 194083,
       "playableCount": 194083,
-      "sourceTotalCount": 196596,
+      "sourceTotalCount": 196804,
       "complete": true,
       "detailPageCount": 1966,
       "detailExpectedPages": 1966,
@@ -2034,9 +1990,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 194083,
-          "pages": 1966,
-          "pagecount": 1966,
-          "total": 196596
+          "pages": 1969,
+          "total": 196804
         }
       ],
       "error": ""
@@ -2057,7 +2012,7 @@
       "indexed": true,
       "itemCount": 215605,
       "playableCount": 215605,
-      "sourceTotalCount": 217422,
+      "sourceTotalCount": 217562,
       "complete": true,
       "detailPageCount": 2175,
       "detailExpectedPages": 2175,
@@ -2074,9 +2029,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 215605,
-          "pages": 2175,
-          "pagecount": 2175,
-          "total": 217422
+          "pages": 2176,
+          "total": 217562
         }
       ],
       "error": ""
@@ -2097,7 +2051,7 @@
       "indexed": true,
       "itemCount": 194083,
       "playableCount": 194083,
-      "sourceTotalCount": 196596,
+      "sourceTotalCount": 196804,
       "complete": true,
       "detailPageCount": 1966,
       "detailExpectedPages": 1966,
@@ -2114,9 +2068,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 194083,
-          "pages": 1966,
-          "pagecount": 1966,
-          "total": 196596
+          "pages": 1969,
+          "total": 196804
         }
       ],
       "error": ""
@@ -2137,7 +2090,7 @@
       "indexed": true,
       "itemCount": 80347,
       "playableCount": 80347,
-      "sourceTotalCount": 80906,
+      "sourceTotalCount": 81006,
       "complete": true,
       "detailPageCount": 1619,
       "detailExpectedPages": 1619,
@@ -2154,9 +2107,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 80347,
-          "pages": 1619,
-          "pagecount": 1619,
-          "total": 80906
+          "pages": 1621,
+          "total": 81006
         }
       ],
       "error": ""
@@ -2177,7 +2129,7 @@
       "indexed": true,
       "itemCount": 58643,
       "playableCount": 58643,
-      "sourceTotalCount": 59326,
+      "sourceTotalCount": 59428,
       "complete": true,
       "detailPageCount": 594,
       "detailExpectedPages": 594,
@@ -2194,9 +2146,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 58643,
-          "pages": 594,
-          "pagecount": 594,
-          "total": 59326
+          "pages": 595,
+          "total": 59428
         }
       ],
       "error": ""
@@ -2217,7 +2168,7 @@
       "indexed": true,
       "itemCount": 108201,
       "playableCount": 108201,
-      "sourceTotalCount": 110326,
+      "sourceTotalCount": 110529,
       "complete": true,
       "detailPageCount": 1104,
       "detailExpectedPages": 1104,
@@ -2234,9 +2185,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 108201,
-          "pages": 1104,
-          "pagecount": 1104,
-          "total": 110326
+          "pages": 1106,
+          "total": 110529
         }
       ],
       "error": ""
@@ -2257,7 +2207,7 @@
       "indexed": true,
       "itemCount": 124088,
       "playableCount": 124088,
-      "sourceTotalCount": 125106,
+      "sourceTotalCount": 125180,
       "complete": true,
       "detailPageCount": 1252,
       "detailExpectedPages": 1252,
@@ -2275,8 +2225,7 @@
           "ok": true,
           "count": 124088,
           "pages": 1252,
-          "pagecount": 1252,
-          "total": 125106
+          "total": 125180
         }
       ],
       "error": ""
@@ -2298,7 +2247,7 @@
       "indexed": true,
       "itemCount": 314152,
       "playableCount": 314152,
-      "sourceTotalCount": 315673,
+      "sourceTotalCount": 315839,
       "complete": true,
       "detailPageCount": 3157,
       "detailExpectedPages": 3157,
@@ -2315,9 +2264,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 314152,
-          "pages": 3157,
-          "pagecount": 3157,
-          "total": 315673
+          "pages": 3159,
+          "total": 315839
         }
       ],
       "error": ""
@@ -2338,7 +2286,7 @@
       "indexed": true,
       "itemCount": 167964,
       "playableCount": 167964,
-      "sourceTotalCount": 169025,
+      "sourceTotalCount": 169123,
       "complete": true,
       "detailPageCount": 1691,
       "detailExpectedPages": 1691,
@@ -2355,9 +2303,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 167964,
-          "pages": 1691,
-          "pagecount": 1691,
-          "total": 169025
+          "pages": 1692,
+          "total": 169123
         }
       ],
       "error": ""
@@ -2378,7 +2325,7 @@
       "indexed": true,
       "itemCount": 238722,
       "playableCount": 238722,
-      "sourceTotalCount": 240770,
+      "sourceTotalCount": 240933,
       "complete": true,
       "detailPageCount": 2408,
       "detailExpectedPages": 2408,
@@ -2395,9 +2342,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 238722,
-          "pages": 2408,
-          "pagecount": 2408,
-          "total": 240770
+          "pages": 2410,
+          "total": 240933
         }
       ],
       "error": ""
@@ -2418,7 +2364,7 @@
       "indexed": true,
       "itemCount": 212239,
       "playableCount": 212239,
-      "sourceTotalCount": 213977,
+      "sourceTotalCount": 214115,
       "complete": true,
       "detailPageCount": 2140,
       "detailExpectedPages": 2140,
@@ -2435,9 +2381,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 212239,
-          "pages": 2140,
-          "pagecount": 2140,
-          "total": 213977
+          "pages": 2142,
+          "total": 214115
         }
       ],
       "error": ""
@@ -2476,7 +2421,6 @@
           "ok": true,
           "count": 51887,
           "pages": 522,
-          "pagecount": 522,
           "total": 52181
         }
       ],
@@ -2516,7 +2460,6 @@
           "ok": true,
           "count": 41035,
           "pages": 414,
-          "pagecount": 414,
           "total": 41348
         }
       ],
@@ -2543,7 +2486,7 @@
       "sourceTotalCount": 95091,
       "complete": true,
       "detailPageCount": 4755,
-      "detailExpectedPages": 4755,
+      "detailExpectedPages": 1,
       "detailPathPattern": "vod-detail/api-bwzyz-com-all-on-demand-sources-百万资源-https-api-bwzyz-com-api-php-provide-vod/page-{page}.json.gz",
       "mappedDetailDir": "api-bwzyz-com-all-on-demand-sources-百万资源-https-api-bwzyz-com-api-php-provide-vod",
       "tvboxType": 1,
@@ -2558,7 +2501,6 @@
           "ok": true,
           "count": 95069,
           "pages": 4755,
-          "pagecount": 4755,
           "total": 95091
         }
       ],
@@ -2578,9 +2520,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 129624,
-      "playableCount": 129624,
-      "sourceTotalCount": 130707,
+      "itemCount": 129620,
+      "playableCount": 129620,
+      "sourceTotalCount": 130794,
       "complete": true,
       "detailPageCount": 1308,
       "detailExpectedPages": 1308,
@@ -2596,10 +2538,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 129624,
+          "count": 129620,
           "pages": 1308,
-          "pagecount": 1308,
-          "total": 130707
+          "total": 130794
         }
       ],
       "error": ""
@@ -2618,9 +2559,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 7110,
-      "playableCount": 7110,
-      "sourceTotalCount": 7179,
+      "itemCount": 7107,
+      "playableCount": 7107,
+      "sourceTotalCount": 7182,
       "complete": true,
       "detailPageCount": 72,
       "detailExpectedPages": 72,
@@ -2636,10 +2577,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 7110,
+          "count": 7107,
           "pages": 72,
-          "pagecount": 72,
-          "total": 7179
+          "total": 7182
         }
       ],
       "error": ""
@@ -2658,9 +2598,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 120332,
-      "playableCount": 120332,
-      "sourceTotalCount": 121176,
+      "itemCount": 120326,
+      "playableCount": 120326,
+      "sourceTotalCount": 121218,
       "complete": true,
       "detailPageCount": 1212,
       "detailExpectedPages": 1212,
@@ -2676,10 +2616,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 120332,
-          "pages": 1212,
-          "pagecount": 1212,
-          "total": 121176
+          "count": 120326,
+          "pages": 1213,
+          "total": 121218
         }
       ],
       "error": ""
@@ -2698,12 +2637,12 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 17865,
-      "playableCount": 17865,
-      "sourceTotalCount": 18218,
+      "itemCount": 17864,
+      "playableCount": 17864,
+      "sourceTotalCount": 18268,
       "complete": true,
       "detailPageCount": 911,
-      "detailExpectedPages": 911,
+      "detailExpectedPages": 910,
       "detailPathPattern": "vod-detail/www-xxibaozyw-com-tvbox-细胞资源-https-www-xxibaozyw-com-api-php-provide-vod-59/page-{page}.json.gz",
       "mappedDetailDir": "www-xxibaozyw-com-tvbox-细胞资源-https-www-xxibaozyw-com-api-php-provide-vod-59",
       "tvboxType": 1,
@@ -2716,10 +2655,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 17865,
-          "pages": 911,
-          "pagecount": 911,
-          "total": 18218
+          "count": 17864,
+          "pages": 914,
+          "total": 18268
         }
       ],
       "error": ""
@@ -2740,10 +2678,10 @@
       "indexed": true,
       "itemCount": 14890,
       "playableCount": 14890,
-      "sourceTotalCount": 18193,
+      "sourceTotalCount": 18243,
       "complete": true,
       "detailPageCount": 910,
-      "detailExpectedPages": 910,
+      "detailExpectedPages": 909,
       "detailPathPattern": "vod-detail/www-xiangjiaozyw-com-all-on-demand-sources-香蕉资源-https-www-xiangjiaozyw-com-api-p/page-{page}.json.gz",
       "mappedDetailDir": "www-xiangjiaozyw-com-all-on-demand-sources-香蕉资源-https-www-xiangjiaozyw-com-api-p",
       "tvboxType": 1,
@@ -2757,9 +2695,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 14890,
-          "pages": 910,
-          "pagecount": 910,
-          "total": 18193
+          "pages": 913,
+          "total": 18243
         }
       ],
       "error": ""
@@ -2782,7 +2719,7 @@
       "indexed": true,
       "itemCount": 23792,
       "playableCount": 23792,
-      "sourceTotalCount": 23939,
+      "sourceTotalCount": 23951,
       "complete": true,
       "detailPageCount": 1197,
       "detailExpectedPages": 1197,
@@ -2799,9 +2736,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 23792,
-          "pages": 1197,
-          "pagecount": 1197,
-          "total": 23939
+          "pages": 1198,
+          "total": 23951
         }
       ],
       "error": ""
@@ -2824,7 +2760,7 @@
       "indexed": true,
       "itemCount": 22671,
       "playableCount": 22671,
-      "sourceTotalCount": 22812,
+      "sourceTotalCount": 22824,
       "complete": true,
       "detailPageCount": 1141,
       "detailExpectedPages": 1141,
@@ -2841,9 +2777,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 22671,
-          "pages": 1141,
-          "pagecount": 1141,
-          "total": 22812
+          "pages": 1142,
+          "total": 22824
         }
       ],
       "error": ""
@@ -2866,7 +2801,7 @@
       "indexed": true,
       "itemCount": 22505,
       "playableCount": 22505,
-      "sourceTotalCount": 22646,
+      "sourceTotalCount": 22658,
       "complete": true,
       "detailPageCount": 1133,
       "detailExpectedPages": 1133,
@@ -2884,8 +2819,7 @@
           "ok": true,
           "count": 22505,
           "pages": 1133,
-          "pagecount": 1133,
-          "total": 22646
+          "total": 22658
         }
       ],
       "error": ""
@@ -2904,9 +2838,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 93261,
-      "playableCount": 93261,
-      "sourceTotalCount": 95431,
+      "itemCount": 93258,
+      "playableCount": 93258,
+      "sourceTotalCount": 95631,
       "complete": true,
       "detailPageCount": 955,
       "detailExpectedPages": 955,
@@ -2922,10 +2856,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 93261,
-          "pages": 955,
-          "pagecount": 955,
-          "total": 95431
+          "count": 93258,
+          "pages": 957,
+          "total": 95631
         }
       ],
       "error": ""
@@ -2947,7 +2880,7 @@
       "indexed": true,
       "itemCount": 259459,
       "playableCount": 259459,
-      "sourceTotalCount": 261349,
+      "sourceTotalCount": 261489,
       "complete": true,
       "detailPageCount": 13068,
       "detailExpectedPages": 13068,
@@ -2964,9 +2897,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 259459,
-          "pages": 13068,
-          "pagecount": 13068,
-          "total": 261349
+          "pages": 13075,
+          "total": 261489
         }
       ],
       "error": ""
@@ -2988,7 +2920,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "complete": false,
+      "complete": true,
       "detailPageCount": 1,
       "detailExpectedPages": 1,
       "detailPathPattern": "vod-detail/caiji-semaozy-net-all-on-demand-sources-色猫资源-https-caiji-semaozy-net-inc-apijson/page-{page}.json.gz",
@@ -3002,14 +2934,13 @@
       "checks": [
         {
           "label": "source-index-gzip",
-          "ok": false,
+          "ok": true,
           "count": 0,
           "pages": 1,
-          "pagecount": 1,
           "total": 0
         }
       ],
-      "error": "遠端回傳 0 筆或目前格式無可播放資料"
+      "error": ""
     },
     {
       "id": "all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-70",
@@ -3027,7 +2958,7 @@
       "indexed": true,
       "itemCount": 183281,
       "playableCount": 183281,
-      "sourceTotalCount": 205952,
+      "sourceTotalCount": 206051,
       "complete": true,
       "detailPageCount": 2060,
       "detailExpectedPages": 2060,
@@ -3044,9 +2975,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 183281,
-          "pages": 2060,
-          "pagecount": 2060,
-          "total": 205952
+          "pages": 2061,
+          "total": 206051
         }
       ],
       "error": ""
@@ -3070,7 +3000,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "complete": false,
+      "complete": true,
       "detailPageCount": 1,
       "detailExpectedPages": 1,
       "detailPathPattern": "vod-detail/siwazyw-tv-all-on-demand-sources-丝袜资源-https-siwazyw-tv-api-php-provide-vod-71/page-{page}.json.gz",
@@ -3084,14 +3014,13 @@
       "checks": [
         {
           "label": "source-index-gzip",
-          "ok": false,
+          "ok": true,
           "count": 0,
           "pages": 1,
-          "pagecount": 1,
           "total": 0
         }
       ],
-      "error": "遠端回傳 0 筆或目前格式無可播放資料"
+      "error": ""
     },
     {
       "id": "all-on-demand-sources-金鹰点播-https-jinyingzy-com-api-php-provide-vod-19",
@@ -3130,7 +3059,6 @@
           "ok": true,
           "count": 104348,
           "pages": 1050,
-          "pagecount": 1050,
           "total": 104961
         }
       ],
@@ -3157,11 +3085,11 @@
       "sourceTotalCount": 0,
       "complete": false,
       "detailPageCount": 0,
+      "detailExpectedPages": 0,
       "mappedDetailDir": "",
       "tvboxType": 1,
       "tvboxApi": "https://www.yytv4.cc/api.php/provide/vod/",
-      "tvboxExt": "",
-      "error": "完整抓取未完成：未產生 detail 分頁資料"
+      "tvboxExt": ""
     },
     {
       "id": "all-on-demand-sources-鲨鱼资源-https-shayuapi-com-api-php-provide-vod-54",
@@ -3179,7 +3107,7 @@
       "indexed": true,
       "itemCount": 265670,
       "playableCount": 265670,
-      "sourceTotalCount": 267453,
+      "sourceTotalCount": 267623,
       "complete": true,
       "detailPageCount": 2675,
       "detailExpectedPages": 2675,
@@ -3196,9 +3124,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 265670,
-          "pages": 2675,
-          "pagecount": 2675,
-          "total": 267453
+          "pages": 2677,
+          "total": 267623
         }
       ],
       "error": ""
@@ -3223,10 +3150,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "unsupportedReason": "not a direct VOD API source",
-      "complete": false,
-      "detailPageCount": 0,
-      "detailExpectedPages": 0
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "tvbox-tx-https-file-icve-com-cn-file-doc-249-899-3e7e0c8a023b624cec6bdcc200f06f02-js-7",
@@ -3248,10 +3172,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "unsupportedReason": "not a direct VOD API source",
-      "complete": false,
-      "detailPageCount": 0,
-      "detailExpectedPages": 0
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "tvbox-mg-https-file-icve-com-cn-file-doc-249-899-3e7e0c8a023b624cec6bdcc200f06f02-js-7",
@@ -3273,10 +3194,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "unsupportedReason": "not a direct VOD API source",
-      "complete": false,
-      "detailPageCount": 0,
-      "detailExpectedPages": 0
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "all-on-demand-sources-闪电影视-http-sdzyapi-com-api-php-provide-vod-77",
@@ -3295,9 +3213,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 118195,
-      "playableCount": 118195,
-      "sourceTotalCount": 118884,
+      "itemCount": 118184,
+      "playableCount": 118184,
+      "sourceTotalCount": 118939,
       "complete": true,
       "detailPageCount": 5945,
       "detailExpectedPages": 5945,
@@ -3313,10 +3231,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 118195,
-          "pages": 5945,
-          "pagecount": 5945,
-          "total": 118884
+          "count": 118184,
+          "pages": 5947,
+          "total": 118939
         }
       ],
       "error": ""
@@ -3338,9 +3255,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 118486,
-      "playableCount": 118486,
-      "sourceTotalCount": 119099,
+      "itemCount": 118475,
+      "playableCount": 118475,
+      "sourceTotalCount": 119154,
       "complete": true,
       "detailPageCount": 5955,
       "detailExpectedPages": 5955,
@@ -3356,10 +3273,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 118486,
-          "pages": 5955,
-          "pagecount": 5955,
-          "total": 119099
+          "count": 118475,
+          "pages": 5958,
+          "total": 119154
         }
       ],
       "error": ""
@@ -3381,9 +3297,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 136538,
-      "playableCount": 136538,
-      "sourceTotalCount": 138783,
+      "itemCount": 136552,
+      "playableCount": 136552,
+      "sourceTotalCount": 139071,
       "complete": true,
       "detailPageCount": 6940,
       "detailExpectedPages": 6940,
@@ -3399,10 +3315,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 136538,
-          "pages": 6940,
-          "pagecount": 6940,
-          "total": 138783
+          "count": 136552,
+          "pages": 6954,
+          "total": 139071
         }
       ],
       "error": ""
@@ -3427,10 +3342,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "unsupportedReason": "not a direct VOD API source",
-      "complete": false,
-      "detailPageCount": 0,
-      "detailExpectedPages": 0
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "all-on-demand-sources-火狐-https-hhzyapi-com-api-php-provide-vod-81",
@@ -3449,9 +3361,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 103861,
-      "playableCount": 103861,
-      "sourceTotalCount": 104759,
+      "itemCount": 103901,
+      "playableCount": 103901,
+      "sourceTotalCount": 104863,
       "complete": true,
       "detailPageCount": 1048,
       "detailExpectedPages": 1048,
@@ -3467,10 +3379,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 103861,
-          "pages": 1048,
-          "pagecount": 1048,
-          "total": 104759
+          "count": 103901,
+          "pages": 1049,
+          "total": 104863
         }
       ],
       "error": ""
@@ -3492,9 +3403,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 78016,
-      "playableCount": 78016,
-      "sourceTotalCount": 78985,
+      "itemCount": 78037,
+      "playableCount": 78037,
+      "sourceTotalCount": 79053,
       "complete": true,
       "detailPageCount": 790,
       "detailExpectedPages": 790,
@@ -3510,10 +3421,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 78016,
-          "pages": 790,
-          "pagecount": 790,
-          "total": 78985
+          "count": 78037,
+          "pages": 791,
+          "total": 79053
         }
       ],
       "error": ""
@@ -3538,10 +3448,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "unsupportedReason": "not a direct VOD API source",
-      "complete": false,
-      "detailPageCount": 0,
-      "detailExpectedPages": 0
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "all-on-demand-sources-cj-360资源-https-360zy-com-api-php-provide-vod-84",
@@ -3560,9 +3467,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 63660,
-      "playableCount": 63660,
-      "sourceTotalCount": 64583,
+      "itemCount": 63718,
+      "playableCount": 63718,
+      "sourceTotalCount": 64661,
       "complete": true,
       "detailPageCount": 646,
       "detailExpectedPages": 646,
@@ -3578,10 +3485,9 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 63660,
-          "pages": 646,
-          "pagecount": 646,
-          "total": 64583
+          "count": 63718,
+          "pages": 647,
+          "total": 64661
         }
       ],
       "error": ""
@@ -3606,10 +3512,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "unsupportedReason": "not a direct VOD API source",
-      "complete": false,
-      "detailPageCount": 0,
-      "detailExpectedPages": 0
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "tvbox-网易云音乐1-https-xn-fjq53n-xyz-ting-yinyue-网易云音乐1-py-87",
@@ -3631,10 +3534,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "unsupportedReason": "not a direct VOD API source",
-      "complete": false,
-      "detailPageCount": 0,
-      "detailExpectedPages": 0
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "tvbox-hhh-https-od-lk-s-njffmti2oty0ntk3xw-truvaze-py-88",
@@ -3655,10 +3555,7 @@
       "itemCount": 0,
       "playableCount": 0,
       "sourceTotalCount": 0,
-      "unsupportedReason": "not a direct VOD API source",
-      "complete": false,
-      "detailPageCount": 0,
-      "detailExpectedPages": 0
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "all-on-demand-sources-大地采集-https-dadiapi-com-apple-m3u8-php-88",
@@ -3676,7 +3573,7 @@
       "indexed": true,
       "itemCount": 259515,
       "playableCount": 259515,
-      "sourceTotalCount": 261349,
+      "sourceTotalCount": 261489,
       "complete": true,
       "detailPageCount": 13068,
       "detailExpectedPages": 13068,
@@ -3693,9 +3590,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 259515,
-          "pages": 13068,
-          "pagecount": 13068,
-          "total": 261349
+          "pages": 13075,
+          "total": 261489
         }
       ],
       "error": ""
@@ -3716,7 +3612,7 @@
       "indexed": true,
       "itemCount": 58643,
       "playableCount": 58643,
-      "sourceTotalCount": 59326,
+      "sourceTotalCount": 59428,
       "complete": true,
       "detailPageCount": 594,
       "detailExpectedPages": 594,
@@ -3733,9 +3629,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 58643,
-          "pages": 594,
-          "pagecount": 594,
-          "total": 59326
+          "pages": 595,
+          "total": 59428
         }
       ],
       "error": ""
@@ -3756,7 +3651,7 @@
       "indexed": true,
       "itemCount": 99412,
       "playableCount": 99412,
-      "sourceTotalCount": 100995,
+      "sourceTotalCount": 101335,
       "complete": true,
       "detailPageCount": 1010,
       "detailExpectedPages": 1010,
@@ -3773,9 +3668,8 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 99412,
-          "pages": 1010,
-          "pagecount": 1010,
-          "total": 100995
+          "pages": 1014,
+          "total": 101335
         }
       ],
       "error": ""
