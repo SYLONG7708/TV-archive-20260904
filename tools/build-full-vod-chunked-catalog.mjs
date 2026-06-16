@@ -43,6 +43,7 @@ const skipExistingPages = args.get('skipExistingPages') !== 'false';
 const keepPartialPages = args.get('keepPartialPages') === 'true';
 const includeEmptySeedSources = args.get('includeEmptySeedSources') === 'true';
 const refreshLeadingPages = Math.max(0, Number(args.get('refreshLeadingPages') || 0));
+const maxFailedPages = Math.max(0, Number(args.get('maxFailedPages') || 0));
 
 const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36 OKTV/1.0';
@@ -531,6 +532,9 @@ async function indexSource(source) {
       if (!keepPartialPages) throw error;
       failures.push({ page, error: error.message });
       console.warn(`${source.name}: page ${page} failed: ${error.message}`);
+      if (maxFailedPages > 0 && failures.length >= maxFailedPages) {
+        throw new Error(`stopped after ${failures.length} failed pages; latest page ${page}: ${error.message}`);
+      }
       return { ok: false, page, error: error.message };
     }
   });

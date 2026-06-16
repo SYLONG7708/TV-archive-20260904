@@ -37,6 +37,7 @@ const keepPartialPages = args.get('keepPartialPages') === 'true';
 const includeEmptySeedSources = args.get('includeEmptySeedSources') === 'true';
 const refreshLeadingPages = Math.max(0, Number(args.get('refreshLeadingPages') || 0));
 const allowPartialSources = args.get('allowPartialSources') === 'true';
+const maxFailedPages = Math.max(0, Number(args.get('maxFailedPages') || args.get('maxFailedPagesPerSource') || 0));
 
 function safeName(value) {
   const safe = String(value || 'source')
@@ -135,6 +136,8 @@ function runSource(source, index, total) {
       String(includeEmptySeedSources),
       '--refreshLeadingPages',
       String(refreshLeadingPages),
+      '--maxFailedPages',
+      String(maxFailedPages),
     ];
 
     const child = spawn(process.execPath, childArgs, {
