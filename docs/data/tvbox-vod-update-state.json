@@ -1,18 +1,16 @@
 {
-    "status":  "success-with-unavailable-sources",
-    "lastSuccessAt":  "2026-06-16T01:01:28.8022081+08:00",
-    "nextDueAt":  "2026-06-18T02:00:00.0000000+08:00",
-    "intervalDays":  2,
-    "scheduleHour":  2,
-    "timeZone":  "China Standard Time",
-    "updatedBy":  "manual-final-tvbox-vod-update",
-    "source":  "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/TVBOX",
-    "unavailableSources":  [
-                               {
-                                   "api":  "https://www.yytv4.cc/api.php/provide/vod/",
-                                   "name":  "优优资源｜追劇",
-                                   "reason":  "fetch failed; yytv1/yyzywcj mirrors returned Cloudflare 502/522 on 2026-06-16"
-                               }
-                           ],
-    "notes":  "All reachable TVBOX VOD detail pages were saved and indexed. Unavailable sources remain in catalog and will be retried by the scheduled updater."
+  "status": "success",
+  "lastSuccessAt": "2026-06-18T02:12:10.9241896+08:00",
+  "nextDueAt": "2026-06-20T02:00:00.0000000+08:00",
+  "intervalDays": 2,
+  "scheduleHour": 2,
+  "timeZone": "China Standard Time",
+  "triggerReason": "manual-force-final-validated",
+  "checkUpstreamFreshness": true,
+  "freshnessReport": "docs/data/tvbox-vod-freshness-report.json",
+  "updatedBy": "tools/update-tvbox-vod-detail-local.ps1",
+  "source": "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/TVBOX",
+  "finalValidationAt": "2026-06-18T02:12:10.9241896+08:00",
+  "playbackReport": "docs/data/tvbox-playback-check-latest.json",
+  "prunedSourcesReport": "docs/data/tvbox-pruned-sources-20260618.json"
 }
