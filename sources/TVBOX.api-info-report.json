@@ -1,46 +1,41 @@
 {
-  "generatedAt": "2026-06-11T17:33:26.350Z",
-  "startedAt": "2026-06-11T17:33:06.930Z",
-  "inputUrl": "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX",
-  "inputPath": "",
-  "outputRoot": "C:\\Users\\Administrator\\TV_api_info_push_20260612\\docs\\data\\tvbox-api-refresh\\latest",
-  "tvboxOutput": "C:\\Users\\Administrator\\TV_api_info_push_20260612\\sources\\TVBOX",
-  "reportOutput": "C:\\Users\\Administrator\\TV_api_info_push_20260612\\sources\\TVBOX.api-info-report.json",
-  "inputSources": 91,
-  "excludedSources": 11,
+  "generatedAt": "2026-06-17T18:55:08.591Z",
+  "startedAt": "2026-06-17T18:54:56.660Z",
+  "inputUrl": "",
+  "inputPath": "C:\\Users\\Administrator\\TV-final-publish-20260616\\sources\\TVBOX",
+  "outputRoot": "C:\\Users\\Administrator\\TV-final-publish-20260616\\docs\\data\\tvbox-api-refresh\\latest",
+  "tvboxOutput": "C:\\Users\\Administrator\\TV-final-publish-20260616\\sources\\TVBOX",
+  "reportOutput": "C:\\Users\\Administrator\\TV-final-publish-20260616\\sources\\TVBOX.api-info-report.json",
+  "inputSources": 82,
+  "excludedSources": 6,
   "excludedSourceKeys": [
-    "旺旺资源",
-    "旺旺短剧",
-    "卧龙资源",
-    "金鹰点播",
-    "华视影院",
     "百万资源",
     "美少女",
     "黄AVZY",
     "白嫖资源",
-    "丝袜资源",
-    "优优资源"
+    "金鹰点播",
+    "华视影院"
   ],
-  "totalSources": 80,
-  "okSources": 80,
-  "failedSources": 0,
-  "cmsInfoSources": 73,
+  "totalSources": 76,
+  "okSources": 75,
+  "failedSources": 1,
+  "cmsInfoSources": 69,
   "rawScriptSources": 7,
-  "adultSources": 32,
-  "totalBytes": 779566,
+  "adultSources": 29,
+  "totalBytes": 760193,
   "windowCount": 3,
   "chunks": [
     {
       "window": 1,
-      "sourceCount": 27
+      "sourceCount": 26
     },
     {
       "window": 2,
-      "sourceCount": 27
+      "sourceCount": 25
     },
     {
       "window": 3,
-      "sourceCount": 26
+      "sourceCount": 25
     }
   ],
   "sources": [
@@ -58,10 +53,10 @@
       "host": "iqiyizyapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6352,
-      "sha256": "291bf027b66540f226bf0d57e6c364115724f8030d2e7ea0e1d7f3f85032c884",
-      "categoryCount": 40,
-      "apiCategoryCount": 40,
+      "bytes": 6608,
+      "sha256": "1415c30c8b8a75a474f1c6fa8b2fb59a517276c0c3fb5491a68f794dd8734fbb",
+      "categoryCount": 42,
+      "apiCategoryCount": 42,
       "usedFallbackCategories": false,
       "categories": [
         {
@@ -223,11 +218,19 @@
         {
           "id": "40",
           "name": "动漫"
+        },
+        {
+          "id": "41",
+          "name": "体育"
+        },
+        {
+          "id": "42",
+          "name": "足球"
         }
       ],
       "rawResponsePath": "raw/001-iqiyizyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:07.470Z",
-      "finishedAt": "2026-06-11T17:33:08.060Z",
+      "startedAt": "2026-06-17T18:54:56.685Z",
+      "finishedAt": "2026-06-17T18:55:03.776Z",
       "error": ""
     },
     {
@@ -244,8 +247,8 @@
       "host": "dbzy.tv",
       "ok": true,
       "httpLike": true,
-      "bytes": 7293,
-      "sha256": "67fd41dff009f8de3ee88b077e52d74cb7ba7f103f82dc669a666429b71ee096",
+      "bytes": 7990,
+      "sha256": "976afa1f628cab0f1e65557253b1a0c29303bb033d31016a19e08765a92554b7",
       "categoryCount": 49,
       "apiCategoryCount": 49,
       "usedFallbackCategories": false,
@@ -448,8 +451,8 @@
         }
       ],
       "rawResponsePath": "raw/002-dbzy.tv.txt",
-      "startedAt": "2026-06-11T17:33:07.473Z",
-      "finishedAt": "2026-06-11T17:33:08.214Z",
+      "startedAt": "2026-06-17T18:54:56.775Z",
+      "finishedAt": "2026-06-17T18:54:57.614Z",
       "error": ""
     },
     {
@@ -466,8 +469,8 @@
       "host": "tyyszy.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6422,
-      "sha256": "6a282308172ac649f92d32fb1e671e0c850c1119882aeaf2a49c3f9d05977af3",
+      "bytes": 6877,
+      "sha256": "70bb0c56cf06c549d67d1631a0a7800afcaa6965db9630e11406cfbe0be4e33a",
       "categoryCount": 59,
       "apiCategoryCount": 59,
       "usedFallbackCategories": false,
@@ -710,12 +713,458 @@
         }
       ],
       "rawResponsePath": "raw/003-tyyszy.com.txt",
-      "startedAt": "2026-06-11T17:33:07.475Z",
-      "finishedAt": "2026-06-11T17:33:08.002Z",
+      "startedAt": "2026-06-17T18:54:56.776Z",
+      "finishedAt": "2026-06-17T18:54:57.505Z",
       "error": ""
     },
     {
       "index": 4,
+      "key": "黑料资源",
+      "name": "🔞 黑料资源｜追劇",
+      "type": 1,
+      "adult": true,
+      "api": "https://www.heiliaozyapi.com/api.php/provide/vod/",
+      "ext": "",
+      "infoKind": "cms-list",
+      "infoUrl": "https://www.heiliaozyapi.com/api.php/provide/vod/?ac=list",
+      "infoSourceField": "api",
+      "host": "www.heiliaozyapi.com",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 15521,
+      "sha256": "050cb7301144fcbbfe3f933054756302e77064f28606f82f1c4d684be2d4c4df",
+      "categoryCount": 24,
+      "apiCategoryCount": 24,
+      "usedFallbackCategories": false,
+      "categories": [
+        {
+          "id": "1",
+          "name": "中文字幕"
+        },
+        {
+          "id": "2",
+          "name": "日本有码"
+        },
+        {
+          "id": "3",
+          "name": "日本无码"
+        },
+        {
+          "id": "4",
+          "name": "AV解说"
+        },
+        {
+          "id": "5",
+          "name": "cosplay"
+        },
+        {
+          "id": "20",
+          "name": "都市激情"
+        },
+        {
+          "id": "21",
+          "name": "校园情事"
+        },
+        {
+          "id": "22",
+          "name": "人妻纵情"
+        },
+        {
+          "id": "23",
+          "name": "风俗伦理"
+        },
+        {
+          "id": "24",
+          "name": "另类小说"
+        },
+        {
+          "id": "25",
+          "name": "武侠古典"
+        },
+        {
+          "id": "26",
+          "name": "长篇连载"
+        },
+        {
+          "id": "27",
+          "name": "黑丝诱惑"
+        },
+        {
+          "id": "28",
+          "name": "SWAG"
+        },
+        {
+          "id": "29",
+          "name": "自拍偷拍"
+        },
+        {
+          "id": "30",
+          "name": "激情动漫"
+        },
+        {
+          "id": "31",
+          "name": "网红主播"
+        },
+        {
+          "id": "32",
+          "name": "探花系列"
+        },
+        {
+          "id": "33",
+          "name": "三级伦理"
+        },
+        {
+          "id": "34",
+          "name": "VR视角"
+        },
+        {
+          "id": "35",
+          "name": "国产传媒"
+        },
+        {
+          "id": "36",
+          "name": "素人搭讪"
+        },
+        {
+          "id": "37",
+          "name": "门事件"
+        },
+        {
+          "id": "38",
+          "name": "抖阴视频"
+        }
+      ],
+      "rawResponsePath": "raw/004-www.heiliaozyapi.com.txt",
+      "startedAt": "2026-06-17T18:54:56.777Z",
+      "finishedAt": "2026-06-17T18:54:57.672Z",
+      "error": ""
+    },
+    {
+      "index": 5,
+      "key": "精品资源",
+      "name": "🔞 精品资源｜追劇",
+      "type": 1,
+      "adult": true,
+      "api": "https://www.jingpinx.com/api.php/provide/vod/",
+      "ext": "",
+      "infoKind": "cms-list",
+      "infoUrl": "https://www.jingpinx.com/api.php/provide/vod/?ac=list",
+      "infoSourceField": "api",
+      "host": "www.jingpinx.com",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 9025,
+      "sha256": "b45f14e8b0e6ff0460fabfa73aa58a64f3e18ac6bc0e8b1b7c1e18a148be4f39",
+      "categoryCount": 28,
+      "apiCategoryCount": 28,
+      "usedFallbackCategories": false,
+      "categories": [
+        {
+          "id": "1",
+          "name": "国产"
+        },
+        {
+          "id": "2",
+          "name": "日本"
+        },
+        {
+          "id": "3",
+          "name": "欧美"
+        },
+        {
+          "id": "4",
+          "name": "动漫"
+        },
+        {
+          "id": "8",
+          "name": "偷拍自拍"
+        },
+        {
+          "id": "9",
+          "name": "国产大制作"
+        },
+        {
+          "id": "10",
+          "name": "乱伦毁三观"
+        },
+        {
+          "id": "11",
+          "name": "嫖妓全过程"
+        },
+        {
+          "id": "12",
+          "name": "淫乱学生妹"
+        },
+        {
+          "id": "13",
+          "name": "黑料不打烊"
+        },
+        {
+          "id": "14",
+          "name": "监控摄像头"
+        },
+        {
+          "id": "15",
+          "name": "主播网红"
+        },
+        {
+          "id": "20",
+          "name": "高清无码"
+        },
+        {
+          "id": "21",
+          "name": "中文字幕"
+        },
+        {
+          "id": "22",
+          "name": "成人综艺"
+        },
+        {
+          "id": "23",
+          "name": "媚黑母狗"
+        },
+        {
+          "id": "24",
+          "name": "为国争光"
+        },
+        {
+          "id": "25",
+          "name": "少女破处"
+        },
+        {
+          "id": "26",
+          "name": "人兽典藏"
+        },
+        {
+          "id": "27",
+          "name": "中文剧情"
+        },
+        {
+          "id": "28",
+          "name": "燃烧荷尔蒙"
+        },
+        {
+          "id": "29",
+          "name": "女同口交"
+        },
+        {
+          "id": "30",
+          "name": "重口味"
+        },
+        {
+          "id": "31",
+          "name": "3D动漫"
+        },
+        {
+          "id": "32",
+          "name": "剧情故事"
+        },
+        {
+          "id": "33",
+          "name": "同人动漫"
+        },
+        {
+          "id": "35",
+          "name": "激情中字"
+        },
+        {
+          "id": "41",
+          "name": "东南亚"
+        }
+      ],
+      "rawResponsePath": "raw/005-www.jingpinx.com.txt",
+      "startedAt": "2026-06-17T18:54:56.778Z",
+      "finishedAt": "2026-06-17T18:54:58.320Z",
+      "error": ""
+    },
+    {
+      "index": 6,
+      "key": "155-资源",
+      "name": "🔞 155-资源｜追劇",
+      "type": 1,
+      "adult": true,
+      "api": "https://155api.com/api.php/provide/vod/",
+      "ext": "",
+      "infoKind": "cms-list",
+      "infoUrl": "https://155api.com/api.php/provide/vod/?ac=list",
+      "infoSourceField": "api",
+      "host": "155api.com",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 9743,
+      "sha256": "f15ab987b9f32a1469b78aa28bf2061e90e87c2c4feff86d555d50d3d07f69c3",
+      "categoryCount": 40,
+      "apiCategoryCount": 40,
+      "usedFallbackCategories": false,
+      "categories": [
+        {
+          "id": "1",
+          "name": "无码专区"
+        },
+        {
+          "id": "2",
+          "name": "麻豆传媒"
+        },
+        {
+          "id": "3",
+          "name": "制服诱惑"
+        },
+        {
+          "id": "4",
+          "name": "三级伦理"
+        },
+        {
+          "id": "5",
+          "name": "AI换脸"
+        },
+        {
+          "id": "6",
+          "name": "中文字幕"
+        },
+        {
+          "id": "7",
+          "name": "卡通动漫"
+        },
+        {
+          "id": "8",
+          "name": "欧美系列"
+        },
+        {
+          "id": "9",
+          "name": "美女主播"
+        },
+        {
+          "id": "10",
+          "name": "国产自拍"
+        },
+        {
+          "id": "11",
+          "name": "熟女人妻"
+        },
+        {
+          "id": "12",
+          "name": "萝莉少女"
+        },
+        {
+          "id": "13",
+          "name": "女同性爱"
+        },
+        {
+          "id": "14",
+          "name": "多人群交"
+        },
+        {
+          "id": "15",
+          "name": "美乳巨乳"
+        },
+        {
+          "id": "16",
+          "name": "强奸乱伦"
+        },
+        {
+          "id": "17",
+          "name": "生活都市"
+        },
+        {
+          "id": "18",
+          "name": "不偷恋情"
+        },
+        {
+          "id": "19",
+          "name": "学生校园"
+        },
+        {
+          "id": "20",
+          "name": "人妻熟女"
+        },
+        {
+          "id": "21",
+          "name": "暴力虐待"
+        },
+        {
+          "id": "22",
+          "name": "明星偶像"
+        },
+        {
+          "id": "23",
+          "name": "玄幻仙侠"
+        },
+        {
+          "id": "24",
+          "name": "科学幻想"
+        },
+        {
+          "id": "25",
+          "name": "街拍偷拍"
+        },
+        {
+          "id": "26",
+          "name": "丝袜美腿"
+        },
+        {
+          "id": "27",
+          "name": "欧美风情"
+        },
+        {
+          "id": "28",
+          "name": "网友自拍"
+        },
+        {
+          "id": "29",
+          "name": "卡通漫画"
+        },
+        {
+          "id": "30",
+          "name": "露出激情"
+        },
+        {
+          "id": "31",
+          "name": "唯美写真"
+        },
+        {
+          "id": "32",
+          "name": "女优情报"
+        },
+        {
+          "id": "33",
+          "name": "抖音视频"
+        },
+        {
+          "id": "34",
+          "name": "韩国主播"
+        },
+        {
+          "id": "35",
+          "name": "网红头条"
+        },
+        {
+          "id": "36",
+          "name": "网爆黑料"
+        },
+        {
+          "id": "37",
+          "name": "欧美无码"
+        },
+        {
+          "id": "38",
+          "name": "女优明星"
+        },
+        {
+          "id": "39",
+          "name": "SM调教"
+        },
+        {
+          "id": "40",
+          "name": "AV解说"
+        }
+      ],
+      "rawResponsePath": "raw/006-155api.com.txt",
+      "startedAt": "2026-06-17T18:54:56.779Z",
+      "finishedAt": "2026-06-17T18:54:57.411Z",
+      "error": ""
+    },
+    {
+      "index": 7,
       "key": "茅台资源",
       "name": "茅台资源｜追劇",
       "type": 1,
@@ -728,8 +1177,8 @@
       "host": "caiji.maotaizy.cc",
       "ok": true,
       "httpLike": true,
-      "bytes": 7321,
-      "sha256": "26b317f844864f4b3a8b4d7e720b73ed14b6d32cc325857bdda2f1c35ecc2266",
+      "bytes": 7781,
+      "sha256": "8834ebfcc02a77390e5802d758a1b393565b57088dd94e3bafcf76d9e03b8c9e",
       "categoryCount": 50,
       "apiCategoryCount": 50,
       "usedFallbackCategories": false,
@@ -935,13 +1384,13 @@
           "name": "预告片"
         }
       ],
-      "rawResponsePath": "raw/004-caiji.maotaizy.cc.txt",
-      "startedAt": "2026-06-11T17:33:07.477Z",
-      "finishedAt": "2026-06-11T17:33:12.634Z",
+      "rawResponsePath": "raw/007-caiji.maotaizy.cc.txt",
+      "startedAt": "2026-06-17T18:54:56.780Z",
+      "finishedAt": "2026-06-17T18:54:58.177Z",
       "error": ""
     },
     {
-      "index": 5,
+      "index": 8,
       "key": "iKun资源",
       "name": "iKun资源｜追劇",
       "type": 1,
@@ -954,8 +1403,8 @@
       "host": "ikunzyapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6994,
-      "sha256": "0d7064100baa3e6e4fe03f37dc0aac37fcff1f437ca30ee8cbe4ffe5782f6e86",
+      "bytes": 7048,
+      "sha256": "5973150c99fd786f3be6b386850ab078246a2721d3164a85fa1f4f292bfe8ffd",
       "categoryCount": 53,
       "apiCategoryCount": 53,
       "usedFallbackCategories": false,
@@ -1173,13 +1622,13 @@
           "name": "里番动漫"
         }
       ],
-      "rawResponsePath": "raw/005-ikunzyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:07.478Z",
-      "finishedAt": "2026-06-11T17:33:08.354Z",
+      "rawResponsePath": "raw/008-ikunzyapi.com.txt",
+      "startedAt": "2026-06-17T18:54:56.781Z",
+      "finishedAt": "2026-06-17T18:54:57.967Z",
       "error": ""
     },
     {
-      "index": 6,
+      "index": 9,
       "key": "电影天堂",
       "name": "电影天堂｜追劇",
       "type": 1,
@@ -1192,8 +1641,8 @@
       "host": "caiji.dyttzyapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6094,
-      "sha256": "2df36aee9381a083013069ffa673c19ce29d9ea075502b2277d9a9fc942f0a07",
+      "bytes": 6350,
+      "sha256": "76656f231bb4ffd627914e099d82f84ca4ee7a9f46bd8080f901cbe78cef71b5",
       "categoryCount": 32,
       "apiCategoryCount": 32,
       "usedFallbackCategories": false,
@@ -1327,13 +1776,13 @@
           "name": "动画片"
         }
       ],
-      "rawResponsePath": "raw/006-caiji.dyttzyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:07.480Z",
-      "finishedAt": "2026-06-11T17:33:08.028Z",
+      "rawResponsePath": "raw/009-caiji.dyttzyapi.com.txt",
+      "startedAt": "2026-06-17T18:54:56.782Z",
+      "finishedAt": "2026-06-17T18:54:57.567Z",
       "error": ""
     },
     {
-      "index": 7,
+      "index": 10,
       "key": "猫眼资源",
       "name": "猫眼资源｜追劇",
       "type": 1,
@@ -1346,8 +1795,8 @@
       "host": "api.maoyanapi.top",
       "ok": true,
       "httpLike": true,
-      "bytes": 9060,
-      "sha256": "1a7bd3ab8959d1dfe263f403bfdb4a515f1ddfc4e59abd1ddd6f7bed413e51ba",
+      "bytes": 8963,
+      "sha256": "52fc438bbc5e6d7b6dc4b2ce92291595a8e1ce8e3a6d1309a08d21b0b807f184",
       "categoryCount": 53,
       "apiCategoryCount": 53,
       "usedFallbackCategories": false,
@@ -1565,13 +2014,13 @@
           "name": "里番动漫"
         }
       ],
-      "rawResponsePath": "raw/007-api.maoyanapi.top.txt",
-      "startedAt": "2026-06-11T17:33:07.481Z",
-      "finishedAt": "2026-06-11T17:33:07.906Z",
+      "rawResponsePath": "raw/010-api.maoyanapi.top.txt",
+      "startedAt": "2026-06-17T18:54:56.783Z",
+      "finishedAt": "2026-06-17T18:54:57.412Z",
       "error": ""
     },
     {
-      "index": 8,
+      "index": 11,
       "key": "量子资源",
       "name": "量子资源｜追劇",
       "type": 1,
@@ -1584,8 +2033,8 @@
       "host": "cj.lzcaiji.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6675,
-      "sha256": "fcac538ae85ceaaf60156d315b8aca8d5927a9ede4617e06ab14e8fc980338d5",
+      "bytes": 7203,
+      "sha256": "f2e74a200caaf9bc3e6732178d1a30d446063070b028474e28692f95729abff8",
       "categoryCount": 44,
       "apiCategoryCount": 44,
       "usedFallbackCategories": false,
@@ -1767,13 +2216,13 @@
           "name": "AI漫剧"
         }
       ],
-      "rawResponsePath": "raw/008-cj.lzcaiji.com.txt",
-      "startedAt": "2026-06-11T17:33:07.482Z",
-      "finishedAt": "2026-06-11T17:33:08.194Z",
+      "rawResponsePath": "raw/011-cj.lzcaiji.com.txt",
+      "startedAt": "2026-06-17T18:54:56.784Z",
+      "finishedAt": "2026-06-17T18:54:57.917Z",
       "error": ""
     },
     {
-      "index": 9,
+      "index": 12,
       "key": "360资源",
       "name": "360 资源｜追劇",
       "type": 1,
@@ -1786,8 +2235,8 @@
       "host": "360zyzz.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6912,
-      "sha256": "63d81fafedb4a3d66503a1dd58919aebb1786527a9d526f5d52cb393ed6cab7c",
+      "bytes": 7066,
+      "sha256": "77a59cf8b7a58cd1a111e113b7f0a61ede9ca854f4bc1d14caa0d21be4a33827",
       "categoryCount": 51,
       "apiCategoryCount": 51,
       "usedFallbackCategories": false,
@@ -1997,195 +2446,13 @@
           "name": "成长逆袭"
         }
       ],
-      "rawResponsePath": "raw/009-360zyzz.com.txt",
-      "startedAt": "2026-06-11T17:33:07.483Z",
-      "finishedAt": "2026-06-11T17:33:08.483Z",
+      "rawResponsePath": "raw/012-360zyzz.com.txt",
+      "startedAt": "2026-06-17T18:54:56.784Z",
+      "finishedAt": "2026-06-17T18:54:58.003Z",
       "error": ""
     },
     {
-      "index": 10,
-      "key": "极速资源",
-      "name": "极速资源｜追劇",
-      "type": 1,
-      "adult": false,
-      "api": "https://jszyapi.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://jszyapi.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "jszyapi.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 6261,
-      "sha256": "44991d8973160581a1bf8e68ab540a1e144cda3b3bc509f8374de46cd096d039",
-      "categoryCount": 39,
-      "apiCategoryCount": 39,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "电视剧"
-        },
-        {
-          "id": "2",
-          "name": "电影"
-        },
-        {
-          "id": "3",
-          "name": "欧美剧"
-        },
-        {
-          "id": "4",
-          "name": "香港剧"
-        },
-        {
-          "id": "5",
-          "name": "韩剧"
-        },
-        {
-          "id": "6",
-          "name": "日剧"
-        },
-        {
-          "id": "7",
-          "name": "马泰剧"
-        },
-        {
-          "id": "8",
-          "name": "伦理片"
-        },
-        {
-          "id": "9",
-          "name": "动作片"
-        },
-        {
-          "id": "10",
-          "name": "爱情片"
-        },
-        {
-          "id": "11",
-          "name": "喜剧片"
-        },
-        {
-          "id": "12",
-          "name": "科幻片"
-        },
-        {
-          "id": "13",
-          "name": "恐怖片"
-        },
-        {
-          "id": "14",
-          "name": "剧情片"
-        },
-        {
-          "id": "15",
-          "name": "战争片"
-        },
-        {
-          "id": "16",
-          "name": "记录片"
-        },
-        {
-          "id": "17",
-          "name": "动漫"
-        },
-        {
-          "id": "20",
-          "name": "内地剧"
-        },
-        {
-          "id": "23",
-          "name": "动画片"
-        },
-        {
-          "id": "24",
-          "name": "中国动漫"
-        },
-        {
-          "id": "25",
-          "name": "日本动漫"
-        },
-        {
-          "id": "26",
-          "name": "欧美动漫"
-        },
-        {
-          "id": "27",
-          "name": "综艺"
-        },
-        {
-          "id": "28",
-          "name": "台湾剧"
-        },
-        {
-          "id": "29",
-          "name": "体育赛事"
-        },
-        {
-          "id": "30",
-          "name": "大陆综艺"
-        },
-        {
-          "id": "31",
-          "name": "日韩综艺"
-        },
-        {
-          "id": "32",
-          "name": "港台综艺"
-        },
-        {
-          "id": "33",
-          "name": "欧美综艺"
-        },
-        {
-          "id": "34",
-          "name": "灾难片"
-        },
-        {
-          "id": "35",
-          "name": "悬疑片"
-        },
-        {
-          "id": "36",
-          "name": "犯罪片"
-        },
-        {
-          "id": "37",
-          "name": "奇幻片"
-        },
-        {
-          "id": "38",
-          "name": "短剧"
-        },
-        {
-          "id": "39",
-          "name": "预告片"
-        },
-        {
-          "id": "40",
-          "name": "足球"
-        },
-        {
-          "id": "41",
-          "name": "篮球"
-        },
-        {
-          "id": "42",
-          "name": "台球"
-        },
-        {
-          "id": "43",
-          "name": "其他赛事"
-        }
-      ],
-      "rawResponsePath": "raw/010-jszyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:07.484Z",
-      "finishedAt": "2026-06-11T17:33:08.543Z",
-      "error": ""
-    },
-    {
-      "index": 11,
+      "index": 13,
       "key": "魔都资源",
       "name": "魔都资源｜追劇",
       "type": 1,
@@ -2198,10 +2465,10 @@
       "host": "www.mdzyapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6308,
-      "sha256": "cbfb4ce58e8e30daeb2cf49175a82ab10e2b0dc433afd9c0d7e8cc68da04dc4b",
-      "categoryCount": 39,
-      "apiCategoryCount": 39,
+      "bytes": 6624,
+      "sha256": "ca2e647a116b3fb918e64347d00c5f853c08d8cc35807b74c8a5200977d34de4",
+      "categoryCount": 41,
+      "apiCategoryCount": 41,
       "usedFallbackCategories": false,
       "categories": [
         {
@@ -2359,15 +2626,23 @@
         {
           "id": "39",
           "name": "伦理片"
+        },
+        {
+          "id": "40",
+          "name": "体育"
+        },
+        {
+          "id": "41",
+          "name": "足球"
         }
       ],
-      "rawResponsePath": "raw/011-www.mdzyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:07.485Z",
-      "finishedAt": "2026-06-11T17:33:09.040Z",
+      "rawResponsePath": "raw/013-www.mdzyapi.com.txt",
+      "startedAt": "2026-06-17T18:54:57.411Z",
+      "finishedAt": "2026-06-17T18:54:58.215Z",
       "error": ""
     },
     {
-      "index": 12,
+      "index": 14,
       "key": "非凡资源",
       "name": "非凡资源｜追劇",
       "type": 1,
@@ -2380,8 +2655,8 @@
       "host": "api.ffzyapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6049,
-      "sha256": "7f02e64d14a0ed718956a9d69671dade599bfce4fe38b5abbe501b0212d08beb",
+      "bytes": 5943,
+      "sha256": "2dab6ae2e0c81e0a6238ece62313c33456b23bbca53b790025d17283087d7ace",
       "categoryCount": 31,
       "apiCategoryCount": 31,
       "usedFallbackCategories": false,
@@ -2511,13 +2786,13 @@
           "name": "短剧"
         }
       ],
-      "rawResponsePath": "raw/012-api.ffzyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:07.485Z",
-      "finishedAt": "2026-06-11T17:33:08.961Z",
+      "rawResponsePath": "raw/014-api.ffzyapi.com.txt",
+      "startedAt": "2026-06-17T18:54:57.412Z",
+      "finishedAt": "2026-06-17T18:54:57.903Z",
       "error": ""
     },
     {
-      "index": 13,
+      "index": 15,
       "key": "暴风资源",
       "name": "暴风资源｜追劇",
       "type": 1,
@@ -2530,8 +2805,8 @@
       "host": "bfzyapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6790,
-      "sha256": "866c862faf0eccc4800193e87b5708e200ba56a50b332c017220cc691de24932",
+      "bytes": 7187,
+      "sha256": "66b1f34f935e969c4039ba91645e1ddf79d57b8297bbc1b48fe0c1a842258061",
       "categoryCount": 49,
       "apiCategoryCount": 49,
       "usedFallbackCategories": false,
@@ -2733,13 +3008,13 @@
           "name": "AI漫剧"
         }
       ],
-      "rawResponsePath": "raw/013-bfzyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:07.486Z",
-      "finishedAt": "2026-06-11T17:33:08.901Z",
+      "rawResponsePath": "raw/015-bfzyapi.com.txt",
+      "startedAt": "2026-06-17T18:54:57.505Z",
+      "finishedAt": "2026-06-17T18:54:59.148Z",
       "error": ""
     },
     {
-      "index": 14,
+      "index": 16,
       "key": "最大资源",
       "name": "最大资源｜追劇",
       "type": 1,
@@ -2752,8 +3027,8 @@
       "host": "api.zuidapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6553,
-      "sha256": "c059e9b8fa2efc4336b98ee7ae52648058e63fca761d90506a3fcb243ac36b17",
+      "bytes": 6733,
+      "sha256": "e5c4087de22518bab54ebd91dafa37eeb48a16cfb3c71b0fbfb52a8b1cac8732",
       "categoryCount": 59,
       "apiCategoryCount": 59,
       "usedFallbackCategories": false,
@@ -2995,13 +3270,13 @@
           "name": "漫剧"
         }
       ],
-      "rawResponsePath": "raw/014-api.zuidapi.com.txt",
-      "startedAt": "2026-06-11T17:33:07.487Z",
-      "finishedAt": "2026-06-11T17:33:08.206Z",
+      "rawResponsePath": "raw/016-api.zuidapi.com.txt",
+      "startedAt": "2026-06-17T18:54:57.567Z",
+      "finishedAt": "2026-06-17T18:54:57.768Z",
       "error": ""
     },
     {
-      "index": 15,
+      "index": 17,
       "key": "无尽资源",
       "name": "无尽资源｜追劇",
       "type": 1,
@@ -3014,8 +3289,8 @@
       "host": "api.wujinapi.me",
       "ok": true,
       "httpLike": true,
-      "bytes": 7221,
-      "sha256": "4f1fe360edbeb5a7ba985ae468fe7b58c9b7cf512b587f9005c1fcc04e8b6316",
+      "bytes": 6878,
+      "sha256": "f0b2937311c689b7d9d92c5cfbdef73073617e719495e0215bf083dad4cf698d",
       "categoryCount": 63,
       "apiCategoryCount": 63,
       "usedFallbackCategories": false,
@@ -3273,13 +3548,13 @@
           "name": "儿童儿歌"
         }
       ],
-      "rawResponsePath": "raw/015-api.wujinapi.me.txt",
-      "startedAt": "2026-06-11T17:33:07.487Z",
-      "finishedAt": "2026-06-11T17:33:08.365Z",
+      "rawResponsePath": "raw/017-api.wujinapi.me.txt",
+      "startedAt": "2026-06-17T18:54:57.614Z",
+      "finishedAt": "2026-06-17T18:54:58.010Z",
       "error": ""
     },
     {
-      "index": 16,
+      "index": 18,
       "key": "新浪资源",
       "name": "新浪资源｜追劇",
       "type": 1,
@@ -3292,8 +3567,8 @@
       "host": "api.xinlangapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6059,
-      "sha256": "77a1843e064522d1ad4a228a3fe17db0fd2315fbcf3b68fe4ce4136be284afec",
+      "bytes": 6068,
+      "sha256": "b27aeb3340018746b1992fad14b101daf020e05771fd1d627ca24147d1e22c77",
       "categoryCount": 28,
       "apiCategoryCount": 28,
       "usedFallbackCategories": false,
@@ -3411,13 +3686,13 @@
           "name": "其他赛事"
         }
       ],
-      "rawResponsePath": "raw/016-api.xinlangapi.com.txt",
-      "startedAt": "2026-06-11T17:33:07.488Z",
-      "finishedAt": "2026-06-11T17:33:09.738Z",
+      "rawResponsePath": "raw/018-api.xinlangapi.com.txt",
+      "startedAt": "2026-06-17T18:54:57.672Z",
+      "finishedAt": "2026-06-17T18:54:59.111Z",
       "error": ""
     },
     {
-      "index": 17,
+      "index": 19,
       "key": "速播资源",
       "name": "速播资源｜追劇",
       "type": 1,
@@ -3430,8 +3705,8 @@
       "host": "subocaiji.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 5929,
-      "sha256": "4d66a1035b35feb348bffbcf00283f5670ffd90a27fe220c5769cc55bfac0475",
+      "bytes": 5930,
+      "sha256": "af3d48e0f28579dcfc68aeebb4285bdd937c93886d269badde254484e1b28201",
       "categoryCount": 31,
       "apiCategoryCount": 31,
       "usedFallbackCategories": false,
@@ -3561,13 +3836,13 @@
           "name": "其他赛事"
         }
       ],
-      "rawResponsePath": "raw/017-subocaiji.com.txt",
-      "startedAt": "2026-06-11T17:33:07.906Z",
-      "finishedAt": "2026-06-11T17:33:08.369Z",
+      "rawResponsePath": "raw/019-subocaiji.com.txt",
+      "startedAt": "2026-06-17T18:54:57.768Z",
+      "finishedAt": "2026-06-17T18:54:58.063Z",
       "error": ""
     },
     {
-      "index": 18,
+      "index": 20,
       "key": "飘零资源",
       "name": "飘零资源｜追劇",
       "type": 1,
@@ -3580,8 +3855,8 @@
       "host": "p2100.net",
       "ok": true,
       "httpLike": true,
-      "bytes": 5293,
-      "sha256": "898df352416650f3f9b80e553b32c7b549d27cfa518210417208b1b79af3cefd",
+      "bytes": 5549,
+      "sha256": "9e37a3314de5e6d55bc3d46f0b2f46ec919f25c68fd7d91097903b106f509a39",
       "categoryCount": 27,
       "apiCategoryCount": 27,
       "usedFallbackCategories": false,
@@ -3695,13 +3970,13 @@
           "name": "动漫电影"
         }
       ],
-      "rawResponsePath": "raw/018-p2100.net.txt",
-      "startedAt": "2026-06-11T17:33:08.002Z",
-      "finishedAt": "2026-06-11T17:33:08.922Z",
+      "rawResponsePath": "raw/020-p2100.net.txt",
+      "startedAt": "2026-06-17T18:54:57.903Z",
+      "finishedAt": "2026-06-17T18:54:58.567Z",
       "error": ""
     },
     {
-      "index": 19,
+      "index": 21,
       "key": "U酷影视",
       "name": "U酷影视｜追劇",
       "type": 1,
@@ -3712,138 +3987,36 @@
       "infoUrl": "https://api.ukuapi88.com/api.php/provide/vod/?ac=list",
       "infoSourceField": "api",
       "host": "api.ukuapi88.com",
-      "ok": true,
+      "ok": false,
       "httpLike": true,
-      "bytes": 6170,
-      "sha256": "150cebdfaec594bb3f5627e9e66084274b7bc31ab3d2f7484a5e9ca5c9a0ed83",
-      "categoryCount": 29,
-      "apiCategoryCount": 29,
-      "usedFallbackCategories": false,
+      "bytes": 0,
+      "sha256": "",
+      "categoryCount": 0,
       "categories": [
         {
           "id": "1",
-          "name": "电影"
-        },
-        {
-          "id": "2",
-          "name": "电视剧"
-        },
-        {
-          "id": "3",
-          "name": "综艺"
-        },
-        {
-          "id": "4",
-          "name": "动漫"
-        },
-        {
-          "id": "6",
           "name": "动作片"
         },
         {
-          "id": "7",
-          "name": "喜剧片"
-        },
-        {
-          "id": "8",
-          "name": "爱情片"
-        },
-        {
-          "id": "9",
-          "name": "科幻片"
-        },
-        {
-          "id": "10",
-          "name": "恐怖片"
-        },
-        {
-          "id": "11",
-          "name": "剧情片"
-        },
-        {
-          "id": "12",
-          "name": "战争片"
-        },
-        {
-          "id": "13",
-          "name": "国产剧"
-        },
-        {
-          "id": "14",
-          "name": "港澳剧"
-        },
-        {
-          "id": "15",
-          "name": "日剧"
-        },
-        {
-          "id": "16",
-          "name": "欧美剧"
-        },
-        {
-          "id": "20",
+          "id": "2",
           "name": "动漫电影"
         },
         {
-          "id": "21",
-          "name": "台湾剧"
-        },
-        {
-          "id": "22",
-          "name": "韩剧"
-        },
-        {
-          "id": "23",
-          "name": "泰剧"
-        },
-        {
-          "id": "24",
-          "name": "记录片"
-        },
-        {
-          "id": "25",
-          "name": "伦理片"
-        },
-        {
-          "id": "26",
-          "name": "资讯"
-        },
-        {
-          "id": "27",
-          "name": "新闻资讯"
-        },
-        {
-          "id": "28",
-          "name": "预告资讯"
-        },
-        {
-          "id": "30",
-          "name": "影视资讯"
-        },
-        {
-          "id": "31",
-          "name": "明星资讯"
-        },
-        {
-          "id": "32",
+          "id": "3",
           "name": "短剧"
         },
         {
-          "id": "33",
-          "name": "奇幻片"
-        },
-        {
-          "id": "34",
-          "name": "犯罪片"
+          "id": "4",
+          "name": "综艺"
         }
       ],
-      "rawResponsePath": "raw/019-api.ukuapi88.com.txt",
-      "startedAt": "2026-06-11T17:33:08.028Z",
-      "finishedAt": "2026-06-11T17:33:09.862Z",
-      "error": ""
+      "rawResponsePath": "",
+      "startedAt": "2026-06-17T18:54:57.917Z",
+      "finishedAt": "2026-06-17T18:55:08.590Z",
+      "error": "HTTP 502"
     },
     {
-      "index": 20,
+      "index": 22,
       "key": "光速资源",
       "name": "光速资源｜追劇",
       "type": 1,
@@ -3856,8 +4029,8 @@
       "host": "api.guangsuapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6069,
-      "sha256": "c6ac8942b5ba7d3125cc6dd0dcc614a6c04c2a499257780ad6a7896683324bac",
+      "bytes": 6106,
+      "sha256": "10b7ce7a325dd51ba9a6fcc21de677d6af9589ef972995c339cd20e5570b80e0",
       "categoryCount": 28,
       "apiCategoryCount": 28,
       "usedFallbackCategories": false,
@@ -3975,13 +4148,13 @@
           "name": "其他赛事"
         }
       ],
-      "rawResponsePath": "raw/020-api.guangsuapi.com.txt",
-      "startedAt": "2026-06-11T17:33:08.060Z",
-      "finishedAt": "2026-06-11T17:33:11.559Z",
+      "rawResponsePath": "raw/022-api.guangsuapi.com.txt",
+      "startedAt": "2026-06-17T18:54:57.967Z",
+      "finishedAt": "2026-06-17T18:54:58.529Z",
       "error": ""
     },
     {
-      "index": 21,
+      "index": 23,
       "key": "红牛资源",
       "name": "红牛资源｜追劇",
       "type": 1,
@@ -3994,8 +4167,8 @@
       "host": "www.hongniuzy2.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 5495,
-      "sha256": "b26ec9f6c5ae2011978e67604448a6e706e1679a0a9c74d36f77aeb90feeecfd",
+      "bytes": 5537,
+      "sha256": "431c356498d415770cb0c047f3601401c8385315e4c530ba95dda280d5d9f6e7",
       "categoryCount": 31,
       "apiCategoryCount": 31,
       "usedFallbackCategories": false,
@@ -4125,13 +4298,13 @@
           "name": "欧美动漫"
         }
       ],
-      "rawResponsePath": "raw/021-www.hongniuzy2.com.txt",
-      "startedAt": "2026-06-11T17:33:08.194Z",
-      "finishedAt": "2026-06-11T17:33:09.026Z",
+      "rawResponsePath": "raw/023-www.hongniuzy2.com.txt",
+      "startedAt": "2026-06-17T18:54:58.003Z",
+      "finishedAt": "2026-06-17T18:54:58.419Z",
       "error": ""
     },
     {
-      "index": 22,
+      "index": 24,
       "key": "魔都动漫",
       "name": "魔都动漫｜追劇",
       "type": 1,
@@ -4144,10 +4317,10 @@
       "host": "caiji.moduapi.cc",
       "ok": true,
       "httpLike": true,
-      "bytes": 6308,
-      "sha256": "cbfb4ce58e8e30daeb2cf49175a82ab10e2b0dc433afd9c0d7e8cc68da04dc4b",
-      "categoryCount": 39,
-      "apiCategoryCount": 39,
+      "bytes": 6624,
+      "sha256": "ca2e647a116b3fb918e64347d00c5f853c08d8cc35807b74c8a5200977d34de4",
+      "categoryCount": 41,
+      "apiCategoryCount": 41,
       "usedFallbackCategories": false,
       "categories": [
         {
@@ -4305,15 +4478,23 @@
         {
           "id": "39",
           "name": "伦理片"
+        },
+        {
+          "id": "40",
+          "name": "体育"
+        },
+        {
+          "id": "41",
+          "name": "足球"
         }
       ],
-      "rawResponsePath": "raw/022-caiji.moduapi.cc.txt",
-      "startedAt": "2026-06-11T17:33:08.206Z",
-      "finishedAt": "2026-06-11T17:33:09.251Z",
+      "rawResponsePath": "raw/024-caiji.moduapi.cc.txt",
+      "startedAt": "2026-06-17T18:54:58.010Z",
+      "finishedAt": "2026-06-17T18:54:58.865Z",
       "error": ""
     },
     {
-      "index": 23,
+      "index": 25,
       "key": "如意资源",
       "name": "如意资源｜追劇",
       "type": 1,
@@ -4326,8 +4507,8 @@
       "host": "cj.rycjapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6333,
-      "sha256": "2b64d3554bb65de45b686f03a4af2c312a987e870b9bba3495b62a18e428ac7b",
+      "bytes": 6752,
+      "sha256": "89994d25a4f8cb8dad8511fb6cc183cbc901c04e74911c2603827a887a28970d",
       "categoryCount": 39,
       "apiCategoryCount": 39,
       "usedFallbackCategories": false,
@@ -4349,12 +4530,12 @@
           "name": "动漫片"
         },
         {
-          "id": "6",
-          "name": "动作片"
-        },
-        {
           "id": "7",
           "name": "喜剧片"
+        },
+        {
+          "id": "6",
+          "name": "动作片"
         },
         {
           "id": "8",
@@ -4489,13 +4670,13 @@
           "name": "动画电影"
         }
       ],
-      "rawResponsePath": "raw/023-cj.rycjapi.com.txt",
-      "startedAt": "2026-06-11T17:33:08.214Z",
-      "finishedAt": "2026-06-11T17:33:09.886Z",
+      "rawResponsePath": "raw/025-cj.rycjapi.com.txt",
+      "startedAt": "2026-06-17T18:54:58.063Z",
+      "finishedAt": "2026-06-17T18:54:59.138Z",
       "error": ""
     },
     {
-      "index": 24,
+      "index": 26,
       "key": "豪华资源",
       "name": "豪华资源｜追劇",
       "type": 1,
@@ -4508,8 +4689,8 @@
       "host": "hhzyapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6335,
-      "sha256": "e516481cdbde99af99163cc5ad00d69c3b7b136adfef6becbf65df0053779e49",
+      "bytes": 6330,
+      "sha256": "cff8930af18fada5afc3d4519b9f2d52498d0c5f1acfa9395961ab884a1386ca",
       "categoryCount": 39,
       "apiCategoryCount": 39,
       "usedFallbackCategories": false,
@@ -4671,13 +4852,13 @@
           "name": "其他赛事"
         }
       ],
-      "rawResponsePath": "raw/024-hhzyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:08.354Z",
-      "finishedAt": "2026-06-11T17:33:08.669Z",
+      "rawResponsePath": "raw/026-hhzyapi.com.txt",
+      "startedAt": "2026-06-17T18:54:58.177Z",
+      "finishedAt": "2026-06-17T18:54:58.525Z",
       "error": ""
     },
     {
-      "index": 25,
+      "index": 27,
       "key": "百度云zy",
       "name": "百度云zy｜追劇",
       "type": 1,
@@ -4690,8 +4871,8 @@
       "host": "api.apibdzy.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6274,
-      "sha256": "cba2561c7d4018925ee8559c63ad174b4ed368ab6348b08020810fdead4b3cac",
+      "bytes": 6525,
+      "sha256": "b3c372f4443a931a9866a78e0a2b9dc002b2158e7f3293106cf2a8a900d16ebe",
       "categoryCount": 54,
       "apiCategoryCount": 54,
       "usedFallbackCategories": false,
@@ -4913,13 +5094,13 @@
           "name": "邵氏电影"
         }
       ],
-      "rawResponsePath": "raw/025-api.apibdzy.com.txt",
-      "startedAt": "2026-06-11T17:33:08.365Z",
-      "finishedAt": "2026-06-11T17:33:10.948Z",
+      "rawResponsePath": "raw/027-api.apibdzy.com.txt",
+      "startedAt": "2026-06-17T18:54:58.215Z",
+      "finishedAt": "2026-06-17T18:54:58.883Z",
       "error": ""
     },
     {
-      "index": 26,
+      "index": 28,
       "key": "艾旦影视",
       "name": "艾旦影视｜追劇",
       "type": 1,
@@ -4932,8 +5113,8 @@
       "host": "lovedan.net",
       "ok": true,
       "httpLike": true,
-      "bytes": 7707,
-      "sha256": "2316e096f48396f265bb8ccdd402d22a6e71ea57ffc1bd78c6106c5cb32eac77",
+      "bytes": 7821,
+      "sha256": "956f2be36530050740b65a7667ad6078a245250098d023193f242c0d88f3f769",
       "categoryCount": 70,
       "apiCategoryCount": 70,
       "usedFallbackCategories": false,
@@ -5219,13 +5400,13 @@
           "name": "其他综艺"
         }
       ],
-      "rawResponsePath": "raw/026-lovedan.net.txt",
-      "startedAt": "2026-06-11T17:33:08.369Z",
-      "finishedAt": "2026-06-11T17:33:09.088Z",
+      "rawResponsePath": "raw/028-lovedan.net.txt",
+      "startedAt": "2026-06-17T18:54:58.321Z",
+      "finishedAt": "2026-06-17T18:54:59.058Z",
       "error": ""
     },
     {
-      "index": 27,
+      "index": 29,
       "key": "量子影视",
       "name": "量子影视｜追劇",
       "type": 1,
@@ -5238,8 +5419,8 @@
       "host": "cj.lziapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6675,
-      "sha256": "fcac538ae85ceaaf60156d315b8aca8d5927a9ede4617e06ab14e8fc980338d5",
+      "bytes": 7203,
+      "sha256": "f2e74a200caaf9bc3e6732178d1a30d446063070b028474e28692f95729abff8",
       "categoryCount": 44,
       "apiCategoryCount": 44,
       "usedFallbackCategories": false,
@@ -5421,13 +5602,13 @@
           "name": "AI漫剧"
         }
       ],
-      "rawResponsePath": "raw/027-cj.lziapi.com.txt",
-      "startedAt": "2026-06-11T17:33:08.483Z",
-      "finishedAt": "2026-06-11T17:33:08.916Z",
+      "rawResponsePath": "raw/029-cj.lziapi.com.txt",
+      "startedAt": "2026-06-17T18:54:58.419Z",
+      "finishedAt": "2026-06-17T18:54:58.735Z",
       "error": ""
     },
     {
-      "index": 28,
+      "index": 30,
       "key": "最大点播",
       "name": "最大点播｜追劇",
       "type": 1,
@@ -5440,8 +5621,8 @@
       "host": "zuidazy.me",
       "ok": true,
       "httpLike": true,
-      "bytes": 6777,
-      "sha256": "7b387a3caeace7cd893ae3ca500b6e78f4e221bc4bcb27fd4199ff211cb401f8",
+      "bytes": 6868,
+      "sha256": "f132f389d625c0e61ebdcd9b53e92823990b692b9230c59fbe11ebc89bb7a789",
       "categoryCount": 59,
       "apiCategoryCount": 59,
       "usedFallbackCategories": false,
@@ -5683,13 +5864,13 @@
           "name": "漫剧"
         }
       ],
-      "rawResponsePath": "raw/028-zuidazy.me.txt",
-      "startedAt": "2026-06-11T17:33:08.543Z",
-      "finishedAt": "2026-06-11T17:33:09.218Z",
+      "rawResponsePath": "raw/030-zuidazy.me.txt",
+      "startedAt": "2026-06-17T18:54:58.525Z",
+      "finishedAt": "2026-06-17T18:54:59.229Z",
       "error": ""
     },
     {
-      "index": 29,
+      "index": 31,
       "key": "无尽影视",
       "name": "无尽影视｜追劇",
       "type": 1,
@@ -5702,8 +5883,8 @@
       "host": "api.wujinapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 7221,
-      "sha256": "4f1fe360edbeb5a7ba985ae468fe7b58c9b7cf512b587f9005c1fcc04e8b6316",
+      "bytes": 6878,
+      "sha256": "f0b2937311c689b7d9d92c5cfbdef73073617e719495e0215bf083dad4cf698d",
       "categoryCount": 63,
       "apiCategoryCount": 63,
       "usedFallbackCategories": false,
@@ -5961,13 +6142,13 @@
           "name": "儿童儿歌"
         }
       ],
-      "rawResponsePath": "raw/029-api.wujinapi.com.txt",
-      "startedAt": "2026-06-11T17:33:08.669Z",
-      "finishedAt": "2026-06-11T17:33:09.539Z",
+      "rawResponsePath": "raw/031-api.wujinapi.com.txt",
+      "startedAt": "2026-06-17T18:54:58.529Z",
+      "finishedAt": "2026-06-17T18:54:59.191Z",
       "error": ""
     },
     {
-      "index": 30,
+      "index": 32,
       "key": "优质资源",
       "name": "优质资源｜追劇",
       "type": 1,
@@ -5980,8 +6161,8 @@
       "host": "api.yzzy-api.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 7884,
-      "sha256": "ae43ffad2907c9372bcfcc976ad7b042541e0e7185d1770e7e68a4f46527631e",
+      "bytes": 7998,
+      "sha256": "2eb996327daddf6ac535f2c3f8b08c5346741e4e0b77f07b82acc29b82ab42d6",
       "categoryCount": 61,
       "apiCategoryCount": 61,
       "usedFallbackCategories": false,
@@ -6231,13 +6412,13 @@
           "name": "AI漫剧"
         }
       ],
-      "rawResponsePath": "raw/030-api.yzzy-api.com.txt",
-      "startedAt": "2026-06-11T17:33:08.901Z",
-      "finishedAt": "2026-06-11T17:33:09.834Z",
+      "rawResponsePath": "raw/032-api.yzzy-api.com.txt",
+      "startedAt": "2026-06-17T18:54:58.567Z",
+      "finishedAt": "2026-06-17T18:54:59.446Z",
       "error": ""
     },
     {
-      "index": 31,
+      "index": 33,
       "key": "虎牙资源",
       "name": "虎牙资源｜追劇",
       "type": 1,
@@ -6250,8 +6431,8 @@
       "host": "www.huyaapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 5892,
-      "sha256": "dfab190edb2a7b7ebaa5a3496235920ebec7042bded8400f30aa53101f97b002",
+      "bytes": 5956,
+      "sha256": "78159dae12a9207e70362437c11a98692e9b89fbd90707f0c70cb5e64ec4b955",
       "categoryCount": 31,
       "apiCategoryCount": 31,
       "usedFallbackCategories": false,
@@ -6381,13 +6562,13 @@
           "name": "其他赛事"
         }
       ],
-      "rawResponsePath": "raw/031-www.huyaapi.com.txt",
-      "startedAt": "2026-06-11T17:33:08.916Z",
-      "finishedAt": "2026-06-11T17:33:09.403Z",
+      "rawResponsePath": "raw/033-www.huyaapi.com.txt",
+      "startedAt": "2026-06-17T18:54:58.735Z",
+      "finishedAt": "2026-06-17T18:54:59.251Z",
       "error": ""
     },
     {
-      "index": 32,
+      "index": 34,
       "key": "鸭鸭资源",
       "name": "鸭鸭资源｜追劇",
       "type": 1,
@@ -6400,8 +6581,8 @@
       "host": "cj.yayazy.net",
       "ok": true,
       "httpLike": true,
-      "bytes": 6493,
-      "sha256": "c48cd9c3b8632cbf7b8758c939d1681600b0365ac6aa66a1b489a9d614b93f2b",
+      "bytes": 6808,
+      "sha256": "95f948d537a69615399c501f45d04e30673ff8e9c1cf227a5dfc335188904646",
       "categoryCount": 59,
       "apiCategoryCount": 59,
       "usedFallbackCategories": false,
@@ -6643,13 +6824,13 @@
           "name": "漫剧"
         }
       ],
-      "rawResponsePath": "raw/032-cj.yayazy.net.txt",
-      "startedAt": "2026-06-11T17:33:08.922Z",
-      "finishedAt": "2026-06-11T17:33:09.576Z",
+      "rawResponsePath": "raw/034-cj.yayazy.net.txt",
+      "startedAt": "2026-06-17T18:54:58.865Z",
+      "finishedAt": "2026-06-17T18:54:59.451Z",
       "error": ""
     },
     {
-      "index": 33,
+      "index": 35,
       "key": "索尼资源",
       "name": "索尼资源｜追劇",
       "type": 1,
@@ -6662,8 +6843,8 @@
       "host": "suoniapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6597,
-      "sha256": "a84d877dc9c3ae49e1a63eb8de54623e6aa1ac0edbe4cde2e4fc1e1382dfbb32",
+      "bytes": 7052,
+      "sha256": "b02fceb214edc3272e844e852033398c108ddfb8a3c17ab17e627acefb169ef7",
       "categoryCount": 61,
       "apiCategoryCount": 61,
       "usedFallbackCategories": false,
@@ -6913,13 +7094,13 @@
           "name": "儿童儿歌"
         }
       ],
-      "rawResponsePath": "raw/033-suoniapi.com.txt",
-      "startedAt": "2026-06-11T17:33:08.961Z",
-      "finishedAt": "2026-06-11T17:33:09.954Z",
+      "rawResponsePath": "raw/035-suoniapi.com.txt",
+      "startedAt": "2026-06-17T18:54:58.883Z",
+      "finishedAt": "2026-06-17T18:54:59.147Z",
       "error": ""
     },
     {
-      "index": 34,
+      "index": 36,
       "key": "快车资源",
       "name": "快车资源｜追劇",
       "type": 1,
@@ -6932,8 +7113,8 @@
       "host": "caiji.kuaichezy.org",
       "ok": true,
       "httpLike": true,
-      "bytes": 7168,
-      "sha256": "6b6bcc1825f44a846bc5cfa5de92f7da5e98e1f43d954e83a9e216b5e018b6c2",
+      "bytes": 6808,
+      "sha256": "5547e006b8e8c07e8ff9c226f6f9441f9861a8c4c6cfe063460f22bc4b368a39",
       "categoryCount": 59,
       "apiCategoryCount": 59,
       "usedFallbackCategories": false,
@@ -7175,13 +7356,13 @@
           "name": "漫剧"
         }
       ],
-      "rawResponsePath": "raw/034-caiji.kuaichezy.org.txt",
-      "startedAt": "2026-06-11T17:33:09.026Z",
-      "finishedAt": "2026-06-11T17:33:09.684Z",
+      "rawResponsePath": "raw/036-caiji.kuaichezy.org.txt",
+      "startedAt": "2026-06-17T18:54:59.058Z",
+      "finishedAt": "2026-06-17T18:54:59.756Z",
       "error": ""
     },
     {
-      "index": 35,
+      "index": 37,
       "key": "闪电资源",
       "name": "闪电资源｜追劇",
       "type": 1,
@@ -7194,8 +7375,8 @@
       "host": "xsd.sdzyapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 6875,
-      "sha256": "c19f1d07208eb6004708c88f7f0d925c8f8e6e5f94ebb7406105e9a507c3fd5f",
+      "bytes": 6808,
+      "sha256": "2079508884acabb2457786a639dc805d4d0f33a65a33f176876e37ab6184be53",
       "categoryCount": 59,
       "apiCategoryCount": 59,
       "usedFallbackCategories": false,
@@ -7437,1585 +7618,13 @@
           "name": "漫剧"
         }
       ],
-      "rawResponsePath": "raw/035-xsd.sdzyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:09.040Z",
-      "finishedAt": "2026-06-11T17:33:09.579Z",
-      "error": ""
-    },
-    {
-      "index": 36,
-      "key": "YK",
-      "name": "优酷视频｜追劇",
-      "type": 3,
-      "adult": false,
-      "api": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
-      "ext": "https://cdn.waimaimingtang.com/file/images/bwc/20251023002200-507c3e8aae.js",
-      "infoKind": "type3-script",
-      "infoUrl": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
-      "infoSourceField": "api",
-      "host": "file.icve.com.cn",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 67948,
-      "sha256": "3527012aed2f6dcf7edd8a6073a2a5fd19bdf271cd9b177ac828f20dc9d504ba",
-      "categoryCount": 4,
-      "apiCategoryCount": 0,
-      "usedFallbackCategories": true,
-      "categories": [
-        {
-          "id": "1",
-          "name": "动作片"
-        },
-        {
-          "id": "2",
-          "name": "国产动漫"
-        },
-        {
-          "id": "3",
-          "name": "短剧"
-        },
-        {
-          "id": "4",
-          "name": "国产综艺"
-        }
-      ],
-      "rawResponsePath": "raw/036-file.icve.com.cn.txt",
-      "startedAt": "2026-06-11T17:33:09.088Z",
-      "finishedAt": "2026-06-11T17:33:10.497Z",
-      "error": ""
-    },
-    {
-      "index": 37,
-      "key": "TX",
-      "name": "腾讯视频｜追劇",
-      "type": 3,
-      "adult": false,
-      "api": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
-      "ext": "https://cdn.waimaimingtang.com/file/images/bwc/20251023002144-0e40887294.js",
-      "infoKind": "type3-script",
-      "infoUrl": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
-      "infoSourceField": "api",
-      "host": "file.icve.com.cn",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 67948,
-      "sha256": "3527012aed2f6dcf7edd8a6073a2a5fd19bdf271cd9b177ac828f20dc9d504ba",
-      "categoryCount": 4,
-      "apiCategoryCount": 0,
-      "usedFallbackCategories": true,
-      "categories": [
-        {
-          "id": "1",
-          "name": "动作片"
-        },
-        {
-          "id": "2",
-          "name": "国产动漫"
-        },
-        {
-          "id": "3",
-          "name": "短剧"
-        },
-        {
-          "id": "4",
-          "name": "国产综艺"
-        }
-      ],
-      "rawResponsePath": "raw/037-file.icve.com.cn.txt",
-      "startedAt": "2026-06-11T17:33:09.218Z",
-      "finishedAt": "2026-06-11T17:33:10.201Z",
+      "rawResponsePath": "raw/037-xsd.sdzyapi.com.txt",
+      "startedAt": "2026-06-17T18:54:59.111Z",
+      "finishedAt": "2026-06-17T18:54:59.773Z",
       "error": ""
     },
     {
       "index": 38,
-      "key": "MG",
-      "name": "芒果TV｜追劇",
-      "type": 3,
-      "adult": false,
-      "api": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
-      "ext": "https://cdn.waimaimingtang.com/file/images/bwc/20251023002108-a4795930ec.js",
-      "infoKind": "type3-script",
-      "infoUrl": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
-      "infoSourceField": "api",
-      "host": "file.icve.com.cn",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 67948,
-      "sha256": "3527012aed2f6dcf7edd8a6073a2a5fd19bdf271cd9b177ac828f20dc9d504ba",
-      "categoryCount": 4,
-      "apiCategoryCount": 0,
-      "usedFallbackCategories": true,
-      "categories": [
-        {
-          "id": "1",
-          "name": "动作片"
-        },
-        {
-          "id": "2",
-          "name": "国产动漫"
-        },
-        {
-          "id": "3",
-          "name": "短剧"
-        },
-        {
-          "id": "4",
-          "name": "国产综艺"
-        }
-      ],
-      "rawResponsePath": "raw/038-file.icve.com.cn.txt",
-      "startedAt": "2026-06-11T17:33:09.251Z",
-      "finishedAt": "2026-06-11T17:33:10.042Z",
-      "error": ""
-    },
-    {
-      "index": 39,
-      "key": "闪电影视",
-      "name": "闪电影视｜追剧",
-      "type": 1,
-      "adult": false,
-      "api": "http://sdzyapi.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "http://sdzyapi.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "sdzyapi.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 6875,
-      "sha256": "c19f1d07208eb6004708c88f7f0d925c8f8e6e5f94ebb7406105e9a507c3fd5f",
-      "categoryCount": 59,
-      "apiCategoryCount": 59,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "电影"
-        },
-        {
-          "id": "2",
-          "name": "电视剧"
-        },
-        {
-          "id": "3",
-          "name": "综艺"
-        },
-        {
-          "id": "4",
-          "name": "动漫"
-        },
-        {
-          "id": "6",
-          "name": "动作片"
-        },
-        {
-          "id": "7",
-          "name": "喜剧片"
-        },
-        {
-          "id": "8",
-          "name": "爱情片"
-        },
-        {
-          "id": "9",
-          "name": "科幻片"
-        },
-        {
-          "id": "10",
-          "name": "恐怖片"
-        },
-        {
-          "id": "11",
-          "name": "剧情片"
-        },
-        {
-          "id": "12",
-          "name": "战争片"
-        },
-        {
-          "id": "13",
-          "name": "国产剧"
-        },
-        {
-          "id": "14",
-          "name": "欧美剧"
-        },
-        {
-          "id": "15",
-          "name": "韩剧"
-        },
-        {
-          "id": "16",
-          "name": "日剧"
-        },
-        {
-          "id": "17",
-          "name": "港剧"
-        },
-        {
-          "id": "18",
-          "name": "台剧"
-        },
-        {
-          "id": "19",
-          "name": "泰剧"
-        },
-        {
-          "id": "20",
-          "name": "纪录片"
-        },
-        {
-          "id": "23",
-          "name": "海外剧"
-        },
-        {
-          "id": "25",
-          "name": "大陆综艺"
-        },
-        {
-          "id": "26",
-          "name": "日韩综艺"
-        },
-        {
-          "id": "27",
-          "name": "港台综艺"
-        },
-        {
-          "id": "28",
-          "name": "欧美综艺"
-        },
-        {
-          "id": "29",
-          "name": "国产动漫"
-        },
-        {
-          "id": "30",
-          "name": "日韩动漫"
-        },
-        {
-          "id": "31",
-          "name": "欧美动漫"
-        },
-        {
-          "id": "39",
-          "name": "动画片"
-        },
-        {
-          "id": "44",
-          "name": "港台动漫"
-        },
-        {
-          "id": "45",
-          "name": "海外动漫"
-        },
-        {
-          "id": "47",
-          "name": "演唱会"
-        },
-        {
-          "id": "48",
-          "name": "体育赛事"
-        },
-        {
-          "id": "49",
-          "name": "篮球"
-        },
-        {
-          "id": "50",
-          "name": "足球"
-        },
-        {
-          "id": "51",
-          "name": "预告片"
-        },
-        {
-          "id": "52",
-          "name": "斯诺克"
-        },
-        {
-          "id": "53",
-          "name": "影视解说"
-        },
-        {
-          "id": "54",
-          "name": "爽文短剧"
-        },
-        {
-          "id": "55",
-          "name": "伦理"
-        },
-        {
-          "id": "56",
-          "name": "港台三级"
-        },
-        {
-          "id": "57",
-          "name": "韩国伦理"
-        },
-        {
-          "id": "58",
-          "name": "西方伦理"
-        },
-        {
-          "id": "59",
-          "name": "日本伦理"
-        },
-        {
-          "id": "60",
-          "name": "两性课堂"
-        },
-        {
-          "id": "61",
-          "name": "写真热舞"
-        },
-        {
-          "id": "62",
-          "name": "4K电影"
-        },
-        {
-          "id": "63",
-          "name": "有声动漫"
-        },
-        {
-          "id": "64",
-          "name": "女频恋爱"
-        },
-        {
-          "id": "65",
-          "name": "反转爽剧"
-        },
-        {
-          "id": "66",
-          "name": "古装仙侠"
-        },
-        {
-          "id": "67",
-          "name": "年代穿越"
-        },
-        {
-          "id": "68",
-          "name": "脑洞悬疑"
-        },
-        {
-          "id": "69",
-          "name": "现代都市"
-        },
-        {
-          "id": "70",
-          "name": "邵氏电影"
-        },
-        {
-          "id": "71",
-          "name": "Netflix电影"
-        },
-        {
-          "id": "72",
-          "name": "Netflix自制剧"
-        },
-        {
-          "id": "73",
-          "name": "科普学习"
-        },
-        {
-          "id": "74",
-          "name": "擦边短剧"
-        },
-        {
-          "id": "75",
-          "name": "漫剧"
-        }
-      ],
-      "rawResponsePath": "raw/039-sdzyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:09.403Z",
-      "finishedAt": "2026-06-11T17:33:11.120Z",
-      "error": ""
-    },
-    {
-      "index": 40,
-      "key": "牛牛影视",
-      "name": "牛牛影视｜追剧",
-      "type": 0,
-      "adult": false,
-      "api": "https://api.niuniuzy.me/api.php/provide/vod/at/xml",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://api.niuniuzy.me/api.php/provide/vod/at/xml?ac=list",
-      "infoSourceField": "api",
-      "host": "api.niuniuzy.me",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 5581,
-      "sha256": "f5e6a68e190ca3e103076bc20681493841b9b29d89f4e793c213aac1d1a6747c",
-      "categoryCount": 59,
-      "apiCategoryCount": 59,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "电影"
-        },
-        {
-          "id": "2",
-          "name": "电视剧"
-        },
-        {
-          "id": "3",
-          "name": "综艺"
-        },
-        {
-          "id": "4",
-          "name": "动漫"
-        },
-        {
-          "id": "6",
-          "name": "动作片"
-        },
-        {
-          "id": "7",
-          "name": "喜剧片"
-        },
-        {
-          "id": "8",
-          "name": "爱情片"
-        },
-        {
-          "id": "9",
-          "name": "科幻片"
-        },
-        {
-          "id": "10",
-          "name": "恐怖片"
-        },
-        {
-          "id": "11",
-          "name": "剧情片"
-        },
-        {
-          "id": "12",
-          "name": "战争片"
-        },
-        {
-          "id": "13",
-          "name": "国产剧"
-        },
-        {
-          "id": "14",
-          "name": "欧美剧"
-        },
-        {
-          "id": "15",
-          "name": "韩剧"
-        },
-        {
-          "id": "16",
-          "name": "日剧"
-        },
-        {
-          "id": "17",
-          "name": "港剧"
-        },
-        {
-          "id": "18",
-          "name": "台剧"
-        },
-        {
-          "id": "19",
-          "name": "泰剧"
-        },
-        {
-          "id": "20",
-          "name": "纪录片"
-        },
-        {
-          "id": "23",
-          "name": "海外剧"
-        },
-        {
-          "id": "25",
-          "name": "大陆综艺"
-        },
-        {
-          "id": "26",
-          "name": "日韩综艺"
-        },
-        {
-          "id": "27",
-          "name": "港台综艺"
-        },
-        {
-          "id": "28",
-          "name": "欧美综艺"
-        },
-        {
-          "id": "29",
-          "name": "国产动漫"
-        },
-        {
-          "id": "30",
-          "name": "日韩动漫"
-        },
-        {
-          "id": "31",
-          "name": "欧美动漫"
-        },
-        {
-          "id": "39",
-          "name": "动画片"
-        },
-        {
-          "id": "44",
-          "name": "港台动漫"
-        },
-        {
-          "id": "45",
-          "name": "海外动漫"
-        },
-        {
-          "id": "47",
-          "name": "演唱会"
-        },
-        {
-          "id": "48",
-          "name": "体育赛事"
-        },
-        {
-          "id": "49",
-          "name": "篮球"
-        },
-        {
-          "id": "50",
-          "name": "足球"
-        },
-        {
-          "id": "51",
-          "name": "预告片"
-        },
-        {
-          "id": "52",
-          "name": "斯诺克"
-        },
-        {
-          "id": "53",
-          "name": "影视解说"
-        },
-        {
-          "id": "54",
-          "name": "爽文短剧"
-        },
-        {
-          "id": "55",
-          "name": "伦理"
-        },
-        {
-          "id": "56",
-          "name": "港台三级"
-        },
-        {
-          "id": "57",
-          "name": "韩国伦理"
-        },
-        {
-          "id": "58",
-          "name": "西方伦理"
-        },
-        {
-          "id": "59",
-          "name": "日本伦理"
-        },
-        {
-          "id": "60",
-          "name": "两性课堂"
-        },
-        {
-          "id": "61",
-          "name": "写真热舞"
-        },
-        {
-          "id": "62",
-          "name": "4K电影"
-        },
-        {
-          "id": "63",
-          "name": "有声动漫"
-        },
-        {
-          "id": "64",
-          "name": "女频恋爱"
-        },
-        {
-          "id": "65",
-          "name": "反转爽剧"
-        },
-        {
-          "id": "66",
-          "name": "古装仙侠"
-        },
-        {
-          "id": "67",
-          "name": "年代穿越"
-        },
-        {
-          "id": "68",
-          "name": "脑洞悬疑"
-        },
-        {
-          "id": "69",
-          "name": "现代都市"
-        },
-        {
-          "id": "70",
-          "name": "邵氏电影"
-        },
-        {
-          "id": "71",
-          "name": "Netflix电影"
-        },
-        {
-          "id": "72",
-          "name": "Netflix自制剧"
-        },
-        {
-          "id": "73",
-          "name": "擦边短剧"
-        },
-        {
-          "id": "74",
-          "name": "科普学习"
-        },
-        {
-          "id": "75",
-          "name": "漫剧"
-        }
-      ],
-      "rawResponsePath": "raw/040-api.niuniuzy.me.txt",
-      "startedAt": "2026-06-11T17:33:09.539Z",
-      "finishedAt": "2026-06-11T17:33:10.481Z",
-      "error": ""
-    },
-    {
-      "index": 41,
-      "key": "雲飛影视",
-      "name": "雲飛影视｜追劇",
-      "type": 1,
-      "adult": false,
-      "api": "http://cj.lziapi.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "http://cj.lziapi.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "cj.lziapi.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 6675,
-      "sha256": "fcac538ae85ceaaf60156d315b8aca8d5927a9ede4617e06ab14e8fc980338d5",
-      "categoryCount": 44,
-      "apiCategoryCount": 44,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "电影片"
-        },
-        {
-          "id": "2",
-          "name": "连续剧"
-        },
-        {
-          "id": "3",
-          "name": "综艺片"
-        },
-        {
-          "id": "4",
-          "name": "动漫片"
-        },
-        {
-          "id": "6",
-          "name": "动作片"
-        },
-        {
-          "id": "7",
-          "name": "喜剧片"
-        },
-        {
-          "id": "8",
-          "name": "爱情片"
-        },
-        {
-          "id": "9",
-          "name": "科幻片"
-        },
-        {
-          "id": "10",
-          "name": "恐怖片"
-        },
-        {
-          "id": "11",
-          "name": "剧情片"
-        },
-        {
-          "id": "12",
-          "name": "战争片"
-        },
-        {
-          "id": "13",
-          "name": "国产剧"
-        },
-        {
-          "id": "14",
-          "name": "香港剧"
-        },
-        {
-          "id": "15",
-          "name": "韩国剧"
-        },
-        {
-          "id": "16",
-          "name": "欧美剧"
-        },
-        {
-          "id": "20",
-          "name": "记录片"
-        },
-        {
-          "id": "21",
-          "name": "台湾剧"
-        },
-        {
-          "id": "22",
-          "name": "日本剧"
-        },
-        {
-          "id": "23",
-          "name": "海外剧"
-        },
-        {
-          "id": "24",
-          "name": "泰国剧"
-        },
-        {
-          "id": "25",
-          "name": "大陆综艺"
-        },
-        {
-          "id": "26",
-          "name": "港台综艺"
-        },
-        {
-          "id": "27",
-          "name": "日韩综艺"
-        },
-        {
-          "id": "28",
-          "name": "欧美综艺"
-        },
-        {
-          "id": "29",
-          "name": "国产动漫"
-        },
-        {
-          "id": "30",
-          "name": "日韩动漫"
-        },
-        {
-          "id": "31",
-          "name": "欧美动漫"
-        },
-        {
-          "id": "32",
-          "name": "港台动漫"
-        },
-        {
-          "id": "33",
-          "name": "海外动漫"
-        },
-        {
-          "id": "34",
-          "name": "伦理片"
-        },
-        {
-          "id": "35",
-          "name": "电影解说"
-        },
-        {
-          "id": "36",
-          "name": "体育"
-        },
-        {
-          "id": "37",
-          "name": "足球"
-        },
-        {
-          "id": "38",
-          "name": "篮球"
-        },
-        {
-          "id": "39",
-          "name": "网球"
-        },
-        {
-          "id": "40",
-          "name": "斯诺克"
-        },
-        {
-          "id": "41",
-          "name": "演员"
-        },
-        {
-          "id": "42",
-          "name": "新闻资讯"
-        },
-        {
-          "id": "43",
-          "name": "电影资讯"
-        },
-        {
-          "id": "44",
-          "name": "娱乐新闻"
-        },
-        {
-          "id": "45",
-          "name": "预告片"
-        },
-        {
-          "id": "46",
-          "name": "短剧"
-        },
-        {
-          "id": "49",
-          "name": "动画片"
-        },
-        {
-          "id": "52",
-          "name": "AI漫剧"
-        }
-      ],
-      "rawResponsePath": "raw/041-cj.lziapi.com.txt",
-      "startedAt": "2026-06-11T17:33:09.576Z",
-      "finishedAt": "2026-06-11T17:33:10.080Z",
-      "error": ""
-    },
-    {
-      "index": 42,
-      "key": "火狐",
-      "name": "火狐影视｜追剧",
-      "type": 1,
-      "adult": false,
-      "api": "https://hhzyapi.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://hhzyapi.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "hhzyapi.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 6335,
-      "sha256": "e516481cdbde99af99163cc5ad00d69c3b7b136adfef6becbf65df0053779e49",
-      "categoryCount": 39,
-      "apiCategoryCount": 39,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "电视剧"
-        },
-        {
-          "id": "2",
-          "name": "电影"
-        },
-        {
-          "id": "3",
-          "name": "欧美剧"
-        },
-        {
-          "id": "4",
-          "name": "香港剧"
-        },
-        {
-          "id": "5",
-          "name": "韩剧"
-        },
-        {
-          "id": "6",
-          "name": "日剧"
-        },
-        {
-          "id": "7",
-          "name": "马泰剧"
-        },
-        {
-          "id": "8",
-          "name": "伦理片"
-        },
-        {
-          "id": "9",
-          "name": "动作片"
-        },
-        {
-          "id": "10",
-          "name": "爱情片"
-        },
-        {
-          "id": "11",
-          "name": "喜剧片"
-        },
-        {
-          "id": "12",
-          "name": "科幻片"
-        },
-        {
-          "id": "13",
-          "name": "恐怖片"
-        },
-        {
-          "id": "14",
-          "name": "剧情片"
-        },
-        {
-          "id": "15",
-          "name": "战争片"
-        },
-        {
-          "id": "16",
-          "name": "记录片"
-        },
-        {
-          "id": "17",
-          "name": "动漫"
-        },
-        {
-          "id": "20",
-          "name": "内地剧"
-        },
-        {
-          "id": "23",
-          "name": "动画片"
-        },
-        {
-          "id": "24",
-          "name": "中国动漫"
-        },
-        {
-          "id": "25",
-          "name": "日本动漫"
-        },
-        {
-          "id": "26",
-          "name": "欧美动漫"
-        },
-        {
-          "id": "27",
-          "name": "综艺"
-        },
-        {
-          "id": "28",
-          "name": "台湾剧"
-        },
-        {
-          "id": "30",
-          "name": "大陆综艺"
-        },
-        {
-          "id": "31",
-          "name": "日韩综艺"
-        },
-        {
-          "id": "32",
-          "name": "港台综艺"
-        },
-        {
-          "id": "33",
-          "name": "欧美综艺"
-        },
-        {
-          "id": "34",
-          "name": "灾难片"
-        },
-        {
-          "id": "35",
-          "name": "悬疑片"
-        },
-        {
-          "id": "36",
-          "name": "犯罪片"
-        },
-        {
-          "id": "37",
-          "name": "奇幻片"
-        },
-        {
-          "id": "38",
-          "name": "短剧"
-        },
-        {
-          "id": "39",
-          "name": "预告片"
-        },
-        {
-          "id": "40",
-          "name": "体育赛事"
-        },
-        {
-          "id": "41",
-          "name": "足球"
-        },
-        {
-          "id": "42",
-          "name": "篮球"
-        },
-        {
-          "id": "43",
-          "name": "台球"
-        },
-        {
-          "id": "44",
-          "name": "其他赛事"
-        }
-      ],
-      "rawResponsePath": "raw/042-hhzyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:09.579Z",
-      "finishedAt": "2026-06-11T17:33:09.879Z",
-      "error": ""
-    },
-    {
-      "index": 43,
-      "key": "API_如意",
-      "name": "如意影视｜追剧",
-      "type": 1,
-      "adult": false,
-      "api": "https://cj.rycjapi.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://cj.rycjapi.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "cj.rycjapi.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 6333,
-      "sha256": "0e0aec384e7e567507fd8f9bd7f2cda56cd299b35ed0b3bb6f5a1e215f8f0856",
-      "categoryCount": 39,
-      "apiCategoryCount": 39,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "电影片"
-        },
-        {
-          "id": "2",
-          "name": "连续剧"
-        },
-        {
-          "id": "3",
-          "name": "综艺片"
-        },
-        {
-          "id": "4",
-          "name": "动漫片"
-        },
-        {
-          "id": "7",
-          "name": "喜剧片"
-        },
-        {
-          "id": "6",
-          "name": "动作片"
-        },
-        {
-          "id": "8",
-          "name": "爱情片"
-        },
-        {
-          "id": "9",
-          "name": "科幻片"
-        },
-        {
-          "id": "10",
-          "name": "恐怖片"
-        },
-        {
-          "id": "11",
-          "name": "剧情片"
-        },
-        {
-          "id": "12",
-          "name": "战争片"
-        },
-        {
-          "id": "13",
-          "name": "国产剧"
-        },
-        {
-          "id": "14",
-          "name": "香港剧"
-        },
-        {
-          "id": "15",
-          "name": "韩国剧"
-        },
-        {
-          "id": "16",
-          "name": "欧美剧"
-        },
-        {
-          "id": "20",
-          "name": "记录片"
-        },
-        {
-          "id": "21",
-          "name": "台湾剧"
-        },
-        {
-          "id": "22",
-          "name": "日本剧"
-        },
-        {
-          "id": "23",
-          "name": "海外剧"
-        },
-        {
-          "id": "24",
-          "name": "泰国剧"
-        },
-        {
-          "id": "25",
-          "name": "大陆综艺"
-        },
-        {
-          "id": "26",
-          "name": "港台综艺"
-        },
-        {
-          "id": "27",
-          "name": "日韩综艺"
-        },
-        {
-          "id": "28",
-          "name": "欧美综艺"
-        },
-        {
-          "id": "29",
-          "name": "国产动漫"
-        },
-        {
-          "id": "30",
-          "name": "日韩动漫"
-        },
-        {
-          "id": "31",
-          "name": "欧美动漫"
-        },
-        {
-          "id": "32",
-          "name": "港台动漫"
-        },
-        {
-          "id": "33",
-          "name": "海外动漫"
-        },
-        {
-          "id": "34",
-          "name": "伦理片"
-        },
-        {
-          "id": "35",
-          "name": "电影解说"
-        },
-        {
-          "id": "36",
-          "name": "体育"
-        },
-        {
-          "id": "37",
-          "name": "足球"
-        },
-        {
-          "id": "38",
-          "name": "篮球"
-        },
-        {
-          "id": "39",
-          "name": "网球"
-        },
-        {
-          "id": "40",
-          "name": "斯诺克"
-        },
-        {
-          "id": "45",
-          "name": "预告片"
-        },
-        {
-          "id": "46",
-          "name": "短剧"
-        },
-        {
-          "id": "47",
-          "name": "动画电影"
-        }
-      ],
-      "rawResponsePath": "raw/043-cj.rycjapi.com.txt",
-      "startedAt": "2026-06-11T17:33:09.684Z",
-      "finishedAt": "2026-06-11T17:33:11.760Z",
-      "error": ""
-    },
-    {
-      "index": 44,
-      "key": "七星短剧",
-      "name": "七星丨短剧｜追劇",
-      "type": 3,
-      "adult": false,
-      "api": "https://mpimg.cn/down.php/48e9d346cdf6da376c53136693bec95a.py",
-      "ext": "",
-      "infoKind": "type3-script",
-      "infoUrl": "https://mpimg.cn/down.php/48e9d346cdf6da376c53136693bec95a.py",
-      "infoSourceField": "api",
-      "host": "mpimg.cn",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 10963,
-      "sha256": "88ea7328a77780001ea67c396ff1937a5b1d2385147bcee2b74b168c80c62f46",
-      "categoryCount": 4,
-      "apiCategoryCount": 0,
-      "usedFallbackCategories": true,
-      "categories": [
-        {
-          "id": "1",
-          "name": "动作片"
-        },
-        {
-          "id": "2",
-          "name": "国产动漫"
-        },
-        {
-          "id": "3",
-          "name": "短剧"
-        },
-        {
-          "id": "4",
-          "name": "国产综艺"
-        }
-      ],
-      "rawResponsePath": "raw/044-mpimg.cn.txt",
-      "startedAt": "2026-06-11T17:33:09.738Z",
-      "finishedAt": "2026-06-11T17:33:10.428Z",
-      "error": ""
-    },
-    {
-      "index": 45,
-      "key": "cj_360资源",
-      "name": "360丨短剧｜追劇",
-      "type": 1,
-      "adult": false,
-      "api": "https://360zy.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://360zy.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "360zy.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 6912,
-      "sha256": "84fabb1bd2dddfacc1b6ff368443011d23990ec380c0dc10e2cef5726a7aed67",
-      "categoryCount": 51,
-      "apiCategoryCount": 51,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "电影"
-        },
-        {
-          "id": "2",
-          "name": "连续剧"
-        },
-        {
-          "id": "3",
-          "name": "综艺"
-        },
-        {
-          "id": "4",
-          "name": "动漫"
-        },
-        {
-          "id": "5",
-          "name": "伦理片"
-        },
-        {
-          "id": "6",
-          "name": "动作片"
-        },
-        {
-          "id": "7",
-          "name": "喜剧片"
-        },
-        {
-          "id": "8",
-          "name": "爱情片"
-        },
-        {
-          "id": "9",
-          "name": "科幻片"
-        },
-        {
-          "id": "10",
-          "name": "恐怖片"
-        },
-        {
-          "id": "11",
-          "name": "剧情片"
-        },
-        {
-          "id": "12",
-          "name": "战争片"
-        },
-        {
-          "id": "13",
-          "name": "国产剧"
-        },
-        {
-          "id": "14",
-          "name": "香港剧"
-        },
-        {
-          "id": "15",
-          "name": "韩国剧"
-        },
-        {
-          "id": "16",
-          "name": "欧美剧"
-        },
-        {
-          "id": "17",
-          "name": "体育"
-        },
-        {
-          "id": "18",
-          "name": "NBA"
-        },
-        {
-          "id": "20",
-          "name": "惊悚片"
-        },
-        {
-          "id": "21",
-          "name": "家庭篇"
-        },
-        {
-          "id": "22",
-          "name": "古装片"
-        },
-        {
-          "id": "23",
-          "name": "历史片"
-        },
-        {
-          "id": "24",
-          "name": "悬疑片"
-        },
-        {
-          "id": "25",
-          "name": "犯罪片"
-        },
-        {
-          "id": "26",
-          "name": "灾难片"
-        },
-        {
-          "id": "27",
-          "name": "纪录片"
-        },
-        {
-          "id": "28",
-          "name": "短片"
-        },
-        {
-          "id": "29",
-          "name": "动画片"
-        },
-        {
-          "id": "30",
-          "name": "台湾剧"
-        },
-        {
-          "id": "31",
-          "name": "日本剧"
-        },
-        {
-          "id": "32",
-          "name": "海外剧"
-        },
-        {
-          "id": "33",
-          "name": "泰国剧"
-        },
-        {
-          "id": "34",
-          "name": "大陆综艺"
-        },
-        {
-          "id": "35",
-          "name": "港台综艺"
-        },
-        {
-          "id": "36",
-          "name": "日韩综艺"
-        },
-        {
-          "id": "37",
-          "name": "欧美综艺"
-        },
-        {
-          "id": "38",
-          "name": "国产动漫"
-        },
-        {
-          "id": "39",
-          "name": "欧美动漫"
-        },
-        {
-          "id": "40",
-          "name": "日韩动漫"
-        },
-        {
-          "id": "41",
-          "name": "足球"
-        },
-        {
-          "id": "42",
-          "name": "篮球"
-        },
-        {
-          "id": "43",
-          "name": "未分类"
-        },
-        {
-          "id": "45",
-          "name": "西部片"
-        },
-        {
-          "id": "46",
-          "name": "爽文短剧"
-        },
-        {
-          "id": "47",
-          "name": "现代都市"
-        },
-        {
-          "id": "48",
-          "name": "脑洞悬疑"
-        },
-        {
-          "id": "49",
-          "name": "年代穿越"
-        },
-        {
-          "id": "50",
-          "name": "古装仙侠"
-        },
-        {
-          "id": "51",
-          "name": "反转爽剧"
-        },
-        {
-          "id": "52",
-          "name": "女频恋爱"
-        },
-        {
-          "id": "53",
-          "name": "成长逆袭"
-        }
-      ],
-      "rawResponsePath": "raw/045-360zy.com.txt",
-      "startedAt": "2026-06-11T17:33:09.834Z",
-      "finishedAt": "2026-06-11T17:33:10.488Z",
-      "error": ""
-    },
-    {
-      "index": 46,
-      "key": "网易云音乐",
-      "name": "网易云｜音乐",
-      "type": 3,
-      "adult": false,
-      "api": "https://xn--fjq53n.xyz/Ting/yinyue/网易云音乐.py",
-      "ext": "",
-      "infoKind": "type3-script",
-      "infoUrl": "https://xn--fjq53n.xyz/Ting/yinyue/网易云音乐.py",
-      "infoSourceField": "api",
-      "host": "xn--fjq53n.xyz",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 5977,
-      "sha256": "432b7a2554d69aed7cc81a8c35fac358e23ee7d500d758545a8f45c273b7694b",
-      "categoryCount": 4,
-      "apiCategoryCount": 0,
-      "usedFallbackCategories": true,
-      "categories": [
-        {
-          "id": "1",
-          "name": "动作片"
-        },
-        {
-          "id": "2",
-          "name": "国产动漫"
-        },
-        {
-          "id": "3",
-          "name": "短剧"
-        },
-        {
-          "id": "4",
-          "name": "国产综艺"
-        }
-      ],
-      "rawResponsePath": "raw/046-xn--fjq53n.xyz.txt",
-      "startedAt": "2026-06-11T17:33:09.864Z",
-      "finishedAt": "2026-06-11T17:33:10.618Z",
-      "error": ""
-    },
-    {
-      "index": 47,
-      "key": "网易云音乐1",
-      "name": "网易云1｜音乐",
-      "type": 3,
-      "adult": false,
-      "api": "https://xn--fjq53n.xyz/Ting/yinyue/网易云音乐1.py",
-      "ext": "",
-      "infoKind": "type3-script",
-      "infoUrl": "https://xn--fjq53n.xyz/Ting/yinyue/网易云音乐1.py",
-      "infoSourceField": "api",
-      "host": "xn--fjq53n.xyz",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 5032,
-      "sha256": "d87200a0ed4d5cdc0f17d14db5978b42dc2ee05d095c4172d2a97ce3a340bf15",
-      "categoryCount": 4,
-      "apiCategoryCount": 0,
-      "usedFallbackCategories": true,
-      "categories": [
-        {
-          "id": "1",
-          "name": "动作片"
-        },
-        {
-          "id": "2",
-          "name": "国产动漫"
-        },
-        {
-          "id": "3",
-          "name": "短剧"
-        },
-        {
-          "id": "4",
-          "name": "国产综艺"
-        }
-      ],
-      "rawResponsePath": "raw/047-xn--fjq53n.xyz.txt",
-      "startedAt": "2026-06-11T17:33:09.879Z",
-      "finishedAt": "2026-06-11T17:33:10.821Z",
-      "error": ""
-    },
-    {
-      "index": 48,
       "key": "樱花资源",
       "name": "樱花资源｜追劇",
       "type": 1,
@@ -9028,8 +7637,8 @@
       "host": "m3u8.apiyhzy.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 5861,
-      "sha256": "b6fd881b0d2860c8c47941693dddc45adfa11176456029630025bc867b7a9129",
+      "bytes": 5703,
+      "sha256": "8d68e15e374aa611c94755ffd76ef2658e50c3dc460cd267488e70a9b2582959",
       "categoryCount": 33,
       "apiCategoryCount": 33,
       "usedFallbackCategories": false,
@@ -9167,13 +7776,13 @@
           "name": "伦理片"
         }
       ],
-      "rawResponsePath": "raw/048-m3u8.apiyhzy.com.txt",
-      "startedAt": "2026-06-11T17:33:09.886Z",
-      "finishedAt": "2026-06-11T17:33:10.823Z",
+      "rawResponsePath": "raw/038-m3u8.apiyhzy.com.txt",
+      "startedAt": "2026-06-17T18:54:59.138Z",
+      "finishedAt": "2026-06-17T18:54:59.866Z",
       "error": ""
     },
     {
-      "index": 49,
+      "index": 39,
       "key": "麻豆视频",
       "name": "🔞 麻豆视频｜追劇",
       "type": 1,
@@ -9186,8 +7795,8 @@
       "host": "91md.me",
       "ok": true,
       "httpLike": true,
-      "bytes": 9388,
-      "sha256": "2e37aa524cf182e83773ef16ece72e1e4a5331cc975b1d8eea204b50a49d421c",
+      "bytes": 9254,
+      "sha256": "da05e363bde5243a6bf0e96158feff29714c89355295e45f80525d5d1abaa0bf",
       "categoryCount": 20,
       "apiCategoryCount": 20,
       "usedFallbackCategories": false,
@@ -9273,13 +7882,13 @@
           "name": "性视界"
         }
       ],
-      "rawResponsePath": "raw/049-91md.me.txt",
-      "startedAt": "2026-06-11T17:33:09.954Z",
-      "finishedAt": "2026-06-11T17:33:10.824Z",
+      "rawResponsePath": "raw/039-91md.me.txt",
+      "startedAt": "2026-06-17T18:54:59.147Z",
+      "finishedAt": "2026-06-17T18:54:59.569Z",
       "error": ""
     },
     {
-      "index": 50,
+      "index": 40,
       "key": "AIvin",
       "name": "🔞 AIvin｜追劇",
       "type": 1,
@@ -9292,8 +7901,8 @@
       "host": "lbapiby.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 7614,
-      "sha256": "ac407cbbbf228629edee794db45816b1604dc742cdd8e94c1982e85ecc98064b",
+      "bytes": 7673,
+      "sha256": "81a79ccdb1858e4c8e154d5977b55050053b746f79d12b313d5ffe0ff73bd546",
       "categoryCount": 33,
       "apiCategoryCount": 33,
       "usedFallbackCategories": false,
@@ -9431,459 +8040,13 @@
           "name": "福利姬"
         }
       ],
-      "rawResponsePath": "raw/050-lbapiby.com.txt",
-      "startedAt": "2026-06-11T17:33:10.042Z",
-      "finishedAt": "2026-06-11T17:33:10.823Z",
+      "rawResponsePath": "raw/040-lbapiby.com.txt",
+      "startedAt": "2026-06-17T18:54:59.148Z",
+      "finishedAt": "2026-06-17T18:54:59.868Z",
       "error": ""
     },
     {
-      "index": 51,
-      "key": "黑料资源",
-      "name": "🔞 黑料资源｜追劇",
-      "type": 1,
-      "adult": true,
-      "api": "https://www.heiliaozyapi.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://www.heiliaozyapi.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "www.heiliaozyapi.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 15641,
-      "sha256": "4ff5b49a0dc81b560aaba2480e0af9761e37fc2c5fd55851255882538f4a6585",
-      "categoryCount": 24,
-      "apiCategoryCount": 24,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "中文字幕"
-        },
-        {
-          "id": "2",
-          "name": "日本有码"
-        },
-        {
-          "id": "3",
-          "name": "日本无码"
-        },
-        {
-          "id": "4",
-          "name": "AV解说"
-        },
-        {
-          "id": "5",
-          "name": "cosplay"
-        },
-        {
-          "id": "20",
-          "name": "都市激情"
-        },
-        {
-          "id": "21",
-          "name": "校园情事"
-        },
-        {
-          "id": "22",
-          "name": "人妻纵情"
-        },
-        {
-          "id": "23",
-          "name": "风俗伦理"
-        },
-        {
-          "id": "24",
-          "name": "另类小说"
-        },
-        {
-          "id": "25",
-          "name": "武侠古典"
-        },
-        {
-          "id": "26",
-          "name": "长篇连载"
-        },
-        {
-          "id": "27",
-          "name": "黑丝诱惑"
-        },
-        {
-          "id": "28",
-          "name": "SWAG"
-        },
-        {
-          "id": "29",
-          "name": "自拍偷拍"
-        },
-        {
-          "id": "30",
-          "name": "激情动漫"
-        },
-        {
-          "id": "31",
-          "name": "网红主播"
-        },
-        {
-          "id": "32",
-          "name": "探花系列"
-        },
-        {
-          "id": "33",
-          "name": "三级伦理"
-        },
-        {
-          "id": "34",
-          "name": "VR视角"
-        },
-        {
-          "id": "35",
-          "name": "国产传媒"
-        },
-        {
-          "id": "36",
-          "name": "素人搭讪"
-        },
-        {
-          "id": "37",
-          "name": "门事件"
-        },
-        {
-          "id": "38",
-          "name": "抖阴视频"
-        }
-      ],
-      "rawResponsePath": "raw/051-www.heiliaozyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:10.080Z",
-      "finishedAt": "2026-06-11T17:33:10.586Z",
-      "error": ""
-    },
-    {
-      "index": 52,
-      "key": "精品资源",
-      "name": "🔞 精品资源｜追劇",
-      "type": 1,
-      "adult": true,
-      "api": "https://www.jingpinx.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://www.jingpinx.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "www.jingpinx.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 8615,
-      "sha256": "f6895180126e046309e07c704725d57042f34373d33219fe2d4e35c1c16afc88",
-      "categoryCount": 28,
-      "apiCategoryCount": 28,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "国产"
-        },
-        {
-          "id": "2",
-          "name": "日本"
-        },
-        {
-          "id": "3",
-          "name": "欧美"
-        },
-        {
-          "id": "4",
-          "name": "动漫"
-        },
-        {
-          "id": "8",
-          "name": "偷拍自拍"
-        },
-        {
-          "id": "9",
-          "name": "国产大制作"
-        },
-        {
-          "id": "10",
-          "name": "乱伦毁三观"
-        },
-        {
-          "id": "11",
-          "name": "嫖妓全过程"
-        },
-        {
-          "id": "12",
-          "name": "淫乱学生妹"
-        },
-        {
-          "id": "13",
-          "name": "黑料不打烊"
-        },
-        {
-          "id": "14",
-          "name": "监控摄像头"
-        },
-        {
-          "id": "15",
-          "name": "主播网红"
-        },
-        {
-          "id": "20",
-          "name": "高清无码"
-        },
-        {
-          "id": "21",
-          "name": "中文字幕"
-        },
-        {
-          "id": "22",
-          "name": "成人综艺"
-        },
-        {
-          "id": "23",
-          "name": "媚黑母狗"
-        },
-        {
-          "id": "24",
-          "name": "为国争光"
-        },
-        {
-          "id": "25",
-          "name": "少女破处"
-        },
-        {
-          "id": "26",
-          "name": "人兽典藏"
-        },
-        {
-          "id": "27",
-          "name": "中文剧情"
-        },
-        {
-          "id": "28",
-          "name": "燃烧荷尔蒙"
-        },
-        {
-          "id": "29",
-          "name": "女同口交"
-        },
-        {
-          "id": "30",
-          "name": "重口味"
-        },
-        {
-          "id": "31",
-          "name": "3D动漫"
-        },
-        {
-          "id": "32",
-          "name": "剧情故事"
-        },
-        {
-          "id": "33",
-          "name": "同人动漫"
-        },
-        {
-          "id": "35",
-          "name": "激情中字"
-        },
-        {
-          "id": "41",
-          "name": "东南亚"
-        }
-      ],
-      "rawResponsePath": "raw/052-www.jingpinx.com.txt",
-      "startedAt": "2026-06-11T17:33:10.201Z",
-      "finishedAt": "2026-06-11T17:33:11.403Z",
-      "error": ""
-    },
-    {
-      "index": 53,
-      "key": "155-资源",
-      "name": "🔞 155-资源｜追劇",
-      "type": 1,
-      "adult": true,
-      "api": "https://155api.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://155api.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "155api.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 9718,
-      "sha256": "19d7bad10b928d127b5be47e0aaad5c28a35c3d2c9c3ba492c2430d05f685849",
-      "categoryCount": 40,
-      "apiCategoryCount": 40,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "无码专区"
-        },
-        {
-          "id": "2",
-          "name": "麻豆传媒"
-        },
-        {
-          "id": "3",
-          "name": "制服诱惑"
-        },
-        {
-          "id": "4",
-          "name": "三级伦理"
-        },
-        {
-          "id": "5",
-          "name": "AI换脸"
-        },
-        {
-          "id": "6",
-          "name": "中文字幕"
-        },
-        {
-          "id": "7",
-          "name": "卡通动漫"
-        },
-        {
-          "id": "8",
-          "name": "欧美系列"
-        },
-        {
-          "id": "9",
-          "name": "美女主播"
-        },
-        {
-          "id": "10",
-          "name": "国产自拍"
-        },
-        {
-          "id": "11",
-          "name": "熟女人妻"
-        },
-        {
-          "id": "12",
-          "name": "萝莉少女"
-        },
-        {
-          "id": "13",
-          "name": "女同性爱"
-        },
-        {
-          "id": "14",
-          "name": "多人群交"
-        },
-        {
-          "id": "15",
-          "name": "美乳巨乳"
-        },
-        {
-          "id": "16",
-          "name": "强奸乱伦"
-        },
-        {
-          "id": "17",
-          "name": "生活都市"
-        },
-        {
-          "id": "18",
-          "name": "不偷恋情"
-        },
-        {
-          "id": "19",
-          "name": "学生校园"
-        },
-        {
-          "id": "20",
-          "name": "人妻熟女"
-        },
-        {
-          "id": "21",
-          "name": "暴力虐待"
-        },
-        {
-          "id": "22",
-          "name": "明星偶像"
-        },
-        {
-          "id": "23",
-          "name": "玄幻仙侠"
-        },
-        {
-          "id": "24",
-          "name": "科学幻想"
-        },
-        {
-          "id": "25",
-          "name": "街拍偷拍"
-        },
-        {
-          "id": "26",
-          "name": "丝袜美腿"
-        },
-        {
-          "id": "27",
-          "name": "欧美风情"
-        },
-        {
-          "id": "28",
-          "name": "网友自拍"
-        },
-        {
-          "id": "29",
-          "name": "卡通漫画"
-        },
-        {
-          "id": "30",
-          "name": "露出激情"
-        },
-        {
-          "id": "31",
-          "name": "唯美写真"
-        },
-        {
-          "id": "32",
-          "name": "女优情报"
-        },
-        {
-          "id": "33",
-          "name": "抖音视频"
-        },
-        {
-          "id": "34",
-          "name": "韩国主播"
-        },
-        {
-          "id": "35",
-          "name": "网红头条"
-        },
-        {
-          "id": "36",
-          "name": "网爆黑料"
-        },
-        {
-          "id": "37",
-          "name": "欧美无码"
-        },
-        {
-          "id": "38",
-          "name": "女优明星"
-        },
-        {
-          "id": "39",
-          "name": "SM调教"
-        },
-        {
-          "id": "40",
-          "name": "AV解说"
-        }
-      ],
-      "rawResponsePath": "raw/053-155api.com.txt",
-      "startedAt": "2026-06-11T17:33:10.428Z",
-      "finishedAt": "2026-06-11T17:33:11.315Z",
-      "error": ""
-    },
-    {
-      "index": 54,
+      "index": 41,
       "key": "玉兔资源",
       "name": "🔞 玉兔资源｜追劇",
       "type": 1,
@@ -9896,8 +8059,8 @@
       "host": "apiyutu.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 4569,
-      "sha256": "2f2ea5289dcabeb612a245c4b065e980e82a5000966348411708989590fe0bec",
+      "bytes": 4811,
+      "sha256": "14720b91c0a95fc5a8d16a08302a6fc2b834f2386e0d31449b61916db3f5a63e",
       "categoryCount": 25,
       "apiCategoryCount": 25,
       "usedFallbackCategories": false,
@@ -10003,13 +8166,13 @@
           "name": "同性恋"
         }
       ],
-      "rawResponsePath": "raw/054-apiyutu.com.txt",
-      "startedAt": "2026-06-11T17:33:10.481Z",
-      "finishedAt": "2026-06-11T17:33:11.103Z",
+      "rawResponsePath": "raw/041-apiyutu.com.txt",
+      "startedAt": "2026-06-17T18:54:59.191Z",
+      "finishedAt": "2026-06-17T18:54:59.817Z",
       "error": ""
     },
     {
-      "index": 55,
+      "index": 42,
       "key": "番号资源",
       "name": "🔞 番号资源｜追劇",
       "type": 1,
@@ -10022,8 +8185,8 @@
       "host": "fhapi9.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 7940,
-      "sha256": "503e071dfca9f5a1560fe2db5ce7dcf3d1478499fbfae08989b57f1d371a01b4",
+      "bytes": 7610,
+      "sha256": "2f95dd4dee7e4b8ba8c1b899a40c9843445b58d76ec739c0d47d5f2cf79efc4c",
       "categoryCount": 32,
       "apiCategoryCount": 32,
       "usedFallbackCategories": false,
@@ -10157,13 +8320,13 @@
           "name": "淫妻交换"
         }
       ],
-      "rawResponsePath": "raw/055-fhapi9.com.txt",
-      "startedAt": "2026-06-11T17:33:10.488Z",
-      "finishedAt": "2026-06-11T17:33:11.348Z",
+      "rawResponsePath": "raw/042-fhapi9.com.txt",
+      "startedAt": "2026-06-17T18:54:59.229Z",
+      "finishedAt": "2026-06-17T18:54:59.908Z",
       "error": ""
     },
     {
-      "index": 56,
+      "index": 43,
       "key": "老色逼",
       "name": "🔞 老色逼｜追劇",
       "type": 1,
@@ -10176,8 +8339,8 @@
       "host": "apilsbzy1.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 4569,
-      "sha256": "2f2ea5289dcabeb612a245c4b065e980e82a5000966348411708989590fe0bec",
+      "bytes": 4811,
+      "sha256": "14720b91c0a95fc5a8d16a08302a6fc2b834f2386e0d31449b61916db3f5a63e",
       "categoryCount": 25,
       "apiCategoryCount": 25,
       "usedFallbackCategories": false,
@@ -10283,13 +8446,13 @@
           "name": "同性恋"
         }
       ],
-      "rawResponsePath": "raw/056-apilsbzy1.com.txt",
-      "startedAt": "2026-06-11T17:33:10.497Z",
-      "finishedAt": "2026-06-11T17:33:11.119Z",
+      "rawResponsePath": "raw/043-apilsbzy1.com.txt",
+      "startedAt": "2026-06-17T18:54:59.251Z",
+      "finishedAt": "2026-06-17T18:55:00.170Z",
       "error": ""
     },
     {
-      "index": 57,
+      "index": 44,
       "key": "小鸡资源",
       "name": "🔞 小鸡资源｜追劇",
       "type": 1,
@@ -10302,8 +8465,8 @@
       "host": "api.xiaojizy.live",
       "ok": true,
       "httpLike": true,
-      "bytes": 8087,
-      "sha256": "4c595c23613c08785b55be2617250ed2506e7e0cc40949f6b77c27cde07d7f65",
+      "bytes": 8947,
+      "sha256": "19c54a2d0a7bd496d6f2293aeef89f26cc8cbdd40c6cc0814b34dbbf66018c2f",
       "categoryCount": 38,
       "apiCategoryCount": 38,
       "usedFallbackCategories": false,
@@ -10461,13 +8624,13 @@
           "name": "VR专区"
         }
       ],
-      "rawResponsePath": "raw/057-api.xiaojizy.live.txt",
-      "startedAt": "2026-06-11T17:33:10.586Z",
-      "finishedAt": "2026-06-11T17:33:11.300Z",
+      "rawResponsePath": "raw/044-api.xiaojizy.live.txt",
+      "startedAt": "2026-06-17T18:54:59.447Z",
+      "finishedAt": "2026-06-17T18:55:00.015Z",
       "error": ""
     },
     {
-      "index": 58,
+      "index": 45,
       "key": "黄色仓库",
       "name": "🔞 黄色仓库｜追劇",
       "type": 1,
@@ -10480,8 +8643,8 @@
       "host": "hsckzy.xyz",
       "ok": true,
       "httpLike": true,
-      "bytes": 10046,
-      "sha256": "054fee0981251a3a1a1ce42986e710853f2d35f038117406b1cd0e17cfba0c2c",
+      "bytes": 10164,
+      "sha256": "e667280f00ab1a3b619c74472de7113a870f761745143f2537e7d9639b16b0a1",
       "categoryCount": 40,
       "apiCategoryCount": 40,
       "usedFallbackCategories": false,
@@ -10647,183 +8810,13 @@
           "name": "OnlyFans"
         }
       ],
-      "rawResponsePath": "raw/058-hsckzy.xyz.txt",
-      "startedAt": "2026-06-11T17:33:10.618Z",
-      "finishedAt": "2026-06-11T17:33:11.424Z",
+      "rawResponsePath": "raw/045-hsckzy.xyz.txt",
+      "startedAt": "2026-06-17T18:54:59.451Z",
+      "finishedAt": "2026-06-17T18:54:59.882Z",
       "error": ""
     },
     {
-      "index": 59,
-      "key": "大奶子",
-      "name": "🔞 大奶子｜追劇",
-      "type": 1,
-      "adult": true,
-      "api": "https://apidanaizi.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://apidanaizi.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "apidanaizi.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 9450,
-      "sha256": "964685e043a856b836e38af137fb66be29295ddb3f321089129a30367fecf309",
-      "categoryCount": 36,
-      "apiCategoryCount": 36,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "视频一区"
-        },
-        {
-          "id": "2",
-          "name": "视频二区"
-        },
-        {
-          "id": "3",
-          "name": "视频三区"
-        },
-        {
-          "id": "4",
-          "name": "视频四区"
-        },
-        {
-          "id": "20",
-          "name": "精品推荐"
-        },
-        {
-          "id": "21",
-          "name": "国产主播"
-        },
-        {
-          "id": "22",
-          "name": "国产乱伦"
-        },
-        {
-          "id": "23",
-          "name": "自拍偷拍"
-        },
-        {
-          "id": "24",
-          "name": "制服丝袜"
-        },
-        {
-          "id": "25",
-          "name": "网曝事件"
-        },
-        {
-          "id": "26",
-          "name": "传媒探花"
-        },
-        {
-          "id": "27",
-          "name": "清纯学生"
-        },
-        {
-          "id": "28",
-          "name": "A V 解说"
-        },
-        {
-          "id": "29",
-          "name": "淫妻作乐"
-        },
-        {
-          "id": "30",
-          "name": "港台辣妹"
-        },
-        {
-          "id": "31",
-          "name": "足浴撩妹"
-        },
-        {
-          "id": "32",
-          "name": "反差母狗"
-        },
-        {
-          "id": "33",
-          "name": "A I 换脸"
-        },
-        {
-          "id": "34",
-          "name": "V R 视角"
-        },
-        {
-          "id": "35",
-          "name": "重口性癖"
-        },
-        {
-          "id": "36",
-          "name": "制服诱惑"
-        },
-        {
-          "id": "37",
-          "name": "丝袜美腿"
-        },
-        {
-          "id": "38",
-          "name": "中文字幕"
-        },
-        {
-          "id": "39",
-          "name": "无码流出"
-        },
-        {
-          "id": "40",
-          "name": "多人群交"
-        },
-        {
-          "id": "41",
-          "name": "凌辱快感"
-        },
-        {
-          "id": "42",
-          "name": "角色剧情"
-        },
-        {
-          "id": "43",
-          "name": "强奸乱伦"
-        },
-        {
-          "id": "44",
-          "name": "韩国三级"
-        },
-        {
-          "id": "45",
-          "name": "欧美激情"
-        },
-        {
-          "id": "46",
-          "name": "人妻熟女"
-        },
-        {
-          "id": "47",
-          "name": "主奴调教"
-        },
-        {
-          "id": "48",
-          "name": "动漫卡通"
-        },
-        {
-          "id": "49",
-          "name": "变性伪娘"
-        },
-        {
-          "id": "50",
-          "name": "女同性恋"
-        },
-        {
-          "id": "51",
-          "name": "野外露出"
-        }
-      ],
-      "rawResponsePath": "raw/059-apidanaizi.com.txt",
-      "startedAt": "2026-06-11T17:33:10.821Z",
-      "finishedAt": "2026-06-11T17:33:13.570Z",
-      "error": ""
-    },
-    {
-      "index": 60,
+      "index": 46,
       "key": "jkun资源",
       "name": "🔞 jkun资源｜追劇",
       "type": 1,
@@ -10836,8 +8829,8 @@
       "host": "jkunzyapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 14808,
-      "sha256": "0c0102e921c3076fe70404a3b2a9b96327bab1456161d2110a49d789e10c307a",
+      "bytes": 16147,
+      "sha256": "63612e0803d1c38b529999cdc52e8891c772b7a26953a2555a1dc17309e5c68d",
       "categoryCount": 25,
       "apiCategoryCount": 25,
       "usedFallbackCategories": false,
@@ -10943,13 +8936,13 @@
           "name": "成人笑话"
         }
       ],
-      "rawResponsePath": "raw/060-jkunzyapi.com.txt",
-      "startedAt": "2026-06-11T17:33:10.823Z",
-      "finishedAt": "2026-06-11T17:33:11.018Z",
+      "rawResponsePath": "raw/046-jkunzyapi.com.txt",
+      "startedAt": "2026-06-17T18:54:59.569Z",
+      "finishedAt": "2026-06-17T18:55:00.213Z",
       "error": ""
     },
     {
-      "index": 61,
+      "index": 47,
       "key": "乐播资源",
       "name": "🔞 乐播资源｜追劇",
       "type": 1,
@@ -10962,8 +8955,8 @@
       "host": "lbapi9.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 7614,
-      "sha256": "ac407cbbbf228629edee794db45816b1604dc742cdd8e94c1982e85ecc98064b",
+      "bytes": 7673,
+      "sha256": "81a79ccdb1858e4c8e154d5977b55050053b746f79d12b313d5ffe0ff73bd546",
       "categoryCount": 33,
       "apiCategoryCount": 33,
       "usedFallbackCategories": false,
@@ -11101,13 +9094,13 @@
           "name": "福利姬"
         }
       ],
-      "rawResponsePath": "raw/061-lbapi9.com.txt",
-      "startedAt": "2026-06-11T17:33:10.823Z",
-      "finishedAt": "2026-06-11T17:33:11.526Z",
+      "rawResponsePath": "raw/047-lbapi9.com.txt",
+      "startedAt": "2026-06-17T18:54:59.756Z",
+      "finishedAt": "2026-06-17T18:55:00.243Z",
       "error": ""
     },
     {
-      "index": 62,
+      "index": 48,
       "key": "奶香资源",
       "name": "🔞 奶香资源｜追劇",
       "type": 1,
@@ -11120,8 +9113,8 @@
       "host": "naixxzy.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 15559,
-      "sha256": "43bbadb50b7a741e06e9b02c73ccf10d30fc1a35f88a0ecf3e05d1543974028b",
+      "bytes": 15948,
+      "sha256": "950e657f3aaba7088e9d95bd97f833642a1ed8a087f88744c67a46e56e9d6760",
       "categoryCount": 33,
       "apiCategoryCount": 33,
       "usedFallbackCategories": false,
@@ -11259,13 +9252,13 @@
           "name": "漫画连载"
         }
       ],
-      "rawResponsePath": "raw/062-naixxzy.com.txt",
-      "startedAt": "2026-06-11T17:33:10.824Z",
-      "finishedAt": "2026-06-11T17:33:11.354Z",
+      "rawResponsePath": "raw/048-naixxzy.com.txt",
+      "startedAt": "2026-06-17T18:54:59.774Z",
+      "finishedAt": "2026-06-17T18:55:00.375Z",
       "error": ""
     },
     {
-      "index": 63,
+      "index": 49,
       "key": "森林资源",
       "name": "🔞 森林资源｜追劇",
       "type": 1,
@@ -11278,8 +9271,8 @@
       "host": "beiyong.slapibf.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 9670,
-      "sha256": "3f68fecbb83a58b0f6ed5798d66832d312e2bfef80e2a68981bd8e80f327dfd5",
+      "bytes": 10548,
+      "sha256": "158a8b3feb3ae71d4437a05dea67e0d07520d2505945fcc8e4cdd6b5b143d28f",
       "categoryCount": 56,
       "apiCategoryCount": 56,
       "usedFallbackCategories": false,
@@ -11509,13 +9502,13 @@
           "name": "欧美风情"
         }
       ],
-      "rawResponsePath": "raw/063-beiyong.slapibf.com.txt",
-      "startedAt": "2026-06-11T17:33:10.948Z",
-      "finishedAt": "2026-06-11T17:33:11.512Z",
+      "rawResponsePath": "raw/049-beiyong.slapibf.com.txt",
+      "startedAt": "2026-06-17T18:54:59.817Z",
+      "finishedAt": "2026-06-17T18:55:00.498Z",
       "error": ""
     },
     {
-      "index": 64,
+      "index": 50,
       "key": "辣椒资源",
       "name": "🔞 辣椒资源｜追劇",
       "type": 1,
@@ -11528,8 +9521,8 @@
       "host": "apilj.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 7764,
-      "sha256": "d224e3d178300342e18a29381b75df095823784281eaab7dfddb119a0f13f3c0",
+      "bytes": 7733,
+      "sha256": "d9367fa2b64d08b20baf3be6f9e51337bfd5fdb3a0e3ce88fae5b780cdea7178",
       "categoryCount": 32,
       "apiCategoryCount": 32,
       "usedFallbackCategories": false,
@@ -11663,127 +9656,13 @@
           "name": "长泽梓"
         }
       ],
-      "rawResponsePath": "raw/064-apilj.com.txt",
-      "startedAt": "2026-06-11T17:33:11.018Z",
-      "finishedAt": "2026-06-11T17:33:14.446Z",
+      "rawResponsePath": "raw/050-apilj.com.txt",
+      "startedAt": "2026-06-17T18:54:59.866Z",
+      "finishedAt": "2026-06-17T18:55:00.716Z",
       "error": ""
     },
     {
-      "index": 65,
-      "key": "鲨鱼资源",
-      "name": "🔞 鲨鱼资源｜追劇",
-      "type": 1,
-      "adult": true,
-      "api": "https://shayuapi.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://shayuapi.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "shayuapi.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 7046,
-      "sha256": "a7fd86616b14009af9b9a7a115e6efff0135922514484ae5717a12f0120a09c0",
-      "categoryCount": 22,
-      "apiCategoryCount": 22,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "国产情色"
-        },
-        {
-          "id": "2",
-          "name": "日本无码"
-        },
-        {
-          "id": "3",
-          "name": "AV明星"
-        },
-        {
-          "id": "20",
-          "name": "中文字幕"
-        },
-        {
-          "id": "21",
-          "name": "网红主播"
-        },
-        {
-          "id": "22",
-          "name": "成人动漫"
-        },
-        {
-          "id": "23",
-          "name": "欧美情色"
-        },
-        {
-          "id": "24",
-          "name": "国模私拍"
-        },
-        {
-          "id": "25",
-          "name": "长腿丝袜"
-        },
-        {
-          "id": "26",
-          "name": "邻家人妻"
-        },
-        {
-          "id": "27",
-          "name": "韩国伦理"
-        },
-        {
-          "id": "28",
-          "name": "香港伦理"
-        },
-        {
-          "id": "31",
-          "name": "精品推荐"
-        },
-        {
-          "id": "32",
-          "name": "原纱央莉"
-        },
-        {
-          "id": "33",
-          "name": "柚木TINA"
-        },
-        {
-          "id": "34",
-          "name": "大桥未久"
-        },
-        {
-          "id": "35",
-          "name": "AV明星1"
-        },
-        {
-          "id": "36",
-          "name": "仁科百华"
-        },
-        {
-          "id": "37",
-          "name": "天海翼"
-        },
-        {
-          "id": "38",
-          "name": "小川阿佐美"
-        },
-        {
-          "id": "39",
-          "name": "三上悠亚"
-        },
-        {
-          "id": "40",
-          "name": "长泽梓"
-        }
-      ],
-      "rawResponsePath": "raw/065-shayuapi.com.txt",
-      "startedAt": "2026-06-11T17:33:11.103Z",
-      "finishedAt": "2026-06-11T17:33:12.610Z",
-      "error": ""
-    },
-    {
-      "index": 66,
+      "index": 51,
       "key": "豆豆资源",
       "name": "🔞 豆豆资源｜追劇",
       "type": 1,
@@ -11796,8 +9675,8 @@
       "host": "api.douapi.cc",
       "ok": true,
       "httpLike": true,
-      "bytes": 9306,
-      "sha256": "ef8388cac1feef3b49ae77befa4deeb9abc244e2e36c12094341e1117fae8b28",
+      "bytes": 9666,
+      "sha256": "4731538e1db57c2ea0924697215af346269c09ca9fa5593e2396028c77e88954",
       "categoryCount": 28,
       "apiCategoryCount": 28,
       "usedFallbackCategories": false,
@@ -11915,13 +9794,13 @@
           "name": "反差系列"
         }
       ],
-      "rawResponsePath": "raw/066-api.douapi.cc.txt",
-      "startedAt": "2026-06-11T17:33:11.119Z",
-      "finishedAt": "2026-06-11T17:33:12.017Z",
+      "rawResponsePath": "raw/051-api.douapi.cc.txt",
+      "startedAt": "2026-06-17T18:54:59.868Z",
+      "finishedAt": "2026-06-17T18:55:00.585Z",
       "error": ""
     },
     {
-      "index": 67,
+      "index": 52,
       "key": "滴滴资源",
       "name": "🔞 滴滴资源｜追劇",
       "type": 1,
@@ -11934,8 +9813,8 @@
       "host": "api.ddapi.cc",
       "ok": true,
       "httpLike": true,
-      "bytes": 9421,
-      "sha256": "d4ba6772842efae50144513bd923c83d3ab0b3133071727bbf4e2eefa7ac7d75",
+      "bytes": 9029,
+      "sha256": "abf36cae8aff36f0d69dd14283cfc44cfc7b59817bcfe7070f8f3b6f7e65c0d8",
       "categoryCount": 28,
       "apiCategoryCount": 28,
       "usedFallbackCategories": false,
@@ -12053,13 +9932,13 @@
           "name": "男同系列"
         }
       ],
-      "rawResponsePath": "raw/067-api.ddapi.cc.txt",
-      "startedAt": "2026-06-11T17:33:11.120Z",
-      "finishedAt": "2026-06-11T17:33:11.661Z",
+      "rawResponsePath": "raw/052-api.ddapi.cc.txt",
+      "startedAt": "2026-06-17T18:54:59.882Z",
+      "finishedAt": "2026-06-17T18:55:00.631Z",
       "error": ""
     },
     {
-      "index": 68,
+      "index": 53,
       "key": "桃花资源",
       "name": "🔞 桃花资源｜追劇",
       "type": 1,
@@ -12072,8 +9951,8 @@
       "host": "thzy1.me",
       "ok": true,
       "httpLike": true,
-      "bytes": 7801,
-      "sha256": "9d17367e5e0ff7c0f7c50edce33ba3cdbb92e945f6a626b79f93edcb26bfea11",
+      "bytes": 8199,
+      "sha256": "ea0df31cc07df38f69cfec86a7466ec833e8913f74882c1c24bf0e1cb9825e34",
       "categoryCount": 14,
       "apiCategoryCount": 14,
       "usedFallbackCategories": false,
@@ -12135,13 +10014,13 @@
           "name": "日本素人"
         }
       ],
-      "rawResponsePath": "raw/068-thzy1.me.txt",
-      "startedAt": "2026-06-11T17:33:11.300Z",
-      "finishedAt": "2026-06-11T17:33:12.483Z",
+      "rawResponsePath": "raw/053-thzy1.me.txt",
+      "startedAt": "2026-06-17T18:54:59.908Z",
+      "finishedAt": "2026-06-17T18:55:01.075Z",
       "error": ""
     },
     {
-      "index": 69,
+      "index": 54,
       "key": "CK-资源",
       "name": "🔞 CK-资源｜追劇",
       "type": 1,
@@ -12154,8 +10033,8 @@
       "host": "ckzy.me",
       "ok": true,
       "httpLike": true,
-      "bytes": 4541,
-      "sha256": "715bdb9966ead0a0ec3fd116a7377492397cd68bc93cd09d663156ae4f99cda1",
+      "bytes": 4593,
+      "sha256": "4c333df5b93aedd5089d56978a1e9635a1854b17027bf837923566a023665464",
       "categoryCount": 2,
       "apiCategoryCount": 2,
       "usedFallbackCategories": false,
@@ -12169,13 +10048,13 @@
           "name": "教程"
         }
       ],
-      "rawResponsePath": "raw/069-ckzy.me.txt",
-      "startedAt": "2026-06-11T17:33:11.315Z",
-      "finishedAt": "2026-06-11T17:33:26.350Z",
+      "rawResponsePath": "raw/054-ckzy.me.txt",
+      "startedAt": "2026-06-17T18:55:00.015Z",
+      "finishedAt": "2026-06-17T18:55:00.889Z",
       "error": ""
     },
     {
-      "index": 70,
+      "index": 55,
       "key": "souavZY",
       "name": "🔞 souavZY｜追劇",
       "type": 1,
@@ -12188,8 +10067,8 @@
       "host": "api.souavzyw.net",
       "ok": true,
       "httpLike": true,
-      "bytes": 12281,
-      "sha256": "140b952cad9081ffce12cd8be8dad5da4aba7fb53fd7f6996ddb05331a45c4a4",
+      "bytes": 13356,
+      "sha256": "52b3e7be357319e62d6ec35f85ae9df05514f3de9e6f959b4238cc92bf75026c",
       "categoryCount": 99,
       "apiCategoryCount": 99,
       "usedFallbackCategories": false,
@@ -12591,13 +10470,13 @@
           "name": "小二先生"
         }
       ],
-      "rawResponsePath": "raw/070-api.souavzyw.net.txt",
-      "startedAt": "2026-06-11T17:33:11.348Z",
-      "finishedAt": "2026-06-11T17:33:12.100Z",
+      "rawResponsePath": "raw/055-api.souavzyw.net.txt",
+      "startedAt": "2026-06-17T18:55:00.170Z",
+      "finishedAt": "2026-06-17T18:55:00.865Z",
       "error": ""
     },
     {
-      "index": 71,
+      "index": 56,
       "key": "细胞资源",
       "name": "🔞 细胞资源｜追劇",
       "type": 1,
@@ -12610,8 +10489,8 @@
       "host": "www.xxibaozyw.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 7397,
-      "sha256": "c34a0dd7ff8324f7ec2ef4c2ef90f3328b42dfa835637a2052658809b0fa3a78",
+      "bytes": 7700,
+      "sha256": "c74b037cfa9b9f85d4f4d8569cde58adb61818dda0d69faf21f3e2222083c1fd",
       "categoryCount": 34,
       "apiCategoryCount": 34,
       "usedFallbackCategories": false,
@@ -12753,175 +10632,13 @@
           "name": "伦理三级"
         }
       ],
-      "rawResponsePath": "raw/071-www.xxibaozyw.com.txt",
-      "startedAt": "2026-06-11T17:33:11.354Z",
-      "finishedAt": "2026-06-11T17:33:12.090Z",
+      "rawResponsePath": "raw/056-www.xxibaozyw.com.txt",
+      "startedAt": "2026-06-17T18:55:00.214Z",
+      "finishedAt": "2026-06-17T18:55:00.910Z",
       "error": ""
     },
     {
-      "index": 72,
-      "key": "香蕉资源",
-      "name": "🔞 香蕉资源｜追劇",
-      "type": 1,
-      "adult": true,
-      "api": "https://www.xiangjiaozyw.com/api.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://www.xiangjiaozyw.com/api.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "www.xiangjiaozyw.com",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 7457,
-      "sha256": "4ef91c374962f5660c04158435c208a31a11cf09ba1c7288c496d9806811d865",
-      "categoryCount": 34,
-      "apiCategoryCount": 34,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "热门视频"
-        },
-        {
-          "id": "6",
-          "name": "国产色情"
-        },
-        {
-          "id": "7",
-          "name": "日本无码"
-        },
-        {
-          "id": "8",
-          "name": "自拍偷拍"
-        },
-        {
-          "id": "20",
-          "name": "视频一区"
-        },
-        {
-          "id": "21",
-          "name": "人妻熟女"
-        },
-        {
-          "id": "22",
-          "name": "黑人洋屌"
-        },
-        {
-          "id": "23",
-          "name": "欧美精品"
-        },
-        {
-          "id": "24",
-          "name": "卡通动漫"
-        },
-        {
-          "id": "26",
-          "name": "视频二区"
-        },
-        {
-          "id": "27",
-          "name": "乱伦中出"
-        },
-        {
-          "id": "28",
-          "name": "传媒原创"
-        },
-        {
-          "id": "29",
-          "name": "口爆颜射"
-        },
-        {
-          "id": "31",
-          "name": "岛国女优"
-        },
-        {
-          "id": "32",
-          "name": "萝莉少女"
-        },
-        {
-          "id": "33",
-          "name": "重口调教"
-        },
-        {
-          "id": "34",
-          "name": "视频三区"
-        },
-        {
-          "id": "35",
-          "name": "国产直播"
-        },
-        {
-          "id": "36",
-          "name": "岛国群交"
-        },
-        {
-          "id": "37",
-          "name": "日本有码"
-        },
-        {
-          "id": "38",
-          "name": "中文字幕"
-        },
-        {
-          "id": "39",
-          "name": "岛国素人"
-        },
-        {
-          "id": "40",
-          "name": "吃瓜爆料"
-        },
-        {
-          "id": "41",
-          "name": "角色扮演"
-        },
-        {
-          "id": "42",
-          "name": "淫娃自慰"
-        },
-        {
-          "id": "43",
-          "name": "视频四区"
-        },
-        {
-          "id": "44",
-          "name": "公开漏出"
-        },
-        {
-          "id": "45",
-          "name": "韩国直播"
-        },
-        {
-          "id": "46",
-          "name": "户外打野"
-        },
-        {
-          "id": "47",
-          "name": "高潮喷水"
-        },
-        {
-          "id": "48",
-          "name": "电车痴汉"
-        },
-        {
-          "id": "49",
-          "name": "AI换脸"
-        },
-        {
-          "id": "50",
-          "name": "AV解说"
-        },
-        {
-          "id": "51",
-          "name": "伦理三级"
-        }
-      ],
-      "rawResponsePath": "raw/072-www.xiangjiaozyw.com.txt",
-      "startedAt": "2026-06-11T17:33:11.403Z",
-      "finishedAt": "2026-06-11T17:33:11.911Z",
-      "error": ""
-    },
-    {
-      "index": 73,
+      "index": 57,
       "key": "杏吧资源",
       "name": "🔞 杏吧资源｜追劇",
       "type": 1,
@@ -12934,8 +10651,8 @@
       "host": "xingba222.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 9476,
-      "sha256": "63fdb3b117138ef234c6e7c0607c52d84838b56a4c1053d7e1e0656739cc470e",
+      "bytes": 8944,
+      "sha256": "62f73305d3c73d814275c4168740340ffc5737c53a58114d74c7f2b2c77b21ec",
       "categoryCount": 39,
       "apiCategoryCount": 39,
       "usedFallbackCategories": false,
@@ -13097,13 +10814,13 @@
           "name": "校园情色"
         }
       ],
-      "rawResponsePath": "raw/073-xingba222.com.txt",
-      "startedAt": "2026-06-11T17:33:11.424Z",
-      "finishedAt": "2026-06-11T17:33:12.177Z",
+      "rawResponsePath": "raw/057-xingba222.com.txt",
+      "startedAt": "2026-06-17T18:55:00.243Z",
+      "finishedAt": "2026-06-17T18:55:01.017Z",
       "error": ""
     },
     {
-      "index": 74,
+      "index": 58,
       "key": "大地资源",
       "name": "🔞 大地资源｜追劇",
       "type": 0,
@@ -13116,8 +10833,8 @@
       "host": "dadiapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 5774,
-      "sha256": "8ab75f8f11225c28a8f4acc14760f2b83a0103e7259d41cdb582cd246c15b07f",
+      "bytes": 5701,
+      "sha256": "8ca3ff6b80743f758deee2baa330bf24aa311580e42cc99fb15c0cfa535a0fe5",
       "categoryCount": 35,
       "apiCategoryCount": 35,
       "usedFallbackCategories": false,
@@ -13263,147 +10980,13 @@
           "name": "长泽梓"
         }
       ],
-      "rawResponsePath": "raw/074-dadiapi.com.txt",
-      "startedAt": "2026-06-11T17:33:11.512Z",
-      "finishedAt": "2026-06-11T17:33:12.515Z",
+      "rawResponsePath": "raw/058-dadiapi.com.txt",
+      "startedAt": "2026-06-17T18:55:00.375Z",
+      "finishedAt": "2026-06-17T18:55:01.448Z",
       "error": ""
     },
     {
-      "index": 75,
-      "key": "色猫资源",
-      "name": "🔞 色猫资源｜追劇",
-      "type": 1,
-      "adult": true,
-      "api": "https://caiji.semaozy.net/inc/apijson_vod.php/provide/vod/",
-      "ext": "",
-      "infoKind": "cms-list",
-      "infoUrl": "https://caiji.semaozy.net/inc/apijson_vod.php/provide/vod/?ac=list",
-      "infoSourceField": "api",
-      "host": "caiji.semaozy.net",
-      "ok": true,
-      "httpLike": true,
-      "bytes": 1574,
-      "sha256": "c3c955875d21178a2c96368df22a7f0b279b455b75f11d810dc83888a8687bc0",
-      "categoryCount": 27,
-      "apiCategoryCount": 27,
-      "usedFallbackCategories": false,
-      "categories": [
-        {
-          "id": "1",
-          "name": "国产自拍"
-        },
-        {
-          "id": "2",
-          "name": "日本无码"
-        },
-        {
-          "id": "3",
-          "name": "日本有码"
-        },
-        {
-          "id": "4",
-          "name": "中文字幕"
-        },
-        {
-          "id": "5",
-          "name": "欧美精品"
-        },
-        {
-          "id": "6",
-          "name": "成人动漫"
-        },
-        {
-          "id": "7",
-          "name": "日本素人"
-        },
-        {
-          "id": "8",
-          "name": "高清名优"
-        },
-        {
-          "id": "9",
-          "name": "三级伦理"
-        },
-        {
-          "id": "10",
-          "name": "网红主播"
-        },
-        {
-          "id": "11",
-          "name": "映画传媒"
-        },
-        {
-          "id": "12",
-          "name": "人妻熟女"
-        },
-        {
-          "id": "13",
-          "name": "口爆颜射"
-        },
-        {
-          "id": "14",
-          "name": "萝莉少女"
-        },
-        {
-          "id": "15",
-          "name": "SM调教"
-        },
-        {
-          "id": "16",
-          "name": "美乳巨乳"
-        },
-        {
-          "id": "17",
-          "name": "短视频"
-        },
-        {
-          "id": "18",
-          "name": "制服诱惑"
-        },
-        {
-          "id": "19",
-          "name": "女同性爱"
-        },
-        {
-          "id": "20",
-          "name": "AI换脸"
-        },
-        {
-          "id": "21",
-          "name": "多人群交"
-        },
-        {
-          "id": "22",
-          "name": "翹臀美尻"
-        },
-        {
-          "id": "23",
-          "name": "丝袜美腿"
-        },
-        {
-          "id": "24",
-          "name": "精选独家"
-        },
-        {
-          "id": "25",
-          "name": "貧乳小奶"
-        },
-        {
-          "id": "26",
-          "name": "探花系列"
-        },
-        {
-          "id": "27",
-          "name": "AV解说"
-        }
-      ],
-      "rawResponsePath": "raw/075-caiji.semaozy.net.txt",
-      "startedAt": "2026-06-11T17:33:11.526Z",
-      "finishedAt": "2026-06-11T17:33:12.394Z",
-      "error": ""
-    },
-    {
-      "index": 76,
+      "index": 59,
       "key": "奥斯卡",
       "name": "🔞 奥斯卡｜追劇",
       "type": 1,
@@ -13416,8 +10999,8 @@
       "host": "aosikazy.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 8539,
-      "sha256": "a285a845919aa21dd8eba41dbdb2ef2af46502893b523aee7e3f2438dcfafc43",
+      "bytes": 8757,
+      "sha256": "61db895e1fb6ee8a46043eb586fab7826a2c681a8632073310594ac141869417",
       "categoryCount": 28,
       "apiCategoryCount": 28,
       "usedFallbackCategories": false,
@@ -13535,13 +11118,1699 @@
           "name": "VR视角"
         }
       ],
-      "rawResponsePath": "raw/076-aosikazy.com.txt",
-      "startedAt": "2026-06-11T17:33:11.559Z",
-      "finishedAt": "2026-06-11T17:33:12.105Z",
+      "rawResponsePath": "raw/059-aosikazy.com.txt",
+      "startedAt": "2026-06-17T18:55:00.498Z",
+      "finishedAt": "2026-06-17T18:55:00.980Z",
       "error": ""
     },
     {
-      "index": 77,
+      "index": 60,
+      "key": "鲨鱼资源",
+      "name": "🔞 鲨鱼资源｜追劇",
+      "type": 1,
+      "adult": true,
+      "api": "https://shayuapi.com/api.php/provide/vod/",
+      "ext": "",
+      "infoKind": "cms-list",
+      "infoUrl": "https://shayuapi.com/api.php/provide/vod/?ac=list",
+      "infoSourceField": "api",
+      "host": "shayuapi.com",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 7009,
+      "sha256": "3a595810ae4d5be6653745da0c61a375ca454f5c382025f724f8c460c8ce081b",
+      "categoryCount": 22,
+      "apiCategoryCount": 22,
+      "usedFallbackCategories": false,
+      "categories": [
+        {
+          "id": "1",
+          "name": "国产情色"
+        },
+        {
+          "id": "2",
+          "name": "日本无码"
+        },
+        {
+          "id": "3",
+          "name": "AV明星"
+        },
+        {
+          "id": "20",
+          "name": "中文字幕"
+        },
+        {
+          "id": "21",
+          "name": "网红主播"
+        },
+        {
+          "id": "22",
+          "name": "成人动漫"
+        },
+        {
+          "id": "23",
+          "name": "欧美情色"
+        },
+        {
+          "id": "24",
+          "name": "国模私拍"
+        },
+        {
+          "id": "25",
+          "name": "长腿丝袜"
+        },
+        {
+          "id": "26",
+          "name": "邻家人妻"
+        },
+        {
+          "id": "27",
+          "name": "韩国伦理"
+        },
+        {
+          "id": "28",
+          "name": "香港伦理"
+        },
+        {
+          "id": "31",
+          "name": "精品推荐"
+        },
+        {
+          "id": "32",
+          "name": "原纱央莉"
+        },
+        {
+          "id": "33",
+          "name": "柚木TINA"
+        },
+        {
+          "id": "34",
+          "name": "大桥未久"
+        },
+        {
+          "id": "35",
+          "name": "AV明星1"
+        },
+        {
+          "id": "36",
+          "name": "仁科百华"
+        },
+        {
+          "id": "37",
+          "name": "天海翼"
+        },
+        {
+          "id": "38",
+          "name": "小川阿佐美"
+        },
+        {
+          "id": "39",
+          "name": "三上悠亚"
+        },
+        {
+          "id": "40",
+          "name": "长泽梓"
+        }
+      ],
+      "rawResponsePath": "raw/060-shayuapi.com.txt",
+      "startedAt": "2026-06-17T18:55:00.585Z",
+      "finishedAt": "2026-06-17T18:55:03.727Z",
+      "error": ""
+    },
+    {
+      "index": 61,
+      "key": "YK",
+      "name": "优酷视频｜追劇",
+      "type": 3,
+      "adult": false,
+      "api": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
+      "ext": "https://cdn.waimaimingtang.com/file/images/bwc/20251023002200-507c3e8aae.js",
+      "infoKind": "type3-script",
+      "infoUrl": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
+      "infoSourceField": "api",
+      "host": "file.icve.com.cn",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 67948,
+      "sha256": "3527012aed2f6dcf7edd8a6073a2a5fd19bdf271cd9b177ac828f20dc9d504ba",
+      "categoryCount": 4,
+      "apiCategoryCount": 0,
+      "usedFallbackCategories": true,
+      "categories": [
+        {
+          "id": "1",
+          "name": "动作片"
+        },
+        {
+          "id": "2",
+          "name": "国产动漫"
+        },
+        {
+          "id": "3",
+          "name": "短剧"
+        },
+        {
+          "id": "4",
+          "name": "国产综艺"
+        }
+      ],
+      "rawResponsePath": "raw/061-file.icve.com.cn.txt",
+      "startedAt": "2026-06-17T18:55:00.631Z",
+      "finishedAt": "2026-06-17T18:55:01.576Z",
+      "error": ""
+    },
+    {
+      "index": 62,
+      "key": "TX",
+      "name": "腾讯视频｜追劇",
+      "type": 3,
+      "adult": false,
+      "api": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
+      "ext": "https://cdn.waimaimingtang.com/file/images/bwc/20251023002144-0e40887294.js",
+      "infoKind": "type3-script",
+      "infoUrl": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
+      "infoSourceField": "api",
+      "host": "file.icve.com.cn",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 67948,
+      "sha256": "3527012aed2f6dcf7edd8a6073a2a5fd19bdf271cd9b177ac828f20dc9d504ba",
+      "categoryCount": 4,
+      "apiCategoryCount": 0,
+      "usedFallbackCategories": true,
+      "categories": [
+        {
+          "id": "1",
+          "name": "动作片"
+        },
+        {
+          "id": "2",
+          "name": "国产动漫"
+        },
+        {
+          "id": "3",
+          "name": "短剧"
+        },
+        {
+          "id": "4",
+          "name": "国产综艺"
+        }
+      ],
+      "rawResponsePath": "raw/062-file.icve.com.cn.txt",
+      "startedAt": "2026-06-17T18:55:00.716Z",
+      "finishedAt": "2026-06-17T18:55:01.566Z",
+      "error": ""
+    },
+    {
+      "index": 63,
+      "key": "MG",
+      "name": "芒果TV｜追劇",
+      "type": 3,
+      "adult": false,
+      "api": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
+      "ext": "https://cdn.waimaimingtang.com/file/images/bwc/20251023002108-a4795930ec.js",
+      "infoKind": "type3-script",
+      "infoUrl": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
+      "infoSourceField": "api",
+      "host": "file.icve.com.cn",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 67948,
+      "sha256": "3527012aed2f6dcf7edd8a6073a2a5fd19bdf271cd9b177ac828f20dc9d504ba",
+      "categoryCount": 4,
+      "apiCategoryCount": 0,
+      "usedFallbackCategories": true,
+      "categories": [
+        {
+          "id": "1",
+          "name": "动作片"
+        },
+        {
+          "id": "2",
+          "name": "国产动漫"
+        },
+        {
+          "id": "3",
+          "name": "短剧"
+        },
+        {
+          "id": "4",
+          "name": "国产综艺"
+        }
+      ],
+      "rawResponsePath": "raw/063-file.icve.com.cn.txt",
+      "startedAt": "2026-06-17T18:55:00.865Z",
+      "finishedAt": "2026-06-17T18:55:01.581Z",
+      "error": ""
+    },
+    {
+      "index": 64,
+      "key": "闪电影视",
+      "name": "闪电影视｜追剧",
+      "type": 1,
+      "adult": false,
+      "api": "http://sdzyapi.com/api.php/provide/vod/",
+      "ext": "",
+      "infoKind": "cms-list",
+      "infoUrl": "http://sdzyapi.com/api.php/provide/vod/?ac=list",
+      "infoSourceField": "api",
+      "host": "sdzyapi.com",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 6808,
+      "sha256": "2079508884acabb2457786a639dc805d4d0f33a65a33f176876e37ab6184be53",
+      "categoryCount": 59,
+      "apiCategoryCount": 59,
+      "usedFallbackCategories": false,
+      "categories": [
+        {
+          "id": "1",
+          "name": "电影"
+        },
+        {
+          "id": "2",
+          "name": "电视剧"
+        },
+        {
+          "id": "3",
+          "name": "综艺"
+        },
+        {
+          "id": "4",
+          "name": "动漫"
+        },
+        {
+          "id": "6",
+          "name": "动作片"
+        },
+        {
+          "id": "7",
+          "name": "喜剧片"
+        },
+        {
+          "id": "8",
+          "name": "爱情片"
+        },
+        {
+          "id": "9",
+          "name": "科幻片"
+        },
+        {
+          "id": "10",
+          "name": "恐怖片"
+        },
+        {
+          "id": "11",
+          "name": "剧情片"
+        },
+        {
+          "id": "12",
+          "name": "战争片"
+        },
+        {
+          "id": "13",
+          "name": "国产剧"
+        },
+        {
+          "id": "14",
+          "name": "欧美剧"
+        },
+        {
+          "id": "15",
+          "name": "韩剧"
+        },
+        {
+          "id": "16",
+          "name": "日剧"
+        },
+        {
+          "id": "17",
+          "name": "港剧"
+        },
+        {
+          "id": "18",
+          "name": "台剧"
+        },
+        {
+          "id": "19",
+          "name": "泰剧"
+        },
+        {
+          "id": "20",
+          "name": "纪录片"
+        },
+        {
+          "id": "23",
+          "name": "海外剧"
+        },
+        {
+          "id": "25",
+          "name": "大陆综艺"
+        },
+        {
+          "id": "26",
+          "name": "日韩综艺"
+        },
+        {
+          "id": "27",
+          "name": "港台综艺"
+        },
+        {
+          "id": "28",
+          "name": "欧美综艺"
+        },
+        {
+          "id": "29",
+          "name": "国产动漫"
+        },
+        {
+          "id": "30",
+          "name": "日韩动漫"
+        },
+        {
+          "id": "31",
+          "name": "欧美动漫"
+        },
+        {
+          "id": "39",
+          "name": "动画片"
+        },
+        {
+          "id": "44",
+          "name": "港台动漫"
+        },
+        {
+          "id": "45",
+          "name": "海外动漫"
+        },
+        {
+          "id": "47",
+          "name": "演唱会"
+        },
+        {
+          "id": "48",
+          "name": "体育赛事"
+        },
+        {
+          "id": "49",
+          "name": "篮球"
+        },
+        {
+          "id": "50",
+          "name": "足球"
+        },
+        {
+          "id": "51",
+          "name": "预告片"
+        },
+        {
+          "id": "52",
+          "name": "斯诺克"
+        },
+        {
+          "id": "53",
+          "name": "影视解说"
+        },
+        {
+          "id": "54",
+          "name": "爽文短剧"
+        },
+        {
+          "id": "55",
+          "name": "伦理"
+        },
+        {
+          "id": "56",
+          "name": "港台三级"
+        },
+        {
+          "id": "57",
+          "name": "韩国伦理"
+        },
+        {
+          "id": "58",
+          "name": "西方伦理"
+        },
+        {
+          "id": "59",
+          "name": "日本伦理"
+        },
+        {
+          "id": "60",
+          "name": "两性课堂"
+        },
+        {
+          "id": "61",
+          "name": "写真热舞"
+        },
+        {
+          "id": "62",
+          "name": "4K电影"
+        },
+        {
+          "id": "63",
+          "name": "有声动漫"
+        },
+        {
+          "id": "64",
+          "name": "女频恋爱"
+        },
+        {
+          "id": "65",
+          "name": "反转爽剧"
+        },
+        {
+          "id": "66",
+          "name": "古装仙侠"
+        },
+        {
+          "id": "67",
+          "name": "年代穿越"
+        },
+        {
+          "id": "68",
+          "name": "脑洞悬疑"
+        },
+        {
+          "id": "69",
+          "name": "现代都市"
+        },
+        {
+          "id": "70",
+          "name": "邵氏电影"
+        },
+        {
+          "id": "71",
+          "name": "Netflix电影"
+        },
+        {
+          "id": "72",
+          "name": "Netflix自制剧"
+        },
+        {
+          "id": "73",
+          "name": "科普学习"
+        },
+        {
+          "id": "74",
+          "name": "擦边短剧"
+        },
+        {
+          "id": "75",
+          "name": "漫剧"
+        }
+      ],
+      "rawResponsePath": "raw/064-sdzyapi.com.txt",
+      "startedAt": "2026-06-17T18:55:00.890Z",
+      "finishedAt": "2026-06-17T18:55:01.610Z",
+      "error": ""
+    },
+    {
+      "index": 65,
+      "key": "牛牛影视",
+      "name": "牛牛影视｜追剧",
+      "type": 0,
+      "adult": false,
+      "api": "https://api.niuniuzy.me/api.php/provide/vod/at/xml",
+      "ext": "",
+      "infoKind": "cms-list",
+      "infoUrl": "https://api.niuniuzy.me/api.php/provide/vod/at/xml?ac=list",
+      "infoSourceField": "api",
+      "host": "api.niuniuzy.me",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 5742,
+      "sha256": "e6d2eeb6ad8c20b4d9e11c48008894cb810ec3eef5da86a71d64db8c729968d1",
+      "categoryCount": 59,
+      "apiCategoryCount": 59,
+      "usedFallbackCategories": false,
+      "categories": [
+        {
+          "id": "1",
+          "name": "电影"
+        },
+        {
+          "id": "2",
+          "name": "电视剧"
+        },
+        {
+          "id": "3",
+          "name": "综艺"
+        },
+        {
+          "id": "4",
+          "name": "动漫"
+        },
+        {
+          "id": "6",
+          "name": "动作片"
+        },
+        {
+          "id": "7",
+          "name": "喜剧片"
+        },
+        {
+          "id": "8",
+          "name": "爱情片"
+        },
+        {
+          "id": "9",
+          "name": "科幻片"
+        },
+        {
+          "id": "10",
+          "name": "恐怖片"
+        },
+        {
+          "id": "11",
+          "name": "剧情片"
+        },
+        {
+          "id": "12",
+          "name": "战争片"
+        },
+        {
+          "id": "13",
+          "name": "国产剧"
+        },
+        {
+          "id": "14",
+          "name": "欧美剧"
+        },
+        {
+          "id": "15",
+          "name": "韩剧"
+        },
+        {
+          "id": "16",
+          "name": "日剧"
+        },
+        {
+          "id": "17",
+          "name": "港剧"
+        },
+        {
+          "id": "18",
+          "name": "台剧"
+        },
+        {
+          "id": "19",
+          "name": "泰剧"
+        },
+        {
+          "id": "20",
+          "name": "纪录片"
+        },
+        {
+          "id": "23",
+          "name": "海外剧"
+        },
+        {
+          "id": "25",
+          "name": "大陆综艺"
+        },
+        {
+          "id": "26",
+          "name": "日韩综艺"
+        },
+        {
+          "id": "27",
+          "name": "港台综艺"
+        },
+        {
+          "id": "28",
+          "name": "欧美综艺"
+        },
+        {
+          "id": "29",
+          "name": "国产动漫"
+        },
+        {
+          "id": "30",
+          "name": "日韩动漫"
+        },
+        {
+          "id": "31",
+          "name": "欧美动漫"
+        },
+        {
+          "id": "39",
+          "name": "动画片"
+        },
+        {
+          "id": "44",
+          "name": "港台动漫"
+        },
+        {
+          "id": "45",
+          "name": "海外动漫"
+        },
+        {
+          "id": "47",
+          "name": "演唱会"
+        },
+        {
+          "id": "48",
+          "name": "体育赛事"
+        },
+        {
+          "id": "49",
+          "name": "篮球"
+        },
+        {
+          "id": "50",
+          "name": "足球"
+        },
+        {
+          "id": "51",
+          "name": "预告片"
+        },
+        {
+          "id": "52",
+          "name": "斯诺克"
+        },
+        {
+          "id": "53",
+          "name": "影视解说"
+        },
+        {
+          "id": "54",
+          "name": "爽文短剧"
+        },
+        {
+          "id": "55",
+          "name": "伦理"
+        },
+        {
+          "id": "56",
+          "name": "港台三级"
+        },
+        {
+          "id": "57",
+          "name": "韩国伦理"
+        },
+        {
+          "id": "58",
+          "name": "西方伦理"
+        },
+        {
+          "id": "59",
+          "name": "日本伦理"
+        },
+        {
+          "id": "60",
+          "name": "两性课堂"
+        },
+        {
+          "id": "61",
+          "name": "写真热舞"
+        },
+        {
+          "id": "62",
+          "name": "4K电影"
+        },
+        {
+          "id": "63",
+          "name": "有声动漫"
+        },
+        {
+          "id": "64",
+          "name": "女频恋爱"
+        },
+        {
+          "id": "65",
+          "name": "反转爽剧"
+        },
+        {
+          "id": "66",
+          "name": "古装仙侠"
+        },
+        {
+          "id": "67",
+          "name": "年代穿越"
+        },
+        {
+          "id": "68",
+          "name": "脑洞悬疑"
+        },
+        {
+          "id": "69",
+          "name": "现代都市"
+        },
+        {
+          "id": "70",
+          "name": "邵氏电影"
+        },
+        {
+          "id": "71",
+          "name": "Netflix电影"
+        },
+        {
+          "id": "72",
+          "name": "Netflix自制剧"
+        },
+        {
+          "id": "73",
+          "name": "擦边短剧"
+        },
+        {
+          "id": "74",
+          "name": "科普学习"
+        },
+        {
+          "id": "75",
+          "name": "漫剧"
+        }
+      ],
+      "rawResponsePath": "raw/065-api.niuniuzy.me.txt",
+      "startedAt": "2026-06-17T18:55:00.910Z",
+      "finishedAt": "2026-06-17T18:55:01.580Z",
+      "error": ""
+    },
+    {
+      "index": 66,
+      "key": "雲飛影视",
+      "name": "雲飛影视｜追劇",
+      "type": 1,
+      "adult": false,
+      "api": "http://cj.lziapi.com/api.php/provide/vod/",
+      "ext": "",
+      "infoKind": "cms-list",
+      "infoUrl": "http://cj.lziapi.com/api.php/provide/vod/?ac=list",
+      "infoSourceField": "api",
+      "host": "cj.lziapi.com",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 7203,
+      "sha256": "f2e74a200caaf9bc3e6732178d1a30d446063070b028474e28692f95729abff8",
+      "categoryCount": 44,
+      "apiCategoryCount": 44,
+      "usedFallbackCategories": false,
+      "categories": [
+        {
+          "id": "1",
+          "name": "电影片"
+        },
+        {
+          "id": "2",
+          "name": "连续剧"
+        },
+        {
+          "id": "3",
+          "name": "综艺片"
+        },
+        {
+          "id": "4",
+          "name": "动漫片"
+        },
+        {
+          "id": "6",
+          "name": "动作片"
+        },
+        {
+          "id": "7",
+          "name": "喜剧片"
+        },
+        {
+          "id": "8",
+          "name": "爱情片"
+        },
+        {
+          "id": "9",
+          "name": "科幻片"
+        },
+        {
+          "id": "10",
+          "name": "恐怖片"
+        },
+        {
+          "id": "11",
+          "name": "剧情片"
+        },
+        {
+          "id": "12",
+          "name": "战争片"
+        },
+        {
+          "id": "13",
+          "name": "国产剧"
+        },
+        {
+          "id": "14",
+          "name": "香港剧"
+        },
+        {
+          "id": "15",
+          "name": "韩国剧"
+        },
+        {
+          "id": "16",
+          "name": "欧美剧"
+        },
+        {
+          "id": "20",
+          "name": "记录片"
+        },
+        {
+          "id": "21",
+          "name": "台湾剧"
+        },
+        {
+          "id": "22",
+          "name": "日本剧"
+        },
+        {
+          "id": "23",
+          "name": "海外剧"
+        },
+        {
+          "id": "24",
+          "name": "泰国剧"
+        },
+        {
+          "id": "25",
+          "name": "大陆综艺"
+        },
+        {
+          "id": "26",
+          "name": "港台综艺"
+        },
+        {
+          "id": "27",
+          "name": "日韩综艺"
+        },
+        {
+          "id": "28",
+          "name": "欧美综艺"
+        },
+        {
+          "id": "29",
+          "name": "国产动漫"
+        },
+        {
+          "id": "30",
+          "name": "日韩动漫"
+        },
+        {
+          "id": "31",
+          "name": "欧美动漫"
+        },
+        {
+          "id": "32",
+          "name": "港台动漫"
+        },
+        {
+          "id": "33",
+          "name": "海外动漫"
+        },
+        {
+          "id": "34",
+          "name": "伦理片"
+        },
+        {
+          "id": "35",
+          "name": "电影解说"
+        },
+        {
+          "id": "36",
+          "name": "体育"
+        },
+        {
+          "id": "37",
+          "name": "足球"
+        },
+        {
+          "id": "38",
+          "name": "篮球"
+        },
+        {
+          "id": "39",
+          "name": "网球"
+        },
+        {
+          "id": "40",
+          "name": "斯诺克"
+        },
+        {
+          "id": "41",
+          "name": "演员"
+        },
+        {
+          "id": "42",
+          "name": "新闻资讯"
+        },
+        {
+          "id": "43",
+          "name": "电影资讯"
+        },
+        {
+          "id": "44",
+          "name": "娱乐新闻"
+        },
+        {
+          "id": "45",
+          "name": "预告片"
+        },
+        {
+          "id": "46",
+          "name": "短剧"
+        },
+        {
+          "id": "49",
+          "name": "动画片"
+        },
+        {
+          "id": "52",
+          "name": "AI漫剧"
+        }
+      ],
+      "rawResponsePath": "raw/066-cj.lziapi.com.txt",
+      "startedAt": "2026-06-17T18:55:00.980Z",
+      "finishedAt": "2026-06-17T18:55:01.160Z",
+      "error": ""
+    },
+    {
+      "index": 67,
+      "key": "火狐",
+      "name": "火狐影视｜追剧",
+      "type": 1,
+      "adult": false,
+      "api": "https://hhzyapi.com/api.php/provide/vod/",
+      "ext": "",
+      "infoKind": "cms-list",
+      "infoUrl": "https://hhzyapi.com/api.php/provide/vod/?ac=list",
+      "infoSourceField": "api",
+      "host": "hhzyapi.com",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 6330,
+      "sha256": "cff8930af18fada5afc3d4519b9f2d52498d0c5f1acfa9395961ab884a1386ca",
+      "categoryCount": 39,
+      "apiCategoryCount": 39,
+      "usedFallbackCategories": false,
+      "categories": [
+        {
+          "id": "1",
+          "name": "电视剧"
+        },
+        {
+          "id": "2",
+          "name": "电影"
+        },
+        {
+          "id": "3",
+          "name": "欧美剧"
+        },
+        {
+          "id": "4",
+          "name": "香港剧"
+        },
+        {
+          "id": "5",
+          "name": "韩剧"
+        },
+        {
+          "id": "6",
+          "name": "日剧"
+        },
+        {
+          "id": "7",
+          "name": "马泰剧"
+        },
+        {
+          "id": "8",
+          "name": "伦理片"
+        },
+        {
+          "id": "9",
+          "name": "动作片"
+        },
+        {
+          "id": "10",
+          "name": "爱情片"
+        },
+        {
+          "id": "11",
+          "name": "喜剧片"
+        },
+        {
+          "id": "12",
+          "name": "科幻片"
+        },
+        {
+          "id": "13",
+          "name": "恐怖片"
+        },
+        {
+          "id": "14",
+          "name": "剧情片"
+        },
+        {
+          "id": "15",
+          "name": "战争片"
+        },
+        {
+          "id": "16",
+          "name": "记录片"
+        },
+        {
+          "id": "17",
+          "name": "动漫"
+        },
+        {
+          "id": "20",
+          "name": "内地剧"
+        },
+        {
+          "id": "23",
+          "name": "动画片"
+        },
+        {
+          "id": "24",
+          "name": "中国动漫"
+        },
+        {
+          "id": "25",
+          "name": "日本动漫"
+        },
+        {
+          "id": "26",
+          "name": "欧美动漫"
+        },
+        {
+          "id": "27",
+          "name": "综艺"
+        },
+        {
+          "id": "28",
+          "name": "台湾剧"
+        },
+        {
+          "id": "30",
+          "name": "大陆综艺"
+        },
+        {
+          "id": "31",
+          "name": "日韩综艺"
+        },
+        {
+          "id": "32",
+          "name": "港台综艺"
+        },
+        {
+          "id": "33",
+          "name": "欧美综艺"
+        },
+        {
+          "id": "34",
+          "name": "灾难片"
+        },
+        {
+          "id": "35",
+          "name": "悬疑片"
+        },
+        {
+          "id": "36",
+          "name": "犯罪片"
+        },
+        {
+          "id": "37",
+          "name": "奇幻片"
+        },
+        {
+          "id": "38",
+          "name": "短剧"
+        },
+        {
+          "id": "39",
+          "name": "预告片"
+        },
+        {
+          "id": "40",
+          "name": "体育赛事"
+        },
+        {
+          "id": "41",
+          "name": "足球"
+        },
+        {
+          "id": "42",
+          "name": "篮球"
+        },
+        {
+          "id": "43",
+          "name": "台球"
+        },
+        {
+          "id": "44",
+          "name": "其他赛事"
+        }
+      ],
+      "rawResponsePath": "raw/067-hhzyapi.com.txt",
+      "startedAt": "2026-06-17T18:55:01.017Z",
+      "finishedAt": "2026-06-17T18:55:01.271Z",
+      "error": ""
+    },
+    {
+      "index": 68,
+      "key": "API_如意",
+      "name": "如意影视｜追剧",
+      "type": 1,
+      "adult": false,
+      "api": "https://cj.rycjapi.com/api.php/provide/vod/",
+      "ext": "",
+      "infoKind": "cms-list",
+      "infoUrl": "https://cj.rycjapi.com/api.php/provide/vod/?ac=list",
+      "infoSourceField": "api",
+      "host": "cj.rycjapi.com",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 6752,
+      "sha256": "89994d25a4f8cb8dad8511fb6cc183cbc901c04e74911c2603827a887a28970d",
+      "categoryCount": 39,
+      "apiCategoryCount": 39,
+      "usedFallbackCategories": false,
+      "categories": [
+        {
+          "id": "1",
+          "name": "电影片"
+        },
+        {
+          "id": "2",
+          "name": "连续剧"
+        },
+        {
+          "id": "3",
+          "name": "综艺片"
+        },
+        {
+          "id": "4",
+          "name": "动漫片"
+        },
+        {
+          "id": "7",
+          "name": "喜剧片"
+        },
+        {
+          "id": "6",
+          "name": "动作片"
+        },
+        {
+          "id": "8",
+          "name": "爱情片"
+        },
+        {
+          "id": "9",
+          "name": "科幻片"
+        },
+        {
+          "id": "10",
+          "name": "恐怖片"
+        },
+        {
+          "id": "11",
+          "name": "剧情片"
+        },
+        {
+          "id": "12",
+          "name": "战争片"
+        },
+        {
+          "id": "13",
+          "name": "国产剧"
+        },
+        {
+          "id": "14",
+          "name": "香港剧"
+        },
+        {
+          "id": "15",
+          "name": "韩国剧"
+        },
+        {
+          "id": "16",
+          "name": "欧美剧"
+        },
+        {
+          "id": "20",
+          "name": "记录片"
+        },
+        {
+          "id": "21",
+          "name": "台湾剧"
+        },
+        {
+          "id": "22",
+          "name": "日本剧"
+        },
+        {
+          "id": "23",
+          "name": "海外剧"
+        },
+        {
+          "id": "24",
+          "name": "泰国剧"
+        },
+        {
+          "id": "25",
+          "name": "大陆综艺"
+        },
+        {
+          "id": "26",
+          "name": "港台综艺"
+        },
+        {
+          "id": "27",
+          "name": "日韩综艺"
+        },
+        {
+          "id": "28",
+          "name": "欧美综艺"
+        },
+        {
+          "id": "29",
+          "name": "国产动漫"
+        },
+        {
+          "id": "30",
+          "name": "日韩动漫"
+        },
+        {
+          "id": "31",
+          "name": "欧美动漫"
+        },
+        {
+          "id": "32",
+          "name": "港台动漫"
+        },
+        {
+          "id": "33",
+          "name": "海外动漫"
+        },
+        {
+          "id": "34",
+          "name": "伦理片"
+        },
+        {
+          "id": "35",
+          "name": "电影解说"
+        },
+        {
+          "id": "36",
+          "name": "体育"
+        },
+        {
+          "id": "37",
+          "name": "足球"
+        },
+        {
+          "id": "38",
+          "name": "篮球"
+        },
+        {
+          "id": "39",
+          "name": "网球"
+        },
+        {
+          "id": "40",
+          "name": "斯诺克"
+        },
+        {
+          "id": "45",
+          "name": "预告片"
+        },
+        {
+          "id": "46",
+          "name": "短剧"
+        },
+        {
+          "id": "47",
+          "name": "动画电影"
+        }
+      ],
+      "rawResponsePath": "raw/068-cj.rycjapi.com.txt",
+      "startedAt": "2026-06-17T18:55:01.075Z",
+      "finishedAt": "2026-06-17T18:55:01.454Z",
+      "error": ""
+    },
+    {
+      "index": 69,
+      "key": "七星短剧",
+      "name": "七星丨短剧｜追劇",
+      "type": 3,
+      "adult": false,
+      "api": "https://mpimg.cn/down.php/48e9d346cdf6da376c53136693bec95a.py",
+      "ext": "",
+      "infoKind": "type3-script",
+      "infoUrl": "https://mpimg.cn/down.php/48e9d346cdf6da376c53136693bec95a.py",
+      "infoSourceField": "api",
+      "host": "mpimg.cn",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 10963,
+      "sha256": "88ea7328a77780001ea67c396ff1937a5b1d2385147bcee2b74b168c80c62f46",
+      "categoryCount": 4,
+      "apiCategoryCount": 0,
+      "usedFallbackCategories": true,
+      "categories": [
+        {
+          "id": "1",
+          "name": "动作片"
+        },
+        {
+          "id": "2",
+          "name": "国产动漫"
+        },
+        {
+          "id": "3",
+          "name": "短剧"
+        },
+        {
+          "id": "4",
+          "name": "国产综艺"
+        }
+      ],
+      "rawResponsePath": "raw/069-mpimg.cn.txt",
+      "startedAt": "2026-06-17T18:55:01.160Z",
+      "finishedAt": "2026-06-17T18:55:01.887Z",
+      "error": ""
+    },
+    {
+      "index": 70,
+      "key": "cj_360资源",
+      "name": "360丨短剧｜追劇",
+      "type": 1,
+      "adult": false,
+      "api": "https://360zy.com/api.php/provide/vod/",
+      "ext": "",
+      "infoKind": "cms-list",
+      "infoUrl": "https://360zy.com/api.php/provide/vod/?ac=list",
+      "infoSourceField": "api",
+      "host": "360zy.com",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 7008,
+      "sha256": "9281f301f1d6de3a28551a1d7b2082b751310061f2ffb870b43ad1ec72cbd50e",
+      "categoryCount": 51,
+      "apiCategoryCount": 51,
+      "usedFallbackCategories": false,
+      "categories": [
+        {
+          "id": "1",
+          "name": "电影"
+        },
+        {
+          "id": "2",
+          "name": "连续剧"
+        },
+        {
+          "id": "3",
+          "name": "综艺"
+        },
+        {
+          "id": "4",
+          "name": "动漫"
+        },
+        {
+          "id": "5",
+          "name": "伦理片"
+        },
+        {
+          "id": "6",
+          "name": "动作片"
+        },
+        {
+          "id": "7",
+          "name": "喜剧片"
+        },
+        {
+          "id": "8",
+          "name": "爱情片"
+        },
+        {
+          "id": "9",
+          "name": "科幻片"
+        },
+        {
+          "id": "10",
+          "name": "恐怖片"
+        },
+        {
+          "id": "11",
+          "name": "剧情片"
+        },
+        {
+          "id": "12",
+          "name": "战争片"
+        },
+        {
+          "id": "13",
+          "name": "国产剧"
+        },
+        {
+          "id": "14",
+          "name": "香港剧"
+        },
+        {
+          "id": "15",
+          "name": "韩国剧"
+        },
+        {
+          "id": "16",
+          "name": "欧美剧"
+        },
+        {
+          "id": "17",
+          "name": "体育"
+        },
+        {
+          "id": "18",
+          "name": "NBA"
+        },
+        {
+          "id": "20",
+          "name": "惊悚片"
+        },
+        {
+          "id": "21",
+          "name": "家庭篇"
+        },
+        {
+          "id": "22",
+          "name": "古装片"
+        },
+        {
+          "id": "23",
+          "name": "历史片"
+        },
+        {
+          "id": "24",
+          "name": "悬疑片"
+        },
+        {
+          "id": "25",
+          "name": "犯罪片"
+        },
+        {
+          "id": "26",
+          "name": "灾难片"
+        },
+        {
+          "id": "27",
+          "name": "纪录片"
+        },
+        {
+          "id": "28",
+          "name": "短片"
+        },
+        {
+          "id": "29",
+          "name": "动画片"
+        },
+        {
+          "id": "30",
+          "name": "台湾剧"
+        },
+        {
+          "id": "31",
+          "name": "日本剧"
+        },
+        {
+          "id": "32",
+          "name": "海外剧"
+        },
+        {
+          "id": "33",
+          "name": "泰国剧"
+        },
+        {
+          "id": "34",
+          "name": "大陆综艺"
+        },
+        {
+          "id": "35",
+          "name": "港台综艺"
+        },
+        {
+          "id": "36",
+          "name": "日韩综艺"
+        },
+        {
+          "id": "37",
+          "name": "欧美综艺"
+        },
+        {
+          "id": "38",
+          "name": "国产动漫"
+        },
+        {
+          "id": "39",
+          "name": "欧美动漫"
+        },
+        {
+          "id": "40",
+          "name": "日韩动漫"
+        },
+        {
+          "id": "41",
+          "name": "足球"
+        },
+        {
+          "id": "42",
+          "name": "篮球"
+        },
+        {
+          "id": "43",
+          "name": "未分类"
+        },
+        {
+          "id": "45",
+          "name": "西部片"
+        },
+        {
+          "id": "46",
+          "name": "爽文短剧"
+        },
+        {
+          "id": "47",
+          "name": "现代都市"
+        },
+        {
+          "id": "48",
+          "name": "脑洞悬疑"
+        },
+        {
+          "id": "49",
+          "name": "年代穿越"
+        },
+        {
+          "id": "50",
+          "name": "古装仙侠"
+        },
+        {
+          "id": "51",
+          "name": "反转爽剧"
+        },
+        {
+          "id": "52",
+          "name": "女频恋爱"
+        },
+        {
+          "id": "53",
+          "name": "成长逆袭"
+        }
+      ],
+      "rawResponsePath": "raw/070-360zy.com.txt",
+      "startedAt": "2026-06-17T18:55:01.271Z",
+      "finishedAt": "2026-06-17T18:55:02.486Z",
+      "error": ""
+    },
+    {
+      "index": 71,
+      "key": "网易云音乐",
+      "name": "网易云｜音乐",
+      "type": 3,
+      "adult": false,
+      "api": "https://xn--fjq53n.xyz/Ting/yinyue/网易云音乐.py",
+      "ext": "",
+      "infoKind": "type3-script",
+      "infoUrl": "https://xn--fjq53n.xyz/Ting/yinyue/网易云音乐.py",
+      "infoSourceField": "api",
+      "host": "xn--fjq53n.xyz",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 5977,
+      "sha256": "432b7a2554d69aed7cc81a8c35fac358e23ee7d500d758545a8f45c273b7694b",
+      "categoryCount": 4,
+      "apiCategoryCount": 0,
+      "usedFallbackCategories": true,
+      "categories": [
+        {
+          "id": "1",
+          "name": "动作片"
+        },
+        {
+          "id": "2",
+          "name": "国产动漫"
+        },
+        {
+          "id": "3",
+          "name": "短剧"
+        },
+        {
+          "id": "4",
+          "name": "国产综艺"
+        }
+      ],
+      "rawResponsePath": "raw/071-xn--fjq53n.xyz.txt",
+      "startedAt": "2026-06-17T18:55:01.451Z",
+      "finishedAt": "2026-06-17T18:55:02.277Z",
+      "error": ""
+    },
+    {
+      "index": 72,
+      "key": "网易云音乐1",
+      "name": "网易云1｜音乐",
+      "type": 3,
+      "adult": false,
+      "api": "https://xn--fjq53n.xyz/Ting/yinyue/网易云音乐1.py",
+      "ext": "",
+      "infoKind": "type3-script",
+      "infoUrl": "https://xn--fjq53n.xyz/Ting/yinyue/网易云音乐1.py",
+      "infoSourceField": "api",
+      "host": "xn--fjq53n.xyz",
+      "ok": true,
+      "httpLike": true,
+      "bytes": 5032,
+      "sha256": "d87200a0ed4d5cdc0f17d14db5978b42dc2ee05d095c4172d2a97ce3a340bf15",
+      "categoryCount": 4,
+      "apiCategoryCount": 0,
+      "usedFallbackCategories": true,
+      "categories": [
+        {
+          "id": "1",
+          "name": "动作片"
+        },
+        {
+          "id": "2",
+          "name": "国产动漫"
+        },
+        {
+          "id": "3",
+          "name": "短剧"
+        },
+        {
+          "id": "4",
+          "name": "国产综艺"
+        }
+      ],
+      "rawResponsePath": "raw/072-xn--fjq53n.xyz.txt",
+      "startedAt": "2026-06-17T18:55:01.454Z",
+      "finishedAt": "2026-06-17T18:55:01.859Z",
+      "error": ""
+    },
+    {
+      "index": 73,
       "key": "hhh",
       "name": "🔞 truvaze｜18+",
       "type": 3,
@@ -13555,7 +12824,7 @@
       "ok": true,
       "httpLike": true,
       "bytes": 10550,
-      "sha256": "e7b4132aed0213f57452c2d9c5c6eb90ea735eb32a724fdbb1049fe042f08b73",
+      "sha256": "acccc7e710b8ba4054dabbf05c450938f42c25d42f8ee65984124783d0fcd43d",
       "categoryCount": 3,
       "apiCategoryCount": 0,
       "usedFallbackCategories": true,
@@ -13573,13 +12842,13 @@
           "name": "国产综艺"
         }
       ],
-      "rawResponsePath": "raw/077-od.lk.txt",
-      "startedAt": "2026-06-11T17:33:11.661Z",
-      "finishedAt": "2026-06-11T17:33:12.546Z",
+      "rawResponsePath": "raw/073-od.lk.txt",
+      "startedAt": "2026-06-17T18:55:01.567Z",
+      "finishedAt": "2026-06-17T18:55:02.561Z",
       "error": ""
     },
     {
-      "index": 78,
+      "index": 74,
       "key": "大地采集",
       "name": "🔞 大地av｜18+",
       "type": 0,
@@ -13592,8 +12861,8 @@
       "host": "dadiapi.com",
       "ok": true,
       "httpLike": true,
-      "bytes": 5770,
-      "sha256": "292b41f3385fa4e4de6e7be83214f9351f981181301dc50a1e74abdf5dceae25",
+      "bytes": 5697,
+      "sha256": "b5ba5659222ccb89022f58ee500ff90fea31d0f9298bbea48dcc5c58fc17e1be",
       "categoryCount": 29,
       "apiCategoryCount": 29,
       "usedFallbackCategories": false,
@@ -13715,13 +12984,13 @@
           "name": "长泽梓"
         }
       ],
-      "rawResponsePath": "raw/078-dadiapi.com.txt",
-      "startedAt": "2026-06-11T17:33:11.760Z",
-      "finishedAt": "2026-06-11T17:33:12.656Z",
+      "rawResponsePath": "raw/074-dadiapi.com.txt",
+      "startedAt": "2026-06-17T18:55:01.576Z",
+      "finishedAt": "2026-06-17T18:55:02.159Z",
       "error": ""
     },
     {
-      "index": 79,
+      "index": 75,
       "key": "黄色仓库|AV",
       "name": "🔞 黄色仓库(旧)｜18+",
       "type": 1,
@@ -13734,8 +13003,8 @@
       "host": "hsckzy.vip",
       "ok": true,
       "httpLike": true,
-      "bytes": 10046,
-      "sha256": "054fee0981251a3a1a1ce42986e710853f2d35f038117406b1cd0e17cfba0c2c",
+      "bytes": 10164,
+      "sha256": "e667280f00ab1a3b619c74472de7113a870f761745143f2537e7d9639b16b0a1",
       "categoryCount": 40,
       "apiCategoryCount": 40,
       "usedFallbackCategories": false,
@@ -13901,13 +13170,13 @@
           "name": "OnlyFans"
         }
       ],
-      "rawResponsePath": "raw/079-hsckzy.vip.txt",
-      "startedAt": "2026-06-11T17:33:11.911Z",
-      "finishedAt": "2026-06-11T17:33:12.599Z",
+      "rawResponsePath": "raw/075-hsckzy.vip.txt",
+      "startedAt": "2026-06-17T18:55:01.580Z",
+      "finishedAt": "2026-06-17T18:55:02.349Z",
       "error": ""
     },
     {
-      "index": 80,
+      "index": 76,
       "key": "fqzy资源",
       "name": "🔞 国产资源｜18+",
       "type": 1,
@@ -13920,8 +13189,8 @@
       "host": "fqzy.me",
       "ok": true,
       "httpLike": true,
-      "bytes": 9288,
-      "sha256": "da33e8614268b9e3389cade31d0cc05bc901b52839b1aad47dc389778b7d664b",
+      "bytes": 8986,
+      "sha256": "cd8d4e3c9193d314eea35847ffe632d048fabfe4834de49245c5af8c37d5ab8f",
       "categoryCount": 27,
       "apiCategoryCount": 27,
       "usedFallbackCategories": false,
@@ -14035,9 +13304,9 @@
           "name": "一本道"
         }
       ],
-      "rawResponsePath": "raw/080-fqzy.me.txt",
-      "startedAt": "2026-06-11T17:33:12.017Z",
-      "finishedAt": "2026-06-11T17:33:13.213Z",
+      "rawResponsePath": "raw/076-fqzy.me.txt",
+      "startedAt": "2026-06-17T18:55:01.581Z",
+      "finishedAt": "2026-06-17T18:55:02.820Z",
       "error": ""
     }
   ]
