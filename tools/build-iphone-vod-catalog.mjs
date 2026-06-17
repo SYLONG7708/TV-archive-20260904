@@ -41,6 +41,7 @@ const currentSourcesPath = path.join(tvRoot, 'sources', 'current-sources.json');
 const fallbackCurrentVodPath = path.join(tvRoot, '.patch-work', 'current-vod.json');
 const allOnDemandSourcesPath = path.join(tvRoot, 'sources', 'All on-demand sources');
 const lunaFullPath = path.join(tvRoot, 'sources', 'vod-lunatv-full-oktv.json');
+const currentVodInput = args.get('currentVodInput') ? path.resolve(args.get('currentVodInput')) : '';
 
 const INDEXABLE_TYPES = new Set([0, 1]);
 const USER_AGENT =
@@ -565,8 +566,10 @@ async function loadSources() {
 
   const currentSources = await readJson(currentSourcesPath, {});
   const currentVodUrl = currentSources?.vod?.url || '';
-  loadedCurrentVodUrl = currentVodUrl;
-  if (currentVodUrl) {
+  loadedCurrentVodUrl = currentVodInput || currentVodUrl;
+  if (currentVodInput) {
+    addSites(await readJson(currentVodInput, {}), 'current-vod-local');
+  } else if (currentVodUrl) {
     try {
       addSites(await fetchJson(currentVodUrl), 'current-vod-url');
     } catch {
