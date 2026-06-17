@@ -995,7 +995,7 @@
       ];
       const SOURCE_ICON = '../assets/source-signal-icon.svg';
       const ADULT_ICON = '../assets/adult-18-badge.svg';
-      const ONLINE_DATA_BASE = 'https://sylong7708.github.io/TV/docs/data/';
+      const ONLINE_DATA_BASE = 'https://raw.githubusercontent.com/SYLONG7708/TV/main/docs/data/';
       const SOURCE_STORAGE_KEY = 'oktv:iphone:selectedSource:v3';
       const DEFAULT_SOURCE_RE = /爱奇艺|愛奇藝/i;
       const QUANTUM_MANIFEST_URL = '../data/quantum-lzi/manifest.json';
@@ -1103,7 +1103,13 @@
 
       async function getJson(url, fallback) {
         const online = onlineDataUrl(url);
-        const urls = location.hostname === 'sylong7708.github.io' || !online ? [url] : [online, url];
+        const dataPath = String(url || '').match(/(?:^|\/)data\/(.+?)(?:[?#].*)?$/)?.[1] || '';
+        const preferOnline = /^(?:vod-index|vod-detail)\//i.test(dataPath);
+        const urls = online
+          ? location.hostname === 'sylong7708.github.io' && !preferOnline
+            ? [url, online]
+            : [online, url]
+          : [url];
         for (const target of urls) {
           try {
             const res = await fetch(target, { cache: 'no-store' });
