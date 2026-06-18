@@ -1029,6 +1029,8 @@
         healthIndex: { sources: new Set(), posters: new Set(), live: new Set() },
         detailCache: new Map(),
         loadedSourceIds: new Set(),
+        fullIndexSourceIds: new Set(),
+        fullIndexLoading: new Map(),
         sourceMap: new Map(),
         itemById: new Map(),
         sourcePageState: new Map(),
@@ -1036,6 +1038,8 @@
         itemsRevision: 0,
         activeItem: null,
         playerUrl: '',
+        searchLoading: false,
+        searchLoadInFlight: null,
       };
 
       const topNav = document.querySelector('#topNav');
@@ -1252,6 +1256,30 @@
         if (!rows.length && source.itemCount) throw new Error('source-index-empty');
         registerCatalogItems(rows);
         state.loadedSourceIds.add(source.id);
+      }
+
+      async function ensureFullSourceIndex(source) {
+        if (!source?.id) return false;
+        if (state.fullIndexSourceIds.has(source.id)) return true;
+        if (state.fullIndexLoading.has(source.id)) return await state.fullIndexLoading.get(source.id);
+        const promise = (async () => {
+          if (source.indexPath) {
+            const payload = await getJson(`../data/${source.indexPath}`, null);
+            const rows = Array.isArray(payload?.items) ? payload.items : [];
+            if (!rows.length && source.itemCount) throw new Error('source-index-empty');
+            registerCatalogItems(rows);
+            state.loadedSourceIds.add(source.id);
+            state.fullIndexSourceIds.add(source.id);
+            return rows.length > 0;
+          }
+          await ensureSourceIndex(source);
+          state.fullIndexSourceIds.add(source.id);
+          return true;
+        })()
+          .catch(() => false)
+          .finally(() => state.fullIndexLoading.delete(source.id));
+        state.fullIndexLoading.set(source.id, promise);
+        return await promise;
       }
 
       async function mapAsyncLimit(items, limit, worker) {
@@ -3512,7 +3540,7 @@
       }
 
       function normalizedText(value) {
-        return String(value || '').trim().replace(/\s+/g, ' ').toLowerCase();
+        return toTraditional(value).trim().replace(/\s+/g, ' ').toLowerCase();
       }
 
       function normalizedPoster(value) {
@@ -3818,6 +3846,42 @@
         return rows;
       }
 
+      function searchScopeSources() {
+        if (!['all', 'normal', 'adult18'].includes(state.selectedSource)) {
+          return [sourceById(state.selectedSource)].filter(Boolean);
+        }
+        const wantAdult = state.selectedSource === 'adult18';
+        return state.catalog.sources.filter((source) => {
+          if (!source.indexed) return false;
+          if (state.selectedSource === 'all') return true;
+          return Boolean(source.adult) === wantAdult;
+        });
+      }
+
+      function triggerSearchIndexLoad() {
+        const query = normalizedText(state.query);
+        if (state.tab === 'live' || query.length < 2) return;
+        const sources = searchScopeSources().filter((source) => source.indexPath && !state.fullIndexSourceIds.has(source.id));
+        if (!sources.length) {
+          if (!state.fullIndexLoading.size) state.searchLoading = false;
+          return;
+        }
+        const key = [state.tab, state.selectedSource, query, sources.map((source) => source.id).join('|')].join('\u001f');
+        if (state.searchLoadInFlight?.key === key) return;
+        state.searchLoading = true;
+        const promise = mapAsyncLimit(sources, 2, async (source) => {
+          await ensureFullSourceIndex(source);
+        }).finally(() => {
+          if (state.searchLoadInFlight?.key !== key) return;
+          state.searchLoading = false;
+          state.searchLoadInFlight = null;
+          clearViewCache();
+          resetVisibleLimit();
+          render();
+        });
+        state.searchLoadInFlight = { key, promise };
+      }
+
       function sortedItems(items) {
         const rows = [...items];
         if (state.filters.sort === 'latest') {
@@ -3919,10 +3983,12 @@
 
       function renderVodScreen() {
         ensureQuantumForCurrentView();
+        triggerSearchIndexLoad();
         ensureAvailableFilters();
         const allRows = visibleItems();
         const rows = allRows.slice(0, state.visibleLimit);
         const title = tabs.find(([id]) => id === state.tab)?.[1] || '主頁';
+        const emptyMessage = state.searchLoading ? '正在搜尋完整點播索引...' : '目前沒有符合篩選的影片';
         screen.innerHTML = `
           ${renderToolbar()}
           ${renderQuickFilters()}
@@ -3932,7 +3998,7 @@
             <span class="status-pill ok">${icon('check')} OKTV</span>
           </section>
           <section class="poster-grid">
-            ${rows.map(renderPoster).join('') || emptyState('目前沒有符合篩選的影片')}
+            ${rows.map(renderPoster).join('') || emptyState(emptyMessage)}
           </section>
           ${renderFloatingFilter()}
         `;
@@ -4081,9 +4147,11 @@
 
       function renderRank() {
         ensureQuantumForCurrentView();
+        triggerSearchIndexLoad();
         ensureAvailableFilters();
         const allRows = visibleItems();
         const rows = allRows.slice(0, state.visibleLimit);
+        const emptyMessage = state.searchLoading ? '正在搜尋完整點播索引...' : '目前沒有榜單內容';
         screen.innerHTML = `
           ${renderToolbar('搜尋榜單內容')}
           ${renderQuickFilters()}
@@ -4091,7 +4159,7 @@
             <div><h1>排行</h1><span>${rows.length} / ${allRows.length} 部內容，觀看人數與評分排序</span></div>
           </section>
           <section class="rank-list">
-            ${rows.map(renderRankRow).join('') || emptyState('目前沒有榜單內容')}
+            ${rows.map(renderRankRow).join('') || emptyState(emptyMessage)}
           </section>
           ${renderFloatingFilter()}
         `;
