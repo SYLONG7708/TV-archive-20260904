@@ -1060,8 +1060,10 @@
       const playerMeta = document.querySelector('#playerMeta');
       const EPISODES_PER_PAGE = 20;
       const SOURCE_DETAIL_PAGE_SIZE = 100;
+      const GROUP_SEARCH_TARGET_RESULTS = 6;
       let hls = null;
       let searchRenderTimer = null;
+      let searchPollTimer = null;
       let loadMoreInFlight = null;
 
       function icon(name) {
@@ -1108,9 +1110,11 @@
       async function getJson(url, fallback) {
         const online = onlineDataUrl(url);
         const dataPath = String(url || '').match(/(?:^|\/)data\/(.+?)(?:[?#].*)?$/)?.[1] || '';
-        const preferOnline = /^(?:vod-index|vod-detail)\//i.test(dataPath);
+        const preferOnline = /^(?:vod-index|vod-detail|vod-search)\//i.test(dataPath);
+        const localHost = /^(?:localhost|127\.0\.0\.1)$/i.test(location.hostname);
+        const preferLocal = localHost || (!preferOnline && location.hostname === 'sylong7708.github.io');
         const urls = online
-          ? location.hostname === 'sylong7708.github.io' && !preferOnline
+          ? preferLocal
             ? [url, online]
             : [online, url]
           : [url];
@@ -1132,9 +1136,23 @@
 
       function prepareCatalogItem(item) {
         if (!item) return item;
+        const searchSource = [
+          item.title,
+          item.originalName,
+          item.vodId,
+          item.categoryName,
+          item.year,
+          item.area,
+          itemGenres(item).join(' '),
+          item.sourceName,
+          item.actor,
+          item.director,
+          item.remarks,
+        ].join(' ');
         item._posterKey = normalizedPoster(item.poster);
         item._duplicateKey = normalizedText(item.title) || (item._posterKey ? `poster:${item._posterKey}` : item.id || '');
-        item._searchText = normalizedText(`${item.title} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`);
+        item._searchText = normalizedText(searchSource);
+        item._searchCompact = compactSearchText(searchSource);
         return item;
       }
 
@@ -1263,12 +1281,13 @@
         if (state.fullIndexSourceIds.has(source.id)) return true;
         if (state.fullIndexLoading.has(source.id)) return await state.fullIndexLoading.get(source.id);
         const promise = (async () => {
-          if (source.indexPath) {
-            const payload = await getJson(`../data/${source.indexPath}`, null);
+          const searchIndexPath = source.searchIndexPath || source.indexPath;
+          if (searchIndexPath) {
+            const payload = await getJson(`../data/${searchIndexPath}`, null);
             const rows = Array.isArray(payload?.items) ? payload.items : [];
             if (!rows.length && source.itemCount) throw new Error('source-index-empty');
             registerCatalogItems(rows);
-            state.loadedSourceIds.add(source.id);
+            if (searchIndexPath === source.indexPath) state.loadedSourceIds.add(source.id);
             state.fullIndexSourceIds.add(source.id);
             return rows.length > 0;
           }
@@ -3543,6 +3562,10 @@
         return toTraditional(value).trim().replace(/\s+/g, ' ').toLowerCase();
       }
 
+      function compactSearchText(value) {
+        return normalizedText(value).replace(/[\s\-_.:：\/\\|,，。！!？?·'"()[\]{}]+/g, '');
+      }
+
       function normalizedPoster(value) {
         return imageSrc(value).split(/[?#]/)[0].toLowerCase();
       }
@@ -3826,7 +3849,15 @@
         if (skipFilter !== 'genre' && state.filters.genre !== 'all' && !itemGenres(item).includes(state.filters.genre)) return false;
         const query = normalizedText(state.query);
         if (!query) return true;
-        return (item._searchText || normalizedText(`${item.title} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`)).includes(query);
+        const compactQuery = compactSearchText(query);
+        const searchText =
+          item._searchText ||
+          normalizedText(
+            `${item.title} ${item.originalName} ${item.vodId} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`,
+          );
+        if (searchText.includes(query)) return true;
+        if (!compactQuery) return false;
+        return (item._searchCompact || compactSearchText(searchText)).includes(compactQuery);
       }
 
       function sourceItems(sourceId = state.selectedSource, skipFilter = '') {
@@ -3861,7 +3892,12 @@
       function triggerSearchIndexLoad() {
         const query = normalizedText(state.query);
         if (state.tab === 'live' || query.length < 2) return;
-        const sources = searchScopeSources().filter((source) => source.indexPath && !state.fullIndexSourceIds.has(source.id));
+        const groupSearch = ['all', 'normal', 'adult18'].includes(state.selectedSource);
+        if (groupSearch && visibleItems().length >= GROUP_SEARCH_TARGET_RESULTS) {
+          state.searchLoading = false;
+          return;
+        }
+        const sources = searchScopeSources().filter((source) => (source.searchIndexPath || source.indexPath) && !state.fullIndexSourceIds.has(source.id));
         if (!sources.length) {
           if (!state.fullIndexLoading.size) state.searchLoading = false;
           return;
@@ -3869,17 +3905,24 @@
         const key = [state.tab, state.selectedSource, query, sources.map((source) => source.id).join('|')].join('\u001f');
         if (state.searchLoadInFlight?.key === key) return;
         state.searchLoading = true;
-        const promise = mapAsyncLimit(sources, 2, async (source) => {
-          await ensureFullSourceIndex(source);
-        }).finally(() => {
-          if (state.searchLoadInFlight?.key !== key) return;
+        const loadToken = { key, promise: null };
+        state.searchLoadInFlight = loadToken;
+        const promise = (async () => {
+          for (const source of sources) {
+            if (state.searchLoadInFlight !== loadToken) return;
+            await ensureFullSourceIndex(source);
+            clearViewCache();
+            if (groupSearch && visibleItems().length >= GROUP_SEARCH_TARGET_RESULTS) return;
+          }
+        })().finally(() => {
+          if (state.searchLoadInFlight !== loadToken) return;
           state.searchLoading = false;
           state.searchLoadInFlight = null;
           clearViewCache();
           resetVisibleLimit();
           render();
         });
-        state.searchLoadInFlight = { key, promise };
+        loadToken.promise = promise;
       }
 
       function sortedItems(items) {
@@ -3942,6 +3985,7 @@
       }
 
       function scheduleSearchRender(value, delay = 120) {
+        if (state.query === value && !state.refocusSearch) return;
         state.query = value;
         clearViewCache();
         state.refocusSearch = true;
@@ -3954,6 +3998,12 @@
 
       function bindToolbar() {
         const input = document.querySelector('#searchBox');
+        window.clearInterval(searchPollTimer);
+        searchPollTimer = window.setInterval(() => {
+          const current = document.querySelector('#searchBox');
+          if (!current || state.searchComposing) return;
+          if (current.value !== state.query) scheduleSearchRender(current.value, 0);
+        }, 250);
         input?.addEventListener('compositionstart', () => {
           state.searchComposing = true;
           window.clearTimeout(searchRenderTimer);
@@ -3965,6 +4015,12 @@
         input?.addEventListener('input', (event) => {
           if (state.searchComposing || event.isComposing) return;
           scheduleSearchRender(event.target.value);
+        });
+        input?.addEventListener('search', (event) => scheduleSearchRender(event.target.value, 0));
+        input?.addEventListener('change', (event) => scheduleSearchRender(event.target.value, 0));
+        input?.addEventListener('keyup', (event) => {
+          if (state.searchComposing || event.isComposing) return;
+          if (event.target.value !== state.query) scheduleSearchRender(event.target.value, 0);
         });
         document.querySelector('[data-open-filter]')?.addEventListener('click', openFilterSheet);
         focusSearchBox();
@@ -4032,6 +4088,11 @@
       function filterValues(key) {
         const cacheKey = viewCacheKey(`filter:${key}`, state.selectedSource, key);
         if (state.viewCache.has(cacheKey)) return state.viewCache.get(cacheKey);
+        if (['all', 'normal', 'adult18'].includes(state.selectedSource) && state.catalog.filters) {
+          const catalogValues = state.catalog.filters[key === 'year' ? 'years' : `${key}s`] || [];
+          state.viewCache.set(cacheKey, catalogValues);
+          return catalogValues;
+        }
         const values = sourceItems(state.selectedSource, key)
           .map((item) => (key === 'genre' ? itemGenres(item) : [item[key]]))
           .flat()
