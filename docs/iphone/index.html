@@ -1002,7 +1002,16 @@
       const QUANTUM_BASE_URL = '../data/quantum-lzi/';
       const QUANTUM_API_RE = /cj\.lziapi\.com/i;
       const ADULT_ITEM_TEXT_RE =
-        /18\+|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u60c5\u8272|\u4e09\u7ea7|\u4e09\u7d1a|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u65e0\u7801|\u7121\u78bc|\u6709\u7801|\u6709\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u5f3a\u5978|\u5f37\u59e6|\u841d\u8389|\u863f\u8389|\u91cc\u756a|\u88cf\u756a|\u5236\u670d\u8bf1\u60d1|\u5236\u670d\u8a98\u60d1|\u4f26\u7406|\u502b\u7406|\u5199\u771f|\u5beb\u771f|\u5973\u512a|\u5973\u4f18|\u5de8\u4e73|\u4e73\u4ea4|\u53e3\u4ea4|\u6deb|\u5077\u62cd|\u4eba\u59bb|\u56fd\u4ea7\u81ea\u62cd|\u570b\u7522\u81ea\u62cd|\bAV\b/i;
+        /18\+|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u9ec4\u6f2b|\u9ec3\u6f2b|\u6210\u4eba\u52a8\u6f2b|\u6210\u4eba\u52d5\u6f2b|\u6fc0\u60c5\u52a8\u6f2b|\u6fc0\u60c5\u52d5\u6f2b|\u60c5\u8272|\u4e09\u7ea7|\u4e09\u7d1a|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u65e0\u7801|\u7121\u78bc|\u6709\u7801|\u6709\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u5f3a\u5978|\u5f37\u59e6|\u841d\u8389|\u863f\u8389|\u91cc\u756a|\u88cf\u756a|\u5236\u670d\u8bf1\u60d1|\u5236\u670d\u8a98\u60d1|\u4f26\u7406|\u502b\u7406|\u5199\u771f|\u5beb\u771f|\u5973\u512a|\u5973\u4f18|\u5de8\u4e73|\u4e73\u4ea4|\u53e3\u4ea4|\u6deb|\u5077\u62cd|\u4eba\u59bb|\u56fd\u4ea7\u81ea\u62cd|\u570b\u7522\u81ea\u62cd|\bAV\b/i;
+      const CLIENT_KIND_RULES = [
+        ['short', /\u77ed\u5267|\u77ed\u5287|\u5fae\u77ed\u5267|\u5fae\u77ed\u5287|\u723d\u6587\u77ed\u5267|\u723d\u6587\u77ed\u5287|\u53cd\u8f6c\u723d\u5267|\u53cd\u8f49\u723d\u5287|\u53cd\u8f6c\u723d\u6587|\u53cd\u8f49\u723d\u6587|\u5973\u9891\u604b\u7231|\u5973\u983b\u6200\u611b|\u53e4\u88c5\u4ed9\u4fa0|\u53e4\u88dd\u4ed9\u4fe0|\u5e74\u4ee3\u7a7f\u8d8a|\u7a7f\u8d8a\u5e74\u4ee3|\u73b0\u4ee3\u90fd\u5e02|\u73fe\u4ee3\u90fd\u5e02|\u73b0\u4ee3\u8a00\u60c5|\u73fe\u4ee3\u8a00\u60c5|\u5973\u604b\u603b\u88c1|\u5973\u6200\u7e3d\u88c1|\u8a00\u60c5\u603b\u88c1|\u8a00\u60c5\u7e3d\u88c1|\u95ea\u5a5a\u79bb\u5a5a|\u9583\u5a5a\u96e2\u5a5a|\u8d58\u5a7f|\u8d05\u5a7f|\u64e6\u8fb9\u77ed\u5267|\u64e6\u908a\u77ed\u5287/i],
+        ['variety', /\u7efc\u827a|\u7d9c\u85dd|\u771f\u4eba\u79c0|\u8131\u53e3\u79c0|\u9078\u79c0|\u9009\u79c0/i],
+        ['series', /\u8fde\u7eed\u5267|\u9023\u7e8c\u5287|\u7535\u89c6\u5267|\u96fb\u8996\u5287|\u5267\u96c6|\u5287\u96c6|\u5927\u9646\u5267|\u5927\u9678\u5287|\u9646\u5267|\u9678\u5287|\u56fd\u4ea7\u5267|\u570b\u7522\u5287|\u5185\u5730\u5267|\u5167\u5730\u5287|\u9999\u6e2f\u5267|\u9999\u6e2f\u5287|\u6e2f\u5267|\u6e2f\u5287|\u53f0\u6e7e\u5267|\u53f0\u7063\u5287|\u53f0\u5267|\u53f0\u5287|\u65e5\u672c\u5267|\u65e5\u5267|\u97e9\u56fd\u5267|\u97d3\u570b\u5287|\u97e9\u5267|\u97d3\u5287|\u7f8e\u56fd\u5267|\u7f8e\u570b\u5287|\u7f8e\u5267|\u6b27\u7f8e\u5267|\u6b50\u7f8e\u5287|\u6cf0\u56fd\u5267|\u6cf0\u570b\u5287|\u6cf0\u5267|\u9a6c\u6cf0\u5267|\u99ac\u6cf0\u5287|\u6d77\u5916\u5267|Netflix\s*\u81ea\u5236\u5267|Netflix\s*\u81ea\u88fd\u5287|\u81ea\u5236\u5267|\u81ea\u88fd\u5287/i],
+        ['anime', /\u52a8\u6f2b|\u52d5\u6f2b|\u52a8\u753b|\u52d5\u756b|\u756a\u5267|\u756a\u5287|\u756a\u7ec4|\u756a\u7d44|\u56fd\u6f2b|\u570b\u6f2b|\u56fd\u4ea7\u52a8\u6f2b|\u570b\u7522\u52d5\u6f2b|\u52a8\u6f2b\u7535\u5f71|\u52d5\u6f2b\u96fb\u5f71|\u52a8\u753b\u7535\u5f71|\u52d5\u756b\u96fb\u5f71|\u52a8\u753b\u7247|\u52d5\u756b\u7247|\u5361\u901a|\u5c11\u513f|\u5c11\u5152|\u4e8c\u6b21\u5143/i],
+        ['movie', /\u7535\u5f71|\u96fb\u5f71|\u5f71\u7247|\u52a8\u4f5c\u7247|\u52d5\u4f5c\u7247|\u559c\u5267\u7247|\u559c\u5287\u7247|\u7231\u60c5\u7247|\u611b\u60c5\u7247|\u79d1\u5e7b\u7247|\u6050\u6016\u7247|\u5267\u60c5\u7247|\u5287\u60c5\u7247|\u6218\u4e89\u7247|\u6230\u722d\u7247|\u7eaa\u5f55\u7247|\u7d00\u9304\u7247|\u8bb0\u5f55\u7247|\u72af\u7f6a\u7247|\u60ac\u7591\u7247|\u9a5a\u609a\u7247|\u60ca\u609a\u7247|\u5192\u9669\u7247|\u5947\u5e7b\u7247|\u707e\u96be\u7247|\u707d\u96e3\u7247|\u9884\u544a\u7247|\u9810\u544a\u7247|\u90b5\u6c0f\u7535\u5f71|\u90b5\u6c0f\u96fb\u5f71|Netflix\s*\u7535\u5f71|Netflix\s*\u96fb\u5f71|4K\s*\u7535\u5f71|4K\s*\u96fb\u5f71|\u897f\u90e8\u7247|\u5bb6\u5ead\u7247|\u77ed\u7247|\u5f71\u89c6\u89e3\u8bf4|\u5f71\u8996\u89e3\u8aaa/i],
+        ['other', /\u4f53\u80b2|\u9ad4\u80b2|\u8db3\u7403|\u7bee\u7403|\u7db2\u7403|\u7f51\u7403|\u65af\u8bfa\u514b|\u65af\u8afe\u514b|\u7535\u7ade|\u96fb\u7af6|\u6f14\u5531\u4f1a|\u6f14\u5531\u6703|\u97f3\u4e50|\u97f3\u6a02|\u65b0\u95fb|\u65b0\u805e|\u8d44\u8baf|\u8cc7\u8a0a/i],
+      ];
+      const VALID_VOD_KINDS = new Set(['movie', 'series', 'short', 'anime', 'variety', 'adult', 'other']);
 
       const state = {
         tab: 'home',
@@ -1016,6 +1025,7 @@
           sort: 'hot',
         },
         sourceSheetMode: 'normal',
+        sourceLoading: false,
         searchComposing: false,
         refocusSearch: false,
         catalog: { totals: {}, sources: [], items: [], filters: { years: [], areas: [], genres: [] } },
@@ -1111,7 +1121,7 @@
         const online = onlineDataUrl(url);
         const dataPath = String(url || '').match(/(?:^|\/)data\/(.+?)(?:[?#].*)?$/)?.[1] || '';
         const preferOnline = /^(?:vod-index|vod-detail|vod-search)\//i.test(dataPath);
-        const localHost = /^(?:localhost|127\.0\.0\.1)$/i.test(location.hostname);
+        const localHost = /^(?:localhost|127\.0\.0\.1|::1)$/i.test(location.hostname);
         const preferLocal = localHost || (!preferOnline && location.hostname === 'sylong7708.github.io');
         const urls = online
           ? preferLocal
@@ -1120,7 +1130,7 @@
           : [url];
         for (const target of urls) {
           try {
-            const res = await fetch(target, { cache: 'no-store' });
+            const res = await fetch(target, { cache: 'default' });
             if (!res.ok) continue;
             return await responseJson(res, target);
           } catch {
@@ -1134,8 +1144,33 @@
         state.viewCache.clear();
       }
 
+      function normalizeVodKind(value) {
+        return VALID_VOD_KINDS.has(value) ? value : '';
+      }
+
+      function classifyClientKindFromText(value) {
+        const text = normalizedText(value);
+        if (!text) return '';
+        for (const [kind, rule] of CLIENT_KIND_RULES) {
+          if (rule.test(text)) return kind;
+        }
+        return '';
+      }
+
+      function displayVodKind(item) {
+        const source = sourceById(item?.sourceId);
+        const sourceAdult = Boolean(source?.adult || item?.sourceAdult || item?.adult);
+        const categoryText = normalizedText(item?.categoryName || item?.typeName || item?.type_name || item?.category || '');
+        const genreText = Array.isArray(item?.genre) ? normalizedText(item.genre.join(' ')) : normalizedText(item?.genre || item?.vod_class || item?.class || '');
+        const titleText = normalizedText(item?.title || item?.vod_name || '');
+        if (sourceAdult || ADULT_ITEM_TEXT_RE.test(`${categoryText} ${genreText}`)) return 'adult';
+        return classifyClientKindFromText(categoryText) || classifyClientKindFromText(`${genreText} ${titleText}`) || normalizeVodKind(item?.kind) || 'movie';
+      }
+
       function prepareCatalogItem(item) {
         if (!item) return item;
+        item.kind = displayVodKind(item);
+        if (item.kind === 'adult') item.adult = true;
         const searchSource = [
           item.title,
           item.originalName,
@@ -1235,7 +1270,9 @@
       }
 
       async function ensureNextSourcePage() {
-        if (['all', 'normal', 'adult18'].includes(state.selectedSource)) return false;
+        if (['all', 'normal', 'adult18'].includes(state.selectedSource)) {
+          return await ensureSelectedSourceItems(state.selectedSource, { eager: true, limit: 4 });
+        }
         const source = sourceById(state.selectedSource);
         const pageState = getSourcePageState(source);
         if (!source?.detailPathPattern || !pageState || !pageState.nextPage || pageState.nextPage > pageState.totalPages) return false;
@@ -1262,18 +1299,46 @@
         return item;
       }
 
+      function hasRegisteredSourceItems(sourceId) {
+        return state.catalog.items.some((item) => item.sourceId === sourceId);
+      }
+
+      function sourceSupportsCurrentTab(source) {
+        if (!source) return false;
+        if (state.tab === 'home' || state.tab === 'rank') return true;
+        if (state.tab === 'live') return false;
+        const categories = Array.isArray(source.categories) ? source.categories : [];
+        if (!categories.length) return true;
+        return categories.some((category) => classifyClientKindFromText(category) === state.tab);
+      }
+
+      function combinedSourceCandidates(sourceId) {
+        const wantAdult = sourceId === 'adult18';
+        return state.catalog.sources.filter((source) => {
+          if (!source.indexed || state.loadedSourceIds.has(source.id)) return false;
+          if (sourceId !== 'all' && Boolean(source.adult) !== wantAdult) return false;
+          return true;
+        });
+      }
+
       async function ensureSourceIndex(source) {
-        if (!source || state.loadedSourceIds.has(source.id)) return;
-        if (source.detailPathPattern) {
-          await ensureSourcePage(source, 1);
-          return;
+        if (!source || state.loadedSourceIds.has(source.id)) return false;
+        if (hasRegisteredSourceItems(source.id)) {
+          state.loadedSourceIds.add(source.id);
+          return false;
         }
-        if (!source.indexPath) return;
+        if (source.detailPathPattern) {
+          const loaded = await ensureSourcePage(source, 1);
+          state.loadedSourceIds.add(source.id);
+          return loaded;
+        }
+        if (!source.indexPath) return false;
         const payload = await getJson(`../data/${source.indexPath}`, null);
         const rows = Array.isArray(payload?.items) ? payload.items : [];
         if (!rows.length && source.itemCount) throw new Error('source-index-empty');
         registerCatalogItems(rows);
         state.loadedSourceIds.add(source.id);
+        return rows.length > 0;
       }
 
       async function ensureFullSourceIndex(source) {
@@ -1313,24 +1378,28 @@
       }
 
       async function ensureSourceListItems(sources) {
-        if (!sources.length) return;
+        if (!sources.length) return false;
+        let loaded = 0;
         await mapAsyncLimit(sources, 4, async (source) => {
           try {
-            await ensureSourceIndex(source);
+            if (await ensureSourceIndex(source)) loaded += 1;
           } catch {
             // Keep the combined catalog usable even when one remote source is temporarily empty.
           }
         });
+        return loaded > 0;
       }
 
-      async function ensureSelectedSourceItems(sourceId) {
+      async function ensureSelectedSourceItems(sourceId, options = {}) {
         if (!['all', 'normal', 'adult18'].includes(sourceId)) {
-          await ensureSourceIndex(sourceById(sourceId));
-          return;
+          return await ensureSourceIndex(sourceById(sourceId));
         }
-        const wantAdult = sourceId === 'adult18';
-        const sources = state.catalog.sources.filter((source) => source.indexed && Boolean(source.adult) === wantAdult);
-        await ensureSourceListItems(sources);
+        if (!options.eager) return false;
+        const limit = Math.max(1, Number(options.limit || 4));
+        const candidates = combinedSourceCandidates(sourceId);
+        const supported = candidates.filter(sourceSupportsCurrentTab);
+        const sources = (supported.length ? supported : candidates).slice(0, limit);
+        return await ensureSourceListItems(sources);
       }
 
       function escapeHtml(value) {
@@ -3615,10 +3684,10 @@
       }
 
       function quantumKindsForCurrentView() {
-        if (state.tab === 'short') return ['short'];
         if (!isQuantumSelected()) return [];
         if (state.tab === 'home') return ['movie'];
         if (['movie', 'series', 'anime', 'variety'].includes(state.tab)) return [state.tab];
+        if (state.tab === 'short') return ['short'];
         if (state.tab === 'rank') return ['movie', 'series', 'short', 'anime', 'variety'];
         return [];
       }
@@ -3724,7 +3793,7 @@
       }
 
       function baseVisibleLimit() {
-        return state.tab === 'home' ? 36 : 72;
+        return state.tab === 'home' ? 30 : 48;
       }
 
       function resetVisibleLimit() {
@@ -4037,11 +4106,26 @@
         return `<div class="filter-summary">${chips.map(([k, v]) => `<span class="status-pill">${displayHtml(k)} ${displayHtml(v)}</span>`).join('')}</div>`;
       }
 
+      function startCombinedPreviewLoad() {
+        if (state.sourceLoading || state.tab === 'live') return;
+        if (!['all', 'normal', 'adult18'].includes(state.selectedSource)) return;
+        if (!combinedSourceCandidates(state.selectedSource).length) return;
+        state.sourceLoading = true;
+        ensureSelectedSourceItems(state.selectedSource, { eager: true, limit: 4 })
+          .finally(() => {
+            state.sourceLoading = false;
+            clearViewCache();
+            resetVisibleLimit();
+            render();
+          });
+      }
+
       function renderVodScreen() {
         ensureQuantumForCurrentView();
         triggerSearchIndexLoad();
         ensureAvailableFilters();
         const allRows = visibleItems();
+        if (!allRows.length) startCombinedPreviewLoad();
         const rows = allRows.slice(0, state.visibleLimit);
         const title = tabs.find(([id]) => id === state.tab)?.[1] || '主頁';
         const emptyMessage = state.searchLoading ? '正在搜尋完整點播索引...' : '目前沒有符合篩選的影片';
@@ -4054,7 +4138,7 @@
             <span class="status-pill ok">${icon('check')} OKTV</span>
           </section>
           <section class="poster-grid">
-            ${rows.map(renderPoster).join('') || emptyState(emptyMessage)}
+            ${rows.map(renderPoster).join('') || emptyState(state.sourceLoading ? '\u6b63\u5728\u8f09\u5165\u5206\u985e\u5167\u5bb9...' : emptyMessage)}
           </section>
           ${renderFloatingFilter()}
         `;
@@ -4658,8 +4742,18 @@
         clearViewCache();
         resetVisibleLimit();
         resetPageViewport();
-        await ensureSelectedSourceItems(sourceId);
+        const combinedSource = ['all', 'normal', 'adult18'].includes(sourceId);
+        state.sourceLoading = !combinedSource;
         render();
+        if (combinedSource) return;
+        try {
+          await ensureSelectedSourceItems(sourceId);
+        } finally {
+          if (state.selectedSource === sourceId) {
+            state.sourceLoading = false;
+            render();
+          }
+        }
       }
 
       function sortLabel(value) {
@@ -4737,7 +4831,13 @@
         state.selectedSource = 'normal';
         localStorage.setItem(SOURCE_STORAGE_KEY, state.selectedSource);
       }
-      await ensureSelectedSourceItems(state.selectedSource);
+      const selectedSourceAtBoot = state.selectedSource;
+      const combinedSourceAtBoot = ['all', 'normal', 'adult18'].includes(selectedSourceAtBoot);
+      state.sourceLoading = !combinedSourceAtBoot;
+      if (!combinedSourceAtBoot) {
+        await ensureSelectedSourceItems(selectedSourceAtBoot);
+        state.sourceLoading = false;
+      }
       window.addEventListener('scroll', maybeLoadMore, { passive: true });
       resetVisibleLimit();
       render();
