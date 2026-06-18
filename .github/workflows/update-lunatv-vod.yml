@@ -127,6 +127,12 @@ jobs:
             --indexRoot .\docs\data\vod-index `
             --dropEmptySources true
           node .\tools\apply-vod-kind-rules.mjs --tvRoot .
+          node .\tools\compact-iphone-catalog.mjs `
+            --tvRoot . `
+            --catalog .\docs\data\iphone-vod-catalog.json `
+            --report .\docs\data\iphone-vod-catalog-report.json `
+            --detailRoot .\docs\data\iphone-detail `
+            --pageSize 240
           node .\tools\build-tvbox-config.mjs `
             --repoRoot . `
             --output .\sources\TVBOX
@@ -182,9 +188,10 @@ jobs:
             docs/data/lunatv-vod-update-state.json `
             docs/data/vod-detail `
             docs/data/vod-index `
+            docs/data/iphone-detail `
             docs/data/quantum-lzi `
             docs/iphone/index.html `
-            tools/vod-kind-rules.mjs tools/apply-vod-kind-rules.mjs tools/build-tvbox-config.mjs tools/build-tvbox-api-history.mjs tools/build-quantum-lzi-full.mjs `
+            tools/vod-kind-rules.mjs tools/apply-vod-kind-rules.mjs tools/compact-iphone-catalog.mjs tools/build-tvbox-config.mjs tools/build-tvbox-api-history.mjs tools/build-quantum-lzi-full.mjs `
             docs/assets/source-signal-icon.svg docs/assets/adult-18-badge.svg
           if (git diff --cached --quiet) {
             Write-Host "No LunaTV VOD source changes."
@@ -202,7 +209,7 @@ jobs:
           git worktree add $pages origin/gh-pages
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs") | Out-Null
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\data") | Out-Null
-          foreach ($staleDir in @("vod-detail", "vod-index")) {
+          foreach ($staleDir in @("vod-detail", "vod-index", "iphone-detail")) {
             $stalePath = Join-Path $pages "docs\data\$staleDir"
             if (Test-Path -LiteralPath $stalePath) {
               Remove-Item -LiteralPath $stalePath -Recurse -Force
@@ -217,6 +224,9 @@ jobs:
           }
           if (Test-Path -Path .\docs\data\quantum-lzi) {
             Copy-Item -Path .\docs\data\quantum-lzi -Destination (Join-Path $pages "docs\data") -Recurse -Force
+          }
+          if (Test-Path -Path .\docs\data\iphone-detail) {
+            Copy-Item -Path .\docs\data\iphone-detail -Destination (Join-Path $pages "docs\data") -Recurse -Force
           }
           Write-Host "Publishing indexed vod-detail/vod-index for iPhone lazy loading."
           node .\tools\build-pages-public-catalog.mjs `

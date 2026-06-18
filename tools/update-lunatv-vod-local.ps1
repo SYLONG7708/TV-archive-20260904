@@ -165,6 +165,9 @@ function Sync-GhPages {
         if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi")) {
             Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
         }
+        if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail")) {
+            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
+        }
         if ($PublishFullData) {
             Write-Log "PublishFullData set; copying full vod-detail and vod-index to gh-pages."
             Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\vod-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
@@ -188,6 +191,9 @@ function Sync-GhPages {
         }
         if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi")) {
             Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
+        }
+        if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail")) {
+            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
         }
         if ($PublishFullData) {
             Write-Log "PublishFullData set; copying full vod-detail and vod-index to gh-pages."
@@ -259,6 +265,7 @@ try {
     $type3SpiderCatalogScript = Join-Path $repoRootText "tools\build-type3-spider-catalog.mjs"
     $assembleChunkedCatalogScript = Join-Path $repoRootText "tools\assemble-vod-index-from-detail.mjs"
     $applyVodKindRulesScript = Join-Path $repoRootText "tools\apply-vod-kind-rules.mjs"
+    $compactIphoneCatalogScript = Join-Path $repoRootText "tools\compact-iphone-catalog.mjs"
     $iphoneHealthScript = Join-Path $repoRootText "tools\check-iphone-catalog-health.mjs"
     $tvboxConfigScript = Join-Path $repoRootText "tools\build-tvbox-config.mjs"
     $sourceNames = @($SourceName -split "," | ForEach-Object { $_.Trim() } | Where-Object { $_ })
@@ -353,6 +360,16 @@ try {
         node $applyVodKindRulesScript --tvRoot $repoRootText
     }
 
+    if (Test-Path -LiteralPath $compactIphoneCatalogScript) {
+        Write-Log "Compacting iPhone catalog for fast first paint."
+        node $compactIphoneCatalogScript `
+            --tvRoot $repoRootText `
+            --catalog (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
+            --report (Join-Path $repoRootText "docs\data\iphone-vod-catalog-report.json") `
+            --detailRoot (Join-Path $repoRootText "docs\data\iphone-detail") `
+            --pageSize 240
+    }
+
     if (Test-Path -LiteralPath $tvboxConfigScript) {
         Write-Log "Saving TVBOX on-demand source config."
         node $tvboxConfigScript `
@@ -386,6 +403,7 @@ try {
         "tools/assemble-vod-index-from-detail.mjs" `
         "tools/vod-kind-rules.mjs" `
         "tools/apply-vod-kind-rules.mjs" `
+        "tools/compact-iphone-catalog.mjs" `
         "tools/build-tvbox-config.mjs" `
         "tools/build-tvbox-api-history.mjs" `
         "tools/build-iqiyi-full-catalog.mjs" `
@@ -413,6 +431,7 @@ try {
         "docs/data/lunatv-vod-update-state.json" `
         "docs/data/vod-detail" `
         "docs/data/vod-index" `
+        "docs/data/iphone-detail" `
         "docs/data/quantum-lzi" `
         "docs/iphone/index.html" `
         "docs/assets/source-signal-icon.svg" `
