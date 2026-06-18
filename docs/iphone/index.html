@@ -1121,7 +1121,8 @@
         const online = onlineDataUrl(url);
         const dataPath = String(url || '').match(/(?:^|\/)data\/(.+?)(?:[?#].*)?$/)?.[1] || '';
         const preferOnline = /^(?:vod-index|vod-detail|vod-search)\//i.test(dataPath);
-        const localHost = /^(?:localhost|127\.0\.0\.1|::1)$/i.test(location.hostname);
+        const capacitorNative = Boolean(window.Capacitor?.isNativePlatform?.());
+        const localHost = !capacitorNative && /^(?:localhost|127\.0\.0\.1|::1)$/i.test(location.hostname);
         const preferLocal = localHost || (!preferOnline && location.hostname === 'sylong7708.github.io');
         const urls = online
           ? preferLocal
@@ -1167,10 +1168,59 @@
         return classifyClientKindFromText(categoryText) || classifyClientKindFromText(`${genreText} ${titleText}`) || normalizeVodKind(item?.kind) || 'movie';
       }
 
+      function cleanFilterToken(value) {
+        return normalizedText(value)
+          .replace(/^[\s:：,_\-，、.·]+|[\s:：,_\-，、.·]+$/g, '')
+          .replace(/\s*\/\s*/g, ' / ')
+          .trim();
+      }
+
+      function cleanFilterYear(value) {
+        const match = String(value || '').match(/\b(19\d{2}|20\d{2})\b/);
+        if (!match) return '';
+        const year = Number(match[1]);
+        const maxYear = new Date().getFullYear() + 1;
+        return year >= 1900 && year <= maxYear ? String(year) : '';
+      }
+
+      function splitFilterValues(value) {
+        return String(value || '')
+          .split(/[\/／|,，、]+/g)
+          .map(cleanFilterToken)
+          .filter(Boolean);
+      }
+
+      function cleanAreaValues(value) {
+        return splitFilterValues(value).filter((item) => item.length >= 2 && item.length <= 12 && !/^\d+$/.test(item));
+      }
+
+      function cleanGenreValues(values) {
+        const rows = Array.isArray(values) ? values : [values];
+        const out = [];
+        for (const row of rows) {
+          for (const token of splitFilterValues(row)) {
+            if (token.length < 2 || token.length > 10) continue;
+            if (/^\[db:/i.test(token) || /^_?m$/i.test(token)) continue;
+            if (/^\d+$/.test(token)) continue;
+            if (!/[\p{Script=Han}A-Za-z0-9]/u.test(token)) continue;
+            if (/性霸凌|美臀|美穴|巨乳|主播|啪啪|G奶|色誘|色诱/i.test(token)) continue;
+            if (ADULT_ITEM_TEXT_RE.test(token) && state.selectedSource !== 'adult18') continue;
+            out.push(token);
+          }
+        }
+        return [...new Set(out)];
+      }
+
       function prepareCatalogItem(item) {
         if (!item) return item;
         item.kind = displayVodKind(item);
         if (item.kind === 'adult') item.adult = true;
+        item._filterYear = cleanFilterYear(item.year);
+        item._filterAreas = cleanAreaValues(item.area);
+        item._filterGenres = cleanGenreValues([...itemGenres(item), item.categoryName, item.typeName, item.type_name]);
+        item.year = item._filterYear || '';
+        item.area = item._filterAreas.join(' / ');
+        item.genre = item._filterGenres;
         const searchSource = [
           item.title,
           item.originalName,
@@ -3913,9 +3963,9 @@
         if (sourceId === 'adult18' && !adult) return false;
         if (enforceSource && !['all', 'normal', 'adult18'].includes(sourceId) && item.sourceId !== sourceId) return false;
         if (state.tab !== 'home' && state.tab !== 'rank' && item.kind !== state.tab) return false;
-        if (skipFilter !== 'year' && state.filters.year !== 'all' && item.year !== state.filters.year) return false;
-        if (skipFilter !== 'area' && state.filters.area !== 'all' && item.area !== state.filters.area) return false;
-        if (skipFilter !== 'genre' && state.filters.genre !== 'all' && !itemGenres(item).includes(state.filters.genre)) return false;
+        if (skipFilter !== 'year' && state.filters.year !== 'all' && item._filterYear !== state.filters.year) return false;
+        if (skipFilter !== 'area' && state.filters.area !== 'all' && !item._filterAreas?.includes(state.filters.area)) return false;
+        if (skipFilter !== 'genre' && state.filters.genre !== 'all' && !item._filterGenres?.includes(state.filters.genre)) return false;
         const query = normalizedText(state.query);
         if (!query) return true;
         const compactQuery = compactSearchText(query);
@@ -4172,13 +4222,13 @@
       function filterValues(key) {
         const cacheKey = viewCacheKey(`filter:${key}`, state.selectedSource, key);
         if (state.viewCache.has(cacheKey)) return state.viewCache.get(cacheKey);
-        if (['all', 'normal', 'adult18'].includes(state.selectedSource) && state.catalog.filters) {
-          const catalogValues = state.catalog.filters[key === 'year' ? 'years' : `${key}s`] || [];
-          state.viewCache.set(cacheKey, catalogValues);
-          return catalogValues;
-        }
         const values = sourceItems(state.selectedSource, key)
-          .map((item) => (key === 'genre' ? itemGenres(item) : [item[key]]))
+          .map((item) => {
+            if (key === 'year') return [item._filterYear];
+            if (key === 'area') return item._filterAreas || [];
+            if (key === 'genre') return item._filterGenres || [];
+            return [item[key]];
+          })
           .flat()
           .filter(Boolean);
         const unique = [...new Set(values)];
@@ -4251,7 +4301,14 @@
       }
 
       function shortAreas() {
-        const areas = [...new Set(state.catalog.items.filter((item) => item.kind === 'short').map((item) => item.area).filter(Boolean))];
+        const areas = [
+          ...new Set(
+            state.catalog.items
+              .filter((item) => item.kind === 'short')
+              .flatMap((item) => item._filterAreas || [])
+              .filter(Boolean),
+          ),
+        ];
         return areas.sort((a, b) => {
           return areaWeight(a) - areaWeight(b) || a.localeCompare(b, 'zh-Hant');
         });
