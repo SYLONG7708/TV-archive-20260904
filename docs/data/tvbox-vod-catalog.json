@@ -1,23 +1,27 @@
 {
-  "generatedAt": "2026-06-17T18:10:10.655Z",
+  "generatedAt": "2026-06-18T03:03:34.704Z",
   "source": {
     "name": "TVBOX all VOD sources",
     "input": "docs/data/tvbox-source-latest.json",
     "detailRoot": "docs/data/vod-detail",
     "fullChunkedCatalog": true,
-    "indexRoot": "docs/data/vod-index"
+    "indexRoot": "docs/data/vod-index",
+    "searchIndexRoot": "docs/data/vod-search",
+    "searchIndexMode": "raw-main-lean-gzip",
+    "dataGeneratedAt": "2026-06-18T03:03:34.704Z",
+    "searchIndexSyncedAt": "2026-06-18T03:08:00.622Z"
   },
   "totals": {
-    "sources": 74,
+    "sources": 82,
     "indexedSources": 74,
-    "items": 8442813,
-    "playableItems": 8430211,
-    "movies": 2051662,
-    "series": 636287,
-    "variety": 121984,
-    "anime": 283525,
-    "short": 1008056,
-    "adult": 4341299
+    "items": 8442780,
+    "playableItems": 8430178,
+    "movies": 2051591,
+    "series": 636176,
+    "variety": 121946,
+    "anime": 283412,
+    "short": 1008381,
+    "adult": 4341274
   },
   "filters": {
     "years": [
@@ -162,7 +166,8 @@
           "total": 62509
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/iqiyizyapi-com-all-on-demand-sources-爱奇艺-https-iqiyizyapi-com-api-php-provide-vo.json.gz"
     },
     {
       "id": "all-on-demand-sources-豆瓣资源-https-dbzy-tv-api-php-provide-vod-2",
@@ -204,7 +209,8 @@
           "total": 131872
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/dbzy-tv-all-on-demand-sources-豆瓣资源-https-dbzy-tv-api-php-provide-vod-2.json.gz"
     },
     {
       "id": "all-on-demand-sources-天涯资源-https-tyyszy-com-api-php-provide-vod-3",
@@ -223,9 +229,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 55853,
-      "playableCount": 55853,
-      "sourceTotalCount": 56375,
+      "itemCount": 55866,
+      "playableCount": 55866,
+      "sourceTotalCount": 56418,
       "complete": true,
       "detailPageCount": 2819,
       "detailExpectedPages": 2819,
@@ -241,12 +247,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 55853,
-          "pages": 2819,
-          "total": 56375
+          "count": 55866,
+          "pages": 2821,
+          "total": 56418
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/tyyszy-com-all-on-demand-sources-天涯资源-https-tyyszy-com-api-php-provide-vod-3.json.gz"
     },
     {
       "id": "all-on-demand-sources-黑料资源-https-www-heiliaozyapi-com-api-php-provide-vod-57",
@@ -264,7 +271,7 @@
       "indexed": true,
       "itemCount": 93268,
       "playableCount": 93268,
-      "sourceTotalCount": 94296,
+      "sourceTotalCount": 94370,
       "complete": true,
       "detailPageCount": 943,
       "detailExpectedPages": 943,
@@ -281,11 +288,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 93268,
-          "pages": 943,
-          "total": 94296
+          "pages": 944,
+          "total": 94370
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/www-heiliaozyapi-com-all-on-demand-sources-黑料资源-https-www-heiliaozyapi-com-api-p.json.gz"
     },
     {
       "id": "all-on-demand-sources-精品资源-https-www-jingpinx-com-api-php-provide-vod-60",
@@ -302,9 +310,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 43740,
-      "playableCount": 43740,
-      "sourceTotalCount": 45040,
+      "itemCount": 43732,
+      "playableCount": 43732,
+      "sourceTotalCount": 45101,
       "complete": true,
       "detailPageCount": 451,
       "detailExpectedPages": 451,
@@ -320,12 +328,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 43740,
-          "pages": 451,
-          "total": 45040
+          "count": 43732,
+          "pages": 452,
+          "total": 45101
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/www-jingpinx-com-all-on-demand-sources-精品资源-https-www-jingpinx-com-api-php-provi.json.gz"
     },
     {
       "id": "all-on-demand-sources-155-资源-https-155api-com-api-php-provide-vod-6",
@@ -365,7 +374,8 @@
           "total": 174342
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/155api-com-all-on-demand-sources-155-资源-https-155api-com-api-php-provide-vod-6.json.gz"
     },
     {
       "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3",
@@ -407,7 +417,8 @@
           "total": 133497
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/caiji-maotaizy-cc-all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-pro.json.gz"
     },
     {
       "id": "all-on-demand-sources-ikun资源-https-ikunzyapi-com-api-php-provide-vod-5",
@@ -449,7 +460,8 @@
           "total": 65780
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/ikunzyapi-com-all-on-demand-sources-ikun资源-https-ikunzyapi-com-api-php-provide-v.json.gz"
     },
     {
       "id": "all-on-demand-sources-电影天堂-http-caiji-dyttzyapi-com-api-php-provide-vod-6",
@@ -468,9 +480,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 81886,
-      "playableCount": 81886,
-      "sourceTotalCount": 82300,
+      "itemCount": 81893,
+      "playableCount": 81893,
+      "sourceTotalCount": 82306,
       "complete": true,
       "detailPageCount": 823,
       "detailExpectedPages": 823,
@@ -486,12 +498,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 81886,
-          "pages": 823,
-          "total": 82300
+          "count": 81893,
+          "pages": 824,
+          "total": 82306
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/caiji-dyttzyapi-com-all-on-demand-sources-电影天堂-http-caiji-dyttzyapi-com-api-php-.json.gz"
     },
     {
       "id": "all-on-demand-sources-猫眼资源-https-api-maoyanapi-top-api-php-provide-vod-7",
@@ -533,7 +546,8 @@
           "total": 33197
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-maoyanapi-top-all-on-demand-sources-猫眼资源-https-api-maoyanapi-top-api-php-pro.json.gz"
     },
     {
       "id": "all-on-demand-sources-量子资源-https-cj-lzcaiji-com-api-php-provide-vod-8",
@@ -552,9 +566,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 136553,
-      "playableCount": 136553,
-      "sourceTotalCount": 139286,
+      "itemCount": 136532,
+      "playableCount": 136532,
+      "sourceTotalCount": 139289,
       "complete": true,
       "detailPageCount": 6965,
       "detailExpectedPages": 6965,
@@ -570,12 +584,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 136553,
+          "count": 136532,
           "pages": 6965,
-          "total": 139286
+          "total": 139289
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/cj-lzcaiji-com-all-on-demand-sources-量子资源-https-cj-lzcaiji-com-api-php-provide-v.json.gz"
     },
     {
       "id": "all-on-demand-sources-360资源-https-360zyzz-com-api-php-provide-vod-9",
@@ -594,9 +609,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 63762,
-      "playableCount": 63762,
-      "sourceTotalCount": 64713,
+      "itemCount": 63765,
+      "playableCount": 63765,
+      "sourceTotalCount": 64754,
       "complete": true,
       "detailPageCount": 648,
       "detailExpectedPages": 648,
@@ -612,12 +627,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 63762,
+          "count": 63765,
           "pages": 648,
-          "total": 64713
+          "total": 64754
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/360zyzz-com-all-on-demand-sources-360资源-https-360zyzz-com-api-php-provide-vod-9.json.gz"
     },
     {
       "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11",
@@ -659,7 +675,8 @@
           "total": 83696
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/www-mdzyapi-com-all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide.json.gz"
     },
     {
       "id": "all-on-demand-sources-非凡资源-https-api-ffzyapi-com-api-php-provide-vod-12",
@@ -678,9 +695,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 96516,
-      "playableCount": 96516,
-      "sourceTotalCount": 96832,
+      "itemCount": 96511,
+      "playableCount": 96511,
+      "sourceTotalCount": 96833,
       "complete": true,
       "detailPageCount": 969,
       "detailExpectedPages": 969,
@@ -696,12 +713,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 96516,
+          "count": 96511,
           "pages": 969,
-          "total": 96832
+          "total": 96833
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-ffzyapi-com-all-on-demand-sources-非凡资源-https-api-ffzyapi-com-api-php-provide.json.gz"
     },
     {
       "id": "all-on-demand-sources-暴风资源-https-bfzyapi-com-api-php-provide-vod-13",
@@ -720,9 +738,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 144430,
-      "playableCount": 144430,
-      "sourceTotalCount": 147355,
+      "itemCount": 144423,
+      "playableCount": 144423,
+      "sourceTotalCount": 147356,
       "complete": true,
       "detailPageCount": 7368,
       "detailExpectedPages": 7368,
@@ -738,12 +756,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 144430,
+          "count": 144423,
           "pages": 7368,
-          "total": 147355
+          "total": 147356
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/bfzyapi-com-all-on-demand-sources-暴风资源-https-bfzyapi-com-api-php-provide-vod-13.json.gz"
     },
     {
       "id": "all-on-demand-sources-最大资源-https-api-zuidapi-com-api-php-provide-vod-14",
@@ -762,9 +781,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 118483,
-      "playableCount": 118483,
-      "sourceTotalCount": 119281,
+      "itemCount": 118501,
+      "playableCount": 118501,
+      "sourceTotalCount": 119323,
       "complete": true,
       "detailPageCount": 5965,
       "detailExpectedPages": 5965,
@@ -780,12 +799,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 118483,
-          "pages": 5965,
-          "total": 119281
+          "count": 118501,
+          "pages": 5967,
+          "total": 119323
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-zuidapi-com-all-on-demand-sources-最大资源-https-api-zuidapi-com-api-php-provide.json.gz"
     },
     {
       "id": "all-on-demand-sources-无尽资源-https-api-wujinapi-me-api-php-provide-vod-15",
@@ -804,8 +824,8 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 110509,
-      "playableCount": 110509,
+      "itemCount": 110511,
+      "playableCount": 110511,
       "sourceTotalCount": 113487,
       "complete": true,
       "detailPageCount": 5675,
@@ -822,12 +842,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 110509,
+          "count": 110511,
           "pages": 5675,
           "total": 113487
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-wujinapi-me-all-on-demand-sources-无尽资源-https-api-wujinapi-me-api-php-provide.json.gz"
     },
     {
       "id": "all-on-demand-sources-新浪资源-https-api-xinlangapi-com-xinlangapi-php-provide-vod-16",
@@ -846,9 +867,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 104528,
-      "playableCount": 104430,
-      "sourceTotalCount": 106036,
+      "itemCount": 104520,
+      "playableCount": 104422,
+      "sourceTotalCount": 106037,
       "complete": true,
       "detailPageCount": 1061,
       "detailExpectedPages": 1061,
@@ -864,12 +885,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 104528,
+          "count": 104520,
           "pages": 1061,
-          "total": 106036
+          "total": 106037
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-xinlangapi-com-all-on-demand-sources-新浪资源-https-api-xinlangapi-com-xinlangap.json.gz"
     },
     {
       "id": "all-on-demand-sources-速播资源-https-subocaiji-com-api-php-provide-vod-18",
@@ -888,9 +910,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 104974,
-      "playableCount": 104396,
-      "sourceTotalCount": 106020,
+      "itemCount": 104966,
+      "playableCount": 104388,
+      "sourceTotalCount": 106021,
       "complete": true,
       "detailPageCount": 1061,
       "detailExpectedPages": 1061,
@@ -906,12 +928,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 104974,
+          "count": 104966,
           "pages": 1061,
-          "total": 106020
+          "total": 106021
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/subocaiji-com-all-on-demand-sources-速播资源-https-subocaiji-com-api-php-provide-vod.json.gz"
     },
     {
       "id": "all-on-demand-sources-飘零资源-https-p2100-net-api-php-provide-vod-20",
@@ -930,9 +953,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 94496,
-      "playableCount": 83274,
-      "sourceTotalCount": 95230,
+      "itemCount": 94514,
+      "playableCount": 83292,
+      "sourceTotalCount": 95274,
       "complete": true,
       "detailPageCount": 4762,
       "detailExpectedPages": 4762,
@@ -948,12 +971,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 94496,
-          "pages": 4762,
-          "total": 95230
+          "count": 94514,
+          "pages": 4764,
+          "total": 95274
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/p2100-net-all-on-demand-sources-飘零资源-https-p2100-net-api-php-provide-vod-20.json.gz"
     },
     {
       "id": "all-on-demand-sources-u酷影视-https-api-ukuapi88-com-api-php-provide-vod-21",
@@ -972,9 +996,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 53449,
-      "playableCount": 53449,
-      "sourceTotalCount": 54163,
+      "itemCount": 53450,
+      "playableCount": 53450,
+      "sourceTotalCount": 54174,
       "complete": true,
       "detailPageCount": 2709,
       "detailExpectedPages": 2709,
@@ -990,12 +1014,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 53449,
+          "count": 53450,
           "pages": 2709,
-          "total": 54163
+          "total": 54174
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-ukuapi88-com-all-on-demand-sources-u酷影视-https-api-ukuapi88-com-api-php-provi.json.gz"
     },
     {
       "id": "all-on-demand-sources-光速资源-https-api-guangsuapi-com-api-php-provide-vod-22",
@@ -1014,9 +1039,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 104668,
-      "playableCount": 104668,
-      "sourceTotalCount": 106272,
+      "itemCount": 104660,
+      "playableCount": 104660,
+      "sourceTotalCount": 106273,
       "complete": true,
       "detailPageCount": 1063,
       "detailExpectedPages": 1063,
@@ -1032,12 +1057,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 104668,
+          "count": 104660,
           "pages": 1063,
-          "total": 106272
+          "total": 106273
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-guangsuapi-com-all-on-demand-sources-光速资源-https-api-guangsuapi-com-api-php-p.json.gz"
     },
     {
       "id": "all-on-demand-sources-红牛资源-https-www-hongniuzy2-com-api-php-provide-vod-23",
@@ -1056,9 +1082,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 104002,
-      "playableCount": 104002,
-      "sourceTotalCount": 105609,
+      "itemCount": 103994,
+      "playableCount": 103994,
+      "sourceTotalCount": 105610,
       "complete": true,
       "detailPageCount": 1057,
       "detailExpectedPages": 1057,
@@ -1074,12 +1100,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 104002,
+          "count": 103994,
           "pages": 1057,
-          "total": 105609
+          "total": 105610
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/www-hongniuzy2-com-all-on-demand-sources-红牛资源-https-www-hongniuzy2-com-api-php-p.json.gz"
     },
     {
       "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24",
@@ -1121,7 +1148,8 @@
           "total": 83696
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/caiji-moduapi-cc-all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provi.json.gz"
     },
     {
       "id": "all-on-demand-sources-如意资源-https-pz-v88-qzz-io-url-https-cj-rycjapi-com-api-php-provide-vod-25",
@@ -1140,9 +1168,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 77814,
-      "playableCount": 77814,
-      "sourceTotalCount": 79153,
+      "itemCount": 77804,
+      "playableCount": 77804,
+      "sourceTotalCount": 79155,
       "complete": true,
       "detailPageCount": 792,
       "detailExpectedPages": 792,
@@ -1158,12 +1186,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 77814,
+          "count": 77804,
           "pages": 792,
-          "total": 79153
+          "total": 79155
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/pz-v88-qzz-io-all-on-demand-sources-如意资源-https-pz-v88-qzz-io-url-https-cj-rycjap.json.gz"
     },
     {
       "id": "all-on-demand-sources-豪华资源-https-pz-v88-qzz-io-url-https-hhzyapi-com-api-php-provide-vod-26",
@@ -1182,9 +1211,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 103934,
-      "playableCount": 103934,
-      "sourceTotalCount": 104952,
+      "itemCount": 103926,
+      "playableCount": 103926,
+      "sourceTotalCount": 104953,
       "complete": true,
       "detailPageCount": 1050,
       "detailExpectedPages": 1050,
@@ -1200,12 +1229,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 103934,
+          "count": 103926,
           "pages": 1050,
-          "total": 104952
+          "total": 104953
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/pz-v88-qzz-io-all-on-demand-sources-豪华资源-https-pz-v88-qzz-io-url-https-hhzyapi-c.json.gz"
     },
     {
       "id": "all-on-demand-sources-百度云zy-https-pz-v88-qzz-io-url-https-api-apibdzy-com-api-php-provide-vod-27",
@@ -1224,9 +1254,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 46844,
-      "playableCount": 46844,
-      "sourceTotalCount": 47048,
+      "itemCount": 46841,
+      "playableCount": 46841,
+      "sourceTotalCount": 47054,
       "complete": true,
       "detailPageCount": 2353,
       "detailExpectedPages": 2353,
@@ -1242,12 +1272,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 46844,
+          "count": 46841,
           "pages": 2353,
-          "total": 47048
+          "total": 47054
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/pz-v88-qzz-io-all-on-demand-sources-百度云zy-https-pz-v88-qzz-io-url-https-api-apib.json.gz"
     },
     {
       "id": "all-on-demand-sources-艾旦影视-https-pz-v88-qzz-io-url-https-lovedan-net-api-php-provide-vod-28",
@@ -1266,9 +1297,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 167847,
-      "playableCount": 167842,
-      "sourceTotalCount": 170049,
+      "itemCount": 167844,
+      "playableCount": 167839,
+      "sourceTotalCount": 170073,
       "complete": true,
       "detailPageCount": 1701,
       "detailExpectedPages": 1701,
@@ -1284,12 +1315,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 167847,
+          "count": 167844,
           "pages": 1701,
-          "total": 170049
+          "total": 170073
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/pz-v88-qzz-io-all-on-demand-sources-艾旦影视-https-pz-v88-qzz-io-url-https-lovedan-n.json.gz"
     },
     {
       "id": "all-on-demand-sources-量子影视-https-cj-lziapi-com-api-php-provide-vod-29",
@@ -1308,9 +1340,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 136553,
-      "playableCount": 136553,
-      "sourceTotalCount": 139286,
+      "itemCount": 136532,
+      "playableCount": 136532,
+      "sourceTotalCount": 139289,
       "complete": true,
       "detailPageCount": 6965,
       "detailExpectedPages": 6965,
@@ -1326,12 +1358,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 136553,
+          "count": 136532,
           "pages": 6965,
-          "total": 139286
+          "total": 139289
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/cj-lziapi-com-all-on-demand-sources-量子影视-https-cj-lziapi-com-api-php-provide-vod.json.gz"
     },
     {
       "id": "all-on-demand-sources-最大点播-https-zuidazy-me-api-php-provide-vod-30",
@@ -1350,9 +1383,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 118337,
-      "playableCount": 118221,
-      "sourceTotalCount": 119281,
+      "itemCount": 118349,
+      "playableCount": 118233,
+      "sourceTotalCount": 119323,
       "complete": true,
       "detailPageCount": 5965,
       "detailExpectedPages": 5965,
@@ -1368,12 +1401,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 118337,
-          "pages": 5965,
-          "total": 119281
+          "count": 118349,
+          "pages": 5967,
+          "total": 119323
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/zuidazy-me-all-on-demand-sources-最大点播-https-zuidazy-me-api-php-provide-vod-30.json.gz"
     },
     {
       "id": "all-on-demand-sources-无尽影视-https-api-wujinapi-com-api-php-provide-vod-31",
@@ -1392,8 +1426,8 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 110509,
-      "playableCount": 110509,
+      "itemCount": 110511,
+      "playableCount": 110511,
       "sourceTotalCount": 113487,
       "complete": true,
       "detailPageCount": 5675,
@@ -1410,12 +1444,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 110509,
+          "count": 110511,
           "pages": 5675,
           "total": 113487
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-wujinapi-com-all-on-demand-sources-无尽影视-https-api-wujinapi-com-api-php-provi.json.gz"
     },
     {
       "id": "all-on-demand-sources-优质资源-https-api-yzzy-api-com-inc-apijson-php-33",
@@ -1434,9 +1469,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 93916,
-      "playableCount": 93914,
-      "sourceTotalCount": 94620,
+      "itemCount": 93885,
+      "playableCount": 93883,
+      "sourceTotalCount": 94653,
       "complete": true,
       "detailPageCount": 4731,
       "detailExpectedPages": 4731,
@@ -1452,12 +1487,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 93916,
-          "pages": 4731,
-          "total": 94620
+          "count": 93885,
+          "pages": 4733,
+          "total": 94653
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-yzzy-api-com-all-on-demand-sources-优质资源-https-api-yzzy-api-com-inc-apijson-p.json.gz"
     },
     {
       "id": "all-on-demand-sources-虎牙资源-https-www-huyaapi-com-api-php-provide-vod-34",
@@ -1476,9 +1512,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 103830,
-      "playableCount": 103252,
-      "sourceTotalCount": 104863,
+      "itemCount": 103822,
+      "playableCount": 103244,
+      "sourceTotalCount": 104864,
       "complete": true,
       "detailPageCount": 1049,
       "detailExpectedPages": 1049,
@@ -1494,12 +1530,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 103830,
+          "count": 103822,
           "pages": 1049,
-          "total": 104863
+          "total": 104864
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/www-huyaapi-com-all-on-demand-sources-虎牙资源-https-www-huyaapi-com-api-php-provide.json.gz"
     },
     {
       "id": "all-on-demand-sources-鸭鸭资源-https-cj-yayazy-net-api-php-provide-vod-35",
@@ -1518,9 +1555,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 116492,
-      "playableCount": 116492,
-      "sourceTotalCount": 117271,
+      "itemCount": 116505,
+      "playableCount": 116505,
+      "sourceTotalCount": 117313,
       "complete": true,
       "detailPageCount": 5864,
       "detailExpectedPages": 5864,
@@ -1536,12 +1573,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 116492,
-          "pages": 5864,
-          "total": 117271
+          "count": 116505,
+          "pages": 5866,
+          "total": 117313
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/cj-yayazy-net-all-on-demand-sources-鸭鸭资源-https-cj-yayazy-net-api-php-provide-vod.json.gz"
     },
     {
       "id": "all-on-demand-sources-索尼资源-https-suoniapi-com-api-php-provide-vod-36",
@@ -1560,9 +1598,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 135575,
-      "playableCount": 135575,
-      "sourceTotalCount": 138198,
+      "itemCount": 135592,
+      "playableCount": 135592,
+      "sourceTotalCount": 138240,
       "complete": true,
       "detailPageCount": 6910,
       "detailExpectedPages": 6910,
@@ -1578,12 +1616,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 135575,
-          "pages": 6910,
-          "total": 138198
+          "count": 135592,
+          "pages": 6912,
+          "total": 138240
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/suoniapi-com-all-on-demand-sources-索尼资源-https-suoniapi-com-api-php-provide-vod-3.json.gz"
     },
     {
       "id": "all-on-demand-sources-快车资源-https-caiji-kuaichezy-org-api-php-provide-vod-37",
@@ -1602,9 +1641,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 119887,
-      "playableCount": 119887,
-      "sourceTotalCount": 120634,
+      "itemCount": 119900,
+      "playableCount": 119900,
+      "sourceTotalCount": 120676,
       "complete": true,
       "detailPageCount": 6032,
       "detailExpectedPages": 6032,
@@ -1620,12 +1659,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 119887,
-          "pages": 6032,
-          "total": 120634
+          "count": 119900,
+          "pages": 6034,
+          "total": 120676
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/caiji-kuaichezy-org-all-on-demand-sources-快车资源-https-caiji-kuaichezy-org-api-php.json.gz"
     },
     {
       "id": "all-on-demand-sources-闪电资源-https-xsd-sdzyapi-com-api-php-provide-vod-38",
@@ -1644,9 +1684,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 118191,
-      "playableCount": 118191,
-      "sourceTotalCount": 119015,
+      "itemCount": 118205,
+      "playableCount": 118205,
+      "sourceTotalCount": 119057,
       "complete": true,
       "detailPageCount": 5951,
       "detailExpectedPages": 5951,
@@ -1662,12 +1702,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 118191,
-          "pages": 5951,
-          "total": 119015
+          "count": 118205,
+          "pages": 5953,
+          "total": 119057
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/xsd-sdzyapi-com-all-on-demand-sources-闪电资源-https-xsd-sdzyapi-com-api-php-provide.json.gz"
     },
     {
       "id": "all-on-demand-sources-樱花资源-https-m3u8-apiyhzy-com-api-php-provide-vod-39",
@@ -1708,7 +1749,8 @@
           "total": 99150
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/m3u8-apiyhzy-com-all-on-demand-sources-樱花资源-https-m3u8-apiyhzy-com-api-php-provi.json.gz"
     },
     {
       "id": "all-on-demand-sources-麻豆视频-https-91md-me-api-php-provide-vod-40",
@@ -1726,7 +1768,7 @@
       "indexed": true,
       "itemCount": 34794,
       "playableCount": 34794,
-      "sourceTotalCount": 35207,
+      "sourceTotalCount": 35247,
       "complete": true,
       "detailPageCount": 353,
       "detailExpectedPages": 353,
@@ -1744,10 +1786,11 @@
           "ok": true,
           "count": 34794,
           "pages": 353,
-          "total": 35207
+          "total": 35247
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/91md-me-all-on-demand-sources-麻豆视频-https-91md-me-api-php-provide-vod-40.json.gz"
     },
     {
       "id": "all-on-demand-sources-aivin-http-lbapiby-com-api-php-provide-vod-41",
@@ -1766,7 +1809,7 @@
       "indexed": true,
       "itemCount": 314152,
       "playableCount": 314152,
-      "sourceTotalCount": 315995,
+      "sourceTotalCount": 316153,
       "complete": true,
       "detailPageCount": 3160,
       "detailExpectedPages": 3160,
@@ -1783,11 +1826,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 314152,
-          "pages": 3160,
-          "total": 315995
+          "pages": 3162,
+          "total": 316153
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/lbapiby-com-all-on-demand-sources-aivin-http-lbapiby-com-api-php-provide-vod-41.json.gz"
     },
     {
       "id": "all-on-demand-sources-玉兔资源-https-apiyutu-com-api-php-provide-vod-43",
@@ -1826,7 +1870,8 @@
           "total": 197012
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/apiyutu-com-all-on-demand-sources-玉兔资源-https-apiyutu-com-api-php-provide-vod-43.json.gz"
     },
     {
       "id": "all-on-demand-sources-番号资源-http-fhapi9-com-api-php-provide-vod-44",
@@ -1844,7 +1889,7 @@
       "indexed": true,
       "itemCount": 215605,
       "playableCount": 215605,
-      "sourceTotalCount": 217734,
+      "sourceTotalCount": 217888,
       "complete": true,
       "detailPageCount": 2178,
       "detailExpectedPages": 2178,
@@ -1861,11 +1906,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 215605,
-          "pages": 2178,
-          "total": 217734
+          "pages": 2179,
+          "total": 217888
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/fhapi9-com-all-on-demand-sources-番号资源-http-fhapi9-com-api-php-provide-vod-44.json.gz"
     },
     {
       "id": "all-on-demand-sources-老色逼-https-apilsbzy1-com-api-php-provide-vod-45",
@@ -1904,7 +1950,8 @@
           "total": 197012
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/apilsbzy1-com-all-on-demand-sources-老色逼-https-apilsbzy1-com-api-php-provide-vod-.json.gz"
     },
     {
       "id": "all-on-demand-sources-小鸡资源-https-api-xiaojizy-live-provide-vod-46",
@@ -1943,7 +1990,8 @@
           "total": 81057
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-xiaojizy-live-all-on-demand-sources-小鸡资源-https-api-xiaojizy-live-provide-vod.json.gz"
     },
     {
       "id": "all-on-demand-sources-黄色仓库-https-hsckzy-xyz-api-php-provide-vod-47",
@@ -1982,7 +2030,8 @@
           "total": 59571
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/hsckzy-xyz-all-on-demand-sources-黄色仓库-https-hsckzy-xyz-api-php-provide-vod-47.json.gz"
     },
     {
       "id": "all-on-demand-sources-jkun资源-https-jkunzyapi-com-api-php-provide-vod-49",
@@ -2021,7 +2070,8 @@
           "total": 125256
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/jkunzyapi-com-all-on-demand-sources-jkun资源-https-jkunzyapi-com-api-php-provide-v.json.gz"
     },
     {
       "id": "all-on-demand-sources-乐播资源-https-lbapi9-com-api-php-provide-vod-50",
@@ -2040,7 +2090,7 @@
       "indexed": true,
       "itemCount": 314152,
       "playableCount": 314152,
-      "sourceTotalCount": 315995,
+      "sourceTotalCount": 316153,
       "complete": true,
       "detailPageCount": 3160,
       "detailExpectedPages": 3160,
@@ -2057,11 +2107,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 314152,
-          "pages": 3160,
-          "total": 315995
+          "pages": 3162,
+          "total": 316153
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/lbapi9-com-all-on-demand-sources-乐播资源-https-lbapi9-com-api-php-provide-vod-50.json.gz"
     },
     {
       "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51",
@@ -2100,7 +2151,8 @@
           "total": 169216
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/naixxzy-com-all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51.json.gz"
     },
     {
       "id": "all-on-demand-sources-森林资源-https-beiyong-slapibf-com-api-php-provide-vod-52",
@@ -2139,7 +2191,8 @@
           "total": 241100
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/beiyong-slapibf-com-all-on-demand-sources-森林资源-https-beiyong-slapibf-com-api-php.json.gz"
     },
     {
       "id": "all-on-demand-sources-辣椒资源-https-pz-v88-qzz-io-url-https-apilj-com-api-php-provide-vod-53",
@@ -2157,7 +2210,7 @@
       "indexed": true,
       "itemCount": 212239,
       "playableCount": 212239,
-      "sourceTotalCount": 214284,
+      "sourceTotalCount": 214434,
       "complete": true,
       "detailPageCount": 2143,
       "detailExpectedPages": 2143,
@@ -2174,11 +2227,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 212239,
-          "pages": 2143,
-          "total": 214284
+          "pages": 2145,
+          "total": 214434
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/pz-v88-qzz-io-all-on-demand-sources-辣椒资源-https-pz-v88-qzz-io-url-https-apilj-com.json.gz"
     },
     {
       "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55",
@@ -2217,7 +2271,8 @@
           "total": 52214
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-douapi-cc-all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod.json.gz"
     },
     {
       "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56",
@@ -2235,7 +2290,7 @@
       "indexed": true,
       "itemCount": 41035,
       "playableCount": 41035,
-      "sourceTotalCount": 41395,
+      "sourceTotalCount": 41411,
       "complete": true,
       "detailPageCount": 414,
       "detailExpectedPages": 414,
@@ -2252,11 +2307,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 41035,
-          "pages": 414,
-          "total": 41395
+          "pages": 415,
+          "total": 41411
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-ddapi-cc-all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-5.json.gz"
     },
     {
       "id": "all-on-demand-sources-百万资源-https-api-bwzyz-com-api-php-provide-vod-58",
@@ -2297,7 +2353,8 @@
           "total": 95091
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-bwzyz-com-all-on-demand-sources-百万资源-https-api-bwzyz-com-api-php-provide-vod.json.gz"
     },
     {
       "id": "all-on-demand-sources-桃花资源-https-thzy1-me-api-php-provide-vod-59",
@@ -2313,9 +2370,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 129623,
-      "playableCount": 129623,
-      "sourceTotalCount": 130937,
+      "itemCount": 129614,
+      "playableCount": 129614,
+      "sourceTotalCount": 130977,
       "complete": true,
       "detailPageCount": 1310,
       "detailExpectedPages": 1310,
@@ -2331,12 +2388,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 129623,
+          "count": 129614,
           "pages": 1310,
-          "total": 130937
+          "total": 130977
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/thzy1-me-all-on-demand-sources-桃花资源-https-thzy1-me-api-php-provide-vod-59.json.gz"
     },
     {
       "id": "all-on-demand-sources-ck-资源-https-ckzy-me-api-php-provide-vod-61",
@@ -2354,7 +2412,7 @@
       "indexed": true,
       "itemCount": 7104,
       "playableCount": 7104,
-      "sourceTotalCount": 7185,
+      "sourceTotalCount": 7188,
       "complete": true,
       "detailPageCount": 72,
       "detailExpectedPages": 72,
@@ -2372,10 +2430,11 @@
           "ok": true,
           "count": 7104,
           "pages": 72,
-          "total": 7185
+          "total": 7188
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/ckzy-me-all-on-demand-sources-ck-资源-https-ckzy-me-api-php-provide-vod-61.json.gz"
     },
     {
       "id": "all-on-demand-sources-souavzy-https-api-souavzyw-net-api-php-provide-vod-62",
@@ -2393,7 +2452,7 @@
       "indexed": true,
       "itemCount": 120329,
       "playableCount": 120329,
-      "sourceTotalCount": 121268,
+      "sourceTotalCount": 121308,
       "complete": true,
       "detailPageCount": 1213,
       "detailExpectedPages": 1213,
@@ -2410,11 +2469,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 120329,
-          "pages": 1213,
-          "total": 121268
+          "pages": 1214,
+          "total": 121308
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-souavzyw-net-all-on-demand-sources-souavzy-https-api-souavzyw-net-api-php-pr.json.gz"
     },
     {
       "id": "tvbox-细胞资源-https-www-xxibaozyw-com-api-php-provide-vod-59",
@@ -2430,9 +2490,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 17865,
-      "playableCount": 17865,
-      "sourceTotalCount": 18376,
+      "itemCount": 17867,
+      "playableCount": 17867,
+      "sourceTotalCount": 18412,
       "complete": true,
       "detailPageCount": 919,
       "detailExpectedPages": 919,
@@ -2448,12 +2508,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 17865,
-          "pages": 919,
-          "total": 18376
+          "count": 17867,
+          "pages": 921,
+          "total": 18412
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/www-xxibaozyw-com-tvbox-细胞资源-https-www-xxibaozyw-com-api-php-provide-vod-59.json.gz"
     },
     {
       "id": "all-on-demand-sources-美少女-https-www-msnii-com-api-json-php-64",
@@ -2473,7 +2534,7 @@
       "indexed": true,
       "itemCount": 23792,
       "playableCount": 23792,
-      "sourceTotalCount": 23964,
+      "sourceTotalCount": 23974,
       "complete": true,
       "detailPageCount": 1199,
       "detailExpectedPages": 1199,
@@ -2491,10 +2552,11 @@
           "ok": true,
           "count": 23792,
           "pages": 1199,
-          "total": 23964
+          "total": 23974
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/www-msnii-com-all-on-demand-sources-美少女-https-www-msnii-com-api-json-php-64.json.gz"
     },
     {
       "id": "all-on-demand-sources-黄avzy-https-www-pgxdy-com-api-json-php-65",
@@ -2514,7 +2576,7 @@
       "indexed": true,
       "itemCount": 22671,
       "playableCount": 22671,
-      "sourceTotalCount": 22837,
+      "sourceTotalCount": 22847,
       "complete": true,
       "detailPageCount": 1142,
       "detailExpectedPages": 1142,
@@ -2531,11 +2593,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 22671,
-          "pages": 1142,
-          "total": 22837
+          "pages": 1143,
+          "total": 22847
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/www-pgxdy-com-all-on-demand-sources-黄avzy-https-www-pgxdy-com-api-json-php-65.json.gz"
     },
     {
       "id": "all-on-demand-sources-白嫖资源-https-www-kxgav-com-api-json-php-66",
@@ -2555,7 +2618,7 @@
       "indexed": true,
       "itemCount": 22505,
       "playableCount": 22505,
-      "sourceTotalCount": 22671,
+      "sourceTotalCount": 22681,
       "complete": true,
       "detailPageCount": 1134,
       "detailExpectedPages": 1134,
@@ -2572,11 +2635,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 22505,
-          "pages": 1134,
-          "total": 22671
+          "pages": 1135,
+          "total": 22681
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/www-kxgav-com-all-on-demand-sources-白嫖资源-https-www-kxgav-com-api-json-php-66.json.gz"
     },
     {
       "id": "all-on-demand-sources-杏吧资源-https-xingba222-com-api-php-provide-vod-67",
@@ -2594,7 +2658,7 @@
       "indexed": true,
       "itemCount": 93261,
       "playableCount": 93261,
-      "sourceTotalCount": 95826,
+      "sourceTotalCount": 96015,
       "complete": true,
       "detailPageCount": 959,
       "detailExpectedPages": 959,
@@ -2611,11 +2675,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 93261,
-          "pages": 959,
-          "total": 95826
+          "pages": 961,
+          "total": 96015
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/xingba222-com-all-on-demand-sources-杏吧资源-https-xingba222-com-api-php-provide-vod.json.gz"
     },
     {
       "id": "all-on-demand-sources-大地资源-https-dadiapi-com-feifei-68",
@@ -2634,7 +2699,7 @@
       "indexed": true,
       "itemCount": 259459,
       "playableCount": 259459,
-      "sourceTotalCount": 261660,
+      "sourceTotalCount": 261811,
       "complete": true,
       "detailPageCount": 13083,
       "detailExpectedPages": 13083,
@@ -2651,11 +2716,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 259459,
-          "pages": 13083,
-          "total": 261660
+          "pages": 13091,
+          "total": 261811
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/dadiapi-com-all-on-demand-sources-大地资源-https-dadiapi-com-feifei-68.json.gz"
     },
     {
       "id": "all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-70",
@@ -2694,7 +2760,8 @@
           "total": 206155
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/aosikazy-com-all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-70.json.gz"
     },
     {
       "id": "all-on-demand-sources-金鹰点播-https-jinyingzy-com-api-php-provide-vod-19",
@@ -2736,7 +2803,8 @@
           "total": 104961
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/jinyingzy-com-all-on-demand-sources-金鹰点播-https-jinyingzy-com-api-php-provide-vod.json.gz"
     },
     {
       "id": "all-on-demand-sources-鲨鱼资源-https-shayuapi-com-api-php-provide-vod-54",
@@ -2754,7 +2822,7 @@
       "indexed": true,
       "itemCount": 265670,
       "playableCount": 265670,
-      "sourceTotalCount": 267783,
+      "sourceTotalCount": 267947,
       "complete": true,
       "detailPageCount": 2678,
       "detailExpectedPages": 2678,
@@ -2771,11 +2839,78 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 265670,
-          "pages": 2678,
-          "total": 267783
+          "pages": 2680,
+          "total": 267947
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/shayuapi-com-all-on-demand-sources-鲨鱼资源-https-shayuapi-com-api-php-provide-vod-5.json.gz"
+    },
+    {
+      "id": "tvbox-yk-https-file-icve-com-cn-file-doc-249-899-3e7e0c8a023b624cec6bdcc200f06f02-js-6",
+      "key": "YK",
+      "name": "优酷视频｜追劇",
+      "type": 3,
+      "api": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
+      "ext": "https://cdn.waimaimingtang.com/file/images/bwc/20251023002200-507c3e8aae.js",
+      "origin": "sources/TVBOX",
+      "adult": false,
+      "categories": [
+        "动作片",
+        "国产动漫",
+        "短剧",
+        "国产综艺"
+      ],
+      "indexable": false,
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "unsupportedReason": "not a direct VOD API source"
+    },
+    {
+      "id": "tvbox-tx-https-file-icve-com-cn-file-doc-249-899-3e7e0c8a023b624cec6bdcc200f06f02-js-6",
+      "key": "TX",
+      "name": "腾讯视频｜追劇",
+      "type": 3,
+      "api": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
+      "ext": "https://cdn.waimaimingtang.com/file/images/bwc/20251023002144-0e40887294.js",
+      "origin": "sources/TVBOX",
+      "adult": false,
+      "categories": [
+        "动作片",
+        "国产动漫",
+        "短剧",
+        "国产综艺"
+      ],
+      "indexable": false,
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "unsupportedReason": "not a direct VOD API source"
+    },
+    {
+      "id": "tvbox-mg-https-file-icve-com-cn-file-doc-249-899-3e7e0c8a023b624cec6bdcc200f06f02-js-6",
+      "key": "MG",
+      "name": "芒果TV｜追劇",
+      "type": 3,
+      "api": "https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js",
+      "ext": "https://cdn.waimaimingtang.com/file/images/bwc/20251023002108-a4795930ec.js",
+      "origin": "sources/TVBOX",
+      "adult": false,
+      "categories": [
+        "动作片",
+        "国产动漫",
+        "短剧",
+        "国产综艺"
+      ],
+      "indexable": false,
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "all-on-demand-sources-闪电影视-http-sdzyapi-com-api-php-provide-vod-77",
@@ -2794,9 +2929,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 118191,
-      "playableCount": 118191,
-      "sourceTotalCount": 119015,
+      "itemCount": 118205,
+      "playableCount": 118205,
+      "sourceTotalCount": 119057,
       "complete": true,
       "detailPageCount": 5951,
       "detailExpectedPages": 5951,
@@ -2812,12 +2947,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 118191,
-          "pages": 5951,
-          "total": 119015
+          "count": 118205,
+          "pages": 5953,
+          "total": 119057
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/sdzyapi-com-all-on-demand-sources-闪电影视-http-sdzyapi-com-api-php-provide-vod-77.json.gz"
     },
     {
       "id": "all-on-demand-sources-牛牛影视-https-api-niuniuzy-me-api-php-provide-vod-at-xml-78",
@@ -2836,9 +2972,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 118483,
-      "playableCount": 118483,
-      "sourceTotalCount": 119231,
+      "itemCount": 118496,
+      "playableCount": 118496,
+      "sourceTotalCount": 119273,
       "complete": true,
       "detailPageCount": 5962,
       "detailExpectedPages": 5962,
@@ -2854,12 +2990,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 118483,
-          "pages": 5962,
-          "total": 119231
+          "count": 118496,
+          "pages": 5964,
+          "total": 119273
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/api-niuniuzy-me-all-on-demand-sources-牛牛影视-https-api-niuniuzy-me-api-php-provide.json.gz"
     },
     {
       "id": "all-on-demand-sources-雲飛影视-http-cj-lziapi-com-api-php-provide-vod-79",
@@ -2878,9 +3015,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 136555,
-      "playableCount": 136555,
-      "sourceTotalCount": 139286,
+      "itemCount": 136539,
+      "playableCount": 136539,
+      "sourceTotalCount": 139289,
       "complete": true,
       "detailPageCount": 6965,
       "detailExpectedPages": 6965,
@@ -2896,12 +3033,35 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 136555,
+          "count": 136539,
           "pages": 6965,
-          "total": 139286
+          "total": 139289
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/cj-lziapi-com-all-on-demand-sources-雲飛影视-http-cj-lziapi-com-api-php-provide-vod-.json.gz"
+    },
+    {
+      "id": "tvbox-华视影院-http-zhangqun1818-serv00-net-5052-sp-华视影院-72",
+      "key": "华视影院",
+      "name": "华视影院｜追剧",
+      "type": 4,
+      "api": "http://zhangqun1818.serv00.net:5052/?sp=华视影院",
+      "ext": "",
+      "origin": "sources/TVBOX",
+      "adult": false,
+      "categories": [
+        "动作片",
+        "国产动漫",
+        "短剧",
+        "国产综艺"
+      ],
+      "indexable": false,
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "all-on-demand-sources-火狐-https-hhzyapi-com-api-php-provide-vod-81",
@@ -2920,9 +3080,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 103934,
-      "playableCount": 103934,
-      "sourceTotalCount": 104952,
+      "itemCount": 103926,
+      "playableCount": 103926,
+      "sourceTotalCount": 104953,
       "complete": true,
       "detailPageCount": 1050,
       "detailExpectedPages": 1050,
@@ -2938,12 +3098,13 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 103934,
+          "count": 103926,
           "pages": 1050,
-          "total": 104952
+          "total": 104953
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/hhzyapi-com-all-on-demand-sources-火狐-https-hhzyapi-com-api-php-provide-vod-81.json.gz"
     },
     {
       "id": "all-on-demand-sources-api-如意-https-cj-rycjapi-com-api-php-provide-vod-82",
@@ -2962,9 +3123,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 78116,
-      "playableCount": 78116,
-      "sourceTotalCount": 79153,
+      "itemCount": 78109,
+      "playableCount": 78109,
+      "sourceTotalCount": 79155,
       "complete": true,
       "detailPageCount": 792,
       "detailExpectedPages": 792,
@@ -2980,12 +3141,35 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 78116,
+          "count": 78109,
           "pages": 792,
-          "total": 79153
+          "total": 79155
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/cj-rycjapi-com-all-on-demand-sources-api-如意-https-cj-rycjapi-com-api-php-provide.json.gz"
+    },
+    {
+      "id": "tvbox-七星短剧-https-mpimg-cn-down-php-48e9d346cdf6da376c53136693bec95a-py-75",
+      "key": "七星短剧",
+      "name": "七星丨短剧｜追劇",
+      "type": 3,
+      "api": "https://mpimg.cn/down.php/48e9d346cdf6da376c53136693bec95a.py",
+      "ext": "",
+      "origin": "sources/TVBOX",
+      "adult": false,
+      "categories": [
+        "动作片",
+        "国产动漫",
+        "短剧",
+        "国产综艺"
+      ],
+      "indexable": false,
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "all-on-demand-sources-cj-360资源-https-360zy-com-api-php-provide-vod-84",
@@ -3004,9 +3188,9 @@
       ],
       "indexable": true,
       "indexed": true,
-      "itemCount": 63772,
-      "playableCount": 63772,
-      "sourceTotalCount": 64738,
+      "itemCount": 63774,
+      "playableCount": 63774,
+      "sourceTotalCount": 64775,
       "complete": true,
       "detailPageCount": 648,
       "detailExpectedPages": 648,
@@ -3022,12 +3206,78 @@
         {
           "label": "source-index-gzip",
           "ok": true,
-          "count": 63772,
+          "count": 63774,
           "pages": 648,
-          "total": 64738
+          "total": 64775
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/360zy-com-all-on-demand-sources-cj-360资源-https-360zy-com-api-php-provide-vod-84.json.gz"
+    },
+    {
+      "id": "tvbox-网易云音乐-https-xn-fjq53n-xyz-ting-yinyue-网易云音乐-py-77",
+      "key": "网易云音乐",
+      "name": "网易云｜音乐",
+      "type": 3,
+      "api": "https://xn--fjq53n.xyz/Ting/yinyue/网易云音乐.py",
+      "ext": "",
+      "origin": "sources/TVBOX",
+      "adult": false,
+      "categories": [
+        "动作片",
+        "国产动漫",
+        "短剧",
+        "国产综艺"
+      ],
+      "indexable": false,
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "unsupportedReason": "not a direct VOD API source"
+    },
+    {
+      "id": "tvbox-网易云音乐1-https-xn-fjq53n-xyz-ting-yinyue-网易云音乐1-py-78",
+      "key": "网易云音乐1",
+      "name": "网易云1｜音乐",
+      "type": 3,
+      "api": "https://xn--fjq53n.xyz/Ting/yinyue/网易云音乐1.py",
+      "ext": "",
+      "origin": "sources/TVBOX",
+      "adult": false,
+      "categories": [
+        "动作片",
+        "国产动漫",
+        "短剧",
+        "国产综艺"
+      ],
+      "indexable": false,
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "unsupportedReason": "not a direct VOD API source"
+    },
+    {
+      "id": "tvbox-hhh-https-od-lk-s-njffmti2oty0ntk3xw-truvaze-py-79",
+      "key": "hhh",
+      "name": "🔞 truvaze｜18+",
+      "type": 3,
+      "api": "https://od.lk/s/NjFfMTI2OTY0NTk3Xw/truvaze.py",
+      "ext": "",
+      "origin": "sources/TVBOX",
+      "adult": true,
+      "categories": [
+        "动作片",
+        "短剧",
+        "国产综艺"
+      ],
+      "indexable": false,
+      "indexed": false,
+      "itemCount": 0,
+      "playableCount": 0,
+      "sourceTotalCount": 0,
+      "unsupportedReason": "not a direct VOD API source"
     },
     {
       "id": "all-on-demand-sources-大地采集-https-dadiapi-com-apple-m3u8-php-88",
@@ -3045,7 +3295,7 @@
       "indexed": true,
       "itemCount": 259515,
       "playableCount": 259515,
-      "sourceTotalCount": 261660,
+      "sourceTotalCount": 261811,
       "complete": true,
       "detailPageCount": 13083,
       "detailExpectedPages": 13083,
@@ -3062,11 +3312,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 259515,
-          "pages": 13083,
-          "total": 261660
+          "pages": 13091,
+          "total": 261811
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/dadiapi-com-all-on-demand-sources-大地采集-https-dadiapi-com-apple-m3u8-php-88.json.gz"
     },
     {
       "id": "all-on-demand-sources-黄色仓库-av-https-hsckzy-vip-api-php-provide-vod-89",
@@ -3105,7 +3356,8 @@
           "total": 59571
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/hsckzy-vip-all-on-demand-sources-黄色仓库-av-https-hsckzy-vip-api-php-provide-vod-89.json.gz"
     },
     {
       "id": "all-on-demand-sources-fqzy资源-https-fqzy-me-api-php-provide-vod-ac-list-90",
@@ -3123,7 +3375,7 @@
       "indexed": true,
       "itemCount": 99412,
       "playableCount": 99412,
-      "sourceTotalCount": 101506,
+      "sourceTotalCount": 101675,
       "complete": true,
       "detailPageCount": 1016,
       "detailExpectedPages": 1016,
@@ -3140,11 +3392,12 @@
           "label": "source-index-gzip",
           "ok": true,
           "count": 99412,
-          "pages": 1016,
-          "total": 101506
+          "pages": 1017,
+          "total": 101675
         }
       ],
-      "error": ""
+      "error": "",
+      "searchIndexPath": "vod-search/fqzy-me-all-on-demand-sources-fqzy资源-https-fqzy-me-api-php-provide-vod-ac-list-9.json.gz"
     }
   ],
   "items": []
