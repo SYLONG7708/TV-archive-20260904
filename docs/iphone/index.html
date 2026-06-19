@@ -1158,6 +1158,27 @@
         return '';
       }
 
+      const NON_PRIMARY_CATEGORY_RE =
+        /\u7535\u5f71\u89e3\u8bf4|\u96fb\u5f71\u89e3\u8aaa|\u5f71\u89c6\u89e3\u8bf4|\u5f71\u8996\u89e3\u8aaa|\u89e3\u8bf4|\u89e3\u8aaa|\u5f71\u8bc4|\u5f71\u8a55|\u9884\u544a|\u9810\u544a|\u82b1\u7d6e|\u7247\u82b1|\u4f53\u80b2|\u9ad4\u80b2|\u8db3\u7403|\u7bee\u7403|\u7db2\u7403|\u7f51\u7403|\u65af\u8bfa\u514b|\u65af\u8afe\u514b|\u7535\u7ade|\u96fb\u7af6|\u65b0\u95fb|\u65b0\u805e|\u8d44\u8baf|\u8cc7\u8a0a/i;
+
+      function classifyCatalogKind(value) {
+        const text = normalizedText(value);
+        if (!text) return '';
+        if (NON_PRIMARY_CATEGORY_RE.test(text)) return 'other';
+        return classifyClientKindFromText(text);
+      }
+
+      function classifyTitleKindFromText(value) {
+        const text = normalizedText(value);
+        if (!text) return '';
+        if (NON_PRIMARY_CATEGORY_RE.test(text)) return 'other';
+        for (const [kind, rule] of CLIENT_KIND_RULES) {
+          if (kind === 'movie') continue;
+          if (rule.test(text)) return kind;
+        }
+        return '';
+      }
+
       function displayVodKind(item) {
         const source = sourceById(item?.sourceId);
         const sourceAdult = Boolean(source?.adult || item?.sourceAdult || item?.adult);
@@ -1165,7 +1186,7 @@
         const genreText = Array.isArray(item?.genre) ? normalizedText(item.genre.join(' ')) : normalizedText(item?.genre || item?.vod_class || item?.class || '');
         const titleText = normalizedText(item?.title || item?.vod_name || '');
         if (sourceAdult || ADULT_ITEM_TEXT_RE.test(`${categoryText} ${genreText}`)) return 'adult';
-        return classifyClientKindFromText(categoryText) || classifyClientKindFromText(`${genreText} ${titleText}`) || normalizeVodKind(item?.kind) || 'movie';
+        return classifyCatalogKind(categoryText) || classifyCatalogKind(genreText) || classifyTitleKindFromText(titleText) || normalizeVodKind(item?.kind) || 'movie';
       }
 
       function cleanFilterToken(value) {
@@ -1359,7 +1380,7 @@
         if (state.tab === 'live') return false;
         const categories = Array.isArray(source.categories) ? source.categories : [];
         if (!categories.length) return true;
-        return categories.some((category) => classifyClientKindFromText(category) === state.tab);
+        return categories.some((category) => classifyCatalogKind(category) === state.tab);
       }
 
       function combinedSourceCandidates(sourceId) {
@@ -4044,15 +4065,76 @@
         loadToken.promise = promise;
       }
 
-      function sortedItems(items) {
-        const rows = [...items];
-        if (state.filters.sort === 'latest') {
-          return rows.sort((a, b) => Date.parse(b.updatedAt || 0) - Date.parse(a.updatedAt || 0));
+      function numericValue(value) {
+        const number = Number(String(value ?? '').replace(/[^\d.-]/g, ''));
+        return Number.isFinite(number) ? number : 0;
+      }
+
+      function itemTimeValue(item) {
+        const raw = String(item?.updatedAt || item?.updateTime || item?.vod_time || '').trim();
+        if (!raw) return 0;
+        const time = Date.parse(raw.replace(' ', 'T'));
+        return Number.isFinite(time) ? time : 0;
+      }
+
+      function itemRecencyScore(item) {
+        const time = itemTimeValue(item);
+        if (!time) return 0;
+        const ageDays = Math.max(0, (Date.now() - time) / 86400000);
+        return 720 / (1 + ageDays / 21);
+      }
+
+      function itemScoreValue(item) {
+        const score = numericValue(item?.score);
+        if (!score) return 0;
+        return score > 10 ? Math.min(10, score / 10) : Math.min(10, score);
+      }
+
+      function itemCompletionScore(item) {
+        const text = normalizedText(`${item?.remarks || ''} ${item?.categoryName || ''}`);
+        let score = 0;
+        if (/\u6b63\u7247|HD|BD|\u5b8c\u7ed3|\u5b8c\u7d50|\u5168\d+|\u5168\u96c6/i.test(text)) score += 120;
+        if (/\u66f4\u65b0\u81f3|\u7b2c\d+\u96c6|\u7b2c\d+\u671f/i.test(text)) score += 70;
+        const episodes = numericValue(item?.episodeCount);
+        if (item?.kind === 'movie' && episodes > 3) score -= 520;
+        if (['series', 'short', 'anime', 'variety'].includes(item?.kind)) score += Math.min(episodes, 80) * 3;
+        return score;
+      }
+
+      function itemSignalScore(item) {
+        return Math.min(numericValue(item?.signalCount || 1), 8) * 18;
+      }
+
+      function itemRankScore(item, mode = 'hot') {
+        const views = numericValue(item?.views);
+        const hot = numericValue(item?.hot);
+        const score = itemScoreValue(item);
+        const recency = itemRecencyScore(item);
+        const completion = itemCompletionScore(item);
+        const signal = itemSignalScore(item);
+        const viewScore = views > 0 ? Math.log10(views + 1) * 2600 : 0;
+        const base = Math.max(hot, viewScore) + score * 135 + recency + completion + signal;
+        if (mode === 'views') {
+          return views > 0 ? viewScore + hot * 0.18 + score * 80 + recency * 0.55 + completion + signal : base;
         }
-        if (state.filters.sort === 'score') return rows.sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
-        if (state.filters.sort === 'views') return rows.sort((a, b) => Number(b.views || 0) - Number(a.views || 0));
-        if (state.filters.sort === 'name') return rows.sort((a, b) => a.title.localeCompare(b.title, 'zh-Hant'));
-        return rows.sort((a, b) => Number(b.hot || 0) - Number(a.hot || 0));
+        if (mode === 'score') return score * 1200 + base * 0.08;
+        if (mode === 'latest') return itemTimeValue(item) / 1000000 + base * 0.02;
+        return base;
+      }
+
+      function compareRankedItems(a, b, mode = state.filters.sort) {
+        if (mode === 'name') return a.title.localeCompare(b.title, 'zh-Hant');
+        const rankDiff = itemRankScore(b, mode) - itemRankScore(a, mode);
+        if (Math.abs(rankDiff) > 0.0001) return rankDiff;
+        const timeDiff = itemTimeValue(b) - itemTimeValue(a);
+        if (timeDiff) return timeDiff;
+        const scoreDiff = itemScoreValue(b) - itemScoreValue(a);
+        if (scoreDiff) return scoreDiff;
+        return String(a.title || '').localeCompare(String(b.title || ''), 'zh-Hant');
+      }
+
+      function sortedItems(items) {
+        return [...items].sort((a, b) => compareRankedItems(a, b));
       }
 
       function renderNav() {
