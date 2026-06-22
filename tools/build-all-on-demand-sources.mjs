@@ -30,34 +30,34 @@ const extraConfigUrls = String(args.get('extraConfigUrls') || defaultExtraConfig
 const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36 OKTV/1.0';
 const DEFAULT_CATEGORIES = [
-  '???',
-  '??',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '???',
-  '??',
-  '????',
-  '????',
-  '????',
-  '????',
-  '????',
-  '????',
-  '????',
+  '国产剧',
+  '短剧',
+  '韩国剧',
+  '香港剧',
+  '台湾剧',
+  '欧美剧',
+  '动作片',
+  '科幻片',
+  '战争片',
+  '奇幻片',
+  '喜剧片',
+  '爱情片',
+  '恐怖片',
+  '犯罪片',
+  '悬疑片',
+  '惊悚片',
+  '剧情片',
+  '冒险片',
+  '记录片',
+  '日本剧',
+  '泰剧',
+  '国产综艺',
+  '港台综艺',
+  '欧美综艺',
+  '日韩综艺',
+  '国产动漫',
+  '港台动漫',
+  '日韩动漫',
 ];
 
 function withTimeout() {
@@ -108,33 +108,33 @@ function cleanSourceName(value) {
     .replace(/^\s*-+\s*/, '')
     .replace(/-+$/g, '')
     .trim();
-  return text || '???';
+  return text || '點播源';
 }
 
 function cleanConfigSourceName(value, fallback = '') {
   const text = cleanSourceName(value || fallback)
-    .replace(/??/g, '18+')
-    .replace(/[????]/gu, '')
-    .replace(/\s*????.*$/i, '')
-    .replace(/\s*????.*$/i, '')
-    .replace(/[?|]\s*$/g, '')
+    .replace(/🔞/g, '18+')
+    .replace(/[🐬🦊]/gu, '')
+    .replace(/\s*海豚影视.*$/i, '')
+    .replace(/\s*海豚影視.*$/i, '')
+    .replace(/[｜|]\s*$/g, '')
     .trim();
-  return text || cleanSourceName(fallback) || '???';
+  return text || cleanSourceName(fallback) || '點播源';
 }
 
 function displayNameBase(value) {
   return cleanConfigSourceName(value)
-    .replace(/[?|].*$/g, '')
-    .replace(/\s+??.*$/g, '')
+    .replace(/[｜|].*$/g, '')
+    .replace(/\s+海豚.*$/g, '')
     .replace(/\s+/g, '')
     .toLowerCase();
 }
 
 function sourceKey(name, index) {
   const clean = cleanSourceName(name)
-    .replace(/[?|]+.*$/g, '')
+    .replace(/[｜|]+.*$/g, '')
     .replace(/\s+/g, '');
-  return clean || `???${index + 1}`;
+  return clean || `點播源${index + 1}`;
 }
 
 function keyId(value, index) {
@@ -310,12 +310,12 @@ function extractLink(cell) {
 }
 
 function parseStatus(cell) {
-  return cell.includes('?') ? 'ok' : cell.includes('?') ? 'failed' : 'unknown';
+  return cell.includes('✅') ? 'ok' : cell.includes('❌') ? 'failed' : 'unknown';
 }
 
 function parseSearchable(cell) {
   const text = normalizeText(cell);
-  return text.includes('?') ? 1 : 1;
+  return text.includes('✅') ? 1 : 1;
 }
 
 function parseReportTable(markdown) {
@@ -324,7 +324,7 @@ function parseReportTable(markdown) {
   for (const line of lines) {
     if (!line.startsWith('|')) continue;
     if (/^\|\s*-+/.test(line)) continue;
-    if (line.includes('????') || line.includes('??') || line.includes('??')) continue;
+    if (line.includes('资源名称') || line.includes('狀態') || line.includes('状态')) continue;
     const cells = line
       .split('|')
       .slice(1, -1)
@@ -369,7 +369,7 @@ function normalizeCategories(rows, fallbackAdult = false) {
     .filter(Boolean);
   const unique = [...new Set(categories)];
   if (unique.length) return unique.slice(0, 80);
-  return fallbackAdult ? ['??18+', ...DEFAULT_CATEGORIES] : DEFAULT_CATEGORIES;
+  return fallbackAdult ? ['成人18+', ...DEFAULT_CATEGORIES] : DEFAULT_CATEGORIES;
 }
 
 async function fetchCategories(row) {
@@ -429,7 +429,7 @@ function isAdultSource(site) {
 
 function configSiteRow(site, index, originUrl) {
   const type = Number(site.type ?? apiType(site.api));
-  const key = cleanSourceName(site.key || site.name || `????${index + 1}`);
+  const key = cleanSourceName(site.key || site.name || `海豚來源${index + 1}`);
   const name = cleanConfigSourceName(site.name || key, key);
   return {
     status: 'ok',
@@ -460,13 +460,13 @@ async function loadExtraConfigRows(url) {
 
 const markdown = await fetchText(reportUrl, 'text/markdown,text/plain,*/*');
 const parsedRows = parseReportTable(markdown);
-const iqiyiIndex = parsedRows.findIndex((row) => /???|???/i.test(row.name));
+const iqiyiIndex = parsedRows.findIndex((row) => /爱奇艺|愛奇藝/i.test(row.name));
 const reportRows = iqiyiIndex > 0 ? [...parsedRows.slice(iqiyiIndex), ...parsedRows.slice(0, iqiyiIndex)] : parsedRows;
 const requiredRows = [
   {
     status: 'ok',
-    key: '???',
-    name: '??????',
+    key: '爱奇艺',
+    name: '爱奇艺｜追劇',
     site: 'https://iqiyizyapi.com/',
     api: 'https://iqiyizyapi.com/api.php/provide/vod/',
     ext: '',
@@ -482,8 +482,8 @@ const requiredRows = [
   },
   {
     status: 'ok',
-    key: '????',
-    name: '???????',
+    key: '豆瓣资源',
+    name: '豆瓣资源｜追劇',
     site: 'https://dbzy.tv/',
     api: 'https://dbzy.tv/api.php/provide/vod/',
     ext: '',
@@ -499,8 +499,8 @@ const requiredRows = [
   },
   {
     status: 'ok',
-    key: '????',
-    name: '???????',
+    key: '天涯资源',
+    name: '天涯资源｜追劇',
     site: 'https://tyyszy.com/',
     api: 'https://tyyszy.com/api.php/provide/vod/',
     ext: '',
@@ -516,8 +516,8 @@ const requiredRows = [
   },
   {
     status: 'ok',
-    key: '????',
-    name: '???????',
+    key: '黑料资源',
+    name: '黑料资源｜追劇',
     site: 'https://heiliaozy.cc/',
     api: 'https://www.heiliaozyapi.com/api.php/provide/vod/',
     ext: '',
@@ -533,8 +533,8 @@ const requiredRows = [
   },
   {
     status: 'ok',
-    key: '????',
-    name: '???????',
+    key: '精品资源',
+    name: '精品资源｜追劇',
     site: 'https://www.jingpinx.com/',
     api: 'https://www.jingpinx.com/api.php/provide/vod/',
     ext: '',
@@ -550,8 +550,8 @@ const requiredRows = [
   },
   {
     status: 'ok',
-    key: '155-??',
-    name: '155-?????',
+    key: '155-资源',
+    name: '155-资源｜追劇',
     site: 'https://155zy2.com/',
     api: 'https://155api.com/api.php/provide/vod/',
     ext: '',
@@ -570,7 +570,7 @@ const pinnedRows = [
   {
     status: 'ok',
     key: 'TX',
-    name: '???????',
+    name: '腾讯视频｜追劇',
     site: '',
     api: 'https://file.icve.com.cn/file_doc/249/899/3E7E0C8A023B624CEC6BDCC200F06F02.js',
     ext: 'https://cdn.waimaimingtang.com/file/images/bwc/20251023002144-0e40887294.js',
@@ -585,8 +585,8 @@ const pinnedRows = [
   },
   {
     status: 'ok',
-    key: '????',
-    name: '???????',
+    key: '雲飛影视',
+    name: '雲飛影视｜追劇',
     site: '',
     api: 'http://cj.lziapi.com/api.php/provide/vod/',
     ext: '',
@@ -602,8 +602,8 @@ const pinnedRows = [
   },
   {
     status: 'ok',
-    key: '????',
-    name: '?????',
+    key: '七星短剧',
+    name: '七星丨短剧',
     site: '',
     api: 'https://mpimg.cn/down.php/48e9d346cdf6da376c53136693bec95a.py',
     ext: '',
@@ -692,7 +692,7 @@ const sites = dedupedRows.map((row, index) => {
   row.adult = isAdultSource({ ...row, key, name: row.name || key, categories });
   const site = {
     key,
-    name: row.name && /[?|]/.test(row.name) ? row.name : `${cleanConfigSourceName(row.name || key, key)}???`,
+    name: row.name && /[｜|]/.test(row.name) ? row.name : `${cleanConfigSourceName(row.name || key, key)}｜追劇`,
     type: Number(row.type ?? apiType(row.api)),
     api: normalizeApi(row.api),
     searchable: Number(row.searchable ?? 1),
