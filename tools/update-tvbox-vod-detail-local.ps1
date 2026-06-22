@@ -1,7 +1,7 @@
 param(
     [string]$RepoRoot = "",
     [string]$TvboxUrl = "https://raw.githubusercontent.com/SYLONG7708/TV/main/sources/TVBOX",
-    [int]$UpdateIntervalDays = 2,
+    [int]$UpdateIntervalDays = 1,
     [int]$ScheduleHour = 2,
     [int]$PageSize = 100,
     [int]$PageConcurrency = 3,
@@ -14,7 +14,7 @@ param(
     [int]$MaxSourceSeconds = 10800,
     [double]$SecondsPerPageEstimate = 1.0,
     [int]$IdleSourceSeconds = 900,
-    [int]$RefreshLeadingPages = 3,
+    [int]$RefreshLeadingPages = 0,
     [int]$MaxFailedPagesPerSource = 120,
     [bool]$CheckUpstreamFreshness = $true,
     [int]$FreshnessTimeoutMs = 12000,
@@ -179,7 +179,7 @@ function Test-UpstreamFreshnessDue {
         $report = Get-Content -LiteralPath $freshnessReportPath -Raw -Encoding UTF8 | ConvertFrom-Json
         if ([bool]$report.hasNewerUpstream) {
             $script:LastTriggerReason = "upstream-date"
-            Write-Log "Upstream VOD dates are newer than saved indexes; update will run before the 2-day schedule."
+            Write-Log "Upstream VOD dates are newer than saved indexes; update will run before the daily schedule."
             return $true
         }
 
@@ -256,7 +256,7 @@ try {
         $response = Invoke-WebRequest -Uri $TvboxUrl -UseBasicParsing -TimeoutSec 60
         $text = [string]$response.Content
         $tvboxConfig = $text | ConvertFrom-Json
-        $tvboxConfig.warningText = "OKTV all on-demand sources. Auto refreshed every 2 days or sooner when upstream VOD update dates change; full VOD pages are stored under docs/data/vod-detail."
+        $tvboxConfig.warningText = "OKTV all on-demand sources. Auto refreshed daily at 02:00 or sooner when upstream VOD update dates change; existing detail pages are preserved and new pages are appended under docs/data/vod-detail."
         $text = $tvboxConfig | ConvertTo-Json -Depth 16
         [System.IO.File]::WriteAllText($sourceSnapshotPath, $text, $utf8NoBom)
         [System.IO.File]::WriteAllText($localTvboxPath, $text, $utf8NoBom)

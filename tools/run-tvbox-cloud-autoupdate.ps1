@@ -2,7 +2,7 @@ param(
     [string]$RepoRoot = "",
     [string]$PagesRoot = "C:\Users\Administrator\TV-gh-pages",
     [string]$AndroidProject = "",
-    [int]$UpdateIntervalDays = 2,
+    [int]$UpdateIntervalDays = 1,
     [switch]$ForceUpdate,
     [switch]$SkipGitPush,
     [switch]$SkipApkBuild
@@ -43,6 +43,41 @@ function Copy-IfExists([string]$Source, [string]$Destination) {
     if (-not (Test-Path -LiteralPath $Source)) { return }
     New-Item -ItemType Directory -Force -Path (Split-Path -Parent $Destination) | Out-Null
     Copy-Item -LiteralPath $Source -Destination $Destination -Force
+}
+
+function Invoke-Git([string]$WorkingDirectory, [string[]]$Arguments) {
+    Push-Location $WorkingDirectory
+    try {
+        & git @Arguments
+        if ($LASTEXITCODE -ne 0) {
+            throw "git $($Arguments -join ' ') failed with exit code $LASTEXITCODE in $WorkingDirectory"
+        }
+    } finally {
+        Pop-Location
+    }
+}
+
+function Test-GitWorkTree([string]$WorkingDirectory) {
+    Push-Location $WorkingDirectory
+    try {
+        & git rev-parse --is-inside-work-tree *> $null
+        return $LASTEXITCODE -eq 0
+    } finally {
+        Pop-Location
+    }
+}
+
+function Test-GitHasStagedChanges([string]$WorkingDirectory) {
+    Push-Location $WorkingDirectory
+    try {
+        & git diff --cached --quiet
+        $exitCode = $LASTEXITCODE
+        if ($exitCode -eq 0) { return $false }
+        if ($exitCode -eq 1) { return $true }
+        throw "git diff --cached --quiet failed with exit code $exitCode in $WorkingDirectory"
+    } finally {
+        Pop-Location
+    }
 }
 
 function Resolve-AndroidProjectPath([string]$ProjectPath) {
@@ -139,34 +174,6 @@ try {
         Copy-IfExists $builtApk (Join-Path $PagesRoot "releases\$apkName")
     }
 
-    if (-not $SkipGitPush) {
-        Push-Location $RepoRoot
-        try {
-            & git add docs sources tools releases
-            if (& git diff --cached --quiet) {
-                Write-Log "No main-branch changes to commit."
-            } else {
-                & git commit -m "Refresh TVBOX search indexes and car APK"
-                & git push origin HEAD:main
-            }
-        } finally {
-            Pop-Location
-        }
-
-        Push-Location $PagesRoot
-        try {
-            & git add docs sources releases
-            if (& git diff --cached --quiet) {
-                Write-Log "No gh-pages changes to commit."
-            } else {
-                & git commit -m "Publish iPhone performance search update"
-                & git push origin gh-pages
-            }
-        } finally {
-            Pop-Location
-        }
-    }
-
     $state = [ordered]@{
         status = "success"
         finishedAt = (Get-Date).ToString("o")
@@ -177,6 +184,31 @@ try {
         script = "tools/run-tvbox-cloud-autoupdate.ps1"
     }
     [IO.File]::WriteAllText((Join-Path $RepoRoot "docs\data\tvbox-cloud-autoupdate-state.json"), (($state | ConvertTo-Json -Depth 4) + "`n"), $utf8NoBom)
+
+    if (-not $SkipGitPush) {
+        if (-not (Test-GitWorkTree $RepoRoot)) {
+            throw "RepoRoot is not a git worktree: $RepoRoot"
+        }
+        Invoke-Git $RepoRoot @("add", "docs", "sources", "tools", "releases")
+        if (Test-GitHasStagedChanges $RepoRoot) {
+            Invoke-Git $RepoRoot @("commit", "-m", "Refresh TVBOX search indexes and car APK")
+            Invoke-Git $RepoRoot @("push", "origin", "HEAD:main")
+        } else {
+            Write-Log "No main-branch changes to commit."
+        }
+
+        if (-not (Test-GitWorkTree $PagesRoot)) {
+            throw "PagesRoot is not a git worktree: $PagesRoot"
+        }
+        Invoke-Git $PagesRoot @("add", "docs", "sources", "releases")
+        if (Test-GitHasStagedChanges $PagesRoot) {
+            Invoke-Git $PagesRoot @("commit", "-m", "Publish iPhone performance search update")
+            Invoke-Git $PagesRoot @("push", "origin", "gh-pages")
+        } else {
+            Write-Log "No gh-pages changes to commit."
+        }
+    }
+
     Write-Log "OKTV TVBOX cloud auto update finished."
 } catch {
     Write-Log "ERROR: $($_.Exception.Message)"

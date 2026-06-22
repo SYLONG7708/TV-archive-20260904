@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # 02:00 Asia/Shanghai. The job checks the last successful update state
-    # and only refreshes after three days; failed attempts retry the next day.
+    # and refreshes once per day; failed attempts retry the next day.
     - cron: "0 18 * * *"
 
 permissions:
@@ -22,12 +22,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check three-day update window
+      - name: Check daily update window
         id: gate
         shell: pwsh
         run: |
           $statePath = ".\docs\data\lunatv-vod-update-state.json"
-          $intervalDays = 3
+          $intervalDays = 1
           $scheduleHour = 2
           $timeZone = [TimeZoneInfo]::FindSystemTimeZoneById("China Standard Time")
           $nowUtc = [DateTimeOffset]::UtcNow
@@ -150,7 +150,7 @@ jobs:
         shell: pwsh
         run: |
           $statePath = ".\docs\data\lunatv-vod-update-state.json"
-          $intervalDays = 3
+          $intervalDays = 1
           $scheduleHour = 2
           $timeZone = [TimeZoneInfo]::FindSystemTimeZoneById("China Standard Time")
           $nowUtc = [DateTimeOffset]::UtcNow

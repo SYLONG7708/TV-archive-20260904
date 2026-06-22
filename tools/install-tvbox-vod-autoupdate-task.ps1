@@ -18,7 +18,7 @@ if (-not (Test-Path -LiteralPath $scriptPath)) {
     throw "Local TVBOX VOD updater script not found: $scriptPath"
 }
 
-$actionArgs = '-NoProfile -ExecutionPolicy Bypass -File "{0}" -RepoRoot "{1}" -UpdateIntervalDays 2 -CheckUpstreamFreshness 1 -MaxFailedPagesPerSource 120' -f $scriptPath, $RepoRoot
+$actionArgs = '-NoProfile -ExecutionPolicy Bypass -File "{0}" -RepoRoot "{1}" -UpdateIntervalDays 1 -CheckUpstreamFreshness 1 -MaxFailedPagesPerSource 120' -f $scriptPath, $RepoRoot
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $actionArgs
 $triggerAt = $null
 $statePath = Join-Path $RepoRoot "docs\data\tvbox-vod-update-state.json"
@@ -42,7 +42,7 @@ if ($null -eq $triggerAt) {
     }
 }
 $triggers = @(
-    (New-ScheduledTaskTrigger -Daily -DaysInterval 2 -At $triggerAt),
+    (New-ScheduledTaskTrigger -Daily -At $triggerAt),
     (New-ScheduledTaskTrigger -AtStartup)
 )
 $settings = New-ScheduledTaskSettingsSet `
@@ -60,13 +60,13 @@ Register-ScheduledTask `
     -Trigger $triggers `
     -Settings $settings `
     -Principal $principal `
-    -Description "Check and continue the full OKTV TVBOX VOD page archive at startup and every two days, or sooner when upstream VOD update dates are newer. Existing VOD detail pages are reused; missing/new pages are saved without duplicating old page files." `
+    -Description "Check and continue the full OKTV TVBOX VOD page archive at startup and every day at 02:00, or sooner when upstream VOD update dates are newer. Existing VOD detail pages are reused; missing/new pages are saved without duplicating old page files." `
     -Force | Out-Null
 
 Write-Host "Registered scheduled task: $TaskName"
 Write-Host "Repo: $RepoRoot"
 Write-Host "Script: $scriptPath"
-Write-Host "Trigger: startup check and every 2 days at $($triggerAt.ToString("HH:mm")); upstream VOD date changes also trigger an update"
+Write-Host "Trigger: startup check and every day at $($triggerAt.ToString("HH:mm")); upstream VOD date changes also trigger an update"
 
 if ($RunNow) {
     Start-ScheduledTask -TaskName $TaskName

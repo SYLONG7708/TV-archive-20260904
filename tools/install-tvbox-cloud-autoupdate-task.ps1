@@ -24,10 +24,10 @@ if ($triggerAt -le (Get-Date)) {
     $triggerAt = $triggerAt.AddDays(1)
 }
 
-$actionArgs = '-NoProfile -ExecutionPolicy Bypass -File "{0}" -RepoRoot "{1}" -PagesRoot "{2}" -UpdateIntervalDays 2' -f $scriptPath, $RepoRoot, $PagesRoot
+$actionArgs = '-NoProfile -ExecutionPolicy Bypass -File "{0}" -RepoRoot "{1}" -PagesRoot "{2}" -UpdateIntervalDays 1' -f $scriptPath, $RepoRoot, $PagesRoot
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $actionArgs
 $triggers = @(
-    (New-ScheduledTaskTrigger -Daily -DaysInterval 2 -At $triggerAt),
+    (New-ScheduledTaskTrigger -Daily -At $triggerAt),
     (New-ScheduledTaskTrigger -AtStartup)
 )
 $settings = New-ScheduledTaskSettingsSet `
@@ -44,12 +44,12 @@ Register-ScheduledTask `
     -Trigger $triggers `
     -Settings $settings `
     -Principal $principal `
-    -Description "Every 2 days and at startup: refresh OKTV TVBOX VOD data, rebuild lean iPhone search indexes, rebuild car Android APK, and push main/gh-pages to GitHub." `
+    -Description "Every day at 02:00 and at startup: refresh OKTV TVBOX VOD data, rebuild lean iPhone search indexes, rebuild car Android APK, and push main/gh-pages to GitHub." `
     -Force | Out-Null
 
 Write-Host "Registered scheduled task: $TaskName"
 Write-Host "Script: $scriptPath"
-Write-Host "Trigger: startup and every 2 days at $($triggerAt.ToString("HH:mm"))"
+Write-Host "Trigger: startup and every day at $($triggerAt.ToString("HH:mm"))"
 
 if ($RunNow) {
     Start-ScheduledTask -TaskName $TaskName

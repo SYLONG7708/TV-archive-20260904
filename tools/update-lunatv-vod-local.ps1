@@ -4,7 +4,7 @@ param(
     [string]$SourceName = "jin18,full",
     [int]$TimeoutSec = 12,
     [int]$MaxDetailProbe = 3,
-    [int]$UpdateIntervalDays = 3,
+    [int]$UpdateIntervalDays = 1,
     [int]$ScheduleHour = 2,
     [switch]$ForceUpdate,
     [switch]$NoGitPush,

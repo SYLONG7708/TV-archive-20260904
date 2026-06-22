@@ -31,17 +31,17 @@ const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36 OKTV/1.0';
 
 const DEFAULT_EXCLUDED_SOURCE_KEYS = new Set([
-  '旺旺资源',
-  '旺旺短剧',
-  '卧龙资源',
-  '金鹰点播',
-  '华视影院',
-  '百万资源',
-  '美少女',
-  '黄AVZY',
-  '白嫖资源',
-  '丝袜资源',
-  '优优资源',
+  '????',
+  '????',
+  '????',
+  '????',
+  '????',
+  '????',
+  '???',
+  '?AVZY',
+  '????',
+  '????',
+  '????',
 ]);
 
 function withTimeout() {
@@ -509,7 +509,7 @@ const updatedConfig = {
   ...inputConfig,
   warningText:
     normalizeText(inputConfig.warningText) ||
-    'OKTV all on-demand sources. Auto refreshed every 3 days; full VOD pages are stored under docs/data/vod-detail.',
+    'OKTV all on-demand sources. Auto refreshed daily at 02:00; existing detail pages are preserved and new pages are appended under docs/data/vod-detail.',
   sites: sites.map((site, index) => updatedSite(site, results[index])),
 };
 
