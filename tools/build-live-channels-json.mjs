@@ -17,7 +17,7 @@ const output = path.resolve(args.get('output') || path.join(tvRoot, 'docs', 'dat
 const summaryOutput = path.resolve(args.get('summary') || path.join(tvRoot, 'docs', 'data', 'source-summary.json'));
 const minValidSeconds = Number(args.get('minValidSeconds') || 600);
 const nowEpoch = Math.floor(Date.now() / 1000);
-const liveNote = '直播來源由 sources/live-stable.txt 重建為 docs/data/live-channels.json，YouTube 簽名 HLS 過期前會被本機排程重新刷新。';
+const liveNote = '直播來源由 sources/live-stable.txt 重建為 docs/data/live-channels.json，YouTube 簽名 HLS 會由自動排程重新刷新。';
 
 function normalizeText(value) {
   return String(value || '').replace(/^\uFEFF/, '').trim();

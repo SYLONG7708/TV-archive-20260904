@@ -15,6 +15,7 @@ param(
     [int]$SegmentProbeBytes = 262144,
     [int]$MinSegmentBytes = 65536,
     [int]$MinSegmentKbps = 600,
+    [int]$MinPlaylistEntries = 1,
     [int]$RetryCount = 2,
     [switch]$DownloadYtDlp,
     [switch]$SkipResolve,
@@ -152,6 +153,17 @@ function Add-LinesForGroup($Lines, [string]$GroupName, $Rows) {
         $Lines.Add("$name,$($row.StreamUrl)")
     }
     $Lines.Add("")
+}
+
+function Read-Utf8LinesOrEmpty([string]$Path) {
+    if (Test-Path -LiteralPath $Path) {
+        return @([System.IO.File]::ReadAllLines($Path, [System.Text.UTF8Encoding]::new($false)))
+    }
+    return @()
+}
+
+function Count-LiveEntries($Lines) {
+    return @($Lines | Where-Object { $_ -match '^\s*[^,#][^,]*,\s*https?://' }).Count
 }
 
 function Resolve-ChildUrl([string]$BaseUrl, [string]$Line) {
@@ -358,6 +370,21 @@ while ($youtubeLines.Count -gt 0 -and $youtubeLines[$youtubeLines.Count - 1] -eq
     $youtubeLines.RemoveAt($youtubeLines.Count - 1)
 }
 
+$candidatePlaylistEntries = $playlistResolved.Count
+$outputsPreserved = $false
+if ($candidatePlaylistEntries -lt $MinPlaylistEntries) {
+    $existingYoutubeLines = Read-Utf8LinesOrEmpty $YoutubeOutput
+    $existingYoutubeEntries = Count-LiveEntries $existingYoutubeLines
+    if ($existingYoutubeEntries -gt 0) {
+        Write-Host "Only $candidatePlaylistEntries playable entries resolved; preserving $existingYoutubeEntries existing YouTube playlist entries."
+        $youtubeLines = New-Object System.Collections.Generic.List[string]
+        foreach ($line in $existingYoutubeLines) { $youtubeLines.Add($line) }
+        $outputsPreserved = $true
+    } else {
+        throw "Only $candidatePlaylistEntries playable entries resolved and no existing YouTube playlist is available to preserve."
+    }
+}
+
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $YoutubeOutput) | Out-Null
 [System.IO.File]::WriteAllLines($YoutubeOutput, $youtubeLines, [System.Text.UTF8Encoding]::new($false))
 
@@ -381,9 +408,12 @@ $report = [pscustomobject]@{
     failed = $failed.Count
     workflowSuccessRate = if ($channels.Count) { [Math]::Round(($resolved.Count / $channels.Count) * 100, 2) } else { 0 }
     hlsSuccessRate = if ($channels.Count -and -not $SkipResolve) { [Math]::Round((@($resolved | Where-Object { $_.Ok }).Count / $channels.Count) * 100, 2) } else { 0 }
-    playlistEntries = $playlistResolved.Count
+    candidatePlaylistEntries = $candidatePlaylistEntries
+    playlistEntries = Count-LiveEntries $youtubeLines
     removedFromPlaylist = if ($KeepFallbackInPlaylist) { 0 } else { @($resolved | Where-Object { -not $_.Ok }).Count }
     playlistPolicy = if ($KeepFallbackInPlaylist) { "include-fallback" } else { "playable-only" }
+    minPlaylistEntries = $MinPlaylistEntries
+    outputsPreserved = $outputsPreserved
     mode = if ($SkipResolve) { "no-cookies-fallback" } elseif (-not [string]::IsNullOrWhiteSpace($CookiesFile) -and (Test-Path -LiteralPath $CookiesFile)) { "cookies-file-hls-resolve" } elseif (-not [string]::IsNullOrWhiteSpace($CookiesFromBrowser)) { "browser-cookies-hls-resolve" } else { "best-effort-hls-resolve" }
     note = if ($SkipResolve) { "GitHub runner has no YouTube cookies, so unresolved YouTube watch URLs are removed from the playable playlist. Add YOUTUBE_COOKIES_B64 to resolve HLS URLs." } else { "" }
     skipResolve = [bool]$SkipResolve

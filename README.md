@@ -64,11 +64,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\update-youtube-live.
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\install-youtube-live-autoupdate-task.ps1
 ```
 
-### No-cookies 100% workflow mode
+### No-cookies GitHub Actions mode
 
-When GitHub runner has no YouTube cookies, the workflow leaves `sources/live-stable.txt` unchanged to avoid wiping the locally refreshed playable HLS URLs. The Windows scheduled task is the primary updater for this repo unless `YOUTUBE_COOKIES_B64` is configured on GitHub.
+When GitHub runner has no YouTube cookies, the workflow still runs public best-effort extraction on the schedule. If fewer than 10 playable HLS entries are resolved, `tools/update-youtube-live.ps1` preserves the existing checked-in playlist instead of wiping `sources/live-stable.txt`.
 
-This means the playlist update succeeded and avoided unplayable watch-page URLs. It does not mean short-lived HLS URLs were extracted. To improve `hlsSuccessRate`, set `YOUTUBE_COOKIES_B64`.
+This means scheduled runs can auto-detect changed YouTube live signals and commit them when they differ, while still protecting the playlist from YouTube bot-block or regional failures. To improve `hlsSuccessRate`, set `YOUTUBE_COOKIES_B64`.
 
 ### GitHub Actions cookies
 

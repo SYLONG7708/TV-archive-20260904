@@ -10,6 +10,9 @@ on:
       - "sources/live-base.txt"
       - "sources/live-verified-only.txt"
       - "tools/update-youtube-live.ps1"
+      - "tools/update-youtube-live-local.ps1"
+      - "tools/build-live-channels-json.mjs"
+      - "docs/iphone/index.html"
       - ".github/workflows/update-youtube-live.yml"
   schedule:
     - cron: "17 */2 * * *"
@@ -40,16 +43,12 @@ jobs:
             "YOUTUBE_COOKIES_FILE=$cookieFile" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
             Write-Host "YouTube cookies restored from repository secret."
           } else {
-            Write-Host "YOUTUBE_COOKIES_B64 secret is not set; GitHub runner will not rewrite the playable playlist."
+            Write-Host "YOUTUBE_COOKIES_B64 secret is not set; using public best-effort YouTube extraction."
           }
 
       - name: Refresh YouTube live URLs
         shell: pwsh
         run: |
-          if ([string]::IsNullOrWhiteSpace($env:YOUTUBE_COOKIES_FILE)) {
-            Write-Host "No YouTube cookies on GitHub runner. Scheduled runs will wait for the local updater; push/manual runs can rebuild checked-in public JSON."
-            exit 0
-          }
           $args = @(
             "-NoProfile",
             "-ExecutionPolicy", "Bypass",
@@ -63,13 +62,15 @@ jobs:
             "-SegmentProbeBytes", "262144",
             "-MinSegmentBytes", "65536",
             "-MinSegmentKbps", "600",
+            "-MinPlaylistEntries", "10",
             "-RetryCount", "1"
           )
-          $args += @("-CookiesFile", $env:YOUTUBE_COOKIES_FILE)
+          if (-not [string]::IsNullOrWhiteSpace($env:YOUTUBE_COOKIES_FILE)) {
+            $args += @("-CookiesFile", $env:YOUTUBE_COOKIES_FILE)
+          }
           powershell @args
 
       - name: Rebuild public live JSON
-        if: env.YOUTUBE_COOKIES_FILE != '' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         shell: pwsh
         run: |
           node .\tools\build-live-channels-json.mjs `
@@ -80,7 +81,6 @@ jobs:
             --minValidSeconds 600
 
       - name: Commit changes
-        if: env.YOUTUBE_COOKIES_FILE != '' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
@@ -94,20 +94,21 @@ jobs:
             git push
           }
 
-      - name: Publish GitHub Pages live data
-        if: env.YOUTUBE_COOKIES_FILE != '' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+      - name: Publish GitHub Pages live page data
         shell: pwsh
         run: |
           git fetch origin gh-pages
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages"
           git worktree add $pages origin/gh-pages
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\data") | Out-Null
+          New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\iphone") | Out-Null
           Copy-Item -LiteralPath ".\docs\data\live-channels.json" -Destination (Join-Path $pages "docs\data\live-channels.json") -Force
           Copy-Item -LiteralPath ".\docs\data\source-summary.json" -Destination (Join-Path $pages "docs\data\source-summary.json") -Force
+          Copy-Item -LiteralPath ".\docs\iphone\index.html" -Destination (Join-Path $pages "docs\iphone\index.html") -Force
           Push-Location $pages
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data/live-channels.json docs/data/source-summary.json
+          git add docs/data/live-channels.json docs/data/source-summary.json docs/iphone/index.html
           if (git diff --cached --quiet) {
             Write-Host "No gh-pages live data changes."
           } else {

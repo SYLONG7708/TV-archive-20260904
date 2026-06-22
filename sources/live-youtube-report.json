@@ -1,19 +1,22 @@
 {
-    "generatedAt":  "2026-06-16T14:22:25.0298049+08:00",
+    "generatedAt":  "2026-06-22T23:52:10.4647020+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  68,
-    "fallback":  44,
-    "failed":  44,
+    "playable":  64,
+    "fallback":  48,
+    "failed":  48,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  60.71,
-    "playlistEntries":  68,
-    "removedFromPlaylist":  44,
+    "hlsSuccessRate":  57.14,
+    "candidatePlaylistEntries":  64,
+    "playlistEntries":  64,
+    "removedFromPlaylist":  48,
     "playlistPolicy":  "playable-only",
+    "minPlaylistEntries":  10,
+    "outputsPreserved":  false,
     "mode":  "best-effort-hls-resolve",
     "note":  "",
     "skipResolve":  false,
@@ -25,7 +28,7 @@
     "minSegmentBytes":  65536,
     "minSegmentKbps":  600,
     "retryCount":  1,
-    "ytDlp":  "C:\\Users\\Administrator\\TV-iphone-source-categories\\.tools\\yt-dlp.exe",
+    "ytDlp":  "C:\\Users\\Administrator\\TV-codex\\.tools\\yt-dlp.exe",
     "cookiesEnabled":  false,
     "cookiesFromBrowser":  "",
     "groups":  [
@@ -91,6 +94,13 @@
                          "Error":  "ERROR: [youtube] QsGswQvRmtU: This live stream recording is not available."
                      },
                      {
+                         "Order":  11,
+                         "Group":  "YouTube新聞台",
+                         "Name":  "鳳凰衛視資訊台",
+                         "PageUrl":  "https://www.youtube.com/watch?v=fN9uYWCjQaw",
+                         "Error":  "ERROR: [youtube] fN9uYWCjQaw: This live stream recording is not available."
+                     },
+                     {
                          "Order":  14,
                          "Group":  "YouTube新聞台",
                          "Name":  "TVBS NEWS",
@@ -110,6 +120,20 @@
                          "Name":  "東森購物台CH47",
                          "PageUrl":  "https://www.youtube.com/watch?v=vZHktiRowRg",
                          "Error":  "ERROR: [youtube] vZHktiRowRg: Requested format is not available. Use --list-formats for a list of available formats"
+                     },
+                     {
+                         "Order":  32,
+                         "Group":  "YouTube購物台",
+                         "Name":  "美好購物1台",
+                         "PageUrl":  "https://www.youtube.com/watch?v=8TBJDKRcg6c",
+                         "Error":  "ERROR: [youtube] 8TBJDKRcg6c: This live stream recording is not available."
+                     },
+                     {
+                         "Order":  34,
+                         "Group":  "YouTube綜合娛樂",
+                         "Name":  "信大電視台",
+                         "PageUrl":  "https://www.youtube.com/watch?v=3MakY86sYn8",
+                         "Error":  "ERROR: [youtube] 3MakY86sYn8: This live stream recording is not available."
                      },
                      {
                          "Order":  35,
@@ -207,7 +231,7 @@
                          "Group":  "YouTube亞洲新聞",
                          "Name":  "JapaNews24",
                          "PageUrl":  "https://www.youtube.com/watch?v=D1uFPfCvtRI",
-                         "Error":  "ERROR: [youtube] D1uFPfCvtRI: Requested format is not available. Use --list-formats for a list of available formats"
+                         "Error":  "ERROR: [youtube] D1uFPfCvtRI: Private video. Sign in if you\u0027ve been granted access to this video. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
                      },
                      {
                          "Order":  65,
@@ -341,6 +365,13 @@
                          "Name":  "佛光山人間衛視",
                          "PageUrl":  "https://www.youtube.com/watch?v=kyjN8rvSnio",
                          "Error":  "ERROR: [youtube] kyjN8rvSnio: Requested format is not available. Use --list-formats for a list of available formats"
+                     },
+                     {
+                         "Order":  94,
+                         "Group":  "YouTube音樂體育風景",
+                         "Name":  "earthTV",
+                         "PageUrl":  "https://www.youtube.com/watch?v=r1K7DyQn3jg",
+                         "Error":  "ERROR: [youtube] r1K7DyQn3jg: We\u0027re experiencing technical difficulties."
                      },
                      {
                          "Order":  95,

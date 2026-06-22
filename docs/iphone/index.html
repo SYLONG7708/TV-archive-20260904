@@ -1096,6 +1096,11 @@
         return `${ONLINE_DATA_BASE}${match[1]}?ts=${Date.now()}`;
       }
 
+      function cacheBustedUrl(url) {
+        const value = String(url || '');
+        return `${value}${value.includes('?') ? '&' : '?'}ts=${Date.now()}`;
+      }
+
       async function responseJson(res, target) {
         if (!/\.gz(?:$|[?#])/i.test(target)) return await res.json();
         const buffer = await res.arrayBuffer();
@@ -1120,18 +1125,20 @@
       async function getJson(url, fallback) {
         const online = onlineDataUrl(url);
         const dataPath = String(url || '').match(/(?:^|\/)data\/(.+?)(?:[?#].*)?$/)?.[1] || '';
+        const freshData = /^(?:live-channels|source-summary)\.json$/i.test(dataPath);
+        const localUrl = freshData ? cacheBustedUrl(url) : url;
         const preferOnline = /^(?:vod-index|vod-detail|vod-search)\//i.test(dataPath);
         const capacitorNative = Boolean(window.Capacitor?.isNativePlatform?.());
         const localHost = !capacitorNative && /^(?:localhost|127\.0\.0\.1|::1)$/i.test(location.hostname);
         const preferLocal = localHost || (!preferOnline && location.hostname === 'sylong7708.github.io');
         const urls = online
           ? preferLocal
-            ? [url, online]
-            : [online, url]
-          : [url];
+            ? [localUrl, online]
+            : [online, localUrl]
+          : [localUrl];
         for (const target of urls) {
           try {
-            const res = await fetch(target, { cache: 'default' });
+            const res = await fetch(target, { cache: freshData ? 'no-store' : 'default' });
             if (!res.ok) continue;
             return await responseJson(res, target);
           } catch {

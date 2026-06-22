@@ -131,6 +131,7 @@ try {
         "-SegmentProbeBytes", "262144",
         "-MinSegmentBytes", "65536",
         "-MinSegmentKbps", "600",
+        "-MinPlaylistEntries", "10",
         "-RetryCount", "1"
     )
 
