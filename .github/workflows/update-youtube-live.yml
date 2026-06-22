@@ -87,7 +87,28 @@ jobs:
           }
           powershell @args
 
+      - name: Read live refresh report
+        id: live_report
+        shell: pwsh
+        run: |
+          $preserved = "False"
+          $entries = "0"
+          $reportPath = ".\sources\live-youtube-report.json"
+          if (Test-Path -LiteralPath $reportPath) {
+            $report = Get-Content -LiteralPath $reportPath -Raw -Encoding UTF8 | ConvertFrom-Json
+            $preserved = [string][bool]$report.outputsPreserved
+            $entries = [string][int]$report.playlistEntries
+            Write-Host "Playlist entries: $entries; outputs preserved: $preserved"
+          } else {
+            Write-Host "Live refresh report was not found."
+          }
+          "LIVE_OUTPUTS_PRESERVED=$preserved" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "LIVE_PLAYLIST_ENTRIES=$entries" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "outputs_preserved=$preserved" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          "playlist_entries=$entries" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
       - name: Rebuild public live JSON
+        if: github.event_name != 'schedule' || steps.live_report.outputs.outputs_preserved != 'True'
         shell: pwsh
         run: |
           node .\tools\build-live-channels-json.mjs `
@@ -98,6 +119,7 @@ jobs:
             --minValidSeconds 600
 
       - name: Commit changes
+        if: github.event_name != 'schedule' || steps.live_report.outputs.outputs_preserved != 'True'
         shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
@@ -112,6 +134,7 @@ jobs:
           }
 
       - name: Publish GitHub Pages live page data
+        if: github.event_name != 'schedule' || steps.live_report.outputs.outputs_preserved != 'True'
         shell: pwsh
         run: |
           git fetch origin gh-pages
