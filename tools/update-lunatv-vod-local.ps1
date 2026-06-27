@@ -344,7 +344,7 @@ try {
             --skipExistingPages true `
             --keepPartialPages true `
             --refreshLeadingPages 2 `
-            --maxNewPagesPerSource 100 `
+            --maxNewPagesPerSource 10 `
             --maxFailedPages 20 `
             --detailOnly true
     }
