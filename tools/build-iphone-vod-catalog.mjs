@@ -713,8 +713,31 @@ async function indexSource(source) {
   return { source, items };
 }
 
-const allSources = await loadSources();
 const existingCatalog = mergeExisting ? await readJson(output, null) : null;
+const existingSourceById = new Map((existingCatalog?.sources || []).map((source) => [source.id, source]));
+const existingSourceByApi = new Map();
+for (const source of existingCatalog?.sources || []) {
+  const apiKey = normalizeApi(source.api);
+  if (apiKey && !existingSourceByApi.has(apiKey)) existingSourceByApi.set(apiKey, source);
+}
+
+function preserveExistingSourceIdentity(source) {
+  if (!mergeExisting) return source;
+  const existingSource = existingSourceByApi.get(normalizeApi(source.api));
+  if (!existingSource || existingSource.id === source.id) return source;
+  return {
+    ...source,
+    id: existingSource.id,
+    key: existingSource.key || source.key,
+    detailMode: existingSource.detailMode || source.detailMode,
+    detailPathPattern: existingSource.detailPathPattern || source.detailPathPattern,
+    indexMode: existingSource.indexMode || source.indexMode,
+    indexPath: existingSource.indexPath || source.indexPath,
+    preservedIdentityFrom: source.id,
+  };
+}
+
+const allSources = (await loadSources()).map(preserveExistingSourceIdentity);
 const indexableSources = allSources
   .filter((source) => source.indexable)
   .filter((source) => includeAdult || !source.adult)
@@ -723,7 +746,6 @@ const indexableSources = allSources
 
 const indexed = await mapLimit(indexableSources, concurrency, indexSource);
 const indexedById = new Map(indexed.map(({ source }) => [source.id, source]));
-const existingSourceById = new Map((existingCatalog?.sources || []).map((source) => [source.id, source]));
 const updatedSourceIds = new Set(indexed.map(({ source }) => source.id));
 
 function sourceView(source) {

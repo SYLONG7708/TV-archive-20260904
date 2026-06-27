@@ -329,6 +329,7 @@ try {
             --maxCategoriesPerSource 8 `
             --includeAdult true `
             --includeLegacySources false `
+            --mergeExisting true `
             --timeoutMs 8000
     }
 
@@ -361,7 +362,7 @@ try {
             --skipExistingPages true `
             --keepPartialPages true `
             --refreshLeadingPages 2 `
-            --maxNewPagesPerSource 300 `
+            --maxNewPagesPerSource 100 `
             --maxFailedPages 20 `
             --detailOnly true
     }

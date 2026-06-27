@@ -89,6 +89,7 @@ jobs:
             --maxCategoriesPerSource 8 `
             --includeAdult true `
             --includeLegacySources false `
+            --mergeExisting true `
             --timeoutMs 8000
           node .\tools\build-quantum-lzi-full.mjs `
             --repoRoot . `
@@ -113,7 +114,7 @@ jobs:
             --skipExistingPages true `
             --keepPartialPages true `
             --refreshLeadingPages 2 `
-            --maxNewPagesPerSource 300 `
+            --maxNewPagesPerSource 100 `
             --maxFailedPages 20 `
             --detailOnly true
           node .\tools\build-type3-spider-catalog.mjs `
@@ -255,10 +256,24 @@ jobs:
           Push-Location $pages
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config http.postBuffer 524288000
+          git config http.version HTTP/1.1
           git add docs/iphone docs/data docs/assets
           if (git diff --cached --quiet) {
             Write-Host "No GitHub Pages public data changes."
           } else {
             git commit -m "Publish auto refreshed OKTV data"
-            git push origin HEAD:gh-pages
+            $pushed = $false
+            for ($attempt = 1; $attempt -le 3; $attempt++) {
+              git push origin HEAD:gh-pages
+              if ($LASTEXITCODE -eq 0) {
+                $pushed = $true
+                break
+              }
+              Write-Warning "gh-pages push failed on attempt $attempt; retrying after backoff."
+              Start-Sleep -Seconds (30 * $attempt)
+            }
+            if (-not $pushed) {
+              throw "gh-pages push failed after 3 attempts."
+            }
           }

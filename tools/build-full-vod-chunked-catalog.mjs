@@ -214,6 +214,15 @@ function slugify(value, fallback = 'source') {
   );
 }
 
+function detailDirFromPattern(pattern) {
+  const match = normalizeText(pattern).match(/vod-detail\/([^/]+)\/page-\{page\}\.json\.gz/i);
+  return match?.[1] || '';
+}
+
+function sourceDetailSlug(source) {
+  return detailDirFromPattern(source.detailPathPattern) || slugify(`${source.host || source.key || source.name}-${source.id}`, 'source');
+}
+
 function imageUrl(baseUrl, value) {
   const raw = normalizeText(value);
   if (!raw) return '';
@@ -465,7 +474,7 @@ function matchesSource(source) {
 }
 
 async function indexSource(source) {
-  const sourceSlug = slugify(`${source.host || source.key || source.name}-${source.id}`, 'source');
+  const sourceSlug = sourceDetailSlug(source);
   const sourceDir = path.join(detailRoot, sourceSlug);
   const tempDir = path.join(detailRoot, `.tmp-${sourceSlug}-${process.pid}-${Date.now()}`);
 
@@ -680,7 +689,7 @@ const results = await mapLimit(targetSources, sourceConcurrency, async (source) 
     return await indexSource(source);
   } catch (error) {
     console.warn(`${source.name}: failed: ${error.message}`);
-    const failedSlug = slugify(`${source.host || source.key || source.name}-${source.id}`, 'source');
+    const failedSlug = sourceDetailSlug(source);
     if (!appendDetailPages) {
       await fs.rm(path.join(detailRoot, failedSlug), { recursive: true, force: true });
     }

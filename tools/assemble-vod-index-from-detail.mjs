@@ -60,7 +60,8 @@ function compactItem(item) {
 }
 
 function sourceSlug(source) {
-  return slugify(`${source.host || source.key || source.name}-${source.id}`, 'source');
+  const match = normalizeText(source.detailPathPattern).match(/vod-detail\/([^/]+)\/page-\{page\}\.json\.gz/i);
+  return match?.[1] || slugify(`${source.host || source.key || source.name}-${source.id}`, 'source');
 }
 
 function sourceCheck(source) {
