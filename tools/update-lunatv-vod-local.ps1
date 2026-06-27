@@ -187,9 +187,6 @@ function Sync-GhPages {
         } | ForEach-Object {
             Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $pagesRootText "docs\data") -Force
         }
-        if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail")) {
-            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
-        }
         if ($PublishFullData) {
             Write-Log "PublishFullData set; copying full vod-detail and vod-index to gh-pages."
             Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\vod-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
@@ -210,9 +207,6 @@ function Sync-GhPages {
 
         Get-ChildItem -LiteralPath (Join-Path $repoRootText "docs\data") -File | ForEach-Object {
             Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $pagesRootText "docs\data") -Force
-        }
-        if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail")) {
-            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
         }
         if ($PublishFullData) {
             Write-Log "PublishFullData set; copying full vod-detail and vod-index to gh-pages."
@@ -272,7 +266,7 @@ try {
     Invoke-Git config http.postBuffer 524288000
     Invoke-Git config http.version HTTP/1.1
 
-    $statusBefore = Invoke-Git status --porcelain
+    $statusBefore = Invoke-Git status --porcelain --untracked-files=no
     if ($statusBefore) {
         Write-Log "Working tree has existing changes; continuing without pull to avoid overwriting local work."
     } else {

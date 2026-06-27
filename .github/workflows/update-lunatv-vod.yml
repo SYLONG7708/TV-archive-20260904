@@ -21,6 +21,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            .github/workflows/update-lunatv-vod.yml
+            docs/assets/*
+            docs/iphone/*
+            docs/data/adult18-sources.json
+            docs/data/iphone-health-check-latest.csv
+            docs/data/iphone-health-check-latest.json
+            docs/data/iphone-vod-catalog.json
+            docs/data/iphone-vod-catalog-report.json
+            docs/data/live-channels.json
+            docs/data/lunatv-vod-update-state.json
+            docs/data/source-summary.json
+            docs/data/vod-sources.json
+            sources/*
+            tools/*
 
       - name: Check daily update window
         id: gate
@@ -287,9 +305,6 @@ jobs:
             $_.Name -notin @("iphone-vod-catalog.json", "iphone-vod-catalog-report.json")
           } | ForEach-Object {
             Copy-Item -Path $_.FullName -Destination (Join-Path $pages "docs\data") -Force
-          }
-          if (Test-Path -Path .\docs\data\iphone-detail) {
-            Copy-Item -Path .\docs\data\iphone-detail -Destination (Join-Path $pages "docs\data") -Recurse -Force
           }
           Write-Host "Publishing indexed vod-detail/vod-index for iPhone lazy loading."
           node .\tools\build-pages-public-catalog.mjs `
