@@ -12,10 +12,14 @@ on:
       - "tools/update-youtube-live.ps1"
       - "tools/update-youtube-live-local.ps1"
       - "tools/build-live-channels-json.mjs"
+      - "tools/build-live-signal-index.mjs"
+      - "sources/live-cleaned-backup.txt"
+      - "sources/live-signal-sources.json"
+      - "sources/live-signal-sources.csv"
       - "docs/iphone/index.html"
       - ".github/workflows/update-youtube-live.yml"
   schedule:
-    - cron: "17 */2 * * *"
+    - cron: "17 */3 * * *"
 
 permissions:
   contents: write
@@ -40,11 +44,16 @@ jobs:
             tools/update-youtube-live.ps1
             tools/update-youtube-live-local.ps1
             tools/build-live-channels-json.mjs
+            tools/build-live-signal-index.mjs
             sources/youtube-live-channels.csv
+            sources/live-base.txt
+            sources/live-cleaned-backup.txt
             sources/live-verified-only.txt
             sources/live-stable.txt
             sources/live-youtube-stable.txt
             sources/live-youtube-report.json
+            sources/live-signal-sources.json
+            sources/live-signal-sources.csv
             docs/data/live-channels.json
             docs/data/source-summary.json
             docs/iphone/index.html
@@ -118,6 +127,15 @@ jobs:
             --summary .\docs\data\source-summary.json `
             --minValidSeconds 600
 
+      - name: Build live signal source index
+        if: github.event_name != 'schedule' || steps.live_report.outputs.outputs_preserved != 'True'
+        shell: pwsh
+        run: |
+          node .\tools\build-live-signal-index.mjs `
+            --tvRoot . `
+            --json .\sources\live-signal-sources.json `
+            --csv .\sources\live-signal-sources.csv
+
       - name: Commit changes
         if: github.event_name != 'schedule' || steps.live_report.outputs.outputs_preserved != 'True'
         shell: pwsh
@@ -125,7 +143,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add sources/live-stable.txt sources/live-youtube-stable.txt sources/live-youtube-report.json `
-            docs/data/live-channels.json docs/data/source-summary.json tools/build-live-channels-json.mjs
+            sources/live-signal-sources.json sources/live-signal-sources.csv `
+            docs/data/live-channels.json docs/data/source-summary.json `
+            tools/build-live-channels-json.mjs tools/build-live-signal-index.mjs
           if (git diff --cached --quiet) {
             Write-Host "No live source changes."
           } else {

@@ -109,6 +109,12 @@ jobs:
             --outputPageSize 500 `
             --fetchRetries 3 `
             --timeoutMs 20000 `
+            --appendDetailPages true `
+            --skipExistingPages true `
+            --keepPartialPages true `
+            --refreshLeadingPages 2 `
+            --maxNewPagesPerSource 800 `
+            --maxFailedPages 20 `
             --detailOnly true
           node .\tools\build-type3-spider-catalog.mjs `
             --tvRoot . `
@@ -209,12 +215,7 @@ jobs:
           git worktree add $pages origin/gh-pages
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs") | Out-Null
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\data") | Out-Null
-          foreach ($staleDir in @("vod-detail", "vod-index", "iphone-detail")) {
-            $stalePath = Join-Path $pages "docs\data\$staleDir"
-            if (Test-Path -LiteralPath $stalePath) {
-              Remove-Item -LiteralPath $stalePath -Recurse -Force
-            }
-          }
+          Write-Host "Preserving existing public vod-detail/vod-index data; this run only adds or refreshes changed data."
           Copy-Item -Path .\docs\iphone -Destination (Join-Path $pages "docs") -Recurse -Force
           Copy-Item -Path .\docs\assets -Destination (Join-Path $pages "docs") -Recurse -Force
           Get-ChildItem -Path .\docs\data -File | Where-Object {
@@ -236,7 +237,7 @@ jobs:
             --smallCatalog (Join-Path $pages "docs\data\iphone-vod-catalog.json") `
             --output (Join-Path $pages "docs\data\iphone-vod-catalog.json") `
             --reportOutput (Join-Path $pages "docs\data\iphone-vod-catalog-report.json") `
-            --preservePreviousPublicSources false
+            --preservePreviousPublicSources true
           Push-Location $pages
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

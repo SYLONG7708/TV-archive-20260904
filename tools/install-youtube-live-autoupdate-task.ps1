@@ -22,7 +22,7 @@ $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $actionArg
 $triggers = @(
     (New-ScheduledTaskTrigger -AtLogOn),
     (New-ScheduledTaskTrigger -AtStartup),
-    (New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(5) -RepetitionInterval (New-TimeSpan -Hours 2) -RepetitionDuration (New-TimeSpan -Days 3650))
+    (New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(5) -RepetitionInterval (New-TimeSpan -Hours 3) -RepetitionDuration (New-TimeSpan -Days 3650))
 )
 $settings = New-ScheduledTaskSettingsSet `
     -StartWhenAvailable `
@@ -39,7 +39,7 @@ Register-ScheduledTask `
     -Trigger $triggers `
     -Settings $settings `
     -Principal $principal `
-    -Description "Refresh OKTV YouTube HLS live URLs at startup/logon and every 2 hours, then push playable sources to GitHub." `
+    -Description "Refresh OKTV YouTube HLS live URLs at startup/logon and every 3 hours, then push playable sources to GitHub." `
     -Force | Out-Null
 
 Write-Host "Registered scheduled task: $TaskName"

@@ -26,6 +26,7 @@ const sourceMatch = String(args.get('sourceMatch') || '').trim().toLowerCase();
 const pageSize = Number(args.get('pageSize') || 100);
 const maxSources = Number(args.get('maxSources') || 0);
 const maxPagesPerSource = Number(args.get('maxPagesPerSource') || 0);
+const maxNewPagesPerSource = Math.max(0, Number(args.get('maxNewPagesPerSource') || 0));
 const startPage = Math.max(1, Number(args.get('startPage') || 1));
 const endPage = Math.max(0, Number(args.get('endPage') || 0));
 const sourceConcurrency = Number(args.get('sourceConcurrency') || 2);
@@ -436,12 +437,16 @@ async function writeDetailPage(source, sourceSlug, pageResult, pagecount) {
   return items;
 }
 
-async function fileExists(file) {
+async function listExistingDetailPages(sourceDir) {
   try {
-    await fs.access(file);
-    return true;
+    const files = await fs.readdir(sourceDir);
+    return new Set(
+      files
+        .map((file) => Number(file.match(/^page-(\d+)\.json(?:\.gz)?$/i)?.[1] || 0))
+        .filter((page) => page > 0),
+    );
   } catch {
-    return false;
+    return new Set();
   }
 }
 
@@ -470,11 +475,18 @@ async function indexSource(source) {
   let lastPage = endPage > 0 ? Math.min(fullPagecount, endPage) : fullPagecount;
   if (maxPagesPerSource > 0) lastPage = Math.min(lastPage, startPage + maxPagesPerSource - 1);
   const requestedPages = Array.from({ length: Math.max(0, lastPage - startPage + 1) }, (_, index) => startPage + index);
-  const targetPages = [];
+  const existingPages = appendDetailPages && skipExistingPages ? await listExistingDetailPages(sourceDir) : new Set();
+  let targetPages = [];
   for (const page of requestedPages) {
-    const targetFile = path.join(sourceDir, `page-${String(page).padStart(4, '0')}.json.gz`);
-    if (appendDetailPages && skipExistingPages && page > refreshLeadingPages && (await fileExists(targetFile))) continue;
+    if (appendDetailPages && skipExistingPages && page > refreshLeadingPages && existingPages.has(page)) continue;
     targetPages.push(page);
+  }
+  const candidatePageCount = targetPages.length;
+  if (maxNewPagesPerSource > 0 && targetPages.length > maxNewPagesPerSource) {
+    const leadingPages = targetPages.filter((page) => page <= refreshLeadingPages);
+    const remainingPages = targetPages.filter((page) => page > refreshLeadingPages);
+    targetPages = [...leadingPages, ...remainingPages].slice(0, maxNewPagesPerSource);
+    console.log(`${source.name}: limiting to ${targetPages.length}/${candidatePageCount} refresh or missing pages for this run`);
   }
 
   if (targetPages.length === 0) {

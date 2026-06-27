@@ -184,7 +184,7 @@ function Sync-GhPages {
             --smallCatalog (Join-Path $pagesRootText "docs\data\iphone-vod-catalog.json") `
             --output (Join-Path $pagesRootText "docs\data\iphone-vod-catalog.json") `
             --reportOutput (Join-Path $pagesRootText "docs\data\iphone-vod-catalog-report.json") `
-            --preservePreviousPublicSources false
+            --preservePreviousPublicSources true
 
         Get-ChildItem -LiteralPath (Join-Path $repoRootText "docs\data") -File | ForEach-Object {
             Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $pagesRootText "docs\data") -Force
@@ -328,6 +328,12 @@ try {
             --outputPageSize 500 `
             --fetchRetries 3 `
             --timeoutMs 20000 `
+            --appendDetailPages true `
+            --skipExistingPages true `
+            --keepPartialPages true `
+            --refreshLeadingPages 2 `
+            --maxNewPagesPerSource 800 `
+            --maxFailedPages 20 `
             --detailOnly true
     }
 
