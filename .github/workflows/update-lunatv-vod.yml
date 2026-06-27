@@ -119,13 +119,6 @@ jobs:
             --includeLegacySources false `
             --mergeExisting true `
             --timeoutMs 8000
-          node .\tools\build-quantum-lzi-full.mjs `
-            --repoRoot . `
-            --api "https://cj.lziapi.com/api.php/provide/vod/" `
-            --outputDir .\docs\data\quantum-lzi `
-            --concurrency 18 `
-            --timeoutMs 20000 `
-            --episodePreviewLimit 3
           node .\tools\build-full-vod-chunked-catalog.mjs `
             --tvRoot . `
             --catalog .\docs\data\iphone-vod-catalog.json `
@@ -294,9 +287,6 @@ jobs:
             $_.Name -notin @("iphone-vod-catalog.json", "iphone-vod-catalog-report.json")
           } | ForEach-Object {
             Copy-Item -Path $_.FullName -Destination (Join-Path $pages "docs\data") -Force
-          }
-          if (Test-Path -Path .\docs\data\quantum-lzi) {
-            Copy-Item -Path .\docs\data\quantum-lzi -Destination (Join-Path $pages "docs\data") -Recurse -Force
           }
           if (Test-Path -Path .\docs\data\iphone-detail) {
             Copy-Item -Path .\docs\data\iphone-detail -Destination (Join-Path $pages "docs\data") -Recurse -Force

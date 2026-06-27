@@ -187,9 +187,6 @@ function Sync-GhPages {
         } | ForEach-Object {
             Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $pagesRootText "docs\data") -Force
         }
-        if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi")) {
-            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
-        }
         if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail")) {
             Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
         }
@@ -213,9 +210,6 @@ function Sync-GhPages {
 
         Get-ChildItem -LiteralPath (Join-Path $repoRootText "docs\data") -File | ForEach-Object {
             Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $pagesRootText "docs\data") -Force
-        }
-        if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi")) {
-            Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\quantum-lzi") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
         }
         if (Test-Path -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail")) {
             Copy-Item -LiteralPath (Join-Path $repoRootText "docs\data\iphone-detail") -Destination (Join-Path $pagesRootText "docs\data") -Recurse -Force
@@ -289,7 +283,6 @@ try {
     $updateScript = Join-Path $repoRootText "tools\update-lunatv-vod.ps1"
     $adultSortScript = Join-Path $repoRootText "tools\build-lunatv-adult18-sorted.mjs"
     $iphoneCatalogScript = Join-Path $repoRootText "tools\build-iphone-vod-catalog.mjs"
-    $quantumLziScript = Join-Path $repoRootText "tools\build-quantum-lzi-full.mjs"
     $fullChunkedCatalogScript = Join-Path $repoRootText "tools\build-full-vod-chunked-catalog.mjs"
     $type3SpiderCatalogScript = Join-Path $repoRootText "tools\build-type3-spider-catalog.mjs"
     $assembleChunkedCatalogScript = Join-Path $repoRootText "tools\assemble-vod-index-from-detail.mjs"
@@ -331,17 +324,6 @@ try {
             --includeLegacySources false `
             --mergeExisting true `
             --timeoutMs 8000
-    }
-
-    if (Test-Path -LiteralPath $quantumLziScript) {
-        Write-Log "Building full cj.lziapi.com VOD catalog for Quantum/Yunfei source."
-        node $quantumLziScript `
-            --repoRoot $repoRootText `
-            --api "https://cj.lziapi.com/api.php/provide/vod/" `
-            --outputDir (Join-Path $repoRootText "docs\data\quantum-lzi") `
-            --concurrency 18 `
-            --timeoutMs 20000 `
-            --episodePreviewLimit 3
     }
 
     if (Test-Path -LiteralPath $fullChunkedCatalogScript) {
