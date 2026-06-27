@@ -65,6 +65,32 @@ jobs:
           "reason=$reason" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
           Write-Host "should_run=$shouldRun; $reason"
 
+      - name: Seed previous public VOD data
+        if: steps.gate.outputs.should_run == 'true'
+        shell: pwsh
+        run: |
+          git fetch origin gh-pages
+          $pages = Join-Path $env:RUNNER_TEMP "gh-pages-seed"
+          git worktree add $pages origin/gh-pages
+          $items = @(
+            @{ From = "docs\data\iphone-vod-catalog.json"; To = "docs\data\iphone-vod-catalog.json"; Directory = $false },
+            @{ From = "docs\data\iphone-vod-catalog-report.json"; To = "docs\data\iphone-vod-catalog-report.json"; Directory = $false },
+            @{ From = "docs\data\vod-detail"; To = "docs\data\vod-detail"; Directory = $true },
+            @{ From = "docs\data\vod-index"; To = "docs\data\vod-index"; Directory = $true }
+          )
+          foreach ($item in $items) {
+            $from = Join-Path $pages $item.From
+            $to = Join-Path "." $item.To
+            if (-not (Test-Path -LiteralPath $from)) { continue }
+            New-Item -ItemType Directory -Force -Path (Split-Path -Parent $to) | Out-Null
+            if ($item.Directory) {
+              Copy-Item -LiteralPath $from -Destination (Split-Path -Parent $to) -Recurse -Force
+            } else {
+              Copy-Item -LiteralPath $from -Destination $to -Force
+            }
+          }
+          git worktree remove $pages --force
+
       - name: Refresh LunaTV VOD sources
         if: steps.gate.outputs.should_run == 'true'
         shell: pwsh
@@ -210,10 +236,6 @@ jobs:
             "docs/data/iphone-health-check-latest.json",
             "docs/data/iphone-health-check-latest.csv",
             "docs/data/lunatv-vod-update-state.json",
-            "docs/data/vod-detail",
-            "docs/data/vod-index",
-            "docs/data/iphone-detail",
-            "docs/data/quantum-lzi",
             "docs/iphone/index.html",
             "tools/vod-kind-rules.mjs",
             "tools/apply-vod-kind-rules.mjs",
