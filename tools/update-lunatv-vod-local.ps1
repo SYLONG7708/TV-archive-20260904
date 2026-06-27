@@ -427,52 +427,62 @@ try {
 
     Write-ScheduleSuccess
 
-    Invoke-Git add `
-        "tools/update-lunatv-vod.ps1" `
-        "tools/update-lunatv-vod-local.ps1" `
-        "tools/install-lunatv-vod-autoupdate-task.ps1" `
-        "tools/build-lunatv-adult18-sorted.mjs" `
-        "tools/build-iphone-vod-catalog.mjs" `
-        "tools/build-full-vod-chunked-catalog.mjs" `
-        "tools/build-type3-spider-catalog.mjs" `
-        "tools/vod-payload-parser.mjs" `
-        "tools/assemble-vod-index-from-detail.mjs" `
-        "tools/vod-kind-rules.mjs" `
-        "tools/apply-vod-kind-rules.mjs" `
-        "tools/compact-iphone-catalog.mjs" `
-        "tools/build-tvbox-config.mjs" `
-        "tools/build-tvbox-api-history.mjs" `
-        "tools/build-iqiyi-full-catalog.mjs" `
-        "tools/build-quantum-lzi-full.mjs" `
-        "tools/check-iphone-catalog-health.mjs" `
-        "sources/current-sources.json" `
-        "sources/TVBOX" `
-        "sources/All on-demand sources" `
-        "sources/All on-demand sources-report.json" `
-        "sources/vod-lunatv-jin18-oktv.json" `
-        "sources/vod-lunatv-jin18-report.json" `
-        "sources/vod-lunatv-jin18-analysis.csv" `
-        "sources/vod-lunatv-full-oktv.json" `
-        "sources/vod-lunatv-full-report.json" `
-        "sources/vod-lunatv-full-analysis.csv" `
-        "sources/vod-lunatv-adult18-sorted-oktv.json" `
-        "sources/vod-lunatv-adult18-sorted-report.json" `
-        "sources/vod-lunatv-adult18-sorted-analysis.csv" `
-        "docs/data/iphone-vod-catalog.json" `
-        "docs/data/iphone-vod-catalog-report.json" `
-        "docs/data/vod-sources.json" `
-        "docs/data/source-summary.json" `
-        "docs/data/iphone-health-check-latest.json" `
-        "docs/data/iphone-health-check-latest.csv" `
-        "docs/data/lunatv-vod-update-state.json" `
-        "docs/data/vod-detail" `
-        "docs/data/vod-index" `
-        "docs/data/iphone-detail" `
-        "docs/data/quantum-lzi" `
-        "docs/iphone/index.html" `
-        "docs/assets/source-signal-icon.svg" `
-        "docs/assets/adult-18-badge.svg" `
+    $gitAddPaths = @(
+        "tools/update-lunatv-vod.ps1",
+        "tools/update-lunatv-vod-local.ps1",
+        "tools/install-lunatv-vod-autoupdate-task.ps1",
+        "tools/build-lunatv-adult18-sorted.mjs",
+        "tools/build-iphone-vod-catalog.mjs",
+        "tools/build-full-vod-chunked-catalog.mjs",
+        "tools/build-type3-spider-catalog.mjs",
+        "tools/vod-payload-parser.mjs",
+        "tools/assemble-vod-index-from-detail.mjs",
+        "tools/vod-kind-rules.mjs",
+        "tools/apply-vod-kind-rules.mjs",
+        "tools/compact-iphone-catalog.mjs",
+        "tools/build-tvbox-config.mjs",
+        "tools/build-tvbox-api-history.mjs",
+        "tools/build-iqiyi-full-catalog.mjs",
+        "tools/build-quantum-lzi-full.mjs",
+        "tools/check-iphone-catalog-health.mjs",
+        "sources/current-sources.json",
+        "sources/TVBOX",
+        "sources/All on-demand sources",
+        "sources/All on-demand sources-report.json",
+        "sources/vod-lunatv-jin18-oktv.json",
+        "sources/vod-lunatv-jin18-report.json",
+        "sources/vod-lunatv-jin18-analysis.csv",
+        "sources/vod-lunatv-full-oktv.json",
+        "sources/vod-lunatv-full-report.json",
+        "sources/vod-lunatv-full-analysis.csv",
+        "sources/vod-lunatv-adult18-sorted-oktv.json",
+        "sources/vod-lunatv-adult18-sorted-report.json",
+        "sources/vod-lunatv-adult18-sorted-analysis.csv",
+        "docs/data/iphone-vod-catalog.json",
+        "docs/data/iphone-vod-catalog-report.json",
+        "docs/data/vod-sources.json",
+        "docs/data/source-summary.json",
+        "docs/data/iphone-health-check-latest.json",
+        "docs/data/iphone-health-check-latest.csv",
+        "docs/data/lunatv-vod-update-state.json",
+        "docs/data/vod-detail",
+        "docs/data/vod-index",
+        "docs/data/iphone-detail",
+        "docs/data/quantum-lzi",
+        "docs/iphone/index.html",
+        "docs/assets/source-signal-icon.svg",
+        "docs/assets/adult-18-badge.svg",
         ".github/workflows/update-lunatv-vod.yml"
+    )
+    $existingGitAddPaths = @($gitAddPaths | Where-Object { Test-Path -LiteralPath (Join-Path $repoRootText $_) })
+    $missingGitAddPaths = @($gitAddPaths | Where-Object { -not (Test-Path -LiteralPath (Join-Path $repoRootText $_)) })
+    if ($missingGitAddPaths.Count -gt 0) {
+        Write-Log "Skipping missing git add paths: $($missingGitAddPaths -join ', ')"
+    }
+    Invoke-Git add -- $existingGitAddPaths
+    if ($LASTEXITCODE -ne 0) {
+        throw "git add failed with exit code $LASTEXITCODE."
+    }
 
     if (Invoke-Git diff --cached --quiet) {
         Write-Log "No LunaTV VOD source changes to commit."

@@ -52,7 +52,16 @@ function applyItemKind(item, sourceAdult = false) {
 
 function applySourceCategoryKinds(source) {
   let changed = 0;
-  for (const category of source?.categories || []) {
+  const categories = source?.categories || [];
+  for (let index = 0; index < categories.length; index += 1) {
+    const category = categories[index];
+    if (typeof category === 'string') {
+      const nextKind = classifyVodKind({ categoryName: category, sourceAdult: source.adult });
+      categories[index] = { id: category, name: category, kind: nextKind };
+      changed += 1;
+      continue;
+    }
+    if (!category || typeof category !== 'object') continue;
     const nextKind = classifyVodKind({ categoryName: category.name || category.type_name || category.kind || '', sourceAdult: source.adult });
     if (category.kind !== nextKind) {
       category.kind = nextKind;

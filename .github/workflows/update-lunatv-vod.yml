@@ -69,6 +69,8 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         shell: pwsh
         run: |
+          $ErrorActionPreference = "Stop"
+          $PSNativeCommandUseErrorActionPreference = $true
           powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\update-lunatv-vod.ps1 `
             -SourceName "jin18" `
             -TimeoutSec 12 `
@@ -187,25 +189,58 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config http.postBuffer 524288000
           git config http.version HTTP/1.1
-          git add sources/current-sources.json sources/TVBOX `
-            "sources/All on-demand sources" "sources/All on-demand sources-report.json" `
-            sources/vod-lunatv-jin18-oktv.json sources/vod-lunatv-jin18-report.json sources/vod-lunatv-jin18-analysis.csv `
-            sources/vod-lunatv-full-oktv.json sources/vod-lunatv-full-report.json sources/vod-lunatv-full-analysis.csv `
-            sources/vod-lunatv-adult18-sorted-oktv.json sources/vod-lunatv-adult18-sorted-report.json sources/vod-lunatv-adult18-sorted-analysis.csv `
-            docs/data/vod-sources.json docs/data/source-summary.json docs/data/iphone-vod-catalog.json docs/data/iphone-vod-catalog-report.json `
-            docs/data/iphone-health-check-latest.json docs/data/iphone-health-check-latest.csv `
-            docs/data/lunatv-vod-update-state.json `
-            docs/data/vod-detail `
-            docs/data/vod-index `
-            docs/data/iphone-detail `
-            docs/data/quantum-lzi `
-            docs/iphone/index.html `
-            tools/vod-kind-rules.mjs tools/apply-vod-kind-rules.mjs tools/compact-iphone-catalog.mjs tools/build-tvbox-config.mjs tools/build-tvbox-api-history.mjs tools/build-quantum-lzi-full.mjs `
-            docs/assets/source-signal-icon.svg docs/assets/adult-18-badge.svg
+          $paths = @(
+            "sources/current-sources.json",
+            "sources/TVBOX",
+            "sources/All on-demand sources",
+            "sources/All on-demand sources-report.json",
+            "sources/vod-lunatv-jin18-oktv.json",
+            "sources/vod-lunatv-jin18-report.json",
+            "sources/vod-lunatv-jin18-analysis.csv",
+            "sources/vod-lunatv-full-oktv.json",
+            "sources/vod-lunatv-full-report.json",
+            "sources/vod-lunatv-full-analysis.csv",
+            "sources/vod-lunatv-adult18-sorted-oktv.json",
+            "sources/vod-lunatv-adult18-sorted-report.json",
+            "sources/vod-lunatv-adult18-sorted-analysis.csv",
+            "docs/data/vod-sources.json",
+            "docs/data/source-summary.json",
+            "docs/data/iphone-vod-catalog.json",
+            "docs/data/iphone-vod-catalog-report.json",
+            "docs/data/iphone-health-check-latest.json",
+            "docs/data/iphone-health-check-latest.csv",
+            "docs/data/lunatv-vod-update-state.json",
+            "docs/data/vod-detail",
+            "docs/data/vod-index",
+            "docs/data/iphone-detail",
+            "docs/data/quantum-lzi",
+            "docs/iphone/index.html",
+            "tools/vod-kind-rules.mjs",
+            "tools/apply-vod-kind-rules.mjs",
+            "tools/build-iphone-vod-catalog.mjs",
+            "tools/build-full-vod-chunked-catalog.mjs",
+            "tools/build-type3-spider-catalog.mjs",
+            "tools/assemble-vod-index-from-detail.mjs",
+            "tools/compact-iphone-catalog.mjs",
+            "tools/build-tvbox-config.mjs",
+            "tools/build-tvbox-api-history.mjs",
+            "tools/build-quantum-lzi-full.mjs",
+            "tools/update-lunatv-vod-local.ps1",
+            "docs/assets/source-signal-icon.svg",
+            "docs/assets/adult-18-badge.svg"
+          )
+          $existingPaths = @($paths | Where-Object { Test-Path -LiteralPath $_ })
+          $missingPaths = @($paths | Where-Object { -not (Test-Path -LiteralPath $_) })
+          if ($missingPaths.Count -gt 0) {
+            Write-Host "Skipping missing paths: $($missingPaths -join ', ')"
+          }
+          git add -- $existingPaths
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           if (git diff --cached --quiet) {
             Write-Host "No LunaTV VOD source changes."
           } else {
             git commit -m "Auto refresh LunaTV VOD sources"
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
             $pushed = $false
             for ($attempt = 1; $attempt -le 3; $attempt++) {
               git push
@@ -259,10 +294,12 @@ jobs:
           git config http.postBuffer 524288000
           git config http.version HTTP/1.1
           git add docs/iphone docs/data docs/assets
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           if (git diff --cached --quiet) {
             Write-Host "No GitHub Pages public data changes."
           } else {
             git commit -m "Publish auto refreshed OKTV data"
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
             $pushed = $false
             for ($attempt = 1; $attempt -le 3; $attempt++) {
               git push origin HEAD:gh-pages
