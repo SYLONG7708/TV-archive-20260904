@@ -47,6 +47,29 @@ function Invoke-PagesGit {
     git -c "safe.directory=$pagesSafeDir" @args
 }
 
+function Invoke-GitPushWithRetry {
+    param(
+        [scriptblock]$PushCommand,
+        [string]$Label
+    )
+
+    $pushed = $false
+    for ($attempt = 1; $attempt -le 3; $attempt++) {
+        & $PushCommand
+        if ($LASTEXITCODE -eq 0) {
+            $pushed = $true
+            break
+        }
+
+        Write-Log "$Label failed on attempt $attempt; retrying after backoff."
+        Start-Sleep -Seconds (30 * $attempt)
+    }
+
+    if (-not $pushed) {
+        throw "$Label failed after 3 attempts."
+    }
+}
+
 function Get-ScheduleTimeZone {
     try {
         return [TimeZoneInfo]::FindSystemTimeZoneById("China Standard Time")
@@ -150,6 +173,8 @@ function Sync-GhPages {
         } catch {
             Invoke-PagesGit config user.email "oktv-local-updater@example.local"
         }
+        Invoke-PagesGit config http.postBuffer 524288000
+        Invoke-PagesGit config http.version HTTP/1.1
 
         Invoke-PagesGit pull --ff-only origin gh-pages
 
@@ -211,7 +236,9 @@ function Sync-GhPages {
             if ($NoGitPush) {
                 Write-Log "NoGitPush set; gh-pages commit created but not pushed."
             } else {
-                Invoke-PagesGit push origin HEAD:gh-pages
+                Invoke-GitPushWithRetry -Label "gh-pages push" -PushCommand {
+                    Invoke-PagesGit push origin HEAD:gh-pages
+                }
             }
         }
     } finally {
@@ -248,6 +275,8 @@ try {
     } catch {
         Invoke-Git config user.email "oktv-local-updater@example.local"
     }
+    Invoke-Git config http.postBuffer 524288000
+    Invoke-Git config http.version HTTP/1.1
 
     $statusBefore = Invoke-Git status --porcelain
     if ($statusBefore) {
@@ -332,7 +361,7 @@ try {
             --skipExistingPages true `
             --keepPartialPages true `
             --refreshLeadingPages 2 `
-            --maxNewPagesPerSource 800 `
+            --maxNewPagesPerSource 300 `
             --maxFailedPages 20 `
             --detailOnly true
     }
@@ -453,7 +482,9 @@ try {
             Write-Log "NoGitPush set; commit created but not pushed."
         } else {
             Write-Log "Pushing update to GitHub."
-            Invoke-Git push origin HEAD:main
+            Invoke-GitPushWithRetry -Label "main push" -PushCommand {
+                Invoke-Git push origin HEAD:main
+            }
         }
     }
 

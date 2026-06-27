@@ -113,7 +113,7 @@ jobs:
             --skipExistingPages true `
             --keepPartialPages true `
             --refreshLeadingPages 2 `
-            --maxNewPagesPerSource 800 `
+            --maxNewPagesPerSource 300 `
             --maxFailedPages 20 `
             --detailOnly true
           node .\tools\build-type3-spider-catalog.mjs `
@@ -184,6 +184,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config http.postBuffer 524288000
+          git config http.version HTTP/1.1
           git add sources/current-sources.json sources/TVBOX `
             "sources/All on-demand sources" "sources/All on-demand sources-report.json" `
             sources/vod-lunatv-jin18-oktv.json sources/vod-lunatv-jin18-report.json sources/vod-lunatv-jin18-analysis.csv `
@@ -203,7 +205,19 @@ jobs:
             Write-Host "No LunaTV VOD source changes."
           } else {
             git commit -m "Auto refresh LunaTV VOD sources"
-            git push
+            $pushed = $false
+            for ($attempt = 1; $attempt -le 3; $attempt++) {
+              git push
+              if ($LASTEXITCODE -eq 0) {
+                $pushed = $true
+                break
+              }
+              Write-Warning "git push failed on attempt $attempt; retrying after backoff."
+              Start-Sleep -Seconds (30 * $attempt)
+            }
+            if (-not $pushed) {
+              throw "git push failed after 3 attempts."
+            }
           }
 
       - name: Publish GitHub Pages data
