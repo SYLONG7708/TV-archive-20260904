@@ -1125,7 +1125,7 @@
       async function getJson(url, fallback) {
         const online = onlineDataUrl(url);
         const dataPath = String(url || '').match(/(?:^|\/)data\/(.+?)(?:[?#].*)?$/)?.[1] || '';
-        const freshData = /^(?:live-channels|source-summary)\.json$/i.test(dataPath);
+        const freshData = /^(?:[^/]+\.json|vod-index\/|vod-detail\/|vod-search\/|quantum-lzi\/)/i.test(dataPath);
         const localUrl = freshData ? cacheBustedUrl(url) : url;
         const preferOnline = /^(?:vod-index|vod-detail|vod-search)\//i.test(dataPath);
         const capacitorNative = Boolean(window.Capacitor?.isNativePlatform?.());
@@ -4084,6 +4084,20 @@
         return Number.isFinite(time) ? time : 0;
       }
 
+      function compactDateTime(value) {
+        const raw = String(value || '').trim();
+        if (!raw) return '';
+        const time = Date.parse(raw.includes('T') ? raw : raw.replace(' ', 'T'));
+        if (!Number.isFinite(time)) return '';
+        const date = new Date(time);
+        const pad = (number) => String(number).padStart(2, '0');
+        return `${pad(date.getMonth() + 1)}/${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+      }
+
+      function catalogFreshnessLabel() {
+        return compactDateTime(state.catalog?.generatedAt) || compactDateTime(state.catalog?.source?.generatedAt);
+      }
+
       function itemRecencyScore(item) {
         const time = itemTimeValue(item);
         if (!time) return 0;
@@ -4274,7 +4288,7 @@
           ${state.tab === 'short' ? renderShortAreaRail() : ''}
           <section class="section-head">
             <div><h1>${displayHtml(title)}</h1><span>${rows.length} / ${allRows.length} 部內容，${state.catalog.totals.playableItems || 0} 部有播放項</span></div>
-            <span class="status-pill ok">${icon('check')} OKTV</span>
+            <span class="status-pill ok">${icon('check')} ${displayHtml(catalogFreshnessLabel() ? `資料 ${catalogFreshnessLabel()}` : 'OKTV')}</span>
           </section>
           <section class="poster-grid">
             ${rows.map(renderPoster).join('') || emptyState(state.sourceLoading ? '\u6b63\u5728\u8f09\u5165\u5206\u985e\u5167\u5bb9...' : emptyMessage)}
