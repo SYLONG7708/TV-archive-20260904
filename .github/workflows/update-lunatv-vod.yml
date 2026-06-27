@@ -282,7 +282,11 @@ jobs:
                 $pushed = $true
                 break
               }
-              Write-Warning "git push failed on attempt $attempt; retrying after backoff."
+              Write-Warning "git push failed on attempt $attempt; rebasing onto origin/main before retry."
+              git fetch origin main
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+              git rebase origin/main
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
               Start-Sleep -Seconds (30 * $attempt)
             }
             if (-not $pushed) {
@@ -336,7 +340,11 @@ jobs:
                 $pushed = $true
                 break
               }
-              Write-Warning "gh-pages push failed on attempt $attempt; retrying after backoff."
+              Write-Warning "gh-pages push failed on attempt $attempt; rebasing onto origin/gh-pages before retry."
+              git fetch origin gh-pages
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+              git rebase origin/gh-pages
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
               Start-Sleep -Seconds (30 * $attempt)
             }
             if (-not $pushed) {

@@ -50,7 +50,8 @@ function Invoke-PagesGit {
 function Invoke-GitPushWithRetry {
     param(
         [scriptblock]$PushCommand,
-        [string]$Label
+        [string]$Label,
+        [scriptblock]$RecoveryCommand = $null
     )
 
     $pushed = $false
@@ -62,6 +63,12 @@ function Invoke-GitPushWithRetry {
         }
 
         Write-Log "$Label failed on attempt $attempt; retrying after backoff."
+        if ($null -ne $RecoveryCommand) {
+            & $RecoveryCommand
+            if ($LASTEXITCODE -ne 0) {
+                throw "$Label recovery failed after attempt $attempt."
+            }
+        }
         Start-Sleep -Seconds (30 * $attempt)
     }
 
@@ -226,6 +233,10 @@ function Sync-GhPages {
             } else {
                 Invoke-GitPushWithRetry -Label "gh-pages push" -PushCommand {
                     Invoke-PagesGit push origin HEAD:gh-pages
+                } -RecoveryCommand {
+                    Invoke-PagesGit fetch origin gh-pages
+                    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+                    Invoke-PagesGit rebase origin/gh-pages
                 }
             }
         }
@@ -467,6 +478,10 @@ try {
             Write-Log "Pushing update to GitHub."
             Invoke-GitPushWithRetry -Label "main push" -PushCommand {
                 Invoke-Git push origin HEAD:main
+            } -RecoveryCommand {
+                Invoke-Git fetch origin main
+                if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+                Invoke-Git rebase origin/main
             }
         }
     }
