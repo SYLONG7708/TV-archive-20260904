@@ -173,7 +173,7 @@ jobs:
             --detailRoot .\docs\data\vod-detail `
             --indexRoot .\docs\data\vod-index `
             --dropEmptySources true
-          node .\tools\apply-vod-kind-rules.mjs --tvRoot .
+          node .\tools\apply-vod-kind-rules.mjs --tvRoot . --skipDetail true --skipQuantum true
           node .\tools\compact-iphone-catalog.mjs `
             --tvRoot . `
             --catalog .\docs\data\iphone-vod-catalog.json `

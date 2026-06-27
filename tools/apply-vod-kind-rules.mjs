@@ -23,6 +23,10 @@ const reportPath = path.resolve(args.get('report') || path.join(tvRoot, 'docs', 
 const detailRoot = path.resolve(args.get('detailRoot') || path.join(tvRoot, 'docs', 'data', 'vod-detail'));
 const indexRoot = path.resolve(args.get('indexRoot') || path.join(tvRoot, 'docs', 'data', 'vod-index'));
 const quantumRoot = path.resolve(args.get('quantumRoot') || path.join(tvRoot, 'docs', 'data', 'quantum-lzi'));
+const skipCatalog = args.get('skipCatalog') === 'true';
+const skipDetail = args.get('skipDetail') === 'true';
+const skipIndex = args.get('skipIndex') === 'true';
+const skipQuantum = args.get('skipQuantum') === 'true';
 
 function kindTotals() {
   return { movie: 0, series: 0, variety: 0, anime: 0, short: 0, adult: 0, other: 0 };
@@ -249,11 +253,12 @@ async function updateQuantum() {
   return { inputItems, itemChanges, chunks };
 }
 
-const catalogResult = await updateCatalog();
-const detailResult = await updateGzipItems(detailRoot, 'vod-detail');
-const indexResult = await updateGzipItems(indexRoot, 'vod-index');
-await updateReportTotals(detailResult.totals);
-const quantumResult = await updateQuantum();
+const catalogResult = skipCatalog ? { skipped: true } : await updateCatalog();
+const detailResult = skipDetail ? { skipped: true } : await updateGzipItems(detailRoot, 'vod-detail');
+const indexResult = skipIndex ? { skipped: true } : await updateGzipItems(indexRoot, 'vod-index');
+const totalsForReport = detailResult.totals || indexResult.totals;
+if (totalsForReport) await updateReportTotals(totalsForReport);
+const quantumResult = skipQuantum ? { skipped: true } : await updateQuantum();
 
 console.log(
   JSON.stringify(

@@ -379,8 +379,8 @@ try {
     }
 
     if (Test-Path -LiteralPath $applyVodKindRulesScript) {
-        Write-Log "Applying persistent VOD category rules to all public indexes."
-        node $applyVodKindRulesScript --tvRoot $repoRootText
+        Write-Log "Applying persistent VOD category rules to catalog and indexes."
+        node $applyVodKindRulesScript --tvRoot $repoRootText --skipDetail true --skipQuantum true
     }
 
     if (Test-Path -LiteralPath $compactIphoneCatalogScript) {
