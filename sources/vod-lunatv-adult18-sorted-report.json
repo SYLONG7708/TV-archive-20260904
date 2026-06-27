@@ -1,33 +1,33 @@
 {
-  "generatedAt": "2026-05-31T18:05:04.919Z",
+  "generatedAt": "2026-06-27T08:14:24.139Z",
   "sourceName": "full",
   "adultStartIndex": 40,
   "totalAdultSources": 34,
-  "usableAdultSources": 0,
-  "duplicateAdultSources": 34,
-  "failedAdultSources": 0,
-  "searchOkSources": 31,
-  "searchPlayableSources": 30,
+  "usableAdultSources": 2,
+  "duplicateAdultSources": 29,
+  "failedAdultSources": 3,
+  "searchOkSources": 28,
+  "searchPlayableSources": 27,
   "candidateOutput": "sources/vod-lunatv-adult18-sorted-oktv.json",
   "analysisOutput": "sources/vod-lunatv-adult18-sorted-analysis.csv",
   "categoryCounts": {
     "01 綜合成人": {
       "total": 5,
-      "usable": 0,
-      "duplicate": 5,
+      "usable": 1,
+      "duplicate": 4,
       "failed": 0
     },
     "02 國產/短片": {
       "total": 9,
       "usable": 0,
-      "duplicate": 9,
-      "failed": 0
+      "duplicate": 8,
+      "failed": 1
     },
     "03 番號/日本": {
       "total": 7,
       "usable": 0,
-      "duplicate": 7,
-      "failed": 0
+      "duplicate": 6,
+      "failed": 1
     },
     "04 動漫/美少女": {
       "total": 1,
@@ -37,9 +37,9 @@
     },
     "05 精品/大站": {
       "total": 12,
-      "usable": 0,
-      "duplicate": 12,
-      "failed": 0
+      "usable": 1,
+      "duplicate": 10,
+      "failed": 1
     }
   },
   "resources": [
@@ -82,17 +82,25 @@
       "order": 49,
       "name": "Luna 49 大奶子-",
       "api": "https://apidanaizi.com/api.php/provide/vod",
-      "included": false,
-      "duplicate": true,
-      "duplicateReason": "duplicate_api",
+      "included": true,
+      "duplicate": false,
+      "duplicateReason": "",
       "listOk": true,
       "detailOk": true,
       "searchOk": true,
       "searchHasPlayUrl": true,
       "hasPlayUrl": true,
-      "status": "duplicate_removed",
-      "error": "duplicate_api",
-      "record": null
+      "status": "usable_review_required",
+      "error": "",
+      "record": {
+        "key": "大奶子|AV",
+        "name": "大奶子｜",
+        "type": 1,
+        "api": "https://apidanaizi.com/api.php/provide/vod/",
+        "quickSearch": 1,
+        "searchable": 1,
+        "filterable": 0
+      }
     },
     {
       "category": "01 綜合成人",
@@ -270,15 +278,15 @@
       "name": "Luna 71 色猫资源",
       "api": "https://caiji.semaozy.net/inc/apijson_vod.php/provide/vod",
       "included": false,
-      "duplicate": true,
-      "duplicateReason": "duplicate_api",
+      "duplicate": false,
+      "duplicateReason": "",
       "listOk": false,
       "detailOk": false,
       "searchOk": false,
       "searchHasPlayUrl": false,
       "hasPlayUrl": false,
-      "status": "duplicate_removed",
-      "error": "duplicate_api",
+      "status": "failed_removed",
+      "error": "ac=list returned no items",
       "record": null
     },
     {
@@ -376,8 +384,8 @@
       "duplicateReason": "duplicate_api",
       "listOk": true,
       "detailOk": true,
-      "searchOk": true,
-      "searchHasPlayUrl": true,
+      "searchOk": false,
+      "searchHasPlayUrl": false,
       "hasPlayUrl": true,
       "status": "duplicate_removed",
       "error": "duplicate_api",
@@ -389,15 +397,15 @@
       "name": "Luna 73 丝袜资源",
       "api": "https://siwazyw.tv/api.php/provide/vod",
       "included": false,
-      "duplicate": true,
-      "duplicateReason": "duplicate_api",
+      "duplicate": false,
+      "duplicateReason": "",
       "listOk": false,
       "detailOk": false,
       "searchOk": false,
       "searchHasPlayUrl": false,
       "hasPlayUrl": false,
-      "status": "duplicate_removed",
-      "error": "duplicate_api",
+      "status": "failed_removed",
+      "error": "Invalid JSON primitive: .",
       "record": null
     },
     {
@@ -457,15 +465,15 @@
       "name": "Luna 46 优优资源",
       "api": "https://www.yytv4.cc/api.php/provide/vod",
       "included": false,
-      "duplicate": true,
-      "duplicateReason": "duplicate_api",
+      "duplicate": false,
+      "duplicateReason": "",
       "listOk": false,
       "detailOk": false,
       "searchOk": false,
       "searchHasPlayUrl": false,
       "hasPlayUrl": false,
-      "status": "duplicate_removed",
-      "error": "duplicate_api",
+      "status": "failed_removed",
+      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"The remote name could not be resolved: 'www.yytv4.cc'\"",
       "record": null
     },
     {
@@ -495,8 +503,8 @@
       "duplicateReason": "duplicate_api",
       "listOk": true,
       "detailOk": true,
-      "searchOk": true,
-      "searchHasPlayUrl": true,
+      "searchOk": false,
+      "searchHasPlayUrl": false,
       "hasPlayUrl": true,
       "status": "duplicate_removed",
       "error": "duplicate_api",
@@ -561,11 +569,11 @@
       "included": false,
       "duplicate": true,
       "duplicateReason": "duplicate_api",
-      "listOk": true,
-      "detailOk": true,
-      "searchOk": true,
-      "searchHasPlayUrl": true,
-      "hasPlayUrl": true,
+      "listOk": false,
+      "detailOk": false,
+      "searchOk": false,
+      "searchHasPlayUrl": false,
+      "hasPlayUrl": false,
       "status": "duplicate_removed",
       "error": "duplicate_api",
       "record": null
@@ -609,17 +617,25 @@
       "order": 65,
       "name": "Luna 65 香蕉资源",
       "api": "https://www.xiangjiaozyw.com/api.php/provide/vod",
-      "included": false,
-      "duplicate": true,
-      "duplicateReason": "duplicate_api",
+      "included": true,
+      "duplicate": false,
+      "duplicateReason": "",
       "listOk": true,
       "detailOk": true,
       "searchOk": true,
       "searchHasPlayUrl": true,
       "hasPlayUrl": true,
-      "status": "duplicate_removed",
-      "error": "duplicate_api",
-      "record": null
+      "status": "usable_review_required",
+      "error": "",
+      "record": {
+        "key": "香蕉资源|AV",
+        "name": "香蕉资源｜",
+        "type": 1,
+        "api": "https://www.xiangjiaozyw.com/api.php/provide/vod/",
+        "quickSearch": 1,
+        "searchable": 1,
+        "filterable": 0
+      }
     }
   ]
 }
