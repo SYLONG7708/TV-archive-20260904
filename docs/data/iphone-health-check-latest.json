@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-06-27T15:08:16.393Z",
+  "checkedAt": "2026-06-27T16:22:02.107Z",
   "inputs": {
     "catalogPath": "D:\\a\\TV\\TV\\docs\\data\\iphone-vod-catalog.json",
     "livePath": "D:\\a\\TV\\TV\\docs\\data\\live-channels.json"
@@ -7,8 +7,8 @@
   "summary": {
     "sources": {
       "total": 78,
-      "ok": 74,
-      "failed": 4
+      "ok": 73,
+      "failed": 5
     },
     "posters": {
       "total": 0,
@@ -31,16 +31,29 @@
   "failed": [
     {
       "kind": "source",
-      "id": "all-on-demand-sources-黄色仓库-https-hsckzy-xyz-api-php-provide-vod-47",
-      "name": "黄色仓库｜追劇",
+      "id": "all-on-demand-sources-u酷影视-https-api-ukuapi88-com-api-php-provide-vod-21",
+      "name": "U酷影视｜追劇",
       "type": 1,
-      "url": "https://hsckzy.xyz/api.php/provide/vod/",
+      "url": "https://api.ukuapi88.com/api.php/provide/vod/",
       "indexed": true,
-      "adult": true,
+      "adult": false,
       "ok": false,
-      "status": 523,
-      "elapsedMs": 69,
-      "error": "ac=list returned no source categories"
+      "status": 500,
+      "elapsedMs": 353,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-虎牙资源-https-www-huyaapi-com-api-php-provide-vod-34",
+      "name": "虎牙资源｜追劇",
+      "type": 1,
+      "url": "https://www.huyaapi.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 8003,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "source",
@@ -52,7 +65,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 611,
+      "elapsedMs": 447,
       "error": "XML source did not return an XML list"
     },
     {
@@ -65,7 +78,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 459,
+      "elapsedMs": 351,
       "error": "Unexpected token '<', \"<html>\n<he\"... is not valid JSON"
     },
     {
@@ -78,7 +91,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 86,
+      "elapsedMs": 44,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     }
   ],
@@ -93,7 +106,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 496,
+      "elapsedMs": 780,
       "error": ""
     },
     {
@@ -106,7 +119,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 240,
+      "elapsedMs": 220,
       "error": ""
     },
     {
@@ -119,7 +132,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1195,
+      "elapsedMs": 911,
       "error": ""
     },
     {
@@ -132,7 +145,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 652,
+      "elapsedMs": 687,
       "error": ""
     },
     {
@@ -145,7 +158,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 608,
+      "elapsedMs": 192,
       "error": ""
     },
     {
@@ -158,7 +171,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1136,
+      "elapsedMs": 1036,
       "error": ""
     },
     {
@@ -171,7 +184,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 410,
+      "elapsedMs": 478,
       "error": ""
     },
     {
@@ -184,7 +197,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 815,
+      "elapsedMs": 834,
       "error": ""
     },
     {
@@ -197,7 +210,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 949,
+      "elapsedMs": 877,
       "error": ""
     },
     {
@@ -210,7 +223,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 361,
+      "elapsedMs": 475,
       "error": ""
     },
     {
@@ -223,7 +236,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 352,
+      "elapsedMs": 437,
       "error": ""
     },
     {
@@ -236,7 +249,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 99,
+      "elapsedMs": 1098,
       "error": ""
     },
     {
@@ -249,7 +262,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1265,
+      "elapsedMs": 624,
       "error": ""
     },
     {
@@ -262,7 +275,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 636,
+      "elapsedMs": 1112,
       "error": ""
     },
     {
@@ -275,7 +288,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 255,
+      "elapsedMs": 1015,
       "error": ""
     },
     {
@@ -288,7 +301,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 299,
+      "elapsedMs": 57,
       "error": ""
     },
     {
@@ -301,7 +314,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 126,
+      "elapsedMs": 132,
       "error": ""
     },
     {
@@ -314,7 +327,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1188,
+      "elapsedMs": 1217,
       "error": ""
     },
     {
@@ -327,7 +340,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 405,
+      "elapsedMs": 1031,
       "error": ""
     },
     {
@@ -340,7 +353,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 499,
+      "elapsedMs": 552,
       "error": ""
     },
     {
@@ -351,10 +364,10 @@
       "url": "https://api.ukuapi88.com/api.php/provide/vod/",
       "indexed": true,
       "adult": false,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 122,
-      "error": ""
+      "ok": false,
+      "status": 500,
+      "elapsedMs": 353,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "source",
@@ -366,7 +379,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 145,
+      "elapsedMs": 6426,
       "error": ""
     },
     {
@@ -379,7 +392,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 299,
+      "elapsedMs": 347,
       "error": ""
     },
     {
@@ -392,7 +405,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1108,
+      "elapsedMs": 500,
       "error": ""
     },
     {
@@ -405,7 +418,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1638,
+      "elapsedMs": 1540,
       "error": ""
     },
     {
@@ -418,7 +431,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 194,
+      "elapsedMs": 157,
       "error": ""
     },
     {
@@ -431,7 +444,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 219,
+      "elapsedMs": 259,
       "error": ""
     },
     {
@@ -444,7 +457,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 209,
+      "elapsedMs": 231,
       "error": ""
     },
     {
@@ -457,7 +470,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 742,
+      "elapsedMs": 1276,
       "error": ""
     },
     {
@@ -468,10 +481,10 @@
       "url": "https://www.huyaapi.com/api.php/provide/vod/",
       "indexed": true,
       "adult": false,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 204,
-      "error": ""
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 8003,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "source",
@@ -483,7 +496,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 272,
+      "elapsedMs": 361,
       "error": ""
     },
     {
@@ -496,7 +509,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 221,
+      "elapsedMs": 160,
       "error": ""
     },
     {
@@ -509,7 +522,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 316,
+      "elapsedMs": 505,
       "error": ""
     },
     {
@@ -522,7 +535,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 276,
+      "elapsedMs": 507,
       "error": ""
     },
     {
@@ -535,7 +548,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 377,
+      "elapsedMs": 555,
       "error": ""
     },
     {
@@ -548,7 +561,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 768,
+      "elapsedMs": 674,
       "error": ""
     },
     {
@@ -561,7 +574,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1034,
+      "elapsedMs": 2309,
       "error": ""
     },
     {
@@ -574,7 +587,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 193,
+      "elapsedMs": 151,
       "error": ""
     },
     {
@@ -587,7 +600,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 504,
+      "elapsedMs": 495,
       "error": ""
     },
     {
@@ -600,7 +613,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 124,
+      "elapsedMs": 197,
       "error": ""
     },
     {
@@ -613,7 +626,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 264,
+      "elapsedMs": 618,
       "error": ""
     },
     {
@@ -624,10 +637,10 @@
       "url": "https://hsckzy.xyz/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": false,
-      "status": 523,
-      "elapsedMs": 69,
-      "error": "ac=list returned no source categories"
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 93,
+      "error": ""
     },
     {
       "kind": "source",
@@ -639,7 +652,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 278,
+      "elapsedMs": 259,
       "error": ""
     },
     {
@@ -652,7 +665,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 403,
+      "elapsedMs": 332,
       "error": ""
     },
     {
@@ -665,7 +678,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 300,
+      "elapsedMs": 1650,
       "error": ""
     },
     {
@@ -678,7 +691,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 865,
+      "elapsedMs": 901,
       "error": ""
     },
     {
@@ -691,7 +704,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 366,
+      "elapsedMs": 322,
       "error": ""
     },
     {
@@ -704,7 +717,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 237,
+      "elapsedMs": 155,
       "error": ""
     },
     {
@@ -717,7 +730,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 188,
+      "elapsedMs": 147,
       "error": ""
     },
     {
@@ -730,7 +743,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 528,
+      "elapsedMs": 589,
       "error": ""
     },
     {
@@ -743,7 +756,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 170,
+      "elapsedMs": 140,
       "error": ""
     },
     {
@@ -756,7 +769,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 229,
+      "elapsedMs": 323,
       "error": ""
     },
     {
@@ -769,7 +782,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 556,
+      "elapsedMs": 423,
       "error": ""
     },
     {
@@ -782,7 +795,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 474,
+      "elapsedMs": 548,
       "error": ""
     },
     {
@@ -795,7 +808,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 652,
+      "elapsedMs": 247,
       "error": ""
     },
     {
@@ -808,7 +821,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 611,
+      "elapsedMs": 447,
       "error": "XML source did not return an XML list"
     },
     {
@@ -821,7 +834,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1159,
+      "elapsedMs": 2429,
       "error": ""
     },
     {
@@ -834,7 +847,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 2132,
+      "elapsedMs": 1415,
       "error": ""
     },
     {
@@ -847,7 +860,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 243,
+      "elapsedMs": 246,
       "error": ""
     },
     {
@@ -860,7 +873,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 233,
+      "elapsedMs": 329,
       "error": ""
     },
     {
@@ -873,7 +886,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 159,
+      "elapsedMs": 136,
       "error": ""
     },
     {
@@ -886,7 +899,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 259,
+      "elapsedMs": 249,
       "error": ""
     },
     {
@@ -899,7 +912,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1360,
+      "elapsedMs": 1256,
       "error": ""
     },
     {
@@ -912,7 +925,7 @@
       "adult": false,
       "ok": true,
       "status": 206,
-      "elapsedMs": 206,
+      "elapsedMs": 84,
       "error": ""
     },
     {
@@ -925,7 +938,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1094,
+      "elapsedMs": 1087,
       "error": ""
     },
     {
@@ -938,7 +951,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 520,
+      "elapsedMs": 536,
       "error": ""
     },
     {
@@ -951,7 +964,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 446,
+      "elapsedMs": 371,
       "error": ""
     },
     {
@@ -964,7 +977,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 871,
+      "elapsedMs": 572,
       "error": ""
     },
     {
@@ -977,7 +990,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 459,
+      "elapsedMs": 351,
       "error": "Unexpected token '<', \"<html>\n<he\"... is not valid JSON"
     },
     {
@@ -990,7 +1003,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 861,
+      "elapsedMs": 523,
       "error": ""
     },
     {
@@ -1003,7 +1016,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 657,
+      "elapsedMs": 580,
       "error": ""
     },
     {
@@ -1016,7 +1029,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 361,
+      "elapsedMs": 351,
       "error": ""
     },
     {
@@ -1029,7 +1042,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 86,
+      "elapsedMs": 44,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -1042,7 +1055,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1856,
+      "elapsedMs": 1238,
       "error": ""
     },
     {
@@ -1055,7 +1068,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 323,
+      "elapsedMs": 301,
       "error": ""
     },
     {
@@ -1068,7 +1081,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 280,
+      "elapsedMs": 239,
       "error": ""
     },
     {
@@ -1081,7 +1094,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 978,
+      "elapsedMs": 1121,
       "error": ""
     },
     {
@@ -1094,7 +1107,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 388,
+      "elapsedMs": 309,
       "error": ""
     },
     {
@@ -1111,7 +1124,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1972,
+      "elapsedMs": 1948,
       "error": "segment HTTP 403"
     },
     {
@@ -1128,7 +1141,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1868,
+      "elapsedMs": 1876,
       "error": "segment HTTP 403"
     },
     {
@@ -1145,7 +1158,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1667,
+      "elapsedMs": 1707,
       "error": "segment HTTP 403"
     },
     {
@@ -1162,7 +1175,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1589,
+      "elapsedMs": 1744,
       "error": "segment HTTP 403"
     },
     {
@@ -1179,7 +1192,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1775,
+      "elapsedMs": 1826,
       "error": "segment HTTP 403"
     },
     {
@@ -1196,7 +1209,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1018,
+      "elapsedMs": 1281,
       "error": "segment HTTP 403"
     },
     {
@@ -1213,7 +1226,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1811,
+      "elapsedMs": 1870,
       "error": "segment HTTP 403"
     },
     {
@@ -1230,7 +1243,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1816,
+      "elapsedMs": 1801,
       "error": "segment HTTP 403"
     },
     {
@@ -1247,7 +1260,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1725,
+      "elapsedMs": 1825,
       "error": "segment HTTP 403"
     },
     {
@@ -1264,7 +1277,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1523,
+      "elapsedMs": 1716,
       "error": "segment HTTP 403"
     },
     {
@@ -1281,7 +1294,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1602,
+      "elapsedMs": 1752,
       "error": "segment HTTP 403"
     },
     {
@@ -1298,7 +1311,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1843,
+      "elapsedMs": 1726,
       "error": "segment HTTP 403"
     },
     {
@@ -1315,7 +1328,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1513,
+      "elapsedMs": 1635,
       "error": "segment HTTP 403"
     },
     {
@@ -1332,7 +1345,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1187,
+      "elapsedMs": 1812,
       "error": "segment HTTP 403"
     },
     {
@@ -1349,7 +1362,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1217,
+      "elapsedMs": 1278,
       "error": "segment HTTP 403"
     },
     {
@@ -1366,7 +1379,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1501,
+      "elapsedMs": 1658,
       "error": "segment HTTP 403"
     },
     {
@@ -1383,7 +1396,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1311,
+      "elapsedMs": 1306,
       "error": "segment HTTP 403"
     },
     {
@@ -1400,7 +1413,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 889,
+      "elapsedMs": 894,
       "error": "segment HTTP 403"
     },
     {
@@ -1417,7 +1430,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1685,
+      "elapsedMs": 1684,
       "error": "segment HTTP 403"
     },
     {
@@ -1434,7 +1447,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1618,
+      "elapsedMs": 1580,
       "error": "segment HTTP 403"
     },
     {
@@ -1451,7 +1464,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1757,
+      "elapsedMs": 1655,
       "error": "segment HTTP 403"
     },
     {
@@ -1468,7 +1481,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1658,
+      "elapsedMs": 1586,
       "error": "segment HTTP 403"
     },
     {
@@ -1485,7 +1498,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1563,
+      "elapsedMs": 1675,
       "error": "segment HTTP 403"
     },
     {
@@ -1502,7 +1515,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1642,
+      "elapsedMs": 1781,
       "error": "segment HTTP 403"
     },
     {
@@ -1519,7 +1532,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1492,
+      "elapsedMs": 1593,
       "error": "segment HTTP 403"
     },
     {
@@ -1536,7 +1549,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1486,
+      "elapsedMs": 1471,
       "error": "segment HTTP 403"
     },
     {
@@ -1553,7 +1566,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1692,
+      "elapsedMs": 1667,
       "error": "segment HTTP 403"
     },
     {
@@ -1570,7 +1583,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1546,
+      "elapsedMs": 1715,
       "error": "segment HTTP 403"
     },
     {
@@ -1587,7 +1600,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1547,
+      "elapsedMs": 1797,
       "error": "segment HTTP 403"
     },
     {
@@ -1604,7 +1617,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1674,
+      "elapsedMs": 1758,
       "error": "segment HTTP 403"
     },
     {
@@ -1621,7 +1634,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1787,
+      "elapsedMs": 1801,
       "error": "segment HTTP 403"
     },
     {
@@ -1638,7 +1651,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1521,
+      "elapsedMs": 1554,
       "error": "segment HTTP 403"
     },
     {
@@ -1655,7 +1668,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1782,
+      "elapsedMs": 1637,
       "error": "segment HTTP 403"
     },
     {
@@ -1672,7 +1685,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1138,
+      "elapsedMs": 1361,
       "error": "segment HTTP 403"
     },
     {
@@ -1689,7 +1702,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1520,
+      "elapsedMs": 1437,
       "error": "segment HTTP 403"
     },
     {
@@ -1706,7 +1719,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1038,
+      "elapsedMs": 1182,
       "error": "segment HTTP 403"
     },
     {
@@ -1723,7 +1736,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1090,
+      "elapsedMs": 1149,
       "error": "segment HTTP 403"
     },
     {
@@ -1740,7 +1753,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1378,
+      "elapsedMs": 1754,
       "error": "segment HTTP 403"
     },
     {
@@ -1757,7 +1770,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 705,
+      "elapsedMs": 1208,
       "error": "segment HTTP 403"
     },
     {
@@ -1774,7 +1787,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1423,
+      "elapsedMs": 1483,
       "error": "segment HTTP 403"
     },
     {
@@ -1791,7 +1804,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1839,
+      "elapsedMs": 1830,
       "error": "segment HTTP 403"
     },
     {
@@ -1808,7 +1821,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1654,
+      "elapsedMs": 1609,
       "error": "segment HTTP 403"
     },
     {
@@ -1825,7 +1838,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1684,
+      "elapsedMs": 1805,
       "error": "segment HTTP 403"
     },
     {
@@ -1842,7 +1855,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1792,
+      "elapsedMs": 1945,
       "error": "segment HTTP 403"
     },
     {
@@ -1859,7 +1872,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1418,
+      "elapsedMs": 1532,
       "error": "segment HTTP 403"
     },
     {
@@ -1876,7 +1889,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1514,
+      "elapsedMs": 1657,
       "error": "segment HTTP 403"
     },
     {
@@ -1893,7 +1906,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 938,
+      "elapsedMs": 1000,
       "error": "segment HTTP 403"
     },
     {
@@ -1910,7 +1923,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1575,
+      "elapsedMs": 1517,
       "error": "segment HTTP 403"
     },
     {
@@ -1927,7 +1940,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1618,
+      "elapsedMs": 1549,
       "error": "segment HTTP 403"
     },
     {
@@ -1944,7 +1957,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1582,
+      "elapsedMs": 1279,
       "error": "segment HTTP 403"
     },
     {
@@ -1961,7 +1974,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1672,
+      "elapsedMs": 1649,
       "error": "segment HTTP 403"
     },
     {
@@ -1978,7 +1991,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1602,
+      "elapsedMs": 1650,
       "error": "segment HTTP 403"
     },
     {
@@ -1995,7 +2008,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1393,
+      "elapsedMs": 1425,
       "error": "segment HTTP 403"
     },
     {
@@ -2012,7 +2025,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1668,
+      "elapsedMs": 1853,
       "error": "segment HTTP 403"
     },
     {
@@ -2029,7 +2042,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1756,
+      "elapsedMs": 1828,
       "error": "segment HTTP 403"
     },
     {
@@ -2046,7 +2059,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 956,
+      "elapsedMs": 949,
       "error": "segment HTTP 403"
     },
     {
@@ -2063,7 +2076,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 624,
+      "elapsedMs": 719,
       "error": "segment HTTP 403"
     },
     {
@@ -2080,7 +2093,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 944,
+      "elapsedMs": 1036,
       "error": "segment HTTP 403"
     },
     {
@@ -2097,7 +2110,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 921,
+      "elapsedMs": 1004,
       "error": "segment HTTP 403"
     },
     {
@@ -2114,7 +2127,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1659,
+      "elapsedMs": 1774,
       "error": "segment HTTP 403"
     },
     {
@@ -2131,7 +2144,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1565,
+      "elapsedMs": 1675,
       "error": "segment HTTP 403"
     },
     {
@@ -2148,7 +2161,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1532,
+      "elapsedMs": 1571,
       "error": "segment HTTP 403"
     },
     {
@@ -2165,7 +2178,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1507,
+      "elapsedMs": 1607,
       "error": "segment HTTP 403"
     },
     {
@@ -2182,7 +2195,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 200,
-      "elapsedMs": 1568,
+      "elapsedMs": 1592,
       "error": "segment HTTP 403"
     }
   ]
