@@ -1,19 +1,19 @@
 {
-    "generatedAt":  "2026-06-28T06:45:00.9250779+08:00",
+    "generatedAt":  "2026-06-28T09:45:07.2948465+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  62,
-    "fallback":  50,
-    "failed":  50,
+    "playable":  63,
+    "fallback":  49,
+    "failed":  49,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  55.36,
-    "candidatePlaylistEntries":  62,
-    "playlistEntries":  62,
-    "removedFromPlaylist":  50,
+    "hlsSuccessRate":  56.25,
+    "candidatePlaylistEntries":  63,
+    "playlistEntries":  63,
+    "removedFromPlaylist":  49,
     "playlistPolicy":  "playable-only",
     "minPlaylistEntries":  10,
     "outputsPreserved":  false,
@@ -126,7 +126,7 @@
                          "Group":  "YouTube新聞台",
                          "Name":  "華視公眾安全資訊觀測站",
                          "PageUrl":  "https://www.youtube.com/watch?v=meHTKm4XBS8",
-                         "Error":  "ERROR: [youtube] meHTKm4XBS8: We\u0027re experiencing technical difficulties."
+                         "Error":  "ERROR: [youtube] meHTKm4XBS8: This live stream recording is not available."
                      },
                      {
                          "Order":  30,
@@ -379,13 +379,6 @@
                          "Name":  "佛光山人間衛視",
                          "PageUrl":  "https://www.youtube.com/watch?v=kyjN8rvSnio",
                          "Error":  "ERROR: [youtube] kyjN8rvSnio: Requested format is not available. Use --list-formats for a list of available formats"
-                     },
-                     {
-                         "Order":  94,
-                         "Group":  "YouTube音樂體育風景",
-                         "Name":  "earthTV",
-                         "PageUrl":  "https://www.youtube.com/watch?v=r1K7DyQn3jg",
-                         "Error":  "ERROR: [youtube] r1K7DyQn3jg: We\u0027re experiencing technical difficulties."
                      },
                      {
                          "Order":  95,
