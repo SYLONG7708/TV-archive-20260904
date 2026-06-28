@@ -1442,7 +1442,7 @@
         if (state.fullIndexSourceIds.has(source.id)) return true;
         if (state.fullIndexLoading.has(source.id)) return await state.fullIndexLoading.get(source.id);
         const promise = (async () => {
-          const searchIndexPath = source.searchIndexPath || source.indexPath;
+          const searchIndexPath = source.indexPath || source.searchIndexPath;
           if (searchIndexPath) {
             const payload = await getJson(`../data/${searchIndexPath}`, null);
             const rows = Array.isArray(payload?.items) ? payload.items : [];
@@ -3731,6 +3731,43 @@
         return normalizedText(value).replace(/[\s\-_.:：\/\\|,，。！!？?·'"()[\]{}]+/g, '');
       }
 
+      let searchNeedleCache = { raw: null, needle: null };
+
+      function currentSearchNeedle() {
+        const raw = state.query || '';
+        if (searchNeedleCache.raw === raw) return searchNeedleCache.needle;
+        const query = normalizedText(raw);
+        const compact = compactSearchText(query);
+        const tokens = query.split(/\s+/g).map((token) => token.trim()).filter(Boolean);
+        const compactTokens = tokens.map((token) => compactSearchText(token));
+        const needle = { query, compact, tokens, compactTokens };
+        searchNeedleCache = { raw, needle };
+        return needle;
+      }
+
+      function compactIncludesInOrder(haystack, needle) {
+        if (!needle) return true;
+        let offset = 0;
+        for (const char of needle) {
+          offset = haystack.indexOf(char, offset);
+          if (offset < 0) return false;
+          offset += char.length;
+        }
+        return true;
+      }
+
+      function searchTextMatchesNeedle(searchText, compactText, needle) {
+        if (searchText.includes(needle.query)) return true;
+        if (needle.compact && compactText.includes(needle.compact)) return true;
+        if (
+          needle.tokens.length > 1 &&
+          needle.tokens.every((token, index) => searchText.includes(token) || compactText.includes(needle.compactTokens[index]))
+        ) {
+          return true;
+        }
+        return needle.compact.length >= 4 && compactIncludesInOrder(compactText, needle.compact);
+      }
+
       function normalizedPoster(value) {
         return imageSrc(value).split(/[?#]/)[0].toLowerCase();
       }
@@ -4012,17 +4049,14 @@
         if (skipFilter !== 'year' && state.filters.year !== 'all' && item._filterYear !== state.filters.year) return false;
         if (skipFilter !== 'area' && state.filters.area !== 'all' && !item._filterAreas?.includes(state.filters.area)) return false;
         if (skipFilter !== 'genre' && state.filters.genre !== 'all' && !item._filterGenres?.includes(state.filters.genre)) return false;
-        const query = normalizedText(state.query);
-        if (!query) return true;
-        const compactQuery = compactSearchText(query);
+        const needle = currentSearchNeedle();
+        if (!needle.query) return true;
         const searchText =
           item._searchText ||
           normalizedText(
             `${item.title} ${item.originalName} ${item.vodId} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`,
           );
-        if (searchText.includes(query)) return true;
-        if (!compactQuery) return false;
-        return (item._searchCompact || compactSearchText(searchText)).includes(compactQuery);
+        return searchTextMatchesNeedle(searchText, item._searchCompact || compactSearchText(searchText), needle);
       }
 
       function sourceItems(sourceId = state.selectedSource, skipFilter = '') {
@@ -4054,25 +4088,36 @@
         });
       }
 
+      function searchSourceRank(source) {
+        const tabPenalty = sourceSupportsCurrentTab(source) ? 0 : 1000000000;
+        const adultPenalty = source.adult && state.selectedSource !== 'adult18' ? 500000000 : 0;
+        const itemCount = Number(source.itemCount || source.sourceTotalCount || 0);
+        return tabPenalty + adultPenalty + Math.min(itemCount, 100000000);
+      }
+
       function triggerSearchIndexLoad() {
-        const query = normalizedText(state.query);
-        if (state.tab === 'live' || query.length < 2) return;
+        const needle = currentSearchNeedle();
+        if (state.tab === 'live' || needle.query.length < 2) return;
         const groupSearch = ['all', 'normal', 'adult18'].includes(state.selectedSource);
         if (groupSearch && visibleItems().length >= GROUP_SEARCH_TARGET_RESULTS) {
           state.searchLoading = false;
           return;
         }
-        const sources = searchScopeSources().filter((source) => {
-          if (groupSearch) return false;
-          if (state.fullIndexSourceIds.has(source.id)) return false;
-          if (source.searchIndexPath) return true;
-          return Boolean(source.indexPath);
-        });
+        const sources = searchScopeSources()
+          .filter((source) => {
+            if (state.fullIndexSourceIds.has(source.id)) return false;
+            return Boolean(source.searchIndexPath || source.indexPath);
+          })
+          .sort(
+            (a, b) =>
+              searchSourceRank(a) - searchSourceRank(b) ||
+              normalizedText(a.name).localeCompare(normalizedText(b.name), 'zh-Hant'),
+          );
         if (!sources.length) {
           if (!state.fullIndexLoading.size) state.searchLoading = false;
           return;
         }
-        const key = [state.tab, state.selectedSource, query, sources.map((source) => source.id).join('|')].join('\u001f');
+        const key = [state.tab, state.selectedSource, needle.query, sources.map((source) => source.id).join('|')].join('\u001f');
         if (state.searchLoadInFlight?.key === key) return;
         state.searchLoading = true;
         const loadToken = { key, promise: null };
