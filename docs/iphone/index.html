@@ -1128,7 +1128,7 @@
         const dataPath = String(url || '').match(/(?:^|\/)data\/(.+?)(?:[?#].*)?$/)?.[1] || '';
         const freshData = /^(?:[^/]+\.json|vod-index\/|vod-detail\/|vod-search\/|quantum-lzi\/)/i.test(dataPath);
         const localUrl = freshData ? cacheBustedUrl(url) : url;
-        const preferOnline = /^(?:vod-index|vod-search)\//i.test(dataPath);
+        const preferOnline = /^vod-search\//i.test(dataPath);
         const capacitorNative = Boolean(window.Capacitor?.isNativePlatform?.());
         const localHost = !capacitorNative && /^(?:localhost|127\.0\.0\.1|::1)$/i.test(location.hostname);
         const preferLocal = localHost || (!preferOnline && location.hostname === 'sylong7708.github.io');
