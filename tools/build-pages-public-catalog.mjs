@@ -279,15 +279,22 @@ let indexedItems = 0;
 let playableItems = 0;
 for (const source of sources) {
   if (!source.indexed) continue;
+  if (source.indexPath) {
+    try {
+      const payload = await readMaybeGzipJson(path.join(pagesDataRoot, source.indexPath));
+      const items = Array.isArray(payload.items) ? payload.items : [];
+      source.itemCount = items.length;
+      source.playableCount = items.filter((item) => item.playable !== false).length;
+      indexedItems += source.itemCount;
+      playableItems += source.playableCount;
+      for (const item of items) addKind(kindTotals, item);
+      continue;
+    } catch {
+      // Fall back to source-level totals when a legacy source has only detail pages published.
+    }
+  }
   indexedItems += Number(source.itemCount || 0);
   playableItems += Number(source.playableCount || source.itemCount || 0);
-  if (!source.indexPath) continue;
-  try {
-    const payload = await readMaybeGzipJson(path.join(pagesDataRoot, source.indexPath));
-    for (const item of payload.items || []) addKind(kindTotals, item);
-  } catch {
-    // Keep source-level totals even when a legacy source has only detail pages published.
-  }
 }
 
 const seedCatalog = preservePreviousPublicSources ? smallCatalog : fullCatalog;

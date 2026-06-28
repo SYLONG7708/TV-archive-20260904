@@ -28,26 +28,27 @@ const syncGeneratedAt = sourceCatalog.generatedAt || new Date().toISOString();
 
 for (const targetPath of [iphoneCatalogPath, pagesTvboxCatalogPath]) {
   if (!fs.existsSync(targetPath)) continue;
+  const isIphoneCatalog = targetPath === iphoneCatalogPath;
   const target = readJson(targetPath);
   let changed = 0;
   for (const source of target.sources || []) {
-    const searchIndexPath = pathById.get(source.id);
+    const searchIndexPath = isIphoneCatalog ? source.indexPath || pathById.get(source.id) : pathById.get(source.id);
     if (searchIndexPath && source.searchIndexPath !== searchIndexPath) {
       source.searchIndexPath = searchIndexPath;
       changed += 1;
     }
   }
-  const nextTotals = { ...(target.totals || {}), ...(sourceCatalog.totals || {}) };
-  if (targetPath === iphoneCatalogPath) {
+  const nextTotals = isIphoneCatalog ? { ...(target.totals || {}) } : { ...(target.totals || {}), ...(sourceCatalog.totals || {}) };
+  if (isIphoneCatalog) {
     nextTotals.sources = (target.sources || []).length;
     nextTotals.indexedSources = (target.sources || []).filter((source) => source.indexed).length;
   }
   target.generatedAt = syncGeneratedAt;
   target.totals = nextTotals;
-  if (sourceCatalog.filters) target.filters = sourceCatalog.filters;
+  if (!isIphoneCatalog && sourceCatalog.filters) target.filters = sourceCatalog.filters;
   target.source = target.source || {};
-  target.source.searchIndexRoot = 'docs/data/vod-search';
-  target.source.searchIndexMode = 'raw-main-lean-gzip';
+  target.source.searchIndexRoot = isIphoneCatalog ? 'docs/data/vod-index' : 'docs/data/vod-search';
+  target.source.searchIndexMode = isIphoneCatalog ? 'pages-lean-index-gzip' : 'raw-main-lean-gzip';
   target.source.dataGeneratedAt = syncGeneratedAt;
   target.source.searchIndexSyncedAt = new Date().toISOString();
   writeJson(targetPath, target);
