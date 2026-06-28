@@ -1,19 +1,19 @@
 {
-    "generatedAt":  "2026-06-28T18:45:48.1003388+08:00",
+    "generatedAt":  "2026-06-28T21:46:17.3078534+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  62,
-    "fallback":  50,
-    "failed":  50,
+    "playable":  61,
+    "fallback":  51,
+    "failed":  51,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  55.36,
-    "candidatePlaylistEntries":  62,
-    "playlistEntries":  62,
-    "removedFromPlaylist":  50,
+    "hlsSuccessRate":  54.46,
+    "candidatePlaylistEntries":  61,
+    "playlistEntries":  61,
+    "removedFromPlaylist":  51,
     "playlistPolicy":  "playable-only",
     "minPlaylistEntries":  10,
     "outputsPreserved":  false,
@@ -127,6 +127,13 @@
                          "Name":  "華視公眾安全資訊觀測站",
                          "PageUrl":  "https://www.youtube.com/watch?v=meHTKm4XBS8",
                          "Error":  "ERROR: [youtube] meHTKm4XBS8: This live stream recording is not available."
+                     },
+                     {
+                         "Order":  26,
+                         "Group":  "YouTube購物台",
+                         "Name":  "momo購物一台",
+                         "PageUrl":  "https://www.youtube.com/watch?v=_pZQ1Lk0xMA",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 270720 bytes, 340.3 kbps."
                      },
                      {
                          "Order":  30,
@@ -413,7 +420,7 @@
                          "Group":  "YouTube動漫台",
                          "Name":  "Muse 獵人馬拉松",
                          "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 57528 bytes, 10525.8 kbps."
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 48504 bytes, 11831.9 kbps."
                      },
                      {
                          "Order":  107,
