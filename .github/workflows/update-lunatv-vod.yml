@@ -31,6 +31,7 @@ jobs:
             docs/data/adult18-sources.json
             docs/data/iphone-health-check-latest.csv
             docs/data/iphone-health-check-latest.json
+            docs/data/iphone-vod-latest.json
             docs/data/iphone-vod-catalog.json
             docs/data/iphone-vod-catalog-report.json
             docs/data/live-channels.json
@@ -174,6 +175,12 @@ jobs:
             --indexRoot .\docs\data\vod-index `
             --dropEmptySources true
           node .\tools\apply-vod-kind-rules.mjs --tvRoot . --skipDetail true --skipQuantum true
+          node .\tools\build-iphone-vod-latest.mjs `
+            --tvRoot . `
+            --catalog .\docs\data\iphone-vod-catalog.json `
+            --output .\docs\data\iphone-vod-latest.json `
+            --maxItems 3600 `
+            --maxItemsPerSource 80
           node .\tools\compact-iphone-catalog.mjs `
             --tvRoot . `
             --catalog .\docs\data\iphone-vod-catalog.json `
@@ -243,6 +250,7 @@ jobs:
             "sources/vod-lunatv-adult18-sorted-analysis.csv",
             "docs/data/vod-sources.json",
             "docs/data/source-summary.json",
+            "docs/data/iphone-vod-latest.json",
             "docs/data/iphone-vod-catalog.json",
             "docs/data/iphone-vod-catalog-report.json",
             "docs/data/iphone-health-check-latest.json",
@@ -252,6 +260,7 @@ jobs:
             "tools/vod-kind-rules.mjs",
             "tools/apply-vod-kind-rules.mjs",
             "tools/build-iphone-vod-catalog.mjs",
+            "tools/build-iphone-vod-latest.mjs",
             "tools/build-full-vod-chunked-catalog.mjs",
             "tools/build-type3-spider-catalog.mjs",
             "tools/assemble-vod-index-from-detail.mjs",

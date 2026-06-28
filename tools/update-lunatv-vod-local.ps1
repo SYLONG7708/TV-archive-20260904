@@ -292,6 +292,7 @@ try {
     $type3SpiderCatalogScript = Join-Path $repoRootText "tools\build-type3-spider-catalog.mjs"
     $assembleChunkedCatalogScript = Join-Path $repoRootText "tools\assemble-vod-index-from-detail.mjs"
     $applyVodKindRulesScript = Join-Path $repoRootText "tools\apply-vod-kind-rules.mjs"
+    $iphoneLatestScript = Join-Path $repoRootText "tools\build-iphone-vod-latest.mjs"
     $compactIphoneCatalogScript = Join-Path $repoRootText "tools\compact-iphone-catalog.mjs"
     $iphoneHealthScript = Join-Path $repoRootText "tools\check-iphone-catalog-health.mjs"
     $tvboxConfigScript = Join-Path $repoRootText "tools\build-tvbox-config.mjs"
@@ -383,6 +384,16 @@ try {
         node $applyVodKindRulesScript --tvRoot $repoRootText --skipDetail true --skipQuantum true
     }
 
+    if (Test-Path -LiteralPath $iphoneLatestScript) {
+        Write-Log "Building fast iPhone latest VOD cache."
+        node $iphoneLatestScript `
+            --tvRoot $repoRootText `
+            --catalog (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
+            --output (Join-Path $repoRootText "docs\data\iphone-vod-latest.json") `
+            --maxItems 3600 `
+            --maxItemsPerSource 80
+    }
+
     if (Test-Path -LiteralPath $compactIphoneCatalogScript) {
         Write-Log "Compacting iPhone catalog for fast first paint."
         node $compactIphoneCatalogScript `
@@ -420,6 +431,7 @@ try {
         "tools/install-lunatv-vod-autoupdate-task.ps1",
         "tools/build-lunatv-adult18-sorted.mjs",
         "tools/build-iphone-vod-catalog.mjs",
+        "tools/build-iphone-vod-latest.mjs",
         "tools/build-full-vod-chunked-catalog.mjs",
         "tools/build-type3-spider-catalog.mjs",
         "tools/vod-payload-parser.mjs",
@@ -447,6 +459,7 @@ try {
         "sources/vod-lunatv-adult18-sorted-analysis.csv",
         "docs/data/iphone-vod-catalog.json",
         "docs/data/iphone-vod-catalog-report.json",
+        "docs/data/iphone-vod-latest.json",
         "docs/data/vod-sources.json",
         "docs/data/source-summary.json",
         "docs/data/iphone-health-check-latest.json",
