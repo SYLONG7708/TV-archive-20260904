@@ -1029,6 +1029,7 @@
         searchComposing: false,
         refocusSearch: false,
         catalog: { totals: {}, sources: [], items: [], filters: { years: [], areas: [], genres: [] } },
+        latest: { items: [] },
         quantum: {
           manifest: null,
           loadedKinds: new Set(),
@@ -1290,6 +1291,23 @@
           clearViewCache();
         }
         return changed;
+      }
+
+      function markLatestPagesLoaded(rows) {
+        const sourcePages = new Map();
+        for (const item of rows || []) {
+          const page = Number(item?.detailPage || 0);
+          if (!item?.sourceId || page < 1) continue;
+          if (!sourcePages.has(item.sourceId)) sourcePages.set(item.sourceId, new Set());
+          sourcePages.get(item.sourceId).add(page);
+        }
+        for (const [sourceId, pages] of sourcePages) {
+          const source = sourceById(sourceId);
+          const pageState = getSourcePageState(source);
+          if (!pageState) continue;
+          for (const page of pages) pageState.loaded.add(page);
+          while (pageState.loaded.has(pageState.nextPage)) pageState.nextPage += 1;
+        }
       }
 
       function sourcePageCount(source) {
@@ -4044,7 +4062,12 @@
           state.searchLoading = false;
           return;
         }
-        const sources = searchScopeSources().filter((source) => (source.searchIndexPath || source.indexPath) && !state.fullIndexSourceIds.has(source.id));
+        const sources = searchScopeSources().filter((source) => {
+          if (groupSearch) return false;
+          if (state.fullIndexSourceIds.has(source.id)) return false;
+          if (source.searchIndexPath) return true;
+          return Boolean(source.indexPath);
+        });
         if (!sources.length) {
           if (!state.fullIndexLoading.size) state.searchLoading = false;
           return;
@@ -4206,7 +4229,7 @@
         });
       }
 
-      function scheduleSearchRender(value, delay = 120) {
+      function scheduleSearchRender(value, delay = 260) {
         if (state.query === value && !state.refocusSearch) return;
         state.query = value;
         clearViewCache();
@@ -4966,17 +4989,21 @@
       document.querySelector('#detailSheet [data-close-detail].icon-btn').innerHTML = icon('close');
       document.querySelector('#playerSheet [data-close-player].icon-btn').innerHTML = icon('close');
 
-      [state.catalog, state.live] = await Promise.all([
+      [state.catalog, state.latest, state.live] = await Promise.all([
         getJson('../data/iphone-vod-catalog.json', state.catalog),
+        getJson('../data/iphone-vod-latest.json', { items: [] }),
         getJson('../data/live-channels.json', []),
       ]);
       state.catalog.sources = Array.isArray(state.catalog.sources) ? state.catalog.sources : [];
       state.sourceMap = new Map(state.catalog.sources.map((source) => [source.id, source]));
       await loadQuantumManifest();
       const initialCatalogItems = Array.isArray(state.catalog.items) ? state.catalog.items : [];
+      const latestCatalogItems = Array.isArray(state.latest.items) ? state.latest.items : [];
       state.catalog.items = [];
       state.itemById.clear();
       registerCatalogItems(initialCatalogItems);
+      registerCatalogItems(latestCatalogItems);
+      markLatestPagesLoaded(latestCatalogItems);
       applyHealthIndex({ failed: [] });
       localStorage.removeItem('oktv:iphone:selectedSource');
       const storedSource = localStorage.getItem(SOURCE_STORAGE_KEY);
