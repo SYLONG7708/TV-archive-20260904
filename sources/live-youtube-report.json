@@ -1,19 +1,19 @@
 {
-    "generatedAt":  "2026-07-02T18:45:36.9544241+08:00",
+    "generatedAt":  "2026-07-02T21:45:50.5218093+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  62,
-    "fallback":  50,
-    "failed":  50,
+    "playable":  60,
+    "fallback":  52,
+    "failed":  52,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  55.36,
-    "candidatePlaylistEntries":  62,
-    "playlistEntries":  62,
-    "removedFromPlaylist":  50,
+    "hlsSuccessRate":  53.57,
+    "candidatePlaylistEntries":  60,
+    "playlistEntries":  60,
+    "removedFromPlaylist":  52,
     "playlistPolicy":  "playable-only",
     "minPlaylistEntries":  10,
     "outputsPreserved":  false,
@@ -92,6 +92,13 @@
                          "Name":  "運通財經台",
                          "PageUrl":  "https://www.youtube.com/watch?v=dlTbFSt2spc",
                          "Error":  "ERROR: [youtube] dlTbFSt2spc: This live stream recording is not available."
+                     },
+                     {
+                         "Order":  7,
+                         "Group":  "YouTube新聞台",
+                         "Name":  "台視新聞台",
+                         "PageUrl":  "https://www.youtube.com/watch?v=sNtCBxP-8LY",
+                         "Error":  "ERROR: [youtube] sNtCBxP-8LY: This live stream recording is not available."
                      },
                      {
                          "Order":  8,
@@ -190,6 +197,13 @@
                          "Name":  "ABC News",
                          "PageUrl":  "https://www.youtube.com/watch?v=IkKbZ_TC9Tc",
                          "Error":  "ERROR: [youtube] IkKbZ_TC9Tc: Requested format is not available. Use --list-formats for a list of available formats"
+                     },
+                     {
+                         "Order":  50,
+                         "Group":  "YouTube國際新聞",
+                         "Name":  "Haberturk TV",
+                         "PageUrl":  "https://www.youtube.com/watch?v=s4KIyYkwiM0",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 271876 bytes, 315.9 kbps."
                      },
                      {
                          "Order":  51,
@@ -413,7 +427,7 @@
                          "Group":  "YouTube動漫台",
                          "Name":  "Muse 獵人馬拉松",
                          "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 48504 bytes, 2986.3 kbps."
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 63544 bytes, 3663.3 kbps."
                      },
                      {
                          "Order":  107,
