@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-01T20:25:13.409Z",
+  "checkedAt": "2026-07-02T19:57:18.341Z",
   "inputs": {
     "catalogPath": "D:\\a\\TV\\TV\\docs\\data\\iphone-vod-catalog.json",
     "livePath": "D:\\a\\TV\\TV\\docs\\data\\live-channels.json"
@@ -7,8 +7,8 @@
   "summary": {
     "sources": {
       "total": 78,
-      "ok": 74,
-      "failed": 4
+      "ok": 71,
+      "failed": 7
     },
     "posters": {
       "total": 0,
@@ -31,15 +31,54 @@
   "failed": [
     {
       "kind": "source",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56",
-      "name": "滴滴资源｜追劇",
+      "id": "all-on-demand-sources-豆瓣资源-https-dbzy-tv-api-php-provide-vod-2",
+      "name": "豆瓣资源｜追劇",
       "type": 1,
-      "url": "https://api.ddapi.cc/api.php/provide/vod/",
+      "url": "https://dbzy.tv/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": false,
+      "status": 502,
+      "elapsedMs": 676,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3",
+      "name": "茅台资源｜追劇",
+      "type": 1,
+      "url": "https://caiji.maotaizy.cc/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": false,
+      "status": 502,
+      "elapsedMs": 694,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    },
+    {
+      "kind": "source",
+      "id": "current-vod-url-极速资源-https-jszyapi-com-api-php-provide-vod-13",
+      "name": "极速资源｜追劇",
+      "type": 1,
+      "url": "https://jszyapi.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": false,
+      "status": 403,
+      "elapsedMs": 85,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55",
+      "name": "豆豆资源｜追劇",
+      "type": 1,
+      "url": "https://api.douapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
       "ok": false,
       "status": 0,
-      "elapsedMs": 330,
+      "elapsedMs": 159,
       "error": "fetch failed"
     },
     {
@@ -52,7 +91,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 203,
+      "elapsedMs": 468,
       "error": "XML source did not return an XML list"
     },
     {
@@ -65,7 +104,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 148,
+      "elapsedMs": 554,
       "error": "Unexpected token '<', \"<html>\n<he\"... is not valid JSON"
     },
     {
@@ -78,7 +117,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 109,
+      "elapsedMs": 108,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     }
   ],
@@ -91,10 +130,10 @@
       "url": "https://dbzy.tv/api.php/provide/vod/",
       "indexed": true,
       "adult": false,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 919,
-      "error": ""
+      "ok": false,
+      "status": 502,
+      "elapsedMs": 676,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "source",
@@ -106,7 +145,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 259,
+      "elapsedMs": 326,
       "error": ""
     },
     {
@@ -119,7 +158,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 942,
+      "elapsedMs": 990,
       "error": ""
     },
     {
@@ -132,7 +171,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 786,
+      "elapsedMs": 640,
       "error": ""
     },
     {
@@ -145,7 +184,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 247,
+      "elapsedMs": 234,
       "error": ""
     },
     {
@@ -156,10 +195,10 @@
       "url": "https://caiji.maotaizy.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": false,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 1055,
-      "error": ""
+      "ok": false,
+      "status": 502,
+      "elapsedMs": 694,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "source",
@@ -171,7 +210,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 456,
+      "elapsedMs": 548,
       "error": ""
     },
     {
@@ -184,7 +223,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 551,
+      "elapsedMs": 1034,
       "error": ""
     },
     {
@@ -197,7 +236,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 634,
+      "elapsedMs": 853,
       "error": ""
     },
     {
@@ -210,7 +249,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 210,
+      "elapsedMs": 505,
       "error": ""
     },
     {
@@ -223,7 +262,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 298,
+      "elapsedMs": 442,
       "error": ""
     },
     {
@@ -234,10 +273,10 @@
       "url": "https://jszyapi.com/api.php/provide/vod/",
       "indexed": true,
       "adult": false,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 411,
-      "error": ""
+      "ok": false,
+      "status": 403,
+      "elapsedMs": 85,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "source",
@@ -249,7 +288,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1014,
+      "elapsedMs": 826,
       "error": ""
     },
     {
@@ -262,7 +301,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1044,
+      "elapsedMs": 854,
       "error": ""
     },
     {
@@ -275,7 +314,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 574,
+      "elapsedMs": 560,
       "error": ""
     },
     {
@@ -288,7 +327,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 120,
+      "elapsedMs": 194,
       "error": ""
     },
     {
@@ -301,7 +340,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 173,
+      "elapsedMs": 117,
       "error": ""
     },
     {
@@ -314,7 +353,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1376,
+      "elapsedMs": 1148,
       "error": ""
     },
     {
@@ -327,7 +366,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 934,
+      "elapsedMs": 1210,
       "error": ""
     },
     {
@@ -340,7 +379,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 416,
+      "elapsedMs": 445,
       "error": ""
     },
     {
@@ -353,7 +392,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 128,
+      "elapsedMs": 300,
       "error": ""
     },
     {
@@ -366,7 +405,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 239,
+      "elapsedMs": 1436,
       "error": ""
     },
     {
@@ -379,7 +418,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 262,
+      "elapsedMs": 417,
       "error": ""
     },
     {
@@ -392,7 +431,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 681,
+      "elapsedMs": 1083,
       "error": ""
     },
     {
@@ -405,7 +444,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 2103,
+      "elapsedMs": 1444,
       "error": ""
     },
     {
@@ -418,7 +457,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 75,
+      "elapsedMs": 168,
       "error": ""
     },
     {
@@ -431,7 +470,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 189,
+      "elapsedMs": 242,
       "error": ""
     },
     {
@@ -444,7 +483,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 248,
+      "elapsedMs": 291,
       "error": ""
     },
     {
@@ -457,7 +496,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 868,
+      "elapsedMs": 979,
       "error": ""
     },
     {
@@ -470,7 +509,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1076,
+      "elapsedMs": 1181,
       "error": ""
     },
     {
@@ -483,7 +522,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 183,
+      "elapsedMs": 320,
       "error": ""
     },
     {
@@ -496,7 +535,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 171,
+      "elapsedMs": 55,
       "error": ""
     },
     {
@@ -509,7 +548,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 234,
+      "elapsedMs": 231,
       "error": ""
     },
     {
@@ -522,7 +561,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 263,
+      "elapsedMs": 249,
       "error": ""
     },
     {
@@ -548,7 +587,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 199,
+      "elapsedMs": 512,
       "error": ""
     },
     {
@@ -561,7 +600,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 900,
+      "elapsedMs": 1051,
       "error": ""
     },
     {
@@ -574,7 +613,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 358,
+      "elapsedMs": 171,
       "error": ""
     },
     {
@@ -587,7 +626,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 431,
+      "elapsedMs": 495,
       "error": ""
     },
     {
@@ -600,7 +639,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 362,
+      "elapsedMs": 196,
       "error": ""
     },
     {
@@ -613,7 +652,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 168,
+      "elapsedMs": 242,
       "error": ""
     },
     {
@@ -626,7 +665,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 188,
+      "elapsedMs": 124,
       "error": ""
     },
     {
@@ -639,7 +678,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 298,
+      "elapsedMs": 387,
       "error": ""
     },
     {
@@ -652,7 +691,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 149,
+      "elapsedMs": 422,
       "error": ""
     },
     {
@@ -665,7 +704,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 223,
+      "elapsedMs": 327,
       "error": ""
     },
     {
@@ -678,7 +717,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 795,
+      "elapsedMs": 873,
       "error": ""
     },
     {
@@ -691,7 +730,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 292,
+      "elapsedMs": 335,
       "error": ""
     },
     {
@@ -702,10 +741,10 @@
       "url": "https://api.douapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 388,
-      "error": ""
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 159,
+      "error": "fetch failed"
     },
     {
       "kind": "source",
@@ -715,10 +754,10 @@
       "url": "https://api.ddapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 330,
-      "error": "fetch failed"
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 254,
+      "error": ""
     },
     {
       "kind": "source",
@@ -730,7 +769,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 690,
+      "elapsedMs": 520,
       "error": ""
     },
     {
@@ -743,7 +782,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 149,
+      "elapsedMs": 198,
       "error": ""
     },
     {
@@ -756,7 +795,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 207,
+      "elapsedMs": 194,
       "error": ""
     },
     {
@@ -769,7 +808,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 194,
+      "elapsedMs": 405,
       "error": ""
     },
     {
@@ -782,7 +821,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 308,
+      "elapsedMs": 568,
       "error": ""
     },
     {
@@ -795,7 +834,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 175,
+      "elapsedMs": 258,
       "error": ""
     },
     {
@@ -808,7 +847,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 203,
+      "elapsedMs": 468,
       "error": "XML source did not return an XML list"
     },
     {
@@ -821,7 +860,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 933,
+      "elapsedMs": 361,
       "error": ""
     },
     {
@@ -834,7 +873,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1357,
+      "elapsedMs": 1265,
       "error": ""
     },
     {
@@ -847,7 +886,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 143,
+      "elapsedMs": 301,
       "error": ""
     },
     {
@@ -860,7 +899,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 247,
+      "elapsedMs": 223,
       "error": ""
     },
     {
@@ -873,7 +912,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 30,
+      "elapsedMs": 173,
       "error": ""
     },
     {
@@ -886,7 +925,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 322,
+      "elapsedMs": 403,
       "error": ""
     },
     {
@@ -899,7 +938,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1047,
+      "elapsedMs": 1296,
       "error": ""
     },
     {
@@ -912,7 +951,7 @@
       "adult": false,
       "ok": true,
       "status": 206,
-      "elapsedMs": 289,
+      "elapsedMs": 142,
       "error": ""
     },
     {
@@ -925,7 +964,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1068,
+      "elapsedMs": 1327,
       "error": ""
     },
     {
@@ -938,7 +977,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 458,
+      "elapsedMs": 535,
       "error": ""
     },
     {
@@ -951,7 +990,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 437,
+      "elapsedMs": 534,
       "error": ""
     },
     {
@@ -964,7 +1003,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 817,
+      "elapsedMs": 1062,
       "error": ""
     },
     {
@@ -977,7 +1016,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 148,
+      "elapsedMs": 554,
       "error": "Unexpected token '<', \"<html>\n<he\"... is not valid JSON"
     },
     {
@@ -990,7 +1029,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 209,
+      "elapsedMs": 453,
       "error": ""
     },
     {
@@ -1003,7 +1042,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 207,
+      "elapsedMs": 190,
       "error": ""
     },
     {
@@ -1016,7 +1055,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 233,
+      "elapsedMs": 301,
       "error": ""
     },
     {
@@ -1029,7 +1068,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 109,
+      "elapsedMs": 108,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -1042,7 +1081,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 797,
+      "elapsedMs": 1337,
       "error": ""
     },
     {
@@ -1055,7 +1094,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 264,
+      "elapsedMs": 307,
       "error": ""
     },
     {
@@ -1068,7 +1107,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 166,
+      "elapsedMs": 323,
       "error": ""
     },
     {
@@ -1081,7 +1120,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 822,
+      "elapsedMs": 538,
       "error": ""
     },
     {
@@ -1094,7 +1133,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 112,
+      "elapsedMs": 788,
       "error": ""
     },
     {
@@ -1105,14 +1144,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945639/ei/B0NFauiKE_LDvcAP6eStuQk/ip/114.42.197.186/id/pF507BLtbqU.8/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/gcr/tw/bui/ARmQxEVpC3QUkDZB0_GwvsIGobWiwAxt98wulV68Hwj4PV_dU8mkV8CqadKoXSitSrAU0lLGrrM7zXVl/spc/SQ-umnn6oGNHivCM_cwkG8OqMxpd5OlKfntTKeoAdxdCrklbWA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2262500/met/1782924039,/mh/6w/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/1/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,51946837/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhAM1aXZ1aiogxjKIio_YgJ1eEG9gP5yQBqJVmLu4aXp9yAiAPvdcKeB2wC2R8JFz7VfrAFfb4Ou-Vm9rIFGihA1FF0g%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgU5WBWijE_PXXDClPbiJPN0Q8uhc71C5aKc8Y8WjSAqkCIA7OHQtp1XKQb8H5H6mPqcEuOsBqPS29rMQb9r_9wYTa/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1174,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 74,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1122,14 +1161,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945642/ei/CkNFas6RIIaNvcAP45OAiQo/ip/114.42.197.186/id/Ej3LQM_lTEw.5/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEX3c4L_JuFts1tV14PjNVpoHLtywOmZiqDfq0nZRwo30Zxuoi0tq_o_Eu0mUI8utjCPLZfYfPXX/spc/SQ-umkKfaVtnP6YP08BBynd9W743LwdGLddSGC5xhQgVtnYyLw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2352500/met/1782924042,/mh/s4/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAKD6lE8_4nRkpWEtktukFiV3D69LBqv8A9Nt3k0waYoRAiEAhxUda9q4h0KZEOsCuh7Q9ASboB2lm_c5WbZN8TqQqV8%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAKrwIDSmoWJfxrjWuvk51I6HedDbnG4zatEqWACxgxv9AiEA-bi0QMRBJKtWTvv_rgkaMv-gb6Bj1nxpaXnCEM7EKgw%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1695,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 41,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1139,14 +1178,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945645/ei/DUNFatzxGfCU1d8Ps8-fsQY/ip/114.42.197.186/id/1I2iq41Akmo.3/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEX0BR7NbQ03OObTSmeQOVqe-_POg9mJIVopAI202-JdkJmrwvJYlDo-zfeUk1V6ANLOCoC0mNir/spc/SQ-umuLoTRVBkMHzu40IDmlUiv0vWnSdOut-0HTpL6TBEg36IQ/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2352500/met/1782924045,/mh/CJ/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgDXshHnr_XSi23CzkwixqsYVRkk7iCnf1o6HzyF5KRG8CIQC5wKXld11kf0IWVIPuAab6RtAu44FXaxfuc7Uy-XDw4A%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAOwvIcueuuhqIWbBas7ByXLAXxDiKznLJSctPT7jqxhwAiEAwTzWOx-x_nZg4z81y1Gby9yIu1uISPcyZqjUnTKU4gE%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1350,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 69,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1156,14 +1195,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945649/ei/EUNFariKOs--vcAP0YmYwQc/ip/114.42.197.186/id/TCnaIE_SAtM.9/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEWMqa8mvQiyWRuj9Jpp6HYLAhv43Q9uVibVCESOqN5-pu9zjm_tWMXFX6UEUO5OyxOV7t83ZDd7/spc/SQ-umq6uSXlh-hajVzmpvo_aMSmXG3rLRNH9ZPXzX9aEfWqWag/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2262500/met/1782924050,/mh/eb/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgb9VOSRjuZxo1-S8Gm37LKYso7hT3EGlIU8q4jMXAKYoCIQDUKk0qoaW3tDXGRSpVKkLKEEZUK7RgZhP6uPHn72uMhg%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgf7tQ1FY7Ji7pu8Khs3IYk45IKtOhiXb8mhWArOJdwAkCIQD6EM2VU9oaHp19ZIR0EbZW-li0BpbTYIsDdHzDUu27fw%3D%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1342,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 66,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1173,14 +1212,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945652/ei/FENFapvtGcu02roP5qqc6A8/ip/114.42.197.186/id/ylYJSBUgaMA.7/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEX61RrbK_cv7_ok7Jve4vwh3hvMCYBf4PbQZI7ejZts9jGuXPi1rrbEMEP2lhDgtF1_ODaeCG-i/spc/SQ-ums4Obymcqk2tqmKbZHx6aHd0Vkm59gSdpc0mG4DON3CfLQ/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2262500/met/1782924052,/mh/iR/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/5/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017147/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhALmOwIGSV3EBTtgJcitmqNrGRc1LIl9-SDEUGoslKaW1AiEA_MyqXtO_zRWQdLWPkTADHoHPNh6Oj2GxohvCfuU3dmg%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAMLEnBsV3gDoJskdVNl4aHa5yw488fT13Uy0wiJHcXqKAiBrrepN4U0w9wekC7s58qyLj34mhd3e_39Co4BQELuMPw%3D%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1629,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 71,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1190,14 +1229,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945654/ei/FkNFavLnLtiXkuEP4o-L0Qc/ip/114.42.197.186/id/sNtCBxP-8LY.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/gcr/tw/bui/ARmQxEXHkwUBYcWh9XShcJByaDBrXPdsx1FnTUoqYHZ22yBDJngO4HorHal9wB7U-2auvMcKTwJzU4vJ/spc/SQ-umhPKGC1_TyVlz8xqxwwpsrYOpQ0gPRlkFjAA_GKZ_ZO_ag/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2377500/met/1782924054,/mh/8w/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017147/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgFcfLM1dJhmhKxX3gy_1cLjdacDwqA1IrWo3Q3JqzbC0CIQDO0x_h528I8VnjsMupKC9pusUuvtJ5jfFppJexoCoqQg%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAKOSzQk5pCDD2VDVljMcO4MB2CeKjdDQI9h5K52-voMbAiBY4ARrkQlaiRHN8iRuBfA5rzpf_o7VKrZxMjgY9nglpw%3D%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1093,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 73,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1207,14 +1246,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945659/ei/G0NFaqT7BeO0vcAPhaWK-Ag/ip/114.42.197.186/id/m_dhMSvUCIc.7/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEXGg6KIsRblA6HsWPdoiEjxq0QpxpMMMN7xXZXv55rZg1wz4IkJwMeMtUHWamYiV5lbe2jn-Ppv/spc/SQ-umoOA5bWdI_7YDpq8khV2RlH7wOKdlAPEq4xbgTVLuMactw/vprv/1/reg/0/playlist_type/DVR/hcs/ir/initcwndbps/2352500/met/1782924059,/mh/V0/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/3/pl/24/rmhost/rr1---sn-ipoxu-umbk.googlevideo.com/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017147/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgMVyonMEBioBs3Crj093M3z6wqvre41MBLajXT7jL7zoCIQCPjbt3KDktD_EhzWqEG7Oh77m5Elfl7axlsyxMuzsbLw%3D%3D/lsparams/hls_chunk_host,hcs,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rmhost,rms/lsig/APaTxxMwRQIgTcJrTuwajFMv7cVqziLoiwOw3ipOe5yqnio_RkQUlNYCIQDHaFzMngjG8aoeKjijaKjxk3sL8F95xe-QP3BHoDGirA%3D%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1338,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 75,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1224,14 +1263,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945661/ei/HUNFaoPvJbeJ1d8Pr-eK6AQ/ip/114.42.197.186/id/vr3XyVCR4T0.4/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEUQMdM6fZ3EgmNBbWZEbjnyxHycKGqGLSQXgzFtAEwITiMaRkWmxbWj5qMNKNQm5XiY650Vv7f_/spc/SQ-umrO2Tct6jn1yBtmPHJXT_uzffkz-R0jDPOk-BalBg5pIVw/vprv/1/reg/0/playlist_type/DVR/hcs/ir/initcwndbps/2352500/met/1782924061,/mh/40/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/1/pl/24/rmhost/rr4---sn-ipoxu-umbk.googlevideo.com/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAKkjA7HYeEiVhDI03mNvpVQP5rPsP6-nDd81IjaCjKf1AiEAjX_KM-FuRFxpu_f1Bj1oAht9ezsyg4l9M3RFP5b6R2E%3D/lsparams/hls_chunk_host,hcs,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rmhost,rms/lsig/APaTxxMwRgIhAK9jjSUVIDEqrhhTi0NLJpFktuEETYfoBadepsXpKVHNAiEAtsvIs7Vnwq1DddSOxNAuCRQdLl2fDMd0fZIOuw6ReDA%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1350,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 80,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1241,14 +1280,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945666/ei/IkNFaum0DfibvcAPrr38qAU/ip/114.42.197.186/id/Bhp_V7H5QoY.3/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEVa9ieaqBJqAl5EwCOWjuvthXALRIkUVj2nyPledyYXkj545uXU2xknuq-kwqTCbkxPRY0Nzpfr/spc/SQ-umnoTpvIKHOB97e03jN5kXf8bLLooadZerZ1UWEIK9JL7kA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2377500/met/1782924066,/mh/Zs/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/5/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAJkE6U9c3PJhNOyYWhPxLm9tU5_zLgYHfo5kv8GHwf5zAiEAuNG7m8vaqdeo7odd6Fr0TNS5KkGDOH-U_8RNUzCjhnw%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAOmZxfNz4zD4fbkcThVRy70tnElVbDnH2ts_mBmhhUfBAiA2o4ESKWZoGH9qVIlZ1-fsFFLXrAXoJq-7e8cp6IrelQ%3D%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1742,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 70,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1258,14 +1297,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945669/ei/JUNFasayEYiJ1d8P06LqyAc/ip/114.42.197.186/id/5n0y6b0Q25o.4/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEVmRwReVWHPfujmAxea49vHy_uh6AKoN9T4IG8WFeimgCGabB_HZ2RCCX_CDa1l7_mheX4q9dIt/spc/SQ-umhcNL5l0Z1nqSn9Gi0QdpeVXcKCLtvXnQATWBsXzPMmABw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2377500/met/1782924069,/mh/di/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017146/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgdghsA9zNbQHNafu40hWpsbAgsQPGAw24qsyMswi_OlYCIQCME40OCPjjR0iMxz90O7-reDTxuhWj7HqBYApnglBdhw%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgUTGOfLigF1m5eEr3bPtweU6zjKukTLVQrOR4_xxbKvsCIQDDdz6rhj0ymVoVwQAJfnyuafi80cm6t0CQG2uXbkYmdw%3D%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1606,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 72,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1275,14 +1314,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945676/ei/LENFaqjfK4SNpt8PgLvUsQo/ip/114.42.197.186/id/yAUQQ0DhPxI.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEX35G1_8lsKl2SSggTQK1-7UPmNXsUW_IJPTzWBNpMkJHWHBF1IPQ2nnvGGMk6Hd_S3iDxYra3Z/spc/SQ-umg9wKuqfwGPQNKzwZVm8aO5Wq_f5yp4YaV8rFrF-VtfveA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2352500/met/1782924076,/mh/iz/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAK6VgH0kQP0pIbNMGI6I9uKXmeHKN8lSTCSX1uuvTZQJAiEAvSk6QZhiQybU5kl0oVGHSoyZM86w75V6ElNKGWiz4eo%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAKGE12MQJM9_e0rVl-iJmTVocFXWT7UuggIhltlYFxInAiAL6CSuhYUQJRCjZuWVlZ5MULadrXoRfiq48GuUBDGLfw%3D%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1609,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 77,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1292,14 +1331,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945679/ei/L0NFau6gJ8Snpt8Pjqn8uAU/ip/114.42.197.186/id/RRybv1kEnCU.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEVl1CxvJkJrxv5Pz5dbEKD-CIsVfuOyZ8CmrUAvZ5e24qENmZ-yudAip7TYsA-138pYhcUEGVOr/spc/SQ-umhqyYMem7xG_YlZwBQ8JgjOinUza7NWnC7L7cIf4pF0keA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2377500/met/1782924079,/mh/f-/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgL4Arkbzx6D-zF5BawvqqDJBmBlVs0IwnWFBPLk7JsEMCIQD6isyl2XcUlAgUgR72oHnOg9P-j7Kuu3oIrAK5z2fVqQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAOLBhQTwqX09W0wW6zqO9VWQdl2dou8SDldbDarzp98uAiEAwDooRPSifNNv3PJLxTW7OoHopDTbSqI6zazzUEpkWNM%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1732,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 76,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1309,14 +1348,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945682/ei/MkNFasiPJ_KA2roPt7mEyQY/ip/114.42.197.186/id/quwqlazU-c8.10/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEUkdrCTczmy4uqlRK-BPg7HSMHl-d1_6nhQUax2DaO8LT5MSsSZGbPionxtgpL8LxA41kILnPt7/spc/SQ-umnj8UzwC_-KPjfN1g6KEoq9Sbqg9tXHJ68uh25EOjOld7A/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2377500/met/1782924082,/mh/sI/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/5/pcm2cms/yes/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgYv1-TudSDNOS6lX9CJwlOr5TiSGALGpVfBGNWQAkxoYCIQDYFkWUyKMvkvfckS6efGHdYhinlfGKyLPy507bWcjzsA%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pcm2cms,pl,rms/lsig/APaTxxMwRgIhAMYwYn4jJ-52k3P2ezHK3cBmfbCtbCaXeWs2rKKMPhn1AiEAsqXHLgKLXPFnBjbls4d6gKB0j9ZjTo6TnOpsxmCnBLA%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1386,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 63,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1326,14 +1365,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945685/ei/NUNFauCaEIOv2roPo8CyuAY/ip/114.42.197.186/id/wM0g8EoUZ_E.6/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEUg2K-pUZgY8O8uUYwTgsVvX9tTL1Hag-L_4VqEFrQ06vEak79Omk6KOdqVF5TPTtZ5U6akSONp/spc/SQ-umhJnpbG849aE3V_cZwofHuzsnkCDdqVJmQ9P_NJW3DC8gQ/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2352500/met/1782924085,/mh/93/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgbglS8Jmpnq7fxA62Xa1Liat9_ETwM3ceiYIaRg4J2oQCIQCZp3drVv5A281UtDHUSM00Bn4VJlJp6RRGxcCkt-zlZg%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgT8bA5XCh4ni_Eu6Gn9oJJmLHaqIpN3VGvxKqAu_3aSQCICJcKxFOQuF34HiVC3nOeTM1wCz1fG3VCbWe1zvMF4EG/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1117,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 12,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1343,14 +1382,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945690/ei/OkNFaoz8B-yCvcAP8aWQ4Qg/ip/114.42.197.186/id/V1p33hqPrUk.62/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEWZDoc5dj9M0hoR09tmcZsu73Z9xUBJU3ijI1X7K8p571LpSntRdg8bvQl7CCUmmtwTxDGbeeC_/spc/SQ-uml1nkTFypvPc6Nl7om4VnkM7dFhyOWiVGxLo9KPKmL1idQ/vprv/1/reg/0/playlist_type/DVR/hcs/ir/initcwndbps/2377500/met/1782924090,/mh/56/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/3/pl/24/rmhost/rr2---sn-ipoxu-umby.googlevideo.com/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017146/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAN1Zn9JFvR9UM-6NBJ-vzIMVrLGWS3gInc6_xewjB52tAiEA9WyvynKU53H9PdqIB7AQN7Nl3KMhE-CqBNjBFbuhGk8%3D/lsparams/hls_chunk_host,hcs,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rmhost,rms/lsig/APaTxxMwRQIgYcaycLSYg-S1MrxVFNQNUJpX8a-QYOf45AiHMRM0tSwCIQDjtnqjqp1c6W9Da8Zx98EhTRXDO3YQbO55FEMzdi2EZw%3D%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1138,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1360,14 +1399,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945692/ei/PENFavDtLKzlpt8P2ZyJyAI/ip/114.42.197.186/id/Ej3LQM_lTEw.5/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEWFn8MaVH-NxQ0h1lx8Yg5tpzCsVRrvdLdK9cgzGtFcu1QbAgFZJ9eLbwdfvOfUA21GMQxMH3Om/spc/SQ-umkIEDq2EVNUwJjx-r01L2kJSbfppbgo9oc52kIdZdoUWUw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2352500/met/1782924092,/mh/s4/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhAKfNHOtNmkXI_pPX4NXgJH4lXzSej05b1i3PTOxs_kTtAiBKvPrwnjI2FwsxNU6iMMWma7O7z3uXjgDceXGF66gYNQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAKlzAjLjsaNaeeYiHWNXttSmCzjvYf4fRr5QfG7PN7D8AiEAsEBbWA7AWWAbiBB820_Lxzk4Dvodf72jun3p6H-R1w4%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1213,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1377,14 +1416,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945695/ei/P0NFaoH_KIGKqL8P2py-sQU/ip/114.42.197.186/id/C6gYqSHLRw4.3/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/gcr/tw/bui/ARmQxEUPjM6Y5sHKPkVsakICpHOyTPpLb13PY1XEWztxc6bEjiHOsbbcx3xG9B8A-rz4qDq_RvLLRwpY/spc/SQ-umitjiiBkos8L_hVV9HJmSkbTgDxYIDm65rGSzdnpopTq8g/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2377500/met/1782924095,/mh/Kb/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017147/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgd4rNcdU-z7Tz-MVqjQVCOtEhTRuAP6ziSsFacxtAF6YCIBmbXBVT_jDWlxeJYOpIa2wkSw0BsHLmxswl6FbPUrAH/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgcc1EA7VGyHNPkvkXRaYjQ-SQYr85QD9Af5vF2ASKc3ECIHGtJkjecEYcv00vRes7dcI-yV-nPH27V1aB6Dp2GMaz/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 877,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1394,14 +1433,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945698/ei/QkNFaqC1JKOV1d8P8-TeqQU/ip/114.42.197.186/id/XWq5kBlakcQ.9/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEV1q0iTMjL8DtQDaVvxN1-a6G3kYUWRjpuUwD6UTRej3jpYkFtIuawiyM-UfQ3Gz5WHg9_Pjo4N/spc/SQ-ummiA5LTJ0Uln_RYlMO2SU7F12zIPSNLQobN5nM8l95WEYg/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2377500/met/1782924098,/mh/W6/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/5/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhAO-UgPZPdmsUiIqO3GxD_r774dYSQ_PinofAIS1qebR6AiBw8M1g1gBWHaFMNecidRLgXsAe5WYdY5HmV2srov2Uvg%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAIYNAJuiQ6OcyVC2U6V7DEKUlV9WpHd4MCz6Liyw5FbBAiBfFkSDR2LzIpFuAn4ysj_yf_GP9_eQJi8bo185O6QZ_w%3D%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1525,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 16,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1411,14 +1450,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945701/ei/RUNFavaDHNC52roP2afCwQ4/ip/114.42.197.186/id/6ZowCmLBcMY.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEV2dOtA07ybh9ydYg8VZ08pfkjcGAdWo4vx8FD4MpFmZZQMDbM6YDRIMIS68OnVKeSKUhaKuu0r/spc/SQ-umlvxm2A2X_c6Q7zrxRvwltyQywTIOXrcjD7Yk14_TnG3OA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2352500/met/1782924101,/mh/2X/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/5/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAMFmDS5mVFwaldBVX2Kgx2f5ooVRZeKbeoD7x_DHdfZrAiEA0RgV7NHbBMOt6jzZvBXSLCaHQBgWJg_OvjvwKD8h5YQ%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgFJurbQJ4AatVjDoFF8jPcKnW4lgkExQnttOWoLs1TOICIQCAAOFekzo6mpo6NYeYRAmZt_q5QRf0t4W6sm9382mq6Q%3D%3D/playlist/index.m3u8",
       "group": "YouTube新聞台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1477,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1428,14 +1467,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945704/ei/SENFar_LBoqFpt8P2MuH2AQ/ip/114.42.197.186/id/_pZQ1Lk0xMA.9/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEUEJohJcNEYRfMOl_iIjAThZwgZyKcDK7lFXihUo53L08H7JPsWugLLya5m3IX2fLxxSuhcWXZ5/spc/SQ-umnMc9haAYiTCx2TID2l5W2VzW92pRN9g9O91yDgEOYecsg/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2377500/met/1782924104,/mh/SK/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/5/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhANeNzB1ipW-Bz5WtkSS1SPOqNmlSMH5-6DuOsUFY94umAiEAkMFmIOqldOcqjMLkaDGTNHZnAKyWoY0GciR9KupwMfY%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgWN-HukEemKdFtd0F_B_y0YkQlWlAtk6Q-Va8XuUrfp4CIGW-j2asgLhxpkBt_H2ok29lFTHW3JzhWO4NgPWO-puc/playlist/index.m3u8",
       "group": "YouTube購物台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1405,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1445,14 +1484,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945706/ei/SkNFauz3NODW1d8P4NbeyAU/ip/114.42.197.186/id/xbNWkUyxQGM.6/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEXpTnPm6UqDTXQC64w1tJ3Jpa1Ruy1xBN9jc9mnh7waCr17ZwO7CvliqXJ7JDFj5-ZFjV7VlRTG/spc/SQ-umt4iX7Xc4ACDxsIBc6gNuuv5xiR346Oy2IRNKA68r_c/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2262500/met/1782924106,/mh/I6/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/5/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,51946838,52017146/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhALoV8Uh3ycV6MyHcTJD6mFgDO9KTCxZa45McpvvVFGIMAiEA2yoUu241F2zsPvWgz5wuqfEWCLkaz39_X-9JSauYmNE%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAOzdZsJuDmmE0YpL93ryTRNcDfk5tPza4OynIkSBcJCjAiEA0yqvmB-V72Q3OlPWuHpSZu1rDUJxJ12N1q10CquyM98%3D/playlist/index.m3u8",
       "group": "YouTube購物台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1357,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1462,14 +1501,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945710/ei/TUNFatXZOvCU1d8Ps8-fsQY/ip/114.42.197.186/id/2IGZjBPTPT8.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEWm9nSs86JYTESorkjqaVPRgxS60r1-jzS2a4-HkQJGcvlqnsPYaMBReLOMl_X3ezZJAvyE43rj/spc/SQ-umnIKlFvFRSWQ_0za8MFyKbbIbIL5Qbsc-H42vE1Vu3M_aw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2352500/met/1782924110,/mh/mc/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/2/pcm2cms/yes/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAKhlbqm3nlaWTPhgOBRlTsQM8wZ-d4nR_irMJNHIGHkZAiEApYY2RYdiaTRW1XhdJuKTHvjKTqSZ2_AXVffFLDdPtUw%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pcm2cms,pl,rms/lsig/APaTxxMwRAIgMM06oXXXfGXdkIN2UkRK5PO4KaxmAGbKu7038bCwiA8CIC_6pH1vNv3pXQv-UtdNf8z-LqCcneBN3FeEJP8kU5Ul/playlist/index.m3u8",
       "group": "YouTube購物台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1398,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1479,14 +1518,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945713/ei/UUNFaoe0Bc6CvcAPteiauQQ/ip/114.42.197.186/id/tUvQg2HgIbs.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEWUEsGTEjPVO5g2n-VqcVLWLuRrCnNgF1mpV0yPFaXKHEN02NElNHFT4nqsQxUZnFgTPVeh1Oao/spc/SQ-umjBaliEdvrquswQITTGYuUGkZNCcXXB2C1BdgaQrb1oU-w/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2352500/met/1782924113,/mh/LC/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/3/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923562/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgN3NdCcpdLQss3dYxgEhO0YLvFWIvtvPe-jkTiqb8boICIQDJkUcCTiK-6qkSkYbNgzrQuzQ5w9i-UmZosbfHL626tA%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgFEORXMJutgxoyjBaUuruB65HHn7PA51hBRHuzh4kU0YCIA_K7cU6kkrQmIVJJ7VG5lbo6WpisFbjnYQNxopGU0-y/playlist/index.m3u8",
       "group": "YouTube購物台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1437,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1496,14 +1535,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945717/ei/VUNFarCELeaWvcAP0q_RoQo/ip/114.42.197.186/id/J3t9N0vciPI.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEWRrT9tPdibhVxLRVGtdlJcHp6TkMwxj9TYedlHKRHYSTLsh6mizLSYwJWXf8k9tepwQEDkXJeM/spc/SQ-umiD_633yp0Ef8Sk5dBdekEMf8n0a_ens_SjPgSsU2V3MuQ/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924117,/mh/15/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/3/pcm2cms/yes/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhAO3g94KZeCjuwI9ZHlIwAvd0gnsRo6HvsAvILOFI_rACAiACdpWvX8NG-bpza5dh9dEhuqbuj-P7VAQYdxyfk36OZQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pcm2cms,pl,rms/lsig/APaTxxMwRQIgV8luoo3YkozRzXkfQIYIKbSeLTbw7MacCTBvA3njhZYCIQDUvfK1PaAPGxKa3vZ2Rwipnk8EqSL1et7bCNkg1FZZxg%3D%3D/playlist/index.m3u8",
       "group": "YouTube購物台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1400,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 23,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1513,14 +1552,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945722/ei/WkNFaqazCOzs2roP2N2nsAQ/ip/114.42.197.186/id/MHoyggBaFW4.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEULE9SxWfveR6GQlVN7J-C8rDgaz_CejxlbJt53fUoaV7FhqJ6C2rJYW3Sxd_2ybJwyzxXqnvAG/spc/SQ-umk6gbzCgf6LvrLcVfl4DUsf0X709Hu_mM0IWupRxcWnZcg/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924122,/mh/Kt/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/1/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhAOxMFELP6ggkxE82PYYOfRZ-SPpo5jMcb01sFGcTOLk9AiB2BdUTItY3uUtPjrbLRTAfI9CbRTb_0aEBYu-VKmxZ2w%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhANb89cxISaNVNMQJ97t7pDYSVx4wrXFqwIMLsgaqd8jVAiB2DkXHTdFbekHbnmGnx9c-NdxcYG_9_bN572jEL1SKAg%3D%3D/playlist/index.m3u8",
       "group": "YouTube購物台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1249,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 21,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1530,14 +1569,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945728/ei/YENFasaAJOjIvcAPsOGGqQ0/ip/114.42.197.186/id/0ePhPlTJbGo.3/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEWpS-0PUCThnJEENBWduJpz1xcXGQANsoqwB4auLSZLbrL6ns_VtnQ5Up_szKbISVGCfWwYSxKq/spc/SQ-umjGb7cWnYdKWPlDU-uVOaAh0qAIAfJiuUc6QrD2rLO-T2w/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924128,/mh/yB/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/1/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgUH4X5Qxbl5QF1MreccRnr1NzMqZFYjji7DPLHJEV7DoCICODMyMvdqb8zF1PLdLF925Takr_3zBgnb6gfiaztumL/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAJLvHuEgoLeTPhTqbXenmNa6LgH_5TlzlrRUbnfV-p4FAiEAhu0IAj25sK4N2EEpqigOYwGP7Sm5FNjShN3mwTdEw2Q%3D/playlist/index.m3u8",
       "group": "YouTube綜合娛樂",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1610,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 62,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1547,14 +1586,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945731/ei/Y0NFatqgEcO80-kPl4_TSA/ip/114.42.197.186/id/ADDSmXoPDY8.6/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEU6lC0ejxbowYPgPH4qQ-cyXCUUMT8-UqJrvyco5Gy3ZVldjRKiD9y323FScN4AzloKnHwv1uPJ/spc/SQ-umsghMETAwVM2Hz2Z_Ry3hv1K21fl0eNB4cNHwXokUhlggg/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924131,/mh/vc/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/2/pcm2cms/yes/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAN6raUXQhmuaRo8q12Yi3yewUnTDIOFr5qzj20dyXP3MAiEAwISnqkxFD-zHDXjt_dT-vczT7jmu-LFM01VOYYYHTAA%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pcm2cms,pl,rms/lsig/APaTxxMwRAIgFS0JP_wUB79HyPkGDZCmEtp8qDkiotb3KzdTx2x14fYCIErXOw53l0HnuSHHdXwli6rdUkcK-8iwjdgKSxm4_xY7/playlist/index.m3u8",
       "group": "YouTube綜合娛樂",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1342,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 59,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1564,14 +1603,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945737/ei/aUNFav6_NuuWvcAP-daX0AM/ip/114.42.197.186/id/v8MUGB4vst8.3/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEV9mxQhj30bbTc5TxrgPnjSBtfvgvxzTEJHQcem9GLFxCXjR-AyJK0a64pVDbDsC3dSZqeLJhJo/spc/SQ-umg2F-nVwhpZhQ4ou1v3SETqrptW7j0Oco8nklNcHLlW3Zg/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2547500/met/1782924138,/mh/PK/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/1/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhAOdCtCwNRTLiPa1t16un1IfSgAe2gQXw-5vH1jhqCMeTAiBm32zaccYSzBVyPV5IC82levGIUUnQ_9kTCNpKw39NAQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhALe3jJoA3R0hhts7jh34I_LJFYD_L1hgE-JufFPmwPPZAiAxRYBm8JJkCv7QRW8OmCLq5NccmdspAa1bIkUlZz0o7Q%3D%3D/playlist/index.m3u8",
       "group": "YouTube綜合娛樂",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1406,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 18,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1581,14 +1620,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945742/ei/bkNFaoazI66T1d8PquzYoAI/ip/114.42.197.186/id/NyrdWXddfR4.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEWZ8g4iyWl4egpyzZmHT4UfZEJd62_uQkxbueu5RVlms39td0NFKgm2Dyt7oK3eLmjsZfWoQ2_8/spc/SQ-umki6wqT8qPUnyjqzYme2RAZDXSuuZOusBHI4awUEkX6ymA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924142,/mh/h5/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAIbBUdHD-yxoNDCekl2OHxKhSsVSYkGcj0-VSOq6EKQMAiEAoa7wVjaq4839bj2xzSd35GCFUTyiOWqGXGSHA5O-P9Q%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgV184v6ntERzw4K5mY-9AzVr2OZM1IuLG8v8t8GVJoPUCIQDxjmPAT4O31-xEPU7QepEmdsY9OjXeEVz8V8-u9DGqmw%3D%3D/playlist/index.m3u8",
       "group": "YouTube綜合娛樂",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1435,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 16,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1598,14 +1637,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945745/ei/cUNFap-MBcCNpt8PvtbruAQ/ip/114.42.197.186/id/ipqTkEH3mhE.3/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEU55gPlq2GiJ2Qe6YeKHpXmqTcPVBC3l7fA7i4GTazjD7jsephQm6zovAyaX1udLAoLp6VAdkKM/spc/SQ-umvZgQP3SD3LCWJiyt_nEh0hi6Q7D9wao27rWZtUhLAoMNw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2547500/met/1782924145,/mh/7T/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/1/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgIk26UM9rftqBxlJFM8nYrWhBZQq254IP10zC6toUMFgCIQDo2i0s-o8WCrLeEuxV4AjQNx50MJw41H5nCHRugcMWDA%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAPRGEOdiIa_uj3AiiHiD2Yr-rvxQ4bVQQKxGcOTvp1kPAiEAurZTLBOvFh3-Bm50W4PkzgkqM5WYffNbMzWMAXBkqCA%3D/playlist/index.m3u8",
       "group": "YouTube綜合娛樂",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1512,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 26,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1615,14 +1654,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945747/ei/c0NFatXuNp2CvcAPjaq32A4/ip/114.42.197.186/id/cimbpAZUjzw.4/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEV9CzFDV5C6RLtbH_CKon6trR4eX8LEhczTHILv3jp5vQJp_dfUbf-IlyizoTjnTL14iX9HaEDa/spc/SQ-umnHsykGgpWkRTqqLgz1-6XYU0ADsifnCw3zCayZeIG0xUw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924148,/mh/vj/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/3/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgaJd_0auILvaF7yVbQeRkbwLLQ0vtcIDXSJTbI9epcf0CIAg2cw3pPlk7dAm55fRu3jd0pE8O3N1RGE-RTkrp5J4l/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAJcBV1ku5oLDBUcEu3Uw5e0kBKaKe9kUBWV5qf7y_47bAiAOJrXiWW6PPkUH4J4mRlzeAjih_qpcUJ6tmNru2IWSEg%3D%3D/playlist/index.m3u8",
       "group": "YouTube綜合娛樂",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1128,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 16,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1632,14 +1671,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945751/ei/d0NFaqGTGvfo2roPwtK0mAo/ip/114.42.197.186/id/LuKwFajn37U.96/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEU2ngWqR_pbSHSNK3_ewsZ_dVHDr0qxj53jA-I4ZfjprS_3UCl_ApOADq0t2RfamL0GYkAS3Zhr/spc/SQ-umugFPpb91WamKmywVm5RWHIjTiN2iBjmQgTTAndzEIU94Q/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924151,/mh/sz/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,51992867/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAN6wOZ9L5yuy6TKFmrWLwYiykIHNFQyfdS-YkoFKZalBAiEAlC-Zil3zdId_IX5J5xwi2dCeVvkr5fxi07AVDmNamM0%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgUqP_R5Ngq4TdXXZFUADU3UwNTyFJkp9jhLySvzTfTacCIQDr9j42ki3tbqKYX8UveE0R8-G4Am9Eawr_MpCaQxrP5g%3D%3D/playlist/index.m3u8",
       "group": "YouTube國際新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1595,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 17,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1649,14 +1688,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945754/ei/ekNFatKaI7rr2roP6-qFsAY/ip/114.42.197.186/id/N8xxOD0nT1Y.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/gcr/tw/bui/ARmQxEVZWaz8yoQ-_3MQdumXlCaOsXO32_-9H3r5nvnYFKvmOFApgWv7_8stIEmVnALTQwQPSWpM3MLl/spc/SQ-umpJl7DHhG0JBlZxdjTDjEyO2hDIAWTjJJEF5zZwQ82WLqQ/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2547500/met/1782924154,/mh/u1/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017146/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgeN5BgKeBzoCQ5kwi4HZFJTA87BGIc-D9oXzj43pzVYYCIH0X28LPSjkpQzeOowx12KTh8McAmDvOZN9OFWGxPwIv/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgCc6vrzoPMdQWoMWlBvTa5y322BkEEkC0agYi82McfpwCIET7NWNE4DBsfx3Er9ec4MQTzswkdWmnAKihfCV_wC5Q/playlist/index.m3u8",
       "group": "YouTube國際新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 996,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 22,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1666,14 +1705,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945760/ei/f0NFas_GOtGrpt8P4o-FyQQ/ip/114.42.197.186/id/vNVp6bxkL1c.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEVTJByFFxUO7Wf4-nwTnW9ZRohkHlGhJ_ywD7uKQYcPqUC-Be2FSWLyL1H9gpPnFdRkNmtmfIY7/spc/SQ-umhGQsXP5Tpc-JivtkMYAcPmRKMJOLyTE71jLrw7ZtnTNMA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2547500/met/1782924160,/mh/MK/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017146/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgJVPacRbR7MS1QMQhlrcqm2YmXs_WhVsOyPpjNFxkZGgCIFiy1rDJvkwlzPm-p-QVRG1zbNw0OdouvYBQWboeecO7/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAKIr6CuxuXZFy_R5UvG7fMrsmp823GxnuxxjH88hN3lGAiAP2wvO6RUz9vXTIoXJAZ-p4yzx23N4rfDllfLIgwuzyQ%3D%3D/playlist/index.m3u8",
       "group": "YouTube國際新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1169,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 23,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1683,14 +1722,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945762/ei/gkNFaq7FKYv3pt8P6Y2EmAw/ip/114.42.197.186/id/s4KIyYkwiM0.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/gcr/tw/bui/ARmQxEXI22AbsWzNMWwpM7LTkXGUmDczs1f2Xm56uz3J8M0-xnPHILLsRofzP_dJr63THdJu_JW05pzg/spc/SQ-umt6ANU3bUxJBoBTSNKc4sGPYwv8g_oja4IOiKrpLrUK3xQ/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924162,/mh/vw/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAJ1qGjvOOC7yvvOmqzieGNy02yByYMAdtRZZzjHbiWM8AiEAkZm8F19TC60wtcrTDqhs-nMuAtSjgS6oc4WpPISYk3E%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAKLAYj1NDL5hJY_MbaHU06bJAwmMmpedXYyeeqltg3oVAiBYmHETPwCFmE1zVlakK7EgcTOxWJEuh73iSXsOPy9B4w%3D%3D/playlist/index.m3u8",
       "group": "YouTube國際新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1119,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 16,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1700,14 +1739,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945770/ei/ikNFavSAJ8iCpt8Pi9Kx0Qg/ip/114.42.197.186/id/pykpO5kQJ98.5/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/gcr/tw/bui/ARmQxEUlhAzb82YhDU3YNaJwPc71qKZ-RU_jWBGaCf2TfWJm5ht9ljiit8cVVh5qV3jceY6bwuqKjudH/spc/SQ-umvUUrCmxqK6eVSLMKVekWwJP6o-ijYuW9fTFZrjEcJXHng/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2547500/met/1782924170,/mh/PN/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/5/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgcriBqTifquwjUaDmbl0T7uILu7ptc7glwshzV79xsQkCIQDOV00gd2ZfLaL-GiwMpsOAapvQloo77PvIxDUsSuXwUQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgKoNOcLvV_Zoe-QZl4TsZ1ac-BVeMXepMkqyIUWD9DgwCIC5V3zOT_PMJbwUG2ChTpO_U5CUOjp_C3sIPmhsrssw-/playlist/index.m3u8",
       "group": "YouTube國際新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 879,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1717,14 +1756,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945773/ei/jUNFaoneKuXAvcAPyrWd6Ag/ip/114.42.197.186/id/HvZt-nh9sGg.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEXqCDP4wSlXa5cw4EcOEkkQSS-4NIdIGqFk6-Z5bGBfAJTZnFTFLdDm5oj3sKt1qXnHPCaGzqJ8/spc/SQ-umn-1JKdpsLou9bE38N-JTNbRzJ837ZRI37WEWtSnovuR8Q/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924173,/mh/Gh/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/1/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgVwNFPJbE4ReWFpeHoEv6-bCUzaiPtxaXI7BjkwYvciACIQC4VvMqWcO8Oxp20G7AM29WGHkebcQOg1NGfwBGIK_I-A%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgeqM0BTiwSJfUtxAwUwOY1miAYQk44zVM0xw47yCEqEgCIQDRQWxjZw1l1MN6G1I8huGeO-P01Uai6WALtKZuenUr_Q%3D%3D/playlist/index.m3u8",
       "group": "YouTube國際新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1453,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1734,14 +1773,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945779/ei/k0NFaqi_EaSqpt8PwsmLuQc/ip/114.42.197.186/id/gCNeDWCI0vo.4/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/gcr/tw/bui/ARmQxEUgGr9wmoyMq4M2BgOOi30GNwhTpD7YZGJqnEeKr4MPibFvbU1vUGuWTGyJsay3AzsxqBCzPM7s/spc/SQ-umhL2Zm-IKXX-WzVMdKwxKh9UwhIazFLR_6vKn0z1grhbWA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2547500/met/1782924179,/mh/Dn/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/5/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgSTSk-D7T8kUUCScC4HpxQ2ep8gjNk7DY79pVm8pf7oUCIFTLwwoUwGjkA_8Y3gg9iDJXDldVoOXanhD1pL1r_y6i/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgBpo1WE88UiQR9C0XVObT4IryaK0kGNPElOdYAzOzpcMCIDSe1KIAwGjqvpgBVqS6II8gI1ZzwSR8w8KsvCkOh7g8/playlist/index.m3u8",
       "group": "YouTube國際新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1015,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 20,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1751,14 +1790,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945788/ei/nENFaqOzJ-XBvcAPn62TkAg/ip/114.42.197.186/id/Vrs-AeKZIEg.3/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEX-N7ChgGGFCkmOcp1FZDN7_1ZS4aMyBoqkFlcznzAZn2ULLsk4D8HQzDJLzARJCGPxRHWsxF9_/spc/SQ-umuCHa5w_AXJgZODlWXzcOZdfqRJupyraaoAindFr0492Lg/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924188,/mh/H2/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/3/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgBL-voF-veiQhc1wVNnLPVdlEk_hc8r9i7mtXiZpVB94CIQDZBARwhAKKaiYd_3iSxxLXNo5TbeTd39LQUWKU-5e9fQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgNgI9vEQ7MxwbZ_rAd4vf3AzHaL1tWAHo_nqFThgr5ScCIQCH327KWwL-LhYxXyUNi8x7dF77_0RTf8Gc0Zs4590TUQ%3D%3D/playlist/index.m3u8",
       "group": "YouTube國際新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1298,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 19,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1768,14 +1807,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945793/ei/oUNFauSsB9-E2roP883x6Qo/ip/114.42.197.186/id/s0LLVQeMmtU.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEXh8_fKluhZGiZwOwi_AAQTSNV_ubgWXXF2VmKy4i3K1mvrHb-uFMdfiNgbiy6Yn_CWKO843Hl9/spc/SQ-umqkyyEz-dydGeS61vjbDn68z-H4R9q0QPwb1Iue1xWn_8Q/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924193,/mh/m2/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgDJtYnI4pye55bylFfznnGerihtW5iWmlixdi3egpNnoCIQDTT0MMXuYQ1Pz_ymnWw5BIolPwTHiWBdM8Hr1P4Y68Ng%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgNimlRVvtv5U7XLjST-c61W1lY9XsI4YQlEe8t-PkZssCIQDVDFfRkXk7dtdCIC7aHTFbSl7VOzSEe3Qk1j9P4QYNjw%3D%3D/playlist/index.m3u8",
       "group": "YouTube亞洲新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1745,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 20,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1785,14 +1824,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945798/ei/pkNFaqHWAtXv2roP36nu8A0/ip/114.42.197.186/id/mkVyNaGee8A.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEXFSagKZrkj4E9jBZA56rTrADBW895xhYGeUUB6_PHQCmp5NwiNU3jYn90us17p97p_DWIO_-iY/spc/SQ-umsFuiGMDdcXTS0mBFJW5M1CGv-QeUhAuHfaweqdispQ0fQ/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924198,/mh/Yt/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/3/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhAKkI8lhG8BQYXpnoFfcjFOB9LBTzJAl51WAkAEEc2UcyAiAQd7fkKpT8XV3i321q7VMzAH8Fi2V61VH4mEL7G_pW-g%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIga0lrM6preBgJxSTeEKUYw5yBbfZ6vktrwSlB2IAd-ScCIEKXEmBSjfzRz8PiOAwaeARAc-q3yOk59I6uhVFwbIvr/playlist/index.m3u8",
       "group": "YouTube亞洲新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1488,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 64,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1802,14 +1841,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945805/ei/rUNFaonVDOqBvcAPio3tiAo/ip/114.42.197.186/id/-8d8-c0yvyU.4/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEVjZBUA2eKhQ9YMhm-0L_yJTaZ_-UnxvILt2SeSYKuV0PM75uRa80T6YAVe7oaIb2uXJtiBtBwI/spc/SQ-umk_BxcMUQad4zugfE3mZuCalIG7JKmj6XogBYeYHQpaG6Q/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924205,/mh/Rs/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/5/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgIVFJYK2U0EGXB1CqpWDApQMJhderyaAXSSDB8Zc5xE4CIB1t4f0nYDRQxXOA3sZFbJKTVynC6IcuTpd9_G8wf1Jy/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAJG1SwlZC-f3K0KINteKgUQGAKCiLTXc6T1D30VB3yn7AiBewPF7K4MuA_QRXyj5CZSgYnKpM3XDW8c0X5aLzU0Ztg%3D%3D/playlist/index.m3u8",
       "group": "YouTube亞洲新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1703,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1819,14 +1858,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945812/ei/tENFaorVBpOqpt8P79GH6Qo/ip/114.42.197.186/id/1wECsnGZcfc.5/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEWZBnVaPqF3eSlnwd5s20DIYkFrMWhocjs2_iedrGfPKkQKTK8VNNbfnmncLxNkFEoGW0CgDa81/spc/SQ-umv_wRIS3XUY3gknt_aAPA1L2kacluJAP4Hm33WP_XmjvSw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924212,/mh/2r/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/4/pcm2cms/yes/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAKKARzM2qFXkBnB5Ol-cK3OnlwlqLS6LtDrk0RHfkdVqAiEAoUIiHXP-Qpo_gs_KwDsMHcxRo1nTZfgDHKMd0LjiEjA%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pcm2cms,pl,rms/lsig/APaTxxMwRgIhAPvSNNf1ih4H0NZm_W0FPhEEUeId55CfMgcUjZq05khkAiEAl3Jkpxeq9JkHahZf7ALGlTm1XXm0Eb2ncSQx7sLn3go%3D/playlist/index.m3u8",
       "group": "YouTube亞洲新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1605,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1836,14 +1875,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945815/ei/t0NFaqvOCIqzvcAPsMmCkQE/ip/114.42.197.186/id/CJVBX7KI5nU.8/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEU4EJpyz-uz275wvt-zLFOKMUS9ZRGlErkbkEXrGdBLA_HcugNBlU-e3a9CoSWQvzJmIVTzn4Wu/spc/SQ-umpNxB2AcZ6sgpOmtpyf42CP19jhUi6yeImtyKyVCftQdLw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924215,/mh/nI/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/3/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAKPsYqSrSSewySn9uHdOBs4AHxGwYbsLXvwdhh0mBZ6xAiEA8kzcCx_mRLNCKx8LHuasyfpdByo8dMjVJoJw5Ke_fv4%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgFLpnr-PK7gSLo-UNQ33QMeGsUPzoscx9srRYECAsIEUCIQDLXRn0COt1MAFsONBfOPpN7lpz_V7bZDuOXz-i656o4A%3D%3D/playlist/index.m3u8",
       "group": "YouTube亞洲新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1372,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1853,14 +1892,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945817/ei/uUNFavO_NJmVvcAPjp6vmAw/ip/114.42.197.186/id/tvgbZZYS4Nk.46/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEUBG0Cn-5H_Ie3jsq6iFAxqVbGnGRWsPCPR98r5U7sqz3oMwGBuFeLde1LATcv9mtmkG0279W85/spc/SQ-umhI9v6qSb_Gy-ZjReroW4KhbsyyLc7_v9EVjNzHmwQ9IFA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924217,/mh/x_/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgU1Rqah3Gmyi4pQQQnaiA86tWPdGaMaTxxw6-Lkfw_MwCIGvHZeThYnOJvyP2rf14SJPKO9xssVr0lR8rckcynXYZ/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAOcSPfCzPiVQxfifVXPAZbUtS4MoUD7sSJUX5UZBExF0AiASbCgMSw5vingNPMJBYbXhCypkUaC_WRg7eNtuMPLFIQ%3D%3D/playlist/index.m3u8",
       "group": "YouTube亞洲新聞",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1453,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1870,14 +1909,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945828/ei/xENFau2oELe2vcAPpMK8-As/ip/114.42.197.186/id/Lh6xiMlkRrg.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/gcr/tw/bui/ARmQxEVtdIq7FTGzhE3f_HM4joZj92Iu97eak_MarvmiDUCKsGU6Czw7q5Dgl0APgZ_gYjjS_NX8IhV6/spc/SQ-umk_W1m8XCHOfWptpSh6GpXZUQPGAoLhliVJjNeclpAWdnw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924228,/mh/s7/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/3/pcm2cms/yes/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgI6YvgvCcG2s3m5uNpHZo6oMoS7s3aO95LO-FuSDJO_8CIQCYOPL1EcwklFkwIgZ_gESXINLv2gNorRa0AVRZT9_p4A%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pcm2cms,pl,rms/lsig/APaTxxMwRQIhAL-k4lQfM3Up3TlGkFuYdS66OFt7Fg87UYoUsMhM1wzoAiBHSwZ-33Sh54CuiZLCBRsc6X-QZ-zKgmKdWLyrWgnVwg%3D%3D/playlist/index.m3u8",
       "group": "YouTube兒童動畫",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 775,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1887,14 +1926,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945846/ei/1kNFaqGfLei2vcAPs7HWkQo/ip/114.42.197.186/id/pcPhqxOUv8A.3/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEUfWP8pQ_IoDWm_49k8I_fpsh4tFMALw3MS1NLdmweVKiTCh6I-MAXYl8u58StHdpoNSgxf96Uc/spc/SQ-umtH3aVzYOwquoonO2BMWs4m61hvIfCUhfRdYyuR2dzOtDw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2547500/met/1782924246,/mh/6u/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017146/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgD4qyhui-83oKSJZr0B7jSw0oJdAx5vIRgl57Vzsf3ngCIQDwoE2G_XXtismnUr00647iUIvVtfumnPqGlHQgm8nlCA%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgIBcqQ7f7XENd_HsjFtZRy-_gdwwROQzBVmbA4KEtpxACIQDNIqjesJxGwOK2vojbXk_X-0L-hCFBixLZP88dPL0WsQ%3D%3D/playlist/index.m3u8",
       "group": "YouTube文化紀實",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1433,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1904,14 +1943,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945856/ei/4ENFarTMHc-BvcAPyZDKwQg/ip/114.42.197.186/id/UQnVkK1kcDI.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEVS17rriiVRxxkMy8HFs-QvcpBzEK7cxqofe0xhvuFJhDa5d2VEAXHwXkunRux-jOUXgtOWip_T/spc/SQ-umrj0FwcxGVOrlTZwQRqb5WQ1wMDX0pd0USpa8mpK3ceCjw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924256,/mh/27/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017146/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgYbI-VJJs9i0-CseCJgTwpOAZQT0-OCI4U2FbDklis9ECIDxDWyCe15VbnR5KvE8otcBbSugpS0T5UUKHzPcVYRMq/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgfn1rE9KvmcLPtSSuunUoUy64fpgvFBYbQ3-rFjvaE4cCIQCM3tQi6CGdEku_cG--Sy-0fDWS5blQHQ2nUq6wDHhSRg%3D%3D/playlist/index.m3u8",
       "group": "YouTube文化紀實",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1247,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 12,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1921,14 +1960,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945859/ei/40NFau2tEqugpt8P0bXH6QQ/ip/114.42.197.186/id/UQnVkK1kcDI.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEX0Yf-ZWpg-D-7DId0ZWlA31Hr31mq-oDtMoVPDPn5EntybKDjtt0Tw1lTBtzh-KoZj-wu3Gnlb/spc/SQ-umj_J6dOBLJ22m9g2jwewRjZqkO2ZHy5wp6WHFIgsPS-LWw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924259,/mh/27/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/4/pcm2cms/yes/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgM-5eQYm5ZpeoB9dUFssG6CFsBAU71gnXe6dZgjTYAyQCIQCJkcINh4X8Y8Y7vyEUFv1AC14_TeqFc6aGFjbatmYDpg%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pcm2cms,pl,rms/lsig/APaTxxMwRQIgQBtexQeiHj1DwWvrs9exJnItVjDSQ-oWIU6USgZyxFkCIQCdfbdMG6TlwrUAO-RgXifmReLOHJ7jakGcey-iitspmQ%3D%3D/playlist/index.m3u8",
       "group": "YouTube文化紀實",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1084,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1938,14 +1977,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945864/ei/6ENFaoP-B5mfrfcPq9_WyQM/ip/114.42.197.186/id/JVocS7Yftw8.3/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEWjLILo1kig3RpkHRRIe36zIFO_jDjQgyorEExlAco5MX5BuEGsZJFBZufVGNohJZUre2PYr890/spc/SQ-ummV2AGn7IvKCitnIoVgVFrWcN7jE4CH4c83oz_dGAvWHCA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924264,/mh/wS/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/1/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhAK23mAWbMbPezBKgJWdYpi-fj46mV3xhPzRzBSoZ6zo6AiBvvSwnU29MLTd4mSgsJyxNgzdNrokoTCgUdv1-esWjCw%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAJCW94nAp8VkJ5H3zM7sxEScUcQxVlH1yA0yVt3QRGpIAiEAv4uwO1JXDDLJ5QkfxvK6xePSBibMndxHEgRi5LT1QHc%3D/playlist/index.m3u8",
       "group": "YouTube音樂體育風景",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1354,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 11,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1955,14 +1994,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945866/ei/6kNFaumYMfznpskPuvOSmQM/ip/114.42.197.186/id/qGohtGC5Rtk.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEV_4FVdAtfOD5CubvuvmVCOvKnG3e6UUIoQ8uj3TejP4CAp4LATeLXCedgbUVdAvicwg1LqJ13X/spc/SQ-umiIsnzDqki_uNIy-NNwDspmwkKtqqm-rscfWTYkSCd7ZYA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924266,/mh/eP/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhAJY1NKBu-Ds1J1sNc_8K6D_p86pXBpXBjN4_E8uNagn4AiA7SBCaJqnlq6zwufqMyIiSTou-I3zy4XErk39JzNm5Dg%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAK1H3I281rUTJ38UlJkXXuTW0HdZOPA7-4IA6wE7EfWEAiEA2T8AyahcHgEspXIO_-4VrVU26KtMajzbF8IGXtEAjhY%3D/playlist/index.m3u8",
       "group": "YouTube音樂體育風景",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1468,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1972,14 +2011,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945869/ei/7UNFao3pOpiMqL8P7LvPqAo/ip/114.42.197.186/id/r1K7DyQn3jg.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEUc3Ta05LIe1hxiR3HugIjQHfMSoYFzpxYuJgUyj5U769cXeyD090fYUPWWs-rzd5wJxBr_rsvo/spc/SQ-ummX8wp9ujrZvylFE8pPFlMG9aYRqOe9DbQy2bfSz6X5s7g/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924270,/mh/ut/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/5/pcm2cms/yes/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgHR7nTy5XTaX34-2EFev8khftikFxcMCeIzQHbm4nSWICIQDbaEx5DWD7KYc68LS_77cUqLJAQpMLP2lO4HHX85N2SQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pcm2cms,pl,rms/lsig/APaTxxMwRQIgMbxuo8yJLD39sHxs_o8k_wsNlvQhfo9n0AtnzopcPRECIQCh1pScVXGT9y9utjil0Dn7W1wYEd6X_KPFUo30wgW5lQ%3D%3D/playlist/index.m3u8",
       "group": "YouTube音樂體育風景",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1370,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -1989,14 +2028,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945874/ei/8kNFao_zOJKUvcAP8sSo2Qg/ip/114.42.197.186/id/lDcWeklf6DI.4/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEXdbHvGl8TzywbZxnav2KbABBDio7Ol8BfiHjz1YlNEkyOHBOvc_RK9DV3VzUYAJfsPqmXJnoNO/spc/SQ-umj1ioLxb0V_13XoaPdM0TsJ4Z3hXoIaulCbWr8aKPATLVw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924275,/mh/V9/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/1/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgTTCr5yV9j5q76PLKpT20Qqn6oYBJ7NDQwkGjpRRsqSECIQDOTmXFaE_2X0C9MqbRZZ25va7YNyGWiMys0jbxIi6_FA%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgdpckhbhXlMB0DoIh5Vg3sU7zojvP5tdXMrAlqbfLOrMCIQCel9KR_aXKjP437dOJ7JPo7H3BDpY8xkdPIl3U7Qg9Fw%3D%3D/playlist/index.m3u8",
       "group": "YouTube韓綜娛樂",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1649,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 12,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -2006,14 +2045,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945877/ei/9UNFar_LOOSjpt8PjM6jsAU/ip/114.42.197.186/id/6TsaEYaKueE.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEWpET06tMB4Gpz4DayTvCxXCzHi46Xlfq-pzvkdERM5sLFX6K2UvdWoJxCHwHURm2e0_LikkBSA/spc/SQ-umtKyU09HuvttYwAZ5aTeENfxFpSqc7oyhbIC2T51OX4ymg/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924278,/mh/-7/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgXkODFxjTa5ZDY6ZVIrlh3RV6NJPl6nFaV2E4hgNEiA4CIHf0ooqNHfWGjdwuwPyx0Anrv_rBwsL_UoxCgbRlD2l3/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAO44cJABfGl15FFTBPEX4i9uvhZeo-6YNTnt7fCVVwtPAiEA4t10xUt5phaQb9pd-K_ibo0JCpf7QqlpyztNnO1diR8%3D/playlist/index.m3u8",
       "group": "YouTube台灣節目",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1747,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 12,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -2023,14 +2062,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945885/ei/_UNFat2RGfPR2roPpc7K8QE/ip/114.42.197.186/id/PxAQgmdBgug.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umby.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/gcr/tw/bui/ARmQxEXoKPKCajzoQ0UZ9VzS8TWd13d9UUeFpA6SGTmZM6qCkx8VH3m5sHVuxnrwjoU1jv7riL6gGt-5/spc/SQ-umuIWy566JpxvW8CG01CywKHFYLTKAbuj29MZFHuvYNsSpA/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2585000/met/1782924285,/mh/pZ/mm/44/mn/sn-ipoxu-umby/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,51946837,52017146/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhAJ7myU6iUnuxkCcVI1nL45_ngDkhmZNF0wIMA80LAG5OAiEAtYeLaVDrQFqiL1gVi0hIfP6NnAUVPmeIdzJpVTUnhsc%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhANvtCXCbpjgM04idjV33FmHGozm-0nmzaAs1fHi1dpPNAiAkK2ddWVvwRAjf-yp6X7ZvzfEkugFl-i0islat7HEVsg%3D%3D/playlist/index.m3u8",
       "group": "YouTube動漫台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 648,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -2040,14 +2079,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945889/ei/AURFasfxJKDM2roPssyvkAE/ip/114.42.197.186/id/YrUJXdCamNs.1/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/gcr/tw/bui/ARmQxEXKjk72TCBMy0cGpTkcYyLrBMSzzM1S8zUr0W5Cbdsy7vvBuk-Ni0X344GAKupV9NJGpKtvW9Qu/spc/SQ-umsB2_cQy6XiL38G2Vx_AA65gso8Ju8b5g25S5ylveAfobQ/vprv/1/reg/0/playlist_type/LIVE/initcwndbps/2616250/met/1782924289,/mh/Mg/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/1/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,52017146/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgLp9gF3xfUTFDm80p5ZimjwsQDVzC0qcQlsERH3Hwf6QCICgoGWT1HVuDIgdSP_CE8yK3aMdC3L2JSZk0XiA87NwW/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgCo2K-u_WitiVaBvGgO3aVLIWtRxtjrBLn_gZt-Ns86cCIFSuwwI0yFNL-vmAXFwRVgXrZxA-4N5EkQGkk9JibbGO/playlist/index.m3u8",
       "group": "YouTube動漫台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 493,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 11,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -2057,14 +2096,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945892/ei/BERFaoTsBIeJ1d8P64-tGQ/ip/114.42.197.186/id/mRCXonM5ru8.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/gcr/tw/bui/ARmQxEXGyzhtYYdzTxuKc94N12rXx5Qi0z4Nd1Fz2V_NTWP7YP3WsDCsI0V6etQyTeZYxhKDP-tmyA8Z/spc/SQ-umhpVKSHSIU6w9arma1Gwlseb1ZzT3l3VndnoEvRxiY1L9w/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924292,/mh/aS/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/2/pcm2cms/yes/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,51992867/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgFYb1_Ftkb7j3S5rn6jCKXjswSgjn9mPSVi_5zI6_914CIDEB38V0W82moXP6Xu-peab6omH1PtLFUQpcoFO8aRW2/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pcm2cms,pl,rms/lsig/APaTxxMwRQIhANeDgRE9_IUpQCG9tVOPbzaHs_3LthMabZuHJK_Q2uM0AiAWfZRPfpyKZmgDL9OrENXW6t-e5dOW-s6EmQUh4NY_bQ%3D%3D/playlist/index.m3u8",
       "group": "YouTube動漫台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 787,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -2074,14 +2113,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945894/ei/BkRFau2iKLOQpt8Pt8q3iQ4/ip/114.42.197.186/id/e1gbvCkwxFE.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr4---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/gcr/tw/bui/ARmQxEWRjdBm_7FUl1-a1t6FH_WO1fousfHhFiPFv6U1VTdzhyplj_GIYWXsoDKc11X8JzgI8jKQYoIM/spc/SQ-umgFc-yFielCX8lWao-vkRDlEyhwMn4Sr5C80WTBQXGHSkg/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2547500/met/1782924294,/mh/-Q/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/4/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,gcr,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhANIAXRayk40C3rQgvMbr385cJwn5XURZ5SNTWJxkGpTJAiBbsICJIYeK6gOcIhdP6LdOhJR4nSOcFA9fCd9MU0UYdA%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgDjqEQNofLfQ4oAbyl847nfGdWi04yrjSPsFZGANlzJMCIQCo8Uww0uTkgZsd67CW-p8LKzo_96Jxe0yF3nazWP1d0Q%3D%3D/playlist/index.m3u8",
       "group": "YouTube動漫台",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 844,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 12,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -2091,14 +2130,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945900/ei/DERFaqrsGP_g1d8Ps-TtQA/ip/114.42.197.186/id/1z_V6alJa2U.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEUzZWS2CZrNY4Hg5xY84QPb1uIvSnuKrswq_kAqw5s8ZVUdussNTndnDB6Ic9UtyXqoOmjtxQ_8/spc/SQ-umhmKA0MDI9lpC97oKOA2GUYEapKM3oTcPlA_DAVlT29SHQ/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2547500/met/1782924300,/mh/rd/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/3/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgEwP6A3KbHJbnpF-6g4YWp0N2jR1mUQWw-K8haxsxXp4CIQDvfzjvbyvPxXadh-TmoObaTIerQiOZNYqMQbEYGamr6g%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgcGB4wa2HSO3Hv6-96XPbG55EHD2L5DLW__0ab28knuQCIHISccmXLtCL_93qlvLBYg0ThU553t7EO5WE0TPTBuUs/playlist/index.m3u8",
       "group": "YouTube電影劇集",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1476,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 11,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -2108,14 +2147,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945903/ei/D0RFapyFOqWOvcAPwO6PuAM/ip/114.42.197.186/id/Y0vqwbt0A0w.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr2---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEXW2Oxpn_-SDXO77N4DuxAi7IEAUAw_wdxrOE1jyq1qIM1ukF2LKRIs3qGznmqDqV8sHa4L10Oz/spc/SQ-umtxNq7inStFjM5j22XHV1d40-PxBxt_joBmiumROHW6rWw/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924304,/mh/hl/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/2/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115,52017146/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRgIhALsPfLRFFPjvf-tyfGCk0E7GtiB5IKEa6k83rX7gWEHIAiEA6hgeCm1O_EP2xyH8dyY4zeNc7rT6YQBU8OnbwUWxSDQ%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIhAM6zUcEsyTm5NzfcNLWSb389XKJugrw4I30bWCuOpUVDAiBgfV8bTUEEgX2BOeOWxgt7Q23JKA9W5a6yk63orOaSXw%3D%3D/playlist/index.m3u8",
       "group": "YouTube電影劇集",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1431,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 11,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -2125,14 +2164,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945907/ei/E0RFatSvAYORpt8Pn4nnmQs/ip/114.42.197.186/id/quxkJY6GYvY.4/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr5---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/bui/ARmQxEUPb-B0Kx7W429do60vYPVhHxBEGi0In9dUmAlFsBVMusKA_Vu3lLNt1wG6BfxkF04yEy5fZQNj/spc/SQ-ummCPbj5LQbNhgJHqe-2Luo7Jeeq6M11FD-oLZkXortc/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924307,/mh/1Q/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/5/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116,51946838,52017147/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIgKhDXMD3G-O3w54zc8wB2LFrFeMV_GQU-FDpC2I6mmZQCIQCyhC9S5yVzNBHHO0sNOR0jYb0fZ8MKWWU1OdOffFGdAg%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgT24Re7jyAu9iFsbHw8BCT-DILey_BR-duac4p2JyqoMCIQDUU9M9BqDtmkkduYV8GF63UouzKFy9b2H_m7Vgixw8zQ%3D%3D/playlist/index.m3u8",
       "group": "YouTube電影劇集",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1397,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 11,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -2142,14 +2181,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945909/ei/FURFaqOgJ8-Ypt8PnYiK4QQ/ip/114.42.197.186/id/5CDcgYH0Ot0.2/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr1---sn-ipoxu-umbee.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEXQV-HTBYROADTGQ67LBJsrfmLMxLkBs5oXxGO6JXPhZLDrDJgLtQXN0amKOL509k2yv5Tu5u7l/spc/SQ-umob6-WBdNvtlQqnjQRlxERSzgrkw9sP6OW3q-FyG-34PzQ/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2547500/met/1782924309,/mh/qj/mm/44/mn/sn-ipoxu-umbee/ms/lva/mv/m/mvi/1/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565116/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRQIhAI0E9FpvNUaM_pBn6d7fQoA1qdI-KSL61GM7voDzhnx-AiBxc1x-LPmeRlGgdN4BYaRM8dSc5LsmZa4sSHjvKFufyA%3D%3D/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRgIhAJkwemj_DmlDnVtnjKLVZqhE1N-tPS4JT4uPDW9oiMs6AiEA6mt_SGxC2O6FfKH62H9zeiPNHeLWn07UWih0Ssv_Y2w%3D/playlist/index.m3u8",
       "group": "YouTube電影劇集",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1374,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 12,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -2159,14 +2198,14 @@
       "url": "https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1782945912/ei/GERFaqzlH-WVvcAP4Ye1sQ8/ip/114.42.197.186/id/4oqyCiX-93Q.4/itag/94/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D135/rqh/1/hls_chunk_host/rr3---sn-ipoxu-umbk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/bui/ARmQxEV5JiYvcK-LdMo7aw-i2cMtGG5XTnZ-sWJ8UJTVWfvuZn-FeQSQjYbllbOSaLDsgjCPFjfGWDo1/spc/SQ-ummOsRlKLDo4aR1rYY-0Gwfcy3W1pmIEiVNtVnLRsk_I05w/vprv/1/reg/0/playlist_type/DVR/initcwndbps/2616250/met/1782924312,/mh/lv/mm/44/mn/sn-ipoxu-umbk/ms/lva/mv/m/mvi/3/pcm2cms/yes/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51565115/mt/1782923798/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,bui,spc,vprv,reg,playlist_type/sig/AHEqNM4wRAIgVUA3dK269GGuVf2L9FMz6RY4gF-5xvcWCf6c9lXGFjECIFiYjgv6-pFXDRcdP4CEq0C6pujg0Io3Hl9-IO8pzX5A/lsparams/hls_chunk_host,initcwndbps,met,mh,mm,mn,ms,mv,mvi,pcm2cms,pl,rms/lsig/APaTxxMwRgIhAIUOl6AG_2YarFGQC12itvtdxZ81LPuH7DMK-CH1Kx3YAiEAuG5T9vD5O43TFWDUsvB5nk4V0qTsvlZp048NIrvUQdQ%3D/playlist/index.m3u8",
       "group": "YouTube電影劇集",
       "ok": false,
-      "qualityOk": true,
-      "qualityLabel": "single",
+      "qualityOk": false,
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1418,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 13,
+      "error": "manifest HTTP 403"
     }
   ]
 }
