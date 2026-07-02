@@ -1,19 +1,19 @@
 {
-    "generatedAt":  "2026-07-02T21:45:50.5218093+08:00",
+    "generatedAt":  "2026-07-03T00:45:27.8473757+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  60,
-    "fallback":  52,
-    "failed":  52,
+    "playable":  61,
+    "fallback":  51,
+    "failed":  51,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  53.57,
-    "candidatePlaylistEntries":  60,
-    "playlistEntries":  60,
-    "removedFromPlaylist":  52,
+    "hlsSuccessRate":  54.46,
+    "candidatePlaylistEntries":  61,
+    "playlistEntries":  61,
+    "removedFromPlaylist":  51,
     "playlistPolicy":  "playable-only",
     "minPlaylistEntries":  10,
     "outputsPreserved":  false,
@@ -197,13 +197,6 @@
                          "Name":  "ABC News",
                          "PageUrl":  "https://www.youtube.com/watch?v=IkKbZ_TC9Tc",
                          "Error":  "ERROR: [youtube] IkKbZ_TC9Tc: Requested format is not available. Use --list-formats for a list of available formats"
-                     },
-                     {
-                         "Order":  50,
-                         "Group":  "YouTube國際新聞",
-                         "Name":  "Haberturk TV",
-                         "PageUrl":  "https://www.youtube.com/watch?v=s4KIyYkwiM0",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 271876 bytes, 315.9 kbps."
                      },
                      {
                          "Order":  51,
@@ -402,6 +395,13 @@
                          "Error":  "ERROR: [youtube] wKiClrFLjZs: Requested format is not available. Use --list-formats for a list of available formats"
                      },
                      {
+                         "Order":  96,
+                         "Group":  "YouTube韓綜娛樂",
+                         "Name":  "SBS Running Man",
+                         "PageUrl":  "https://www.youtube.com/watch?v=lDcWeklf6DI",
+                         "Error":  "ERROR: [youtube] lDcWeklf6DI: This live stream recording is not available."
+                     },
+                     {
                          "Order":  98,
                          "Group":  "YouTube互動娛樂",
                          "Name":  "InquizeX",
@@ -421,13 +421,6 @@
                          "Name":  "Muse 異世界流浪美食家馬拉松",
                          "PageUrl":  "https://www.youtube.com/watch?v=fK1M3oM7ZPQ",
                          "Error":  "ERROR: [youtube] fK1M3oM7ZPQ: Private video. Sign in if you\u0027ve been granted access to this video. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
-                     },
-                     {
-                         "Order":  103,
-                         "Group":  "YouTube動漫台",
-                         "Name":  "Muse 獵人馬拉松",
-                         "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 63544 bytes, 3663.3 kbps."
                      },
                      {
                          "Order":  107,
