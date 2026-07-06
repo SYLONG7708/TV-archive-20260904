@@ -31,6 +31,36 @@ function Write-Log([string]$Message) {
     $line | Tee-Object -FilePath $logPath -Append
 }
 
+function Invoke-GitChecked {
+    param([string[]]$Arguments)
+
+    git @Arguments
+    if ($LASTEXITCODE -ne 0) {
+        throw "git $($Arguments -join ' ') failed with exit code $LASTEXITCODE"
+    }
+}
+
+function Invoke-GitPushWithRetry {
+    param(
+        [string]$Branch,
+        [string]$Label
+    )
+
+    for ($attempt = 1; $attempt -le 3; $attempt++) {
+        git push origin "HEAD:$Branch"
+        if ($LASTEXITCODE -eq 0) {
+            return
+        }
+
+        Write-Log "$Label failed on attempt $attempt; fetching and rebasing before retry."
+        Invoke-GitChecked @("fetch", "origin", $Branch)
+        Invoke-GitChecked @("rebase", "origin/$Branch")
+        Start-Sleep -Seconds (20 * $attempt)
+    }
+
+    throw "$Label failed after 3 attempts."
+}
+
 function Sync-GhPagesLiveData {
     $liveJson = Join-Path $RepoRootText "docs\data\live-channels.json"
     $summaryJson = Join-Path $RepoRootText "docs\data\source-summary.json"
@@ -45,8 +75,8 @@ function Sync-GhPagesLiveData {
             return
         }
         Write-Log "Creating gh-pages worktree: $PagesRootText"
-        git fetch origin gh-pages
-        git worktree add $PagesRootText origin/gh-pages
+        Invoke-GitChecked @("fetch", "origin", "gh-pages")
+        Invoke-GitChecked @("worktree", "add", $PagesRootText, "origin/gh-pages")
     }
 
     Write-Log "Syncing live JSON to gh-pages."
@@ -63,7 +93,7 @@ function Sync-GhPagesLiveData {
             git config user.email "oktv-local-updater@example.local"
         }
 
-        git pull --ff-only origin gh-pages
+        Invoke-GitChecked @("pull", "--ff-only", "origin", "gh-pages")
         New-Item -ItemType Directory -Force -Path (Join-Path $PagesRootText "docs\data") | Out-Null
         Copy-Item -LiteralPath $liveJson -Destination (Join-Path $PagesRootText "docs\data\live-channels.json") -Force
         if (Test-Path -LiteralPath $summaryJson) {
@@ -77,7 +107,7 @@ function Sync-GhPagesLiveData {
             if ($NoGhPagesPush -or $NoGitPush) {
                 Write-Log "Push disabled; gh-pages live data commit created locally."
             } else {
-                git push origin HEAD:gh-pages
+                Invoke-GitPushWithRetry -Branch "gh-pages" -Label "gh-pages live data push"
             }
         }
     } finally {
@@ -114,7 +144,7 @@ try {
         Write-Log "Working tree has existing changes; continuing without pull to avoid overwriting local work."
     } else {
         Write-Log "Pulling latest main."
-        git pull --ff-only origin main
+        Invoke-GitChecked @("pull", "--ff-only", "origin", "main")
     }
 
     $updateScript = Join-Path $RepoRoot "tools\update-youtube-live.ps1"
@@ -173,7 +203,7 @@ try {
             Write-Log "NoGitPush set; commit created but not pushed."
         } else {
             Write-Log "Pushing update to GitHub."
-            git push origin HEAD:main
+            Invoke-GitPushWithRetry -Branch "main" -Label "main live data push"
         }
     }
 
