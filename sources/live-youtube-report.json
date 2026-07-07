@@ -1,19 +1,19 @@
 {
-    "generatedAt":  "2026-07-07T06:45:01.6914615+08:00",
+    "generatedAt":  "2026-07-07T09:45:15.4069270+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  59,
-    "fallback":  53,
-    "failed":  53,
+    "playable":  58,
+    "fallback":  54,
+    "failed":  54,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  52.68,
-    "candidatePlaylistEntries":  59,
-    "playlistEntries":  59,
-    "removedFromPlaylist":  53,
+    "hlsSuccessRate":  51.79,
+    "candidatePlaylistEntries":  58,
+    "playlistEntries":  58,
+    "removedFromPlaylist":  54,
     "playlistPolicy":  "playable-only",
     "minPlaylistEntries":  10,
     "outputsPreserved":  false,
@@ -134,6 +134,13 @@
                          "Name":  "華視公眾安全資訊觀測站",
                          "PageUrl":  "https://www.youtube.com/watch?v=meHTKm4XBS8",
                          "Error":  "ERROR: [youtube] meHTKm4XBS8: This live stream recording is not available."
+                     },
+                     {
+                         "Order":  25,
+                         "Group":  "YouTube新聞台",
+                         "Name":  "華視戲劇頻道",
+                         "PageUrl":  "https://www.youtube.com/watch?v=6ZowCmLBcMY",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 271660 bytes, 236.8 kbps."
                      },
                      {
                          "Order":  30,
@@ -434,7 +441,7 @@
                          "Group":  "YouTube動漫台",
                          "Name":  "Muse 獵人馬拉松",
                          "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 51512 bytes, 3564.7 kbps."
+                         "Error":  "ERROR: [youtube] YrUJXdCamNs: We\u0027re experiencing technical difficulties."
                      },
                      {
                          "Order":  107,
