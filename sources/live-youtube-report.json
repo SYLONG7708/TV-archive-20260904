@@ -1,19 +1,19 @@
 {
-    "generatedAt":  "2026-07-09T12:45:19.3410951+08:00",
+    "generatedAt":  "2026-07-09T15:45:33.3929481+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  59,
-    "fallback":  53,
-    "failed":  53,
+    "playable":  58,
+    "fallback":  54,
+    "failed":  54,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  52.68,
-    "candidatePlaylistEntries":  59,
-    "playlistEntries":  59,
-    "removedFromPlaylist":  53,
+    "hlsSuccessRate":  51.79,
+    "candidatePlaylistEntries":  58,
+    "playlistEntries":  58,
+    "removedFromPlaylist":  54,
     "playlistPolicy":  "playable-only",
     "minPlaylistEntries":  10,
     "outputsPreserved":  false,
@@ -112,7 +112,7 @@
                          "Group":  "YouTube新聞台",
                          "Name":  "鳳凰衛視資訊台",
                          "PageUrl":  "https://www.youtube.com/watch?v=fN9uYWCjQaw",
-                         "Error":  "ERROR: [youtube] fN9uYWCjQaw: This live stream recording is not available."
+                         "Error":  "ERROR: [youtube] fN9uYWCjQaw: Video unavailable. This video is not available"
                      },
                      {
                          "Order":  14,
@@ -273,7 +273,7 @@
                          "Group":  "YouTube亞洲新聞",
                          "Name":  "News18 India",
                          "PageUrl":  "https://www.youtube.com/watch?v=o6OP0iB5zvE",
-                         "Error":  "ERROR: [youtube] o6OP0iB5zvE: Video unavailable. This video is not available"
+                         "Error":  "ERROR: [youtube] o6OP0iB5zvE: Requested format is not available. Use --list-formats for a list of available formats"
                      },
                      {
                          "Order":  68,
@@ -301,7 +301,7 @@
                          "Group":  "YouTube亞洲新聞",
                          "Name":  "ABCテレビニュース",
                          "PageUrl":  "https://www.youtube.com/watch?v=XGSEjlkjK8o",
-                         "Error":  "ERROR: [youtube] XGSEjlkjK8o: Video unavailable. This video is not available"
+                         "Error":  "ERROR: [youtube] XGSEjlkjK8o: This live stream recording is not available."
                      },
                      {
                          "Order":  75,
@@ -435,6 +435,13 @@
                          "Name":  "Muse 異世界流浪美食家馬拉松",
                          "PageUrl":  "https://www.youtube.com/watch?v=fK1M3oM7ZPQ",
                          "Error":  "ERROR: [youtube] fK1M3oM7ZPQ: Private video. Sign in if you\u0027ve been granted access to this video. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
+                     },
+                     {
+                         "Order":  103,
+                         "Group":  "YouTube動漫台",
+                         "Name":  "Muse 獵人馬拉松",
+                         "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
+                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 57528 bytes, 4186 kbps."
                      },
                      {
                          "Order":  107,
