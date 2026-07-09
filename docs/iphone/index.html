@@ -1071,7 +1071,9 @@
       const playerMeta = document.querySelector('#playerMeta');
       const EPISODES_PER_PAGE = 20;
       const SOURCE_DETAIL_PAGE_SIZE = 100;
-      const GROUP_SEARCH_TARGET_RESULTS = 6;
+      const GROUP_SEARCH_TARGET_RESULTS = 48;
+      const SEARCH_INDEX_CONCURRENCY = 4;
+      const SEARCH_PROGRESS_RENDER_INTERVAL_MS = 420;
       let hls = null;
       let searchRenderTimer = null;
       let searchPollTimer = null;
@@ -1442,7 +1444,7 @@
         if (state.fullIndexSourceIds.has(source.id)) return true;
         if (state.fullIndexLoading.has(source.id)) return await state.fullIndexLoading.get(source.id);
         const promise = (async () => {
-          const searchIndexPath = source.indexPath || source.searchIndexPath;
+          const searchIndexPath = source.searchIndexPath || source.indexPath;
           if (searchIndexPath) {
             const payload = await getJson(`../data/${searchIndexPath}`, null);
             const rows = Array.isArray(payload?.items) ? payload.items : [];
@@ -3731,6 +3733,48 @@
         return normalizedText(value).replace(/[\s\-_.:：\/\\|,，。！!？?·'"()[\]{}]+/g, '');
       }
 
+      function uniqueSearchValues(values) {
+        const seen = new Set();
+        const out = [];
+        for (const value of values) {
+          const text = normalizedText(value);
+          const key = compactSearchText(text);
+          if (!key || seen.has(key)) continue;
+          seen.add(key);
+          out.push(text);
+        }
+        return out;
+      }
+
+      function searchAliasQueries(query, compact) {
+        const aliases = [];
+        if (query.includes('特務')) aliases.push(query.replaceAll('特務', '特工'));
+        if (query.includes('特工')) aliases.push(query.replaceAll('特工', '特務'));
+        if (/金(?:牌)?特(?:務|工)|kingsman/i.test(compact)) {
+          aliases.push('王牌特工', '王牌特工 黃金圈', '王牌特工 特工學院', '王牌特工 源起', 'kingsman');
+        }
+        return aliases;
+      }
+
+      function buildSearchCandidate(value) {
+        const query = normalizedText(value);
+        const compact = compactSearchText(query);
+        const tokens = query.split(/\s+/g).map((token) => token.trim()).filter(Boolean);
+        const compactTokens = tokens.map((token) => compactSearchText(token));
+        return { query, compact, tokens, compactTokens };
+      }
+
+      function fuzzySearchMinLength(value) {
+        const hanCount = (value.match(/\p{Script=Han}/gu) || []).length;
+        return hanCount >= 3 ? 3 : 4;
+      }
+
+      function searchTargetResultCount(needle) {
+        if ((needle.candidates?.length || 0) > 2) return 6;
+        if ((needle.compact || '').length >= 4) return 24;
+        return GROUP_SEARCH_TARGET_RESULTS;
+      }
+
       let searchNeedleCache = { raw: null, needle: null };
 
       function currentSearchNeedle() {
@@ -3740,7 +3784,8 @@
         const compact = compactSearchText(query);
         const tokens = query.split(/\s+/g).map((token) => token.trim()).filter(Boolean);
         const compactTokens = tokens.map((token) => compactSearchText(token));
-        const needle = { query, compact, tokens, compactTokens };
+        const candidates = uniqueSearchValues([query, ...searchAliasQueries(query, compact)]).map(buildSearchCandidate);
+        const needle = { query, compact, tokens, compactTokens, candidates };
         searchNeedleCache = { raw, needle };
         return needle;
       }
@@ -3756,7 +3801,8 @@
         return true;
       }
 
-      function searchTextMatchesNeedle(searchText, compactText, needle) {
+      function searchCandidateMatches(searchText, compactText, needle) {
+        if (!needle.query) return true;
         if (searchText.includes(needle.query)) return true;
         if (needle.compact && compactText.includes(needle.compact)) return true;
         if (
@@ -3765,7 +3811,12 @@
         ) {
           return true;
         }
-        return needle.compact.length >= 4 && compactIncludesInOrder(compactText, needle.compact);
+        return needle.compact.length >= fuzzySearchMinLength(needle.compact) && compactIncludesInOrder(compactText, needle.compact);
+      }
+
+      function searchTextMatchesNeedle(searchText, compactText, needle) {
+        const candidates = needle.candidates?.length ? needle.candidates : [needle];
+        return candidates.some((candidate) => searchCandidateMatches(searchText, compactText, candidate));
       }
 
       function normalizedPoster(value) {
@@ -4097,12 +4148,15 @@
 
       function triggerSearchIndexLoad() {
         const needle = currentSearchNeedle();
-        if (state.tab === 'live' || needle.query.length < 2) return;
-        const groupSearch = ['all', 'normal', 'adult18'].includes(state.selectedSource);
-        if (groupSearch && visibleItems().length >= GROUP_SEARCH_TARGET_RESULTS) {
+        if (state.tab === 'live' || needle.query.length < 2) {
           state.searchLoading = false;
+          state.searchLoadInFlight = null;
           return;
         }
+        const groupSearch = ['all', 'normal', 'adult18'].includes(state.selectedSource);
+        const targetResultCount = searchTargetResultCount(needle);
+        const scopeKey = [state.tab, state.selectedSource, needle.query].join('\u001f');
+        if (state.searchLoadInFlight?.scopeKey === scopeKey) return;
         const sources = searchScopeSources()
           .filter((source) => {
             if (state.fullIndexSourceIds.has(source.id)) return false;
@@ -4120,14 +4174,41 @@
         const key = [state.tab, state.selectedSource, needle.query, sources.map((source) => source.id).join('|')].join('\u001f');
         if (state.searchLoadInFlight?.key === key) return;
         state.searchLoading = true;
-        const loadToken = { key, promise: null };
+        const loadToken = { key, scopeKey, promise: null };
         state.searchLoadInFlight = loadToken;
         const promise = (async () => {
+          let next = 0;
+          let lastProgressRender = 0;
+          const targetReached = () => groupSearch && visibleItems().length >= targetResultCount;
+          const renderProgress = () => {
+            const now = Date.now();
+            if (now - lastProgressRender < SEARCH_PROGRESS_RENDER_INTERVAL_MS) return;
+            lastProgressRender = now;
+            clearViewCache();
+            resetVisibleLimit();
+            render();
+          };
+          const worker = async () => {
+            while (next < sources.length) {
+              if (state.searchLoadInFlight !== loadToken || targetReached()) return;
+              const source = sources[next];
+              next += 1;
+              await ensureFullSourceIndex(source);
+              clearViewCache();
+              renderProgress();
+            }
+          };
+          const workers = Array.from({ length: Math.min(SEARCH_INDEX_CONCURRENCY, sources.length) }, worker);
+          await Promise.all(workers);
+          if (state.searchLoadInFlight !== loadToken) return;
+          if (targetReached()) return;
           for (const source of sources) {
             if (state.searchLoadInFlight !== loadToken) return;
+            if (state.fullIndexSourceIds.has(source.id)) continue;
             await ensureFullSourceIndex(source);
             clearViewCache();
-            if (groupSearch && visibleItems().length >= GROUP_SEARCH_TARGET_RESULTS) return;
+            renderProgress();
+            if (targetReached()) return;
           }
         })().finally(() => {
           if (state.searchLoadInFlight !== loadToken) return;

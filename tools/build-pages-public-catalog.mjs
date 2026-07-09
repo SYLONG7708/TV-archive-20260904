@@ -113,6 +113,7 @@ function sourceCheck(source) {
     detailPageCount: source.detailPageCount,
     detailExpectedPages: source.detailExpectedPages,
     indexPath: source.indexPath,
+    searchIndexPath: source.searchIndexPath,
     detailPathPattern: source.detailPathPattern,
     error: source.error,
   };
@@ -121,6 +122,12 @@ function sourceCheck(source) {
 function detailDirFromPattern(pattern) {
   const match = normalizeText(pattern).match(/vod-detail\/([^/]+)\/page-\{page\}\.json\.gz/i);
   return match?.[1] || '';
+}
+
+function leanSearchPathForSource(source) {
+  if (source?.searchIndexPath) return source.searchIndexPath;
+  if (!source?.indexPath) return '';
+  return `vod-search/${path.basename(source.indexPath)}`;
 }
 
 async function copyDirIfExists(from, to) {
@@ -149,6 +156,7 @@ async function publishIndexedSourceData(fullCatalog, pagesDataRoot) {
   const repoDataRoot = path.join(tvRoot, 'docs', 'data');
   let detailDirs = 0;
   let indexFiles = 0;
+  let searchFiles = 0;
   for (const source of fullCatalog.sources || []) {
     if (!source.indexed || !source.detailPathPattern) continue;
     const slug = detailDirFromPattern(source.detailPathPattern) || sourceSlug(source);
@@ -161,8 +169,15 @@ async function publishIndexedSourceData(fullCatalog, pagesDataRoot) {
         indexFiles += 1;
       }
     }
+    const searchPath = leanSearchPathForSource(source);
+    if (searchPath) {
+      const searchFile = path.basename(searchPath);
+      if (await copyFileIfExists(path.join(repoDataRoot, 'vod-search', searchFile), path.join(pagesDataRoot, 'vod-search', searchFile))) {
+        searchFiles += 1;
+      }
+    }
   }
-  return { detailDirs, indexFiles };
+  return { detailDirs, indexFiles, searchFiles };
 }
 
 const fullCatalog = await readJson(catalogPath);
@@ -183,8 +198,10 @@ const pagesDataRoot = path.join(pagesRoot, 'docs', 'data');
 const publishedIndexedData = await publishIndexedSourceData(fullCatalog, pagesDataRoot);
 const detailRoot = path.join(pagesDataRoot, 'vod-detail');
 const indexRoot = path.join(pagesDataRoot, 'vod-index');
+const searchRoot = path.join(pagesDataRoot, 'vod-search');
 const publishedDetailDirs = new Set(await listNames(detailRoot));
 const publishedIndexFiles = new Set(await listNames(indexRoot, { files: true }));
+const publishedSearchFiles = new Set(await listNames(searchRoot, { files: true }));
 
 const publishedSourceIds = new Set();
 const usedPreviousPublicSourceIds = new Set();
@@ -194,6 +211,9 @@ const sources = (fullCatalog.sources || []).map((source) => {
   const hasDetail = publishedDetailDirs.has(slug);
   const indexFile = source.indexPath ? path.basename(source.indexPath) : `${slug}.json.gz`;
   const hasIndex = publishedIndexFiles.has(indexFile);
+  const searchIndexPath = leanSearchPathForSource(source);
+  const searchIndexFile = searchIndexPath ? path.basename(searchIndexPath) : '';
+  const hasSearchIndex = Boolean(searchIndexFile && publishedSearchFiles.has(searchIndexFile));
   const previousPublicSource =
     previousPublicSourceById.get(source.id) ||
     previousPublicSourceBySlug.get(slug) ||
@@ -212,6 +232,7 @@ const sources = (fullCatalog.sources || []).map((source) => {
       error: hasInlineItems ? source.error || '' : source.error || '未發布到 Pages：大型資料採精簡發布',
     };
     delete next.indexPath;
+    delete next.searchIndexPath;
     delete next.detailPathPattern;
     delete next.detailMode;
     delete next.indexMode;
@@ -229,6 +250,7 @@ const sources = (fullCatalog.sources || []).map((source) => {
         key: previousPublicSource.key || source.key,
         detailPathPattern: previousPublicSource.detailPathPattern || source.detailPathPattern,
         indexPath: previousPublicSource.indexPath || source.indexPath,
+        searchIndexPath: previousPublicSource.searchIndexPath || source.searchIndexPath,
       }
     : source;
 
@@ -252,6 +274,11 @@ const sources = (fullCatalog.sources || []).map((source) => {
   } else {
     delete next.indexMode;
     delete next.indexPath;
+  }
+  if (hasSearchIndex) {
+    next.searchIndexPath = sourceForPublish.searchIndexPath || `vod-search/${searchIndexFile}`;
+  } else {
+    delete next.searchIndexPath;
   }
   return next;
 });
@@ -309,6 +336,8 @@ const nextCatalog = {
     pagesLeanPublish: true,
     preservePreviousPublicSources,
     fullCatalogItems: fullCatalog.totals?.items || 0,
+    searchIndexRoot: 'docs/data/vod-search',
+    searchIndexMode: 'pages-lean-search-gzip',
   },
   totals: {
     sources: sources.length,
