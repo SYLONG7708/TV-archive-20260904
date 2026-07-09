@@ -1,19 +1,19 @@
 {
-    "generatedAt":  "2026-07-09T09:45:10.4069137+08:00",
+    "generatedAt":  "2026-07-09T12:45:19.3410951+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  58,
-    "fallback":  54,
-    "failed":  54,
+    "playable":  59,
+    "fallback":  53,
+    "failed":  53,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  51.79,
-    "candidatePlaylistEntries":  58,
-    "playlistEntries":  58,
-    "removedFromPlaylist":  54,
+    "hlsSuccessRate":  52.68,
+    "candidatePlaylistEntries":  59,
+    "playlistEntries":  59,
+    "removedFromPlaylist":  53,
     "playlistPolicy":  "playable-only",
     "minPlaylistEntries":  10,
     "outputsPreserved":  false,
@@ -129,18 +129,18 @@
                          "Error":  "ERROR: [youtube] 72d-gkakiek: Requested format is not available. Use --list-formats for a list of available formats"
                      },
                      {
-                         "Order":  19,
-                         "Group":  "YouTube新聞台",
-                         "Name":  "華視新聞",
-                         "PageUrl":  "https://www.youtube.com/watch?v=wM0g8EoUZ_E",
-                         "Error":  "ERROR: [youtube] wM0g8EoUZ_E: Video unavailable. This video is not available"
-                     },
-                     {
                          "Order":  20,
                          "Group":  "YouTube新聞台",
                          "Name":  "華視公眾安全資訊觀測站",
                          "PageUrl":  "https://www.youtube.com/watch?v=meHTKm4XBS8",
                          "Error":  "ERROR: [youtube] meHTKm4XBS8: This live stream recording is not available."
+                     },
+                     {
+                         "Order":  26,
+                         "Group":  "YouTube購物台",
+                         "Name":  "momo購物一台",
+                         "PageUrl":  "https://www.youtube.com/watch?v=_pZQ1Lk0xMA",
+                         "Error":  "ERROR: [youtube] _pZQ1Lk0xMA: This video has been removed for violating YouTube\u0027s Terms of Service"
                      },
                      {
                          "Order":  30,
@@ -196,7 +196,7 @@
                          "Group":  "YouTube綜合娛樂",
                          "Name":  "8world",
                          "PageUrl":  "https://www.youtube.com/watch?v=RvSOIM620bA",
-                         "Error":  "ERROR: [youtube] RvSOIM620bA: Please sign in. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
+                         "Error":  "ERROR: [youtube] RvSOIM620bA: Private video. Sign in if you\u0027ve been granted access to this video. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
                      },
                      {
                          "Order":  48,
@@ -273,7 +273,7 @@
                          "Group":  "YouTube亞洲新聞",
                          "Name":  "News18 India",
                          "PageUrl":  "https://www.youtube.com/watch?v=o6OP0iB5zvE",
-                         "Error":  "ERROR: [youtube] o6OP0iB5zvE: Requested format is not available. Use --list-formats for a list of available formats"
+                         "Error":  "ERROR: [youtube] o6OP0iB5zvE: Video unavailable. This video is not available"
                      },
                      {
                          "Order":  68,
@@ -301,7 +301,7 @@
                          "Group":  "YouTube亞洲新聞",
                          "Name":  "ABCテレビニュース",
                          "PageUrl":  "https://www.youtube.com/watch?v=XGSEjlkjK8o",
-                         "Error":  "ERROR: [youtube] XGSEjlkjK8o: This live stream recording is not available."
+                         "Error":  "ERROR: [youtube] XGSEjlkjK8o: Video unavailable. This video is not available"
                      },
                      {
                          "Order":  75,
@@ -435,13 +435,6 @@
                          "Name":  "Muse 異世界流浪美食家馬拉松",
                          "PageUrl":  "https://www.youtube.com/watch?v=fK1M3oM7ZPQ",
                          "Error":  "ERROR: [youtube] fK1M3oM7ZPQ: Private video. Sign in if you\u0027ve been granted access to this video. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies"
-                     },
-                     {
-                         "Order":  103,
-                         "Group":  "YouTube動漫台",
-                         "Name":  "Muse 獵人馬拉松",
-                         "PageUrl":  "https://www.youtube.com/watch?v=YrUJXdCamNs",
-                         "Error":  "Resolved stream failed HLS validation: Segment probe too slow or incomplete: 54520 bytes, 12749.6 kbps."
                      },
                      {
                          "Order":  107,
