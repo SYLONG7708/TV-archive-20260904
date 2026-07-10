@@ -175,7 +175,6 @@ jobs:
           }
 
       - name: Publish GitHub Pages live page data
-        if: steps.live_report.outputs.outputs_preserved != 'True'
         shell: pwsh
         run: |
           git fetch origin gh-pages
