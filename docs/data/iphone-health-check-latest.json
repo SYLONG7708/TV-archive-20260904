@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-10T06:30:46.624Z",
+  "checkedAt": "2026-07-10T12:30:41.612Z",
   "inputs": {
     "catalogPath": "D:\\a\\TV\\TV\\docs\\data\\iphone-vod-catalog.json",
     "livePath": "D:\\a\\TV\\TV\\docs\\data\\live-channels.json"
@@ -12,12 +12,12 @@
     },
     "posters": {
       "total": 210,
-      "ok": 82,
+      "ok": 79,
       "titleOk": 210,
       "posterOk": 141,
-      "playOk": 208,
-      "qualityOk": 151,
-      "failed": 128
+      "playOk": 196,
+      "qualityOk": 148,
+      "failed": 131
     },
     "live": {
       "total": 58,
@@ -31,16 +31,16 @@
   "failed": [
     {
       "kind": "source",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56",
-      "name": "滴滴资源｜追劇",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55",
+      "name": "豆豆资源｜追劇",
       "type": 1,
-      "url": "https://api.ddapi.cc/api.php/provide/vod/",
+      "url": "https://api.douapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
       "ok": false,
-      "status": 0,
-      "elapsedMs": 409,
-      "error": "fetch failed"
+      "status": 200,
+      "elapsedMs": 940,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "source",
@@ -52,7 +52,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 506,
+      "elapsedMs": 548,
       "error": "XML source did not return an XML list"
     },
     {
@@ -73,7 +73,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -94,7 +94,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -115,7 +115,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 42,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -136,7 +136,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 42,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -157,7 +157,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -178,7 +178,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 40,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -199,7 +199,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 40,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -220,7 +220,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -241,7 +241,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 40,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -262,7 +262,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 41,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -283,7 +283,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 41,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -304,7 +304,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 42,
+      "elapsedMs": 57,
       "error": "play quality probe failed"
     },
     {
@@ -325,7 +325,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -346,7 +346,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -367,7 +367,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -388,7 +388,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -409,7 +409,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -430,7 +430,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -451,7 +451,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 180,
+      "elapsedMs": 178,
       "error": "play quality probe failed"
     },
     {
@@ -472,16 +472,16 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70119-1",
-      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆16(6V)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-120454-1",
+      "name": "骚货学生出轨大屌老师 别人眼中的班长学霸 表面看起来很乖巧可爱 私下是老师的小母狗",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/f38d4fdd3333560dcc8f0e7d7f324120.jpg",
-      "sourceName": "滴滴资源｜追劇",
+      "url": "https://pic.dd1pic.cc/upload/vod/20231214-1/53791c328aefb1feaaf67e03d2d33588.jpg",
+      "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
@@ -493,16 +493,16 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70115-1",
-      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆19(10V)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-120436-1",
+      "name": "极品学生风格纯纯小美女约到酒店嗨皮 粉嫩嫩肥逼鼓胀凸起情欲盛开抵挡不住立马硬邦邦舔弄亲吻后入啪啪狠操【水印】",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/a3693ce1e447701669c1b7d83377ada6.jpg",
-      "sourceName": "滴滴资源｜追劇",
+      "url": "https://pic.dd1pic.cc/upload/vod/20231215-1/6cc2af715d453a99beedd1faad6d53de.jpg",
+      "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
@@ -514,70 +514,28 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70114-1",
-      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆17(6V)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-120391-1",
+      "name": "黑丝学生装，跳蛋操逼，很骚",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/fb6f72f989a6590a954cdca69f223d74.jpg",
-      "sourceName": "滴滴资源｜追劇",
+      "url": "https://pic.dd1pic.cc/upload/vod/20231217-1/7d94c7b51e5e9320d09aa1195d95c3a4.jpg",
+      "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
+      "qualityLabel": "408p",
+      "maxHeight": 408,
       "maxBandwidth": 1000000,
       "variants": 1,
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
-      "error": "play quality probe failed"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70113-1",
-      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆18(12V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/ca4cda598d7ae14f69676d0df45b95dc.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": false,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 45,
-      "error": "play quality probe failed"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70111-1",
-      "name": "大奶子校花！超骚【PuppyPorn090】付费门票房 尝试原相机插入高潮喷水4(8V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/27d2bfd81aa81f7f33357f03c2fd809e.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": false,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 37,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -598,7 +556,112 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 50,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70119-1",
+      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆16(6V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/f38d4fdd3333560dcc8f0e7d7f324120.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 49,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70115-1",
+      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆19(10V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/a3693ce1e447701669c1b7d83377ada6.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 52,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70114-1",
+      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆17(6V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/fb6f72f989a6590a954cdca69f223d74.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 48,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70113-1",
+      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆18(12V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/ca4cda598d7ae14f69676d0df45b95dc.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 49,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70111-1",
+      "name": "大奶子校花！超骚【PuppyPorn090】付费门票房 尝试原相机插入高潮喷水4(8V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/27d2bfd81aa81f7f33357f03c2fd809e.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 56,
       "error": "play quality probe failed"
     },
     {
@@ -619,7 +682,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -640,7 +703,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -661,7 +724,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -682,7 +745,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -703,7 +766,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -724,7 +787,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 40,
+      "elapsedMs": 58,
       "error": "play quality probe failed"
     },
     {
@@ -745,7 +808,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 41,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -766,7 +829,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -787,7 +850,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 54,
       "error": "play quality probe failed"
     },
     {
@@ -808,7 +871,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 53,
       "error": "play quality probe failed"
     },
     {
@@ -829,7 +892,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -850,7 +913,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 57,
       "error": "play quality probe failed"
     },
     {
@@ -871,7 +934,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -883,17 +946,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 38,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 50,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -904,17 +967,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 41,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 50,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -934,7 +997,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 55,
       "error": "play quality probe failed"
     },
     {
@@ -946,17 +1009,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 39,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 48,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -976,7 +1039,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 42,
+      "elapsedMs": 57,
       "error": "play quality probe failed"
     },
     {
@@ -997,7 +1060,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -1009,17 +1072,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 42,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 50,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -1030,17 +1093,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 41,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 48,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -1060,7 +1123,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -1081,7 +1144,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -1093,17 +1156,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 46,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 51,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -1114,17 +1177,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "398p",
-      "maxHeight": 398,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 39,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 48,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -1135,17 +1198,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 38,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 56,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -1156,17 +1219,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 43,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 49,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -1177,17 +1240,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 42,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 48,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -1207,7 +1270,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 57,
       "error": "play quality probe failed"
     },
     {
@@ -1219,17 +1282,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 43,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 48,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -1240,17 +1303,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 47,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 49,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -1269,9 +1332,9 @@
       "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 404,
-      "elapsedMs": 41,
-      "error": "play manifest HTTP 404"
+      "playStatus": 503,
+      "elapsedMs": 50,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -1291,7 +1354,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 404,
-      "elapsedMs": 45,
+      "elapsedMs": 57,
       "error": "play manifest HTTP 404"
     },
     {
@@ -1312,7 +1375,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8011,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1333,7 +1396,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1354,7 +1417,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1375,7 +1438,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1396,7 +1459,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1417,7 +1480,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1438,7 +1501,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8011,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1459,7 +1522,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1480,7 +1543,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1501,7 +1564,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1522,7 +1585,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1564,7 +1627,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1585,7 +1648,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8014,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1606,7 +1669,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1627,7 +1690,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1648,7 +1711,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1669,7 +1732,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1690,7 +1753,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1711,7 +1774,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1732,7 +1795,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1753,7 +1816,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1774,7 +1837,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1795,7 +1858,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1816,7 +1879,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8009,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1837,7 +1900,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1858,7 +1921,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1879,7 +1942,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1900,7 +1963,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1921,7 +1984,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1942,7 +2005,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1963,7 +2026,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1984,7 +2047,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2005,7 +2068,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 7999,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2026,7 +2089,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2047,7 +2110,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2068,7 +2131,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2089,7 +2152,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2110,7 +2173,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2131,7 +2194,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2152,7 +2215,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8012,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2173,7 +2236,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 7999,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2194,7 +2257,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8011,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2215,7 +2278,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2236,7 +2299,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2257,7 +2320,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8012,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2299,7 +2362,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8011,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2320,7 +2383,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 7999,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2341,7 +2404,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2383,7 +2446,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2404,7 +2467,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2425,7 +2488,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8016,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2446,7 +2509,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8014,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2467,7 +2530,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2488,7 +2551,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2530,7 +2593,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2551,7 +2614,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2572,7 +2635,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2593,7 +2656,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8015,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2614,7 +2677,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2656,7 +2719,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2677,7 +2740,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2698,7 +2761,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2719,7 +2782,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2740,7 +2803,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     }
   ],
@@ -2755,7 +2818,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 951,
+      "elapsedMs": 568,
       "error": ""
     },
     {
@@ -2768,7 +2831,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 276,
+      "elapsedMs": 340,
       "error": ""
     },
     {
@@ -2781,7 +2844,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1060,
+      "elapsedMs": 1207,
       "error": ""
     },
     {
@@ -2794,7 +2857,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 864,
+      "elapsedMs": 896,
       "error": ""
     },
     {
@@ -2807,7 +2870,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 344,
+      "elapsedMs": 434,
       "error": ""
     },
     {
@@ -2820,7 +2883,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1329,
+      "elapsedMs": 1331,
       "error": ""
     },
     {
@@ -2833,7 +2896,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 819,
+      "elapsedMs": 834,
       "error": ""
     },
     {
@@ -2846,7 +2909,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1137,
+      "elapsedMs": 1108,
       "error": ""
     },
     {
@@ -2859,7 +2922,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 929,
+      "elapsedMs": 2132,
       "error": ""
     },
     {
@@ -2872,7 +2935,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 570,
+      "elapsedMs": 347,
       "error": ""
     },
     {
@@ -2885,7 +2948,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 247,
+      "elapsedMs": 521,
       "error": ""
     },
     {
@@ -2898,7 +2961,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 253,
+      "elapsedMs": 297,
       "error": ""
     },
     {
@@ -2911,7 +2974,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 924,
+      "elapsedMs": 1092,
       "error": ""
     },
     {
@@ -2924,7 +2987,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1173,
+      "elapsedMs": 1144,
       "error": ""
     },
     {
@@ -2937,7 +3000,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 442,
+      "elapsedMs": 313,
       "error": ""
     },
     {
@@ -2950,7 +3013,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 320,
+      "elapsedMs": 215,
       "error": ""
     },
     {
@@ -2963,7 +3026,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 318,
+      "elapsedMs": 214,
       "error": ""
     },
     {
@@ -2976,7 +3039,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1272,
+      "elapsedMs": 1672,
       "error": ""
     },
     {
@@ -2989,7 +3052,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1286,
+      "elapsedMs": 1246,
       "error": ""
     },
     {
@@ -3002,7 +3065,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 359,
+      "elapsedMs": 454,
       "error": ""
     },
     {
@@ -3015,7 +3078,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 322,
+      "elapsedMs": 397,
       "error": ""
     },
     {
@@ -3028,7 +3091,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 461,
+      "elapsedMs": 748,
       "error": ""
     },
     {
@@ -3041,7 +3104,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1099,
+      "elapsedMs": 1153,
       "error": ""
     },
     {
@@ -3054,7 +3117,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1633,
+      "elapsedMs": 1330,
       "error": ""
     },
     {
@@ -3067,7 +3130,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 202,
+      "elapsedMs": 263,
       "error": ""
     },
     {
@@ -3080,7 +3143,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 283,
+      "elapsedMs": 206,
       "error": ""
     },
     {
@@ -3093,7 +3156,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 370,
+      "elapsedMs": 478,
       "error": ""
     },
     {
@@ -3106,7 +3169,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 841,
+      "elapsedMs": 1825,
       "error": ""
     },
     {
@@ -3119,7 +3182,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1124,
+      "elapsedMs": 2203,
       "error": ""
     },
     {
@@ -3132,7 +3195,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 295,
+      "elapsedMs": 226,
       "error": ""
     },
     {
@@ -3145,7 +3208,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 134,
+      "elapsedMs": 60,
       "error": ""
     },
     {
@@ -3158,7 +3221,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 322,
+      "elapsedMs": 308,
       "error": ""
     },
     {
@@ -3171,7 +3234,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 271,
+      "elapsedMs": 296,
       "error": ""
     },
     {
@@ -3184,7 +3247,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 513,
+      "elapsedMs": 583,
       "error": ""
     },
     {
@@ -3197,7 +3260,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1040,
+      "elapsedMs": 567,
       "error": ""
     },
     {
@@ -3210,7 +3273,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 920,
+      "elapsedMs": 1023,
       "error": ""
     },
     {
@@ -3223,7 +3286,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 221,
+      "elapsedMs": 455,
       "error": ""
     },
     {
@@ -3236,7 +3299,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 592,
+      "elapsedMs": 618,
       "error": ""
     },
     {
@@ -3249,7 +3312,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 271,
+      "elapsedMs": 365,
       "error": ""
     },
     {
@@ -3262,7 +3325,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 392,
+      "elapsedMs": 296,
       "error": ""
     },
     {
@@ -3275,7 +3338,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1429,
+      "elapsedMs": 1184,
       "error": ""
     },
     {
@@ -3288,7 +3351,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 328,
+      "elapsedMs": 361,
       "error": ""
     },
     {
@@ -3301,7 +3364,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 145,
+      "elapsedMs": 400,
       "error": ""
     },
     {
@@ -3314,7 +3377,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 259,
+      "elapsedMs": 465,
       "error": ""
     },
     {
@@ -3327,7 +3390,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1468,
+      "elapsedMs": 1299,
       "error": ""
     },
     {
@@ -3340,7 +3403,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 423,
+      "elapsedMs": 477,
       "error": ""
     },
     {
@@ -3351,10 +3414,10 @@
       "url": "https://api.douapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": true,
+      "ok": false,
       "status": 200,
-      "elapsedMs": 416,
-      "error": ""
+      "elapsedMs": 940,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "source",
@@ -3364,10 +3427,10 @@
       "url": "https://api.ddapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 409,
-      "error": "fetch failed"
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 174,
+      "error": ""
     },
     {
       "kind": "source",
@@ -3379,7 +3442,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 709,
+      "elapsedMs": 631,
       "error": ""
     },
     {
@@ -3392,7 +3455,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 222,
+      "elapsedMs": 161,
       "error": ""
     },
     {
@@ -3405,7 +3468,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 322,
+      "elapsedMs": 251,
       "error": ""
     },
     {
@@ -3418,7 +3481,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 338,
+      "elapsedMs": 449,
       "error": ""
     },
     {
@@ -3431,7 +3494,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 490,
+      "elapsedMs": 643,
       "error": ""
     },
     {
@@ -3444,7 +3507,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 351,
+      "elapsedMs": 363,
       "error": ""
     },
     {
@@ -3457,7 +3520,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 506,
+      "elapsedMs": 548,
       "error": "XML source did not return an XML list"
     },
     {
@@ -3470,7 +3533,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1151,
+      "elapsedMs": 1256,
       "error": ""
     },
     {
@@ -3483,7 +3546,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1319,
+      "elapsedMs": 1512,
       "error": ""
     },
     {
@@ -3496,7 +3559,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 215,
+      "elapsedMs": 388,
       "error": ""
     },
     {
@@ -3509,7 +3572,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 348,
+      "elapsedMs": 298,
       "error": ""
     },
     {
@@ -3522,7 +3585,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 132,
+      "elapsedMs": 138,
       "error": ""
     },
     {
@@ -3535,7 +3598,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 362,
+      "elapsedMs": 289,
       "error": ""
     },
     {
@@ -3548,7 +3611,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1188,
+      "elapsedMs": 1266,
       "error": ""
     },
     {
@@ -3561,7 +3624,7 @@
       "adult": false,
       "ok": true,
       "status": 206,
-      "elapsedMs": 218,
+      "elapsedMs": 231,
       "error": ""
     },
     {
@@ -3574,7 +3637,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 964,
+      "elapsedMs": 1383,
       "error": ""
     },
     {
@@ -3587,7 +3650,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 518,
+      "elapsedMs": 526,
       "error": ""
     },
     {
@@ -3600,7 +3663,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 289,
+      "elapsedMs": 490,
       "error": ""
     },
     {
@@ -3613,7 +3676,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 964,
+      "elapsedMs": 1146,
       "error": ""
     },
     {
@@ -3626,7 +3689,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 438,
+      "elapsedMs": 930,
       "error": ""
     },
     {
@@ -3639,7 +3702,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 295,
+      "elapsedMs": 418,
       "error": ""
     },
     {
@@ -3652,7 +3715,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 319,
+      "elapsedMs": 481,
       "error": ""
     },
     {
@@ -3665,7 +3728,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1383,
+      "elapsedMs": 1045,
       "error": ""
     },
     {
@@ -3678,7 +3741,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 216,
+      "elapsedMs": 217,
       "error": ""
     },
     {
@@ -3691,7 +3754,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 2989,
+      "elapsedMs": 855,
       "error": ""
     },
     {
@@ -3704,15 +3767,15 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 337,
+      "elapsedMs": 334,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145845-1",
-      "name": "人气女神【保时捷车模】姐妹配合无套榨精，骚话不断干出白浆4 (3)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145870-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (4)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260708-1/b88bd6d93cd0ea01b31eccad2e55790b.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/020c68bc159d0de013e56b665c0217a2.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3725,15 +3788,162 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 188,
+      "elapsedMs": 183,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145844-1",
-      "name": "清纯反差主播【07学妹】气质端庄簪花女神全裸大秀 超级反差真想干她3 (5)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145869-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (1)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260708-1/3d43672dc6129f50611630758e60055a.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/c5984e017ca682678b3275be553a485f.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 182,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145868-1",
+      "name": "ST【nidekikibabe-2026】女学生为了考研色诱导师双插爆菊",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/440c3633518541dae103d4e7949093a1.webp",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "960p",
+      "maxHeight": 960,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 181,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145867-1",
+      "name": "最美G奶校花【曼小狗】自慰啪啪奶子狂跳3 (4)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/3749d71727cd058f16695cd6ceb698cc.webp",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 187,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145866-1",
+      "name": "重口【两只00后】两姐妹太极品 大奶美女 极品翘臀 绝美骚逼 各种道具玩弄 脚踢逼 抠B喷水 玩真猛",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/640f930a9286124b0806df3a8ca9d7c3.webp",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 191,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145865-1",
+      "name": "最美G奶校花【曼小狗】自慰啪啪奶子狂跳3(5V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/0686737ec6ea80685fd3c200616e08ea.webp",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 195,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145864-1",
+      "name": "推荐【兔兔猪猪】双飞极品姊妹 全身白嫩 大奶美乳 翘臀肥鲍嫩穴 无套插菊花 两个大极品",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/41370042aeba73c7dbcb4dd5bc625c3a.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 181,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145863-1",
+      "name": "最美G奶校花【曼小狗】自慰啪啪奶子狂跳3 (3)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/1ae236628b1266f624f738eafe887d08.webp",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 176,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145862-1",
+      "name": "校花被爆操【小兮少萝】超漂亮 大奶美乳 长腿大屁股 粉嫩骚逼 69口交无套内射 撸到肾疼",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/0e1692d19e628a4265b39209afc2af02.webp",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3751,10 +3961,10 @@
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145843-1",
-      "name": "【小骚黄绿播】唱歌主播不赚钱被迫下海 美乳太漂亮 长腿翘臀 粉嫩美穴 全身白嫩 给观众抠b大秀 (5)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145861-1",
+      "name": "最美G奶校花【曼小狗】自慰啪啪奶子狂跳3 (1)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/961138721355dfbc8c5ab7f8079cea39.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/cae3bf7b290457ec7ebe23dacc1961a8.webp",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3767,15 +3977,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 186,
+      "elapsedMs": 179,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145842-1",
-      "name": "【一点萝】高颜值护士装超粉白虎小萝莉 可爱双马尾 雪白的裸体 粉嫩无毛逼 让人垂涎欲滴 (4)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145860-1",
+      "name": "最美G奶校花【曼小狗】自慰啪啪奶子狂跳3 (2)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/5473b4b9635ca30352ee7a5fedf14db5.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/ea70e6c98fdccd51f148664bf44ea35b.webp",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3783,6 +3993,69 @@
       "qualityOk": true,
       "qualityLabel": "1280p",
       "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 185,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145859-1",
+      "name": "专注年轻嫩妹【鱼哥】最新付费群4K作品，极品一线天馒头嫩逼花臂少女爆插下下到底",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/3569628aa38dcabfd3ce1590c357f145.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 171,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145858-1",
+      "name": "专注年轻嫩妹【鱼哥】最新7.2号作品，约啪调教贵州闷骚精神小妹无套中出内射",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/6e90507d4fc7229dc43c7a489ed25628.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 176,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145857-1",
+      "name": "专注年轻嫩妹【鱼哥】最新6.29作品，约啪调教台球助教，鲍鱼粉嫩露脸",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/0abfed5be55ee8673c080c91b67c7515.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1314p",
+      "maxHeight": 1314,
       "maxBandwidth": 1000000,
       "variants": 1,
       "ok": true,
@@ -3793,10 +4066,10 @@
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145841-1",
-      "name": "【大奶爱吃香蕉】G奶尤物 巨奶肥臀 丝袜美腿 性感大屁股 近距特写逼逼 道具抽插 流白浆 (5)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145856-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (8)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/98bc0a411963c7891fa004da3f16440a.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/d3ef8ce2616c6d38fa440de8ce54121e.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3809,36 +4082,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 164,
+      "elapsedMs": 173,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145840-1",
-      "name": "【小骚黄绿播】唱歌主播不赚钱被迫下海 美乳太漂亮 长腿翘臀 粉嫩美穴 全身白嫩 给观众抠b大秀",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145855-1",
+      "name": "颜值嫩妹【呜呜】一对一视频被出卖,身材颜值都不错,大尺度掰逼诱惑,淫语调教",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/b618b83062c1e3a9d18d504cabf2a707.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 168,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145839-1",
-      "name": "【小骚黄绿播】唱歌主播不赚钱被迫下海 美乳太漂亮 长腿翘臀 粉嫩美穴 全身白嫩 给观众抠b大秀 (3)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/e42d944fce6b4a239085e8973ce5616c.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/7bb8ee52dc596d92f0ea39150b15b7c2.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3856,10 +4108,10 @@
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145838-1",
-      "name": "【小骚黄绿播】唱歌主播不赚钱被迫下海 美乳太漂亮 长腿翘臀 粉嫩美穴 全身白嫩 给观众抠b大秀 (4)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145854-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (9)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/9012ee4f2c6b500462e227296bdd86a6.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/ef7ffee9ab401ef9d1d3af2f2e9b94fc.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3877,10 +4129,10 @@
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145837-1",
-      "name": "【小骚黄绿播】唱歌主播不赚钱被迫下海 美乳太漂亮 长腿翘臀 粉嫩美穴 全身白嫩 给观众抠b大秀 (2)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145853-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/11e7be78141caf3adb5b5daeb64c7580.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/9889dcfb48a1a137ce396bf5f0d47f3a.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3893,15 +4145,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 161,
+      "elapsedMs": 173,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145836-1",
-      "name": "【大奶爱吃香蕉】G奶尤物 巨奶肥臀 丝袜美腿 性感大屁股 近距特写逼逼 道具抽插 流白浆",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145852-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (12)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/ce523c445e655d6456c7bde0bf248ec5.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/220a2b7402e537b07bb6fdfe6dc09f85.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3914,15 +4166,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 166,
+      "elapsedMs": 49,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145835-1",
-      "name": "【大奶爱吃香蕉】G奶尤物 巨奶肥臀 丝袜美腿 性感大屁股 近距特写逼逼 道具抽插 流白浆 (6)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145851-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (10)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/1f6cf3807142b6fde64b349ad3d2ed46.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/91eebe3c1d841140301de13b9cad6e87.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3935,15 +4187,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 160,
+      "elapsedMs": 52,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145834-1",
-      "name": "【大奶爱吃香蕉】G奶尤物 巨奶肥臀 丝袜美腿 性感大屁股 近距特写逼逼 道具抽插 流白浆 (3)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145850-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (11)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/c38a64fd23a1203d64711e8bcfc92f7a.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/ce354552daa4f00f7344c88144be9394.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3956,301 +4208,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 168,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145833-1",
-      "name": "【06双马尾】全身雪白丰乳肥臀眼镜妹 极品炮架肉便器 喜欢大奶子骚母狗的不要错过 (2)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/0261f95c1d36123e3852422d0bbe1dc9.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 165,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145832-1",
-      "name": "【宝宝瑶瑶】双马尾校花少萝天花板 超级大屁股 美乳美腿 小穴超级粉 被干的样子太美了 (3)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/d53810db090ca4639c9d8d46e1e26c0d.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 162,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145831-1",
-      "name": "【宝宝瑶瑶】双马尾校花少萝天花板 超级大屁股 美乳美腿 小穴超级粉 被干的样子太美了 (2)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/427c4330247c754a0cdae23fba895d5c.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 162,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145830-1",
-      "name": "【大奶爱吃香蕉】G奶尤物 巨奶肥臀 丝袜美腿 性感大屁股 近距特写逼逼 道具抽插 流白浆 (4)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/66e1f1210c7021e0d090798a416e4968.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 163,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145829-1",
-      "name": "【大奶爱吃香蕉】G奶尤物 巨奶肥臀 丝袜美腿 性感大屁股 近距特写逼逼 道具抽插 流白浆 (2)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/bf799eca6f4e4270e589137303048e88.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 175,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145828-1",
-      "name": "【被操飞】轰动平台！嗨爆全场！交换女友！4P6P酒店混战",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/9c22f6c7c89696f00d5f7b88c68a944b.webp",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 174,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145827-1",
-      "name": "【宝宝瑶瑶】双马尾校花少萝天花板 超级大屁股 美乳美腿 小穴超级粉 被干的样子太美了",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/772953ec4b1d4bf7df62a206fc517a3d.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 39,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145826-1",
-      "name": "【06双马尾】全身雪白丰乳肥臀眼镜妹 极品炮架肉便器 喜欢大奶子骚母狗的不要错过",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/41448fa24f806a0b4242e3c7692ff8f8.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 44,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145825-1",
-      "name": "人气女神【保时捷车模】姐妹配合无套榨精，骚话不断干出白浆4 (2)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260708-1/f426192a4707c476fa4efca1eb264731.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 44,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145824-1",
-      "name": "极品河南小妞和男友的同居性爱【小星星】口交 足交 女上位啪啪 贵在真实3(3V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/a84ba5e1b5f44153fb3a195e91cba115.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 44,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145823-1",
-      "name": "顶级校花女神【小蝴蝶会飞】女神妖娆~逆天大长腿~极品翘臀~道具狂插3 (1)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/6c923de38f27cfe5df6b1af8326900df.webp",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 40,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145822-1",
-      "name": "福利姬美女 航空大学学妹【菲菲】大尺度视频福利合集3(6V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/031ee90207f507f9209b78ec2b012c9c.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 40,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145821-1",
-      "name": "极品河南小妞和男友的同居性爱【小星星】口交 足交 女上位啪啪 贵在真实2(4V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/15c67c39ecd3fd0f43cbd0a5e39d1970.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 40,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145820-1",
-      "name": "福利姬美女 航空大学学妹【菲菲】大尺度视频福利合集2(9V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/821ef4e70991b7e37e0d3ab387a347b9.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 50,
       "error": ""
     },
     {
@@ -4271,7 +4229,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -4292,7 +4250,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 191,
+      "elapsedMs": 194,
       "error": ""
     },
     {
@@ -4313,7 +4271,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 185,
+      "elapsedMs": 206,
       "error": ""
     },
     {
@@ -4334,7 +4292,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 202,
+      "elapsedMs": 188,
       "error": ""
     },
     {
@@ -4355,7 +4313,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 186,
+      "elapsedMs": 191,
       "error": ""
     },
     {
@@ -4376,7 +4334,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 182,
+      "elapsedMs": 201,
       "error": ""
     },
     {
@@ -4397,7 +4355,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 195,
+      "elapsedMs": 206,
       "error": ""
     },
     {
@@ -4418,7 +4376,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 181,
+      "elapsedMs": 196,
       "error": ""
     },
     {
@@ -4439,7 +4397,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 192,
+      "elapsedMs": 197,
       "error": ""
     },
     {
@@ -4460,7 +4418,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 180,
+      "elapsedMs": 188,
       "error": ""
     },
     {
@@ -4481,7 +4439,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 120,
+      "elapsedMs": 190,
       "error": ""
     },
     {
@@ -4502,7 +4460,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 119,
+      "elapsedMs": 182,
       "error": ""
     },
     {
@@ -4523,7 +4481,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 120,
+      "elapsedMs": 186,
       "error": ""
     },
     {
@@ -4544,7 +4502,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 120,
+      "elapsedMs": 195,
       "error": ""
     },
     {
@@ -4565,7 +4523,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 121,
+      "elapsedMs": 185,
       "error": ""
     },
     {
@@ -4586,7 +4544,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 124,
+      "elapsedMs": 163,
       "error": ""
     },
     {
@@ -4607,7 +4565,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 129,
+      "elapsedMs": 166,
       "error": ""
     },
     {
@@ -4628,7 +4586,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 117,
+      "elapsedMs": 162,
       "error": ""
     },
     {
@@ -4649,7 +4607,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 40,
+      "elapsedMs": 163,
       "error": ""
     },
     {
@@ -4670,7 +4628,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 48,
       "error": ""
     },
     {
@@ -4691,7 +4649,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -4712,7 +4670,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 49,
       "error": ""
     },
     {
@@ -4733,7 +4691,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 48,
       "error": ""
     },
     {
@@ -4754,7 +4712,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 42,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -4775,7 +4733,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 42,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -4796,7 +4754,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -4817,7 +4775,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 40,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -4838,7 +4796,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 40,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -4859,7 +4817,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -4880,7 +4838,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 40,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -4901,7 +4859,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 41,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -4922,7 +4880,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 41,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -4943,7 +4901,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 42,
+      "elapsedMs": 57,
       "error": "play quality probe failed"
     },
     {
@@ -4964,7 +4922,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -4985,7 +4943,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -5006,7 +4964,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 41,
+      "elapsedMs": 57,
       "error": ""
     },
     {
@@ -5027,7 +4985,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -5048,7 +5006,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -5069,7 +5027,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -5090,7 +5048,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -5111,7 +5069,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 180,
+      "elapsedMs": 178,
       "error": "play quality probe failed"
     },
     {
@@ -5132,7 +5090,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -5153,7 +5111,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 48,
       "error": ""
     },
     {
@@ -5179,242 +5137,53 @@
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70100-1",
-      "name": "极品河南小妞和男友的同居性爱【小星星】口交 足交 女上位啪啪 贵在真实2(4V)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-120464-1",
+      "name": "黑丝高跟大学生观战好姐妹被草，搞的自己骚逼瘙痒难耐自慰，躺在沙发边等待大哥宠幸，扛腿抽插浪叫呻吟好骚",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/15c67c39ecd3fd0f43cbd0a5e39d1970.jpg",
-      "sourceName": "滴滴资源｜追劇",
+      "url": "https://pic.dd1pic.cc/upload/vod/20231213-1/da705fb4edc45c0e9cf0f0afe3ddc0e8.jpg",
+      "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
       "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
+      "qualityLabel": "1270p",
+      "maxHeight": 1270,
       "maxBandwidth": 1000000,
       "variants": 1,
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 49,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70129-1",
-      "name": "ST【nidekikibabe-2026】女学生为了考研色诱导师双插爆菊",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-120454-1",
+      "name": "骚货学生出轨大屌老师 别人眼中的班长学霸 表面看起来很乖巧可爱 私下是老师的小母狗",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/440c3633518541dae103d4e7949093a1.webp",
-      "sourceName": "滴滴资源｜追劇",
+      "url": "https://pic.dd1pic.cc/upload/vod/20231214-1/53791c328aefb1feaaf67e03d2d33588.jpg",
+      "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "960p",
-      "maxHeight": 960,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
       "maxBandwidth": 1000000,
       "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 41,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70128-1",
-      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (1)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/c5984e017ca682678b3275be553a485f.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 59,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70127-1",
-      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (4)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/020c68bc159d0de013e56b665c0217a2.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 58,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70126-1",
-      "name": "【一点萝】高颜值护士装超粉白虎小萝莉 可爱双马尾 雪白的裸体 粉嫩无毛逼 让人垂涎欲滴 (3)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/2591cc553af67ea3cc3acfb80f1f0aab.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
+      "ok": false,
       "status": 206,
       "playStatus": 200,
       "elapsedMs": 50,
-      "error": ""
+      "error": "play quality probe failed"
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70125-1",
-      "name": "【一点萝】高颜值护士装超粉白虎小萝莉 可爱双马尾 雪白的裸体 粉嫩无毛逼 让人垂涎欲滴",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-120436-1",
+      "name": "极品学生风格纯纯小美女约到酒店嗨皮 粉嫩嫩肥逼鼓胀凸起情欲盛开抵挡不住立马硬邦邦舔弄亲吻后入啪啪狠操【水印】",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/f7773bf0cbd675936acb4db4f2895809.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 38,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70124-1",
-      "name": "【一只鱼】绝美双女神下海 雪白大奶 凹凸有致 极品翘臀 身材超级好 掰穴很是粉嫩 道具自慰 (2)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/0f745eb066bb0a17089dbb054f508807.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 39,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70123-1",
-      "name": "【一只鱼】绝美双女神下海 雪白大奶 凹凸有致 极品翘臀 身材超级好 掰穴很是粉嫩 道具自慰 (1)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/8393a1e419c1993b4d510e7920cc10af.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 40,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70122-1",
-      "name": "【一点萝】高颜值护士装超粉白虎小萝莉 可爱双马尾 雪白的裸体 粉嫩无毛逼 让人垂涎欲滴 (2)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/2550f7e1c3125f4d301fef88a82527de.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 47,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70121-1",
-      "name": "【一只鱼】绝美双女神下海 雪白大奶 凹凸有致 极品翘臀 身材超级好 掰穴很是粉嫩 道具自慰",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/7643f59bc76aa4ce6d53dfbe05da468e.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 43,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70120-1",
-      "name": "18岁美少女 3P前后夹击【小伊】新人开播 主动深喉口交~无套骑乘位啪啪2 (3)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/fad8fff1f7bd7c5e90c17bdd3fc686c5.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 42,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70119-1",
-      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆16(6V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/f38d4fdd3333560dcc8f0e7d7f324120.jpg",
-      "sourceName": "滴滴资源｜追劇",
+      "url": "https://pic.dd1pic.cc/upload/vod/20231215-1/6cc2af715d453a99beedd1faad6d53de.jpg",
+      "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
@@ -5426,15 +5195,57 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70118-1",
-      "name": "18岁美少女 3P前后夹击【小伊】新人开播 主动深喉口交~无套骑乘位啪啪2 (2)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-120391-1",
+      "name": "黑丝学生装，跳蛋操逼，很骚",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/27571c3f2096a66daa55604568c30680.jpg",
+      "url": "https://pic.dd1pic.cc/upload/vod/20231217-1/7d94c7b51e5e9320d09aa1195d95c3a4.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "408p",
+      "maxHeight": 408,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 49,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-120381-1",
+      "name": "一脸呆萌妹妹！情趣学生装扭腰摆臀！掰开紧致嫩穴，特写视角刮逼毛，看着更粉水嫩多汁",
+      "type": "adult",
+      "url": "https://pic.dd1pic.cc/upload/vod/20231217-1/91f7703b2a144a0f95e943690299194b.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 49,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70151-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (5)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/7845dab3afb6963e8ce54ff04a3fa1a2.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5447,120 +5258,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 53,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70117-1",
-      "name": "18岁美少女 3P前后夹击【小伊】新人开播 主动深喉口交~无套骑乘位啪啪2(6V)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70150-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (6)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/304c0400208eb039a1913691d120dd13.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 40,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70116-1",
-      "name": "18岁美少女 3P前后夹击【小伊】新人开播 主动深喉口交~无套骑乘位啪啪2 (5)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/4f95d2de1918ae3b585d362174bb9e8c.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 48,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70115-1",
-      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆19(10V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/a3693ce1e447701669c1b7d83377ada6.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": false,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 46,
-      "error": "play quality probe failed"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70114-1",
-      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆17(6V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/fb6f72f989a6590a954cdca69f223d74.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": false,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 44,
-      "error": "play quality probe failed"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70113-1",
-      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆18(12V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/ca4cda598d7ae14f69676d0df45b95dc.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": false,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 45,
-      "error": "play quality probe failed"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70112-1",
-      "name": "18岁美少女 3P前后夹击【小伊】新人开播 主动深喉口交~无套骑乘位啪啪2 (4)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/798bc53ea9b36473540f555b571ed8af.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/76fce395846c10686fcef0cc35047ca7.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5578,31 +5284,10 @@
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70111-1",
-      "name": "大奶子校花！超骚【PuppyPorn090】付费门票房 尝试原相机插入高潮喷水4(8V)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70149-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (7)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/27d2bfd81aa81f7f33357f03c2fd809e.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": false,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 37,
-      "error": "play quality probe failed"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70106-1",
-      "name": "顶级校花女神【小蝴蝶会飞】女神妖娆~逆天大长腿~极品翘臀~道具狂插3(4V)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/fa8ecbadbd5073a38e20f44d4d0e36b6.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/f0f16714eff962e295b173f87b5df586.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5615,15 +5300,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 49,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70105-1",
-      "name": "顶级校花女神【小蝴蝶会飞】女神妖娆~逆天大长腿~极品翘臀~道具狂插3 (2)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70148-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (3)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/4b294541c391936120f331b1c75a51d9.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/3eaa64daa49f458e28ca40052be945e5.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5636,15 +5321,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 49,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70104-1",
-      "name": "顶级校花女神【小蝴蝶会飞】女神妖娆~逆天大长腿~极品翘臀~道具狂插3 (3)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70147-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (11)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/9fff6e6a1ee40e4cc15d9ba6d12a5121.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/ce354552daa4f00f7344c88144be9394.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5657,15 +5342,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 48,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70102-1",
-      "name": "极品大奶【安妮儿】360度无死角，这个逼真想操她个100遍5(7V)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70146-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (10)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/0942cea63afc886a530600a9efe6daf7.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/91eebe3c1d841140301de13b9cad6e87.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5678,15 +5363,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 51,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70101-1",
-      "name": "福利姬美女 航空大学学妹【菲菲】大尺度视频福利合集2(9V)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70145-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (12)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/821ef4e70991b7e37e0d3ab387a347b9.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/220a2b7402e537b07bb6fdfe6dc09f85.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5699,15 +5384,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 50,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70099-1",
-      "name": "福利姬美女 航空大学学妹【菲菲】大尺度视频福利合集3(6V)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70144-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/031ee90207f507f9209b78ec2b012c9c.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/9889dcfb48a1a137ce396bf5f0d47f3a.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5720,15 +5405,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 48,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70098-1",
-      "name": "顶级校花女神【小蝴蝶会飞】女神妖娆~逆天大长腿~极品翘臀~道具狂插3 (1)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70143-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (9)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/6c923de38f27cfe5df6b1af8326900df.webp",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/ef7ffee9ab401ef9d1d3af2f2e9b94fc.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5741,15 +5426,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 51,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70097-1",
-      "name": "极品河南小妞和男友的同居性爱【小星星】口交 足交 女上位啪啪 贵在真实3(3V)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70142-1",
+      "name": "颜值嫩妹【呜呜】一对一视频被出卖,身材颜值都不错,大尺度掰逼诱惑,淫语调教",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/a84ba5e1b5f44153fb3a195e91cba115.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/7bb8ee52dc596d92f0ea39150b15b7c2.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5762,15 +5447,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 40,
+      "elapsedMs": 50,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70077-1",
-      "name": "人气女神【保时捷车模】姐妹配合无套榨精，骚话不断干出白浆4 (2)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70141-1",
+      "name": "良家极品少妇【奶水少妇】奶子太大都下垂了 极品骚穴 道具自慰 挤奶水 叫他妈妈一起脱裤子 (8)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260708-1/f426192a4707c476fa4efca1eb264731.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/d3ef8ce2616c6d38fa440de8ce54121e.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5783,36 +5468,36 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 50,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70096-1",
-      "name": "【06双马尾】全身雪白丰乳肥臀眼镜妹 极品炮架肉便器 喜欢大奶子骚母狗的不要错过",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70140-1",
+      "name": "专注年轻嫩妹【鱼哥】最新6.29作品，约啪调教台球助教，鲍鱼粉嫩露脸",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/41448fa24f806a0b4242e3c7692ff8f8.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/0abfed5be55ee8673c080c91b67c7515.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
       "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
+      "qualityLabel": "1314p",
+      "maxHeight": 1314,
       "maxBandwidth": 1000000,
       "variants": 1,
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 53,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70095-1",
-      "name": "【宝宝瑶瑶】双马尾校花少萝天花板 超级大屁股 美乳美腿 小穴超级粉 被干的样子太美了",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70139-1",
+      "name": "专注年轻嫩妹【鱼哥】最新7.2号作品，约啪调教贵州闷骚精神小妹无套中出内射",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/772953ec4b1d4bf7df62a206fc517a3d.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/6e90507d4fc7229dc43c7a489ed25628.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5825,7 +5510,154 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 54,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70138-1",
+      "name": "专注年轻嫩妹【鱼哥】最新付费群4K作品，极品一线天馒头嫩逼花臂少女爆插下下到底",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/3569628aa38dcabfd3ce1590c357f145.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 54,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70137-1",
+      "name": "最美G奶校花【曼小狗】自慰啪啪奶子狂跳3 (2)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/ea70e6c98fdccd51f148664bf44ea35b.webp",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 52,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70136-1",
+      "name": "最美G奶校花【曼小狗】自慰啪啪奶子狂跳3 (1)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/cae3bf7b290457ec7ebe23dacc1961a8.webp",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 48,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70135-1",
+      "name": "校花被爆操【小兮少萝】超漂亮 大奶美乳 长腿大屁股 粉嫩骚逼 69口交无套内射 撸到肾疼",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/0e1692d19e628a4265b39209afc2af02.webp",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 48,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70134-1",
+      "name": "最美G奶校花【曼小狗】自慰啪啪奶子狂跳3 (3)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/1ae236628b1266f624f738eafe887d08.webp",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 48,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70133-1",
+      "name": "推荐【兔兔猪猪】双飞极品姊妹 全身白嫩 大奶美乳 翘臀肥鲍嫩穴 无套插菊花 两个大极品",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/41370042aeba73c7dbcb4dd5bc625c3a.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 54,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70132-1",
+      "name": "最美G奶校花【曼小狗】自慰啪啪奶子狂跳3(5V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/0686737ec6ea80685fd3c200616e08ea.webp",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 51,
       "error": ""
     },
     {
@@ -5846,7 +5678,238 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 50,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70129-1",
+      "name": "ST【nidekikibabe-2026】女学生为了考研色诱导师双插爆菊",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260710-1/440c3633518541dae103d4e7949093a1.webp",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "960p",
+      "maxHeight": 960,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 49,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70120-1",
+      "name": "18岁美少女 3P前后夹击【小伊】新人开播 主动深喉口交~无套骑乘位啪啪2 (3)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/fad8fff1f7bd7c5e90c17bdd3fc686c5.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 51,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70119-1",
+      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆16(6V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/f38d4fdd3333560dcc8f0e7d7f324120.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 49,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70118-1",
+      "name": "18岁美少女 3P前后夹击【小伊】新人开播 主动深喉口交~无套骑乘位啪啪2 (2)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/27571c3f2096a66daa55604568c30680.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 49,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70117-1",
+      "name": "18岁美少女 3P前后夹击【小伊】新人开播 主动深喉口交~无套骑乘位啪啪2(6V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/304c0400208eb039a1913691d120dd13.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 57,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70116-1",
+      "name": "18岁美少女 3P前后夹击【小伊】新人开播 主动深喉口交~无套骑乘位啪啪2 (5)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/4f95d2de1918ae3b585d362174bb9e8c.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 57,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70115-1",
+      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆19(10V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/a3693ce1e447701669c1b7d83377ada6.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 52,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70114-1",
+      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆17(6V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/fb6f72f989a6590a954cdca69f223d74.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 48,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70113-1",
+      "name": "sp站喷水女神【asuna_love】水娃大黑牛自慰 炮机抽插出白浆18(12V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/ca4cda598d7ae14f69676d0df45b95dc.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 49,
+      "error": "play quality probe failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70112-1",
+      "name": "18岁美少女 3P前后夹击【小伊】新人开播 主动深喉口交~无套骑乘位啪啪2 (4)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/798bc53ea9b36473540f555b571ed8af.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 55,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70111-1",
+      "name": "大奶子校花！超骚【PuppyPorn090】付费门票房 尝试原相机插入高潮喷水4(8V)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260709-1/27d2bfd81aa81f7f33357f03c2fd809e.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": false,
+      "qualityLabel": "406p",
+      "maxHeight": 406,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": false,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 56,
       "error": "play quality probe failed"
     },
     {
@@ -5867,7 +5930,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -5888,7 +5951,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -5909,7 +5972,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -5930,7 +5993,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -5951,7 +6014,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 47,
       "error": ""
     },
     {
@@ -5972,7 +6035,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 48,
       "error": ""
     },
     {
@@ -5993,7 +6056,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 48,
       "error": ""
     },
     {
@@ -6014,7 +6077,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 49,
       "error": ""
     },
     {
@@ -6035,7 +6098,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 49,
       "error": ""
     },
     {
@@ -6056,7 +6119,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -6077,7 +6140,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 40,
+      "elapsedMs": 58,
       "error": "play quality probe failed"
     },
     {
@@ -6098,7 +6161,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 41,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -6119,7 +6182,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -6140,7 +6203,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 54,
       "error": "play quality probe failed"
     },
     {
@@ -6161,7 +6224,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 39,
+      "elapsedMs": 53,
       "error": "play quality probe failed"
     },
     {
@@ -6182,7 +6245,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -6203,7 +6266,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 57,
       "error": "play quality probe failed"
     },
     {
@@ -6224,7 +6287,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 49,
       "error": "play quality probe failed"
     },
     {
@@ -6236,17 +6299,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 38,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 50,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6257,17 +6320,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 41,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 50,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6287,7 +6350,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 55,
       "error": "play quality probe failed"
     },
     {
@@ -6299,17 +6362,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 39,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 48,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6329,7 +6392,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 42,
+      "elapsedMs": 57,
       "error": "play quality probe failed"
     },
     {
@@ -6350,7 +6413,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -6362,17 +6425,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 42,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 50,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6383,17 +6446,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 41,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 48,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6413,7 +6476,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -6434,7 +6497,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -6446,17 +6509,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 46,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 51,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6467,17 +6530,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "398p",
-      "maxHeight": 398,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 39,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 48,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6488,17 +6551,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 38,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 56,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6509,17 +6572,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 43,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 49,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6530,17 +6593,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 42,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 48,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6560,7 +6623,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 57,
       "error": "play quality probe failed"
     },
     {
@@ -6572,17 +6635,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 43,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 48,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6593,17 +6656,17 @@
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
+      "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "406p",
-      "maxHeight": 406,
-      "maxBandwidth": 1000000,
-      "variants": 1,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 47,
-      "error": "play quality probe failed"
+      "playStatus": 503,
+      "elapsedMs": 49,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6622,9 +6685,9 @@
       "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 404,
-      "elapsedMs": 41,
-      "error": "play manifest HTTP 404"
+      "playStatus": 503,
+      "elapsedMs": 50,
+      "error": "play manifest HTTP 503"
     },
     {
       "kind": "poster",
@@ -6644,7 +6707,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 404,
-      "elapsedMs": 45,
+      "elapsedMs": 57,
       "error": "play manifest HTTP 404"
     },
     {
@@ -6665,7 +6728,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 423,
+      "elapsedMs": 339,
       "error": ""
     },
     {
@@ -6686,7 +6749,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8011,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6707,7 +6770,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6728,7 +6791,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6749,7 +6812,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6770,7 +6833,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6791,7 +6854,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6812,7 +6875,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8011,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6833,7 +6896,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6854,7 +6917,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6875,7 +6938,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6896,7 +6959,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6938,7 +7001,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6959,7 +7022,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8014,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6980,7 +7043,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7001,7 +7064,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7022,7 +7085,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7043,7 +7106,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7064,7 +7127,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7085,7 +7148,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7106,7 +7169,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7127,7 +7190,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7148,7 +7211,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7169,7 +7232,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7190,7 +7253,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8009,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7211,7 +7274,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7232,7 +7295,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7253,7 +7316,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7274,7 +7337,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7295,7 +7358,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7316,7 +7379,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7337,7 +7400,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7358,7 +7421,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7379,7 +7442,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 7999,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7400,7 +7463,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7421,7 +7484,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7442,7 +7505,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7463,7 +7526,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7484,7 +7547,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7505,7 +7568,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7526,7 +7589,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8012,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7547,7 +7610,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 7999,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7568,7 +7631,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8011,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7589,7 +7652,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7610,7 +7673,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7631,7 +7694,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8012,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7673,7 +7736,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8011,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7694,7 +7757,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 7999,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7715,7 +7778,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7757,7 +7820,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7778,7 +7841,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7799,7 +7862,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8016,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7820,7 +7883,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8014,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7841,7 +7904,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7862,7 +7925,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7904,7 +7967,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7925,7 +7988,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7946,7 +8009,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7967,7 +8030,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8015,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7988,7 +8051,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8030,7 +8093,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8051,7 +8114,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8072,7 +8135,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8093,7 +8156,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8114,7 +8177,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8126,13 +8189,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1888,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 101,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8143,13 +8206,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1946,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 114,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8160,13 +8223,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1808,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 61,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8177,13 +8240,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1812,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 102,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8194,13 +8257,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1878,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 100,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8211,13 +8274,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1724,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 115,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8228,13 +8291,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1836,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 115,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8245,13 +8308,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1744,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 105,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8262,13 +8325,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1846,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 100,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8279,13 +8342,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1665,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 105,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8296,13 +8359,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1773,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 101,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8313,13 +8376,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1779,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 99,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8330,13 +8393,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1810,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 88,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8347,13 +8410,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1427,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8364,13 +8427,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1305,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 18,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8381,13 +8444,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 750,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 19,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8398,13 +8461,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1685,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 17,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8415,13 +8478,13 @@
       "group": "YouTube新聞台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1553,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 18,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8432,13 +8495,13 @@
       "group": "YouTube購物台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1621,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 17,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8449,13 +8512,13 @@
       "group": "YouTube購物台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1567,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 17,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8466,13 +8529,13 @@
       "group": "YouTube購物台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1441,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 17,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8483,13 +8546,13 @@
       "group": "YouTube購物台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1445,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8500,13 +8563,13 @@
       "group": "YouTube購物台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1480,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 19,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8517,13 +8580,13 @@
       "group": "YouTube綜合娛樂",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1564,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 28,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8534,13 +8597,13 @@
       "group": "YouTube綜合娛樂",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1386,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 18,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8551,13 +8614,13 @@
       "group": "YouTube綜合娛樂",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1490,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 99,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8568,13 +8631,13 @@
       "group": "YouTube綜合娛樂",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1520,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8585,13 +8648,13 @@
       "group": "YouTube綜合娛樂",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1846,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8602,13 +8665,13 @@
       "group": "YouTube綜合娛樂",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1465,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8619,13 +8682,13 @@
       "group": "YouTube國際新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1547,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8636,13 +8699,13 @@
       "group": "YouTube國際新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1093,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8653,13 +8716,13 @@
       "group": "YouTube國際新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1654,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8670,13 +8733,13 @@
       "group": "YouTube國際新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 875,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 17,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8687,13 +8750,13 @@
       "group": "YouTube國際新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1074,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 17,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8704,13 +8767,13 @@
       "group": "YouTube國際新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1620,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8721,13 +8784,13 @@
       "group": "YouTube國際新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1002,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8738,13 +8801,13 @@
       "group": "YouTube國際新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1365,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8755,13 +8818,13 @@
       "group": "YouTube亞洲新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1664,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8772,13 +8835,13 @@
       "group": "YouTube亞洲新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1468,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 16,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8789,13 +8852,13 @@
       "group": "YouTube亞洲新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1671,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 16,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8806,13 +8869,13 @@
       "group": "YouTube亞洲新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1641,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8823,13 +8886,13 @@
       "group": "YouTube亞洲新聞",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1705,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8840,13 +8903,13 @@
       "group": "YouTube兒童動畫",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 900,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 17,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8857,13 +8920,13 @@
       "group": "YouTube文化紀實",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1766,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8874,13 +8937,13 @@
       "group": "YouTube文化紀實",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1391,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8891,13 +8954,13 @@
       "group": "YouTube文化紀實",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1252,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 24,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8908,13 +8971,13 @@
       "group": "YouTube音樂體育風景",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1605,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8925,13 +8988,13 @@
       "group": "YouTube音樂體育風景",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1625,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 16,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8942,13 +9005,13 @@
       "group": "YouTube台灣節目",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1698,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8959,13 +9022,13 @@
       "group": "YouTube動漫台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 725,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 17,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8976,13 +9039,13 @@
       "group": "YouTube動漫台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 516,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -8993,13 +9056,13 @@
       "group": "YouTube動漫台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 870,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 17,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -9010,13 +9073,13 @@
       "group": "YouTube動漫台",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 775,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 16,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -9027,13 +9090,13 @@
       "group": "YouTube電影劇集",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1594,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -9044,13 +9107,13 @@
       "group": "YouTube電影劇集",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1464,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 21,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -9061,13 +9124,13 @@
       "group": "YouTube電影劇集",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1423,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -9078,13 +9141,13 @@
       "group": "YouTube電影劇集",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1454,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 15,
+      "error": "manifest HTTP 403"
     },
     {
       "kind": "live",
@@ -9095,13 +9158,13 @@
       "group": "YouTube電影劇集",
       "ok": false,
       "qualityOk": false,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
+      "qualityLabel": "",
+      "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
-      "status": 200,
-      "elapsedMs": 1456,
-      "error": "segment HTTP 403"
+      "status": 403,
+      "elapsedMs": 14,
+      "error": "manifest HTTP 403"
     }
   ]
 }
