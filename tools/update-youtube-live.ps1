@@ -8,7 +8,7 @@ param(
     [string]$CookiesFile = "",
     [string]$CookiesFromBrowser = "",
     [int]$MaxChannels = 0,
-    [int]$MaxHeight = 480,
+    [int]$MaxHeight = 1080,
     [int]$SocketTimeoutSec = 15,
     [int]$ProcessTimeoutSec = 45,
     [int]$StreamValidationTimeoutSec = 8,

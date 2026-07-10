@@ -1,0 +1,63 @@
+name: Check OKTV public freshness
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "37 */3 * * *"
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: oktv-public-freshness
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout freshness checker
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/check-public-freshness.mjs
+
+      - name: Check public data age
+        id: freshness
+        shell: bash
+        run: |
+          set +e
+          node tools/check-public-freshness.mjs \
+            --baseUrl "https://sylong7708.github.io/TV" \
+            --maxVodAgeHours 30 \
+            --maxLiveAgeHours 8 > freshness-report.json
+          status=$?
+          cat freshness-report.json
+          if [ "$status" -eq 0 ]; then
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+          fi
+          exit 0
+
+      - name: Dispatch live refresh when stale
+        if: steps.freshness.outputs.stale == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run update-youtube-live.yml --repo "${{ github.repository }}" --ref main
+
+      - name: Dispatch VOD refresh when stale
+        if: steps.freshness.outputs.stale == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run update-lunatv-vod.yml --repo "${{ github.repository }}" --ref main
+
+      - name: Fail stale check after dispatch
+        if: steps.freshness.outputs.stale == 'true'
+        run: |
+          echo "Public OKTV data is stale; refresh workflows were dispatched."
+          exit 1

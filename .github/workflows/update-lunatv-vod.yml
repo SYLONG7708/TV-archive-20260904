@@ -3,16 +3,17 @@ name: Update LunaTV VOD sources
 on:
   workflow_dispatch:
   schedule:
-    # 02:00 Asia/Shanghai. The job checks the last successful update state
-    # and refreshes once per day; failed attempts retry the next day.
-    - cron: "0 18 * * *"
+    # 02:00, 08:00, 14:00, 20:00 Asia/Shanghai. The job checks the last
+    # successful public update state and refreshes once per day; failed or
+    # stale public attempts retry on the next 6-hour trigger.
+    - cron: "0 18,0,6,12 * * *"
 
 permissions:
   contents: write
 
 concurrency:
-  group: update-lunatv-vod-${{ github.ref }}
-  cancel-in-progress: true
+  group: oktv-data-publish-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -234,6 +235,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config http.postBuffer 524288000
           git config http.version HTTP/1.1
+          git config core.autocrlf false
+          git config core.eol lf
           $paths = @(
             "sources/current-sources.json",
             "sources/TVBOX",
@@ -292,10 +295,10 @@ jobs:
                 break
               }
               Write-Warning "git push failed on attempt $attempt; rebasing onto origin/main before retry."
-              git fetch origin main
+              git status --short
+              git pull --rebase --autostash origin main
               if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-              git rebase origin/main
-              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+              git status --short
               Start-Sleep -Seconds (30 * $attempt)
             }
             if (-not $pushed) {
@@ -311,6 +314,8 @@ jobs:
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages"
           git worktree add $pages origin/gh-pages
           git -C $pages sparse-checkout disable
+          git -C $pages config core.autocrlf false
+          git -C $pages config core.eol lf
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs") | Out-Null
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\data") | Out-Null
           Write-Host "Preserving existing public vod-detail/vod-index data; this run only adds or refreshes changed data."
@@ -350,10 +355,10 @@ jobs:
                 break
               }
               Write-Warning "gh-pages push failed on attempt $attempt; rebasing onto origin/gh-pages before retry."
-              git fetch origin gh-pages
+              git status --short
+              git pull --rebase --autostash origin gh-pages
               if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-              git rebase origin/gh-pages
-              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+              git status --short
               Start-Sleep -Seconds (30 * $attempt)
             }
             if (-not $pushed) {

@@ -22,6 +22,8 @@ const output = path.resolve(args.get('output') || path.join(tvRoot, 'docs', 'dat
 const csvOutput = path.resolve(args.get('csvOutput') || path.join(tvRoot, 'docs', 'data', 'iphone-health-check-latest.csv'));
 const timeoutMs = Number(args.get('timeoutMs') || 8000);
 const concurrency = Number(args.get('concurrency') || 18);
+const minVodHlsHeight = Number(args.get('minVodHlsHeight') || 480);
+const minLiveHlsHeight = Number(args.get('minLiveHlsHeight') || 720);
 
 const USER_AGENT = 'OKTV-iPhone-health-check/1.0';
 
@@ -120,7 +122,23 @@ function firstPlayableManifestLine(manifest) {
     .find((line) => line && !line.startsWith('#'));
 }
 
-function hlsQuality(manifest) {
+function inferYoutubeHlsHeight(url) {
+  const raw = String(url || '');
+  const itag = Number(raw.match(/(?:\/itag\/|[?&]itag=)(\d+)/i)?.[1] || 0);
+  const heights = new Map([
+    [91, 144],
+    [92, 240],
+    [93, 360],
+    [94, 480],
+    [95, 720],
+    [96, 1080],
+    [300, 720],
+    [301, 1080],
+  ]);
+  return heights.get(itag) || 0;
+}
+
+function hlsQuality(manifest, url = '', minHeight = minVodHlsHeight) {
   const variants = [...String(manifest || '').matchAll(/#EXT-X-STREAM-INF:([^\n\r]+)/gi)].map((match) => {
     const attrs = match[1];
     const bandwidth = Number(attrs.match(/BANDWIDTH=(\d+)/i)?.[1] || 0);
@@ -129,11 +147,12 @@ function hlsQuality(manifest) {
     const height = Number(resolution?.[2] || 0);
     return { bandwidth, width, height };
   });
-  const maxHeight = Math.max(0, ...variants.map((item) => item.height));
+  const inferredHeight = inferYoutubeHlsHeight(url);
+  const maxHeight = Math.max(inferredHeight, ...variants.map((item) => item.height));
   const maxBandwidth = Math.max(0, ...variants.map((item) => item.bandwidth));
   const qualityLabel = maxHeight ? `${maxHeight}p` : variants.length ? 'adaptive' : 'single';
   return {
-    qualityOk: variants.length === 0 || maxHeight >= 480 || maxBandwidth >= 800000,
+    qualityOk: maxHeight ? maxHeight >= minHeight : variants.length === 0 || maxBandwidth >= 800000,
     qualityLabel,
     maxHeight,
     maxBandwidth,
@@ -214,7 +233,7 @@ async function checkPoster(item) {
         const manifest = await fetchText(firstEpisode.url);
         playStatus = manifest.res.status;
         playOk = manifest.res.ok && manifest.text.includes('#EXTM3U');
-        quality = hlsQuality(manifest.text);
+        quality = hlsQuality(manifest.text, firstEpisode.url, minVodHlsHeight);
         if (!playOk) playError = `play manifest HTTP ${manifest.res.status}`;
       } else {
         const playProbe = await fetchProbe(firstEpisode.url);
@@ -306,7 +325,7 @@ async function checkLive(channel) {
       row.status = manifest.res.status;
       const manifestOk = manifest.res.ok && manifest.text.includes('#EXTM3U');
       if (!manifestOk) throw new Error(`manifest HTTP ${manifest.res.status}`);
-      const quality = hlsQuality(manifest.text);
+      const quality = hlsQuality(manifest.text, row.url, minLiveHlsHeight);
       row.qualityOk = quality.qualityOk;
       row.qualityLabel = quality.qualityLabel;
       row.maxHeight = quality.maxHeight;

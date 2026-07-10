@@ -25,8 +25,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: update-youtube-live-${{ github.ref }}
-  cancel-in-progress: true
+  group: oktv-data-publish-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -81,13 +81,13 @@ jobs:
             "-File", ".\tools\update-youtube-live.ps1",
             "-DownloadYtDlp",
             "-IncludeOriginalOnFailure",
-            "-MaxHeight", "480",
+            "-MaxHeight", "1080",
             "-SocketTimeoutSec", "10",
             "-ProcessTimeoutSec", "25",
             "-StreamValidationTimeoutSec", "15",
             "-SegmentProbeBytes", "262144",
             "-MinSegmentBytes", "65536",
-            "-MinSegmentKbps", "600",
+            "-MinSegmentKbps", "900",
             "-MinPlaylistEntries", "10",
             "-RetryCount", "1"
           )
@@ -142,6 +142,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config http.postBuffer 524288000
+          git config http.version HTTP/1.1
+          git config core.autocrlf false
+          git config core.eol lf
           git add sources/live-stable.txt sources/live-youtube-stable.txt sources/live-youtube-report.json `
             sources/live-signal-sources.json sources/live-signal-sources.csv `
             docs/data/live-channels.json docs/data/source-summary.json `
@@ -150,7 +154,24 @@ jobs:
             Write-Host "No live source changes."
           } else {
             git commit -m "Auto update YouTube live sources"
-            git push
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            $pushed = $false
+            for ($attempt = 1; $attempt -le 3; $attempt++) {
+              git push
+              if ($LASTEXITCODE -eq 0) {
+                $pushed = $true
+                break
+              }
+              Write-Warning "main live push failed on attempt $attempt; rebasing before retry."
+              git status --short
+              git pull --rebase --autostash origin main
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+              git status --short
+              Start-Sleep -Seconds (20 * $attempt)
+            }
+            if (-not $pushed) {
+              throw "main live push failed after 3 attempts."
+            }
           }
 
       - name: Publish GitHub Pages live page data
@@ -160,6 +181,8 @@ jobs:
           git fetch origin gh-pages
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages"
           git worktree add $pages origin/gh-pages
+          git -C $pages config core.autocrlf false
+          git -C $pages config core.eol lf
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\data") | Out-Null
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\iphone") | Out-Null
           Copy-Item -LiteralPath ".\docs\data\live-channels.json" -Destination (Join-Path $pages "docs\data\live-channels.json") -Force
@@ -173,6 +196,23 @@ jobs:
             Write-Host "No gh-pages live data changes."
           } else {
             git commit -m "Publish refreshed live data"
-            git push origin HEAD:gh-pages
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            $pushed = $false
+            for ($attempt = 1; $attempt -le 3; $attempt++) {
+              git push origin HEAD:gh-pages
+              if ($LASTEXITCODE -eq 0) {
+                $pushed = $true
+                break
+              }
+              Write-Warning "gh-pages live push failed on attempt $attempt; rebasing before retry."
+              git status --short
+              git pull --rebase --autostash origin gh-pages
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+              git status --short
+              Start-Sleep -Seconds (20 * $attempt)
+            }
+            if (-not $pushed) {
+              throw "gh-pages live push failed after 3 attempts."
+            }
           }
           Pop-Location

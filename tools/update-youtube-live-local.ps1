@@ -1,7 +1,7 @@
 param(
     [string]$RepoRoot = "",
     [string]$PagesRoot = "",
-    [int]$MaxHeight = 480,
+    [int]$MaxHeight = 1080,
     [int]$IntervalSafeMinutes = 120,
     [switch]$NoGitPush,
     [switch]$NoGhPagesPush
@@ -52,9 +52,10 @@ function Invoke-GitPushWithRetry {
             return
         }
 
-        Write-Log "$Label failed on attempt $attempt; fetching and rebasing before retry."
-        Invoke-GitChecked @("fetch", "origin", $Branch)
-        Invoke-GitChecked @("rebase", "origin/$Branch")
+        Write-Log "$Label failed on attempt $attempt; rebasing with autostash before retry."
+        git status --short | ForEach-Object { Write-Log $_ }
+        Invoke-GitChecked @("pull", "--rebase", "--autostash", "origin", $Branch)
+        git status --short | ForEach-Object { Write-Log $_ }
         Start-Sleep -Seconds (20 * $attempt)
     }
 
@@ -160,7 +161,7 @@ try {
         "-StreamValidationTimeoutSec", "15",
         "-SegmentProbeBytes", "262144",
         "-MinSegmentBytes", "65536",
-        "-MinSegmentKbps", "600",
+        "-MinSegmentKbps", "900",
         "-MinPlaylistEntries", "10",
         "-RetryCount", "1"
     )
