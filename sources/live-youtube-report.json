@@ -1,19 +1,19 @@
 {
-    "generatedAt":  "2026-07-10T09:44:59.6533464+08:00",
+    "generatedAt":  "2026-07-10T12:45:33.2871035+08:00",
     "channelCsv":  "sources/youtube-live-channels.csv",
     "baseLive":  "sources/live-verified-only.txt",
     "youtubeOutput":  "sources/live-youtube-stable.txt",
     "mergedOutput":  "sources/live-stable.txt",
     "total":  112,
     "resolved":  112,
-    "playable":  59,
-    "fallback":  53,
-    "failed":  53,
+    "playable":  58,
+    "fallback":  54,
+    "failed":  54,
     "workflowSuccessRate":  100,
-    "hlsSuccessRate":  52.68,
-    "candidatePlaylistEntries":  59,
-    "playlistEntries":  59,
-    "removedFromPlaylist":  53,
+    "hlsSuccessRate":  51.79,
+    "candidatePlaylistEntries":  58,
+    "playlistEntries":  58,
+    "removedFromPlaylist":  54,
     "playlistPolicy":  "playable-only",
     "minPlaylistEntries":  10,
     "outputsPreserved":  false,
@@ -203,7 +203,7 @@
                          "Group":  "YouTube國際新聞",
                          "Name":  "ABC News",
                          "PageUrl":  "https://www.youtube.com/watch?v=IkKbZ_TC9Tc",
-                         "Error":  "ERROR: [youtube] IkKbZ_TC9Tc: Requested format is not available. Use --list-formats for a list of available formats"
+                         "Error":  "ERROR: [youtube] IkKbZ_TC9Tc: Video unavailable. This video is not available"
                      },
                      {
                          "Order":  51,
@@ -288,6 +288,13 @@
                          "Name":  "NewsTamil24x7",
                          "PageUrl":  "https://www.youtube.com/watch?v=hGs-nKaNc88",
                          "Error":  "ERROR: [youtube] hGs-nKaNc88: Requested format is not available. Use --list-formats for a list of available formats"
+                     },
+                     {
+                         "Order":  71,
+                         "Group":  "YouTube亞洲新聞",
+                         "Name":  "Arirang TV",
+                         "PageUrl":  "https://www.youtube.com/watch?v=CJVBX7KI5nU",
+                         "Error":  "ERROR: [youtube] CJVBX7KI5nU: This live stream recording is not available."
                      },
                      {
                          "Order":  73,
