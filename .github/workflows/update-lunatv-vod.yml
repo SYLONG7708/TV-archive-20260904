@@ -91,13 +91,16 @@ jobs:
         run: |
           git fetch origin gh-pages
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages-seed"
-          git worktree add $pages origin/gh-pages
-          git -C $pages sparse-checkout disable
+          git worktree add --no-checkout $pages origin/gh-pages
+          git -C $pages sparse-checkout init --no-cone
+          @(
+            "/docs/data/iphone-vod-catalog.json",
+            "/docs/data/iphone-vod-catalog-report.json"
+          ) | Set-Content -LiteralPath (Join-Path $pages ".git\info\sparse-checkout") -Encoding UTF8
+          git -C $pages checkout
           $items = @(
             @{ From = "docs\data\iphone-vod-catalog.json"; To = "docs\data\iphone-vod-catalog.json"; Directory = $false },
-            @{ From = "docs\data\iphone-vod-catalog-report.json"; To = "docs\data\iphone-vod-catalog-report.json"; Directory = $false },
-            @{ From = "docs\data\vod-detail"; To = "docs\data\vod-detail"; Directory = $true },
-            @{ From = "docs\data\vod-index"; To = "docs\data\vod-index"; Directory = $true }
+            @{ From = "docs\data\iphone-vod-catalog-report.json"; To = "docs\data\iphone-vod-catalog-report.json"; Directory = $false }
           )
           foreach ($item in $items) {
             $from = Join-Path $pages $item.From
@@ -312,8 +315,15 @@ jobs:
         run: |
           git fetch origin gh-pages
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages"
-          git worktree add $pages origin/gh-pages
-          git -C $pages sparse-checkout disable
+          git worktree add --no-checkout $pages origin/gh-pages
+          git -C $pages sparse-checkout init --no-cone
+          @(
+            "/docs/iphone/*",
+            "/docs/assets/*",
+            "/docs/data/*.json",
+            "/docs/data/*.csv"
+          ) | Set-Content -LiteralPath (Join-Path $pages ".git\info\sparse-checkout") -Encoding UTF8
+          git -C $pages checkout
           git -C $pages config core.autocrlf false
           git -C $pages config core.eol lf
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs") | Out-Null
@@ -334,13 +344,15 @@ jobs:
             --smallCatalog (Join-Path $pages "docs\data\iphone-vod-catalog.json") `
             --output (Join-Path $pages "docs\data\iphone-vod-catalog.json") `
             --reportOutput (Join-Path $pages "docs\data\iphone-vod-catalog-report.json") `
-            --preservePreviousPublicSources true
+            --preservePreviousPublicSources true `
+            --trustPreviousPublicSources true
           Push-Location $pages
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config http.postBuffer 524288000
           git config http.version HTTP/1.1
-          git add docs/iphone docs/data docs/assets
+          git add docs/iphone docs/assets
+          git add docs/data/*.json docs/data/*.csv
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           if (git diff --cached --quiet) {
             Write-Host "No GitHub Pages public data changes."

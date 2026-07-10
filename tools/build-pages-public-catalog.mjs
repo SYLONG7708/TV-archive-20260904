@@ -24,6 +24,7 @@ const reportOutput = path.resolve(
   args.get('reportOutput') || path.join(pagesRoot, 'docs', 'data', 'iphone-vod-catalog-report.json'),
 );
 const preservePreviousPublicSources = args.get('preservePreviousPublicSources') === 'true';
+const trustPreviousPublicSources = args.get('trustPreviousPublicSources') === 'true';
 
 function normalizeText(value, fallback = '') {
   return String(value ?? fallback)
@@ -208,16 +209,20 @@ const usedPreviousPublicSourceIds = new Set();
 const inlineSourceIds = new Set((fullCatalog.items || []).map((item) => item.sourceId).filter(Boolean));
 const sources = (fullCatalog.sources || []).map((source) => {
   const slug = detailDirFromPattern(source.detailPathPattern) || sourceSlug(source);
-  const hasDetail = publishedDetailDirs.has(slug);
-  const indexFile = source.indexPath ? path.basename(source.indexPath) : `${slug}.json.gz`;
-  const hasIndex = publishedIndexFiles.has(indexFile);
-  const searchIndexPath = leanSearchPathForSource(source);
-  const searchIndexFile = searchIndexPath ? path.basename(searchIndexPath) : '';
-  const hasSearchIndex = Boolean(searchIndexFile && publishedSearchFiles.has(searchIndexFile));
   const previousPublicSource =
     previousPublicSourceById.get(source.id) ||
     previousPublicSourceBySlug.get(slug) ||
     previousPublicSourceByApi.get(normalizeApi(source.api));
+  const trustPreviousPublicSource = Boolean(trustPreviousPublicSources && previousPublicSource?.indexed);
+  const hasDetail = publishedDetailDirs.has(slug) || trustPreviousPublicSource;
+  const indexFile = source.indexPath ? path.basename(source.indexPath) : `${slug}.json.gz`;
+  const hasIndex = publishedIndexFiles.has(indexFile) || Boolean(trustPreviousPublicSource && previousPublicSource.indexPath);
+  const searchIndexPath = leanSearchPathForSource(source);
+  const searchIndexFile = searchIndexPath ? path.basename(searchIndexPath) : '';
+  const hasSearchIndex = Boolean(
+    searchIndexFile &&
+      (publishedSearchFiles.has(searchIndexFile) || (trustPreviousPublicSource && previousPublicSource.searchIndexPath)),
+  );
   if (previousPublicSource) usedPreviousPublicSourceIds.add(previousPublicSource.id);
 
   if (!hasDetail) {
@@ -288,7 +293,7 @@ if (preservePreviousPublicSources) {
   for (const previous of previousPublicSources) {
     if (sourceIds.has(previous.id) || usedPreviousPublicSourceIds.has(previous.id)) continue;
     const slug = detailDirFromPattern(previous.detailPathPattern) || sourceSlug(previous);
-    if (!publishedDetailDirs.has(slug)) continue;
+    if (!publishedDetailDirs.has(slug) && !(trustPreviousPublicSources && previous.indexed)) continue;
     publishedSourceIds.add(previous.id);
     sources.push({
       ...previous,
@@ -335,6 +340,7 @@ const nextCatalog = {
     ...(fullCatalog.source || {}),
     pagesLeanPublish: true,
     preservePreviousPublicSources,
+    trustPreviousPublicSources,
     fullCatalogItems: fullCatalog.totals?.items || 0,
     searchIndexRoot: 'docs/data/vod-search',
     searchIndexMode: 'pages-lean-search-gzip',
@@ -358,6 +364,7 @@ const report = {
   publishedDetailDirs: publishedDetailDirs.size,
   publishedIndexFiles: publishedIndexFiles.size,
   preservePreviousPublicSources,
+  trustPreviousPublicSources,
   publishedIndexedData,
   publishedSpiderData: publishedIndexedData,
   sourceChecks: sources.map(sourceCheck),
