@@ -92,11 +92,11 @@ jobs:
           git fetch origin gh-pages
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages-seed"
           git worktree add --no-checkout $pages origin/gh-pages
-          git -C $pages sparse-checkout init --no-cone
           @(
             "/docs/data/iphone-vod-catalog.json",
             "/docs/data/iphone-vod-catalog-report.json"
-          ) | Set-Content -LiteralPath (Join-Path $pages ".git\info\sparse-checkout") -Encoding UTF8
+          ) | git -C $pages sparse-checkout set --no-cone --stdin
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           git -C $pages checkout
           $items = @(
             @{ From = "docs\data\iphone-vod-catalog.json"; To = "docs\data\iphone-vod-catalog.json"; Directory = $false },
@@ -316,13 +316,13 @@ jobs:
           git fetch origin gh-pages
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages"
           git worktree add --no-checkout $pages origin/gh-pages
-          git -C $pages sparse-checkout init --no-cone
           @(
             "/docs/iphone/*",
             "/docs/assets/*",
             "/docs/data/*.json",
             "/docs/data/*.csv"
-          ) | Set-Content -LiteralPath (Join-Path $pages ".git\info\sparse-checkout") -Encoding UTF8
+          ) | git -C $pages sparse-checkout set --no-cone --stdin
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           git -C $pages checkout
           git -C $pages config core.autocrlf false
           git -C $pages config core.eol lf
