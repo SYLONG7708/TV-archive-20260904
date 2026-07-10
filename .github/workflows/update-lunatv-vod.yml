@@ -262,21 +262,7 @@ jobs:
             "docs/data/iphone-health-check-latest.json",
             "docs/data/iphone-health-check-latest.csv",
             "docs/data/lunatv-vod-update-state.json",
-            "docs/iphone/index.html",
-            "tools/vod-kind-rules.mjs",
-            "tools/apply-vod-kind-rules.mjs",
-            "tools/build-iphone-vod-catalog.mjs",
-            "tools/build-iphone-vod-latest.mjs",
-            "tools/build-full-vod-chunked-catalog.mjs",
-            "tools/build-type3-spider-catalog.mjs",
-            "tools/assemble-vod-index-from-detail.mjs",
-            "tools/compact-iphone-catalog.mjs",
-            "tools/build-tvbox-config.mjs",
-            "tools/build-tvbox-api-history.mjs",
-            "tools/build-quantum-lzi-full.mjs",
-            "tools/update-lunatv-vod-local.ps1",
-            "docs/assets/source-signal-icon.svg",
-            "docs/assets/adult-18-badge.svg"
+            "docs/iphone/index.html"
           )
           $existingPaths = @($paths | Where-Object { Test-Path -LiteralPath $_ })
           $missingPaths = @($paths | Where-Object { -not (Test-Path -LiteralPath $_) })
