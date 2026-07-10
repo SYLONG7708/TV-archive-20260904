@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-10T20:17:53.201Z",
+  "generatedAt": "2026-07-10T22:48:20.669Z",
   "sourceName": "full",
   "adultStartIndex": 40,
   "totalAdultSources": 33,
   "usableAdultSources": 3,
   "duplicateAdultSources": 28,
   "failedAdultSources": 2,
-  "searchOkSources": 27,
-  "searchPlayableSources": 26,
+  "searchOkSources": 28,
+  "searchPlayableSources": 27,
   "candidateOutput": "sources/vod-lunatv-adult18-sorted-oktv.json",
   "analysisOutput": "sources/vod-lunatv-adult18-sorted-analysis.csv",
   "categoryCounts": {
@@ -153,11 +153,11 @@
       "included": false,
       "duplicate": true,
       "duplicateReason": "duplicate_api",
-      "listOk": false,
-      "detailOk": false,
-      "searchOk": false,
-      "searchHasPlayUrl": false,
-      "hasPlayUrl": false,
+      "listOk": true,
+      "detailOk": true,
+      "searchOk": true,
+      "searchHasPlayUrl": true,
+      "hasPlayUrl": true,
       "status": "duplicate_removed",
       "error": "duplicate_api",
       "record": null
@@ -413,7 +413,7 @@
       "searchHasPlayUrl": false,
       "hasPlayUrl": false,
       "status": "failed_removed",
-      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"The operation has timed out\"",
+      "error": "Invalid JSON primitive: .",
       "record": null
     },
     {
