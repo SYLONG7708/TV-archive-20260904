@@ -197,7 +197,7 @@ jobs:
             --output .\docs\data\iphone-vod-latest.json `
             --maxItems 3600 `
             --maxItemsPerSource 80 `
-            --embedEpisodesPerSource 3
+            --embedEpisodesPerSource 12
           node .\tools\compact-iphone-catalog.mjs `
             --tvRoot . `
             --catalog .\docs\data\iphone-vod-catalog.json `
