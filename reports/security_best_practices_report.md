@@ -1,7 +1,7 @@
 # OKTV iPhone 點播／直播安全與韌性檢測報告
 
 - 檢測日期：2026-07-11
-- 範圍：`docs/iphone/index.html`、點播建置工具、三個 GitHub Actions 更新／監測工作流
+- 範圍：`docs/iphone/index.html`、點播建置工具、四個 GitHub Actions 更新／監測／驗證工作流
 - 結論：未留下 Critical／High 等級的已知安全漏洞；本次發現的資料完整性、供應鏈與瀏覽器注入風險均已修復。仍有兩項 GitHub Pages／YouTube 嵌入的低風險限制，以及第三方來源可用性的外部限制。
 
 ## 已修復項目
@@ -38,11 +38,12 @@
 
 ### SEC-003 — Medium — GitHub Action 使用可變標籤
 
-三個工作流的 `actions/checkout` 已固定至完整 commit SHA，避免上游標籤遭替換造成供應鏈風險。
+四個工作流的 `actions/checkout` 已固定至完整 commit SHA，避免上游標籤遭替換造成供應鏈風險。
 
 - `.github/workflows/check-public-freshness.yml:22`
 - `.github/workflows/update-lunatv-vod.yml:24`
 - `.github/workflows/update-youtube-live.yml:37`
+- `.github/workflows/validate-oktv-integrity.yml:34`
 
 ### REL-003 — Medium — 無變更時工作流誤判失敗／反覆觸發
 
@@ -52,6 +53,12 @@ PowerShell 現在明確保存 `git diff --cached --quiet` 結束碼；直播更�
 - `.github/workflows/update-youtube-live.yml:158,179-185,232-238`
 - `tools/check-public-freshness.mjs:48,79-90`
 - `.github/workflows/check-public-freshness.yml:45-66`
+
+### REL-004 — Medium — PR 沒有自動完整度與安全回歸檢查
+
+新增唯讀、稀疏 checkout 的 PR／main CI；自動執行 11 項測試、Node 語法、CSP 雜湊、100 萬筆絕對下限及 catalog 加總一致性檢查。
+
+- `.github/workflows/validate-oktv-integrity.yml`
 
 ## 保留風險與外部限制
 
@@ -72,7 +79,7 @@ Chrome 會顯示一般性 sandbox 警告，但缺少 `allow-same-origin` 時 You
 ## 驗證紀錄
 
 - Node 測試：11／11 通過（完整度守門、局部索引保護、CSP/SRI、URL 白名單、最新集數嵌入）。
-- YAML：Prettier 3.6.2 `--debug-check` 三個工作流通過。
+- YAML：Prettier 3.6.2 `--debug-check` 四個工作流通過。
 - SRI：即時下載 hls.js 1.6.15、pako 2.1.0 後重新計算 SHA-384，兩者完全相符。
 - 資料樹：78／78 `vod-index`、78／78 `vod-search`；總數 8,458,047、可播放 8,445,444。
 - 手機瀏覽器：390×844 實測完整計數、搜尋、詳情索引回查、2,831 集分頁、VOD 播放器與 YouTube iframe；YouTube 畫面成功渲染，無 JavaScript error。

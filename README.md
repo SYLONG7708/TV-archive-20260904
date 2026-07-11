@@ -34,6 +34,8 @@ node --test .\tests\*.test.mjs
 node .\tools\update-iphone-csp.mjs --check
 ```
 
+`.github/workflows/validate-oktv-integrity.yml` 會在 PR 與主分支相關變更時，以稀疏 checkout 自動重跑相同檢查並驗證 catalog 絕對下限及加總一致性。
+
 公開 catalog 的 `totals.items` / `totals.playableItems` 代表完整索引覆蓋量；本次更新的局部樣本會記錄在每個來源的 `coverageGuard.observedItemCount`，兩者不再混用。
 
 ## 直播穩定加強
