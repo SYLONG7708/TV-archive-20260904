@@ -34,7 +34,7 @@ jobs:
     timeout-minutes: 25
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 1
           filter: blob:none
@@ -45,6 +45,7 @@ jobs:
             tools/update-youtube-live-local.ps1
             tools/build-live-channels-json.mjs
             tools/build-live-signal-index.mjs
+            tools/update-iphone-csp.mjs
             sources/youtube-live-channels.csv
             sources/live-base.txt
             sources/live-cleaned-backup.txt
@@ -57,6 +58,10 @@ jobs:
             docs/data/live-channels.json
             docs/data/source-summary.json
             docs/iphone/index.html
+
+      - name: Validate iPhone security policy
+        shell: pwsh
+        run: node .\tools\update-iphone-csp.mjs --check
 
       - name: Restore optional YouTube cookies
         shell: pwsh
@@ -136,6 +141,27 @@ jobs:
             --json .\sources\live-signal-sources.json `
             --csv .\sources\live-signal-sources.csv
 
+      - name: Record live refresh attempt
+        shell: pwsh
+        run: |
+          $summaryPath = ".\docs\data\source-summary.json"
+          if (Test-Path -LiteralPath $summaryPath) {
+            $summary = Get-Content -LiteralPath $summaryPath -Raw -Encoding UTF8 | ConvertFrom-Json
+          } else {
+            $summary = [pscustomobject]@{}
+          }
+          if (-not $summary.live) {
+            $summary | Add-Member -NotePropertyName live -NotePropertyValue ([pscustomobject]@{}) -Force
+          }
+          $attemptAt = [DateTimeOffset]::UtcNow.ToString("o")
+          $preserved = [bool]::Parse("$env:LIVE_OUTPUTS_PRESERVED")
+          $summary | Add-Member -NotePropertyName lastLiveAttemptAt -NotePropertyValue $attemptAt -Force
+          $summary.live | Add-Member -NotePropertyName lastAttemptAt -NotePropertyValue $attemptAt -Force
+          $summary.live | Add-Member -NotePropertyName refreshStatus -NotePropertyValue $(if ($preserved) { "preserved" } else { "updated" }) -Force
+          $summary.live | Add-Member -NotePropertyName outputsPreserved -NotePropertyValue $preserved -Force
+          $summary.live | Add-Member -NotePropertyName playlistEntries -NotePropertyValue ([int]$env:LIVE_PLAYLIST_ENTRIES) -Force
+          Set-Content -LiteralPath $summaryPath -Value (($summary | ConvertTo-Json -Depth 12) + "`n") -Encoding UTF8
+
       - name: Commit changes
         if: steps.live_report.outputs.outputs_preserved != 'True'
         shell: pwsh
@@ -150,7 +176,11 @@ jobs:
             sources/live-signal-sources.json sources/live-signal-sources.csv `
             docs/data/live-channels.json docs/data/source-summary.json `
             tools/build-live-channels-json.mjs tools/build-live-signal-index.mjs
-          if (git diff --cached --quiet) {
+          git diff --cached --quiet
+          $diffExit = $LASTEXITCODE
+          $hasChanges = $diffExit -eq 1
+          if ($diffExit -gt 1) { exit $diffExit }
+          if (-not $hasChanges) {
             Write-Host "No live source changes."
           } else {
             git commit -m "Auto update YouTube live sources"
@@ -179,9 +209,17 @@ jobs:
         run: |
           git fetch origin gh-pages
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages"
-          git worktree add $pages origin/gh-pages
+          git worktree add --no-checkout $pages origin/gh-pages
           git -C $pages config core.autocrlf false
           git -C $pages config core.eol lf
+          @(
+            "/docs/data/live-channels.json",
+            "/docs/data/source-summary.json",
+            "/docs/iphone/index.html"
+          ) | git -C $pages sparse-checkout set --no-cone --stdin
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git -C $pages checkout
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\data") | Out-Null
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\iphone") | Out-Null
           Copy-Item -LiteralPath ".\docs\data\live-channels.json" -Destination (Join-Path $pages "docs\data\live-channels.json") -Force
@@ -191,7 +229,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/data/live-channels.json docs/data/source-summary.json docs/iphone/index.html
-          if (git diff --cached --quiet) {
+          git diff --cached --quiet
+          $diffExit = $LASTEXITCODE
+          $hasChanges = $diffExit -eq 1
+          if ($diffExit -gt 1) { exit $diffExit }
+          if (-not $hasChanges) {
             Write-Host "No gh-pages live data changes."
           } else {
             git commit -m "Publish refreshed live data"

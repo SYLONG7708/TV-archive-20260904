@@ -44,7 +44,9 @@ const [vodState, vodReport, sourceSummary] = await Promise.all([
 
 const vodStateAge = ageHours(vodState.lastSuccessAt);
 const vodReportAge = ageHours(vodReport.generatedAt);
-const liveSummaryAge = ageHours(sourceSummary.generatedAt);
+const liveReference =
+  sourceSummary.live?.lastAttemptAt || sourceSummary.lastLiveAttemptAt || sourceSummary.generatedAt;
+const liveSummaryAge = ageHours(liveReference);
 
 const checks = [
   {
@@ -65,7 +67,7 @@ const checks = [
   },
   {
     name: 'live-public-summary',
-    value: sourceSummary.generatedAt || '',
+    value: liveReference || '',
     ageHours: liveSummaryAge,
     maxAgeHours: maxLiveAgeHours,
     ok: liveSummaryAge <= maxLiveAgeHours,
@@ -74,6 +76,8 @@ const checks = [
 ];
 
 const stale = checks.filter((check) => !check.ok);
+const vodStale = checks.some((check) => check.name.startsWith('vod-') && !check.ok);
+const liveStale = checks.some((check) => check.name.startsWith('live-') && !check.ok);
 const report = {
   checkedAt: new Date().toISOString(),
   baseUrl,
@@ -82,6 +86,8 @@ const report = {
     ...check,
     age: formatAge(check.ageHours),
   })),
+  vodStale,
+  liveStale,
   ok: stale.length === 0,
 };
 

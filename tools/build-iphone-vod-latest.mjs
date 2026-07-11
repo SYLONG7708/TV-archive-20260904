@@ -21,6 +21,7 @@ const output = path.resolve(args.get('output') || path.join(tvRoot, 'docs', 'dat
 const dataRoot = path.resolve(args.get('dataRoot') || path.join(tvRoot, 'docs', 'data'));
 const maxItems = Math.max(100, Number(args.get('maxItems') || 3600));
 const maxItemsPerSource = Math.max(10, Number(args.get('maxItemsPerSource') || 80));
+const embedEpisodesPerSource = Math.max(0, Number(args.get('embedEpisodesPerSource') || 0));
 
 function timeValue(value) {
   const raw = String(value || '').trim();
@@ -48,8 +49,9 @@ function sourceDetailPath(source, page) {
   return source.detailPathPattern.replace('{page}', String(page).padStart(4, '0'));
 }
 
-function compactLatestItem(item) {
-  return {
+function compactLatestItem(item, embedEpisodes = false) {
+  const episodes = Array.isArray(item.episodes) ? item.episodes : [];
+  const compact = {
     id: item.id,
     sourceId: item.sourceId,
     sourceName: item.sourceName,
@@ -71,10 +73,12 @@ function compactLatestItem(item) {
     episodeCount: item.episodeCount,
     playable: item.playable,
     adult: item.adult,
-    lazyEpisodes: true,
+    lazyEpisodes: !embedEpisodes || episodes.length === 0,
     detailPage: item.detailPage,
     detailPath: item.detailPath,
   };
+  if (embedEpisodes && episodes.length) compact.episodes = episodes;
+  return compact;
 }
 
 const catalog = await readJson(catalogPath);
@@ -92,14 +96,18 @@ for (const source of catalog.sources || []) {
       const payload = await readMaybeGzipJson(path.join(dataRoot, detailPath));
       for (const item of payload.items || []) {
         if (!item?.id || !item.title) continue;
-        sourceRows.push(compactLatestItem(item));
+        sourceRows.push(item);
       }
     } catch {
       // A source can still be usable through its index/detail pages even when one latest page is missing.
     }
   }
   sourceRows.sort((a, b) => timeValue(b.updatedAt) - timeValue(a.updatedAt) || Number(b.hot || 0) - Number(a.hot || 0));
-  rows.push(...sourceRows.slice(0, maxItemsPerSource));
+  rows.push(
+    ...sourceRows
+      .slice(0, maxItemsPerSource)
+      .map((item, index) => compactLatestItem(item, index < embedEpisodesPerSource)),
+  );
   sourceStats.push({ id: source.id, name: source.name, items: sourceRows.length });
 }
 
@@ -117,6 +125,7 @@ const payload = {
   catalogGeneratedAt: catalog.generatedAt || '',
   maxItems,
   maxItemsPerSource,
+  embedEpisodesPerSource,
   sourceCount: sourceStats.length,
   itemCount: items.length,
   items,
@@ -124,4 +133,6 @@ const payload = {
 
 await fs.mkdir(path.dirname(output), { recursive: true });
 await fs.writeFile(output, `${JSON.stringify(payload)}\n`, 'utf8');
-console.log(JSON.stringify({ output, itemCount: items.length, sourceCount: sourceStats.length }, null, 2));
+console.log(
+  JSON.stringify({ output, itemCount: items.length, sourceCount: sourceStats.length, embedEpisodesPerSource }, null, 2),
+);
