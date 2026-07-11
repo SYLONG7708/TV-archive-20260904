@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" data-oktv-csp content="default-src 'self'; script-src 'self' 'sha256-pQEoW+8Gv0BB55lKc0CBRqvVlDes+T7tvdT4KZ99i4g=' https://cdn.jsdelivr.net; style-src 'self' 'sha256-MEMAvoMoAgGfiM9lKnNXOGh3jyFdjZ2UH9i0QvOOW/M='; img-src 'self' data: https:; media-src 'self' blob: https:; connect-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; worker-src 'self' blob:; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -10,9 +11,9 @@
     <link rel="icon" href="../assets/icon.png" />
     <link rel="apple-touch-icon" href="../assets/icon.png" />
     <title>影視 OKTV iPhone</title>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js" defer></script>
-    <style>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js" integrity="sha384-iZBI1/lW9u8FcBjxuQ8nPTsU7TXhZNtzkV8H3gQHSTgz+VYQoKWqGlBHqhO84alJ" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js" integrity="sha384-rNlaE5fs9dGIjmxWDALQh/RBAaGRYT5ChrzHo6tRfgrZ36iRFAiquP5g41Jsv+0j" crossorigin="anonymous" defer></script>
+    <style data-csp-hash>
       :root {
         color-scheme: dark;
         --bg: #050507;
@@ -929,6 +930,15 @@
           aspect-ratio: auto;
         }
       }
+
+      .load-more-status {
+        margin-top: 14px;
+      }
+
+      .reset-filter-btn {
+        width: 100%;
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
@@ -978,11 +988,11 @@
           <button class="icon-btn" type="button" data-close-player aria-label="關閉"></button>
         </div>
         <video id="player" controls playsinline preload="metadata" poster="../assets/hero-cinema.png"></video>
-        <iframe id="playerFrame" class="player-frame hidden" title="直播播放器" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <iframe id="playerFrame" class="player-frame hidden" title="直播播放器" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </section>
     </div>
 
-    <script type="module">
+    <script type="module" data-csp-hash>
       const tabs = [
         ['home', '主頁'],
         ['movie', '電影'],
@@ -1039,9 +1049,11 @@
         health: { failed: [] },
         healthIndex: { sources: new Set(), posters: new Set(), live: new Set() },
         detailCache: new Map(),
+        detailPathLookupCache: new Map(),
         loadedSourceIds: new Set(),
         fullIndexSourceIds: new Set(),
         fullIndexLoading: new Map(),
+        searchIndexScopeKeys: new Set(),
         sourceMap: new Map(),
         itemById: new Map(),
         sourcePageState: new Map(),
@@ -1072,12 +1084,23 @@
       const EPISODES_PER_PAGE = 20;
       const SOURCE_DETAIL_PAGE_SIZE = 100;
       const GROUP_SEARCH_TARGET_RESULTS = 48;
-      const SEARCH_INDEX_CONCURRENCY = 4;
+      const SEARCH_INDEX_CONCURRENCY = 2;
+      const SEARCH_INDEX_MATCH_LIMIT = 320;
+      const SEARCH_INDEX_YIELD_EVERY = 200;
       const SEARCH_PROGRESS_RENDER_INTERVAL_MS = 420;
       let hls = null;
       let searchRenderTimer = null;
       let searchPollTimer = null;
       let loadMoreInFlight = null;
+
+      document.addEventListener(
+        'error',
+        (event) => {
+          const target = event.target;
+          if (target instanceof HTMLImageElement && target.closest('.poster-art')) target.classList.add('is-broken');
+        },
+        true,
+      );
 
       function icon(name) {
         const paths = {
@@ -1268,7 +1291,7 @@
         item._posterKey = normalizedPoster(item.poster);
         item._duplicateKey = normalizedText(item.title) || (item._posterKey ? `poster:${item._posterKey}` : item.id || '');
         item._searchText = normalizedText(searchSource);
-        item._searchCompact = compactSearchText(searchSource);
+        item._searchCompact = compactNormalizedText(item._searchText);
         return item;
       }
 
@@ -1377,21 +1400,43 @@
         return await ensureSourcePage(source, pageState.nextPage);
       }
 
+      function itemIdentityMatches(entry, item) {
+        return Boolean(entry && (entry.id === item.id || (entry.vodId && entry.vodId === item.vodId)));
+      }
+
+      async function detailItemAtPath(item, detailPath) {
+        if (!detailPath) return null;
+        let detail = state.detailCache.get(detailPath);
+        if (!detail) {
+          detail = await getJson(`../data/${detailPath}`, null);
+          if (!detail) return null;
+          state.detailCache.set(detailPath, detail);
+        }
+        return (detail.items || []).find((entry) => itemIdentityMatches(entry, item)) || null;
+      }
+
+      async function indexedDetailPathFor(item) {
+        if (state.detailPathLookupCache.has(item.id)) return state.detailPathLookupCache.get(item.id);
+        const source = sourceById(item.sourceId);
+        const indexPath = source?.searchIndexPath || source?.indexPath;
+        if (!indexPath) return '';
+        const payload = await getJson(`../data/${indexPath}`, null);
+        const indexedItem = (payload?.items || []).find((entry) => itemIdentityMatches(entry, item));
+        const detailPath = indexedItem?.detailPath || '';
+        state.detailPathLookupCache.set(item.id, detailPath);
+        return detailPath;
+      }
+
       async function hydrateItemDetail(item) {
         if (Array.isArray(item?.episodes) && item.episodes.length) return item;
         if (!item?.detailPath) return item;
-        if (state.detailCache.has(item.detailPath)) {
-          const cached = state.detailCache.get(item.detailPath);
-          const found = (cached.items || []).find((entry) => entry.id === item.id || (entry.vodId && entry.vodId === item.vodId));
-          if (found) {
-            Object.assign(item, found, { lazyEpisodes: false });
-            return item;
+        let found = await detailItemAtPath(item, item.detailPath);
+        if (!found) {
+          const indexedDetailPath = await indexedDetailPathFor(item);
+          if (indexedDetailPath && indexedDetailPath !== item.detailPath) {
+            found = await detailItemAtPath(item, indexedDetailPath);
           }
         }
-        const detail = await getJson(`../data/${item.detailPath}`, null);
-        if (!detail) throw new Error('detail-not-found');
-        state.detailCache.set(item.detailPath, detail);
-        const found = (detail.items || []).find((entry) => entry.id === item.id || (entry.vodId && entry.vodId === item.vodId));
         if (!found) throw new Error('detail-item-not-found');
         Object.assign(item, found, { lazyEpisodes: false });
         return item;
@@ -1427,8 +1472,15 @@
         }
         if (source.detailPathPattern) {
           const loaded = await ensureSourcePage(source, 1);
-          state.loadedSourceIds.add(source.id);
-          return loaded;
+          if (loaded) {
+            state.loadedSourceIds.add(source.id);
+            return true;
+          }
+          const pageState = getSourcePageState(source);
+          if (pageState) {
+            pageState.nextPage = 0;
+            pageState.totalPages = 0;
+          }
         }
         if (!source.indexPath) return false;
         const payload = await getJson(`../data/${source.indexPath}`, null);
@@ -1439,28 +1491,105 @@
         return rows.length > 0;
       }
 
-      async function ensureFullSourceIndex(source) {
+      function searchIndexScopeKey(source, needle) {
+        return `${source.id}\u001f${needle?.query || ''}`;
+      }
+
+      function searchIndexItemText(item) {
+        return [
+          item?.title,
+          item?.originalName,
+          item?.vodId,
+          item?.categoryName,
+          item?.typeName,
+          item?.type_name,
+          item?.year,
+          item?.area,
+          Array.isArray(item?.genre) ? item.genre.join(' ') : item?.genre,
+          item?.sourceName,
+          item?.actor,
+          item?.director,
+          item?.remarks,
+        ]
+          .filter(Boolean)
+          .join(' ');
+      }
+
+      function buildRawSearchCandidate(value) {
+        const query = String(value ?? '').trim().replace(/\s+/g, ' ').toLowerCase();
+        const compact = compactNormalizedText(query);
+        const tokens = query.split(/\s+/g).map((token) => token.trim()).filter(Boolean);
+        const compactTokens = tokens.map((token) => compactNormalizedText(token));
+        return { query, compact, tokens, compactTokens };
+      }
+
+      function rawSearchIndexNeedle(needle) {
+        if (needle.rawIndexNeedle) return needle.rawIndexNeedle;
+        const values = [];
+        for (const candidate of needle.candidates?.length ? needle.candidates : [needle]) {
+          values.push(candidate.query, toSimplifiedSearchText(candidate.query));
+        }
+        const seen = new Set();
+        const candidates = [];
+        for (const value of values) {
+          const candidate = buildRawSearchCandidate(value);
+          if (!candidate.compact || seen.has(candidate.compact)) continue;
+          seen.add(candidate.compact);
+          candidates.push(candidate);
+        }
+        needle.rawIndexNeedle = { candidates };
+        return needle.rawIndexNeedle;
+      }
+
+      async function matchingSearchIndexRows(rows, needle) {
+        if (!needle?.query) return rows;
+        const matches = [];
+        const rawNeedle = rawSearchIndexNeedle(needle);
+        for (let index = 0; index < rows.length; index += 1) {
+          if (index && index % SEARCH_INDEX_YIELD_EVERY === 0) {
+            await new Promise((resolve) => setTimeout(resolve, 0));
+            if (currentSearchNeedle().query !== needle.query) return matches;
+          }
+          const row = rows[index];
+          const searchText = searchIndexItemText(row).trim().replace(/\s+/g, ' ').toLowerCase();
+          if (!searchTextMatchesNeedle(searchText, compactNormalizedText(searchText), rawNeedle)) continue;
+          matches.push(row);
+          if (matches.length >= SEARCH_INDEX_MATCH_LIMIT) break;
+        }
+        return matches;
+      }
+
+      async function ensureFullSourceIndex(source, needle = null) {
         if (!source?.id) return false;
-        if (state.fullIndexSourceIds.has(source.id)) return true;
-        if (state.fullIndexLoading.has(source.id)) return await state.fullIndexLoading.get(source.id);
+        const scopedSearch = Boolean(needle?.query);
+        const loadingKey = scopedSearch ? searchIndexScopeKey(source, needle) : source.id;
+        if (!scopedSearch && state.fullIndexSourceIds.has(source.id)) return true;
+        if (scopedSearch && state.searchIndexScopeKeys.has(loadingKey)) return true;
+        if (state.fullIndexLoading.has(loadingKey)) return await state.fullIndexLoading.get(loadingKey);
         const promise = (async () => {
           const searchIndexPath = source.searchIndexPath || source.indexPath;
           if (searchIndexPath) {
             const payload = await getJson(`../data/${searchIndexPath}`, null);
             const rows = Array.isArray(payload?.items) ? payload.items : [];
             if (!rows.length && source.itemCount) throw new Error('source-index-empty');
-            registerCatalogItems(rows);
-            if (searchIndexPath === source.indexPath) state.loadedSourceIds.add(source.id);
-            state.fullIndexSourceIds.add(source.id);
-            return rows.length > 0;
+            const selectedRows = await matchingSearchIndexRows(rows, needle);
+            registerCatalogItems(selectedRows);
+            if (scopedSearch) {
+              state.searchIndexScopeKeys.add(loadingKey);
+            } else {
+              if (searchIndexPath === source.indexPath) state.loadedSourceIds.add(source.id);
+              state.fullIndexSourceIds.add(source.id);
+            }
+            return selectedRows.length > 0;
           }
+          if (scopedSearch) return false;
           await ensureSourceIndex(source);
           state.fullIndexSourceIds.add(source.id);
           return true;
         })()
           .catch(() => false)
-          .finally(() => state.fullIndexLoading.delete(source.id));
-        state.fullIndexLoading.set(source.id, promise);
+          .finally(() => state.fullIndexLoading.delete(loadingKey));
+        state.fullIndexLoading.set(loadingKey, promise);
         return await promise;
       }
 
@@ -3701,10 +3830,26 @@
         龟: '龜',
       };
 
+      const ZH_SIMPLIFIED_CHAR_MAP = Object.fromEntries(
+        Object.entries(ZH_CHAR_MAP).map(([simplified, traditional]) => [traditional, simplified]),
+      );
+      const ZH_PHRASE_MAP = new Map(ZH_PHRASES);
+      const ZH_PHRASE_RE = new RegExp(
+        [...ZH_PHRASE_MAP.keys()].sort((left, right) => right.length - left.length).join('|'),
+        'g',
+      );
+
       function toTraditional(value) {
         let text = String(value ?? '');
-        for (const [from, to] of ZH_PHRASES) text = text.replaceAll(from, to);
+        text = text.replace(ZH_PHRASE_RE, (phrase) => ZH_PHRASE_MAP.get(phrase) ?? phrase);
         return text.replace(/[\u3400-\u9fff]/g, (char) => ZH_CHAR_MAP[char] || char);
+      }
+
+      function toSimplifiedSearchText(value) {
+        return String(value ?? '').replace(
+          /[\u3400-\u9fff]/g,
+          (char) => ZH_SIMPLIFIED_CHAR_MAP[char] || char,
+        );
       }
 
       function displayText(value) {
@@ -3720,17 +3865,43 @@
       }
 
       function imageSrc(value) {
+        return safeHttpUrl(value);
+      }
+
+      function safeHttpUrl(value) {
         const raw = String(value || '').trim();
         if (!raw) return '';
-        return raw.replace(/^http:/i, 'https:');
+        try {
+          const url = new URL(raw, location.href);
+          if (url.protocol === 'http:') url.protocol = 'https:';
+          if (url.protocol !== 'https:') return '';
+          url.username = '';
+          url.password = '';
+          return url.href;
+        } catch {
+          return '';
+        }
+      }
+
+      function safeEmbedUrl(value) {
+        const safe = safeHttpUrl(value);
+        if (!safe) return '';
+        const url = new URL(safe);
+        const allowedHosts = new Set(['www.youtube.com', 'youtube.com', 'www.youtube-nocookie.com']);
+        if (!allowedHosts.has(url.hostname) || !url.pathname.startsWith('/embed/')) return '';
+        return url.href;
       }
 
       function normalizedText(value) {
         return toTraditional(value).trim().replace(/\s+/g, ' ').toLowerCase();
       }
 
+      function compactNormalizedText(value) {
+        return String(value ?? '').replace(/[\s\-_.:：\/\\|,，。！!？?·'"()[\]{}]+/g, '');
+      }
+
       function compactSearchText(value) {
-        return normalizedText(value).replace(/[\s\-_.:：\/\\|,，。！!？?·'"()[\]{}]+/g, '');
+        return compactNormalizedText(normalizedText(value));
       }
 
       function uniqueSearchValues(values) {
@@ -3738,7 +3909,7 @@
         const out = [];
         for (const value of values) {
           const text = normalizedText(value);
-          const key = compactSearchText(text);
+          const key = compactNormalizedText(text);
           if (!key || seen.has(key)) continue;
           seen.add(key);
           out.push(text);
@@ -3758,9 +3929,9 @@
 
       function buildSearchCandidate(value) {
         const query = normalizedText(value);
-        const compact = compactSearchText(query);
+        const compact = compactNormalizedText(query);
         const tokens = query.split(/\s+/g).map((token) => token.trim()).filter(Boolean);
-        const compactTokens = tokens.map((token) => compactSearchText(token));
+        const compactTokens = tokens.map((token) => compactNormalizedText(token));
         return { query, compact, tokens, compactTokens };
       }
 
@@ -3770,7 +3941,7 @@
       }
 
       function searchTargetResultCount(needle) {
-        if ((needle.candidates?.length || 0) > 2) return 6;
+        if ((needle.candidates?.length || 0) > 2) return 2;
         if ((needle.compact || '').length >= 4) return 24;
         return GROUP_SEARCH_TARGET_RESULTS;
       }
@@ -3781,9 +3952,9 @@
         const raw = state.query || '';
         if (searchNeedleCache.raw === raw) return searchNeedleCache.needle;
         const query = normalizedText(raw);
-        const compact = compactSearchText(query);
+        const compact = compactNormalizedText(query);
         const tokens = query.split(/\s+/g).map((token) => token.trim()).filter(Boolean);
-        const compactTokens = tokens.map((token) => compactSearchText(token));
+        const compactTokens = tokens.map((token) => compactNormalizedText(token));
         const candidates = uniqueSearchValues([query, ...searchAliasQueries(query, compact)]).map(buildSearchCandidate);
         const needle = { query, compact, tokens, compactTokens, candidates };
         searchNeedleCache = { raw, needle };
@@ -4107,7 +4278,7 @@
           normalizedText(
             `${item.title} ${item.originalName} ${item.vodId} ${item.categoryName} ${item.year} ${item.area} ${itemGenres(item).join(' ')} ${item.sourceName}`,
           );
-        return searchTextMatchesNeedle(searchText, item._searchCompact || compactSearchText(searchText), needle);
+        return searchTextMatchesNeedle(searchText, item._searchCompact || compactNormalizedText(searchText), needle);
       }
 
       function sourceItems(sourceId = state.selectedSource, skipFilter = '') {
@@ -4155,11 +4326,17 @@
         }
         const groupSearch = ['all', 'normal', 'adult18'].includes(state.selectedSource);
         const targetResultCount = searchTargetResultCount(needle);
+        if (groupSearch && visibleItems().length >= targetResultCount) {
+          state.searchLoading = false;
+          state.searchLoadInFlight = null;
+          return;
+        }
         const scopeKey = [state.tab, state.selectedSource, needle.query].join('\u001f');
         if (state.searchLoadInFlight?.scopeKey === scopeKey) return;
         const sources = searchScopeSources()
           .filter((source) => {
             if (state.fullIndexSourceIds.has(source.id)) return false;
+            if (state.searchIndexScopeKeys.has(searchIndexScopeKey(source, needle))) return false;
             return Boolean(source.searchIndexPath || source.indexPath);
           })
           .sort(
@@ -4193,7 +4370,7 @@
               if (state.searchLoadInFlight !== loadToken || targetReached()) return;
               const source = sources[next];
               next += 1;
-              await ensureFullSourceIndex(source);
+              await ensureFullSourceIndex(source, needle);
               clearViewCache();
               renderProgress();
             }
@@ -4204,8 +4381,13 @@
           if (targetReached()) return;
           for (const source of sources) {
             if (state.searchLoadInFlight !== loadToken) return;
-            if (state.fullIndexSourceIds.has(source.id)) continue;
-            await ensureFullSourceIndex(source);
+            if (
+              state.fullIndexSourceIds.has(source.id) ||
+              state.searchIndexScopeKeys.has(searchIndexScopeKey(source, needle))
+            ) {
+              continue;
+            }
+            await ensureFullSourceIndex(source, needle);
             clearViewCache();
             renderProgress();
             if (targetReached()) return;
@@ -4241,6 +4423,11 @@
         const date = new Date(time);
         const pad = (number) => String(number).padStart(2, '0');
         return `${pad(date.getMonth() + 1)}/${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+      }
+
+      function formatCount(value) {
+        const count = Number(value || 0);
+        return Number.isFinite(count) ? new Intl.NumberFormat('zh-TW').format(count) : '0';
       }
 
       function catalogFreshnessLabel() {
@@ -4436,7 +4623,7 @@
           ${renderQuickFilters()}
           ${state.tab === 'short' ? renderShortAreaRail() : ''}
           <section class="section-head">
-            <div><h1>${displayHtml(title)}</h1><span>${rows.length} / ${allRows.length} 部內容，${state.catalog.totals.playableItems || 0} 部有播放項</span></div>
+            <div><h1>${displayHtml(title)}</h1><span>${formatCount(rows.length)} / ${formatCount(allRows.length)} 部已載入，完整索引 ${formatCount(state.catalog.totals.playableItems)} 部可播放</span></div>
             <span class="status-pill ok">${icon('check')} ${displayHtml(catalogFreshnessLabel() ? `資料 ${catalogFreshnessLabel()}` : 'OKTV')}</span>
           </section>
           <section class="poster-grid">
@@ -4458,7 +4645,7 @@
               <span class="hero-kicker">${displayHtml(item.sourceName || 'OKTV')}</span>
               <h1>${displayHtml(item.title)}</h1>
               <div class="hero-meta">${displayHtml([item.year, item.area, item.categoryName].filter(Boolean).join(' / '))}</div>
-              <div style="margin-top:14px">
+              <div class="load-more-status">
                 <button class="play-btn" type="button" data-open-detail="${escapeHtml(item.id)}">${icon('play')}播放</button>
               </div>
             </div>
@@ -4649,7 +4836,11 @@
           button.addEventListener('click', () => {
             const item = state.live.find((entry) => entry.id === button.dataset.livePlay);
             if (!item) return;
-            if (item.kind === 'external' && !item.embedUrl) return window.open(item.url, '_blank', 'noopener,noreferrer');
+            if (item.kind === 'external' && !item.embedUrl) {
+              const externalUrl = safeHttpUrl(item.url);
+              if (externalUrl) window.open(externalUrl, '_blank', 'noopener,noreferrer');
+              return;
+            }
             if (item.playable || item.embedUrl) openPlayer(item.name, `${item.group} / ${kindLabel(item.kind)}`, item.url, item.embedUrl || '');
           });
         });
@@ -4660,7 +4851,7 @@
         screen.innerHTML = `
           ${renderToolbar('搜尋點播源')}
           <section class="section-head">
-            <div><h1>點播源</h1><span>${state.catalog.totals.indexedSources || 0} 個來源已建立手機索引</span></div>
+            <div><h1>點播源</h1><span>${formatCount(state.catalog.totals.indexedSources)} 個來源，完整索引 ${formatCount(state.catalog.totals.items)} 部</span></div>
           </section>
           <section class="source-list">
             ${rows.map(renderSourceRow).join('') || emptyState('沒有點播源資料')}
@@ -4688,7 +4879,7 @@
         const poster = imageSrc(item.poster);
         return `
           <div class="poster-art">
-            ${poster ? `<img src="${escapeHtml(poster)}" alt="${displayHtml(item.title)}" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" onerror="this.classList.add('is-broken')" />` : ''}
+            ${poster ? `<img src="${escapeHtml(poster)}" alt="${displayHtml(item.title)}" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" />` : ''}
             <div class="poster-fallback">${displayHtml(initials(item.title))}</div>
             ${itemIsAdult(item) ? `<span class="adult-content-badge">${adultIcon('adult-content-icon')}18+</span>` : ''}
             <span class="score">${displayHtml(item.score ? `評分 ${item.score}` : item.remarks || item.year || 'OKTV')}</span>
@@ -4732,7 +4923,7 @@
             <div class="avatar">${source.adult ? adultIcon() : generatedSourceIcon()}</div>
             <div class="row-main">
               <strong>${sourceNameMarkup(source)}</strong>
-              <span>${displayHtml(source.origin)} / ${displayHtml(source.host || source.key)} / ${source.itemCount || 0} 部</span>
+              <span>${displayHtml(source.origin)} / ${displayHtml(source.host || source.key)} / ${formatCount(source.itemCount)} 部</span>
             </div>
             ${
               canSelect
@@ -4878,6 +5069,8 @@
       }
 
       function openPlayer(title, meta, url, embedUrl = '') {
+        const verifiedEmbedUrl = embedUrl ? safeEmbedUrl(embedUrl) : '';
+        const verifiedMediaUrl = embedUrl ? '' : safeHttpUrl(url);
         closeDetail(false);
         hls?.destroy?.();
         hls = null;
@@ -4888,18 +5081,23 @@
         playerFrame.classList.add('hidden');
         player.classList.remove('hidden');
         playerTitle.textContent = displayText(title);
-        playerMeta.textContent = displayText(meta);
-        state.playerUrl = url;
+        playerMeta.textContent =
+          (embedUrl && !verifiedEmbedUrl) || (!embedUrl && !verifiedMediaUrl)
+            ? '已阻擋不安全或不支援的播放網址'
+            : displayText(meta);
+        state.playerUrl = verifiedEmbedUrl || verifiedMediaUrl;
         openSheet(playerSheet);
 
-        if (embedUrl) {
+        if (!state.playerUrl) return;
+
+        if (verifiedEmbedUrl) {
           player.classList.add('hidden');
           playerFrame.classList.remove('hidden');
-          playerFrame.src = embedUrl;
+          playerFrame.src = verifiedEmbedUrl;
           return;
         }
 
-        if (/\.m3u8(?:$|\?)/i.test(url) && window.Hls?.isSupported?.()) {
+        if (/\.m3u8(?:$|\?)/i.test(verifiedMediaUrl) && window.Hls?.isSupported?.()) {
           hls = new window.Hls({
             lowLatencyMode: false,
             enableWorker: true,
@@ -4908,10 +5106,10 @@
             manifestLoadingTimeOut: 15000,
             fragLoadingTimeOut: 20000,
           });
-          hls.loadSource(url);
+          hls.loadSource(verifiedMediaUrl);
           hls.attachMedia(player);
         } else {
-          player.src = url;
+          player.src = verifiedMediaUrl;
         }
         player.play().catch(() => undefined);
       }
@@ -4955,7 +5153,7 @@
             <div class="source-section-label ${mode === 'adult' ? 'is-adult' : ''}"><span>${mode === 'adult' ? adultIcon() : ''}${mode === 'adult' ? '成人 18+' : '一般點播源'}</span><small>${rows.length} 個來源</small></div>
             <article class="source-row">
               <div class="avatar">${allIcon}</div>
-              <div class="row-main"><strong>${allIcon} ${allLabel}</strong><span>${itemCount} 部手機索引內容</span></div>
+              <div class="row-main"><strong>${allIcon} ${allLabel}</strong><span>${formatCount(itemCount)} 部完整索引內容</span></div>
               <button class="play-btn" type="button" data-sheet-source="${allSourceId}">${icon(state.selectedSource === allSourceId ? 'check' : 'signal')}${state.selectedSource === allSourceId ? '使用中' : '切換'}</button>
             </article>
             ${rows.map((source) => renderSheetSourceRow(source)).join('') || emptyState('目前沒有此分類來源')}
@@ -4983,7 +5181,7 @@
             <div class="avatar">${source.adult ? adultIcon() : generatedSourceIcon()}</div>
             <div class="row-main">
               <strong>${sourceNameMarkup(source)}</strong>
-              <span>${displayHtml(source.origin)} / ${source.itemCount || 0} 部 / ${source.playableCount || 0} 可播放</span>
+              <span>${displayHtml(source.origin)} / ${formatCount(source.itemCount)} 部 / ${formatCount(source.playableCount)} 可播放</span>
             </div>
             ${
               canSelect
@@ -5021,7 +5219,7 @@
           ${areas.length ? filter('地區', 'area', [['all', '全部地區'], ...areas.map((area) => [area, area])]) : ''}
           ${genres.length ? filter('類型', 'genre', [['all', '全部類型'], ...genres.map((genre) => [genre, genre])]) : ''}
           ${filter('排序', 'sort', sorts)}
-          <button class="play-btn" type="button" data-reset-filter style="width:100%;margin-top:10px">重設篩選</button>
+          <button class="play-btn reset-filter-btn" type="button" data-reset-filter>重設篩選</button>
         `;
         filterSheetBody.querySelectorAll('[data-filter-key]').forEach((button) => {
           button.addEventListener('click', () => {

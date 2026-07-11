@@ -23,6 +23,21 @@
 
 設定檔在 [`sources/current-sources.json`](sources/current-sources.json)。APK 預設值寫入 `classes.dex` 的 `com.fongmi.android.tv.bean.Config.vod()` 與 `Config.live()`；使用者在 App 設定畫面修改後，會保存到 Android App 私有資料庫。
 
+## 點播完整索引與防暴跌保護
+
+iPhone 網頁採「小型 catalog + 分來源完整索引/明細分片」架構。每日更新只刷新各來源前幾頁時，不能把局部樣本數誤當成完整索引總量。`tools/guard-vod-catalog-coverage.mjs` 會將本次結果與 `main`、公開 `gh-pages` 兩份基準交叉比對：單一來源低於基準 90%、全域低於基準 95%，或總量低於 100 萬筆時會保留最後完整版本或直接中止發布。
+
+`tools/build-pages-public-catalog.mjs` 另有第二層發布閘門，局部索引不得覆蓋完整索引 metadata。相關回歸測試：
+
+```powershell
+node --test .\tests\*.test.mjs
+node .\tools\update-iphone-csp.mjs --check
+```
+
+`.github/workflows/validate-oktv-integrity.yml` 會在 PR 與主分支相關變更時，以稀疏 checkout 自動重跑相同檢查並驗證 catalog 絕對下限及加總一致性。
+
+公開 catalog 的 `totals.items` / `totals.playableItems` 代表完整索引覆蓋量；本次更新的局部樣本會記錄在每個來源的 `coverageGuard.observedItemCount`，兩者不再混用。
+
 ## 直播穩定加強
 
 已從原始安博直播源重新生成：

@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 240
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 1
           sparse-checkout-cone-mode: false
@@ -41,6 +41,10 @@ jobs:
             docs/data/vod-sources.json
             sources/*
             tools/*
+
+      - name: Validate iPhone security policy
+        shell: pwsh
+        run: node .\tools\update-iphone-csp.mjs --check
 
       - name: Check daily update window
         id: gate
@@ -89,6 +93,11 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         shell: pwsh
         run: |
+          $mainBaseline = Join-Path $env:RUNNER_TEMP "main-iphone-vod-catalog-baseline.json"
+          $publicBaseline = Join-Path $env:RUNNER_TEMP "public-iphone-vod-catalog-baseline.json"
+          if (Test-Path -LiteralPath ".\docs\data\iphone-vod-catalog.json") {
+            Copy-Item -LiteralPath ".\docs\data\iphone-vod-catalog.json" -Destination $mainBaseline -Force
+          }
           git fetch origin gh-pages
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages-seed"
           git worktree add --no-checkout $pages origin/gh-pages
@@ -106,6 +115,9 @@ jobs:
             $from = Join-Path $pages $item.From
             $to = Join-Path "." $item.To
             if (-not (Test-Path -LiteralPath $from)) { continue }
+            if ($item.From -eq "docs\data\iphone-vod-catalog.json") {
+              Copy-Item -LiteralPath $from -Destination $publicBaseline -Force
+            }
             New-Item -ItemType Directory -Force -Path (Split-Path -Parent $to) | Out-Null
             if ($item.Directory) {
               Copy-Item -LiteralPath $from -Destination (Split-Path -Parent $to) -Recurse -Force
@@ -184,13 +196,31 @@ jobs:
             --catalog .\docs\data\iphone-vod-catalog.json `
             --output .\docs\data\iphone-vod-latest.json `
             --maxItems 3600 `
-            --maxItemsPerSource 80
+            --maxItemsPerSource 80 `
+            --embedEpisodesPerSource 3
           node .\tools\compact-iphone-catalog.mjs `
             --tvRoot . `
             --catalog .\docs\data\iphone-vod-catalog.json `
             --report .\docs\data\iphone-vod-catalog-report.json `
             --detailRoot .\docs\data\iphone-detail `
             --pageSize 240
+          $mainBaseline = Join-Path $env:RUNNER_TEMP "main-iphone-vod-catalog-baseline.json"
+          $publicBaseline = Join-Path $env:RUNNER_TEMP "public-iphone-vod-catalog-baseline.json"
+          $baselines = @($publicBaseline, $mainBaseline) | Where-Object { Test-Path -LiteralPath $_ }
+          if ($baselines.Count -eq 0) { throw "No VOD catalog coverage baseline is available." }
+          for ($baselineIndex = 0; $baselineIndex -lt $baselines.Count; $baselineIndex++) {
+            $baseline = $baselines[$baselineIndex]
+            $minimumItems = if ($baselineIndex -eq $baselines.Count - 1) { 1000000 } else { 0 }
+            node .\tools\guard-vod-catalog-coverage.mjs `
+              --tvRoot . `
+              --catalog .\docs\data\iphone-vod-catalog.json `
+              --report .\docs\data\iphone-vod-catalog-report.json `
+              --baseline $baseline `
+              --minSourceRetention 0.90 `
+              --minGlobalRetention 0.95 `
+              --minTotalItems $minimumItems
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
           node .\tools\build-tvbox-config.mjs `
             --repoRoot . `
             --output .\sources\TVBOX
@@ -271,7 +301,11 @@ jobs:
           }
           git add -- $existingPaths
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          if (git diff --cached --quiet) {
+          git diff --cached --quiet
+          $diffExit = $LASTEXITCODE
+          $hasChanges = $diffExit -eq 1
+          if ($diffExit -gt 1) { exit $diffExit }
+          if (-not $hasChanges) {
             Write-Host "No LunaTV VOD source changes."
           } else {
             git commit -m "Auto refresh LunaTV VOD sources"
@@ -331,7 +365,10 @@ jobs:
             --output (Join-Path $pages "docs\data\iphone-vod-catalog.json") `
             --reportOutput (Join-Path $pages "docs\data\iphone-vod-catalog-report.json") `
             --preservePreviousPublicSources true `
-            --trustPreviousPublicSources true
+            --trustPreviousPublicSources true `
+            --minSourceIndexRetention 0.90 `
+            --minCatalogRetention 0.95 `
+            --minExpectedItems 1000000
           Push-Location $pages
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -340,7 +377,11 @@ jobs:
           git add docs/iphone docs/assets
           git add docs/data/*.json docs/data/*.csv
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          if (git diff --cached --quiet) {
+          git diff --cached --quiet
+          $diffExit = $LASTEXITCODE
+          $hasChanges = $diffExit -eq 1
+          if ($diffExit -gt 1) { exit $diffExit }
+          if (-not $hasChanges) {
             Write-Host "No GitHub Pages public data changes."
           } else {
             git commit -m "Publish auto refreshed OKTV data"

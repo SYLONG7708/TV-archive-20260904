@@ -25,6 +25,9 @@ const reportOutput = path.resolve(
 );
 const preservePreviousPublicSources = args.get('preservePreviousPublicSources') === 'true';
 const trustPreviousPublicSources = args.get('trustPreviousPublicSources') === 'true';
+const minSourceIndexRetention = Number(args.get('minSourceIndexRetention') || 0.9);
+const minCatalogRetention = Number(args.get('minCatalogRetention') || 0.95);
+const minExpectedItems = Number(args.get('minExpectedItems') || 1_000_000);
 
 function normalizeText(value, fallback = '') {
   return String(value ?? fallback)
@@ -98,6 +101,23 @@ function addKind(totals, item) {
   else totals.movies += 1;
 }
 
+function kindTotalCount(totals) {
+  return ['movies', 'series', 'variety', 'anime', 'short', 'adult', 'other'].reduce(
+    (sum, key) => sum + Number(totals?.[key] || 0),
+    0,
+  );
+}
+
+function copyKindTotals(target, source) {
+  for (const key of ['movies', 'series', 'variety', 'anime', 'short', 'adult', 'other']) {
+    target[key] = Number(source?.[key] || 0);
+  }
+}
+
+function sourceCoverageWasPreserved(source) {
+  return /^preserved-/i.test(normalizeText(source?.coverageGuard?.status));
+}
+
 function sourceCheck(source) {
   return {
     id: source.id,
@@ -116,6 +136,10 @@ function sourceCheck(source) {
     indexPath: source.indexPath,
     searchIndexPath: source.searchIndexPath,
     detailPathPattern: source.detailPathPattern,
+    coverageGuard: source.coverageGuard,
+    indexCoverageStatus: source.indexCoverageStatus,
+    publishedIndexItemCount: source.publishedIndexItemCount,
+    publishedIndexRetention: source.publishedIndexRetention,
     error: source.error,
   };
 }
@@ -158,6 +182,7 @@ async function publishIndexedSourceData(fullCatalog, pagesDataRoot) {
   let detailDirs = 0;
   let indexFiles = 0;
   let searchFiles = 0;
+  let preservedIndexFiles = 0;
   for (const source of fullCatalog.sources || []) {
     if (!source.indexed || !source.detailPathPattern) continue;
     const slug = detailDirFromPattern(source.detailPathPattern) || sourceSlug(source);
@@ -166,7 +191,14 @@ async function publishIndexedSourceData(fullCatalog, pagesDataRoot) {
     }
     if (source.indexPath) {
       const indexFile = path.basename(source.indexPath);
-      if (await copyFileIfExists(path.join(repoDataRoot, 'vod-index', indexFile), path.join(pagesDataRoot, 'vod-index', indexFile))) {
+      if (sourceCoverageWasPreserved(source)) {
+        preservedIndexFiles += 1;
+      } else if (
+        await copyFileIfExists(
+          path.join(repoDataRoot, 'vod-index', indexFile),
+          path.join(pagesDataRoot, 'vod-index', indexFile),
+        )
+      ) {
         indexFiles += 1;
       }
     }
@@ -178,7 +210,7 @@ async function publishIndexedSourceData(fullCatalog, pagesDataRoot) {
       }
     }
   }
-  return { detailDirs, indexFiles, searchFiles };
+  return { detailDirs, indexFiles, searchFiles, preservedIndexFiles };
 }
 
 const fullCatalog = await readJson(catalogPath);
@@ -309,17 +341,40 @@ if (preservePreviousPublicSources) {
 const kindTotals = emptyKindTotals();
 let indexedItems = 0;
 let playableItems = 0;
+let classifiedItems = 0;
+let protectedPartialIndexes = 0;
 for (const source of sources) {
   if (!source.indexed) continue;
+  if (sourceCoverageWasPreserved(source)) {
+    indexedItems += Number(source.itemCount || 0);
+    playableItems += Number(source.playableCount || source.itemCount || 0);
+    protectedPartialIndexes += 1;
+    continue;
+  }
   if (source.indexPath) {
     try {
       const payload = await readMaybeGzipJson(path.join(pagesDataRoot, source.indexPath));
       const items = Array.isArray(payload.items) ? payload.items : [];
+      const declaredItems = Number(source.itemCount || 0);
+      const observedRetention = declaredItems > 0 ? items.length / declaredItems : 1;
+      source.publishedIndexItemCount = items.length;
+      source.publishedIndexRetention = observedRetention;
+      if (declaredItems > 0 && observedRetention < minSourceIndexRetention) {
+        indexedItems += declaredItems;
+        playableItems += Number(source.playableCount || declaredItems);
+        source.indexCoverageStatus = 'protected-partial-index';
+        protectedPartialIndexes += 1;
+        continue;
+      }
       source.itemCount = items.length;
       source.playableCount = items.filter((item) => item.playable !== false).length;
+      source.indexCoverageStatus = 'verified-index';
       indexedItems += source.itemCount;
       playableItems += source.playableCount;
-      for (const item of items) addKind(kindTotals, item);
+      for (const item of items) {
+        addKind(kindTotals, item);
+        classifiedItems += 1;
+      }
       continue;
     } catch {
       // Fall back to source-level totals when a legacy source has only detail pages published.
@@ -331,7 +386,36 @@ for (const source of sources) {
 
 const seedCatalog = preservePreviousPublicSources ? smallCatalog : fullCatalog;
 const seedItems = (seedCatalog.items || []).filter((item) => publishedSourceIds.has(item.sourceId) || sourceIds.has(item.sourceId));
-for (const item of seedItems) addKind(kindTotals, item);
+for (const item of seedItems) {
+  addKind(kindTotals, item);
+  classifiedItems += 1;
+}
+
+if (classifiedItems < indexedItems * minCatalogRetention) {
+  const candidates = [fullCatalog.totals, smallCatalog.totals]
+    .filter((totals) => kindTotalCount(totals) >= indexedItems * minCatalogRetention)
+    .sort(
+      (left, right) =>
+        Math.abs(Number(left?.items || 0) - indexedItems) - Math.abs(Number(right?.items || 0) - indexedItems),
+    );
+  if (candidates.length) {
+    copyKindTotals(kindTotals, candidates[0]);
+  } else {
+    kindTotals.other += Math.max(0, indexedItems - kindTotalCount(kindTotals));
+  }
+}
+
+const referenceItems = Math.max(
+  Number(fullCatalog.totals?.items || 0),
+  Number(smallCatalog.totals?.items || 0),
+);
+const requiredItems = Math.max(minExpectedItems, referenceItems * minCatalogRetention);
+if (indexedItems < requiredItems) {
+  throw new Error(
+    `Refusing to publish regressed catalog: ${indexedItems} items, required at least ${Math.ceil(requiredItems)} ` +
+      `(reference ${referenceItems}, retention ${minCatalogRetention}).`,
+  );
+}
 
 const nextCatalog = {
   ...fullCatalog,
@@ -344,6 +428,13 @@ const nextCatalog = {
     fullCatalogItems: fullCatalog.totals?.items || 0,
     searchIndexRoot: 'docs/data/vod-search',
     searchIndexMode: 'pages-lean-search-gzip',
+    publicationGuard: {
+      minSourceIndexRetention,
+      minCatalogRetention,
+      minExpectedItems,
+      referenceItems,
+      protectedPartialIndexes,
+    },
   },
   totals: {
     sources: sources.length,
@@ -367,6 +458,7 @@ const report = {
   trustPreviousPublicSources,
   publishedIndexedData,
   publishedSpiderData: publishedIndexedData,
+  publicationGuard: nextCatalog.source.publicationGuard,
   sourceChecks: sources.map(sourceCheck),
 };
 
