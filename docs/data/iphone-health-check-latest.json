@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-12T06:31:05.010Z",
+  "checkedAt": "2026-07-12T12:33:00.473Z",
   "inputs": {
     "catalogPath": "D:\\a\\TV\\TV\\docs\\data\\iphone-vod-catalog.json",
     "livePath": "D:\\a\\TV\\TV\\docs\\data\\live-channels.json"
@@ -7,17 +7,17 @@
   "summary": {
     "sources": {
       "total": 78,
-      "ok": 72,
-      "failed": 6
+      "ok": 71,
+      "failed": 7
     },
     "posters": {
-      "total": 210,
-      "ok": 79,
-      "titleOk": 210,
-      "posterOk": 141,
-      "playOk": 208,
-      "qualityOk": 148,
-      "failed": 131
+      "total": 280,
+      "ok": 147,
+      "titleOk": 280,
+      "posterOk": 211,
+      "playOk": 276,
+      "qualityOk": 216,
+      "failed": 133
     },
     "live": {
       "total": 58,
@@ -31,6 +31,32 @@
   "failed": [
     {
       "kind": "source",
+      "id": "all-on-demand-sources-黄色仓库-https-hsckzy-xyz-api-php-provide-vod-47",
+      "name": "黄色仓库｜追劇",
+      "type": 1,
+      "url": "https://hsckzy.xyz/api.php/provide/vod/",
+      "indexed": true,
+      "adult": true,
+      "ok": false,
+      "status": 523,
+      "elapsedMs": 68,
+      "error": "ac=list returned no source categories"
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56",
+      "name": "滴滴资源｜追劇",
+      "type": 1,
+      "url": "https://api.ddapi.cc/api.php/provide/vod/",
+      "indexed": true,
+      "adult": true,
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 201,
+      "error": "fetch failed"
+    },
+    {
+      "kind": "source",
       "id": "all-on-demand-sources-大地资源-https-dadiapi-com-feifei-68",
       "name": "大地资源｜追劇",
       "type": 0,
@@ -39,21 +65,8 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 485,
+      "elapsedMs": 517,
       "error": "XML source did not return an XML list"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-70",
-      "name": "奥斯卡｜追劇",
-      "type": 1,
-      "url": "https://aosikazy.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": true,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8002,
-      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "source",
@@ -65,7 +78,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 108,
+      "elapsedMs": 33,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -78,7 +91,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 194,
+      "elapsedMs": 220,
       "error": "Unexpected token '<', \"<html>\n<he\"... is not valid JSON"
     },
     {
@@ -91,7 +104,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 100,
+      "elapsedMs": 53,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -104,8 +117,50 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 71,
+      "elapsedMs": 72,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-30439-1",
+      "name": "致郁生日～最棒的生日",
+      "type": "movie",
+      "url": "https://mtzy2.com/upload/vod/20250108-45/a700ddb84160702377c85c1936cdbd0e.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
+      "status": 206,
+      "playStatus": 403,
+      "elapsedMs": 20,
+      "error": "play manifest HTTP 403"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-68997-1",
+      "name": "胶个朋友 第二季",
+      "type": "variety",
+      "url": "https://mtzy2.com/upload/vod/20250107-2/a263075d51934b9fd95188858c484335.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
+      "status": 206,
+      "playStatus": 403,
+      "elapsedMs": 25,
+      "error": "play manifest HTTP 403"
     },
     {
       "kind": "poster",
@@ -125,7 +180,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -146,7 +201,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -167,7 +222,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -188,7 +243,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -209,7 +264,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -230,7 +285,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -251,7 +306,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -272,7 +327,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -293,7 +348,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -314,7 +369,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -335,7 +390,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -377,7 +432,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -398,7 +453,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -419,7 +474,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 70,
       "error": "play quality probe failed"
     },
     {
@@ -440,7 +495,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 65,
       "error": "play quality probe failed"
     },
     {
@@ -461,7 +516,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 57,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -482,7 +537,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 66,
       "error": "play quality probe failed"
     },
     {
@@ -503,7 +558,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 170,
+      "elapsedMs": 216,
       "error": "play quality probe failed"
     },
     {
@@ -524,7 +579,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 55,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -545,7 +600,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -566,7 +621,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -587,7 +642,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -608,7 +663,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -629,7 +684,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -650,7 +705,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 66,
       "error": "play quality probe failed"
     },
     {
@@ -671,7 +726,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -692,7 +747,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -713,7 +768,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -734,7 +789,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 54,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -755,7 +810,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 59,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -776,7 +831,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -797,7 +852,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 69,
       "error": "play quality probe failed"
     },
     {
@@ -818,7 +873,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -839,7 +894,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -860,7 +915,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -881,7 +936,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -902,7 +957,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -923,7 +978,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -944,7 +999,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -965,7 +1020,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -986,7 +1041,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -1007,7 +1062,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -1028,7 +1083,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -1049,7 +1104,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -1070,7 +1125,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -1091,7 +1146,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 183,
       "error": "play quality probe failed"
     },
     {
@@ -1112,7 +1167,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -1133,7 +1188,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -1154,7 +1209,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -1175,7 +1230,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -1196,7 +1251,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 66,
       "error": "play quality probe failed"
     },
     {
@@ -1217,7 +1272,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -1238,7 +1293,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -1259,7 +1314,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -1280,7 +1335,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -1301,7 +1356,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -1322,7 +1377,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -1343,7 +1398,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -1364,7 +1419,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -1385,7 +1440,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 404,
-      "elapsedMs": 50,
+      "elapsedMs": 60,
       "error": "play manifest HTTP 404"
     },
     {
@@ -1406,7 +1461,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 404,
-      "elapsedMs": 50,
+      "elapsedMs": 61,
       "error": "play manifest HTTP 404"
     },
     {
@@ -1427,7 +1482,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1490,7 +1545,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8015,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1511,7 +1566,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8011,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1532,7 +1587,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1553,7 +1608,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1574,7 +1629,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 7999,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1595,7 +1650,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1637,7 +1692,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1658,7 +1713,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1679,7 +1734,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1742,7 +1797,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1763,7 +1818,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1784,7 +1839,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1826,7 +1881,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1847,7 +1902,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8015,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1868,7 +1923,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1889,7 +1944,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1910,7 +1965,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1931,7 +1986,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1952,7 +2007,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8013,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1973,7 +2028,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8011,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1994,7 +2049,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2015,7 +2070,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8014,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2036,7 +2091,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8012,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2057,7 +2112,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2078,7 +2133,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2099,7 +2154,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2120,7 +2175,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 7999,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2141,7 +2196,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8014,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2162,7 +2217,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8011,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2183,7 +2238,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2204,7 +2259,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2225,7 +2280,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2246,7 +2301,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8014,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2267,7 +2322,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2288,7 +2343,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2309,7 +2364,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2330,7 +2385,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2351,7 +2406,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2372,7 +2427,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2435,7 +2490,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2456,7 +2511,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2477,7 +2532,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2498,7 +2553,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2519,7 +2574,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2540,7 +2595,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8009,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2561,7 +2616,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2582,7 +2637,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2624,7 +2679,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2645,7 +2700,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2666,7 +2721,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2687,7 +2742,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2729,7 +2784,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2750,7 +2805,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2771,7 +2826,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2792,7 +2847,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2813,7 +2868,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2834,7 +2889,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2855,7 +2910,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     }
   ],
@@ -2870,7 +2925,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 577,
+      "elapsedMs": 425,
       "error": ""
     },
     {
@@ -2883,7 +2938,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 293,
+      "elapsedMs": 227,
       "error": ""
     },
     {
@@ -2896,7 +2951,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1208,
+      "elapsedMs": 1721,
       "error": ""
     },
     {
@@ -2909,7 +2964,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 822,
+      "elapsedMs": 626,
       "error": ""
     },
     {
@@ -2922,7 +2977,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 324,
+      "elapsedMs": 177,
       "error": ""
     },
     {
@@ -2935,7 +2990,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1377,
+      "elapsedMs": 675,
       "error": ""
     },
     {
@@ -2948,7 +3003,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 644,
+      "elapsedMs": 534,
       "error": ""
     },
     {
@@ -2961,7 +3016,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1116,
+      "elapsedMs": 1084,
       "error": ""
     },
     {
@@ -2974,7 +3029,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1114,
+      "elapsedMs": 889,
       "error": ""
     },
     {
@@ -2987,7 +3042,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 591,
+      "elapsedMs": 462,
       "error": ""
     },
     {
@@ -3000,7 +3055,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 621,
+      "elapsedMs": 373,
       "error": ""
     },
     {
@@ -3013,7 +3068,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 267,
+      "elapsedMs": 99,
       "error": ""
     },
     {
@@ -3026,7 +3081,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1542,
+      "elapsedMs": 980,
       "error": ""
     },
     {
@@ -3039,7 +3094,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 713,
+      "elapsedMs": 1428,
       "error": ""
     },
     {
@@ -3052,7 +3107,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 382,
+      "elapsedMs": 466,
       "error": ""
     },
     {
@@ -3065,7 +3120,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 177,
+      "elapsedMs": 323,
       "error": ""
     },
     {
@@ -3078,7 +3133,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 348,
+      "elapsedMs": 354,
       "error": ""
     },
     {
@@ -3091,7 +3146,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 363,
+      "elapsedMs": 1344,
       "error": ""
     },
     {
@@ -3104,7 +3159,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 436,
+      "elapsedMs": 575,
       "error": ""
     },
     {
@@ -3117,7 +3172,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 433,
+      "elapsedMs": 379,
       "error": ""
     },
     {
@@ -3130,7 +3185,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 244,
+      "elapsedMs": 1153,
       "error": ""
     },
     {
@@ -3143,7 +3198,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 499,
+      "elapsedMs": 469,
       "error": ""
     },
     {
@@ -3156,7 +3211,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1754,
+      "elapsedMs": 1043,
       "error": ""
     },
     {
@@ -3169,7 +3224,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1352,
+      "elapsedMs": 2061,
       "error": ""
     },
     {
@@ -3182,7 +3237,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 199,
+      "elapsedMs": 180,
       "error": ""
     },
     {
@@ -3195,7 +3250,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 338,
+      "elapsedMs": 243,
       "error": ""
     },
     {
@@ -3208,7 +3263,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 336,
+      "elapsedMs": 294,
       "error": ""
     },
     {
@@ -3221,7 +3276,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1129,
+      "elapsedMs": 983,
       "error": ""
     },
     {
@@ -3234,7 +3289,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 149,
+      "elapsedMs": 820,
       "error": ""
     },
     {
@@ -3247,7 +3302,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 281,
+      "elapsedMs": 219,
       "error": ""
     },
     {
@@ -3260,7 +3315,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 175,
+      "elapsedMs": 58,
       "error": ""
     },
     {
@@ -3273,7 +3328,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 487,
+      "elapsedMs": 210,
       "error": ""
     },
     {
@@ -3286,7 +3341,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 478,
+      "elapsedMs": 308,
       "error": ""
     },
     {
@@ -3299,7 +3354,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 502,
+      "elapsedMs": 281,
       "error": ""
     },
     {
@@ -3312,7 +3367,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 962,
+      "elapsedMs": 3126,
       "error": ""
     },
     {
@@ -3325,7 +3380,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1059,
+      "elapsedMs": 996,
       "error": ""
     },
     {
@@ -3338,7 +3393,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 162,
+      "elapsedMs": 390,
       "error": ""
     },
     {
@@ -3351,7 +3406,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 534,
+      "elapsedMs": 529,
       "error": ""
     },
     {
@@ -3364,7 +3419,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 217,
+      "elapsedMs": 357,
       "error": ""
     },
     {
@@ -3377,7 +3432,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 464,
+      "elapsedMs": 290,
       "error": ""
     },
     {
@@ -3388,10 +3443,10 @@
       "url": "https://hsckzy.xyz/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 144,
-      "error": ""
+      "ok": false,
+      "status": 523,
+      "elapsedMs": 68,
+      "error": "ac=list returned no source categories"
     },
     {
       "kind": "source",
@@ -3403,7 +3458,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 297,
+      "elapsedMs": 293,
       "error": ""
     },
     {
@@ -3416,7 +3471,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 127,
+      "elapsedMs": 441,
       "error": ""
     },
     {
@@ -3429,7 +3484,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 255,
+      "elapsedMs": 340,
       "error": ""
     },
     {
@@ -3442,7 +3497,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1177,
+      "elapsedMs": 1501,
       "error": ""
     },
     {
@@ -3455,7 +3510,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 326,
+      "elapsedMs": 340,
       "error": ""
     },
     {
@@ -3468,7 +3523,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 220,
+      "elapsedMs": 192,
       "error": ""
     },
     {
@@ -3479,10 +3534,10 @@
       "url": "https://api.ddapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 232,
-      "error": ""
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 201,
+      "error": "fetch failed"
     },
     {
       "kind": "source",
@@ -3494,7 +3549,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 650,
+      "elapsedMs": 576,
       "error": ""
     },
     {
@@ -3507,7 +3562,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 234,
+      "elapsedMs": 251,
       "error": ""
     },
     {
@@ -3520,7 +3575,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 259,
+      "elapsedMs": 315,
       "error": ""
     },
     {
@@ -3533,7 +3588,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 314,
+      "elapsedMs": 416,
       "error": ""
     },
     {
@@ -3546,7 +3601,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 519,
+      "elapsedMs": 659,
       "error": ""
     },
     {
@@ -3559,7 +3614,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 267,
+      "elapsedMs": 274,
       "error": ""
     },
     {
@@ -3572,8 +3627,21 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 485,
+      "elapsedMs": 517,
       "error": "XML source did not return an XML list"
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-70",
+      "name": "奥斯卡｜追劇",
+      "type": 1,
+      "url": "https://aosikazy.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": true,
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 320,
+      "error": ""
     },
     {
       "kind": "source",
@@ -3585,7 +3653,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1270,
+      "elapsedMs": 2539,
       "error": ""
     },
     {
@@ -3598,7 +3666,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 347,
+      "elapsedMs": 282,
       "error": ""
     },
     {
@@ -3611,7 +3679,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 276,
+      "elapsedMs": 302,
       "error": ""
     },
     {
@@ -3624,7 +3692,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 78,
+      "elapsedMs": 182,
       "error": ""
     },
     {
@@ -3637,7 +3705,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 363,
+      "elapsedMs": 336,
       "error": ""
     },
     {
@@ -3650,7 +3718,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1295,
+      "elapsedMs": 1096,
       "error": ""
     },
     {
@@ -3663,7 +3731,7 @@
       "adult": false,
       "ok": true,
       "status": 206,
-      "elapsedMs": 176,
+      "elapsedMs": 174,
       "error": ""
     },
     {
@@ -3676,7 +3744,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 997,
+      "elapsedMs": 1080,
       "error": ""
     },
     {
@@ -3689,7 +3757,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 527,
+      "elapsedMs": 534,
       "error": ""
     },
     {
@@ -3702,7 +3770,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 492,
+      "elapsedMs": 320,
       "error": ""
     },
     {
@@ -3715,7 +3783,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1152,
+      "elapsedMs": 800,
       "error": ""
     },
     {
@@ -3728,7 +3796,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 615,
+      "elapsedMs": 466,
       "error": ""
     },
     {
@@ -3741,7 +3809,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 486,
+      "elapsedMs": 370,
       "error": ""
     },
     {
@@ -3754,7 +3822,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 436,
+      "elapsedMs": 343,
       "error": ""
     },
     {
@@ -3767,7 +3835,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1223,
+      "elapsedMs": 4205,
       "error": ""
     },
     {
@@ -3780,7 +3848,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 266,
+      "elapsedMs": 194,
       "error": ""
     },
     {
@@ -3793,7 +3861,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1412,
+      "elapsedMs": 1090,
       "error": ""
     },
     {
@@ -3806,21 +3874,8 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 379,
+      "elapsedMs": 303,
       "error": ""
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-70",
-      "name": "奥斯卡｜追劇",
-      "type": 1,
-      "url": "https://aosikazy.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": true,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8002,
-      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "source",
@@ -3832,7 +3887,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 108,
+      "elapsedMs": 33,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -3845,7 +3900,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 194,
+      "elapsedMs": 220,
       "error": "Unexpected token '<', \"<html>\n<he\"... is not valid JSON"
     },
     {
@@ -3858,7 +3913,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 100,
+      "elapsedMs": 53,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -3871,15 +3926,1695 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 71,
+      "elapsedMs": 72,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145909-1",
-      "name": "撸管推荐【蜜桃十分甜】校花学妹 美乳又圆又大还白嫩 丝袜美腿 粉嫩逼逼 跪地吃鸡白丝足交 爆操中 (2)",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140072-1",
+      "name": "春赋寒山",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/5f898eccb3c5af50a0dd337c0bd49327.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3994000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 689,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140066-1",
+      "name": "三生石上怀旧梦",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/90fd06760ec098de92485380f4c551e8.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3945000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 332,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140065-1",
+      "name": "我的狐狸九条尾巴",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/2f349dace71d8dd086e02648b2db1157.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 4014000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 606,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140062-1",
+      "name": "灵印镇渊",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/275882f566e63f5fba2c0ea956009e86.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3996000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 774,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140060-1",
+      "name": "霍家新妻第一季",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/8c21f0a1661a0d75a914817760c13852.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3811000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 603,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140059-1",
+      "name": "暗影夺妻",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/5eb6865c2e24b994e215e65ab72cd17c.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 4003000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 621,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140058-1",
+      "name": "兽世开荒：傲娇狐王和我的海岛庄园",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/3f2d206703fdb63d56e84af4b288f282.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 4015000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 701,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140057-1",
+      "name": "对面帅哥每天都在抓我现形",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/576b0f6c7198e99919edf9b041355485.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3895000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 676,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140056-1",
+      "name": "对面帅哥每天都在抓我现形第二季",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/058dab30f93543b0fefe5959c55e905e.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3934000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 601,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140055-1",
+      "name": "八零农家女：从种草莓开始带全村致富",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/ef491c9cc6dd435ac2250da2ff1237ac.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3898000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 705,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140054-1",
+      "name": "唢呐修仙，一曲炸翻修仙界",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/5de8d22f44c94ea9630a7bc217c2fa79.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3988000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 610,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140049-1",
+      "name": "八零小辣媳：我家大佬有金矿",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/82679d0b4cf84aa58b6e44ccc4cb7c15.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3896000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 604,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140051-1",
+      "name": "旧焰成霜",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/4a303f23fc50c4c6c3d68a03e5bd5c1f.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3881000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 316,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140053-1",
+      "name": "辰光落尽星长明",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/d05531ccb2046c3b579827b6c0b28edd.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3860000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 324,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140052-1",
+      "name": "她揣二十八两三钱寻父",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/fda2f9857ab0896323179383077312a3.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3956000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 315,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140050-1",
+      "name": "晚风遇少年",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/571661b2530b92b548da5177190185ef.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3919000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 306,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140048-1",
+      "name": "重生四岁半，我要好好长大",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/80b3f58639afbebbda9f3e6bf9756c01.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3878000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 679,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140047-1",
+      "name": "八零糯糯小福宝",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/d0bfbcd24fca1b4d9467669866c032bb.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3974000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 312,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140046-1",
+      "name": "第三季：穿成男主的王牌前女友",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/7046f4e2d58341021fcc2e40af78d516.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1618000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 29,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140045-1",
+      "name": "潮汐深处有家",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260712-1/70784500fe2ea3ef5a682e3f535f9358.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3943000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 313,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-89360-1",
+      "name": "炸薯条！电影版",
+      "type": "movie",
+      "url": "https://mtzy2.com/upload/vod/20250506-1/0f69488231c2412218cd7db8b6b3123b.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3749000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 26,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-30439-1",
+      "name": "致郁生日～最棒的生日",
+      "type": "movie",
+      "url": "https://mtzy2.com/upload/vod/20250108-45/a700ddb84160702377c85c1936cdbd0e.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
+      "status": 206,
+      "playStatus": 403,
+      "elapsedMs": 20,
+      "error": "play manifest HTTP 403"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-70458-1",
+      "name": "无法容入",
+      "type": "movie",
+      "url": "https://mtzy2.com/upload/vod/20250112-1/4a9ceb1c3b4a834fe0bf3854cc6ed278.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3880000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 20,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-70456-1",
+      "name": "食尸鬼",
+      "type": "movie",
+      "url": "https://mtzy2.com/upload/vod/20250112-1/0c67cebac24e16e3de6f5e23eeed2816.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3793000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 18,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-95621-1",
+      "name": "资本家大小姐，挖空家产寻夫",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250606-1/3ceae42f6610ac92facbd6e75d613baf.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 2717000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 18,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-96097-1",
+      "name": "曲尽星河灿",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250609-1/cf042b60b0638468f849bf9d66110605.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2135000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 18,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-97246-1",
+      "name": "工地天降好老公",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250619-1/0ee37790ad3b3db864b36238cb92517c.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2094000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 19,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-93403-1",
+      "name": "弃娘不自弃",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250525-1/f78e64ba9c80676fa3ca32df45991c29.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2141000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 19,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-86061-1",
+      "name": "月光永不坠落",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250420-1/e30e001bb9a36103b88613ba8d9ca5af.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 589000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 17,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-85108-1",
+      "name": "强迫沉沦",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250414-1/2f14d2e057f38a1d58fe99936018faec.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2338000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 22,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-69816-1",
+      "name": "冷宫爆改大别墅",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250107-1/2ec338da4530d6e7af3e2f9aed409e9c.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2127000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 18,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-69820-1",
+      "name": "高门小寡妇",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250107-1/9dd6fb35e4583d463a7b25f4e76b560c.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1136p",
+      "maxHeight": 1136,
+      "maxBandwidth": 2099000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 20,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-69892-1",
+      "name": "再见前妻",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250107-1/d933929118dac81b1df69e9fcd966a03.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2134000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 18,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-79320-1",
+      "name": "厚德载物",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250313-1/170dd80ceaf8a67d32128d77eb71142d.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2135000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 20,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-69885-1",
+      "name": "爱已消逝我再不回头",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250107-1/c8ad516af59ad498ea0ab4e35f116296.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2181000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 20,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-119982-1",
+      "name": "小小假少爷，我带全家走上致富路",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260130-1/d49e02095fd55c6d7c9bb7373359b5fa.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2284000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 27,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-119983-1",
+      "name": "天命财神开局赚翻",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260130-1/be6f4db04af16488bb73cce53c58b4a8.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2286000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 23,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-119966-1",
+      "name": "我有八个姐姐，但是他们都是弟控2",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260130-1/10ad1e9e4754a94cff8487ef25f09207.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2290000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 19,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-119974-1",
+      "name": "满月照乡野",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260130-1/24a059721f90e91b3dbcba9060d144b1.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2291000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 20,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-119978-1",
+      "name": "冷库求生72小时",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260130-1/43b1931a6fdba0cbc90558ae992aa151.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2287000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 21,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-120016-1",
+      "name": "卷王少女，制霸考场",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260130-1/4c5f0b284beebf229f64b18a2649ecdf.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2292000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 18,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-120022-1",
+      "name": "刚毕业就跟总裁姐姐求婚",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260130-1/7e4c5656455500bb0108bf5ea585e12c.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2296000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 31,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-120072-1",
+      "name": "大灾年，团宠带全家躺赢了",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260130-1/4f40c8f701f45f85dc39508bee191790.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2287000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 19,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-120075-1",
+      "name": "天命赊刀人小爷来收你们了",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20260130-1/5ad1ffe8923e17d433eb77a8cef513b5.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2286000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 19,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-1647-1",
+      "name": "十七年命运周期",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250109-4/afbd6700d8572fd3167adb99fc90d31f.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 4035000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 18,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-32354-1",
+      "name": "怒火街头",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-43/e594f34654f01f456cd24fd5cce3618f.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1012p",
+      "maxHeight": 1012,
+      "maxBandwidth": 1770000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 27,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-48607-1",
+      "name": "I SWIM",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-1/60d02241d03d411bffb577c9a22bb034.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 2233000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 242,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-32309-1",
+      "name": "十八年后的终极告白2.0（粤语版）",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-43/8f26b4340b413003e89e090ff6ce4bd6.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1440p",
+      "maxHeight": 1440,
+      "maxBandwidth": 1383000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 231,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-3169-1",
+      "name": "如来神掌",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250109-3/a90e1172ffae94764f2291d1c10793eb.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "486p",
+      "maxHeight": 486,
+      "maxBandwidth": 355000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 20,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-36345-1",
+      "name": "神雕侠侣1983",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-39/f2e1e28ccdfe1fa8530c07ff5f749791.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 1073000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 25,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-50463-1",
+      "name": "曙光（国语版）",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250107-20/366dc54d67264e28d283fecf5dd61f50.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1440p",
+      "maxHeight": 1440,
+      "maxBandwidth": 1171000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 235,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-67943-1",
+      "name": "命转乾坤（粤语版）",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250107-3/0aa56434d97b058d476d3b5e07cb1980.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "576p",
+      "maxHeight": 576,
+      "maxBandwidth": 791000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 25,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-40794-1",
+      "name": "暗夜守护者",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-35/0650c858a7472b3a196002043581a9a5.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1440p",
+      "maxHeight": 1440,
+      "maxBandwidth": 1144000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 253,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-40795-1",
+      "name": "暗夜守护者（国语版）",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-35/f4efd19c46979920cd3c9a4e5ad488fa.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1440p",
+      "maxHeight": 1440,
+      "maxBandwidth": 1137000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 29,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-9108-1",
+      "name": "大冒险家",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-67/0ef146d036255e3a2da8016ff796cc30.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "540p",
+      "maxHeight": 540,
+      "maxBandwidth": 486000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 27,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-30238-1",
+      "name": "闭嘴！花美男乐团",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-45/f68f7bdc8f21ec945e8d321f9aaa22bc.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 2190000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 265,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-19516-1",
+      "name": "第一桶金",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-56/87521209d72bd1868dee4d4920e83f3e.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "480p",
+      "maxHeight": 480,
+      "maxBandwidth": 844000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 232,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-26148-1",
+      "name": "楼下来的人",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-50/a252d6513ab793a3c17134a9e33b9e5d.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 1696000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 25,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-32783-1",
+      "name": "My盛Lady",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-43/c2930deceee428007462800c0d9affc1.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 1562000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 239,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-32537-1",
+      "name": "名媛望族",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-43/7607df4f975bf0083746a8d7c450fbb8.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 718000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 243,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-1515-1",
+      "name": "廉政行动2024 粤语版",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250109-4/d9ca5069478cf9afaca20e4a226ca11e.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1440p",
+      "maxHeight": 1440,
+      "maxBandwidth": 1227000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 18,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-1514-1",
+      "name": "廉政行动2024 国语版",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250109-4/d8b3cd82cb97adb1834d9c0ee9462b6e.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1440p",
+      "maxHeight": 1440,
+      "maxBandwidth": 1227000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 21,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-20290-1",
+      "name": "巾帼枭雄之义海豪情",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-55/489e7ae8987e76523ea9f4d00d64860a.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 1831000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 329,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-72881-1",
+      "name": "飞常日志 国语",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250205-1/378b2f9700c089e5a09ea410f559ea2c.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1440p",
+      "maxHeight": 1440,
+      "maxBandwidth": 1331000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 382,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-69054-1",
+      "name": "拜托了冰箱 第二季",
+      "type": "variety",
+      "url": "https://mtzy2.com/upload/vod/20250107-2/7687b6db8e8771db2ab33fc1b04f6937.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 4046000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 26,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-131589-1",
+      "name": "尤达·鲁西vs吉娜·卡拉诺",
+      "type": "variety",
+      "url": "https://mtzy2.com/upload/vod/20260508-1/9e3b88ee57c810b8b374065ebfe447a4.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 4384000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 861,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-57154-1",
+      "name": "话说山海",
+      "type": "variety",
+      "url": "https://mtzy2.com/upload/vod/20250107-13/a37975ced1d721a615db56a4ce263f5b.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 2588000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 167,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-2068-1",
+      "name": "忙忙碌碌寻宝藏",
+      "type": "variety",
+      "url": "https://mtzy2.com/upload/vod/20250109-4/1e47dca0a8b279765bfc44c141e310ca.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3993000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 168,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-68997-1",
+      "name": "胶个朋友 第二季",
+      "type": "variety",
+      "url": "https://mtzy2.com/upload/vod/20250107-2/a263075d51934b9fd95188858c484335.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
+      "status": 206,
+      "playStatus": 403,
+      "elapsedMs": 25,
+      "error": "play manifest HTTP 403"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-57273-1",
+      "name": "奔跑吧 第七季",
+      "type": "variety",
+      "url": "https://mtzy2.com/upload/vod/20250107-13/217cb52eadba23a38f31ab32a0b8f9c4.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 4023000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 24,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145944-1",
+      "name": "顶级嫩妹【06小骚骚】超级漂亮 娇艳欲滴 美乳又白又圆超漂亮 长腿大屁股 粉嫩骚逼一线天 掰逼自慰美到爆 (3)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/dcddb2d7b271866710d0e3c981a673d1.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/387e792012d5a962e3d3dff0202313dc.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 658,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145943-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (12)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/59f7063ced9c55c70ef0d4254d77ea0d.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 646,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145942-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (11)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/a6a0ed58e252dd7d26586820403aad45.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 612,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145941-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (10)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/48f104fc352510d7eb96e74f857a2f9e.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 602,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145940-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (13)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/dc590c332f92f50ad5e46854a88a674a.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 531,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145939-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (7)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/d4023e668bde1938a9d49870d655d9d2.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 456,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145938-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (4)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/d05abf1ceac0d1b09e3ad0fc036ce78f.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 368,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145937-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (8)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/022080088d954cc865dc2272d31e5a1e.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 363,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145936-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (9)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/096f3d449d65737a0d967d0bf63dac64.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 249,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145935-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (5)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/84a13abca3a76a318d5ef27205f5c23c.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 182,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145934-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (2)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/7a21cdc7b96d84f5ad4ed8942eaf8683.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3897,10 +5632,31 @@
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145908-1",
-      "name": "推荐高端女神【采花莫妮卡】甜欲少女 巨乳大奶 长腿翘臀 粉嫩逼逼 激烈无套猛操吃鸡 颜射滴蜡 (1)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145933-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (6)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/5cfc6039e9eff7c78cf1856d460f48f9.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/954ca39ef04bcdc6a5d442d619b70eb2.jpg",
+      "sourceName": "豆豆资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 182,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145932-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (3)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/e39da166a39fd325885c4e4ed606052a.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3918,10 +5674,10 @@
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145907-1",
-      "name": "推荐高端女神【采花莫妮卡】甜欲少女 巨乳大奶 长腿翘臀 粉嫩逼逼 激烈无套猛操吃鸡 颜射滴蜡",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145931-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天 (10)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/10d63c44e83ea18ef488dd5f0d0fdaa7.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/f78c7b883fe28b77f0f58ffa19d3e611.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3939,10 +5695,10 @@
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145906-1",
-      "name": "全网精选【老师湿透了】两闺蜜一起 都是美乳长腿 极品美女身材超好 被猛男各种姿势 无套啪啪",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145930-1",
+      "name": "精选【老师湿透了】老师带闺蜜一起操逼 完美酮体美乳嫩穴 长腿翘臀 无套爆草 精液流一屁股 玩得真爽快 (2)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/633f768442f12ca59dd52a486ffd1b0b.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/8e6263db0dbe5a194446f87b8434bd66.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3955,15 +5711,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 172,
+      "elapsedMs": 66,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145905-1",
-      "name": "撸管推荐【蜜桃十分甜】校花学妹 美乳又圆又大还白嫩 丝袜美腿 粉嫩逼逼 跪地吃鸡白丝足交 爆操中",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145929-1",
+      "name": "冷艳学妹【胡杨林】酥胸诱惑 高跟丝袜美腿 极品翘臀 跳蛋狂震 特写骚逼 流浆 超级过瘾",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/a0f027024320ce90e574337d4f04e19d.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/11db68cf27c525d1e40122a9f3a85a33.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3976,15 +5732,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 175,
+      "elapsedMs": 71,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145904-1",
-      "name": "全网精选【老师湿透了】两闺蜜一起 都是美乳长腿 极品美女身材超好 被猛男各种姿势 无套啪啪 (4)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145928-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天 (9)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/0b41e92d3a1be34c3d8501340b24a934.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/e437ab5d0344f4ef6a039ecc2d4fd0ec.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -3997,15 +5753,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 154,
+      "elapsedMs": 62,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145903-1",
-      "name": "全网精选【老师湿透了】两闺蜜一起 都是美乳长腿 极品美女身材超好 被猛男各种姿势 无套啪啪 (3)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145927-1",
+      "name": "精选【老师湿透了】老师带闺蜜一起操逼 完美酮体美乳嫩穴 长腿翘臀 无套爆草 精液流一屁股 玩得真爽快",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/0750eda74c17966a7173a44c98df9787.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/917db963336c832cc658552bd456551d.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -4018,15 +5774,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 156,
+      "elapsedMs": 63,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145902-1",
-      "name": "推荐良家少女【小酒窝女孩】丝足美腿极品粉穴一线天 美乳带网红胸链屁股超美 怼屏抠逼 直播秀尿 (2)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145926-1",
+      "name": "冷艳学妹【胡杨林】酥胸诱惑 高跟丝袜美腿 极品翘臀 跳蛋狂震 特写骚逼 流浆 超级过瘾 (4)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/303ad31a4c37bbbe8476b4265fa26d15.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/b677bf629031dbf3ebf73acd794b78e1.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -4039,15 +5795,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 164,
+      "elapsedMs": 62,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145901-1",
-      "name": "校花被草了【文文很可爱】超级漂亮的一对美乳 美腿又长又直 嫩穴一线天 怼屏自慰大鸡吧狂插 骑乘后入 (2)",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145925-1",
+      "name": "精选【极品二女】丝袜长腿 娇小美乳 雪白大屁股 粉嫩骚逼 在家里被大哥 从床上干到厨房 全操一遍",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/b2c5fcaddf07fff17418da7c59f10736.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/e01843c00820dd9884619ed2a1e8a6fe.jpg",
       "sourceName": "豆豆资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -4060,238 +5816,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 154,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145900-1",
-      "name": "推荐御姐女神【请叫我姐姐】舞蹈老师 长腿大屁股粉嫩肥鲍 硬核倒立一字马 自慰喷水",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/ef6a2d588ac56086f66c3d658beb1fe3.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 150,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145899-1",
-      "name": "推荐高端女神【采花莫妮卡】甜欲少女 巨乳大奶 长腿翘臀 粉嫩逼逼 激烈无套猛操吃鸡 颜射滴蜡 (3)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/a5219d75e13cc4f021d42cd18af0ee9d.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 173,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145898-1",
-      "name": "推荐良家少女【小酒窝女孩】丝足美腿极品粉穴一线天 美乳带网红胸链屁股超美 怼屏抠逼 直播秀尿",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/73fca97d1a545ecd05b6ed16dee8011d.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 151,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145897-1",
-      "name": "全网精选【老师湿透了】两闺蜜一起 都是美乳长腿 极品美女身材超好 被猛男各种姿势 无套啪啪 (2)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/777ba9291b7390d2de23178fe924ec53.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 150,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145896-1",
-      "name": "推荐良家少女【小酒窝女孩】丝足美腿极品粉穴一线天 美乳带网红胸链屁股超美 怼屏抠逼 直播秀尿 (4)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/ca3cda3eb12db682cda858ede5892b41.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 155,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145895-1",
-      "name": "推荐良家少女【小酒窝女孩】丝足美腿极品粉穴一线天 美乳带网红胸链屁股超美 怼屏抠逼 直播秀尿 (3)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/61552b34fe28faa90b6f89ea385b4845.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 169,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145894-1",
-      "name": "新人福利【温柔师格】两闺蜜 两对大奶晃的眼晕 大美腿翘臀 逼逼很是粉嫩 道具自慰猛抠逼 洗澡尿尿",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/c0356ee9eece979a439248fa0c5adede.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 149,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145893-1",
-      "name": "新人福利【温柔师格】两闺蜜 两对大奶晃的眼晕 大美腿翘臀 逼逼很是粉嫩 道具自慰猛抠逼 洗澡尿尿 (5)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/f1e637f8407c0fdd3c7406e107495317.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 161,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145892-1",
-      "name": "新人福利【温柔师格】两闺蜜 两对大奶晃的眼晕 大美腿翘臀 逼逼很是粉嫩 道具自慰猛抠逼 洗澡尿尿 (2)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/027f01d742b4946d773a3a7b0a44a7d5.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 149,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145891-1",
-      "name": "推荐御姐女神【请叫我姐姐】舞蹈老师 长腿大屁股粉嫩肥鲍 硬核倒立一字马 自慰喷水 (2)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/174b5d4865fbbe9635d9451d2268657a.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 50,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55-145890-1",
-      "name": "新人福利【温柔师格】两闺蜜 两对大奶晃的眼晕 大美腿翘臀 逼逼很是粉嫩 道具自慰猛抠逼 洗澡尿尿 (4)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/6f2d9d6dfc2979904a7695c9593d138e.jpg",
-      "sourceName": "豆豆资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 61,
       "error": ""
     },
     {
@@ -4312,7 +5837,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -4333,7 +5858,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 178,
+      "elapsedMs": 191,
       "error": ""
     },
     {
@@ -4354,7 +5879,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 154,
+      "elapsedMs": 191,
       "error": ""
     },
     {
@@ -4375,7 +5900,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 155,
+      "elapsedMs": 190,
       "error": ""
     },
     {
@@ -4396,7 +5921,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 159,
+      "elapsedMs": 187,
       "error": ""
     },
     {
@@ -4417,7 +5942,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 153,
+      "elapsedMs": 186,
       "error": ""
     },
     {
@@ -4438,7 +5963,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 168,
+      "elapsedMs": 188,
       "error": ""
     },
     {
@@ -4459,7 +5984,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 153,
+      "elapsedMs": 183,
       "error": ""
     },
     {
@@ -4480,7 +6005,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 155,
+      "elapsedMs": 186,
       "error": ""
     },
     {
@@ -4501,7 +6026,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 155,
+      "elapsedMs": 182,
       "error": ""
     },
     {
@@ -4522,7 +6047,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 149,
+      "elapsedMs": 196,
       "error": ""
     },
     {
@@ -4543,7 +6068,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 153,
+      "elapsedMs": 182,
       "error": ""
     },
     {
@@ -4564,7 +6089,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 153,
+      "elapsedMs": 181,
       "error": ""
     },
     {
@@ -4585,7 +6110,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 150,
+      "elapsedMs": 184,
       "error": ""
     },
     {
@@ -4606,7 +6131,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 161,
+      "elapsedMs": 182,
       "error": ""
     },
     {
@@ -4627,7 +6152,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 147,
+      "elapsedMs": 184,
       "error": ""
     },
     {
@@ -4648,7 +6173,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 130,
+      "elapsedMs": 184,
       "error": ""
     },
     {
@@ -4669,7 +6194,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 144,
+      "elapsedMs": 185,
       "error": ""
     },
     {
@@ -4690,7 +6215,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 130,
+      "elapsedMs": 65,
       "error": ""
     },
     {
@@ -4711,7 +6236,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 62,
       "error": ""
     },
     {
@@ -4732,7 +6257,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -4753,7 +6278,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 62,
       "error": ""
     },
     {
@@ -4774,7 +6299,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 60,
       "error": ""
     },
     {
@@ -4795,7 +6320,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -4816,7 +6341,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -4837,7 +6362,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -4858,7 +6383,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -4879,7 +6404,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -4900,7 +6425,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -4921,7 +6446,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -4942,7 +6467,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -4963,7 +6488,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -5005,7 +6530,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -5026,7 +6551,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -5047,7 +6572,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 61,
       "error": ""
     },
     {
@@ -5068,7 +6593,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 70,
       "error": "play quality probe failed"
     },
     {
@@ -5089,7 +6614,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 65,
       "error": "play quality probe failed"
     },
     {
@@ -5110,7 +6635,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 57,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -5131,7 +6656,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 66,
       "error": "play quality probe failed"
     },
     {
@@ -5152,7 +6677,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 170,
+      "elapsedMs": 216,
       "error": "play quality probe failed"
     },
     {
@@ -5173,7 +6698,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 55,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -5194,7 +6719,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 62,
       "error": ""
     },
     {
@@ -5215,7 +6740,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 62,
       "error": ""
     },
     {
@@ -5236,7 +6761,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 63,
       "error": ""
     },
     {
@@ -5257,7 +6782,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -5278,7 +6803,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -5299,7 +6824,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -5320,7 +6845,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 66,
       "error": ""
     },
     {
@@ -5341,99 +6866,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 60,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70203-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (3)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70225-1",
+      "name": "极品校花【宝宝瑶瑶】绝美双马尾 超大翘臀 掰穴粉嫩骚逼 怼屏自慰爆浆 无套啪啪 吃鸡骑乘后入 (1)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/e39da166a39fd325885c4e4ed606052a.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 49,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70202-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (6)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/954ca39ef04bcdc6a5d442d619b70eb2.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 49,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70201-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (2)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/7a21cdc7b96d84f5ad4ed8942eaf8683.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 48,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70200-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (5)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/84a13abca3a76a318d5ef27205f5c23c.jpg",
-      "sourceName": "滴滴资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 1000000,
-      "variants": 1,
-      "ok": true,
-      "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 50,
-      "error": ""
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70199-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (9)",
-      "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/096f3d449d65737a0d967d0bf63dac64.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/33ea4006e403cffe3757c53146b727b7.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5451,10 +6892,10 @@
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70198-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (8)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70224-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天 (3)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/022080088d954cc865dc2272d31e5a1e.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/5da84772f68dc4f5e7205443d4f2420c.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5467,15 +6908,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 61,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70197-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (4)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70222-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天 (4)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/d05abf1ceac0d1b09e3ad0fc036ce78f.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/1303ae314cbafdbca23c6de3d96e5566.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5488,15 +6929,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 61,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70196-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (7)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70223-1",
+      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/d4023e668bde1938a9d49870d655d9d2.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/e54be96841f7b8873d99a81ae1cad943.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5509,15 +6950,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 62,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70195-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (13)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70221-1",
+      "name": "顶级嫩妹【06小骚骚】超级漂亮 娇艳欲滴 美乳又白又圆超漂亮 长腿大屁股 粉嫩骚逼一线天 掰逼自慰美到爆",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/dc590c332f92f50ad5e46854a88a674a.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/8bf583b14a9ae8c5b176349ec548b6e2.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5530,15 +6971,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 71,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70194-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (10)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70220-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天 (1)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/48f104fc352510d7eb96e74f857a2f9e.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/6a468a5efa5824339ad53419f1eb0277.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5551,15 +6992,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 63,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70193-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (11)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70219-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天 (7)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/a6a0ed58e252dd7d26586820403aad45.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/41a3841788eea89d29448d0da00667af.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5572,15 +7013,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 61,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70192-1",
-      "name": "大长腿尤物【00舞蹈老师】极品蜜桃臀 粉嫩小穴 水蛇腰 丝袜美腿 裸舞自慰 超美 (12)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70218-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天 (6)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/59f7063ced9c55c70ef0d4254d77ea0d.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/34a8e3b0330e896ca555ca4d704f6172.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5593,15 +7034,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 60,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70191-1",
-      "name": "顶级嫩妹【06小骚骚】超级漂亮 娇艳欲滴 美乳又白又圆超漂亮 长腿大屁股 粉嫩骚逼一线天 掰逼自慰美到爆 (3)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70217-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天 (8)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/387e792012d5a962e3d3dff0202313dc.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/765c58c3ef1baa22be89612358f13236.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5614,15 +7055,15 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 63,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70190-1",
-      "name": "校花被草了【文文很可爱】超级漂亮的一对美乳 美腿又长又直 嫩穴一线天 怼屏自慰大鸡吧狂插 骑乘后入 (3)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70216-1",
+      "name": "顶级嫩妹【06小骚骚】超级漂亮 娇艳欲滴 美乳又白又圆超漂亮 长腿大屁股 粉嫩骚逼一线天 掰逼自慰美到爆 (1)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/b5e117c802eb9fb7527b192eaef99f3c.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/1c038846a4040256e17b6df630540d28.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
@@ -5635,133 +7076,217 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 60,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70189-1",
-      "name": "兄弟们 G奶校花来了 超级漂亮【Suluuuuu-1】完美大奶美乳 长腿美足 超极品大屁股 掰穴自慰 (4)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70215-1",
+      "name": "极品校花【宝宝瑶瑶】绝美双马尾 超大翘臀 掰穴粉嫩骚逼 怼屏自慰爆浆 无套啪啪 吃鸡骑乘后入",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/1e5a78d10f75c65a9b8f724030f8bdef.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/e417135cd35bd93ee5f579d931783221.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
       "qualityOk": true,
-      "qualityLabel": "960p",
-      "maxHeight": 960,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
       "maxBandwidth": 1000000,
       "variants": 1,
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 229,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70188-1",
-      "name": "兄弟们 G奶校花来了 超级漂亮【Suluuuuu-1】完美大奶美乳 长腿美足 超极品大屁股 掰穴自慰 (2)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70214-1",
+      "name": "精选【老师湿透了】老师带闺蜜一起操逼 完美酮体美乳嫩穴 长腿翘臀 无套爆草 精液流一屁股 玩得真爽快 (4)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/40d41d983537d4d205121d665635cb2b.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/f53e7b69dc0e14105f1c499ce24ff2e3.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
       "qualityOk": true,
-      "qualityLabel": "960p",
-      "maxHeight": 960,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
       "maxBandwidth": 1000000,
       "variants": 1,
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 54,
+      "elapsedMs": 60,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70187-1",
-      "name": "兄弟们 G奶校花来了 超级漂亮【Suluuuuu-1】完美大奶美乳 长腿美足 超极品大屁股 掰穴自慰 (5)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70213-1",
+      "name": "顶级嫩妹【06小骚骚】超级漂亮 娇艳欲滴 美乳又白又圆超漂亮 长腿大屁股 粉嫩骚逼一线天 掰逼自慰美到爆 (4)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/953281e8be520aea5a4ef8792f69735c.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/8c4e5059ea882c223305d00cbebb9258.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
       "qualityOk": true,
-      "qualityLabel": "960p",
-      "maxHeight": 960,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
       "maxBandwidth": 1000000,
       "variants": 1,
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 61,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70186-1",
-      "name": "兄弟们 G奶校花来了 超级漂亮【Suluuuuu-1】完美大奶美乳 长腿美足 超极品大屁股 掰穴自慰 (3)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70212-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天 (2)",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/75459cc8702be7bcd00356282282d9ee.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/f209c3c71602c4e071344417fdea3849.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
       "qualityOk": true,
-      "qualityLabel": "960p",
-      "maxHeight": 960,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
       "maxBandwidth": 1000000,
       "variants": 1,
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 67,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70184-1",
-      "name": "兄弟们 G奶校花来了 超级漂亮【Suluuuuu-1】完美大奶美乳 长腿美足 超极品大屁股 掰穴自慰 (6)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70211-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/e66d08ea022b579320e640e0f7f85e34.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/cdba8d9540e0334602835782392d47de.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
       "qualityOk": true,
-      "qualityLabel": "960p",
-      "maxHeight": 960,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
       "maxBandwidth": 1000000,
       "variants": 1,
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 60,
       "error": ""
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70185-1",
-      "name": "兄弟们 这奶子绝了【xiaoni2599】极品美乳 又大又圆还坚挺 细腰长腿 大鸡巴跳弹自慰 害我狂撸 (2)",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70210-1",
+      "name": "精选【极品二女】丝袜长腿 娇小美乳 雪白大屁股 粉嫩骚逼 在家里被大哥 从床上干到厨房 全操一遍",
       "type": "adult",
-      "url": "https://pic.dipiccdn.cc/upload/vod/20260711-1/2fd615c6163d73c3a76394816196c55a.jpg",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/e01843c00820dd9884619ed2a1e8a6fe.jpg",
       "sourceName": "滴滴资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": true,
       "qualityOk": true,
-      "qualityLabel": "960p",
-      "maxHeight": 960,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
       "maxBandwidth": 1000000,
       "variants": 1,
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 61,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70209-1",
+      "name": "冷艳学妹【胡杨林】酥胸诱惑 高跟丝袜美腿 极品翘臀 跳蛋狂震 特写骚逼 流浆 超级过瘾 (4)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/b677bf629031dbf3ebf73acd794b78e1.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 61,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70208-1",
+      "name": "精选【老师湿透了】老师带闺蜜一起操逼 完美酮体美乳嫩穴 长腿翘臀 无套爆草 精液流一屁股 玩得真爽快",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/917db963336c832cc658552bd456551d.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 61,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70207-1",
+      "name": "绝对女神【甜心教主】粉雕玉琢身材逆天 极品美乳 长腿大屁股 骚逼又粉又嫩 裸舞自慰美炸天 (9)",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/e437ab5d0344f4ef6a039ecc2d4fd0ec.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 61,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56-70206-1",
+      "name": "冷艳学妹【胡杨林】酥胸诱惑 高跟丝袜美腿 极品翘臀 跳蛋狂震 特写骚逼 流浆 超级过瘾",
+      "type": "adult",
+      "url": "https://pic.dipiccdn.cc/upload/vod/20260712-1/11db68cf27c525d1e40122a9f3a85a33.jpg",
+      "sourceName": "滴滴资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 1000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 60,
       "error": ""
     },
     {
@@ -5782,7 +7307,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -5803,7 +7328,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 66,
       "error": ""
     },
     {
@@ -5824,7 +7349,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 64,
       "error": ""
     },
     {
@@ -5845,7 +7370,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -5866,7 +7391,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 55,
+      "elapsedMs": 63,
       "error": ""
     },
     {
@@ -5887,7 +7412,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 67,
       "error": ""
     },
     {
@@ -5908,7 +7433,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 63,
       "error": ""
     },
     {
@@ -5929,7 +7454,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 66,
       "error": "play quality probe failed"
     },
     {
@@ -5950,7 +7475,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -5971,7 +7496,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -5992,7 +7517,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 60,
       "error": ""
     },
     {
@@ -6013,7 +7538,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -6034,7 +7559,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 54,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -6055,7 +7580,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 59,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -6076,7 +7601,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -6097,7 +7622,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 69,
       "error": "play quality probe failed"
     },
     {
@@ -6118,7 +7643,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 64,
       "error": ""
     },
     {
@@ -6139,7 +7664,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 60,
       "error": ""
     },
     {
@@ -6160,7 +7685,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 61,
       "error": ""
     },
     {
@@ -6181,7 +7706,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 61,
       "error": ""
     },
     {
@@ -6202,7 +7727,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 61,
       "error": ""
     },
     {
@@ -6223,7 +7748,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -6244,7 +7769,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -6265,7 +7790,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -6286,7 +7811,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -6307,7 +7832,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 44,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -6328,7 +7853,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -6349,7 +7874,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -6370,7 +7895,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -6391,7 +7916,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -6412,7 +7937,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -6433,7 +7958,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -6454,7 +7979,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -6475,7 +8000,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -6496,7 +8021,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 183,
       "error": "play quality probe failed"
     },
     {
@@ -6517,7 +8042,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -6538,7 +8063,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 63,
       "error": "play quality probe failed"
     },
     {
@@ -6559,7 +8084,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 45,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -6580,7 +8105,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 61,
       "error": "play quality probe failed"
     },
     {
@@ -6601,7 +8126,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 66,
       "error": "play quality probe failed"
     },
     {
@@ -6622,7 +8147,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 64,
       "error": "play quality probe failed"
     },
     {
@@ -6643,7 +8168,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -6664,7 +8189,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -6685,7 +8210,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -6706,7 +8231,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 60,
       "error": "play quality probe failed"
     },
     {
@@ -6727,7 +8252,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -6748,7 +8273,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -6769,7 +8294,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 43,
+      "elapsedMs": 62,
       "error": "play quality probe failed"
     },
     {
@@ -6790,7 +8315,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 404,
-      "elapsedMs": 50,
+      "elapsedMs": 60,
       "error": "play manifest HTTP 404"
     },
     {
@@ -6811,7 +8336,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 404,
-      "elapsedMs": 50,
+      "elapsedMs": 61,
       "error": "play manifest HTTP 404"
     },
     {
@@ -6832,7 +8357,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 350,
+      "elapsedMs": 376,
       "error": ""
     },
     {
@@ -6853,7 +8378,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6916,7 +8441,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8015,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6937,7 +8462,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8011,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6958,7 +8483,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -6979,7 +8504,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7000,7 +8525,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 7999,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7021,7 +8546,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7063,7 +8588,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7084,7 +8609,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7105,7 +8630,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7168,7 +8693,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7189,7 +8714,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7210,7 +8735,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7252,7 +8777,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7273,7 +8798,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8015,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7294,7 +8819,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7315,7 +8840,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7336,7 +8861,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7357,7 +8882,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7378,7 +8903,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8013,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7399,7 +8924,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8011,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7420,7 +8945,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7441,7 +8966,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8014,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7462,7 +8987,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8012,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7483,7 +9008,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7504,7 +9029,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7525,7 +9050,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7546,7 +9071,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 7999,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7567,7 +9092,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8014,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7588,7 +9113,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8011,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7609,7 +9134,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7630,7 +9155,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7651,7 +9176,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7672,7 +9197,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8014,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7693,7 +9218,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7714,7 +9239,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7735,7 +9260,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7756,7 +9281,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7777,7 +9302,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7798,7 +9323,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7861,7 +9386,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7882,7 +9407,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7903,7 +9428,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7924,7 +9449,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7945,7 +9470,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7966,7 +9491,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8009,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -7987,7 +9512,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8008,7 +9533,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8050,7 +9575,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8071,7 +9596,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8092,7 +9617,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8113,7 +9638,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8155,7 +9680,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8176,7 +9701,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8197,7 +9722,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8218,7 +9743,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8239,7 +9764,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8260,7 +9785,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8281,7 +9806,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8298,7 +9823,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 88,
+      "elapsedMs": 71,
       "error": "manifest HTTP 403"
     },
     {
@@ -8315,7 +9840,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 91,
+      "elapsedMs": 71,
       "error": "manifest HTTP 403"
     },
     {
@@ -8332,7 +9857,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 105,
+      "elapsedMs": 72,
       "error": "manifest HTTP 403"
     },
     {
@@ -8349,7 +9874,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 93,
+      "elapsedMs": 75,
       "error": "manifest HTTP 403"
     },
     {
@@ -8366,7 +9891,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 90,
+      "elapsedMs": 73,
       "error": "manifest HTTP 403"
     },
     {
@@ -8383,7 +9908,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 97,
+      "elapsedMs": 80,
       "error": "manifest HTTP 403"
     },
     {
@@ -8400,7 +9925,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 87,
+      "elapsedMs": 78,
       "error": "manifest HTTP 403"
     },
     {
@@ -8417,7 +9942,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 91,
+      "elapsedMs": 84,
       "error": "manifest HTTP 403"
     },
     {
@@ -8434,7 +9959,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 92,
+      "elapsedMs": 82,
       "error": "manifest HTTP 403"
     },
     {
@@ -8451,7 +9976,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 95,
+      "elapsedMs": 80,
       "error": "manifest HTTP 403"
     },
     {
@@ -8468,7 +9993,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 78,
+      "elapsedMs": 73,
       "error": "manifest HTTP 403"
     },
     {
@@ -8485,7 +10010,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 97,
+      "elapsedMs": 80,
       "error": "manifest HTTP 403"
     },
     {
@@ -8502,7 +10027,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 69,
+      "elapsedMs": 61,
       "error": "manifest HTTP 403"
     },
     {
@@ -8519,7 +10044,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 22,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -8536,7 +10061,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 24,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -8553,7 +10078,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 24,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -8570,7 +10095,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 26,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -8587,7 +10112,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -8604,7 +10129,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 77,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -8621,7 +10146,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 27,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -8638,7 +10163,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -8655,7 +10180,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 29,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -8672,7 +10197,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -8689,7 +10214,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 30,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -8706,7 +10231,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 28,
+      "elapsedMs": 59,
       "error": "manifest HTTP 403"
     },
     {
@@ -8723,7 +10248,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 22,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -8740,7 +10265,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -8757,7 +10282,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 20,
       "error": "manifest HTTP 403"
     },
     {
@@ -8774,7 +10299,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 26,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -8791,7 +10316,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 11,
       "error": "manifest HTTP 403"
     },
     {
@@ -8808,7 +10333,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 28,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -8825,7 +10350,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -8842,7 +10367,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 27,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -8859,7 +10384,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 28,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -8876,7 +10401,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 26,
+      "elapsedMs": 11,
       "error": "manifest HTTP 403"
     },
     {
@@ -8893,7 +10418,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 29,
+      "elapsedMs": 11,
       "error": "manifest HTTP 403"
     },
     {
@@ -8910,7 +10435,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 32,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -8927,7 +10452,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 24,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -8944,7 +10469,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 27,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -8961,7 +10486,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 21,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -8978,7 +10503,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -8995,7 +10520,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -9012,7 +10537,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 30,
+      "elapsedMs": 17,
       "error": "manifest HTTP 403"
     },
     {
@@ -9029,7 +10554,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 29,
+      "elapsedMs": 19,
       "error": "manifest HTTP 403"
     },
     {
@@ -9046,7 +10571,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 17,
       "error": "manifest HTTP 403"
     },
     {
@@ -9063,7 +10588,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -9080,7 +10605,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 27,
+      "elapsedMs": 16,
       "error": "manifest HTTP 403"
     },
     {
@@ -9097,7 +10622,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 27,
+      "elapsedMs": 17,
       "error": "manifest HTTP 403"
     },
     {
@@ -9114,7 +10639,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 26,
+      "elapsedMs": 16,
       "error": "manifest HTTP 403"
     },
     {
@@ -9131,7 +10656,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 23,
+      "elapsedMs": 16,
       "error": "manifest HTTP 403"
     },
     {
@@ -9148,7 +10673,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 23,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -9165,7 +10690,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 26,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -9182,7 +10707,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 32,
+      "elapsedMs": 65,
       "error": "manifest HTTP 403"
     },
     {
@@ -9199,7 +10724,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 27,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -9216,7 +10741,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 27,
+      "elapsedMs": 60,
       "error": "manifest HTTP 403"
     },
     {
@@ -9233,7 +10758,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 67,
       "error": "manifest HTTP 403"
     },
     {
@@ -9250,7 +10775,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 26,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -9267,7 +10792,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 24,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     }
   ]
