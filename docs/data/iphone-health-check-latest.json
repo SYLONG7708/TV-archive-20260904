@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-12T18:30:53.041Z",
+  "checkedAt": "2026-07-13T00:30:45.457Z",
   "inputs": {
     "catalogPath": "D:\\a\\TV\\TV\\docs\\data\\iphone-vod-catalog.json",
     "livePath": "D:\\a\\TV\\TV\\docs\\data\\live-channels.json"
@@ -7,17 +7,17 @@
   "summary": {
     "sources": {
       "total": 78,
-      "ok": 73,
-      "failed": 5
+      "ok": 72,
+      "failed": 6
     },
     "posters": {
       "total": 280,
-      "ok": 128,
+      "ok": 133,
       "titleOk": 280,
       "posterOk": 211,
-      "playOk": 265,
-      "qualityOk": 197,
-      "failed": 152
+      "playOk": 270,
+      "qualityOk": 202,
+      "failed": 147
     },
     "live": {
       "total": 58,
@@ -31,6 +31,19 @@
   "failed": [
     {
       "kind": "source",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56",
+      "name": "滴滴资源｜追劇",
+      "type": 1,
+      "url": "https://api.ddapi.cc/api.php/provide/vod/",
+      "indexed": true,
+      "adult": true,
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 159,
+      "error": "fetch failed"
+    },
+    {
+      "kind": "source",
       "id": "all-on-demand-sources-大地资源-https-dadiapi-com-feifei-68",
       "name": "大地资源｜追劇",
       "type": 0,
@@ -39,7 +52,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 623,
+      "elapsedMs": 628,
       "error": "XML source did not return an XML list"
     },
     {
@@ -52,7 +65,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 130,
+      "elapsedMs": 170,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -65,7 +78,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 205,
+      "elapsedMs": 179,
       "error": "Unexpected token '<', \"<html>\n<he\"... is not valid JSON"
     },
     {
@@ -78,7 +91,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 129,
+      "elapsedMs": 114,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -91,218 +104,8 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 50,
+      "elapsedMs": 91,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140038-1",
-      "name": "大庸青春芒果演唱会",
-      "type": "other",
-      "url": "https://mtzy2.com/upload/vod/20260712-1/8a0267d37e0be1be48360e3eb22db6a8.jpg",
-      "sourceName": "茅台资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
-      "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 289,
-      "error": "play manifest HTTP 403"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140064-1",
-      "name": "【回放】NBA夏季联赛 76人VS步行者",
-      "type": "other",
-      "url": "https://mtzy2.com/upload/vod/20260712-1/4dda553c3f6f30c51229f744fa094e38.jpg",
-      "sourceName": "茅台资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
-      "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 283,
-      "error": "play manifest HTTP 403"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140063-1",
-      "name": "【回放】NBA夏季联赛 鹈鹕VS黄蜂",
-      "type": "other",
-      "url": "https://mtzy2.com/upload/vod/20260712-1/4dda553c3f6f30c51229f744fa094e38.jpg",
-      "sourceName": "茅台资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
-      "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 252,
-      "error": "play manifest HTTP 403"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140068-1",
-      "name": "【回放】NBA夏季联赛 掘金VS森林狼",
-      "type": "other",
-      "url": "https://mtzy2.com/upload/vod/20260712-1/4abd372ce4e4ef00472a90c70905b84c.jpg",
-      "sourceName": "茅台资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
-      "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 265,
-      "error": "play manifest HTTP 403"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140070-1",
-      "name": "【回放】NBA夏季联赛 湖人VS独行侠",
-      "type": "other",
-      "url": "https://mtzy2.com/upload/vod/20260712-1/40462574aa01e15ff0ae62bd51b67202.jpg",
-      "sourceName": "茅台资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
-      "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 266,
-      "error": "play manifest HTTP 403"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140061-1",
-      "name": "【回放】NBA夏季联赛 魔术VS热火",
-      "type": "other",
-      "url": "https://mtzy2.com/upload/vod/20260712-1/827a41708974b4b71a8ed9ffc2dc5c39.jpg",
-      "sourceName": "茅台资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
-      "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 266,
-      "error": "play manifest HTTP 403"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140066-1",
-      "name": "三生石上怀旧梦",
-      "type": "short",
-      "url": "https://mtzy2.com/upload/vod/20260712-1/90fd06760ec098de92485380f4c551e8.jpg",
-      "sourceName": "茅台资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
-      "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 258,
-      "error": "play manifest HTTP 403"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140065-1",
-      "name": "我的狐狸九条尾巴",
-      "type": "short",
-      "url": "https://mtzy2.com/upload/vod/20260712-1/2f349dace71d8dd086e02648b2db1157.jpg",
-      "sourceName": "茅台资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
-      "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 274,
-      "error": "play manifest HTTP 403"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140060-1",
-      "name": "霍家新妻第一季",
-      "type": "short",
-      "url": "https://mtzy2.com/upload/vod/20260712-1/8c21f0a1661a0d75a914817760c13852.jpg",
-      "sourceName": "茅台资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
-      "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 270,
-      "error": "play manifest HTTP 403"
-    },
-    {
-      "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-140059-1",
-      "name": "暗影夺妻",
-      "type": "short",
-      "url": "https://mtzy2.com/upload/vod/20260712-1/5eb6865c2e24b994e215e65ab72cd17c.jpg",
-      "sourceName": "茅台资源｜追劇",
-      "titleOk": true,
-      "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
-      "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 37,
-      "error": "play manifest HTTP 403"
     },
     {
       "kind": "poster",
@@ -322,29 +125,134 @@
       "ok": false,
       "status": 206,
       "playStatus": 403,
-      "elapsedMs": 31,
+      "elapsedMs": 52,
       "error": "play manifest HTTP 403"
     },
     {
       "kind": "poster",
-      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-93403-1",
-      "name": "弃娘不自弃",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-69816-1",
+      "name": "冷宫爆改大别墅",
       "type": "short",
-      "url": "https://mtzy2.com/upload/vod/20250525-1/f78e64ba9c80676fa3ca32df45991c29.jpg",
+      "url": "https://mtzy2.com/upload/vod/20250107-1/2ec338da4530d6e7af3e2f9aed409e9c.jpg",
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
       "playOk": false,
       "qualityOk": false,
-      "qualityLabel": "single",
+      "qualityLabel": "",
       "maxHeight": 0,
       "maxBandwidth": 0,
       "variants": 0,
       "ok": false,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 26,
-      "error": "play manifest HTTP 403"
+      "playStatus": 0,
+      "elapsedMs": 37,
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-69820-1",
+      "name": "高门小寡妇",
+      "type": "short",
+      "url": "https://mtzy2.com/upload/vod/20250107-1/9dd6fb35e4583d463a7b25f4e76b560c.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
+      "status": 206,
+      "playStatus": 0,
+      "elapsedMs": 39,
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-40795-1",
+      "name": "暗夜守护者（国语版）",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-35/f4efd19c46979920cd3c9a4e5ad488fa.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
+      "status": 206,
+      "playStatus": 0,
+      "elapsedMs": 49,
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-19516-1",
+      "name": "第一桶金",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-56/87521209d72bd1868dee4d4920e83f3e.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
+      "status": 206,
+      "playStatus": 0,
+      "elapsedMs": 48,
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-26148-1",
+      "name": "楼下来的人",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-50/a252d6513ab793a3c17134a9e33b9e5d.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
+      "status": 206,
+      "playStatus": 0,
+      "elapsedMs": 54,
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-茅台资源-https-caiji-maotaizy-cc-api-php-provide-vod-3-20290-1",
+      "name": "巾帼枭雄之义海豪情",
+      "type": "series",
+      "url": "https://mtzy2.com/upload/vod/20250108-55/489e7ae8987e76523ea9f4d00d64860a.jpg",
+      "sourceName": "茅台资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
+      "status": 206,
+      "playStatus": 0,
+      "elapsedMs": 53,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "poster",
@@ -364,7 +272,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 53,
       "error": "play manifest HTTP 403"
     },
     {
@@ -385,7 +293,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -406,7 +314,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -427,7 +335,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -448,7 +356,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -469,7 +377,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -490,7 +398,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -511,7 +419,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 54,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -532,7 +440,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -553,7 +461,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -574,7 +482,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -595,7 +503,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 62,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -616,7 +524,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -637,7 +545,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 60,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -658,7 +566,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 54,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -679,7 +587,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 59,
+      "elapsedMs": 53,
       "error": "play quality probe failed"
     },
     {
@@ -700,7 +608,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 59,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -721,7 +629,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -742,7 +650,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -763,7 +671,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 169,
+      "elapsedMs": 164,
       "error": "play quality probe failed"
     },
     {
@@ -784,7 +692,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 58,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -805,7 +713,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -826,7 +734,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -847,7 +755,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -868,7 +776,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 201,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -889,7 +797,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 205,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -910,7 +818,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 216,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -931,7 +839,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 209,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -952,7 +860,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 206,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -973,7 +881,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 205,
+      "elapsedMs": 53,
       "error": "play quality probe failed"
     },
     {
@@ -994,7 +902,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 220,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -1015,7 +923,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 209,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -1036,7 +944,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -1057,7 +965,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -1078,7 +986,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 62,
+      "elapsedMs": 55,
       "error": "play quality probe failed"
     },
     {
@@ -1099,7 +1007,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -1120,7 +1028,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 60,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -1141,7 +1049,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -1162,7 +1070,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -1183,7 +1091,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -1204,7 +1112,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -1246,7 +1154,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 55,
       "error": "play quality probe failed"
     },
     {
@@ -1267,7 +1175,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -1288,7 +1196,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -1309,7 +1217,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -1330,7 +1238,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -1372,7 +1280,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -1393,7 +1301,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -1414,7 +1322,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 56,
       "error": "play quality probe failed"
     },
     {
@@ -1435,7 +1343,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 62,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -1456,7 +1364,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -1477,7 +1385,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 56,
       "error": "play quality probe failed"
     },
     {
@@ -1498,7 +1406,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -1519,7 +1427,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -1540,7 +1448,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -1582,7 +1490,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -1603,7 +1511,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -1624,7 +1532,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 53,
       "error": "play quality probe failed"
     },
     {
@@ -1645,7 +1553,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -1666,7 +1574,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -1687,7 +1595,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -1708,7 +1616,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 63,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -1729,7 +1637,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -1750,7 +1658,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -1771,7 +1679,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -1792,7 +1700,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -1813,7 +1721,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 404,
-      "elapsedMs": 52,
+      "elapsedMs": 48,
       "error": "play manifest HTTP 404"
     },
     {
@@ -1834,7 +1742,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 404,
-      "elapsedMs": 51,
+      "elapsedMs": 52,
       "error": "play manifest HTTP 404"
     },
     {
@@ -1855,7 +1763,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1876,7 +1784,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1897,7 +1805,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1918,7 +1826,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1939,7 +1847,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1960,7 +1868,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1981,7 +1889,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2002,7 +1910,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2023,7 +1931,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 7999,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2065,7 +1973,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8009,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2086,7 +1994,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2107,7 +2015,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2149,7 +2057,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2191,7 +2099,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2212,7 +2120,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8014,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2275,7 +2183,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8013,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2296,7 +2204,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2338,7 +2246,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8013,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2359,7 +2267,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2380,7 +2288,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8009,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2401,7 +2309,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2422,7 +2330,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2443,7 +2351,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8012,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2464,7 +2372,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2485,7 +2393,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2506,7 +2414,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8012,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2527,7 +2435,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8016,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2548,7 +2456,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2569,7 +2477,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2611,7 +2519,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2653,7 +2561,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8009,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2674,7 +2582,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2695,7 +2603,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8013,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2716,7 +2624,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2737,7 +2645,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2758,7 +2666,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2800,7 +2708,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8013,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2821,7 +2729,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2842,7 +2750,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8014,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2863,7 +2771,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2884,7 +2792,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2905,7 +2813,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8015,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2926,7 +2834,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2947,7 +2855,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -2968,7 +2876,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8015,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3010,7 +2918,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3031,7 +2939,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8011,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3073,7 +2981,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3094,7 +3002,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3115,7 +3023,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3136,7 +3044,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3157,7 +3065,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3178,7 +3086,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3199,7 +3107,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3220,7 +3128,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3241,7 +3149,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3262,7 +3170,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -3283,7 +3191,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     }
   ],
@@ -3298,7 +3206,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 842,
+      "elapsedMs": 536,
       "error": ""
     },
     {
@@ -3311,7 +3219,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 257,
+      "elapsedMs": 244,
       "error": ""
     },
     {
@@ -3324,7 +3232,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1168,
+      "elapsedMs": 970,
       "error": ""
     },
     {
@@ -3337,7 +3245,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 945,
+      "elapsedMs": 877,
       "error": ""
     },
     {
@@ -3350,7 +3258,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 386,
+      "elapsedMs": 242,
       "error": ""
     },
     {
@@ -3363,7 +3271,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1606,
+      "elapsedMs": 1187,
       "error": ""
     },
     {
@@ -3376,7 +3284,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 675,
+      "elapsedMs": 575,
       "error": ""
     },
     {
@@ -3389,7 +3297,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1100,
+      "elapsedMs": 820,
       "error": ""
     },
     {
@@ -3402,7 +3310,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1076,
+      "elapsedMs": 901,
       "error": ""
     },
     {
@@ -3415,7 +3323,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1056,
+      "elapsedMs": 616,
       "error": ""
     },
     {
@@ -3428,7 +3336,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 593,
+      "elapsedMs": 292,
       "error": ""
     },
     {
@@ -3441,7 +3349,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1372,
+      "elapsedMs": 318,
       "error": ""
     },
     {
@@ -3454,7 +3362,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 669,
+      "elapsedMs": 964,
       "error": ""
     },
     {
@@ -3467,7 +3375,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1046,
+      "elapsedMs": 1354,
       "error": ""
     },
     {
@@ -3480,7 +3388,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1691,
+      "elapsedMs": 464,
       "error": ""
     },
     {
@@ -3493,7 +3401,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 136,
+      "elapsedMs": 447,
       "error": ""
     },
     {
@@ -3506,7 +3414,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 240,
+      "elapsedMs": 457,
       "error": ""
     },
     {
@@ -3519,7 +3427,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1146,
+      "elapsedMs": 643,
       "error": ""
     },
     {
@@ -3532,7 +3440,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1189,
+      "elapsedMs": 1413,
       "error": ""
     },
     {
@@ -3545,7 +3453,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 285,
+      "elapsedMs": 602,
       "error": ""
     },
     {
@@ -3558,7 +3466,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 231,
+      "elapsedMs": 1387,
       "error": ""
     },
     {
@@ -3571,7 +3479,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 428,
+      "elapsedMs": 417,
       "error": ""
     },
     {
@@ -3584,7 +3492,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 692,
+      "elapsedMs": 1229,
       "error": ""
     },
     {
@@ -3597,7 +3505,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1310,
+      "elapsedMs": 1373,
       "error": ""
     },
     {
@@ -3610,7 +3518,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 181,
+      "elapsedMs": 287,
       "error": ""
     },
     {
@@ -3623,7 +3531,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 314,
+      "elapsedMs": 288,
       "error": ""
     },
     {
@@ -3636,7 +3544,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 311,
+      "elapsedMs": 296,
       "error": ""
     },
     {
@@ -3649,7 +3557,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 990,
+      "elapsedMs": 720,
       "error": ""
     },
     {
@@ -3662,7 +3570,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 924,
+      "elapsedMs": 1002,
       "error": ""
     },
     {
@@ -3675,7 +3583,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 468,
+      "elapsedMs": 376,
       "error": ""
     },
     {
@@ -3688,7 +3596,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 76,
+      "elapsedMs": 199,
       "error": ""
     },
     {
@@ -3701,7 +3609,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 254,
+      "elapsedMs": 280,
       "error": ""
     },
     {
@@ -3714,7 +3622,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 202,
+      "elapsedMs": 324,
       "error": ""
     },
     {
@@ -3727,7 +3635,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 313,
+      "elapsedMs": 349,
       "error": ""
     },
     {
@@ -3740,7 +3648,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1572,
+      "elapsedMs": 383,
       "error": ""
     },
     {
@@ -3753,7 +3661,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1014,
+      "elapsedMs": 977,
       "error": ""
     },
     {
@@ -3766,7 +3674,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 223,
+      "elapsedMs": 170,
       "error": ""
     },
     {
@@ -3779,7 +3687,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 563,
+      "elapsedMs": 717,
       "error": ""
     },
     {
@@ -3792,7 +3700,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 208,
+      "elapsedMs": 252,
       "error": ""
     },
     {
@@ -3805,7 +3713,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 351,
+      "elapsedMs": 463,
       "error": ""
     },
     {
@@ -3818,7 +3726,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 104,
+      "elapsedMs": 153,
       "error": ""
     },
     {
@@ -3831,7 +3739,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 285,
+      "elapsedMs": 392,
       "error": ""
     },
     {
@@ -3844,7 +3752,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 356,
+      "elapsedMs": 141,
       "error": ""
     },
     {
@@ -3857,7 +3765,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 317,
+      "elapsedMs": 469,
       "error": ""
     },
     {
@@ -3870,7 +3778,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1255,
+      "elapsedMs": 1171,
       "error": ""
     },
     {
@@ -3883,7 +3791,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 374,
+      "elapsedMs": 572,
       "error": ""
     },
     {
@@ -3896,7 +3804,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 199,
+      "elapsedMs": 363,
       "error": ""
     },
     {
@@ -3907,10 +3815,10 @@
       "url": "https://api.ddapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 182,
-      "error": ""
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 159,
+      "error": "fetch failed"
     },
     {
       "kind": "source",
@@ -3922,7 +3830,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 704,
+      "elapsedMs": 775,
       "error": ""
     },
     {
@@ -3935,7 +3843,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 151,
+      "elapsedMs": 177,
       "error": ""
     },
     {
@@ -3948,7 +3856,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 234,
+      "elapsedMs": 379,
       "error": ""
     },
     {
@@ -3961,7 +3869,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 483,
+      "elapsedMs": 260,
       "error": ""
     },
     {
@@ -3974,7 +3882,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 608,
+      "elapsedMs": 605,
       "error": ""
     },
     {
@@ -3987,7 +3895,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 398,
+      "elapsedMs": 350,
       "error": ""
     },
     {
@@ -4000,7 +3908,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 623,
+      "elapsedMs": 628,
       "error": "XML source did not return an XML list"
     },
     {
@@ -4013,7 +3921,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 476,
+      "elapsedMs": 508,
       "error": ""
     },
     {
@@ -4026,7 +3934,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1492,
+      "elapsedMs": 3141,
       "error": ""
     },
     {
@@ -4039,7 +3947,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 226,
+      "elapsedMs": 285,
       "error": ""
     },
     {
@@ -4052,7 +3960,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 214,
+      "elapsedMs": 353,
       "error": ""
     },
     {
@@ -4065,7 +3973,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 141,
+      "elapsedMs": 146,
       "error": ""
     },
     {
@@ -4078,7 +3986,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 338,
+      "elapsedMs": 406,
       "error": ""
     },
     {
@@ -4091,7 +3999,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1367,
+      "elapsedMs": 1125,
       "error": ""
     },
     {
@@ -4104,7 +4012,7 @@
       "adult": false,
       "ok": true,
       "status": 206,
-      "elapsedMs": 333,
+      "elapsedMs": 237,
       "error": ""
     },
     {
@@ -4117,7 +4025,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1367,
+      "elapsedMs": 1121,
       "error": ""
     },
     {
@@ -4130,7 +4038,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 564,
+      "elapsedMs": 530,
       "error": ""
     },
     {
@@ -4143,7 +4051,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 594,
+      "elapsedMs": 383,
       "error": ""
     },
     {
@@ -4156,7 +4064,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1114,
+      "elapsedMs": 1071,
       "error": ""
     },
     {
@@ -4169,7 +4077,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1299,
+      "elapsedMs": 616,
       "error": ""
     },
     {
@@ -4182,7 +4090,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1164,
+      "elapsedMs": 503,
       "error": ""
     },
     {
@@ -4195,7 +4103,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 529,
+      "elapsedMs": 782,
       "error": ""
     },
     {
@@ -4208,7 +4116,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1191,
+      "elapsedMs": 1172,
       "error": ""
     },
     {
@@ -4221,7 +4129,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 233,
+      "elapsedMs": 235,
       "error": ""
     },
     {
@@ -4234,7 +4142,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 990,
+      "elapsedMs": 942,
       "error": ""
     },
     {
@@ -4247,7 +4155,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 305,
+      "elapsedMs": 281,
       "error": ""
     },
     {
@@ -4260,7 +4168,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 130,
+      "elapsedMs": 170,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -4273,7 +4181,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 205,
+      "elapsedMs": 179,
       "error": "Unexpected token '<', \"<html>\n<he\"... is not valid JSON"
     },
     {
@@ -4286,7 +4194,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 129,
+      "elapsedMs": 114,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -4299,7 +4207,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 50,
+      "elapsedMs": 91,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -4320,7 +4228,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 275,
+      "elapsedMs": 426,
       "error": ""
     },
     {
@@ -4341,7 +4249,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 277,
+      "elapsedMs": 378,
       "error": ""
     },
     {
@@ -4362,7 +4270,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 280,
+      "elapsedMs": 378,
       "error": ""
     },
     {
@@ -4383,7 +4291,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 294,
+      "elapsedMs": 425,
       "error": ""
     },
     {
@@ -4395,17 +4303,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1080p",
+      "maxHeight": 1080,
+      "maxBandwidth": 3286000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 289,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 389,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4425,7 +4333,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 285,
+      "elapsedMs": 427,
       "error": ""
     },
     {
@@ -4437,17 +4345,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3605000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 283,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 376,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4458,17 +4366,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3533000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 252,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 385,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4488,7 +4396,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 273,
+      "elapsedMs": 376,
       "error": ""
     },
     {
@@ -4500,17 +4408,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3588000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 265,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 399,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4521,17 +4429,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3606000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 266,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 394,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4542,17 +4450,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3516000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 266,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 401,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4572,7 +4480,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 260,
+      "elapsedMs": 377,
       "error": ""
     },
     {
@@ -4593,7 +4501,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 272,
+      "elapsedMs": 390,
       "error": ""
     },
     {
@@ -4605,17 +4513,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3945000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 258,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 374,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4626,17 +4534,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 4014000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 274,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 390,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4656,7 +4564,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 256,
+      "elapsedMs": 375,
       "error": ""
     },
     {
@@ -4668,17 +4576,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 3811000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 270,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 390,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4689,17 +4597,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 4003000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 37,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 52,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4719,7 +4627,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 28,
+      "elapsedMs": 51,
       "error": ""
     },
     {
@@ -4740,7 +4648,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 403,
-      "elapsedMs": 31,
+      "elapsedMs": 52,
       "error": "play manifest HTTP 403"
     },
     {
@@ -4782,7 +4690,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 26,
+      "elapsedMs": 50,
       "error": ""
     },
     {
@@ -4803,7 +4711,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 37,
       "error": ""
     },
     {
@@ -4824,7 +4732,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 27,
+      "elapsedMs": 52,
       "error": ""
     },
     {
@@ -4845,7 +4753,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 27,
+      "elapsedMs": 42,
       "error": ""
     },
     {
@@ -4857,17 +4765,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": false,
-      "qualityOk": false,
-      "qualityLabel": "single",
-      "maxHeight": 0,
-      "maxBandwidth": 0,
-      "variants": 0,
-      "ok": false,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2141000,
+      "variants": 1,
+      "ok": true,
       "status": 206,
-      "playStatus": 403,
-      "elapsedMs": 26,
-      "error": "play manifest HTTP 403"
+      "playStatus": 200,
+      "elapsedMs": 48,
+      "error": ""
     },
     {
       "kind": "poster",
@@ -4887,7 +4795,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 32,
+      "elapsedMs": 39,
       "error": ""
     },
     {
@@ -4908,7 +4816,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 29,
+      "elapsedMs": 43,
       "error": ""
     },
     {
@@ -4920,17 +4828,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1280p",
-      "maxHeight": 1280,
-      "maxBandwidth": 2127000,
-      "variants": 1,
-      "ok": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 33,
-      "error": ""
+      "playStatus": 0,
+      "elapsedMs": 37,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "poster",
@@ -4941,17 +4849,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1136p",
-      "maxHeight": 1136,
-      "maxBandwidth": 2099000,
-      "variants": 1,
-      "ok": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 29,
-      "error": ""
+      "playStatus": 0,
+      "elapsedMs": 39,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "poster",
@@ -4971,7 +4879,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 31,
+      "elapsedMs": 51,
       "error": ""
     },
     {
@@ -4992,7 +4900,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 28,
+      "elapsedMs": 55,
       "error": ""
     },
     {
@@ -5013,7 +4921,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 26,
+      "elapsedMs": 46,
       "error": ""
     },
     {
@@ -5034,7 +4942,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 26,
+      "elapsedMs": 34,
       "error": ""
     },
     {
@@ -5055,7 +4963,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 36,
+      "elapsedMs": 57,
       "error": ""
     },
     {
@@ -5076,7 +4984,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 30,
+      "elapsedMs": 64,
       "error": ""
     },
     {
@@ -5097,7 +5005,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 38,
+      "elapsedMs": 35,
       "error": ""
     },
     {
@@ -5118,7 +5026,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 28,
+      "elapsedMs": 55,
       "error": ""
     },
     {
@@ -5139,7 +5047,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 28,
+      "elapsedMs": 58,
       "error": ""
     },
     {
@@ -5160,7 +5068,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 34,
+      "elapsedMs": 41,
       "error": ""
     },
     {
@@ -5181,7 +5089,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 28,
+      "elapsedMs": 37,
       "error": ""
     },
     {
@@ -5202,7 +5110,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 30,
+      "elapsedMs": 53,
       "error": ""
     },
     {
@@ -5223,7 +5131,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 31,
+      "elapsedMs": 52,
       "error": ""
     },
     {
@@ -5244,7 +5152,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 27,
+      "elapsedMs": 52,
       "error": ""
     },
     {
@@ -5265,7 +5173,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 30,
+      "elapsedMs": 44,
       "error": ""
     },
     {
@@ -5286,7 +5194,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 26,
+      "elapsedMs": 52,
       "error": ""
     },
     {
@@ -5307,7 +5215,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 34,
+      "elapsedMs": 36,
       "error": ""
     },
     {
@@ -5328,7 +5236,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 29,
+      "elapsedMs": 64,
       "error": ""
     },
     {
@@ -5349,7 +5257,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 29,
+      "elapsedMs": 36,
       "error": ""
     },
     {
@@ -5370,7 +5278,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 28,
+      "elapsedMs": 55,
       "error": ""
     },
     {
@@ -5391,7 +5299,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 29,
+      "elapsedMs": 43,
       "error": ""
     },
     {
@@ -5403,17 +5311,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1440p",
-      "maxHeight": 1440,
-      "maxBandwidth": 1137000,
-      "variants": 1,
-      "ok": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 32,
-      "error": ""
+      "playStatus": 0,
+      "elapsedMs": 49,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "poster",
@@ -5433,7 +5341,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 27,
+      "elapsedMs": 34,
       "error": ""
     },
     {
@@ -5454,7 +5362,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 28,
+      "elapsedMs": 65,
       "error": ""
     },
     {
@@ -5466,17 +5374,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "480p",
-      "maxHeight": 480,
-      "maxBandwidth": 844000,
-      "variants": 1,
-      "ok": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 27,
-      "error": ""
+      "playStatus": 0,
+      "elapsedMs": 48,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "poster",
@@ -5487,17 +5395,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1080p",
-      "maxHeight": 1080,
-      "maxBandwidth": 1696000,
-      "variants": 1,
-      "ok": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 27,
-      "error": ""
+      "playStatus": 0,
+      "elapsedMs": 54,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "poster",
@@ -5517,7 +5425,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 29,
+      "elapsedMs": 50,
       "error": ""
     },
     {
@@ -5538,7 +5446,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 36,
+      "elapsedMs": 40,
       "error": ""
     },
     {
@@ -5559,7 +5467,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 27,
+      "elapsedMs": 54,
       "error": ""
     },
     {
@@ -5580,7 +5488,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 35,
+      "elapsedMs": 42,
       "error": ""
     },
     {
@@ -5592,17 +5500,17 @@
       "sourceName": "茅台资源｜追劇",
       "titleOk": true,
       "posterOk": true,
-      "playOk": true,
-      "qualityOk": true,
-      "qualityLabel": "1080p",
-      "maxHeight": 1080,
-      "maxBandwidth": 1831000,
-      "variants": 1,
-      "ok": true,
+      "playOk": false,
+      "qualityOk": false,
+      "qualityLabel": "",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": false,
       "status": 206,
-      "playStatus": 200,
-      "elapsedMs": 30,
-      "error": ""
+      "playStatus": 0,
+      "elapsedMs": 53,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "poster",
@@ -5622,7 +5530,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 26,
+      "elapsedMs": 47,
       "error": ""
     },
     {
@@ -5643,7 +5551,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 25,
+      "elapsedMs": 53,
       "error": ""
     },
     {
@@ -5664,7 +5572,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 29,
+      "elapsedMs": 36,
       "error": ""
     },
     {
@@ -5685,7 +5593,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 32,
+      "elapsedMs": 53,
       "error": ""
     },
     {
@@ -5706,7 +5614,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 32,
+      "elapsedMs": 36,
       "error": ""
     },
     {
@@ -5727,7 +5635,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 53,
       "error": "play manifest HTTP 403"
     },
     {
@@ -5748,7 +5656,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 27,
+      "elapsedMs": 42,
       "error": ""
     },
     {
@@ -5769,7 +5677,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 29,
+      "elapsedMs": 51,
       "error": ""
     },
     {
@@ -5790,7 +5698,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 277,
+      "elapsedMs": 163,
       "error": ""
     },
     {
@@ -5811,7 +5719,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 270,
+      "elapsedMs": 131,
       "error": ""
     },
     {
@@ -5832,7 +5740,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 249,
+      "elapsedMs": 146,
       "error": ""
     },
     {
@@ -5853,7 +5761,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 250,
+      "elapsedMs": 137,
       "error": ""
     },
     {
@@ -5874,7 +5782,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 239,
+      "elapsedMs": 131,
       "error": ""
     },
     {
@@ -5895,7 +5803,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 229,
+      "elapsedMs": 131,
       "error": ""
     },
     {
@@ -5916,7 +5824,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 232,
+      "elapsedMs": 131,
       "error": ""
     },
     {
@@ -5937,7 +5845,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 207,
+      "elapsedMs": 130,
       "error": ""
     },
     {
@@ -5958,7 +5866,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 160,
+      "elapsedMs": 137,
       "error": ""
     },
     {
@@ -5979,7 +5887,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 146,
+      "elapsedMs": 46,
       "error": ""
     },
     {
@@ -6000,7 +5908,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 149,
+      "elapsedMs": 48,
       "error": ""
     },
     {
@@ -6021,7 +5929,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 148,
+      "elapsedMs": 46,
       "error": ""
     },
     {
@@ -6042,7 +5950,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 145,
+      "elapsedMs": 44,
       "error": ""
     },
     {
@@ -6063,7 +5971,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 55,
       "error": ""
     },
     {
@@ -6084,7 +5992,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 46,
       "error": ""
     },
     {
@@ -6105,7 +6013,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 43,
       "error": ""
     },
     {
@@ -6126,7 +6034,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 46,
       "error": ""
     },
     {
@@ -6147,7 +6055,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 60,
+      "elapsedMs": 49,
       "error": ""
     },
     {
@@ -6168,7 +6076,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 46,
       "error": ""
     },
     {
@@ -6189,7 +6097,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 44,
       "error": ""
     },
     {
@@ -6210,7 +6118,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -6231,7 +6139,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 163,
+      "elapsedMs": 174,
       "error": ""
     },
     {
@@ -6252,7 +6160,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 158,
+      "elapsedMs": 148,
       "error": ""
     },
     {
@@ -6273,7 +6181,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 156,
+      "elapsedMs": 148,
       "error": ""
     },
     {
@@ -6294,7 +6202,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 166,
+      "elapsedMs": 155,
       "error": ""
     },
     {
@@ -6315,7 +6223,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 159,
+      "elapsedMs": 144,
       "error": ""
     },
     {
@@ -6336,7 +6244,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 159,
+      "elapsedMs": 135,
       "error": ""
     },
     {
@@ -6357,7 +6265,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 161,
+      "elapsedMs": 136,
       "error": ""
     },
     {
@@ -6378,7 +6286,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 159,
+      "elapsedMs": 134,
       "error": ""
     },
     {
@@ -6399,7 +6307,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 156,
+      "elapsedMs": 145,
       "error": ""
     },
     {
@@ -6420,7 +6328,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 156,
+      "elapsedMs": 130,
       "error": ""
     },
     {
@@ -6441,7 +6349,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 154,
+      "elapsedMs": 138,
       "error": ""
     },
     {
@@ -6462,7 +6370,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 155,
+      "elapsedMs": 132,
       "error": ""
     },
     {
@@ -6483,7 +6391,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 153,
+      "elapsedMs": 50,
       "error": ""
     },
     {
@@ -6504,7 +6412,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 156,
+      "elapsedMs": 43,
       "error": ""
     },
     {
@@ -6525,7 +6433,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 147,
+      "elapsedMs": 43,
       "error": ""
     },
     {
@@ -6546,7 +6454,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 151,
+      "elapsedMs": 46,
       "error": ""
     },
     {
@@ -6567,7 +6475,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 152,
+      "elapsedMs": 44,
       "error": ""
     },
     {
@@ -6588,7 +6496,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 146,
+      "elapsedMs": 51,
       "error": ""
     },
     {
@@ -6609,7 +6517,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 53,
       "error": ""
     },
     {
@@ -6630,7 +6538,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -6651,7 +6559,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 54,
       "error": ""
     },
     {
@@ -6672,7 +6580,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 45,
       "error": ""
     },
     {
@@ -6693,7 +6601,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -6714,7 +6622,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -6735,7 +6643,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -6756,7 +6664,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -6777,7 +6685,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 54,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -6798,7 +6706,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -6819,7 +6727,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -6840,7 +6748,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -6861,7 +6769,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 62,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -6882,7 +6790,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -6903,7 +6811,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 60,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -6924,7 +6832,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 54,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -6945,7 +6853,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 55,
+      "elapsedMs": 49,
       "error": ""
     },
     {
@@ -6966,7 +6874,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 59,
+      "elapsedMs": 53,
       "error": "play quality probe failed"
     },
     {
@@ -6987,7 +6895,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 59,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -7008,7 +6916,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -7029,7 +6937,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -7050,7 +6958,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 169,
+      "elapsedMs": 164,
       "error": "play quality probe failed"
     },
     {
@@ -7071,7 +6979,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 58,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -7092,7 +7000,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 55,
       "error": ""
     },
     {
@@ -7113,7 +7021,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 56,
       "error": ""
     },
     {
@@ -7134,7 +7042,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 54,
+      "elapsedMs": 50,
       "error": ""
     },
     {
@@ -7155,7 +7063,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -7176,7 +7084,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -7197,7 +7105,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -7218,7 +7126,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 44,
       "error": ""
     },
     {
@@ -7239,7 +7147,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 50,
       "error": ""
     },
     {
@@ -7260,7 +7168,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 209,
+      "elapsedMs": 47,
       "error": ""
     },
     {
@@ -7281,7 +7189,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 1234,
+      "elapsedMs": 43,
       "error": ""
     },
     {
@@ -7302,7 +7210,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 211,
+      "elapsedMs": 51,
       "error": ""
     },
     {
@@ -7323,7 +7231,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 210,
+      "elapsedMs": 46,
       "error": ""
     },
     {
@@ -7344,7 +7252,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 205,
+      "elapsedMs": 58,
       "error": ""
     },
     {
@@ -7365,7 +7273,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 201,
+      "elapsedMs": 49,
       "error": ""
     },
     {
@@ -7386,7 +7294,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 202,
+      "elapsedMs": 50,
       "error": ""
     },
     {
@@ -7407,7 +7315,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 206,
+      "elapsedMs": 45,
       "error": ""
     },
     {
@@ -7428,7 +7336,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 204,
+      "elapsedMs": 51,
       "error": ""
     },
     {
@@ -7449,7 +7357,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 211,
+      "elapsedMs": 52,
       "error": ""
     },
     {
@@ -7470,7 +7378,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 201,
+      "elapsedMs": 48,
       "error": ""
     },
     {
@@ -7491,7 +7399,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 205,
+      "elapsedMs": 48,
       "error": ""
     },
     {
@@ -7512,7 +7420,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 201,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -7533,7 +7441,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 205,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -7554,7 +7462,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 216,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -7575,7 +7483,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 209,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -7596,7 +7504,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 206,
+      "elapsedMs": 52,
       "error": "play quality probe failed"
     },
     {
@@ -7617,7 +7525,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 205,
+      "elapsedMs": 53,
       "error": "play quality probe failed"
     },
     {
@@ -7638,7 +7546,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 220,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -7659,7 +7567,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 209,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -7680,7 +7588,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 47,
       "error": ""
     },
     {
@@ -7701,7 +7609,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 43,
       "error": ""
     },
     {
@@ -7764,7 +7672,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 44,
       "error": ""
     },
     {
@@ -7785,7 +7693,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -7806,7 +7714,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 46,
       "error": ""
     },
     {
@@ -7827,7 +7735,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 48,
       "error": ""
     },
     {
@@ -7848,7 +7756,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -7869,7 +7777,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 44,
       "error": ""
     },
     {
@@ -7890,7 +7798,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": ""
     },
     {
@@ -7911,7 +7819,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 45,
       "error": ""
     },
     {
@@ -7932,7 +7840,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 62,
+      "elapsedMs": 55,
       "error": "play quality probe failed"
     },
     {
@@ -7953,7 +7861,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -7974,7 +7882,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 60,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -7995,7 +7903,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 45,
       "error": ""
     },
     {
@@ -8016,7 +7924,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -8037,7 +7945,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -8058,7 +7966,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -8079,7 +7987,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -8121,7 +8029,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 55,
       "error": "play quality probe failed"
     },
     {
@@ -8142,7 +8050,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -8163,7 +8071,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -8184,7 +8092,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -8205,7 +8113,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -8247,7 +8155,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -8268,7 +8176,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -8289,7 +8197,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 56,
       "error": "play quality probe failed"
     },
     {
@@ -8310,7 +8218,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 62,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -8331,7 +8239,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 44,
       "error": "play quality probe failed"
     },
     {
@@ -8352,7 +8260,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 56,
       "error": "play quality probe failed"
     },
     {
@@ -8373,7 +8281,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -8394,7 +8302,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -8415,7 +8323,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 51,
       "error": "play quality probe failed"
     },
     {
@@ -8457,7 +8365,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 43,
       "error": "play quality probe failed"
     },
     {
@@ -8478,7 +8386,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 45,
       "error": "play quality probe failed"
     },
     {
@@ -8499,7 +8407,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 53,
       "error": "play quality probe failed"
     },
     {
@@ -8520,7 +8428,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 47,
       "error": "play quality probe failed"
     },
     {
@@ -8541,7 +8449,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -8562,7 +8470,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -8583,7 +8491,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 63,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -8604,7 +8512,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -8625,7 +8533,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 46,
       "error": "play quality probe failed"
     },
     {
@@ -8646,7 +8554,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 48,
       "error": "play quality probe failed"
     },
     {
@@ -8667,7 +8575,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 50,
       "error": "play quality probe failed"
     },
     {
@@ -8688,7 +8596,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 404,
-      "elapsedMs": 52,
+      "elapsedMs": 48,
       "error": "play manifest HTTP 404"
     },
     {
@@ -8709,7 +8617,7 @@
       "ok": false,
       "status": 206,
       "playStatus": 404,
-      "elapsedMs": 51,
+      "elapsedMs": 52,
       "error": "play manifest HTTP 404"
     },
     {
@@ -8730,7 +8638,7 @@
       "ok": true,
       "status": 206,
       "playStatus": 200,
-      "elapsedMs": 295,
+      "elapsedMs": 373,
       "error": ""
     },
     {
@@ -8751,7 +8659,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8772,7 +8680,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8793,7 +8701,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8814,7 +8722,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8835,7 +8743,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8856,7 +8764,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8877,7 +8785,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8007,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8898,7 +8806,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8919,7 +8827,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 7999,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8961,7 +8869,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8009,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -8982,7 +8890,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9003,7 +8911,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9045,7 +8953,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9087,7 +8995,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8009,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9108,7 +9016,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8014,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9171,7 +9079,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8013,
+      "elapsedMs": 8010,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9192,7 +9100,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9234,7 +9142,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8013,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9255,7 +9163,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9276,7 +9184,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8009,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9297,7 +9205,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9318,7 +9226,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9339,7 +9247,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8012,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9360,7 +9268,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9381,7 +9289,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9402,7 +9310,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8012,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9423,7 +9331,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8016,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9444,7 +9352,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9465,7 +9373,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9507,7 +9415,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9549,7 +9457,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8009,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9570,7 +9478,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9591,7 +9499,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8013,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9612,7 +9520,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9633,7 +9541,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9654,7 +9562,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9696,7 +9604,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8013,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9717,7 +9625,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9738,7 +9646,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8014,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9759,7 +9667,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9780,7 +9688,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9801,7 +9709,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8015,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9822,7 +9730,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9843,7 +9751,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8002,
+      "elapsedMs": 8008,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9864,7 +9772,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8015,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9906,7 +9814,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8010,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9927,7 +9835,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8011,
+      "elapsedMs": 8004,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9969,7 +9877,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8012,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -9990,7 +9898,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8003,
+      "elapsedMs": 8005,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -10011,7 +9919,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -10032,7 +9940,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8008,
+      "elapsedMs": 8001,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -10053,7 +9961,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8006,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -10074,7 +9982,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -10095,7 +10003,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8005,
+      "elapsedMs": 8000,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -10116,7 +10024,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8007,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -10137,7 +10045,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8004,
+      "elapsedMs": 8003,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -10158,7 +10066,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8001,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -10179,7 +10087,7 @@
       "ok": false,
       "status": 0,
       "playStatus": 200,
-      "elapsedMs": 8000,
+      "elapsedMs": 8002,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -10196,7 +10104,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 116,
+      "elapsedMs": 128,
       "error": "manifest HTTP 403"
     },
     {
@@ -10213,7 +10121,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 119,
+      "elapsedMs": 118,
       "error": "manifest HTTP 403"
     },
     {
@@ -10230,7 +10138,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 115,
+      "elapsedMs": 112,
       "error": "manifest HTTP 403"
     },
     {
@@ -10247,7 +10155,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 123,
+      "elapsedMs": 107,
       "error": "manifest HTTP 403"
     },
     {
@@ -10264,7 +10172,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 127,
+      "elapsedMs": 119,
       "error": "manifest HTTP 403"
     },
     {
@@ -10298,7 +10206,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 116,
+      "elapsedMs": 106,
       "error": "manifest HTTP 403"
     },
     {
@@ -10315,7 +10223,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 118,
+      "elapsedMs": 115,
       "error": "manifest HTTP 403"
     },
     {
@@ -10332,7 +10240,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 85,
+      "elapsedMs": 126,
       "error": "manifest HTTP 403"
     },
     {
@@ -10349,7 +10257,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 115,
+      "elapsedMs": 108,
       "error": "manifest HTTP 403"
     },
     {
@@ -10366,7 +10274,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 121,
+      "elapsedMs": 100,
       "error": "manifest HTTP 403"
     },
     {
@@ -10383,7 +10291,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 123,
+      "elapsedMs": 117,
       "error": "manifest HTTP 403"
     },
     {
@@ -10400,7 +10308,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 82,
+      "elapsedMs": 80,
       "error": "manifest HTTP 403"
     },
     {
@@ -10417,7 +10325,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -10434,7 +10342,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -10451,7 +10359,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -10468,7 +10376,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -10485,7 +10393,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -10502,7 +10410,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 27,
       "error": "manifest HTTP 403"
     },
     {
@@ -10519,7 +10427,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 28,
       "error": "manifest HTTP 403"
     },
     {
@@ -10536,7 +10444,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 27,
       "error": "manifest HTTP 403"
     },
     {
@@ -10553,7 +10461,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 17,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -10570,7 +10478,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 30,
       "error": "manifest HTTP 403"
     },
     {
@@ -10587,7 +10495,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -10604,7 +10512,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 17,
+      "elapsedMs": 30,
       "error": "manifest HTTP 403"
     },
     {
@@ -10621,7 +10529,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -10638,7 +10546,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 26,
       "error": "manifest HTTP 403"
     },
     {
@@ -10655,7 +10563,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 27,
       "error": "manifest HTTP 403"
     },
     {
@@ -10672,7 +10580,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -10689,7 +10597,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 28,
       "error": "manifest HTTP 403"
     },
     {
@@ -10706,7 +10614,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 17,
+      "elapsedMs": 27,
       "error": "manifest HTTP 403"
     },
     {
@@ -10723,7 +10631,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 17,
+      "elapsedMs": 30,
       "error": "manifest HTTP 403"
     },
     {
@@ -10740,7 +10648,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 30,
       "error": "manifest HTTP 403"
     },
     {
@@ -10757,7 +10665,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 31,
       "error": "manifest HTTP 403"
     },
     {
@@ -10774,7 +10682,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 28,
       "error": "manifest HTTP 403"
     },
     {
@@ -10791,7 +10699,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -10808,7 +10716,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 30,
       "error": "manifest HTTP 403"
     },
     {
@@ -10825,7 +10733,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 82,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -10842,7 +10750,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 17,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -10859,7 +10767,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -10876,7 +10784,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 42,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -10893,7 +10801,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 26,
       "error": "manifest HTTP 403"
     },
     {
@@ -10910,7 +10818,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 28,
       "error": "manifest HTTP 403"
     },
     {
@@ -10927,7 +10835,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -10944,7 +10852,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -10961,7 +10869,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -10978,7 +10886,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 84,
       "error": "manifest HTTP 403"
     },
     {
@@ -10995,7 +10903,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 30,
       "error": "manifest HTTP 403"
     },
     {
@@ -11012,7 +10920,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 26,
       "error": "manifest HTTP 403"
     },
     {
@@ -11029,7 +10937,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -11046,7 +10954,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 20,
+      "elapsedMs": 32,
       "error": "manifest HTTP 403"
     },
     {
@@ -11063,7 +10971,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 26,
       "error": "manifest HTTP 403"
     },
     {
@@ -11080,7 +10988,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 27,
       "error": "manifest HTTP 403"
     },
     {
@@ -11097,7 +11005,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -11114,7 +11022,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 27,
       "error": "manifest HTTP 403"
     },
     {
@@ -11131,7 +11039,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 17,
+      "elapsedMs": 27,
       "error": "manifest HTTP 403"
     },
     {
@@ -11148,7 +11056,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -11165,7 +11073,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 17,
+      "elapsedMs": 27,
       "error": "manifest HTTP 403"
     }
   ]
