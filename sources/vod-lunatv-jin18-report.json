@@ -1,5 +1,5 @@
 {
-    "generatedAt":  "2026-07-18 19:57:21 +00:00",
+    "generatedAt":  "2026-07-19 00:16:57 +00:00",
     "sourceName":  "jin18",
     "sourceUrl":  "https://raw.githubusercontent.com/hafrey1/LunaTV-config/refs/heads/main/jin18.json",
     "compareVodUrl":  "https://raw.githubusercontent.com/SYLONG7708/TV/refs/heads/main/sources/TVBOX",
@@ -11,12 +11,12 @@
     "output":  "D:/a/TV/TV/sources/vod-lunatv-jin18-oktv.json",
     "analysisOutput":  "D:/a/TV/TV/sources/vod-lunatv-jin18-analysis.csv",
     "totalSources":  27,
-    "includedSources":  1,
-    "failedSources":  26,
+    "includedSources":  2,
+    "failedSources":  25,
     "duplicateSources":  23,
-    "invalidSources":  4,
-    "searchOkSources":  23,
-    "searchPlayableSources":  20,
+    "invalidSources":  3,
+    "searchOkSources":  24,
+    "searchPlayableSources":  22,
     "validationSkipped":  false,
     "duplicateCheckSkipped":  false,
     "redactedSampleNames":  true,
@@ -25,18 +25,18 @@
                        "key":  "lunatv_001_iqiyizyapi_com",
                        "name":  "Luna 01 爱奇艺-",
                        "api":  "https://iqiyizyapi.com/api.php/provide/vod",
-                       "included":  false,
+                       "included":  true,
                        "duplicate":  false,
                        "duplicateReason":  "",
-                       "listOk":  false,
-                       "detailOk":  false,
-                       "searchOk":  false,
-                       "searchHasPlayUrl":  false,
-                       "hasPlayUrl":  false,
-                       "sampleVodName":  "",
-                       "sampleVodId":  "",
-                       "searchSampleVodId":  "",
-                       "error":  "Exception calling \"GetResponse\" with \"0\" argument(s): \"The remote server returned an error: (500) Internal Server Error.\""
+                       "listOk":  true,
+                       "detailOk":  true,
+                       "searchOk":  true,
+                       "searchHasPlayUrl":  true,
+                       "hasPlayUrl":  true,
+                       "sampleVodName":  "[redacted]",
+                       "sampleVodId":  "81374",
+                       "searchSampleVodId":  "81374",
+                       "error":  ""
                    },
                    {
                        "key":  "lunatv_002_mtzy_me",
@@ -136,7 +136,7 @@
                        "searchHasPlayUrl":  true,
                        "hasPlayUrl":  true,
                        "sampleVodName":  "[redacted]",
-                       "sampleVodId":  "146780",
+                       "sampleVodId":  "146873",
                        "searchSampleVodId":  "103976",
                        "error":  "duplicate_api"
                    },
@@ -153,8 +153,8 @@
                        "searchHasPlayUrl":  true,
                        "hasPlayUrl":  true,
                        "sampleVodName":  "[redacted]",
-                       "sampleVodId":  "101763",
-                       "searchSampleVodId":  "101763",
+                       "sampleVodId":  "101779",
+                       "searchSampleVodId":  "101779",
                        "error":  "duplicate_api"
                    },
                    {
@@ -167,11 +167,11 @@
                        "listOk":  true,
                        "detailOk":  true,
                        "searchOk":  true,
-                       "searchHasPlayUrl":  false,
+                       "searchHasPlayUrl":  true,
                        "hasPlayUrl":  true,
                        "sampleVodName":  "[redacted]",
                        "sampleVodId":  "112267",
-                       "searchSampleVodId":  "",
+                       "searchSampleVodId":  "112267",
                        "error":  "duplicate_api"
                    },
                    {
@@ -221,7 +221,7 @@
                        "searchHasPlayUrl":  true,
                        "hasPlayUrl":  true,
                        "sampleVodName":  "[redacted]",
-                       "sampleVodId":  "151493",
+                       "sampleVodId":  "29777",
                        "searchSampleVodId":  "89269",
                        "error":  "duplicate_api"
                    },
@@ -255,8 +255,8 @@
                        "searchHasPlayUrl":  true,
                        "hasPlayUrl":  true,
                        "sampleVodName":  "[redacted]",
-                       "sampleVodId":  "166442",
-                       "searchSampleVodId":  "166442",
+                       "sampleVodId":  "165322",
+                       "searchSampleVodId":  "165322",
                        "error":  "duplicate_api"
                    },
                    {
@@ -476,8 +476,8 @@
                        "searchHasPlayUrl":  true,
                        "hasPlayUrl":  true,
                        "sampleVodName":  "[redacted]",
-                       "sampleVodId":  "198167",
-                       "searchSampleVodId":  "198167",
+                       "sampleVodId":  "196669",
+                       "searchSampleVodId":  "196669",
                        "error":  "duplicate_api"
                    }
                ]
