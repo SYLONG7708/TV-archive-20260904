@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-26T06:28:54.610Z",
+  "checkedAt": "2026-07-26T12:30:18.415Z",
   "inputs": {
     "catalogPath": "D:\\a\\TV\\TV\\docs\\data\\iphone-vod-catalog.json",
     "livePath": "D:\\a\\TV\\TV\\docs\\data\\live-channels.json"
@@ -7,16 +7,16 @@
   "summary": {
     "sources": {
       "total": 78,
-      "ok": 72,
-      "failed": 6
+      "ok": 71,
+      "failed": 7
     },
     "posters": {
-      "total": 70,
-      "ok": 70,
-      "titleOk": 70,
-      "posterOk": 70,
-      "playOk": 70,
-      "qualityOk": 70,
+      "total": 140,
+      "ok": 140,
+      "titleOk": 140,
+      "posterOk": 140,
+      "playOk": 140,
+      "qualityOk": 140,
       "failed": 0
     },
     "live": {
@@ -31,16 +31,16 @@
   "failed": [
     {
       "kind": "source",
-      "id": "all-on-demand-sources-小鸡资源-https-api-xiaojizy-live-provide-vod-46",
-      "name": "小鸡资源｜追劇",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55",
+      "name": "豆豆资源｜追劇",
       "type": 1,
-      "url": "https://api.xiaojizy.live/provide/vod/",
+      "url": "https://api.douapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
       "ok": false,
       "status": 0,
-      "elapsedMs": 8008,
-      "error": "The operation was aborted due to timeout"
+      "elapsedMs": 208,
+      "error": "fetch failed"
     },
     {
       "kind": "source",
@@ -52,8 +52,21 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 264,
+      "elapsedMs": 160,
       "error": "XML source did not return an XML list"
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-爱奇艺-https-iqiyizyapi-com-api-php-provide-vod-1",
+      "name": "爱奇艺｜追劇",
+      "type": 1,
+      "url": "https://iqiyizyapi.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": false,
+      "status": 500,
+      "elapsedMs": 672,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "source",
@@ -65,7 +78,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 54,
+      "elapsedMs": 36,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -78,7 +91,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 54,
+      "elapsedMs": 31,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -91,7 +104,7 @@
       "adult": true,
       "ok": false,
       "status": 0,
-      "elapsedMs": 8001,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -104,7 +117,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 81,
+      "elapsedMs": 41,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     }
   ],
@@ -119,7 +132,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 736,
+      "elapsedMs": 582,
       "error": ""
     },
     {
@@ -132,7 +145,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 198,
+      "elapsedMs": 160,
       "error": ""
     },
     {
@@ -145,7 +158,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1379,
+      "elapsedMs": 886,
       "error": ""
     },
     {
@@ -158,7 +171,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 964,
+      "elapsedMs": 927,
       "error": ""
     },
     {
@@ -171,7 +184,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 229,
+      "elapsedMs": 120,
       "error": ""
     },
     {
@@ -184,7 +197,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1178,
+      "elapsedMs": 930,
       "error": ""
     },
     {
@@ -197,7 +210,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 598,
+      "elapsedMs": 333,
       "error": ""
     },
     {
@@ -210,7 +223,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 773,
+      "elapsedMs": 484,
       "error": ""
     },
     {
@@ -223,7 +236,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 845,
+      "elapsedMs": 626,
       "error": ""
     },
     {
@@ -236,7 +249,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 635,
+      "elapsedMs": 122,
       "error": ""
     },
     {
@@ -249,7 +262,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 289,
+      "elapsedMs": 274,
       "error": ""
     },
     {
@@ -262,7 +275,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 130,
+      "elapsedMs": 153,
       "error": ""
     },
     {
@@ -275,7 +288,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 994,
+      "elapsedMs": 667,
       "error": ""
     },
     {
@@ -288,7 +301,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1177,
+      "elapsedMs": 445,
       "error": ""
     },
     {
@@ -301,7 +314,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 646,
+      "elapsedMs": 72,
       "error": ""
     },
     {
@@ -314,7 +327,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 69,
+      "elapsedMs": 35,
       "error": ""
     },
     {
@@ -327,7 +340,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 55,
+      "elapsedMs": 96,
       "error": ""
     },
     {
@@ -340,7 +353,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 153,
+      "elapsedMs": 4325,
       "error": ""
     },
     {
@@ -353,7 +366,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 842,
+      "elapsedMs": 797,
       "error": ""
     },
     {
@@ -366,7 +379,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 129,
+      "elapsedMs": 94,
       "error": ""
     },
     {
@@ -379,7 +392,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 184,
+      "elapsedMs": 1213,
       "error": ""
     },
     {
@@ -392,7 +405,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 230,
+      "elapsedMs": 207,
       "error": ""
     },
     {
@@ -405,7 +418,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1036,
+      "elapsedMs": 851,
       "error": ""
     },
     {
@@ -418,7 +431,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1204,
+      "elapsedMs": 736,
       "error": ""
     },
     {
@@ -431,7 +444,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 139,
+      "elapsedMs": 81,
       "error": ""
     },
     {
@@ -444,7 +457,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 215,
+      "elapsedMs": 136,
       "error": ""
     },
     {
@@ -457,7 +470,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 265,
+      "elapsedMs": 116,
       "error": ""
     },
     {
@@ -470,7 +483,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 628,
+      "elapsedMs": 1011,
       "error": ""
     },
     {
@@ -483,7 +496,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 166,
+      "elapsedMs": 177,
       "error": ""
     },
     {
@@ -496,7 +509,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 55,
+      "elapsedMs": 54,
       "error": ""
     },
     {
@@ -509,7 +522,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 285,
+      "elapsedMs": 164,
       "error": ""
     },
     {
@@ -522,7 +535,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 270,
+      "elapsedMs": 191,
       "error": ""
     },
     {
@@ -535,7 +548,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 248,
+      "elapsedMs": 274,
       "error": ""
     },
     {
@@ -548,7 +561,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 733,
+      "elapsedMs": 841,
       "error": ""
     },
     {
@@ -561,7 +574,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1023,
+      "elapsedMs": 897,
       "error": ""
     },
     {
@@ -574,7 +587,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 166,
+      "elapsedMs": 124,
       "error": ""
     },
     {
@@ -587,7 +600,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 565,
+      "elapsedMs": 402,
       "error": ""
     },
     {
@@ -600,7 +613,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 207,
+      "elapsedMs": 158,
       "error": ""
     },
     {
@@ -611,10 +624,10 @@
       "url": "https://api.xiaojizy.live/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8008,
-      "error": "The operation was aborted due to timeout"
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 115,
+      "error": ""
     },
     {
       "kind": "source",
@@ -626,7 +639,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 212,
+      "elapsedMs": 149,
       "error": ""
     },
     {
@@ -639,7 +652,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 293,
+      "elapsedMs": 247,
       "error": ""
     },
     {
@@ -652,7 +665,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 59,
+      "elapsedMs": 37,
       "error": ""
     },
     {
@@ -665,7 +678,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 337,
+      "elapsedMs": 156,
       "error": ""
     },
     {
@@ -678,7 +691,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1061,
+      "elapsedMs": 979,
       "error": ""
     },
     {
@@ -691,7 +704,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 264,
+      "elapsedMs": 230,
       "error": ""
     },
     {
@@ -702,10 +715,10 @@
       "url": "https://api.douapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 271,
-      "error": ""
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 208,
+      "error": "fetch failed"
     },
     {
       "kind": "source",
@@ -717,7 +730,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 212,
+      "elapsedMs": 222,
       "error": ""
     },
     {
@@ -730,7 +743,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 889,
+      "elapsedMs": 875,
       "error": ""
     },
     {
@@ -743,7 +756,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 233,
+      "elapsedMs": 95,
       "error": ""
     },
     {
@@ -756,7 +769,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 213,
+      "elapsedMs": 111,
       "error": ""
     },
     {
@@ -769,7 +782,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 216,
+      "elapsedMs": 144,
       "error": ""
     },
     {
@@ -782,7 +795,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 177,
+      "elapsedMs": 311,
       "error": ""
     },
     {
@@ -795,7 +808,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 297,
+      "elapsedMs": 122,
       "error": ""
     },
     {
@@ -808,7 +821,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 264,
+      "elapsedMs": 160,
       "error": "XML source did not return an XML list"
     },
     {
@@ -821,7 +834,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 847,
+      "elapsedMs": 832,
       "error": ""
     },
     {
@@ -834,7 +847,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1235,
+      "elapsedMs": 1145,
       "error": ""
     },
     {
@@ -847,7 +860,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 167,
+      "elapsedMs": 135,
       "error": ""
     },
     {
@@ -860,7 +873,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 173,
+      "elapsedMs": 129,
       "error": ""
     },
     {
@@ -873,7 +886,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 113,
+      "elapsedMs": 21,
       "error": ""
     },
     {
@@ -886,7 +899,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 201,
+      "elapsedMs": 256,
       "error": ""
     },
     {
@@ -899,7 +912,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1006,
+      "elapsedMs": 1008,
       "error": ""
     },
     {
@@ -912,7 +925,7 @@
       "adult": false,
       "ok": true,
       "status": 206,
-      "elapsedMs": 374,
+      "elapsedMs": 328,
       "error": ""
     },
     {
@@ -925,7 +938,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 683,
+      "elapsedMs": 408,
       "error": ""
     },
     {
@@ -938,7 +951,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 500,
+      "elapsedMs": 516,
       "error": ""
     },
     {
@@ -951,7 +964,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 328,
+      "elapsedMs": 135,
       "error": ""
     },
     {
@@ -964,7 +977,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 909,
+      "elapsedMs": 910,
       "error": ""
     },
     {
@@ -977,7 +990,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 659,
+      "elapsedMs": 166,
       "error": ""
     },
     {
@@ -990,7 +1003,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 270,
+      "elapsedMs": 209,
       "error": ""
     },
     {
@@ -1003,7 +1016,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 246,
+      "elapsedMs": 190,
       "error": ""
     },
     {
@@ -1014,10 +1027,10 @@
       "url": "https://iqiyizyapi.com/api.php/provide/vod/",
       "indexed": true,
       "adult": false,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 1311,
-      "error": ""
+      "ok": false,
+      "status": 500,
+      "elapsedMs": 672,
+      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "source",
@@ -1029,7 +1042,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 142,
+      "elapsedMs": 108,
       "error": ""
     },
     {
@@ -1042,7 +1055,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 642,
+      "elapsedMs": 358,
       "error": ""
     },
     {
@@ -1055,7 +1068,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 386,
+      "elapsedMs": 697,
       "error": ""
     },
     {
@@ -1068,7 +1081,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 191,
+      "elapsedMs": 211,
       "error": ""
     },
     {
@@ -1081,7 +1094,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 54,
+      "elapsedMs": 36,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -1094,7 +1107,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 54,
+      "elapsedMs": 31,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -1107,7 +1120,7 @@
       "adult": true,
       "ok": false,
       "status": 0,
-      "elapsedMs": 8001,
+      "elapsedMs": 8006,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1120,7 +1133,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 81,
+      "elapsedMs": 41,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -1141,7 +1154,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 282,
+      "elapsedMs": 171,
       "error": ""
     },
     {
@@ -1162,7 +1175,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 289,
+      "elapsedMs": 185,
       "error": ""
     },
     {
@@ -1183,7 +1196,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 281,
+      "elapsedMs": 171,
       "error": ""
     },
     {
@@ -1204,7 +1217,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 271,
+      "elapsedMs": 162,
       "error": ""
     },
     {
@@ -1225,7 +1238,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 313,
+      "elapsedMs": 166,
       "error": ""
     },
     {
@@ -1246,7 +1259,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 273,
+      "elapsedMs": 193,
       "error": ""
     },
     {
@@ -1267,7 +1280,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 265,
+      "elapsedMs": 150,
       "error": ""
     },
     {
@@ -1288,7 +1301,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 267,
+      "elapsedMs": 165,
       "error": ""
     },
     {
@@ -1309,7 +1322,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 277,
+      "elapsedMs": 156,
       "error": ""
     },
     {
@@ -1330,7 +1343,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 289,
+      "elapsedMs": 171,
       "error": ""
     },
     {
@@ -1351,7 +1364,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 303,
+      "elapsedMs": 150,
       "error": ""
     },
     {
@@ -1372,7 +1385,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 260,
+      "elapsedMs": 154,
       "error": ""
     },
     {
@@ -1393,7 +1406,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 308,
+      "elapsedMs": 145,
       "error": ""
     },
     {
@@ -1414,7 +1427,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 307,
+      "elapsedMs": 161,
       "error": ""
     },
     {
@@ -1435,7 +1448,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 288,
+      "elapsedMs": 161,
       "error": ""
     },
     {
@@ -1456,7 +1469,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 288,
+      "elapsedMs": 160,
       "error": ""
     },
     {
@@ -1477,7 +1490,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 282,
+      "elapsedMs": 153,
       "error": ""
     },
     {
@@ -1498,7 +1511,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 303,
+      "elapsedMs": 154,
       "error": ""
     },
     {
@@ -1519,7 +1532,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 22,
       "error": ""
     },
     {
@@ -1540,7 +1553,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 26,
       "error": ""
     },
     {
@@ -1561,7 +1574,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 58,
+      "elapsedMs": 28,
       "error": ""
     },
     {
@@ -1582,7 +1595,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 55,
+      "elapsedMs": 21,
       "error": ""
     },
     {
@@ -1603,7 +1616,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 60,
+      "elapsedMs": 40,
       "error": ""
     },
     {
@@ -1624,7 +1637,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 37,
       "error": ""
     },
     {
@@ -1645,7 +1658,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 58,
+      "elapsedMs": 28,
       "error": ""
     },
     {
@@ -1666,7 +1679,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 71,
+      "elapsedMs": 24,
       "error": ""
     },
     {
@@ -1687,7 +1700,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 64,
+      "elapsedMs": 36,
       "error": ""
     },
     {
@@ -1708,7 +1721,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 63,
+      "elapsedMs": 30,
       "error": ""
     },
     {
@@ -1729,7 +1742,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 43,
       "error": ""
     },
     {
@@ -1750,7 +1763,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 30,
       "error": ""
     },
     {
@@ -1771,7 +1784,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 61,
+      "elapsedMs": 32,
       "error": ""
     },
     {
@@ -1792,7 +1805,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 76,
+      "elapsedMs": 28,
       "error": ""
     },
     {
@@ -1813,7 +1826,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 55,
+      "elapsedMs": 39,
       "error": ""
     },
     {
@@ -1834,7 +1847,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 55,
       "error": ""
     },
     {
@@ -1855,7 +1868,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 38,
       "error": ""
     },
     {
@@ -1876,7 +1889,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 55,
+      "elapsedMs": 23,
       "error": ""
     },
     {
@@ -1897,7 +1910,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 27,
       "error": ""
     },
     {
@@ -1918,7 +1931,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 30,
       "error": ""
     },
     {
@@ -1939,7 +1952,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 23,
       "error": ""
     },
     {
@@ -1960,7 +1973,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 32,
       "error": ""
     },
     {
@@ -1981,7 +1994,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 30,
       "error": ""
     },
     {
@@ -2002,7 +2015,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 29,
       "error": ""
     },
     {
@@ -2023,7 +2036,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 37,
       "error": ""
     },
     {
@@ -2044,7 +2057,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 51,
+      "elapsedMs": 28,
       "error": ""
     },
     {
@@ -2065,7 +2078,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 30,
       "error": ""
     },
     {
@@ -2086,7 +2099,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 33,
       "error": ""
     },
     {
@@ -2107,7 +2120,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 30,
       "error": ""
     },
     {
@@ -2128,7 +2141,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 34,
       "error": ""
     },
     {
@@ -2149,7 +2162,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 31,
       "error": ""
     },
     {
@@ -2170,7 +2183,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 55,
+      "elapsedMs": 36,
       "error": ""
     },
     {
@@ -2191,7 +2204,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 31,
       "error": ""
     },
     {
@@ -2212,7 +2225,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 35,
       "error": ""
     },
     {
@@ -2233,7 +2246,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 41,
       "error": ""
     },
     {
@@ -2254,7 +2267,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 54,
+      "elapsedMs": 40,
       "error": ""
     },
     {
@@ -2275,7 +2288,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 34,
       "error": ""
     },
     {
@@ -2296,7 +2309,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 48,
+      "elapsedMs": 30,
       "error": ""
     },
     {
@@ -2317,7 +2330,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 56,
+      "elapsedMs": 28,
       "error": ""
     },
     {
@@ -2338,7 +2351,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 22,
       "error": ""
     },
     {
@@ -2359,7 +2372,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 47,
+      "elapsedMs": 28,
       "error": ""
     },
     {
@@ -2380,7 +2393,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 54,
+      "elapsedMs": 24,
       "error": ""
     },
     {
@@ -2401,7 +2414,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 53,
+      "elapsedMs": 24,
       "error": ""
     },
     {
@@ -2422,7 +2435,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 31,
       "error": ""
     },
     {
@@ -2443,7 +2456,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 33,
       "error": ""
     },
     {
@@ -2464,7 +2477,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 29,
       "error": ""
     },
     {
@@ -2485,7 +2498,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 49,
+      "elapsedMs": 32,
       "error": ""
     },
     {
@@ -2506,7 +2519,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 30,
       "error": ""
     },
     {
@@ -2527,7 +2540,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 29,
       "error": ""
     },
     {
@@ -2548,7 +2561,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 52,
+      "elapsedMs": 27,
       "error": ""
     },
     {
@@ -2569,7 +2582,7 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 60,
+      "elapsedMs": 23,
       "error": ""
     },
     {
@@ -2590,7 +2603,1477 @@
       "ok": true,
       "status": 200,
       "playStatus": 200,
-      "elapsedMs": 50,
+      "elapsedMs": 25,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76930-1",
+      "name": "制服诱惑！极品无毛网红【艾米酱】cos性感小护士..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/25289_cover_2026-06-23_203118.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 24,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76920-1",
+      "name": "第一次觉得爆菊这么爽嫂子疼得撕心裂肺..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/21817_cover_2026-06-23_191808.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 25,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76919-1",
+      "name": "24人梦幻大乱交，S级素颜骚货女神全上阵任你挑！年度豪华大感谢，极品老师随便挑！..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/17814_cover_2026-06-23_191607.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 22,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76910-1",
+      "name": "居家乱伦性感的嫂嫂，大哥不在家玩了风骚的嫂子-精品力荐..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/10131_cover_2026-06-23_184732.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 25,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76903-1",
+      "name": "【爬山野外双飞】两个少妇忽悠小哥去爬山，地上铺上垫子开操..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/21133_cover_2026-06-23_175053.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 33,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76888-1",
+      "name": "【喷水女神】双指扣穴出水超多这种女人就欠操..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/16351_cover_2026-06-23_161407.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 27,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76881-1",
+      "name": "精选绿帽人妻肏逼正激烈时候老公电话查岗来了-猎奇吃瓜..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/25351_cover_2026-06-23_144753.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 24,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76870-1",
+      "name": "御姐豹纹内衣边拍边记录边内射-福利姬..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/14819_cover_2026-06-23_131707.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 29,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76867-1",
+      "name": "无套爆干大长腿白虎校花 极品炮架子-福利姬..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/19910_cover_2026-06-23_125804.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 29,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76861-1",
+      "name": "七彩女神粉嫩酱..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/98501_cover_2026-06-23_123530.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 29,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76854-1",
+      "name": "美少女穿着可爱内衣大声呻吟淫叫打炮-福利姬..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/55476_cover_2026-06-23_115854.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 30,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76834-1",
+      "name": "我要掰开了哦你还不进来吗 #自慰 #福利姬 #萝莉 #二次元!..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/39519_cover_2026-06-23_082619.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 29,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76827-1",
+      "name": "⑤绿帽学院-4层头套 3丝袜头套，玩过头了见红了..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/56583_cover_2026-06-23_074443.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 30,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76814-1",
+      "name": "文静乖巧金发妹妹！好久没播回归！大尺度自慰,脱光光多毛骚逼,翘起肥臀假屌后入,爆插小骚逼..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/48617_cover_2026-06-23_041142.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 22,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76811-1",
+      "name": "深圳网红-女神DJyAMMY耐不住寂寞，反差婊沉沦超大鸡巴找鸭子陪睡..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/42812_cover_2026-06-23_034710.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 25,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76786-1",
+      "name": "【校园约啪】纯欲天花板穷人女神富人精盆..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/65488_cover_2026-06-23_014952.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 22,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76785-1",
+      "name": "极品腾讯主播与有妇之夫被曝光!..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/90920_cover_2026-06-23_014422.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 20,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76782-1",
+      "name": "极品美乳自慰鉴赏..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/94504_cover_2026-06-23_013650.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 31,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76778-1",
+      "name": "贝贝女神太会了丝袜足交丝滑美脚手活齐发撸喷..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/54328_cover_2026-06-23_010616.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 20,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76768-1",
+      "name": "【反差萝莉】淫荡喵喵酱黑丝JK户外自慰 幻龙骑乘玩弄合集!..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e5_9b_bd_e4_ba_a7_e8_89_b2_e6_83_85/47928_cover_2026-06-23_001339.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 24,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74770-1",
+      "name": "FC2-PPV-4561465-あいり..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/04/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/87904_cover_2026-06-04_142038.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 32,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74749-1",
+      "name": "FC2-PPV-4468036-高梨藍..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/04/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/49459_cover_2026-06-04_073029.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 28,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74747-1",
+      "name": "FC2-PPV-3237031-あいり..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/04/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/12263_cover_2026-06-04_102210.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 35,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74709-1",
+      "name": "FC2PPV-2939404 長身スレンダーなつゆだく美人妻【個人】拒否をしながらも大量放2水..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/04/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/75693_cover_2026-06-04_053902.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 28,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74703-1",
+      "name": "FC2-PPV-1538953-えりか..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/04/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/74692_cover_2026-06-04_042717.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 30,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74689-1",
+      "name": "FC2精品无码PPV-2983515 【無修正】【2回射精】指名困難な六〇木の極上メンエス嬢2。..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/04/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/80136_cover_2026-06-04_015746.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 27,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74679-1",
+      "name": "FC2精品无码PPV-3017114 9日まで「#39-2」パン屋の看板娘、私服姿が可愛い。ついにできた生挿入..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/03/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/73765_cover_2026-06-03_222903.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 27,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74655-1",
+      "name": "FC2PPV-3038578 SNSで人気の美●女系JDと奇跡のハメ撮り成功。そして流出。..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/03/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/61268_cover_2026-06-03_140437.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 36,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74652-1",
+      "name": "FC2PPV-3037413 【完全顔出し】【天真爛漫娘の初中出し?】純粋無垢な不思議ちゃんをホテルに..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/03/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/21610_cover_2026-06-03_162341.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 30,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74593-1",
+      "name": "FC2PPV-3070077 【無修正】【3回射精】「ふふ?ちんちん硬くなってきたね?」年下クンを喰べ2ま..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/03/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/33291_cover_2026-06-03_044453.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 28,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74570-1",
+      "name": "FC2-PPV-4231665-1-えりか..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/03/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/21543_cover_2026-06-03_010335.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 25,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74569-1",
+      "name": "FC2精品无码PPV-3046602 処女消失作品。恐怖から快楽に変わっていく瞬間??2?..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/03/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/59187_cover_2026-06-03_003229.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 23,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74568-1",
+      "name": "FC2PPV-2875219 遊んでこなかった女子大１回生色白むっちり巨乳に美マンの持ち主にごっくん中出し！..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/03/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/13926_cover_2026-06-03_004501.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 24,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74526-1",
+      "name": "FC2精品无码PPV-2915778 初撮影！個数限定【無修正】爽やかなショートボブが可憐になび..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/02/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/51307_cover_2026-06-02_133604.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 30,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74519-1",
+      "name": "FC2-PPV-3519114-4-佐々波綾..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/02/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/49016_cover_2026-06-02_120648.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 22,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74505-1",
+      "name": "FC2精品无码PPV-2910803 【中出し?3P】縛られて置き去りにされた熟女妻 暫く逢わない間にす..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/02/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/91721_cover_2026-06-02_101756.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 37,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74493-1",
+      "name": "FC2PPV-3037413 【完全顔出し】【天真爛漫娘の初中出し?】純粋無垢な不思議ちゃんをホテル2に..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/02/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/64011_cover_2026-06-02_073048.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 26,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74455-1",
+      "name": "FC2-PPV-4559754-中田ゆめ..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/01/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/67595_cover_2026-06-01_230034.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 32,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74435-1",
+      "name": "FC2PPV-3040657 怒涛の180分！！ ショートカットの素朴な美女は、股間に大きなシミを作る変態女子2。..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/01/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/59217_cover_2026-06-01_160811.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 24,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74410-1",
+      "name": "FC2-PPV-4511602-中田ゆめ..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/01/e6_97_a5_e6_9c_ac_e6_97_a0_e7_a0_81/30328_cover_2026-06-01_150700.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 18,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76914-1",
+      "name": "超可爱的女友，乖巧听话 性爱技巧一级棒 萝莉 自拍..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/66498_cover_2026-06-23_185834.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 22,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76875-1",
+      "name": "顶级大尺《星期二是全裸上课日》自拍..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/75011_cover_2026-06-23_140344.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 25,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76873-1",
+      "name": "抖音二次元网红萝莉不雅自拍流出..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/27665_cover_2026-06-23_133640.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 28,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76863-1",
+      "name": "情侣自拍外泄【985JK黑丝学妹和男友淫乱】33 晚自习刚下就偷跑去酒店开荤，穿了男友最爱的JK和黑丝抱着美腿和脚就疯狂舔，跟吸了料子一样，学妹也..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/56329_cover_2026-06-23_124732.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 23,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76839-1",
+      "name": "真实人妻少妇出轨自拍合集-猎奇吃瓜..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/26871_cover_2026-06-23_085053.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 29,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76830-1",
+      "name": "情侣自拍外泄【985JK黑丝学妹和男友淫乱】13 晚自习刚下就偷跑去酒店开荤，穿了男友最爱的JK和黑丝抱着美腿和脚就疯狂舔，跟吸了料子一样，学妹也..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/80467_cover_2026-06-23_075515.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 26,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76816-1",
+      "name": "【云盘泄密】清纯萝莉大奶翘臀和男友啪啪真实自拍！..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/11212_cover_2026-06-23_045649.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 28,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76798-1",
+      "name": "【门事件】天津HM试衣间和黑吊男自拍流出，激情颜射..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/39046_cover_2026-06-23_024601.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 39,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76777-1",
+      "name": "短裤小妹刚开始很警惕呀！被偷拍了~『360影视』..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/39717_cover_2026-06-23_010446.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 41,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76775-1",
+      "name": "②寂寞反差骚货母狗自慰嫩逼高潮喷浆几十次自拍合集放送..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/23/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/42246_cover_2026-06-23_005916.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 36,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76756-1",
+      "name": "真实偷拍两对夫妻换妻全过程『360影视』..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/22/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/57888_cover_2026-06-22_222324.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 36,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76704-1",
+      "name": "正规按摩店忽悠175高个人妻开房偷情，酒店扒光爆操中途偷拍被发现翻车-猎奇吃瓜..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/22/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/12829_cover_2026-06-22_175946.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 31,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76700-1",
+      "name": "推荐信阳学院老师婚内出轨自己学生，性爱自拍视频外泄..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/22/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/84380_cover_2026-06-22_170509.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 23,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76682-1",
+      "name": "推荐情侣外泄极品校花和男友性爱自拍外流一顿狂操内射抠出来精液吃掉..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/22/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/43833_cover_2026-06-22_155127.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 26,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76626-1",
+      "name": "酒店无套肏帅奴自拍爆操肌肉奴..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/22/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/62412_cover_2026-06-22_092429.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 26,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76619-1",
+      "name": "吃瓜-主播-台湾主播芷涵8分钟偷拍洗澡片流出..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/22/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/95761_cover_2026-06-22_081545.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 31,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76578-1",
+      "name": "反差舞蹈学员，被套路自拍流出=泄密..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/22/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/40841_cover_2026-06-22_005728.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 29,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76557-1",
+      "name": "瓜友用华为手机偷拍邻居女孩看毛片自嗨！真TM清晰，以后干这事还是把窗帘拉上！这波偷拍真遥遥领先！..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/21/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/18541_cover_2026-06-21_210419.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 27,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76536-1",
+      "name": "最新私房婚礼现场闹洞房 偷拍流出趴趴视频 恶搞新娘伴娘 花样多玩的疯..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/21/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/43784_cover_2026-06-21_154058.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 30,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-76412-1",
+      "name": "寂寞反差骚货母狗自慰嫩逼高潮喷浆几十次自拍合集放送..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/21/e8_87_aa_e6_8b_8d_e5_81_b7_e6_8b_8d/43332_cover_2026-06-21_023622.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 30,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-75094-1",
+      "name": "【媚黑】上海纹身骚女被黑人操成了黑逼了都..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/06/e9_bb_91_e4_ba_ba_e6_b4_8b_e5_b1_8c/44887_cover_2026-06-06_094724.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 26,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-75014-1",
+      "name": "云南工商学院被三个黑人强奸官方辟谣否认..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/06/e9_bb_91_e4_ba_ba_e6_b4_8b_e5_b1_8c/48602_cover_2026-06-06_014125.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 34,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74976-1",
+      "name": "【媚黑】黑棒在按摩沙发上中出中国骚女..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/05/e9_bb_91_e4_ba_ba_e6_b4_8b_e5_b1_8c/33717_cover_2026-06-05_213940.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 30,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74973-1",
+      "name": "【媚黑】第一次约黑人小哥做单男把女友操到语无伦次..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/05/e9_bb_91_e4_ba_ba_e6_b4_8b_e5_b1_8c/48690_cover_2026-06-05_211539.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 25,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74881-1",
+      "name": "成都音乐学院大三媚黑母狗杨子晏，被黑鬼交换生猛操露脸视频流出..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/05/e9_bb_91_e4_ba_ba_e6_b4_8b_e5_b1_8c/98253_cover_2026-06-05_131209.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 28,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74860-1",
+      "name": "【绿帽淫妻】黑人的大肉棒完全承受不住，撑爆骚逼大声呐喊淫叫..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/05/e9_bb_91_e4_ba_ba_e6_b4_8b_e5_b1_8c/53184_cover_2026-06-05_115706.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 24,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74843-1",
+      "name": "娇嫩身躯被黑驴吊肆意抽插高潮翻白眼山东济南师范学院媚黑母狗邱敏不雅视频流出..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/05/e9_bb_91_e4_ba_ba_e6_b4_8b_e5_b1_8c/70435_cover_2026-06-05_094117.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 23,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74795-1",
+      "name": "漂亮的美女！ 在沙发被黑祖宗！被大肉棒无套输出..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/04/e9_bb_91_e4_ba_ba_e6_b4_8b_e5_b1_8c/81114_cover_2026-06-04_222205.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 22,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74777-1",
+      "name": "【绿帽淫妻】结婚纪念日的特殊礼物，奖励老婆一个大老黑..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/04/e9_bb_91_e4_ba_ba_e6_b4_8b_e5_b1_8c/20877_cover_2026-06-04_192555.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 21,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "current-vod-url-香蕉资源-https-www-xiangjiaozyw-com-api-php-provide-vod-55-74773-1",
+      "name": "【绿帽淫妻】绿帽男友陪女友找黑鬼采访女友被操感受-..-xj",
+      "type": "adult",
+      "url": "https://img.xxibaocdn.com/video/m3u8/2026/06/04/e9_bb_91_e4_ba_ba_e6_b4_8b_e5_b1_8c/65124_cover_2026-06-04_163440.jpg",
+      "sourceName": "香蕉资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "single",
+      "maxHeight": 0,
+      "maxBandwidth": 0,
+      "variants": 0,
+      "ok": true,
+      "status": 200,
+      "playStatus": 200,
+      "elapsedMs": 25,
       "error": ""
     },
     {
@@ -2607,7 +4090,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 80,
+      "elapsedMs": 151,
       "error": "manifest HTTP 403"
     },
     {
@@ -2624,7 +4107,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 85,
+      "elapsedMs": 148,
       "error": "manifest HTTP 403"
     },
     {
@@ -2641,7 +4124,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 87,
+      "elapsedMs": 152,
       "error": "manifest HTTP 403"
     },
     {
@@ -2658,7 +4141,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 92,
+      "elapsedMs": 150,
       "error": "manifest HTTP 403"
     },
     {
@@ -2675,7 +4158,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 75,
+      "elapsedMs": 154,
       "error": "manifest HTTP 403"
     },
     {
@@ -2692,7 +4175,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 51,
+      "elapsedMs": 156,
       "error": "manifest HTTP 403"
     },
     {
@@ -2709,7 +4192,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 84,
+      "elapsedMs": 160,
       "error": "manifest HTTP 403"
     },
     {
@@ -2726,7 +4209,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 86,
+      "elapsedMs": 150,
       "error": "manifest HTTP 403"
     },
     {
@@ -2743,7 +4226,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 88,
+      "elapsedMs": 155,
       "error": "manifest HTTP 403"
     },
     {
@@ -2760,7 +4243,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 82,
+      "elapsedMs": 162,
       "error": "manifest HTTP 403"
     },
     {
@@ -2777,7 +4260,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 78,
+      "elapsedMs": 155,
       "error": "manifest HTTP 403"
     },
     {
@@ -2794,7 +4277,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 95,
+      "elapsedMs": 160,
       "error": "manifest HTTP 403"
     },
     {
@@ -2811,7 +4294,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 66,
+      "elapsedMs": 127,
       "error": "manifest HTTP 403"
     },
     {
@@ -2828,7 +4311,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -2845,7 +4328,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 13,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -2862,7 +4345,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -2879,7 +4362,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -2896,7 +4379,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -2913,7 +4396,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -2930,7 +4413,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 18,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -2947,7 +4430,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -2964,7 +4447,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -2981,7 +4464,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -2998,7 +4481,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 26,
       "error": "manifest HTTP 403"
     },
     {
@@ -3015,7 +4498,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -3032,7 +4515,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -3049,7 +4532,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 12,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -3066,7 +4549,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 13,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -3083,7 +4566,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -3100,7 +4583,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 17,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -3117,7 +4600,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 17,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -3134,7 +4617,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -3151,7 +4634,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -3168,7 +4651,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -3185,7 +4668,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -3202,7 +4685,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -3219,7 +4702,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 145,
       "error": "manifest HTTP 403"
     },
     {
@@ -3236,7 +4719,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 18,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -3253,7 +4736,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 13,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -3270,7 +4753,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -3287,7 +4770,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 13,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -3304,7 +4787,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -3321,7 +4804,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -3338,7 +4821,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -3355,7 +4838,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -3372,7 +4855,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -3389,7 +4872,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -3406,7 +4889,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -3423,7 +4906,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -3440,7 +4923,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -3457,7 +4940,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 13,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -3474,7 +4957,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -3491,7 +4974,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -3508,7 +4991,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -3525,7 +5008,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 11,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -3542,7 +5025,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 17,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -3559,7 +5042,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -3576,7 +5059,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 26,
       "error": "manifest HTTP 403"
     }
   ]
