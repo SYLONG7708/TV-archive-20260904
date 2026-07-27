@@ -187,6 +187,7 @@ function Sync-GhPages {
 
         New-Item -ItemType Directory -Force -Path (Join-Path $pagesRootText "docs") | Out-Null
         New-Item -ItemType Directory -Force -Path (Join-Path $pagesRootText "docs\data") | Out-Null
+        Copy-Item -LiteralPath (Join-Path $repoRootText ".gitattributes") -Destination (Join-Path $pagesRootText ".gitattributes") -Force
         Copy-Item -LiteralPath (Join-Path $repoRootText "docs\iphone") -Destination (Join-Path $pagesRootText "docs") -Recurse -Force
         Copy-Item -LiteralPath (Join-Path $repoRootText "docs\assets") -Destination (Join-Path $pagesRootText "docs") -Recurse -Force
         Get-ChildItem -LiteralPath (Join-Path $repoRootText "docs\data") -File | Where-Object {
@@ -212,6 +213,21 @@ function Sync-GhPages {
             --reportOutput (Join-Path $pagesRootText "docs\data\iphone-vod-catalog-report.json") `
             --preservePreviousPublicSources true
 
+        $queryManifest = Join-Path $pagesRootText "docs\data\vod-query\manifest.json"
+        $queryMergeScript = Join-Path $repoRootText "tools\merge-iphone-query-shards.mjs"
+        if ((Test-Path -LiteralPath $queryManifest) -and (Test-Path -LiteralPath $queryMergeScript)) {
+            Write-Log "Merging the latest iPhone catalog into the mobile-safe query shards."
+            & node $queryMergeScript `
+                --repoRoot $repoRootText `
+                --catalog (Join-Path $repoRootText "docs\data\iphone-vod-catalog.json") `
+                --latest (Join-Path $repoRootText "docs\data\iphone-vod-latest.json") `
+                --outputRoot (Join-Path $pagesRootText "docs\data\vod-query") `
+                --iphoneHtml (Join-Path $repoRootText "docs\iphone\index.html")
+            if ($LASTEXITCODE -ne 0) { throw "Query shard merge failed with exit code $LASTEXITCODE." }
+        } else {
+            Write-Log "Query shard manifest is not available yet; keeping the current public search fallback."
+        }
+
         Get-ChildItem -LiteralPath (Join-Path $repoRootText "docs\data") -File | ForEach-Object {
             Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $pagesRootText "docs\data") -Force
         }
@@ -223,7 +239,7 @@ function Sync-GhPages {
             Write-Log "Skipping full vod-detail/vod-index copy for lean gh-pages publish."
         }
 
-        Invoke-PagesGit add "docs/iphone" "docs/data" "docs/assets"
+        Invoke-PagesGit add ".gitattributes" "docs/iphone" "docs/data" "docs/assets"
         if (Invoke-PagesGit diff --cached --quiet) {
             Write-Log "No gh-pages public file changes to commit."
         } else {
