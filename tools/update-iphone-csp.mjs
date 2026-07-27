@@ -45,7 +45,6 @@ export function buildPolicy(html) {
     "object-src 'none'",
     "base-uri 'none'",
     "form-action 'none'",
-    'upgrade-insecure-requests',
   ].join('; ');
 }
 

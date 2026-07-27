@@ -26,6 +26,7 @@ jobs:
           fetch-depth: 1
           sparse-checkout-cone-mode: false
           sparse-checkout: |
+            .gitattributes
             .github/workflows/update-lunatv-vod.yml
             docs/assets/*
             docs/iphone/*
@@ -337,10 +338,12 @@ jobs:
           $pages = Join-Path $env:RUNNER_TEMP "gh-pages"
           git worktree add --no-checkout $pages origin/gh-pages
           @(
+            "/.gitattributes",
             "/docs/iphone/*",
             "/docs/assets/*",
             "/docs/data/*.json",
-            "/docs/data/*.csv"
+            "/docs/data/*.csv",
+            "/docs/data/vod-query/**"
           ) | git -C $pages sparse-checkout set --no-cone --stdin
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           git -C $pages checkout
@@ -348,6 +351,7 @@ jobs:
           git -C $pages config core.eol lf
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs") | Out-Null
           New-Item -ItemType Directory -Force -Path (Join-Path $pages "docs\data") | Out-Null
+          Copy-Item -LiteralPath .\.gitattributes -Destination (Join-Path $pages ".gitattributes") -Force
           Write-Host "Preserving existing public vod-detail/vod-index data; this run only adds or refreshes changed data."
           Copy-Item -Path .\docs\iphone -Destination (Join-Path $pages "docs") -Recurse -Force
           Copy-Item -Path .\docs\assets -Destination (Join-Path $pages "docs") -Recurse -Force
@@ -369,13 +373,28 @@ jobs:
             --minSourceIndexRetention 0.90 `
             --minCatalogRetention 0.95 `
             --minExpectedItems 1000000
+          $queryManifest = Join-Path $pages "docs\data\vod-query\manifest.json"
+          if (Test-Path -LiteralPath $queryManifest) {
+            node .\tools\merge-iphone-query-shards.mjs `
+              --repoRoot . `
+              --catalog .\docs\data\iphone-vod-catalog.json `
+              --latest .\docs\data\iphone-vod-latest.json `
+              --outputRoot (Join-Path $pages "docs\data\vod-query") `
+              --iphoneHtml .\docs\iphone\index.html
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          } else {
+            Write-Warning "Query shard manifest is missing on gh-pages; preserving the existing public search fallback."
+          }
           Push-Location $pages
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config http.postBuffer 524288000
           git config http.version HTTP/1.1
-          git add docs/iphone docs/assets
+          git add .gitattributes docs/iphone docs/assets
           git add docs/data/*.json docs/data/*.csv
+          if (Test-Path -LiteralPath "docs\data\vod-query") {
+            git add docs/data/vod-query
+          }
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           git diff --cached --quiet
           $diffExit = $LASTEXITCODE

@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" data-oktv-csp content="default-src 'self'; script-src 'self' 'sha256-pQEoW+8Gv0BB55lKc0CBRqvVlDes+T7tvdT4KZ99i4g=' https://cdn.jsdelivr.net; style-src 'self' 'sha256-MEMAvoMoAgGfiM9lKnNXOGh3jyFdjZ2UH9i0QvOOW/M='; img-src 'self' data: https:; media-src 'self' blob: https:; connect-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; worker-src 'self' blob:; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" data-oktv-csp content="default-src 'self'; script-src 'self' 'sha256-pNKY7Tjx3kGzWRtmG4+f7vxGFHM5+cMwAjalxRtSk44=' https://cdn.jsdelivr.net; style-src 'self' 'sha256-QQRLlOM+9gQ2cglCRVQSliJzrpZn8LY/VDaKm72OKVY='; img-src 'self' data: https:; media-src 'self' blob: https:; connect-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; worker-src 'self' blob:; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -747,12 +747,23 @@
 
       .signal-strip {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         gap: 8px;
         margin: 10px 0 12px;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        padding: 1px 0 4px;
+        scroll-snap-type: inline proximity;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .signal-strip::-webkit-scrollbar {
+        display: none;
       }
 
       .signal-chip {
+        flex: 0 0 auto;
         min-height: 34px;
         border: 1px solid rgba(50, 214, 231, 0.35);
         border-radius: 8px;
@@ -763,6 +774,8 @@
         align-items: center;
         gap: 6px;
         cursor: pointer;
+        scroll-snap-align: start;
+        white-space: nowrap;
       }
 
       .signal-chip.is-active {
@@ -988,7 +1001,7 @@
           <button class="icon-btn" type="button" data-close-player aria-label="關閉"></button>
         </div>
         <video id="player" controls playsinline preload="metadata" poster="../assets/hero-cinema.png"></video>
-        <iframe id="playerFrame" class="player-frame hidden" title="直播播放器" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <iframe id="playerFrame" class="player-frame hidden" title="直播播放器" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" sandbox="allow-scripts allow-same-origin allow-popups" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </section>
     </div>
 
@@ -1005,11 +1018,12 @@
       ];
       const SOURCE_ICON = '../assets/source-signal-icon.svg';
       const ADULT_ICON = '../assets/adult-18-badge.svg';
-      const ONLINE_DATA_BASE = 'https://raw.githubusercontent.com/SYLONG7708/TV/main/docs/data/';
+      const ONLINE_DATA_BASE = 'https://sylong7708.github.io/TV/docs/data/';
       const SOURCE_STORAGE_KEY = 'oktv:iphone:selectedSource:v3';
       const DEFAULT_SOURCE_RE = /爱奇艺|愛奇藝/i;
       const QUANTUM_MANIFEST_URL = '../data/quantum-lzi/manifest.json';
       const QUANTUM_BASE_URL = '../data/quantum-lzi/';
+      const QUERY_MANIFEST_URL = '../data/vod-query/manifest.json';
       const QUANTUM_API_RE = /cj\.lziapi\.com/i;
       const ADULT_ITEM_TEXT_RE =
         /18\+|\u6210\u4eba|\u9ebb\u8c46|\u756a\u53f7|\u9ec4\u8272|\u9ec3\u8272|\u9ec4\u6f2b|\u9ec3\u6f2b|\u6210\u4eba\u52a8\u6f2b|\u6210\u4eba\u52d5\u6f2b|\u6fc0\u60c5\u52a8\u6f2b|\u6fc0\u60c5\u52d5\u6f2b|\u60c5\u8272|\u4e09\u7ea7|\u4e09\u7d1a|\u8001\u8272|\u5927\u5976|\u4e1d\u889c|\u7d72\u896a|\u65e0\u7801|\u7121\u78bc|\u6709\u7801|\u6709\u78bc|\u4e71\u4f26|\u4e82\u502b|\u798f\u5229\u59ec|\u5f3a\u5978|\u5f37\u59e6|\u841d\u8389|\u863f\u8389|\u91cc\u756a|\u88cf\u756a|\u5236\u670d\u8bf1\u60d1|\u5236\u670d\u8a98\u60d1|\u4f26\u7406|\u502b\u7406|\u5199\u771f|\u5beb\u771f|\u5973\u512a|\u5973\u4f18|\u5de8\u4e73|\u4e73\u4ea4|\u53e3\u4ea4|\u6deb|\u5077\u62cd|\u4eba\u59bb|\u56fd\u4ea7\u81ea\u62cd|\u570b\u7522\u81ea\u62cd|\bAV\b/i;
@@ -1050,12 +1064,15 @@
         healthIndex: { sources: new Set(), posters: new Set(), live: new Set() },
         detailCache: new Map(),
         detailPathLookupCache: new Map(),
+        queryIndex: {
+          manifest: null,
+          cache: new Map(),
+        },
         loadedSourceIds: new Set(),
-        fullIndexSourceIds: new Set(),
-        fullIndexLoading: new Map(),
-        searchIndexScopeKeys: new Set(),
         sourceMap: new Map(),
         itemById: new Map(),
+        seedItemIds: new Set(),
+        searchItemIds: new Set(),
         sourcePageState: new Map(),
         viewCache: new Map(),
         itemsRevision: 0,
@@ -1063,6 +1080,8 @@
         playerUrl: '',
         searchLoading: false,
         searchLoadInFlight: null,
+        searchAbortController: null,
+        renderLayoutKey: '',
       };
 
       const topNav = document.querySelector('#topNav');
@@ -1084,13 +1103,13 @@
       const EPISODES_PER_PAGE = 20;
       const SOURCE_DETAIL_PAGE_SIZE = 100;
       const GROUP_SEARCH_TARGET_RESULTS = 48;
-      const SEARCH_INDEX_CONCURRENCY = 2;
       const SEARCH_INDEX_MATCH_LIMIT = 320;
       const SEARCH_INDEX_YIELD_EVERY = 200;
-      const SEARCH_PROGRESS_RENDER_INTERVAL_MS = 420;
+      const QUERY_SHARD_CACHE_LIMIT = 6;
+      const DETAIL_CACHE_LIMIT = 12;
+      const AUTO_SIGNAL_FALLBACK_LIMIT = 8;
       let hls = null;
       let searchRenderTimer = null;
-      let searchPollTimer = null;
       let loadMoreInFlight = null;
 
       document.addEventListener(
@@ -1148,10 +1167,10 @@
         return JSON.parse(new TextDecoder().decode(buffer));
       }
 
-      async function getJson(url, fallback) {
+      async function getJson(url, fallback, options = {}) {
         const online = onlineDataUrl(url);
         const dataPath = String(url || '').match(/(?:^|\/)data\/(.+?)(?:[?#].*)?$/)?.[1] || '';
-        const freshData = /^(?:[^/]+\.json|vod-index\/|vod-detail\/|vod-search\/|quantum-lzi\/)/i.test(dataPath);
+        const freshData = /^(?:[^/]+\.json|vod-index\/|vod-detail\/|vod-search\/|vod-query\/|quantum-lzi\/)/i.test(dataPath);
         const localUrl = freshData ? cacheBustedUrl(url) : url;
         const preferOnline = /^vod-search\//i.test(dataPath);
         const capacitorNative = Boolean(window.Capacitor?.isNativePlatform?.());
@@ -1164,10 +1183,15 @@
           : [localUrl];
         for (const target of urls) {
           try {
-            const res = await fetch(target, { cache: freshData ? 'no-store' : 'default' });
+            if (options.signal?.aborted) throw new DOMException('Search aborted', 'AbortError');
+            const res = await fetch(target, {
+              cache: freshData ? 'no-store' : 'default',
+              signal: options.signal,
+            });
             if (!res.ok) continue;
             return await responseJson(res, target);
-          } catch {
+          } catch (error) {
+            if (options.signal?.aborted || error?.name === 'AbortError') throw error;
             undefined;
           }
         }
@@ -1176,6 +1200,15 @@
 
       function clearViewCache() {
         state.viewCache.clear();
+      }
+
+      function setBoundedCache(cache, key, value, limit) {
+        cache.delete(key);
+        cache.set(key, value);
+        while (cache.size > limit) {
+          cache.delete(cache.keys().next().value);
+        }
+        return value;
       }
 
       function normalizeVodKind(value) {
@@ -1289,13 +1322,15 @@
           item.remarks,
         ].join(' ');
         item._posterKey = normalizedPoster(item.poster);
-        item._duplicateKey = normalizedText(item.title) || (item._posterKey ? `poster:${item._posterKey}` : item.id || '');
+        item._duplicateKey =
+          compactNormalizedText(toSimplifiedSearchText(item.title)) ||
+          (item._posterKey ? `poster:${item._posterKey}` : item.id || '');
         item._searchText = normalizedText(searchSource);
         item._searchCompact = compactNormalizedText(item._searchText);
         return item;
       }
 
-      function registerCatalogItems(rows) {
+      function registerCatalogItems(rows, options = {}) {
         if (!Array.isArray(rows) || !rows.length) return 0;
         let changed = 0;
         for (const row of rows) {
@@ -1308,6 +1343,9 @@
           } else {
             state.itemById.set(prepared.id, prepared);
             state.catalog.items.push(prepared);
+            if (options.searchResult && !state.seedItemIds.has(prepared.id)) {
+              state.searchItemIds.add(prepared.id);
+            }
           }
           changed += 1;
         }
@@ -1316,6 +1354,16 @@
           clearViewCache();
         }
         return changed;
+      }
+
+      function clearTransientSearchItems() {
+        if (!state.searchItemIds.size) return;
+        const transientIds = state.searchItemIds;
+        state.catalog.items = state.catalog.items.filter((item) => !transientIds.has(item.id));
+        for (const id of transientIds) state.itemById.delete(id);
+        transientIds.clear();
+        state.itemsRevision += 1;
+        clearViewCache();
       }
 
       function markLatestPagesLoaded(rows) {
@@ -1378,7 +1426,7 @@
           const payload = await getJson(`../data/${path}`, null);
           const rows = Array.isArray(payload?.items) ? payload.items : [];
           if (!rows.length) return false;
-          state.detailCache.set(path, payload);
+          setBoundedCache(state.detailCache, path, payload, DETAIL_CACHE_LIMIT);
           registerCatalogItems(rows);
           pageState.loaded.add(page);
           while (pageState.loaded.has(pageState.nextPage)) pageState.nextPage += 1;
@@ -1410,33 +1458,20 @@
         if (!detail) {
           detail = await getJson(`../data/${detailPath}`, null);
           if (!detail) return null;
-          state.detailCache.set(detailPath, detail);
+          setBoundedCache(state.detailCache, detailPath, detail, DETAIL_CACHE_LIMIT);
         }
         return (detail.items || []).find((entry) => itemIdentityMatches(entry, item)) || null;
       }
 
       async function indexedDetailPathFor(item) {
-        if (state.detailPathLookupCache.has(item.id)) return state.detailPathLookupCache.get(item.id);
-        const source = sourceById(item.sourceId);
-        const indexPath = source?.searchIndexPath || source?.indexPath;
-        if (!indexPath) return '';
-        const payload = await getJson(`../data/${indexPath}`, null);
-        const indexedItem = (payload?.items || []).find((entry) => itemIdentityMatches(entry, item));
-        const detailPath = indexedItem?.detailPath || '';
-        state.detailPathLookupCache.set(item.id, detailPath);
-        return detailPath;
+        return item?.detailPath || '';
       }
 
       async function hydrateItemDetail(item) {
         if (Array.isArray(item?.episodes) && item.episodes.length) return item;
         if (!item?.detailPath) return item;
-        let found = await detailItemAtPath(item, item.detailPath);
-        if (!found) {
-          const indexedDetailPath = await indexedDetailPathFor(item);
-          if (indexedDetailPath && indexedDetailPath !== item.detailPath) {
-            found = await detailItemAtPath(item, indexedDetailPath);
-          }
-        }
+        const indexedDetailPath = await indexedDetailPathFor(item);
+        const found = await detailItemAtPath(item, indexedDetailPath);
         if (!found) throw new Error('detail-item-not-found');
         Object.assign(item, found, { lazyEpisodes: false });
         return item;
@@ -1489,10 +1524,6 @@
         registerCatalogItems(rows);
         state.loadedSourceIds.add(source.id);
         return rows.length > 0;
-      }
-
-      function searchIndexScopeKey(source, needle) {
-        return `${source.id}\u001f${needle?.query || ''}`;
       }
 
       function searchIndexItemText(item) {
@@ -1557,40 +1588,6 @@
           if (matches.length >= SEARCH_INDEX_MATCH_LIMIT) break;
         }
         return matches;
-      }
-
-      async function ensureFullSourceIndex(source, needle = null) {
-        if (!source?.id) return false;
-        const scopedSearch = Boolean(needle?.query);
-        const loadingKey = scopedSearch ? searchIndexScopeKey(source, needle) : source.id;
-        if (!scopedSearch && state.fullIndexSourceIds.has(source.id)) return true;
-        if (scopedSearch && state.searchIndexScopeKeys.has(loadingKey)) return true;
-        if (state.fullIndexLoading.has(loadingKey)) return await state.fullIndexLoading.get(loadingKey);
-        const promise = (async () => {
-          const searchIndexPath = source.searchIndexPath || source.indexPath;
-          if (searchIndexPath) {
-            const payload = await getJson(`../data/${searchIndexPath}`, null);
-            const rows = Array.isArray(payload?.items) ? payload.items : [];
-            if (!rows.length && source.itemCount) throw new Error('source-index-empty');
-            const selectedRows = await matchingSearchIndexRows(rows, needle);
-            registerCatalogItems(selectedRows);
-            if (scopedSearch) {
-              state.searchIndexScopeKeys.add(loadingKey);
-            } else {
-              if (searchIndexPath === source.indexPath) state.loadedSourceIds.add(source.id);
-              state.fullIndexSourceIds.add(source.id);
-            }
-            return selectedRows.length > 0;
-          }
-          if (scopedSearch) return false;
-          await ensureSourceIndex(source);
-          state.fullIndexSourceIds.add(source.id);
-          return true;
-        })()
-          .catch(() => false)
-          .finally(() => state.fullIndexLoading.delete(loadingKey));
-        state.fullIndexLoading.set(loadingKey, promise);
-        return await promise;
       }
 
       async function mapAsyncLimit(items, limit, worker) {
@@ -4161,7 +4158,7 @@
 
       function itemDuplicateKey(item) {
         if (item._duplicateKey) return item._duplicateKey;
-        const title = normalizedText(item.title);
+        const title = compactNormalizedText(toSimplifiedSearchText(item.title));
         const poster = normalizedPoster(item.poster);
         if (title) return title;
         if (poster) return `poster:${poster}`;
@@ -4182,7 +4179,11 @@
         }
         const rows = [];
         for (const group of groups.values()) {
-          const primary = group.find((item) => item.playable) || group[0];
+          const primary =
+            group.find((item) => Array.isArray(item.episodes) && item.episodes.length) ||
+            group.find((item) => item.playable && item.detailPath) ||
+            group.find((item) => item.playable) ||
+            group[0];
           const signalSources = [];
           const seenSignals = new Set();
           for (const item of group) {
@@ -4298,108 +4299,139 @@
         return rows;
       }
 
-      function searchScopeSources() {
-        if (!['all', 'normal', 'adult18'].includes(state.selectedSource)) {
-          return [sourceById(state.selectedSource)].filter(Boolean);
+      function fnv1aQueryShard(value) {
+        let hash = 0x811c9dc5;
+        const text = String(value || '');
+        for (let index = 0; index < text.length; index += 1) {
+          hash ^= text.charCodeAt(index);
+          hash = Math.imul(hash, 0x01000193);
         }
-        const wantAdult = state.selectedSource === 'adult18';
-        return state.catalog.sources.filter((source) => {
-          if (!source.indexed) return false;
-          if (state.selectedSource === 'all') return true;
-          return Boolean(source.adult) === wantAdult;
-        });
+        return hash >>> 0;
       }
 
-      function searchSourceRank(source) {
-        const tabPenalty = sourceSupportsCurrentTab(source) ? 0 : 1000000000;
-        const adultPenalty = source.adult && state.selectedSource !== 'adult18' ? 500000000 : 0;
-        const itemCount = Number(source.itemCount || source.sourceTotalCount || 0);
-        return tabPenalty + adultPenalty + Math.min(itemCount, 100000000);
+      function queryShardPrefixes(needle, minimum) {
+        const prefixes = new Set();
+        for (const candidate of needle.candidates?.length ? needle.candidates : [needle]) {
+          for (const value of [candidate.query, toSimplifiedSearchText(candidate.query)]) {
+            const compact = compactNormalizedText(value);
+            const characters = [...compact];
+            if (characters.length >= minimum) prefixes.add(characters.slice(0, minimum).join(''));
+          }
+        }
+        return [...prefixes];
+      }
+
+      function queryShardScopes() {
+        if (state.selectedSource === 'all') return ['normal', 'adult'];
+        if (state.selectedSource === 'adult18') return ['adult'];
+        if (state.selectedSource === 'normal') return ['normal'];
+        return [sourceById(state.selectedSource)?.adult ? 'adult' : 'normal'];
+      }
+
+      function queryShardFile(scope, bucket, manifest) {
+        const width = Math.max(4, String(Math.max(0, Number(manifest.bucketCount || 1) - 1)).length);
+        const bucketName = String(bucket).padStart(width, '0');
+        const path = manifest.scopes?.[scope]?.path?.replace('{bucket}', bucketName);
+        return path ? `../data/${path}` : '';
+      }
+
+      function expandQueryShard(payload) {
+        const rows = [];
+        for (const group of payload?.groups || []) {
+          for (const signal of group?.signals || []) {
+            rows.push({
+              title: group.title || '',
+              originalName: group.originalName || '',
+              kind: group.kind || '',
+              categoryName: group.categoryName || '',
+              year: group.year || '',
+              area: group.area || '',
+              genre: Array.isArray(group.genre) ? group.genre : [],
+              poster: group.poster || '',
+              score: Number(signal.score || group.score || 0),
+              hot: Number(signal.hot || group.hot || 0),
+              updatedAt: signal.updatedAt || group.updatedAt || '',
+              ...signal,
+            });
+          }
+        }
+        return rows;
+      }
+
+      async function loadQueryShard(scope, bucket, signal) {
+        const manifest = state.queryIndex.manifest;
+        const key = `${scope}\u001f${bucket}`;
+        if (state.queryIndex.cache.has(key)) {
+          const cached = state.queryIndex.cache.get(key);
+          setBoundedCache(state.queryIndex.cache, key, cached, QUERY_SHARD_CACHE_LIMIT);
+          return cached;
+        }
+        const file = queryShardFile(scope, bucket, manifest);
+        if (!file) return { groups: [] };
+        const payload = await getJson(file, { groups: [] }, { signal });
+        return setBoundedCache(state.queryIndex.cache, key, payload, QUERY_SHARD_CACHE_LIMIT);
       }
 
       function triggerSearchIndexLoad() {
         const needle = currentSearchNeedle();
-        if (state.tab === 'live' || needle.query.length < 2) {
-          state.searchLoading = false;
-          state.searchLoadInFlight = null;
-          return;
-        }
-        const groupSearch = ['all', 'normal', 'adult18'].includes(state.selectedSource);
-        const targetResultCount = searchTargetResultCount(needle);
-        if (groupSearch && visibleItems().length >= targetResultCount) {
+        const manifest = state.queryIndex.manifest;
+        const minimum = Math.max(2, Number(manifest?.minQueryLength || 2));
+        if (state.tab === 'live' || [...needle.query].length < minimum || !manifest) {
+          state.searchAbortController?.abort();
+          state.searchAbortController = null;
           state.searchLoading = false;
           state.searchLoadInFlight = null;
           return;
         }
         const scopeKey = [state.tab, state.selectedSource, needle.query].join('\u001f');
         if (state.searchLoadInFlight?.scopeKey === scopeKey) return;
-        const sources = searchScopeSources()
-          .filter((source) => {
-            if (state.fullIndexSourceIds.has(source.id)) return false;
-            if (state.searchIndexScopeKeys.has(searchIndexScopeKey(source, needle))) return false;
-            return Boolean(source.searchIndexPath || source.indexPath);
-          })
-          .sort(
-            (a, b) =>
-              searchSourceRank(a) - searchSourceRank(b) ||
-              normalizedText(a.name).localeCompare(normalizedText(b.name), 'zh-Hant'),
-          );
-        if (!sources.length) {
-          if (!state.fullIndexLoading.size) state.searchLoading = false;
+        state.searchAbortController?.abort();
+        const controller = new AbortController();
+        state.searchAbortController = controller;
+        const prefixes = queryShardPrefixes(needle, minimum);
+        const targets = [];
+        const targetKeys = new Set();
+        for (const scope of queryShardScopes()) {
+          const scopeManifest = manifest.scopes?.[scope];
+          if (!scopeManifest) continue;
+          const available = new Set(scopeManifest.buckets || []);
+          for (const prefix of prefixes) {
+            const bucket = fnv1aQueryShard(prefix) % Number(manifest.bucketCount || 1);
+            const key = `${scope}\u001f${bucket}`;
+            if (!available.has(bucket) || targetKeys.has(key)) continue;
+            targetKeys.add(key);
+            targets.push({ scope, bucket });
+          }
+        }
+        if (!targets.length) {
+          state.searchLoading = false;
+          state.searchLoadInFlight = null;
           return;
         }
-        const key = [state.tab, state.selectedSource, needle.query, sources.map((source) => source.id).join('|')].join('\u001f');
-        if (state.searchLoadInFlight?.key === key) return;
         state.searchLoading = true;
-        const loadToken = { key, scopeKey, promise: null };
+        const loadToken = { scopeKey, controller, promise: null };
         state.searchLoadInFlight = loadToken;
         const promise = (async () => {
-          let next = 0;
-          let lastProgressRender = 0;
-          const targetReached = () => groupSearch && visibleItems().length >= targetResultCount;
-          const renderProgress = () => {
-            const now = Date.now();
-            if (now - lastProgressRender < SEARCH_PROGRESS_RENDER_INTERVAL_MS) return;
-            lastProgressRender = now;
-            clearViewCache();
-            resetVisibleLimit();
-            render();
-          };
-          const worker = async () => {
-            while (next < sources.length) {
-              if (state.searchLoadInFlight !== loadToken || targetReached()) return;
-              const source = sources[next];
-              next += 1;
-              await ensureFullSourceIndex(source, needle);
-              clearViewCache();
-              renderProgress();
-            }
-          };
-          const workers = Array.from({ length: Math.min(SEARCH_INDEX_CONCURRENCY, sources.length) }, worker);
-          await Promise.all(workers);
-          if (state.searchLoadInFlight !== loadToken) return;
-          if (targetReached()) return;
-          for (const source of sources) {
-            if (state.searchLoadInFlight !== loadToken) return;
-            if (
-              state.fullIndexSourceIds.has(source.id) ||
-              state.searchIndexScopeKeys.has(searchIndexScopeKey(source, needle))
-            ) {
-              continue;
-            }
-            await ensureFullSourceIndex(source, needle);
-            clearViewCache();
-            renderProgress();
-            if (targetReached()) return;
+          for (const target of targets) {
+            if (controller.signal.aborted || state.searchLoadInFlight !== loadToken) return;
+            const payload = await loadQueryShard(target.scope, target.bucket, controller.signal);
+            if (controller.signal.aborted || state.searchLoadInFlight !== loadToken) return;
+            const selectedRows = await matchingSearchIndexRows(expandQueryShard(payload), needle);
+            registerCatalogItems(selectedRows, { searchResult: true });
           }
-        })().finally(() => {
+        })()
+          .catch((error) => {
+            if (error?.name !== 'AbortError') console.warn('query-shard-search-failed', error);
+          })
+          .finally(() => {
           if (state.searchLoadInFlight !== loadToken) return;
           state.searchLoading = false;
           state.searchLoadInFlight = null;
+          if (state.searchAbortController === controller) state.searchAbortController = null;
           clearViewCache();
           resetVisibleLimit();
           render();
-        });
+          });
         loadToken.promise = promise;
       }
 
@@ -4502,6 +4534,11 @@
           button.addEventListener('click', () => {
             state.tab = button.dataset.tab || 'home';
             state.query = '';
+            state.searchAbortController?.abort();
+            state.searchAbortController = null;
+            state.searchLoadInFlight = null;
+            state.searchLoading = false;
+            clearTransientSearchItems();
             clearViewCache();
             resetVisibleLimit();
             resetPageViewport();
@@ -4513,8 +4550,14 @@
 
       function render() {
         renderNav();
-        if (state.tab === 'live') return renderLive();
-        if (state.tab === 'rank') return renderRank();
+        if (state.tab === 'live') {
+          state.renderLayoutKey = '';
+          return renderLive();
+        }
+        if (state.tab === 'rank') {
+          state.renderLayoutKey = '';
+          return renderRank();
+        }
         return renderVodScreen();
       }
 
@@ -4544,9 +4587,13 @@
 
       function scheduleSearchRender(value, delay = 260) {
         if (state.query === value && !state.refocusSearch) return;
+        state.searchAbortController?.abort();
+        state.searchAbortController = null;
+        state.searchLoadInFlight = null;
+        state.searchLoading = false;
+        clearTransientSearchItems();
         state.query = value;
         clearViewCache();
-        state.refocusSearch = true;
         resetVisibleLimit();
         window.clearTimeout(searchRenderTimer);
         searchRenderTimer = window.setTimeout(() => {
@@ -4556,12 +4603,6 @@
 
       function bindToolbar() {
         const input = document.querySelector('#searchBox');
-        window.clearInterval(searchPollTimer);
-        searchPollTimer = window.setInterval(() => {
-          const current = document.querySelector('#searchBox');
-          if (!current || state.searchComposing) return;
-          if (current.value !== state.query) scheduleSearchRender(current.value, 0);
-        }, 250);
         input?.addEventListener('compositionstart', () => {
           state.searchComposing = true;
           window.clearTimeout(searchRenderTimer);
@@ -4614,24 +4655,36 @@
         triggerSearchIndexLoad();
         ensureAvailableFilters();
         const allRows = visibleItems();
-        if (!allRows.length) startCombinedPreviewLoad();
+        if (!allRows.length && !state.query) startCombinedPreviewLoad();
         const rows = allRows.slice(0, state.visibleLimit);
         const title = tabs.find(([id]) => id === state.tab)?.[1] || '主頁';
-        const emptyMessage = state.searchLoading ? '正在搜尋完整點播索引...' : '目前沒有符合篩選的影片';
-        screen.innerHTML = `
-          ${renderToolbar()}
-          ${renderQuickFilters()}
-          ${state.tab === 'short' ? renderShortAreaRail() : ''}
-          <section class="section-head">
-            <div><h1>${displayHtml(title)}</h1><span>${formatCount(rows.length)} / ${formatCount(allRows.length)} 部已載入，完整索引 ${formatCount(state.catalog.totals.playableItems)} 部可播放</span></div>
-            <span class="status-pill ok">${icon('check')} ${displayHtml(catalogFreshnessLabel() ? `資料 ${catalogFreshnessLabel()}` : 'OKTV')}</span>
-          </section>
-          <section class="poster-grid">
-            ${rows.map(renderPoster).join('') || emptyState(state.sourceLoading ? '\u6b63\u5728\u8f09\u5165\u5206\u985e\u5167\u5bb9...' : emptyMessage)}
-          </section>
-          ${renderFloatingFilter()}
+        const emptyMessage = state.searchLoading ? '正在搜尋安全分片...' : '目前沒有符合篩選的影片';
+        const countLabel = state.query
+          ? `${formatCount(rows.length)} / ${formatCount(allRows.length)} 部搜尋結果`
+          : `${formatCount(rows.length)} / ${formatCount(allRows.length)} 部已載入，完整索引 ${formatCount(state.catalog.totals.playableItems)} 部可播放`;
+        const layoutKey = `vod:${state.tab}`;
+        if (state.renderLayoutKey !== layoutKey || !document.querySelector('#vodGrid')) {
+          screen.innerHTML = `
+            ${renderToolbar()}
+            <div id="vodQuickFilters"></div>
+            <div id="vodShortRail"></div>
+            <section class="section-head" id="vodSectionHead"></section>
+            <section class="poster-grid" id="vodGrid"></section>
+            <div id="vodFloatingFilter"></div>
+          `;
+          state.renderLayoutKey = layoutKey;
+          bindToolbar();
+        }
+        document.querySelector('#vodQuickFilters').innerHTML = renderQuickFilters();
+        document.querySelector('#vodShortRail').innerHTML = state.tab === 'short' ? renderShortAreaRail() : '';
+        document.querySelector('#vodSectionHead').innerHTML = `
+          <div><h1>${displayHtml(title)}</h1><span>${countLabel}</span></div>
+          <span class="status-pill ok">${icon('check')} ${displayHtml(catalogFreshnessLabel() ? `資料 ${catalogFreshnessLabel()}` : 'OKTV')}</span>
         `;
-        bindToolbar();
+        document.querySelector('#vodGrid').innerHTML =
+          rows.map(renderPoster).join('') ||
+          emptyState(state.sourceLoading ? '\u6b63\u5728\u8f09\u5165\u5206\u985e\u5167\u5bb9...' : emptyMessage);
+        document.querySelector('#vodFloatingFilter').innerHTML = renderFloatingFilter();
         bindPosters();
         bindQuickFilters();
         bindShortAreaRail();
@@ -4940,6 +4993,44 @@
         });
       }
 
+      async function resolvePlayableSignal(item, { allowAlternates = true } = {}) {
+        const signals = signalSourcesFor(item);
+        const candidates = [item];
+        if (allowAlternates) {
+          for (const signal of signals) {
+            const candidate = state.itemById.get(signal.itemId);
+            if (candidate && !candidates.some((entry) => entry.id === candidate.id)) candidates.push(candidate);
+          }
+        }
+        candidates.sort((left, right) => {
+          const leftEmbedded = Array.isArray(left.episodes) ? left.episodes.length : 0;
+          const rightEmbedded = Array.isArray(right.episodes) ? right.episodes.length : 0;
+          return rightEmbedded - leftEmbedded || Number(Boolean(right.detailPath)) - Number(Boolean(left.detailPath));
+        });
+        const failures = [];
+        for (const candidate of candidates.slice(0, AUTO_SIGNAL_FALLBACK_LIMIT)) {
+          try {
+            const hydrated = await hydrateItemDetail(candidate);
+            if (!Array.isArray(hydrated.episodes) || !hydrated.episodes.length) {
+              failures.push(signalSourceLabel(candidate) || candidate.sourceName || candidate.id);
+              continue;
+            }
+            hydrated.signalSources = signals;
+            hydrated.signalCount = signals.length;
+            delete hydrated.playbackError;
+            return hydrated;
+          } catch {
+            failures.push(signalSourceLabel(candidate) || candidate.sourceName || candidate.id);
+          }
+        }
+        item.signalSources = signals;
+        item.signalCount = signals.length;
+        item.playbackError = failures.length
+          ? `已檢查 ${failures.length} 個訊號源，目前均沒有有效集數。請稍後再試或切換其他來源。`
+          : '目前沒有有效播放訊號。請稍後再試。';
+        return item;
+      }
+
       async function openDetail(id) {
         const item = state.itemById.get(id);
         if (!item) return;
@@ -4948,20 +5039,23 @@
         detailMeta.textContent = displayText([signalSourceLabel(item), item.year, item.area, item.categoryName].filter(Boolean).join(' / '));
         renderDetailLoading(item);
         openSheet(detailSheet);
-        try {
-          const hydrated = await hydrateItemDetail(item);
-          if (state.activeItem?.id === item.id) renderDetailBody(hydrated, 0);
-        } catch {
-          if (state.activeItem?.id === item.id) renderDetailBody(item, 0);
+        const resolved = await resolvePlayableSignal(item);
+        if (state.activeItem?.id === item.id) {
+          state.activeItem = resolved;
+          detailTitle.textContent = displayText(resolved.title);
+          detailMeta.textContent = displayText(
+            [signalSourceLabel(resolved), resolved.year, resolved.area, resolved.categoryName].filter(Boolean).join(' / '),
+          );
+          renderDetailBody(resolved, 0);
         }
       }
 
       function episodePageCount(item) {
-        return Math.max(1, Math.ceil((item.episodes?.length || item.episodeCount || 0) / EPISODES_PER_PAGE));
+        return Math.max(1, Math.ceil((item.episodes?.length || 0) / EPISODES_PER_PAGE));
       }
 
       function renderEpisodePager(item, page) {
-        const total = item.episodes?.length || item.episodeCount || 0;
+        const total = item.episodes?.length || 0;
         const pages = episodePageCount(item);
         if (pages <= 1) return '';
         return `
@@ -5005,11 +5099,10 @@
             detailTitle.textContent = displayText(next.title);
             detailMeta.textContent = displayText([signalSourceLabel(next), next.year, next.area, next.categoryName].filter(Boolean).join(' / '));
             renderDetailLoading(next);
-            try {
-              const hydrated = await hydrateItemDetail(next);
-              if (state.activeItem?.id === next.id) renderDetailBody(hydrated, 0);
-            } catch {
-              if (state.activeItem?.id === next.id) renderDetailBody(next, 0);
+            const resolved = await resolvePlayableSignal(next, { allowAlternates: false });
+            if (state.activeItem?.id === next.id) {
+              state.activeItem = resolved;
+              renderDetailBody(resolved, 0);
             }
           });
         });
@@ -5038,7 +5131,7 @@
       }
 
       function renderDetailBody(item, page = 0) {
-        const total = item.episodes?.length || item.episodeCount || 0;
+        const total = item.episodes?.length || 0;
         const pages = episodePageCount(item);
         const safePage = Math.min(Math.max(Number(page) || 0, 0), pages - 1);
         const start = safePage * EPISODES_PER_PAGE;
@@ -5061,7 +5154,7 @@
                 ? rows
                     .map((episode, index) => `<button type="button" data-episode="${start + index}">${displayHtml(episode.name || `第 ${start + index + 1} 集`)}</button>`)
                     .join('')
-                : '<span>目前沒有可播放集數</span>'
+                : `<span>${displayHtml(item.playbackError || '目前沒有有效播放訊號；可嘗試上方其他訊號源。')}</span>`
             }
           </div>
         `;
@@ -5108,9 +5201,18 @@
           });
           hls.loadSource(verifiedMediaUrl);
           hls.attachMedia(player);
+          hls.on(window.Hls.Events.ERROR, (_event, data) => {
+            if (!data?.fatal) return;
+            playerMeta.textContent = '此訊號目前無法播放，請返回並切換其他訊號源。';
+            hls?.destroy?.();
+            hls = null;
+          });
         } else {
           player.src = verifiedMediaUrl;
         }
+        player.onerror = () => {
+          playerMeta.textContent = '此訊號目前無法播放，請返回並切換其他訊號源。';
+        };
         player.play().catch(() => undefined);
       }
 
@@ -5121,6 +5223,7 @@
         playerFrame.classList.add('hidden');
         player.classList.remove('hidden');
         player.pause();
+        player.onerror = null;
         player.removeAttribute('src');
         player.load();
         state.playerUrl = '';
@@ -5243,6 +5346,11 @@
       }
 
       async function selectSource(sourceId) {
+        state.searchAbortController?.abort();
+        state.searchAbortController = null;
+        state.searchLoadInFlight = null;
+        state.searchLoading = false;
+        clearTransientSearchItems();
         state.selectedSource = sourceId;
         localStorage.setItem(SOURCE_STORAGE_KEY, sourceId);
         state.tab = state.tab === 'sources' ? 'movie' : state.tab;
@@ -5313,10 +5421,11 @@
       document.querySelector('#detailSheet [data-close-detail].icon-btn').innerHTML = icon('close');
       document.querySelector('#playerSheet [data-close-player].icon-btn').innerHTML = icon('close');
 
-      [state.catalog, state.latest, state.live] = await Promise.all([
+      [state.catalog, state.latest, state.live, state.queryIndex.manifest] = await Promise.all([
         getJson('../data/iphone-vod-catalog.json', state.catalog),
         getJson('../data/iphone-vod-latest.json', { items: [] }),
         getJson('../data/live-channels.json', []),
+        getJson(QUERY_MANIFEST_URL, null),
       ]);
       state.catalog.sources = Array.isArray(state.catalog.sources) ? state.catalog.sources : [];
       state.sourceMap = new Map(state.catalog.sources.map((source) => [source.id, source]));
@@ -5327,6 +5436,7 @@
       state.itemById.clear();
       registerCatalogItems(initialCatalogItems);
       registerCatalogItems(latestCatalogItems);
+      state.seedItemIds = new Set(state.itemById.keys());
       markLatestPagesLoaded(latestCatalogItems);
       applyHealthIndex({ failed: [] });
       localStorage.removeItem('oktv:iphone:selectedSource');
