@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-30T12:35:31.498Z",
+  "checkedAt": "2026-07-30T18:30:51.575Z",
   "inputs": {
     "catalogPath": "D:\\a\\TV\\TV\\docs\\data\\iphone-vod-catalog.json",
     "livePath": "D:\\a\\TV\\TV\\docs\\data\\live-channels.json"
@@ -7,8 +7,8 @@
   "summary": {
     "sources": {
       "total": 78,
-      "ok": 66,
-      "failed": 12
+      "ok": 74,
+      "failed": 4
     },
     "posters": {
       "total": 0,
@@ -31,19 +31,6 @@
   "failed": [
     {
       "kind": "source",
-      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55",
-      "name": "豆豆资源｜追劇",
-      "type": 1,
-      "url": "https://api.douapi.cc/api.php/provide/vod/",
-      "indexed": true,
-      "adult": true,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 1106,
-      "error": "fetch failed"
-    },
-    {
-      "kind": "source",
       "id": "all-on-demand-sources-大地资源-https-dadiapi-com-feifei-68",
       "name": "大地资源｜追劇",
       "type": 0,
@@ -52,99 +39,8 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 1212,
+      "elapsedMs": 574,
       "error": "XML source did not return an XML list"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-爱奇艺-https-iqiyizyapi-com-api-php-provide-vod-1",
-      "name": "爱奇艺｜追劇",
-      "type": 1,
-      "url": "https://iqiyizyapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8011,
-      "error": "The operation was aborted due to timeout"
-    },
-    {
-      "kind": "source",
-      "id": "current-vod-url-极速资源-https-jszyapi-com-api-php-provide-vod-13",
-      "name": "极速资源｜追劇",
-      "type": 1,
-      "url": "https://jszyapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 262,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-新浪资源-https-api-xinlangapi-com-xinlangapi-php-provide-vod-16",
-      "name": "新浪资源｜追劇",
-      "type": 1,
-      "url": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 262,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-光速资源-https-api-guangsuapi-com-api-php-provide-vod-22",
-      "name": "光速资源｜追劇",
-      "type": 1,
-      "url": "https://api.guangsuapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 379,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-虎牙资源-https-www-huyaapi-com-api-php-provide-vod-34",
-      "name": "虎牙资源｜追劇",
-      "type": 1,
-      "url": "https://www.huyaapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 395,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-火狐-https-hhzyapi-com-api-php-provide-vod-81",
-      "name": "火狐影视｜追剧",
-      "type": 1,
-      "url": "https://hhzyapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 481,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-豪华资源-https-pz-v88-qzz-io-url-https-hhzyapi-com-api-php-provide-vod-26",
-      "name": "豪华资源｜追劇",
-      "type": 1,
-      "url": "https://pz.v88.qzz.io/?url=https://hhzyapi.com/api.php/provide/vod",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 112,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "source",
@@ -156,7 +52,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 266,
+      "elapsedMs": 118,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -169,7 +65,7 @@
       "adult": true,
       "ok": false,
       "status": 0,
-      "elapsedMs": 8011,
+      "elapsedMs": 8013,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -182,7 +78,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 167,
+      "elapsedMs": 68,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     }
   ],
@@ -197,7 +93,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 951,
+      "elapsedMs": 776,
       "error": ""
     },
     {
@@ -210,7 +106,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 720,
+      "elapsedMs": 266,
       "error": ""
     },
     {
@@ -223,7 +119,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1670,
+      "elapsedMs": 1238,
       "error": ""
     },
     {
@@ -236,7 +132,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 2230,
+      "elapsedMs": 835,
       "error": ""
     },
     {
@@ -249,7 +145,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 650,
+      "elapsedMs": 292,
       "error": ""
     },
     {
@@ -262,7 +158,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 4407,
+      "elapsedMs": 1356,
       "error": ""
     },
     {
@@ -275,7 +171,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1344,
+      "elapsedMs": 659,
       "error": ""
     },
     {
@@ -288,7 +184,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 2176,
+      "elapsedMs": 804,
       "error": ""
     },
     {
@@ -301,7 +197,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1491,
+      "elapsedMs": 1006,
       "error": ""
     },
     {
@@ -314,7 +210,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1255,
+      "elapsedMs": 592,
       "error": ""
     },
     {
@@ -327,7 +223,20 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1148,
+      "elapsedMs": 461,
+      "error": ""
+    },
+    {
+      "kind": "source",
+      "id": "current-vod-url-极速资源-https-jszyapi-com-api-php-provide-vod-13",
+      "name": "极速资源｜追劇",
+      "type": 1,
+      "url": "https://jszyapi.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 197,
       "error": ""
     },
     {
@@ -340,7 +249,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 2240,
+      "elapsedMs": 648,
       "error": ""
     },
     {
@@ -353,7 +262,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1136,
+      "elapsedMs": 672,
       "error": ""
     },
     {
@@ -366,7 +275,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1320,
+      "elapsedMs": 939,
       "error": ""
     },
     {
@@ -379,7 +288,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 461,
+      "elapsedMs": 189,
       "error": ""
     },
     {
@@ -392,7 +301,20 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 803,
+      "elapsedMs": 255,
+      "error": ""
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-新浪资源-https-api-xinlangapi-com-xinlangapi-php-provide-vod-16",
+      "name": "新浪资源｜追劇",
+      "type": 1,
+      "url": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 1537,
       "error": ""
     },
     {
@@ -405,7 +327,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1682,
+      "elapsedMs": 1165,
       "error": ""
     },
     {
@@ -418,7 +340,20 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1198,
+      "elapsedMs": 372,
+      "error": ""
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-光速资源-https-api-guangsuapi-com-api-php-provide-vod-22",
+      "name": "光速资源｜追劇",
+      "type": 1,
+      "url": "https://api.guangsuapi.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 193,
       "error": ""
     },
     {
@@ -431,7 +366,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 954,
+      "elapsedMs": 299,
       "error": ""
     },
     {
@@ -444,7 +379,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1826,
+      "elapsedMs": 773,
       "error": ""
     },
     {
@@ -457,7 +392,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 2184,
+      "elapsedMs": 1527,
       "error": ""
     },
     {
@@ -470,7 +405,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 636,
+      "elapsedMs": 223,
       "error": ""
     },
     {
@@ -483,7 +418,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 973,
+      "elapsedMs": 233,
       "error": ""
     },
     {
@@ -496,7 +431,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 674,
+      "elapsedMs": 251,
       "error": ""
     },
     {
@@ -509,7 +444,20 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1396,
+      "elapsedMs": 4270,
+      "error": ""
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-虎牙资源-https-www-huyaapi-com-api-php-provide-vod-34",
+      "name": "虎牙资源｜追劇",
+      "type": 1,
+      "url": "https://www.huyaapi.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 1114,
       "error": ""
     },
     {
@@ -522,7 +470,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 651,
+      "elapsedMs": 178,
       "error": ""
     },
     {
@@ -535,7 +483,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 309,
+      "elapsedMs": 118,
       "error": ""
     },
     {
@@ -548,7 +496,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 632,
+      "elapsedMs": 345,
       "error": ""
     },
     {
@@ -561,7 +509,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 668,
+      "elapsedMs": 198,
       "error": ""
     },
     {
@@ -574,7 +522,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 760,
+      "elapsedMs": 290,
       "error": ""
     },
     {
@@ -587,7 +535,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1159,
+      "elapsedMs": 1239,
       "error": ""
     },
     {
@@ -600,7 +548,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1241,
+      "elapsedMs": 7041,
       "error": ""
     },
     {
@@ -613,7 +561,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 610,
+      "elapsedMs": 198,
       "error": ""
     },
     {
@@ -626,7 +574,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 833,
+      "elapsedMs": 541,
       "error": ""
     },
     {
@@ -639,7 +587,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 773,
+      "elapsedMs": 117,
       "error": ""
     },
     {
@@ -652,20 +600,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 980,
-      "error": ""
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-黄色仓库-https-hsckzy-xyz-api-php-provide-vod-47",
-      "name": "黄色仓库｜追劇",
-      "type": 1,
-      "url": "https://hsckzy.xyz/api.php/provide/vod/",
-      "indexed": true,
-      "adult": true,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 543,
+      "elapsedMs": 291,
       "error": ""
     },
     {
@@ -678,7 +613,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 753,
+      "elapsedMs": 299,
       "error": ""
     },
     {
@@ -691,7 +626,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 279,
+      "elapsedMs": 189,
       "error": ""
     },
     {
@@ -704,7 +639,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 655,
+      "elapsedMs": 6335,
       "error": ""
     },
     {
@@ -717,7 +652,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1989,
+      "elapsedMs": 1042,
       "error": ""
     },
     {
@@ -730,7 +665,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 839,
+      "elapsedMs": 331,
       "error": ""
     },
     {
@@ -741,10 +676,10 @@
       "url": "https://api.douapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 1106,
-      "error": "fetch failed"
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 1000,
+      "error": ""
     },
     {
       "kind": "source",
@@ -756,7 +691,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 771,
+      "elapsedMs": 996,
       "error": ""
     },
     {
@@ -769,7 +704,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1728,
+      "elapsedMs": 657,
       "error": ""
     },
     {
@@ -782,7 +717,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1400,
+      "elapsedMs": 181,
       "error": ""
     },
     {
@@ -795,7 +730,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1175,
+      "elapsedMs": 202,
       "error": ""
     },
     {
@@ -808,7 +743,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1221,
+      "elapsedMs": 414,
       "error": ""
     },
     {
@@ -821,7 +756,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1520,
+      "elapsedMs": 522,
       "error": ""
     },
     {
@@ -834,7 +769,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1155,
+      "elapsedMs": 300,
       "error": ""
     },
     {
@@ -847,7 +782,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 1212,
+      "elapsedMs": 574,
       "error": "XML source did not return an XML list"
     },
     {
@@ -860,7 +795,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1602,
+      "elapsedMs": 933,
       "error": ""
     },
     {
@@ -873,7 +808,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1737,
+      "elapsedMs": 3266,
       "error": ""
     },
     {
@@ -886,7 +821,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 624,
+      "elapsedMs": 270,
       "error": ""
     },
     {
@@ -899,7 +834,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 853,
+      "elapsedMs": 338,
       "error": ""
     },
     {
@@ -912,7 +847,20 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 487,
+      "elapsedMs": 149,
+      "error": ""
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-火狐-https-hhzyapi-com-api-php-provide-vod-81",
+      "name": "火狐影视｜追剧",
+      "type": 1,
+      "url": "https://hhzyapi.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 388,
       "error": ""
     },
     {
@@ -925,7 +873,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1831,
+      "elapsedMs": 1277,
       "error": ""
     },
     {
@@ -938,7 +886,7 @@
       "adult": false,
       "ok": true,
       "status": 206,
-      "elapsedMs": 618,
+      "elapsedMs": 171,
       "error": ""
     },
     {
@@ -951,7 +899,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 2167,
+      "elapsedMs": 1134,
       "error": ""
     },
     {
@@ -964,7 +912,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 641,
+      "elapsedMs": 512,
       "error": ""
     },
     {
@@ -977,7 +925,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1087,
+      "elapsedMs": 312,
       "error": ""
     },
     {
@@ -990,7 +938,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1437,
+      "elapsedMs": 649,
       "error": ""
     },
     {
@@ -1003,7 +951,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 754,
+      "elapsedMs": 406,
       "error": ""
     },
     {
@@ -1016,7 +964,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 777,
+      "elapsedMs": 327,
       "error": ""
     },
     {
@@ -1029,7 +977,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 889,
+      "elapsedMs": 356,
       "error": ""
     },
     {
@@ -1040,10 +988,10 @@
       "url": "https://iqiyizyapi.com/api.php/provide/vod/",
       "indexed": true,
       "adult": false,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8011,
-      "error": "The operation was aborted due to timeout"
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 4402,
+      "error": ""
     },
     {
       "kind": "source",
@@ -1055,7 +1003,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 657,
+      "elapsedMs": 175,
       "error": ""
     },
     {
@@ -1068,7 +1016,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 3265,
+      "elapsedMs": 1043,
       "error": ""
     },
     {
@@ -1081,73 +1029,8 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1060,
+      "elapsedMs": 300,
       "error": ""
-    },
-    {
-      "kind": "source",
-      "id": "current-vod-url-极速资源-https-jszyapi-com-api-php-provide-vod-13",
-      "name": "极速资源｜追劇",
-      "type": 1,
-      "url": "https://jszyapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 262,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-新浪资源-https-api-xinlangapi-com-xinlangapi-php-provide-vod-16",
-      "name": "新浪资源｜追劇",
-      "type": 1,
-      "url": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 262,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-光速资源-https-api-guangsuapi-com-api-php-provide-vod-22",
-      "name": "光速资源｜追劇",
-      "type": 1,
-      "url": "https://api.guangsuapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 379,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-虎牙资源-https-www-huyaapi-com-api-php-provide-vod-34",
-      "name": "虎牙资源｜追劇",
-      "type": 1,
-      "url": "https://www.huyaapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 395,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-火狐-https-hhzyapi-com-api-php-provide-vod-81",
-      "name": "火狐影视｜追剧",
-      "type": 1,
-      "url": "https://hhzyapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 403,
-      "elapsedMs": 481,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
       "kind": "source",
@@ -1157,10 +1040,23 @@
       "url": "https://pz.v88.qzz.io/?url=https://hhzyapi.com/api.php/provide/vod",
       "indexed": true,
       "adult": false,
-      "ok": false,
-      "status": 403,
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 328,
+      "error": ""
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-黄色仓库-https-hsckzy-xyz-api-php-provide-vod-47",
+      "name": "黄色仓库｜追劇",
+      "type": 1,
+      "url": "https://hsckzy.xyz/api.php/provide/vod/",
+      "indexed": true,
+      "adult": true,
+      "ok": true,
+      "status": 200,
       "elapsedMs": 112,
-      "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+      "error": ""
     },
     {
       "kind": "source",
@@ -1172,7 +1068,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 266,
+      "elapsedMs": 118,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -1185,7 +1081,7 @@
       "adult": true,
       "ok": false,
       "status": 0,
-      "elapsedMs": 8011,
+      "elapsedMs": 8013,
       "error": "The operation was aborted due to timeout"
     },
     {
@@ -1198,7 +1094,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 167,
+      "elapsedMs": 68,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -1215,7 +1111,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 120,
+      "elapsedMs": 75,
       "error": "manifest HTTP 403"
     },
     {
@@ -1232,7 +1128,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 129,
+      "elapsedMs": 78,
       "error": "manifest HTTP 403"
     },
     {
@@ -1249,7 +1145,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 123,
+      "elapsedMs": 80,
       "error": "manifest HTTP 403"
     },
     {
@@ -1266,7 +1162,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 127,
+      "elapsedMs": 73,
       "error": "manifest HTTP 403"
     },
     {
@@ -1283,7 +1179,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 128,
+      "elapsedMs": 80,
       "error": "manifest HTTP 403"
     },
     {
@@ -1300,7 +1196,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 124,
+      "elapsedMs": 78,
       "error": "manifest HTTP 403"
     },
     {
@@ -1317,7 +1213,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 128,
+      "elapsedMs": 80,
       "error": "manifest HTTP 403"
     },
     {
@@ -1334,7 +1230,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 132,
+      "elapsedMs": 79,
       "error": "manifest HTTP 403"
     },
     {
@@ -1351,7 +1247,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 127,
+      "elapsedMs": 85,
       "error": "manifest HTTP 403"
     },
     {
@@ -1368,7 +1264,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 128,
+      "elapsedMs": 83,
       "error": "manifest HTTP 403"
     },
     {
@@ -1385,7 +1281,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 133,
+      "elapsedMs": 77,
       "error": "manifest HTTP 403"
     },
     {
@@ -1402,7 +1298,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 132,
+      "elapsedMs": 77,
       "error": "manifest HTTP 403"
     },
     {
@@ -1419,7 +1315,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 33,
+      "elapsedMs": 70,
       "error": "manifest HTTP 403"
     },
     {
@@ -1436,7 +1332,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 31,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -1453,7 +1349,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 27,
+      "elapsedMs": 68,
       "error": "manifest HTTP 403"
     },
     {
@@ -1470,7 +1366,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 28,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1487,7 +1383,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 15,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -1504,7 +1400,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 13,
+      "elapsedMs": 62,
       "error": "manifest HTTP 403"
     },
     {
@@ -1521,7 +1417,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 14,
+      "elapsedMs": 17,
       "error": "manifest HTTP 403"
     },
     {
@@ -1538,7 +1434,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 13,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -1555,7 +1451,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 25,
+      "elapsedMs": 16,
       "error": "manifest HTTP 403"
     },
     {
@@ -1572,7 +1468,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 39,
+      "elapsedMs": 62,
       "error": "manifest HTTP 403"
     },
     {
@@ -1589,7 +1485,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 24,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -1606,7 +1502,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 23,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1623,7 +1519,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 8,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -1640,7 +1536,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 6,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -1657,7 +1553,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 6,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -1691,7 +1587,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 10,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -1708,7 +1604,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 9,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -1725,7 +1621,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 11,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1759,7 +1655,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 13,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -1776,7 +1672,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 8,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -1793,7 +1689,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 8,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -1810,7 +1706,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 12,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -1827,7 +1723,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 9,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -1844,7 +1740,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 16,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -1861,7 +1757,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 10,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -1878,7 +1774,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 11,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -1895,7 +1791,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 12,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -1912,7 +1808,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 11,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -1929,7 +1825,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 8,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -1946,7 +1842,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 12,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -1963,7 +1859,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 11,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -1980,7 +1876,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 12,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -1997,7 +1893,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 12,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -2014,7 +1910,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 9,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -2031,7 +1927,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 10,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -2048,7 +1944,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 10,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     },
     {
@@ -2065,7 +1961,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 8,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -2082,7 +1978,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 8,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -2099,7 +1995,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 9,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -2116,7 +2012,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 7,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -2133,7 +2029,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 8,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -2150,7 +2046,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 7,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -2167,7 +2063,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 6,
+      "elapsedMs": 12,
       "error": "manifest HTTP 403"
     },
     {
@@ -2184,7 +2080,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 5,
+      "elapsedMs": 13,
       "error": "manifest HTTP 403"
     }
   ]
