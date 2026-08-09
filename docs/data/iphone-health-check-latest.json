@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-08-08T18:30:53.661Z",
+  "checkedAt": "2026-08-09T00:30:20.422Z",
   "inputs": {
     "catalogPath": "D:\\a\\TV\\TV\\docs\\data\\iphone-vod-catalog.json",
     "livePath": "D:\\a\\TV\\TV\\docs\\data\\live-channels.json"
@@ -7,16 +7,16 @@
   "summary": {
     "sources": {
       "total": 78,
-      "ok": 74,
-      "failed": 4
+      "ok": 73,
+      "failed": 5
     },
     "posters": {
-      "total": 0,
-      "ok": 0,
-      "titleOk": 0,
-      "posterOk": 0,
-      "playOk": 0,
-      "qualityOk": 0,
+      "total": 50,
+      "ok": 50,
+      "titleOk": 50,
+      "posterOk": 50,
+      "playOk": 50,
+      "qualityOk": 50,
       "failed": 0
     },
     "live": {
@@ -31,6 +31,19 @@
   "failed": [
     {
       "kind": "source",
+      "id": "all-on-demand-sources-豆豆资源-https-api-douapi-cc-api-php-provide-vod-55",
+      "name": "豆豆资源｜追劇",
+      "type": 1,
+      "url": "https://api.douapi.cc/api.php/provide/vod/",
+      "indexed": true,
+      "adult": true,
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 189,
+      "error": "fetch failed"
+    },
+    {
+      "kind": "source",
       "id": "all-on-demand-sources-大地资源-https-dadiapi-com-feifei-68",
       "name": "大地资源｜追劇",
       "type": 0,
@@ -39,7 +52,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 937,
+      "elapsedMs": 211,
       "error": "XML source did not return an XML list"
     },
     {
@@ -52,7 +65,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 463,
+      "elapsedMs": 35,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -65,7 +78,7 @@
       "adult": true,
       "ok": false,
       "status": 0,
-      "elapsedMs": 2240,
+      "elapsedMs": 2329,
       "error": "fetch failed"
     },
     {
@@ -78,7 +91,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 496,
+      "elapsedMs": 32,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     }
   ],
@@ -93,7 +106,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 617,
+      "elapsedMs": 680,
       "error": ""
     },
     {
@@ -106,7 +119,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 661,
+      "elapsedMs": 243,
       "error": ""
     },
     {
@@ -119,7 +132,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1111,
+      "elapsedMs": 903,
       "error": ""
     },
     {
@@ -132,7 +145,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1031,
+      "elapsedMs": 1022,
       "error": ""
     },
     {
@@ -145,7 +158,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 719,
+      "elapsedMs": 496,
       "error": ""
     },
     {
@@ -158,7 +171,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1490,
+      "elapsedMs": 1066,
       "error": ""
     },
     {
@@ -171,7 +184,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1060,
+      "elapsedMs": 501,
       "error": ""
     },
     {
@@ -184,7 +197,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1030,
+      "elapsedMs": 529,
       "error": ""
     },
     {
@@ -197,7 +210,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 746,
+      "elapsedMs": 647,
       "error": ""
     },
     {
@@ -210,7 +223,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 621,
+      "elapsedMs": 58,
       "error": ""
     },
     {
@@ -223,7 +236,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 435,
+      "elapsedMs": 295,
       "error": ""
     },
     {
@@ -236,7 +249,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 823,
+      "elapsedMs": 153,
       "error": ""
     },
     {
@@ -249,7 +262,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1502,
+      "elapsedMs": 1085,
       "error": ""
     },
     {
@@ -262,7 +275,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1171,
+      "elapsedMs": 423,
       "error": ""
     },
     {
@@ -275,7 +288,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 817,
+      "elapsedMs": 269,
       "error": ""
     },
     {
@@ -288,7 +301,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 611,
+      "elapsedMs": 45,
       "error": ""
     },
     {
@@ -301,7 +314,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 694,
+      "elapsedMs": 160,
       "error": ""
     },
     {
@@ -314,7 +327,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 966,
+      "elapsedMs": 211,
       "error": ""
     },
     {
@@ -327,7 +340,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1753,
+      "elapsedMs": 325,
       "error": ""
     },
     {
@@ -340,7 +353,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 639,
+      "elapsedMs": 145,
       "error": ""
     },
     {
@@ -353,7 +366,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 509,
+      "elapsedMs": 59,
       "error": ""
     },
     {
@@ -366,7 +379,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 668,
+      "elapsedMs": 201,
       "error": ""
     },
     {
@@ -379,7 +392,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1140,
+      "elapsedMs": 1021,
       "error": ""
     },
     {
@@ -392,7 +405,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 3058,
+      "elapsedMs": 886,
       "error": ""
     },
     {
@@ -405,7 +418,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 499,
+      "elapsedMs": 70,
       "error": ""
     },
     {
@@ -418,7 +431,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 619,
+      "elapsedMs": 215,
       "error": ""
     },
     {
@@ -431,7 +444,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 609,
+      "elapsedMs": 165,
       "error": ""
     },
     {
@@ -444,7 +457,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 976,
+      "elapsedMs": 620,
       "error": ""
     },
     {
@@ -457,7 +470,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 984,
+      "elapsedMs": 147,
       "error": ""
     },
     {
@@ -470,7 +483,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 562,
+      "elapsedMs": 183,
       "error": ""
     },
     {
@@ -483,7 +496,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 475,
+      "elapsedMs": 42,
       "error": ""
     },
     {
@@ -496,7 +509,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 604,
+      "elapsedMs": 261,
       "error": ""
     },
     {
@@ -509,7 +522,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 576,
+      "elapsedMs": 196,
       "error": ""
     },
     {
@@ -522,7 +535,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 796,
+      "elapsedMs": 261,
       "error": ""
     },
     {
@@ -535,7 +548,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 713,
+      "elapsedMs": 534,
       "error": ""
     },
     {
@@ -548,7 +561,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 970,
+      "elapsedMs": 870,
       "error": ""
     },
     {
@@ -561,7 +574,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 540,
+      "elapsedMs": 305,
       "error": ""
     },
     {
@@ -574,7 +587,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 774,
+      "elapsedMs": 601,
       "error": ""
     },
     {
@@ -587,7 +600,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 624,
+      "elapsedMs": 309,
       "error": ""
     },
     {
@@ -600,7 +613,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 460,
+      "elapsedMs": 232,
       "error": ""
     },
     {
@@ -613,7 +626,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 529,
+      "elapsedMs": 150,
       "error": ""
     },
     {
@@ -626,7 +639,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 724,
+      "elapsedMs": 226,
       "error": ""
     },
     {
@@ -639,7 +652,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 492,
+      "elapsedMs": 56,
       "error": ""
     },
     {
@@ -652,7 +665,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 569,
+      "elapsedMs": 156,
       "error": ""
     },
     {
@@ -665,7 +678,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1856,
+      "elapsedMs": 845,
       "error": ""
     },
     {
@@ -678,7 +691,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 686,
+      "elapsedMs": 253,
       "error": ""
     },
     {
@@ -689,10 +702,10 @@
       "url": "https://api.douapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 636,
-      "error": ""
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 189,
+      "error": "fetch failed"
     },
     {
       "kind": "source",
@@ -704,7 +717,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 603,
+      "elapsedMs": 235,
       "error": ""
     },
     {
@@ -717,7 +730,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 825,
+      "elapsedMs": 855,
       "error": ""
     },
     {
@@ -730,7 +743,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 596,
+      "elapsedMs": 232,
       "error": ""
     },
     {
@@ -743,7 +756,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 590,
+      "elapsedMs": 123,
       "error": ""
     },
     {
@@ -756,7 +769,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 661,
+      "elapsedMs": 161,
       "error": ""
     },
     {
@@ -769,7 +782,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 431,
+      "elapsedMs": 317,
       "error": ""
     },
     {
@@ -782,7 +795,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 703,
+      "elapsedMs": 128,
       "error": ""
     },
     {
@@ -795,21 +808,8 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 937,
+      "elapsedMs": 211,
       "error": "XML source did not return an XML list"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-70",
-      "name": "奥斯卡｜追劇",
-      "type": 1,
-      "url": "https://aosikazy.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": true,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 875,
-      "error": ""
     },
     {
       "kind": "source",
@@ -821,7 +821,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 5045,
+      "elapsedMs": 4870,
       "error": ""
     },
     {
@@ -834,7 +834,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 498,
+      "elapsedMs": 162,
       "error": ""
     },
     {
@@ -847,7 +847,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 620,
+      "elapsedMs": 203,
       "error": ""
     },
     {
@@ -860,7 +860,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 342,
+      "elapsedMs": 76,
       "error": ""
     },
     {
@@ -873,7 +873,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 696,
+      "elapsedMs": 238,
       "error": ""
     },
     {
@@ -886,7 +886,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1230,
+      "elapsedMs": 1005,
       "error": ""
     },
     {
@@ -899,7 +899,7 @@
       "adult": false,
       "ok": true,
       "status": 206,
-      "elapsedMs": 671,
+      "elapsedMs": 340,
       "error": ""
     },
     {
@@ -912,7 +912,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 951,
+      "elapsedMs": 786,
       "error": ""
     },
     {
@@ -925,7 +925,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 608,
+      "elapsedMs": 504,
       "error": ""
     },
     {
@@ -938,7 +938,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 851,
+      "elapsedMs": 247,
       "error": ""
     },
     {
@@ -951,7 +951,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1061,
+      "elapsedMs": 873,
       "error": ""
     },
     {
@@ -964,7 +964,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 674,
+      "elapsedMs": 169,
       "error": ""
     },
     {
@@ -977,7 +977,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 617,
+      "elapsedMs": 182,
       "error": ""
     },
     {
@@ -990,7 +990,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 623,
+      "elapsedMs": 216,
       "error": ""
     },
     {
@@ -1003,7 +1003,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 284,
+      "elapsedMs": 120,
       "error": ""
     },
     {
@@ -1016,7 +1016,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 635,
+      "elapsedMs": 129,
       "error": ""
     },
     {
@@ -1029,7 +1029,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1067,
+      "elapsedMs": 214,
       "error": ""
     },
     {
@@ -1042,7 +1042,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 3942,
+      "elapsedMs": 5302,
       "error": ""
     },
     {
@@ -1055,7 +1055,20 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1260,
+      "elapsedMs": 681,
+      "error": ""
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-奥斯卡-https-aosikazy-com-api-php-provide-vod-70",
+      "name": "奥斯卡｜追劇",
+      "type": 1,
+      "url": "https://aosikazy.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": true,
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 839,
       "error": ""
     },
     {
@@ -1068,7 +1081,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 463,
+      "elapsedMs": 35,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -1081,7 +1094,7 @@
       "adult": true,
       "ok": false,
       "status": 0,
-      "elapsedMs": 2240,
+      "elapsedMs": 2329,
       "error": "fetch failed"
     },
     {
@@ -1094,8 +1107,1058 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 496,
+      "elapsedMs": 32,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186095-1",
+      "name": "调教小女友",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/S379n4wD/1.jpg?t=1786156909",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "2276p",
+      "maxHeight": 2276,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 168,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186094-1",
+      "name": "跳蛋玩弄小逼逼 2",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/KdLACShi/1.jpg?t=1786156909",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1706p",
+      "maxHeight": 1706,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 180,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186093-1",
+      "name": "跳蛋玩弄小逼逼 3",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/whU9ayLp/1.jpg?t=1786156909",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1706p",
+      "maxHeight": 1706,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 186,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186092-1",
+      "name": "跳蛋尽情玩弄 插浪穴屁眼2",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/jYGZNRJm/1.jpg?t=1786156909",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1958p",
+      "maxHeight": 1958,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 173,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186091-1",
+      "name": "10musume 122025_01 お掃除フェラまでしてくれるサンタコス美尻娘",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/1M95225N/1.jpg?t=1786156908",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 173,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186090-1",
+      "name": "SMOK-033 【尻穴交尾セクハラ】残業中、2人きりのオフィスで無自覚パッツンスーツのせいで肛門大好きムラムラ",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/FWynR4DF/1.jpg?t=1786156904",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 189,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186089-1",
+      "name": "10musume 121825_01 彼氏の借金をカラダで返済する健気な彼女",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/dSAoQlQZ/1.jpg?t=1786156901",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 172,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186088-1",
+      "name": "10musume 122325_01 イラマチオで神対応するエッチなサンタちゃん",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/qMAORsE9/1.jpg?t=1786156900",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 188,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186087-1",
+      "name": "SMOK-032 【肛門舐めセクハラ】ケツ穴を拡げさせられ何度もアナルクンニで舐められイキするデカ尻部下OL妻",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/8lLBlaOC/1.jpg?t=1786156900",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 183,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186086-1",
+      "name": "10musume 121625_01 アジアの美女図鑑：チャオアン",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/hZhmhpKZ/1.jpg?t=1786156897",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 181,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186085-1",
+      "name": "10musume 121325_01 おんなのこのしくみ ~明るく神対応の巨乳ロリ娘~ 羽柴よしの",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/jPRcJPNv/1.jpg?t=1786156897",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 183,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186084-1",
+      "name": "SMKD-006 完全昏眠-4名- 英留学希望（1●）-未成熟モデル（1●）-偏差値67漬けマ〇コ（19）-17",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/jlGwdLlI/1.jpg?t=1786156897",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 180,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186083-1",
+      "name": "SMKD-007 完全昏眠-4名- ヒロイン級バ先後輩（19）-インテリアプランナー（2●）-令和8新妻（25）",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/2ntZ0Vxx/1.jpg?t=1786156896",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 167,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186082-1",
+      "name": "SMOK-031 【剛毛舐めセクハラ】残業中のオフィスで二人きり、無自覚ハミ毛で上司ち○ぽを勃起させムレムレジャ",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/FRNg79wa/1.jpg?t=1786156895",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 170,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186081-1",
+      "name": "SKMJ-734 祝！卒業！男性経験ほぼゼロのうぶな女子学生1クラス30名 人生初の中出しセックス映像大放出300分SP",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/rb9TmvjC/1.jpg?t=1786156892",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 173,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186080-1",
+      "name": "SKMJ-731 本物小●校の教員にガチ依頼！いじめられっ子童貞君にリアル性教育してもらえませんか？担任のディー",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/fkYjyGWJ/1.jpg?t=1786156885",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 168,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186079-1",
+      "name": "SKMJ-730 モーターショーで車より輝くレースクイーンの皆さん！！「童貞カメラマンのモデルになってくれません",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/JvBaKGwa/1.jpg?t=1786156885",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 171,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186078-1",
+      "name": "SKMJ-733 現役ナースが何度も射精させるほど高額賞金GET！連続射精チャレンジ！心優しいナースさんたちが金",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/eH9AZ18t/1.jpg?t=1786156884",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 177,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186077-1",
+      "name": "SMKD-005 完全昏眠-4名- 琉●大学インターン（22）-ダイヤモンドギャル（22）-Hcup医療事務員（",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/OIPDnUaY/1.jpg?t=1786156883",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 11,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186076-1",
+      "name": "SMOK-028 【胸チラッセクハラ】残業中のオフィスで二人きり、あざとい谷間おっぱい挑発で若手部下をビンビン勃",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/dnDNBUwu/1.jpg?t=1786156882",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 11,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186075-1",
+      "name": "SMOK-029 【お漏らしセクハラ】残業中のオフィスで二人きり、 媚薬利尿剤で早漏敏感化した若手ま○こを刺激し",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/lkfyUQvs/1.jpg?t=1786156881",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 11,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186074-1",
+      "name": "SMOK-030 【美脚責めセクハラ】残業中のオフィスで二人きり、ミニスカモデル脚挑発で若手ち○ぽを勃起させどす",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/alHZBLvs/1.jpg?t=1786156880",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 4,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186073-1",
+      "name": "SLN-014 すれてない 上尾市 地元のクレープ店バイト さくら21さい 沖奈さくら",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/djVy5yux/1.jpg?t=1786156879",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 4,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186072-1",
+      "name": "SKMN-015 【配信限定】そんなに誘われたら友人の…人妻にだってブチこむわ",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/TXYTu9EW/1.jpg?t=1786156873",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 10,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186071-1",
+      "name": "SKMJ-732 3分前まで女子○校生！～2026年～卒業式直後にガチナンパ！生まれて初めての素股体験！クリトリ",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/6jV4G9Rf/1.jpg?t=1786156863",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 4,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186070-1",
+      "name": "MGMJ-077-C 僕たちは、あの子の黒スト脚をやめられない。綾瀬こころ",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/nXMTXvlk/1.jpg?t=1786156860",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 5,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186069-1",
+      "name": "MIAB-286-C 筋肉美ボディ女教師に欲情したアスリート生徒らの中出し精子ぶりゅぶりゅ逆流絶倫マッスルピスト",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/HKTMydIK/1.jpg?t=1786156860",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 12,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186068-1",
+      "name": "SKMN-014 【配信限定】人妻はセフレの方が本性が出しやすい",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/a7f6scvk/1.jpg?t=1786156860",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 12,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186067-1",
+      "name": "水菜麗 EC-114 監禁恋愛ドレイ みづなれい",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/h1QTlxd5/1.jpg?t=1786156860",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "718p",
+      "maxHeight": 718,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 5,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186066-1",
+      "name": "水菜麗 EC-104 ザ·お仕置き みづなれい",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/ZB2YcE8E/1.jpg?t=1786156859",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "718p",
+      "maxHeight": 718,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 3,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186065-1",
+      "name": "MGMQ-150-C M男がみんな夢中になる保健室のアナル責め先生。橘京花",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/qjE3I1KT/1.jpg?t=1786156859",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 5,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186064-1",
+      "name": "TMAVR-179 【VR】叔父さん大好きな日焼けっ子と夏休み 由良かな-cd3",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/EB4VsGCz/1.jpg?t=1786156855",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "640p",
+      "maxHeight": 640,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 10,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186063-1",
+      "name": "MIAB-273-C 僕より高身長（174cm）のデカ尻デカパイ女上司はドMチ〇ポを見下しマウント種搾りプレスで",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/RMNzwOi9/1.jpg?t=1786156854",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 5,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186062-1",
+      "name": "[株式会社虎の穴] 母娘丼 おっぱい特盛母乳汁だくで",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/QhoEhfvh/1.jpg?t=1786156854",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "854p",
+      "maxHeight": 854,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 10,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186061-1",
+      "name": "[無修正_Uncensored] にーとと天使とえっちな家族 莉菜編 EPANIME Directors Cut 導演搶先版",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/VbprXuwW/1.jpg?t=1786156853",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "680p",
+      "maxHeight": 680,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 5,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186060-1",
+      "name": "MGMJ-075-C 黒木さんのパンスト脚がエロ過ぎて脳みそがとろけそう",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/PBlsZwvQ/1.jpg?t=1786156848",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 4,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186059-1",
+      "name": "SKMJ-724 極寒の冬に混浴SEXでパパンパッパンッパンッパンッ！パコって温まりたい厳選素人BEST10 中",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/vAMlcXgq/1.jpg?t=1786156845",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 15,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186058-1",
+      "name": "MGMJ-076-C 美丘さんのパンスト脚がエロ過ぎて脳みそがとろけそう",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/MzN2UeuT/1.jpg?t=1786156844",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 5,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186057-1",
+      "name": "MFYD-006-C 日曜日のJULIA 年下カレシと渋谷のラブホで、ハメ撮りSEX2本番。",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/bWn52XgL/1.jpg?t=1786156844",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 8,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186056-1",
+      "name": "MFYD-010-C めっちゃ上から目線のイイオンナに見下されながらオナニーしたい！！ 大谷双葉のサディズムボイ",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/RaWR5trk/1.jpg?t=1786156842",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 6,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186055-1",
+      "name": "SKMJ-728 美人で巨乳な彼有りの姉と童貞弟が高額賞金かけて野球拳で対決！？「姉ちゃんの裸で興奮するわけない",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/hTkm0lBz/1.jpg?t=1786156842",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 7,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186054-1",
+      "name": "[妄想専科]身体で解決百鬼屋探偵事務所 ～百鬼屋 光の妖怪事件簿～ 第一話 処女捨山伝説怪奇譚",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/FASDcqEA/1.jpg?t=1786156841",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 7,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186053-1",
+      "name": "SKMJ-727 家族の絆が性欲に負ける！？卒業式直後の父娘が相互エステ密着オイルエステぬるぬる素股体験！？お互",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/uPYrdF7j/1.jpg?t=1786156841",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 5,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186052-1",
+      "name": "[妄想専科]身体で解決百鬼屋探偵事務所 ～百鬼屋 光の妖怪事件簿～ 第四話 妖怪大戦争復讐劇",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/j2umsY3v/1.jpg?t=1786156841",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 5,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186051-1",
+      "name": "MIAB-271-C キミ（幼なじみ）が2度と風俗行けないように10発中出ししても騎乗位で搾りとるの止めないよ",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/btyDxtca/1.jpg?t=1786156839",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 6,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186050-1",
+      "name": "SKMJ-726 聖母のように優しくて可愛いナースさん！「早漏に悩む童貞君の暴発改善のお手伝いしてくれませんか？",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/RTGzlaMD/1.jpg?t=1786156839",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 5,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186049-1",
+      "name": "SKMJ-729 週3でママさんバレーに通う欲求不満を隠せない素人ご無沙汰妻が挑戦！？むちむちのデカ尻素股！旦那",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/kCvPzhXc/1.jpg?t=1786156837",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 5,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186048-1",
+      "name": "SKMJ-725 『メモリアルヌードフォト』と題された雑誌の特集だと素人大学生を騙し、絶倫チ○ポ男と素肌密着偽撮",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/G9pRQP0f/1.jpg?t=1786156834",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 4,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186047-1",
+      "name": "친구 아줌마와 첫경험",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/EiSe9TOn/1.jpg?t=1786156833",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 4,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-奶香资源-https-naixxzy-com-api-php-provide-vod-51-186046-1",
+      "name": "MFYD-004-C エロがものすごい人妻を禁欲させて無限絶頂させる、中出し解禁3本番ー。",
+      "type": "adult",
+      "url": "https://guzwiayz.com/20260807/heKRrVGO/1.jpg?t=1786156833",
+      "sourceName": "奶香资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 4,
+      "error": ""
     },
     {
       "kind": "live",
@@ -1111,7 +2174,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 199,
+      "elapsedMs": 88,
       "error": "manifest HTTP 403"
     },
     {
@@ -1128,7 +2191,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 201,
+      "elapsedMs": 166,
       "error": "manifest HTTP 403"
     },
     {
@@ -1145,7 +2208,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 209,
+      "elapsedMs": 152,
       "error": "manifest HTTP 403"
     },
     {
@@ -1162,7 +2225,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 204,
+      "elapsedMs": 85,
       "error": "manifest HTTP 403"
     },
     {
@@ -1179,7 +2242,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 199,
+      "elapsedMs": 80,
       "error": "manifest HTTP 403"
     },
     {
@@ -1196,7 +2259,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 204,
+      "elapsedMs": 161,
       "error": "manifest HTTP 403"
     },
     {
@@ -1213,7 +2276,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 206,
+      "elapsedMs": 156,
       "error": "manifest HTTP 403"
     },
     {
@@ -1230,7 +2293,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 201,
+      "elapsedMs": 164,
       "error": "manifest HTTP 403"
     },
     {
@@ -1247,7 +2310,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 203,
+      "elapsedMs": 153,
       "error": "manifest HTTP 403"
     },
     {
@@ -1264,7 +2327,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 199,
+      "elapsedMs": 70,
       "error": "manifest HTTP 403"
     },
     {
@@ -1281,7 +2344,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 204,
+      "elapsedMs": 160,
       "error": "manifest HTTP 403"
     },
     {
@@ -1298,7 +2361,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 206,
+      "elapsedMs": 162,
       "error": "manifest HTTP 403"
     },
     {
@@ -1315,7 +2378,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 176,
+      "elapsedMs": 153,
       "error": "manifest HTTP 403"
     },
     {
@@ -1332,7 +2395,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 36,
+      "elapsedMs": 28,
       "error": "manifest HTTP 403"
     },
     {
@@ -1349,7 +2412,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 171,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -1366,7 +2429,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 171,
+      "elapsedMs": 35,
       "error": "manifest HTTP 403"
     },
     {
@@ -1383,7 +2446,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 36,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -1400,7 +2463,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 35,
+      "elapsedMs": 37,
       "error": "manifest HTTP 403"
     },
     {
@@ -1417,7 +2480,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 33,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -1434,7 +2497,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 170,
+      "elapsedMs": 32,
       "error": "manifest HTTP 403"
     },
     {
@@ -1451,7 +2514,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -1468,7 +2531,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 33,
+      "elapsedMs": 28,
       "error": "manifest HTTP 403"
     },
     {
@@ -1485,7 +2548,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 36,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -1502,7 +2565,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 35,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -1519,7 +2582,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 35,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -1536,7 +2599,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 35,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -1553,7 +2616,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 37,
       "error": "manifest HTTP 403"
     },
     {
@@ -1570,7 +2633,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 33,
+      "elapsedMs": 128,
       "error": "manifest HTTP 403"
     },
     {
@@ -1587,7 +2650,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 36,
+      "elapsedMs": 45,
       "error": "manifest HTTP 403"
     },
     {
@@ -1604,7 +2667,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 36,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -1621,7 +2684,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -1638,7 +2701,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 48,
+      "elapsedMs": 27,
       "error": "manifest HTTP 403"
     },
     {
@@ -1655,7 +2718,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 35,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -1672,7 +2735,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -1689,7 +2752,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 26,
       "error": "manifest HTTP 403"
     },
     {
@@ -1706,7 +2769,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 35,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -1723,7 +2786,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -1740,7 +2803,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -1757,7 +2820,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 48,
+      "elapsedMs": 36,
       "error": "manifest HTTP 403"
     },
     {
@@ -1774,7 +2837,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 45,
+      "elapsedMs": 26,
       "error": "manifest HTTP 403"
     },
     {
@@ -1791,7 +2854,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 42,
       "error": "manifest HTTP 403"
     },
     {
@@ -1808,7 +2871,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -1825,7 +2888,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 35,
       "error": "manifest HTTP 403"
     },
     {
@@ -1842,7 +2905,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 31,
       "error": "manifest HTTP 403"
     },
     {
@@ -1859,7 +2922,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 33,
+      "elapsedMs": 27,
       "error": "manifest HTTP 403"
     },
     {
@@ -1876,7 +2939,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 46,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -1893,7 +2956,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 47,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -1910,7 +2973,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 36,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -1927,7 +2990,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 35,
+      "elapsedMs": 25,
       "error": "manifest HTTP 403"
     },
     {
@@ -1944,7 +3007,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 35,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -1961,7 +3024,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 22,
       "error": "manifest HTTP 403"
     },
     {
@@ -1978,7 +3041,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 35,
+      "elapsedMs": 40,
       "error": "manifest HTTP 403"
     },
     {
@@ -1995,7 +3058,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 46,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -2012,7 +3075,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 47,
+      "elapsedMs": 23,
       "error": "manifest HTTP 403"
     },
     {
@@ -2029,7 +3092,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -2046,7 +3109,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 33,
+      "elapsedMs": 38,
       "error": "manifest HTTP 403"
     },
     {
@@ -2063,7 +3126,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 35,
       "error": "manifest HTTP 403"
     },
     {
@@ -2080,7 +3143,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 34,
+      "elapsedMs": 48,
       "error": "manifest HTTP 403"
     }
   ]
