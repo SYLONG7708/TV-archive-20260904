@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-17T18:18:16.929Z",
+  "generatedAt": "2026-08-18T00:18:54.801Z",
   "sourceName": "full",
   "adultStartIndex": 40,
   "totalAdultSources": 33,
   "usableAdultSources": 3,
   "duplicateAdultSources": 28,
   "failedAdultSources": 2,
-  "searchOkSources": 28,
-  "searchPlayableSources": 27,
+  "searchOkSources": 27,
+  "searchPlayableSources": 26,
   "candidateOutput": "sources/vod-lunatv-adult18-sorted-oktv.json",
   "analysisOutput": "sources/vod-lunatv-adult18-sorted-analysis.csv",
   "categoryCounts": {
@@ -53,8 +53,8 @@
       "duplicateReason": "duplicate_api",
       "listOk": true,
       "detailOk": true,
-      "searchOk": true,
-      "searchHasPlayUrl": true,
+      "searchOk": false,
+      "searchHasPlayUrl": false,
       "hasPlayUrl": true,
       "status": "duplicate_removed",
       "error": "duplicate_api",
@@ -413,7 +413,7 @@
       "searchHasPlayUrl": false,
       "hasPlayUrl": false,
       "status": "failed_removed",
-      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"The remote name could not be resolved: 'siwazyw.tv'\"",
+      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"The request was aborted: Could not create SSL/TLS secure channel.\"",
       "record": null
     },
     {
