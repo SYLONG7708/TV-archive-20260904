@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-19T06:18:35.806Z",
+  "generatedAt": "2026-08-19T12:19:48.562Z",
   "sourceName": "full",
   "adultStartIndex": 40,
   "totalAdultSources": 33,
   "usableAdultSources": 3,
   "duplicateAdultSources": 28,
   "failedAdultSources": 2,
-  "searchOkSources": 27,
-  "searchPlayableSources": 26,
+  "searchOkSources": 28,
+  "searchPlayableSources": 27,
   "candidateOutput": "sources/vod-lunatv-adult18-sorted-oktv.json",
   "analysisOutput": "sources/vod-lunatv-adult18-sorted-analysis.csv",
   "categoryCounts": {
@@ -53,8 +53,8 @@
       "duplicateReason": "duplicate_api",
       "listOk": true,
       "detailOk": true,
-      "searchOk": false,
-      "searchHasPlayUrl": false,
+      "searchOk": true,
+      "searchHasPlayUrl": true,
       "hasPlayUrl": true,
       "status": "duplicate_removed",
       "error": "duplicate_api",
@@ -413,7 +413,7 @@
       "searchHasPlayUrl": false,
       "hasPlayUrl": false,
       "status": "failed_removed",
-      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"The operation has timed out\"",
+      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"The underlying connection was closed: An unexpected error occurred on a send.\"",
       "record": null
     },
     {
