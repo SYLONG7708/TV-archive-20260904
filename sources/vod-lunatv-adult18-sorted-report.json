@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-22T06:19:07.098Z",
+  "generatedAt": "2026-08-22T08:26:03.676Z",
   "sourceName": "full",
   "adultStartIndex": 40,
   "totalAdultSources": 33,
   "usableAdultSources": 3,
   "duplicateAdultSources": 28,
   "failedAdultSources": 2,
-  "searchOkSources": 28,
-  "searchPlayableSources": 27,
+  "searchOkSources": 29,
+  "searchPlayableSources": 28,
   "candidateOutput": "sources/vod-lunatv-adult18-sorted-oktv.json",
   "analysisOutput": "sources/vod-lunatv-adult18-sorted-analysis.csv",
   "categoryCounts": {
@@ -53,8 +53,8 @@
       "duplicateReason": "duplicate_api",
       "listOk": true,
       "detailOk": true,
-      "searchOk": false,
-      "searchHasPlayUrl": false,
+      "searchOk": true,
+      "searchHasPlayUrl": true,
       "hasPlayUrl": true,
       "status": "duplicate_removed",
       "error": "duplicate_api",
@@ -574,7 +574,7 @@
       "searchHasPlayUrl": false,
       "hasPlayUrl": false,
       "status": "failed_removed",
-      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"Unable to connect to the remote server\"",
+      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"The operation has timed out\"",
       "record": null
     },
     {
