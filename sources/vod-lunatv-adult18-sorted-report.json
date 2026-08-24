@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-24T00:18:56.185Z",
+  "generatedAt": "2026-08-24T06:18:47.857Z",
   "sourceName": "full",
   "adultStartIndex": 40,
   "totalAdultSources": 33,
-  "usableAdultSources": 2,
+  "usableAdultSources": 3,
   "duplicateAdultSources": 28,
-  "failedAdultSources": 3,
+  "failedAdultSources": 2,
   "searchOkSources": 28,
   "searchPlayableSources": 27,
   "candidateOutput": "sources/vod-lunatv-adult18-sorted-oktv.json",
@@ -19,9 +19,9 @@
     },
     "02 國產/短片": {
       "total": 9,
-      "usable": 0,
+      "usable": 1,
       "duplicate": 8,
-      "failed": 1
+      "failed": 0
     },
     "03 番號/日本": {
       "total": 7,
@@ -53,8 +53,8 @@
       "duplicateReason": "duplicate_api",
       "listOk": true,
       "detailOk": true,
-      "searchOk": true,
-      "searchHasPlayUrl": true,
+      "searchOk": false,
+      "searchHasPlayUrl": false,
       "hasPlayUrl": true,
       "status": "duplicate_removed",
       "error": "duplicate_api",
@@ -218,17 +218,25 @@
       "order": 67,
       "name": "Luna 67 白嫖资源",
       "api": "https://www.kxgav.com/api/json.php",
-      "included": false,
+      "included": true,
       "duplicate": false,
       "duplicateReason": "",
-      "listOk": false,
-      "detailOk": false,
-      "searchOk": false,
-      "searchHasPlayUrl": false,
-      "hasPlayUrl": false,
-      "status": "failed_removed",
-      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"The operation has timed out\"",
-      "record": null
+      "listOk": true,
+      "detailOk": true,
+      "searchOk": true,
+      "searchHasPlayUrl": true,
+      "hasPlayUrl": true,
+      "status": "usable_review_required",
+      "error": "",
+      "record": {
+        "key": "白嫖资源|AV",
+        "name": "白嫖资源｜",
+        "type": 1,
+        "api": "https://www.kxgav.com/api/json.php",
+        "quickSearch": 1,
+        "searchable": 1,
+        "filterable": 0
+      }
     },
     {
       "category": "02 國產/短片",
