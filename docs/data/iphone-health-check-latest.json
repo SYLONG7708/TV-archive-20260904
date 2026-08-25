@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-08-25T00:31:39.361Z",
+  "checkedAt": "2026-08-25T06:31:15.413Z",
   "inputs": {
     "catalogPath": "D:\\a\\TV\\TV\\docs\\data\\iphone-vod-catalog.json",
     "livePath": "D:\\a\\TV\\TV\\docs\\data\\live-channels.json"
@@ -11,12 +11,12 @@
       "failed": 6
     },
     "posters": {
-      "total": 0,
-      "ok": 0,
-      "titleOk": 0,
-      "posterOk": 0,
-      "playOk": 0,
-      "qualityOk": 0,
+      "total": 40,
+      "ok": 40,
+      "titleOk": 40,
+      "posterOk": 40,
+      "playOk": 40,
+      "qualityOk": 40,
       "failed": 0
     },
     "live": {
@@ -31,6 +31,45 @@
   "failed": [
     {
       "kind": "source",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11",
+      "name": "魔都资源｜追劇",
+      "type": 1,
+      "url": "https://www.mdzyapi.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 8002,
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24",
+      "name": "魔都动漫｜追劇",
+      "type": 1,
+      "url": "https://caiji.moduapi.cc/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 8002,
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-滴滴资源-https-api-ddapi-cc-api-php-provide-vod-56",
+      "name": "滴滴资源｜追劇",
+      "type": 1,
+      "url": "https://api.ddapi.cc/api.php/provide/vod/",
+      "indexed": true,
+      "adult": true,
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 130,
+      "error": "fetch failed"
+    },
+    {
+      "kind": "source",
       "id": "all-on-demand-sources-大地资源-https-dadiapi-com-feifei-68",
       "name": "大地资源｜追劇",
       "type": 0,
@@ -39,47 +78,8 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 165,
+      "elapsedMs": 465,
       "error": "XML source did not return an XML list"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-ikun资源-https-ikunzyapi-com-api-php-provide-vod-5",
-      "name": "iKun资源｜追劇",
-      "type": 1,
-      "url": "https://ikunzyapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8016,
-      "error": "The operation was aborted due to timeout"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-jkun资源-https-jkunzyapi-com-api-php-provide-vod-49",
-      "name": "jkun资源｜追劇",
-      "type": 1,
-      "url": "https://jkunzyapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": true,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8007,
-      "error": "The operation was aborted due to timeout"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-爱奇艺-https-iqiyizyapi-com-api-php-provide-vod-1",
-      "name": "爱奇艺｜追劇",
-      "type": 1,
-      "url": "https://iqiyizyapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8001,
-      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "source",
@@ -91,7 +91,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 82,
+      "elapsedMs": 58,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -104,7 +104,7 @@
       "adult": true,
       "ok": false,
       "status": 0,
-      "elapsedMs": 2553,
+      "elapsedMs": 2787,
       "error": "fetch failed"
     }
   ],
@@ -119,7 +119,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 626,
+      "elapsedMs": 490,
       "error": ""
     },
     {
@@ -132,7 +132,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 238,
+      "elapsedMs": 204,
       "error": ""
     },
     {
@@ -145,7 +145,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1659,
+      "elapsedMs": 1807,
       "error": ""
     },
     {
@@ -158,7 +158,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 969,
+      "elapsedMs": 965,
       "error": ""
     },
     {
@@ -171,7 +171,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 305,
+      "elapsedMs": 329,
       "error": ""
     },
     {
@@ -184,7 +184,20 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1174,
+      "elapsedMs": 1061,
+      "error": ""
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-ikun资源-https-ikunzyapi-com-api-php-provide-vod-5",
+      "name": "iKun资源｜追劇",
+      "type": 1,
+      "url": "https://ikunzyapi.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": false,
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 2606,
       "error": ""
     },
     {
@@ -197,7 +210,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 493,
+      "elapsedMs": 687,
       "error": ""
     },
     {
@@ -210,7 +223,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 946,
+      "elapsedMs": 993,
       "error": ""
     },
     {
@@ -223,7 +236,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 319,
+      "elapsedMs": 339,
       "error": ""
     },
     {
@@ -236,7 +249,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 273,
+      "elapsedMs": 512,
       "error": ""
     },
     {
@@ -249,7 +262,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 420,
+      "elapsedMs": 65,
       "error": ""
     },
     {
@@ -260,10 +273,10 @@
       "url": "https://www.mdzyapi.com/api.php/provide/vod/",
       "indexed": true,
       "adult": false,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 3785,
-      "error": ""
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 8002,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "source",
@@ -275,7 +288,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 583,
+      "elapsedMs": 716,
       "error": ""
     },
     {
@@ -288,7 +301,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 305,
+      "elapsedMs": 187,
       "error": ""
     },
     {
@@ -301,7 +314,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 121,
+      "elapsedMs": 59,
       "error": ""
     },
     {
@@ -314,7 +327,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 753,
+      "elapsedMs": 135,
       "error": ""
     },
     {
@@ -327,7 +340,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 291,
+      "elapsedMs": 206,
       "error": ""
     },
     {
@@ -340,7 +353,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 378,
+      "elapsedMs": 556,
       "error": ""
     },
     {
@@ -353,7 +366,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 145,
+      "elapsedMs": 286,
       "error": ""
     },
     {
@@ -366,7 +379,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 254,
+      "elapsedMs": 122,
       "error": ""
     },
     {
@@ -379,7 +392,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 272,
+      "elapsedMs": 309,
       "error": ""
     },
     {
@@ -390,10 +403,10 @@
       "url": "https://caiji.moduapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": false,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 3156,
-      "error": ""
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 8002,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "source",
@@ -405,7 +418,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1358,
+      "elapsedMs": 1651,
       "error": ""
     },
     {
@@ -418,7 +431,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 87,
+      "elapsedMs": 259,
       "error": ""
     },
     {
@@ -431,7 +444,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 195,
+      "elapsedMs": 245,
       "error": ""
     },
     {
@@ -444,7 +457,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 581,
+      "elapsedMs": 284,
       "error": ""
     },
     {
@@ -457,7 +470,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 342,
+      "elapsedMs": 473,
       "error": ""
     },
     {
@@ -470,7 +483,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 193,
+      "elapsedMs": 543,
       "error": ""
     },
     {
@@ -483,7 +496,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 308,
+      "elapsedMs": 286,
       "error": ""
     },
     {
@@ -496,7 +509,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 128,
+      "elapsedMs": 69,
       "error": ""
     },
     {
@@ -509,7 +522,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 174,
+      "elapsedMs": 332,
       "error": ""
     },
     {
@@ -522,7 +535,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 162,
+      "elapsedMs": 309,
       "error": ""
     },
     {
@@ -535,7 +548,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 389,
+      "elapsedMs": 500,
       "error": ""
     },
     {
@@ -548,7 +561,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 415,
+      "elapsedMs": 396,
       "error": ""
     },
     {
@@ -561,7 +574,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 937,
+      "elapsedMs": 986,
       "error": ""
     },
     {
@@ -574,7 +587,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 153,
+      "elapsedMs": 131,
       "error": ""
     },
     {
@@ -587,7 +600,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 399,
+      "elapsedMs": 585,
       "error": ""
     },
     {
@@ -600,7 +613,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 160,
+      "elapsedMs": 225,
       "error": ""
     },
     {
@@ -613,7 +626,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 191,
+      "elapsedMs": 531,
       "error": ""
     },
     {
@@ -626,7 +639,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 172,
+      "elapsedMs": 92,
       "error": ""
     },
     {
@@ -639,7 +652,20 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 381,
+      "elapsedMs": 357,
+      "error": ""
+    },
+    {
+      "kind": "source",
+      "id": "all-on-demand-sources-jkun资源-https-jkunzyapi-com-api-php-provide-vod-49",
+      "name": "jkun资源｜追劇",
+      "type": 1,
+      "url": "https://jkunzyapi.com/api.php/provide/vod/",
+      "indexed": true,
+      "adult": true,
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 140,
       "error": ""
     },
     {
@@ -652,7 +678,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 210,
+      "elapsedMs": 296,
       "error": ""
     },
     {
@@ -665,7 +691,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1015,
+      "elapsedMs": 1217,
       "error": ""
     },
     {
@@ -678,7 +704,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 239,
+      "elapsedMs": 356,
       "error": ""
     },
     {
@@ -691,7 +717,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 220,
+      "elapsedMs": 183,
       "error": ""
     },
     {
@@ -702,10 +728,10 @@
       "url": "https://api.ddapi.cc/api.php/provide/vod/",
       "indexed": true,
       "adult": true,
-      "ok": true,
-      "status": 200,
-      "elapsedMs": 256,
-      "error": ""
+      "ok": false,
+      "status": 0,
+      "elapsedMs": 130,
+      "error": "fetch failed"
     },
     {
       "kind": "source",
@@ -717,7 +743,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 842,
+      "elapsedMs": 777,
       "error": ""
     },
     {
@@ -730,7 +756,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 176,
+      "elapsedMs": 158,
       "error": ""
     },
     {
@@ -743,7 +769,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 168,
+      "elapsedMs": 286,
       "error": ""
     },
     {
@@ -756,7 +782,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 180,
+      "elapsedMs": 327,
       "error": ""
     },
     {
@@ -769,7 +795,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 331,
+      "elapsedMs": 506,
       "error": ""
     },
     {
@@ -782,7 +808,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 193,
+      "elapsedMs": 228,
       "error": ""
     },
     {
@@ -795,7 +821,7 @@
       "adult": true,
       "ok": false,
       "status": 200,
-      "elapsedMs": 165,
+      "elapsedMs": 465,
       "error": "XML source did not return an XML list"
     },
     {
@@ -808,7 +834,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 188,
+      "elapsedMs": 300,
       "error": ""
     },
     {
@@ -821,7 +847,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1162,
+      "elapsedMs": 2006,
       "error": ""
     },
     {
@@ -834,7 +860,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 148,
+      "elapsedMs": 276,
       "error": ""
     },
     {
@@ -847,7 +873,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 210,
+      "elapsedMs": 255,
       "error": ""
     },
     {
@@ -860,7 +886,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 46,
+      "elapsedMs": 152,
       "error": ""
     },
     {
@@ -873,7 +899,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 316,
+      "elapsedMs": 312,
       "error": ""
     },
     {
@@ -886,7 +912,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 1099,
+      "elapsedMs": 1264,
       "error": ""
     },
     {
@@ -899,7 +925,7 @@
       "adult": false,
       "ok": true,
       "status": 206,
-      "elapsedMs": 391,
+      "elapsedMs": 119,
       "error": ""
     },
     {
@@ -912,7 +938,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 949,
+      "elapsedMs": 1074,
       "error": ""
     },
     {
@@ -925,7 +951,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 512,
+      "elapsedMs": 551,
       "error": ""
     },
     {
@@ -938,7 +964,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 317,
+      "elapsedMs": 380,
       "error": ""
     },
     {
@@ -951,7 +977,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 834,
+      "elapsedMs": 1022,
       "error": ""
     },
     {
@@ -964,7 +990,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 342,
+      "elapsedMs": 324,
       "error": ""
     },
     {
@@ -977,7 +1003,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 257,
+      "elapsedMs": 273,
       "error": ""
     },
     {
@@ -990,7 +1016,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 708,
+      "elapsedMs": 277,
       "error": ""
     },
     {
@@ -1003,7 +1029,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 131,
+      "elapsedMs": 228,
       "error": ""
     },
     {
@@ -1016,7 +1042,7 @@
       "adult": true,
       "ok": true,
       "status": 200,
-      "elapsedMs": 213,
+      "elapsedMs": 309,
       "error": ""
     },
     {
@@ -1029,7 +1055,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 171,
+      "elapsedMs": 280,
       "error": ""
     },
     {
@@ -1042,7 +1068,7 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 234,
+      "elapsedMs": 616,
       "error": ""
     },
     {
@@ -1055,34 +1081,8 @@
       "adult": false,
       "ok": true,
       "status": 200,
-      "elapsedMs": 816,
+      "elapsedMs": 1428,
       "error": ""
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-ikun资源-https-ikunzyapi-com-api-php-provide-vod-5",
-      "name": "iKun资源｜追劇",
-      "type": 1,
-      "url": "https://ikunzyapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": false,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8016,
-      "error": "The operation was aborted due to timeout"
-    },
-    {
-      "kind": "source",
-      "id": "all-on-demand-sources-jkun资源-https-jkunzyapi-com-api-php-provide-vod-49",
-      "name": "jkun资源｜追劇",
-      "type": 1,
-      "url": "https://jkunzyapi.com/api.php/provide/vod/",
-      "indexed": true,
-      "adult": true,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8007,
-      "error": "The operation was aborted due to timeout"
     },
     {
       "kind": "source",
@@ -1092,10 +1092,10 @@
       "url": "https://iqiyizyapi.com/api.php/provide/vod/",
       "indexed": true,
       "adult": false,
-      "ok": false,
-      "status": 0,
-      "elapsedMs": 8001,
-      "error": "The operation was aborted due to timeout"
+      "ok": true,
+      "status": 200,
+      "elapsedMs": 909,
+      "error": ""
     },
     {
       "kind": "source",
@@ -1107,7 +1107,7 @@
       "adult": false,
       "ok": false,
       "status": 403,
-      "elapsedMs": 82,
+      "elapsedMs": 58,
       "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
     },
     {
@@ -1120,8 +1120,848 @@
       "adult": true,
       "ok": false,
       "status": 0,
-      "elapsedMs": 2553,
+      "elapsedMs": 2787,
       "error": "fetch failed"
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88410-1",
+      "name": "蝉",
+      "type": "series",
+      "url": "https://www.mdzypic.com/upload/vod/20260820-1/67ec65195f5faed4138f7b05b1a7c3b0.webp",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "960p",
+      "maxHeight": 960,
+      "maxBandwidth": 2012000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 496,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88538-1",
+      "name": "月慵便枕玉凉梦第十一季",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/8c2d350faad7e251cdfd5571b734f1d4.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 528,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88537-1",
+      "name": "遇樱儿",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/ff600625f7ac980d3e8b5ccf002e26e9.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 524,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88536-1",
+      "name": "予你星河，在月亮心口撒个娇",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/c32aae475b0900a1fa75c0b303300b62.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 544,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88535-1",
+      "name": "宜起看今朝",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/5fa617908a5c2d0974502ee40007432f.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 543,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88534-1",
+      "name": "烟烟入我心间",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/5380bfbd8d2578b3ebbf60881d9b043d.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 535,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88533-1",
+      "name": "休个假，顺便成了老板娘",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/d81cf56b19f9692fbeab690b4756dead.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 531,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88532-1",
+      "name": "谢总失忆后每天都在要名分",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/0c1a5cc67411bf7d5bcad51001eebd09.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 521,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88531-1",
+      "name": "我在山海经里开超市",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/35ab77d7bbf29032578740c08490f4c4.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 537,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88530-1",
+      "name": "我有聚宝盆无限复制",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/9b3dcff1770b2fc19997a584acdc7917.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 539,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88529-1",
+      "name": "退婚那天，我养了五朵花",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/39c68b6f92b34e3e76352006b98ceeb1.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 524,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88528-1",
+      "name": "团宠糯糯第二季",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/31ff5d4dfe23f1e67e22f768b06a95d2.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 526,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88526-1",
+      "name": "烧着烧着就成神了",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/1b16530922b367933dd338cdd17ca8e0.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 534,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88527-1",
+      "name": "宿舍求生：从刷广告开始变强第二季",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/aefc700e0d292c5a82723e999ac6a098.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 528,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88525-1",
+      "name": "山沟进城，我去当了上门女婿",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/115369cebcb0b9ea75d4cd31381acbeb.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 527,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88524-1",
+      "name": "乞丐千金之我替老爹寻真爱",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/0f5423b73997869d38bb56dc073850cf.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 503,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88523-1",
+      "name": "骑手无双：差评里的秘密",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/8f4f71ae27fbe069aa609e5001bcbab9.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 515,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88522-1",
+      "name": "偏宠卿卿",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/bad14c497d002d34baf526aa433cd9b9.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 503,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88521-1",
+      "name": "马甲曝光，薄总追着我认娃",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/f5b6cd4767b503918aef900eb05cee50.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 88,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都资源-https-www-mdzyapi-com-api-php-provide-vod-11-88520-1",
+      "name": "开局诡秘天赋，焚尸就能变强之镇国伏尸",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/6e2c1cda2c1567e6b9d1af7d734eb5f9.jpg",
+      "sourceName": "魔都资源｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 89,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88538-1",
+      "name": "月慵便枕玉凉梦第十一季",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/8c2d350faad7e251cdfd5571b734f1d4.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 89,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88537-1",
+      "name": "遇樱儿",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/ff600625f7ac980d3e8b5ccf002e26e9.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 88,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88536-1",
+      "name": "予你星河，在月亮心口撒个娇",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/c32aae475b0900a1fa75c0b303300b62.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 94,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88535-1",
+      "name": "宜起看今朝",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/5fa617908a5c2d0974502ee40007432f.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 92,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88534-1",
+      "name": "烟烟入我心间",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/5380bfbd8d2578b3ebbf60881d9b043d.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 94,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88533-1",
+      "name": "休个假，顺便成了老板娘",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/d81cf56b19f9692fbeab690b4756dead.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 89,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88532-1",
+      "name": "谢总失忆后每天都在要名分",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/0c1a5cc67411bf7d5bcad51001eebd09.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1920p",
+      "maxHeight": 1920,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 90,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88531-1",
+      "name": "我在山海经里开超市",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/35ab77d7bbf29032578740c08490f4c4.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 90,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88530-1",
+      "name": "我有聚宝盆无限复制",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/9b3dcff1770b2fc19997a584acdc7917.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 92,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88529-1",
+      "name": "退婚那天，我养了五朵花",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/39c68b6f92b34e3e76352006b98ceeb1.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 88,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88528-1",
+      "name": "团宠糯糯第二季",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/31ff5d4dfe23f1e67e22f768b06a95d2.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 90,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88526-1",
+      "name": "烧着烧着就成神了",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/1b16530922b367933dd338cdd17ca8e0.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 88,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88527-1",
+      "name": "宿舍求生：从刷广告开始变强第二季",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/aefc700e0d292c5a82723e999ac6a098.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 87,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88525-1",
+      "name": "山沟进城，我去当了上门女婿",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/115369cebcb0b9ea75d4cd31381acbeb.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 89,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88524-1",
+      "name": "乞丐千金之我替老爹寻真爱",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/0f5423b73997869d38bb56dc073850cf.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 90,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88523-1",
+      "name": "骑手无双：差评里的秘密",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/8f4f71ae27fbe069aa609e5001bcbab9.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 90,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88522-1",
+      "name": "偏宠卿卿",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/bad14c497d002d34baf526aa433cd9b9.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 228,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88521-1",
+      "name": "马甲曝光，薄总追着我认娃",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/f5b6cd4767b503918aef900eb05cee50.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 229,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88520-1",
+      "name": "开局诡秘天赋，焚尸就能变强之镇国伏尸",
+      "type": "anime",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/6e2c1cda2c1567e6b9d1af7d734eb5f9.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "720p",
+      "maxHeight": 720,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 236,
+      "error": ""
+    },
+    {
+      "kind": "poster",
+      "id": "all-on-demand-sources-魔都动漫-https-caiji-moduapi-cc-api-php-provide-vod-24-88519-1",
+      "name": "觉醒当天，唯我依旧笑春风",
+      "type": "short",
+      "url": "https://www.mdzypic.com/upload/vod/20260825-1/c40d3923fd2dfec75cea72015ea935a8.jpg",
+      "sourceName": "魔都动漫｜追劇",
+      "titleOk": true,
+      "posterOk": true,
+      "playOk": true,
+      "qualityOk": true,
+      "qualityLabel": "1280p",
+      "maxHeight": 1280,
+      "maxBandwidth": 2000000,
+      "variants": 1,
+      "ok": true,
+      "status": 206,
+      "playStatus": 200,
+      "elapsedMs": 235,
+      "error": ""
     },
     {
       "kind": "live",
@@ -1137,7 +1977,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 92,
+      "elapsedMs": 129,
       "error": "manifest HTTP 403"
     },
     {
@@ -1154,7 +1994,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 222,
+      "elapsedMs": 105,
       "error": "manifest HTTP 403"
     },
     {
@@ -1171,7 +2011,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 93,
+      "elapsedMs": 119,
       "error": "manifest HTTP 403"
     },
     {
@@ -1188,7 +2028,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 128,
+      "elapsedMs": 106,
       "error": "manifest HTTP 403"
     },
     {
@@ -1205,7 +2045,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 240,
+      "elapsedMs": 105,
       "error": "manifest HTTP 403"
     },
     {
@@ -1222,7 +2062,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 94,
+      "elapsedMs": 108,
       "error": "manifest HTTP 403"
     },
     {
@@ -1239,7 +2079,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 221,
+      "elapsedMs": 116,
       "error": "manifest HTTP 403"
     },
     {
@@ -1256,7 +2096,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 111,
+      "elapsedMs": 72,
       "error": "manifest HTTP 403"
     },
     {
@@ -1273,7 +2113,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 106,
+      "elapsedMs": 111,
       "error": "manifest HTTP 403"
     },
     {
@@ -1290,7 +2130,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 129,
+      "elapsedMs": 115,
       "error": "manifest HTTP 403"
     },
     {
@@ -1307,7 +2147,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 102,
+      "elapsedMs": 111,
       "error": "manifest HTTP 403"
     },
     {
@@ -1324,7 +2164,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 111,
+      "elapsedMs": 112,
       "error": "manifest HTTP 403"
     },
     {
@@ -1341,7 +2181,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 208,
+      "elapsedMs": 81,
       "error": "manifest HTTP 403"
     },
     {
@@ -1358,7 +2198,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 42,
+      "elapsedMs": 17,
       "error": "manifest HTTP 403"
     },
     {
@@ -1375,7 +2215,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 41,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1392,7 +2232,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 42,
+      "elapsedMs": 16,
       "error": "manifest HTTP 403"
     },
     {
@@ -1409,7 +2249,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 46,
+      "elapsedMs": 19,
       "error": "manifest HTTP 403"
     },
     {
@@ -1426,7 +2266,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 40,
+      "elapsedMs": 16,
       "error": "manifest HTTP 403"
     },
     {
@@ -1443,7 +2283,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 45,
+      "elapsedMs": 17,
       "error": "manifest HTTP 403"
     },
     {
@@ -1460,7 +2300,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 45,
+      "elapsedMs": 17,
       "error": "manifest HTTP 403"
     },
     {
@@ -1477,7 +2317,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 45,
+      "elapsedMs": 16,
       "error": "manifest HTTP 403"
     },
     {
@@ -1494,7 +2334,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 41,
+      "elapsedMs": 17,
       "error": "manifest HTTP 403"
     },
     {
@@ -1511,7 +2351,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 52,
+      "elapsedMs": 16,
       "error": "manifest HTTP 403"
     },
     {
@@ -1528,7 +2368,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 41,
+      "elapsedMs": 16,
       "error": "manifest HTTP 403"
     },
     {
@@ -1545,7 +2385,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 45,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1562,7 +2402,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 38,
+      "elapsedMs": 29,
       "error": "manifest HTTP 403"
     },
     {
@@ -1579,7 +2419,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 39,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -1596,7 +2436,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 43,
+      "elapsedMs": 24,
       "error": "manifest HTTP 403"
     },
     {
@@ -1613,7 +2453,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 44,
+      "elapsedMs": 85,
       "error": "manifest HTTP 403"
     },
     {
@@ -1630,7 +2470,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 51,
+      "elapsedMs": 119,
       "error": "manifest HTTP 403"
     },
     {
@@ -1647,7 +2487,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 39,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1664,7 +2504,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 44,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1681,7 +2521,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 41,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1698,7 +2538,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 42,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -1715,7 +2555,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 39,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1732,7 +2572,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 45,
+      "elapsedMs": 21,
       "error": "manifest HTTP 403"
     },
     {
@@ -1749,7 +2589,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 40,
+      "elapsedMs": 17,
       "error": "manifest HTTP 403"
     },
     {
@@ -1766,7 +2606,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 45,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1783,7 +2623,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 42,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1800,7 +2640,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 43,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1817,7 +2657,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 68,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1834,7 +2674,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 48,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1851,7 +2691,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 44,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1868,7 +2708,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 41,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1885,7 +2725,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 41,
+      "elapsedMs": 17,
       "error": "manifest HTTP 403"
     },
     {
@@ -1902,7 +2742,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 57,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -1919,7 +2759,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 40,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -1936,7 +2776,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 43,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1953,7 +2793,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 38,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -1970,7 +2810,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 49,
+      "elapsedMs": 16,
       "error": "manifest HTTP 403"
     },
     {
@@ -1987,7 +2827,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 44,
+      "elapsedMs": 14,
       "error": "manifest HTTP 403"
     },
     {
@@ -2004,7 +2844,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 41,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -2021,7 +2861,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 41,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -2038,7 +2878,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 42,
+      "elapsedMs": 19,
       "error": "manifest HTTP 403"
     },
     {
@@ -2055,7 +2895,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 72,
+      "elapsedMs": 18,
       "error": "manifest HTTP 403"
     },
     {
@@ -2072,7 +2912,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 40,
+      "elapsedMs": 19,
       "error": "manifest HTTP 403"
     },
     {
@@ -2089,7 +2929,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 40,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     },
     {
@@ -2106,7 +2946,7 @@
       "maxBandwidth": 0,
       "variants": 0,
       "status": 403,
-      "elapsedMs": 44,
+      "elapsedMs": 15,
       "error": "manifest HTTP 403"
     }
   ]
