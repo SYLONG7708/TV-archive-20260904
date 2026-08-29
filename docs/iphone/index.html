@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" data-oktv-csp content="default-src 'self'; script-src 'self' 'sha256-pNKY7Tjx3kGzWRtmG4+f7vxGFHM5+cMwAjalxRtSk44=' https://cdn.jsdelivr.net; style-src 'self' 'sha256-QQRLlOM+9gQ2cglCRVQSliJzrpZn8LY/VDaKm72OKVY='; img-src 'self' data: https:; media-src 'self' blob: https:; connect-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; worker-src 'self' blob:; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'" />
+    <meta http-equiv="Content-Security-Policy" data-oktv-csp content="default-src 'self'; script-src 'self' 'sha256-d/ZrFvC2ndJN1FjyEUcxzPPrJ+Rl80u25VJrZk9QnEY=' https://cdn.jsdelivr.net; style-src 'self' 'sha256-q02F97qqlOr202beJ5VnHrLJYWm/Qm53QwnFgiZg0VQ='; img-src 'self' data: https:; media-src 'self' blob: https:; connect-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; worker-src 'self' blob:; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -239,6 +239,10 @@
       .section-head h2 {
         margin: 0;
         font-size: clamp(1.18rem, 5.8vw, 1.72rem);
+      }
+
+      .search-section-head .status-pill {
+        max-width: 100%;
       }
 
       .poster-grid,
@@ -616,6 +620,17 @@
         color: var(--amber);
       }
 
+      button.status-pill {
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      button.status-pill:focus-visible {
+        outline: 2px solid var(--amber);
+        outline-offset: 2px;
+      }
+
       .filter-summary {
         display: flex;
         flex-wrap: wrap;
@@ -878,6 +893,15 @@
       }
 
       @media (max-width: 430px) {
+        .search-section-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .search-section-head .status-pill {
+          white-space: normal;
+        }
+
         .top-nav {
           gap: 12px;
         }
@@ -1001,7 +1025,7 @@
           <button class="icon-btn" type="button" data-close-player aria-label="關閉"></button>
         </div>
         <video id="player" controls playsinline preload="metadata" poster="../assets/hero-cinema.png"></video>
-        <iframe id="playerFrame" class="player-frame hidden" title="直播播放器" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" sandbox="allow-scripts allow-same-origin allow-popups" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <iframe id="playerFrame" class="player-frame hidden" title="直播播放器" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" sandbox="allow-scripts allow-popups" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </section>
     </div>
 
@@ -1067,6 +1091,7 @@
         queryIndex: {
           manifest: null,
           cache: new Map(),
+          health: new Map(),
         },
         loadedSourceIds: new Set(),
         sourceMap: new Map(),
@@ -1081,6 +1106,8 @@
         searchLoading: false,
         searchLoadInFlight: null,
         searchAbortController: null,
+        searchDeadlineTimer: null,
+        searchProgress: { query: '', completed: 0, total: 0, failed: 0, status: 'idle' },
         renderLayoutKey: '',
       };
 
@@ -1106,6 +1133,11 @@
       const SEARCH_INDEX_MATCH_LIMIT = 320;
       const SEARCH_INDEX_YIELD_EVERY = 200;
       const QUERY_SHARD_CACHE_LIMIT = 6;
+      const QUERY_SEARCH_CONCURRENCY = 4;
+      const QUERY_SHARD_TIMEOUT_MS = 6000;
+      const QUERY_SEARCH_TIMEOUT_MS = 15000;
+      const QUERY_SHARD_COOLDOWN_MS = 30000;
+      const SEARCH_PROGRESS_RENDER_MS = 120;
       const DETAIL_CACHE_LIMIT = 12;
       const AUTO_SIGNAL_FALLBACK_LIMIT = 8;
       let hls = null;
@@ -1146,25 +1178,48 @@
         return `${value}${value.includes('?') ? '&' : '?'}ts=${Date.now()}`;
       }
 
+      const MAX_COMPRESSED_JSON_BYTES = 8 * 1024 * 1024;
+      const MAX_DECOMPRESSED_JSON_BYTES = 64 * 1024 * 1024;
+      const GZIP_DECOMPRESSION_TIMEOUT_MS = 2500;
+
+      function parseBoundedJsonBytes(bytes) {
+        if (bytes.byteLength > MAX_DECOMPRESSED_JSON_BYTES) throw new Error('JSON payload exceeds safe size limit');
+        return JSON.parse(new TextDecoder().decode(bytes));
+      }
+
       async function responseJson(res, target) {
         if (!/\.gz(?:$|[?#])/i.test(target)) return await res.json();
         const buffer = await res.arrayBuffer();
-        try {
-          if ('DecompressionStream' in window) {
-            const stream = new Blob([buffer]).stream().pipeThrough(new DecompressionStream('gzip'));
-            return JSON.parse(await new Response(stream).text());
-          }
-        } catch {
-          undefined;
-        }
+        if (buffer.byteLength > MAX_COMPRESSED_JSON_BYTES) throw new Error('Compressed JSON exceeds safe size limit');
+        const bytes = new Uint8Array(buffer);
         try {
           if (window.pako?.ungzip) {
-            return JSON.parse(new TextDecoder().decode(window.pako.ungzip(new Uint8Array(buffer))));
+            return parseBoundedJsonBytes(window.pako.ungzip(bytes));
           }
         } catch {
           undefined;
         }
-        return JSON.parse(new TextDecoder().decode(buffer));
+        try {
+          if ('DecompressionStream' in window) {
+            let timeoutId = null;
+            const stream = new Blob([buffer]).stream().pipeThrough(new DecompressionStream('gzip'));
+            const decompressed = new Response(stream).arrayBuffer();
+            const timed = new Promise((_, reject) => {
+              timeoutId = window.setTimeout(
+                () => reject(new DOMException('Gzip decompression timed out', 'TimeoutError')),
+                GZIP_DECOMPRESSION_TIMEOUT_MS,
+              );
+            });
+            try {
+              return parseBoundedJsonBytes(new Uint8Array(await Promise.race([decompressed, timed])));
+            } finally {
+              if (timeoutId !== null) window.clearTimeout(timeoutId);
+            }
+          }
+        } catch {
+          undefined;
+        }
+        return parseBoundedJsonBytes(bytes);
       }
 
       async function getJson(url, fallback, options = {}) {
@@ -1181,20 +1236,42 @@
             ? [localUrl, online]
             : [online, localUrl]
           : [localUrl];
-        for (const target of urls) {
-          try {
-            if (options.signal?.aborted) throw new DOMException('Search aborted', 'AbortError');
-            const res = await fetch(target, {
-              cache: freshData ? 'no-store' : 'default',
-              signal: options.signal,
-            });
-            if (!res.ok) continue;
-            return await responseJson(res, target);
-          } catch (error) {
-            if (options.signal?.aborted || error?.name === 'AbortError') throw error;
-            undefined;
+        const requestController = new AbortController();
+        let timedOut = false;
+        let lastError = null;
+        const forwardAbort = () => requestController.abort(options.signal?.reason);
+        if (options.signal?.aborted) forwardAbort();
+        else options.signal?.addEventListener('abort', forwardAbort, { once: true });
+        const timeoutId = options.timeoutMs
+          ? window.setTimeout(() => {
+              timedOut = true;
+              requestController.abort(new DOMException('Request timed out', 'TimeoutError'));
+            }, options.timeoutMs)
+          : null;
+        try {
+          for (const target of urls) {
+            try {
+              if (options.signal?.aborted) throw new DOMException('Search aborted', 'AbortError');
+              const res = await fetch(target, {
+                cache: freshData ? 'no-store' : 'default',
+                signal: requestController.signal,
+              });
+              if (!res.ok) {
+                lastError = new Error(`HTTP ${res.status} for ${new URL(target, location.href).pathname}`);
+                continue;
+              }
+              return await responseJson(res, target);
+            } catch (error) {
+              if (options.signal?.aborted) throw new DOMException('Search aborted', 'AbortError');
+              lastError = timedOut ? new DOMException('Request timed out', 'TimeoutError') : error;
+              if (timedOut) break;
+            }
           }
+        } finally {
+          if (timeoutId !== null) window.clearTimeout(timeoutId);
+          options.signal?.removeEventListener('abort', forwardAbort);
         }
+        if (options.throwOnFailure) throw lastError || new Error(`Unable to load ${String(url || '')}`);
         return fallback;
       }
 
@@ -1572,13 +1649,14 @@
         return needle.rawIndexNeedle;
       }
 
-      async function matchingSearchIndexRows(rows, needle) {
+      async function matchingSearchIndexRows(rows, needle, signal) {
         if (!needle?.query) return rows;
         const matches = [];
         const rawNeedle = rawSearchIndexNeedle(needle);
         for (let index = 0; index < rows.length; index += 1) {
           if (index && index % SEARCH_INDEX_YIELD_EVERY === 0) {
             await new Promise((resolve) => setTimeout(resolve, 0));
+            if (signal?.aborted) throw new DOMException('Search aborted', 'AbortError');
             if (currentSearchNeedle().query !== needle.query) return matches;
           }
           const row = rows[index];
@@ -3857,6 +3935,29 @@
         return escapeHtml(displayText(value));
       }
 
+      function plainTextFromMarkup(value) {
+        const raw = String(value ?? '').trim();
+        if (!raw || !/[<&]/.test(raw)) return raw;
+        return raw
+          .replace(/<[^>]*>/g, ' ')
+          .replace(/&nbsp;/gi, ' ')
+          .replace(/&amp;/gi, '&')
+          .replace(/&lt;/gi, '<')
+          .replace(/&gt;/gi, '>')
+          .replace(/&quot;/gi, '"')
+          .replace(/&#0*39;|&apos;/gi, "'")
+          .replace(/&#(\d{1,7});/g, (_, code) => {
+            const point = Number(code);
+            return Number.isInteger(point) && point > 0 && point <= 0x10ffff ? String.fromCodePoint(point) : ' ';
+          })
+          .replace(/&#x([\da-f]{1,6});/gi, (_, code) => {
+            const point = Number.parseInt(code, 16);
+            return Number.isInteger(point) && point > 0 && point <= 0x10ffff ? String.fromCodePoint(point) : ' ';
+          })
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
       function initials(value) {
         return [...displayText(value || '影視').replace(/\s+/g, '')].slice(0, 2).join('');
       }
@@ -4358,6 +4459,47 @@
         return rows;
       }
 
+      function queryShardHealth(key) {
+        if (!state.queryIndex.health.has(key)) {
+          state.queryIndex.health.set(key, {
+            score: 100,
+            successes: 0,
+            failures: 0,
+            consecutiveFailures: 0,
+            averageLatencyMs: 0,
+            cooldownUntil: 0,
+          });
+        }
+        return state.queryIndex.health.get(key);
+      }
+
+      function recordQueryShardHealth(key, ok, latencyMs) {
+        const health = queryShardHealth(key);
+        if (ok) {
+          health.successes += 1;
+          health.consecutiveFailures = 0;
+          health.cooldownUntil = 0;
+          health.score = Math.min(100, health.score + 4);
+          health.averageLatencyMs = health.averageLatencyMs
+            ? Math.round(health.averageLatencyMs * 0.7 + latencyMs * 0.3)
+            : Math.round(latencyMs);
+          return;
+        }
+        health.failures += 1;
+        health.consecutiveFailures += 1;
+        health.score = Math.max(0, health.score - 25);
+        if (health.consecutiveFailures >= 2) health.cooldownUntil = Date.now() + QUERY_SHARD_COOLDOWN_MS;
+      }
+
+      function queryShardHealthSummary() {
+        const rows = [...state.queryIndex.health.values()];
+        if (!rows.length) return { score: 100, cooling: 0 };
+        return {
+          score: Math.round(rows.reduce((sum, item) => sum + item.score, 0) / rows.length),
+          cooling: rows.filter((item) => item.cooldownUntil > Date.now()).length,
+        };
+      }
+
       async function loadQueryShard(scope, bucket, signal) {
         const manifest = state.queryIndex.manifest;
         const key = `${scope}\u001f${bucket}`;
@@ -4368,8 +4510,84 @@
         }
         const file = queryShardFile(scope, bucket, manifest);
         if (!file) return { groups: [] };
-        const payload = await getJson(file, { groups: [] }, { signal });
-        return setBoundedCache(state.queryIndex.cache, key, payload, QUERY_SHARD_CACHE_LIMIT);
+        const health = queryShardHealth(key);
+        if (health.cooldownUntil > Date.now()) {
+          const error = new Error('Query shard is cooling down after repeated failures');
+          error.name = 'CircuitOpenError';
+          throw error;
+        }
+        const startedAt = performance.now();
+        try {
+          const payload = await getJson(file, null, {
+            signal,
+            timeoutMs: QUERY_SHARD_TIMEOUT_MS,
+            throwOnFailure: true,
+          });
+          recordQueryShardHealth(key, true, performance.now() - startedAt);
+          return setBoundedCache(state.queryIndex.cache, key, payload || { groups: [] }, QUERY_SHARD_CACHE_LIMIT);
+        } catch (error) {
+          if (error?.name !== 'AbortError') recordQueryShardHealth(key, false, performance.now() - startedAt);
+          throw error;
+        }
+      }
+
+      function searchProgressLabel() {
+        const progress = state.searchProgress;
+        if (!state.query || progress.query !== currentSearchNeedle().query) return '';
+        const successful = Math.max(0, progress.completed - progress.failed);
+        if (progress.status === 'loading') {
+          return `搜尋 ${progress.completed}/${progress.total}，成功 ${successful}，失敗 ${progress.failed}`;
+        }
+        if (progress.status === 'timed-out') return `搜尋已逾時，保留已完成結果（${successful}/${progress.total}）`;
+        if (progress.status === 'cancelled') return `搜尋已取消，保留已完成結果（${successful}/${progress.total}）`;
+        if (progress.status === 'complete' && progress.failed) return `搜尋完成 ${successful}/${progress.total}，${progress.failed} 個分片暫時失敗`;
+        if (progress.status === 'complete') return `搜尋完成 ${successful}/${progress.total}`;
+        return '';
+      }
+
+      function searchProgressMarkup() {
+        const label = searchProgressLabel();
+        if (!label) return `<span class="status-pill ok">${icon('check')} ${displayHtml(catalogFreshnessLabel() ? `資料 ${catalogFreshnessLabel()}` : 'OKTV')}</span>`;
+        if (state.searchLoading) {
+          return `<button class="status-pill warn" type="button" data-cancel-search aria-label="取消搜尋">${icon('x')} ${displayHtml(label)}</button>`;
+        }
+        const health = queryShardHealthSummary();
+        const statusClass = state.searchProgress.failed || state.searchProgress.status !== 'complete' ? 'warn' : 'ok';
+        return `<span class="status-pill ${statusClass}">${icon(statusClass === 'ok' ? 'check' : 'signal')} ${displayHtml(`${label}｜健康 ${health.score}`)}</span>`;
+      }
+
+      function cancelActiveSearch(status = 'cancelled') {
+        const active = state.searchLoadInFlight;
+        if (state.searchDeadlineTimer !== null) window.clearTimeout(state.searchDeadlineTimer);
+        state.searchDeadlineTimer = null;
+        if (!active) return false;
+        if (active.renderTimer) window.clearTimeout(active.renderTimer);
+        state.searchProgress.status = status;
+        state.searchLoading = false;
+        state.searchLoadInFlight = null;
+        if (state.searchAbortController === active.controller) state.searchAbortController = null;
+        active.controller.abort(new DOMException('Search cancelled', 'AbortError'));
+        return true;
+      }
+
+      function queueProgressiveSearchRender(loadToken, immediate = false) {
+        if (state.searchLoadInFlight !== loadToken || loadToken.controller.signal.aborted) return;
+        const renderNow = () => {
+          loadToken.renderTimer = null;
+          if (state.searchLoadInFlight !== loadToken || loadToken.controller.signal.aborted) return;
+          loadToken.lastRenderAt = performance.now();
+          state.refocusSearch = document.activeElement?.id === 'searchBox';
+          clearViewCache();
+          resetVisibleLimit();
+          render();
+        };
+        const delay = immediate ? 0 : Math.max(0, SEARCH_PROGRESS_RENDER_MS - (performance.now() - loadToken.lastRenderAt));
+        if (!delay) {
+          if (loadToken.renderTimer) window.clearTimeout(loadToken.renderTimer);
+          renderNow();
+        } else if (!loadToken.renderTimer) {
+          loadToken.renderTimer = window.setTimeout(renderNow, delay);
+        }
       }
 
       function triggerSearchIndexLoad() {
@@ -4377,15 +4595,20 @@
         const manifest = state.queryIndex.manifest;
         const minimum = Math.max(2, Number(manifest?.minQueryLength || 2));
         if (state.tab === 'live' || [...needle.query].length < minimum || !manifest) {
-          state.searchAbortController?.abort();
+          cancelActiveSearch('cancelled');
           state.searchAbortController = null;
           state.searchLoading = false;
-          state.searchLoadInFlight = null;
           return;
         }
         const scopeKey = [state.tab, state.selectedSource, needle.query].join('\u001f');
         if (state.searchLoadInFlight?.scopeKey === scopeKey) return;
-        state.searchAbortController?.abort();
+        if (
+          state.searchProgress.scopeKey === scopeKey &&
+          ['complete', 'timed-out', 'cancelled'].includes(state.searchProgress.status)
+        ) {
+          return;
+        }
+        cancelActiveSearch('cancelled');
         const controller = new AbortController();
         state.searchAbortController = controller;
         const prefixes = queryShardPrefixes(needle, minimum);
@@ -4406,31 +4629,101 @@
         if (!targets.length) {
           state.searchLoading = false;
           state.searchLoadInFlight = null;
+          state.searchProgress = {
+            query: needle.query,
+            scopeKey,
+            completed: 0,
+            total: 0,
+            failed: 0,
+            status: 'complete',
+          };
           return;
         }
         state.searchLoading = true;
-        const loadToken = { scopeKey, controller, promise: null };
+        const startedAt =
+          state.searchProgress.query === needle.query && Number(state.searchProgress.startedAt) > 0
+            ? state.searchProgress.startedAt
+            : Date.now();
+        state.searchProgress = {
+          query: needle.query,
+          scopeKey,
+          completed: 0,
+          total: targets.length,
+          failed: 0,
+          status: 'loading',
+          startedAt,
+        };
+        const loadToken = {
+          scopeKey,
+          controller,
+          promise: null,
+          renderTimer: null,
+          lastRenderAt: 0,
+          timedOut: false,
+        };
         state.searchLoadInFlight = loadToken;
+        if (state.searchDeadlineTimer !== null) window.clearTimeout(state.searchDeadlineTimer);
+        const deadlineDelay = Math.max(0, startedAt + QUERY_SEARCH_TIMEOUT_MS - Date.now());
+        state.searchDeadlineTimer = window.setTimeout(() => {
+          if (state.searchProgress.query !== needle.query || state.searchProgress.status !== 'loading') return;
+          const active = state.searchLoadInFlight;
+          if (active) active.timedOut = true;
+          state.searchProgress.status = 'timed-out';
+          state.searchLoading = false;
+          state.searchLoadInFlight = null;
+          state.searchDeadlineTimer = null;
+          if (state.searchAbortController === active?.controller) state.searchAbortController = null;
+          active?.controller.abort(new DOMException('Search timed out', 'TimeoutError'));
+          clearViewCache();
+          resetVisibleLimit();
+          render();
+        }, deadlineDelay);
         const promise = (async () => {
-          for (const target of targets) {
-            if (controller.signal.aborted || state.searchLoadInFlight !== loadToken) return;
-            const payload = await loadQueryShard(target.scope, target.bucket, controller.signal);
-            if (controller.signal.aborted || state.searchLoadInFlight !== loadToken) return;
-            const selectedRows = await matchingSearchIndexRows(expandQueryShard(payload), needle);
-            registerCatalogItems(selectedRows, { searchResult: true });
-          }
+          let nextIndex = 0;
+          const worker = async () => {
+            while (nextIndex < targets.length) {
+              const targetIndex = nextIndex;
+              nextIndex += 1;
+              const target = targets[targetIndex];
+              if (controller.signal.aborted || state.searchLoadInFlight !== loadToken) return;
+              try {
+                const payload = await loadQueryShard(target.scope, target.bucket, controller.signal);
+                if (controller.signal.aborted || state.searchLoadInFlight !== loadToken) return;
+                const selectedRows = await matchingSearchIndexRows(expandQueryShard(payload), needle, controller.signal);
+                if (controller.signal.aborted || state.searchLoadInFlight !== loadToken) return;
+                registerCatalogItems(selectedRows, { searchResult: true });
+              } catch (error) {
+                if (controller.signal.aborted || error?.name === 'AbortError') return;
+                state.searchProgress.failed += 1;
+                console.warn('query-shard-load-failed', target.scope, target.bucket, error?.name || 'Error');
+              } finally {
+                if (!controller.signal.aborted && state.searchLoadInFlight === loadToken) {
+                  state.searchProgress.completed += 1;
+                  queueProgressiveSearchRender(loadToken);
+                }
+              }
+            }
+          };
+          await Promise.all(
+            Array.from({ length: Math.min(QUERY_SEARCH_CONCURRENCY, targets.length) }, () => worker()),
+          );
         })()
           .catch((error) => {
             if (error?.name !== 'AbortError') console.warn('query-shard-search-failed', error);
           })
           .finally(() => {
-          if (state.searchLoadInFlight !== loadToken) return;
-          state.searchLoading = false;
-          state.searchLoadInFlight = null;
-          if (state.searchAbortController === controller) state.searchAbortController = null;
-          clearViewCache();
-          resetVisibleLimit();
-          render();
+            if (loadToken.renderTimer) window.clearTimeout(loadToken.renderTimer);
+            if (state.searchLoadInFlight !== loadToken) return;
+            if (state.searchDeadlineTimer !== null) window.clearTimeout(state.searchDeadlineTimer);
+            state.searchDeadlineTimer = null;
+            state.searchLoading = false;
+            state.searchLoadInFlight = null;
+            if (state.searchAbortController === controller) state.searchAbortController = null;
+            if (loadToken.timedOut) state.searchProgress.status = 'timed-out';
+            else if (state.searchProgress.status === 'loading') state.searchProgress.status = 'complete';
+            clearViewCache();
+            resetVisibleLimit();
+            render();
           });
         loadToken.promise = promise;
       }
@@ -4494,6 +4787,20 @@
         return Math.min(numericValue(item?.signalCount || 1), 8) * 18;
       }
 
+      function sourceHealthScore(source) {
+        if (!source) return 50;
+        if (source.error || state.healthIndex.sources.has(source.id)) return 0;
+        const checks = Array.isArray(source.checks) ? source.checks.filter((check) => typeof check?.ok === 'boolean') : [];
+        const passedRatio = checks.length ? checks.filter((check) => check.ok).length / checks.length : 0.7;
+        const coverage = Math.max(0, Math.min(1, Number(source.coverageGuard?.retention ?? 1)));
+        const completeness = source.complete ? 10 : source.indexed ? 5 : 0;
+        return Math.round(Math.max(0, Math.min(100, passedRatio * 70 + coverage * 20 + completeness)));
+      }
+
+      function itemSourceHealthScore(item) {
+        return sourceHealthScore(sourceById(item?.sourceId));
+      }
+
       function itemRankScore(item, mode = 'hot') {
         const views = numericValue(item?.views);
         const hot = numericValue(item?.hot);
@@ -4501,8 +4808,9 @@
         const recency = itemRecencyScore(item);
         const completion = itemCompletionScore(item);
         const signal = itemSignalScore(item);
+        const sourceHealth = itemSourceHealthScore(item) * 2;
         const viewScore = views > 0 ? Math.log10(views + 1) * 2600 : 0;
-        const base = Math.max(hot, viewScore) + score * 135 + recency + completion + signal;
+        const base = Math.max(hot, viewScore) + score * 135 + recency + completion + signal + sourceHealth;
         if (mode === 'views') {
           return views > 0 ? viewScore + hot * 0.18 + score * 80 + recency * 0.55 + completion + signal : base;
         }
@@ -4534,10 +4842,8 @@
           button.addEventListener('click', () => {
             state.tab = button.dataset.tab || 'home';
             state.query = '';
-            state.searchAbortController?.abort();
-            state.searchAbortController = null;
-            state.searchLoadInFlight = null;
-            state.searchLoading = false;
+            cancelActiveSearch('cancelled');
+            state.searchProgress = { query: '', completed: 0, total: 0, failed: 0, status: 'idle' };
             clearTransientSearchItems();
             clearViewCache();
             resetVisibleLimit();
@@ -4587,12 +4893,10 @@
 
       function scheduleSearchRender(value, delay = 260) {
         if (state.query === value && !state.refocusSearch) return;
-        state.searchAbortController?.abort();
-        state.searchAbortController = null;
-        state.searchLoadInFlight = null;
-        state.searchLoading = false;
+        cancelActiveSearch('cancelled');
         clearTransientSearchItems();
         state.query = value;
+        state.searchProgress = { query: '', completed: 0, total: 0, failed: 0, status: 'idle' };
         clearViewCache();
         resetVisibleLimit();
         window.clearTimeout(searchRenderTimer);
@@ -4623,6 +4927,15 @@
         });
         document.querySelector('[data-open-filter]')?.addEventListener('click', openFilterSheet);
         focusSearchBox();
+      }
+
+      function bindSearchProgress() {
+        document.querySelector('[data-cancel-search]')?.addEventListener('click', () => {
+          if (!cancelActiveSearch('cancelled')) return;
+          clearViewCache();
+          resetVisibleLimit();
+          render();
+        });
       }
 
       function renderFilterSummary() {
@@ -4668,7 +4981,7 @@
             ${renderToolbar()}
             <div id="vodQuickFilters"></div>
             <div id="vodShortRail"></div>
-            <section class="section-head" id="vodSectionHead"></section>
+            <section class="section-head search-section-head" id="vodSectionHead"></section>
             <section class="poster-grid" id="vodGrid"></section>
             <div id="vodFloatingFilter"></div>
           `;
@@ -4679,7 +4992,7 @@
         document.querySelector('#vodShortRail').innerHTML = state.tab === 'short' ? renderShortAreaRail() : '';
         document.querySelector('#vodSectionHead').innerHTML = `
           <div><h1>${displayHtml(title)}</h1><span>${countLabel}</span></div>
-          <span class="status-pill ok">${icon('check')} ${displayHtml(catalogFreshnessLabel() ? `資料 ${catalogFreshnessLabel()}` : 'OKTV')}</span>
+          ${searchProgressMarkup()}
         `;
         document.querySelector('#vodGrid').innerHTML =
           rows.map(renderPoster).join('') ||
@@ -4689,6 +5002,7 @@
         bindQuickFilters();
         bindShortAreaRail();
         bindFloatingFilter();
+        bindSearchProgress();
       }
 
       function renderHero(item) {
@@ -4849,8 +5163,9 @@
         screen.innerHTML = `
           ${renderToolbar('搜尋榜單內容')}
           ${renderQuickFilters()}
-          <section class="section-head">
+          <section class="section-head search-section-head">
             <div><h1>排行</h1><span>${rows.length} / ${allRows.length} 部內容，觀看人數與評分排序</span></div>
+            ${searchProgressMarkup()}
           </section>
           <section class="rank-list">
             ${rows.map(renderRankRow).join('') || emptyState(emptyMessage)}
@@ -4860,6 +5175,7 @@
         bindToolbar();
         bindQuickFilters();
         bindFloatingFilter();
+        bindSearchProgress();
         document.querySelectorAll('[data-open-detail]').forEach((button) => {
           button.addEventListener('click', () => openDetail(button.dataset.openDetail));
         });
@@ -4971,12 +5287,13 @@
       function renderSourceRow(source) {
         const active = state.selectedSource === source.id;
         const canSelect = source.indexed;
+        const healthScore = sourceHealthScore(source);
         return `
           <article class="source-row">
             <div class="avatar">${source.adult ? adultIcon() : generatedSourceIcon()}</div>
             <div class="row-main">
               <strong>${sourceNameMarkup(source)}</strong>
-              <span>${displayHtml(source.origin)} / ${displayHtml(source.host || source.key)} / ${formatCount(source.itemCount)} 部</span>
+              <span>${displayHtml(source.origin)} / ${displayHtml(source.host || source.key)} / ${formatCount(source.itemCount)} 部 / 健康 ${healthScore}</span>
             </div>
             ${
               canSelect
@@ -5142,7 +5459,7 @@
             <div class="detail-copy">
               <h2>${displayHtml(item.title)}</h2>
               <div class="item-meta">${displayHtml([item.remarks, item.score ? `評分 ${item.score}` : '', item.updatedAt].filter(Boolean).join(' / '))}</div>
-              <p>${displayHtml(item.content || item.actor || item.director || '此內容已建立 OKTV 手機索引。')}</p>
+              <p>${displayHtml(plainTextFromMarkup(item.content || item.actor || item.director) || '此內容已建立 OKTV 手機索引。')}</p>
             </div>
           </div>
           ${renderSignalSourceControls(item)}
@@ -5279,12 +5596,13 @@
       function renderSheetSourceRow(source) {
         const active = state.selectedSource === source.id;
         const canSelect = source.indexed;
+        const healthScore = sourceHealthScore(source);
         return `
           <article class="source-row">
             <div class="avatar">${source.adult ? adultIcon() : generatedSourceIcon()}</div>
             <div class="row-main">
               <strong>${sourceNameMarkup(source)}</strong>
-              <span>${displayHtml(source.origin)} / ${formatCount(source.itemCount)} 部 / ${formatCount(source.playableCount)} 可播放</span>
+              <span>${displayHtml(source.origin)} / ${formatCount(source.itemCount)} 部 / ${formatCount(source.playableCount)} 可播放 / 健康 ${healthScore}</span>
             </div>
             ${
               canSelect
@@ -5346,10 +5664,8 @@
       }
 
       async function selectSource(sourceId) {
-        state.searchAbortController?.abort();
-        state.searchAbortController = null;
-        state.searchLoadInFlight = null;
-        state.searchLoading = false;
+        cancelActiveSearch('cancelled');
+        state.searchProgress = { query: '', completed: 0, total: 0, failed: 0, status: 'idle' };
         clearTransientSearchItems();
         state.selectedSource = sourceId;
         localStorage.setItem(SOURCE_STORAGE_KEY, sourceId);
