@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-29T00:18:13.147Z",
+  "generatedAt": "2026-08-29T06:18:04.796Z",
   "sourceName": "full",
   "adultStartIndex": 40,
   "totalAdultSources": 33,
   "usableAdultSources": 3,
   "duplicateAdultSources": 28,
   "failedAdultSources": 2,
-  "searchOkSources": 28,
-  "searchPlayableSources": 27,
+  "searchOkSources": 27,
+  "searchPlayableSources": 26,
   "candidateOutput": "sources/vod-lunatv-adult18-sorted-oktv.json",
   "analysisOutput": "sources/vod-lunatv-adult18-sorted-analysis.csv",
   "categoryCounts": {
@@ -153,11 +153,11 @@
       "included": false,
       "duplicate": true,
       "duplicateReason": "duplicate_api",
-      "listOk": true,
-      "detailOk": true,
-      "searchOk": true,
-      "searchHasPlayUrl": true,
-      "hasPlayUrl": true,
+      "listOk": false,
+      "detailOk": false,
+      "searchOk": false,
+      "searchHasPlayUrl": false,
+      "hasPlayUrl": false,
       "status": "duplicate_removed",
       "error": "duplicate_api",
       "record": null
@@ -413,7 +413,7 @@
       "searchHasPlayUrl": false,
       "hasPlayUrl": false,
       "status": "failed_removed",
-      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"Unable to connect to the remote server\"",
+      "error": "Exception calling \"GetResponse\" with \"0\" argument(s): \"The underlying connection was closed: An unexpected error occurred on a send.\"",
       "record": null
     },
     {
