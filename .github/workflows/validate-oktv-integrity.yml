@@ -37,6 +37,7 @@ jobs:
           fetch-depth: 1
           sparse-checkout-cone-mode: false
           sparse-checkout: |
+            .gitattributes
             .github/workflows/*.yml
             docs/iphone/index.html
             docs/data/iphone-vod-catalog.json

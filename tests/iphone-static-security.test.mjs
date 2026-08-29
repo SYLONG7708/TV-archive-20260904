@@ -33,11 +33,14 @@ test('third-party scripts are pinned with integrity metadata', () => {
 test('rendered markup has no inline event handlers or style attributes', () => {
   assert.doesNotMatch(html, /\s(?:onerror|onclick|onload|onmouseover|onfocus|oninput|onchange)\s*=/i);
   assert.doesNotMatch(html, /\sstyle="/i);
+  assert.match(html, /function plainTextFromMarkup\([\s\S]*?\.replace\(\/<\[\^>\]\*>\/g, ' '\)/);
+  assert.doesNotMatch(html, /new DOMParser\(\)\.parseFromString\(raw, 'text\/html'\)/);
+  assert.match(html, /displayHtml\(plainTextFromMarkup\(item\.content \|\| item\.actor \|\| item\.director\)/);
 });
 
 test('player iframe is sandboxed and media URLs pass through allowlist helpers', () => {
   assert.match(html, /<iframe[^>]+sandbox="[^"]*allow-scripts[^"]*"/);
-  assert.match(html, /<iframe[^>]+sandbox="[^"]*allow-same-origin[^"]*"/);
+  assert.doesNotMatch(html, /<iframe[^>]+sandbox="[^"]*allow-same-origin[^"]*"/);
   assert.match(html, /function safeHttpUrl\(/);
   assert.match(html, /function safeEmbedUrl\(/);
   assert.match(html, /playerFrame\.src = verifiedEmbedUrl/);
