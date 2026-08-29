@@ -18,6 +18,28 @@ test('mobile search uses abortable query shards instead of full source indexes',
   assert.match(html, /QUERY_SHARD_CACHE_LIMIT = 6/);
 });
 
+test('search is concurrent, progressive, bounded, cancellable, and failure-isolated', () => {
+  assert.match(html, /QUERY_SEARCH_CONCURRENCY = 4/);
+  assert.match(html, /QUERY_SHARD_TIMEOUT_MS = 6000/);
+  assert.match(html, /QUERY_SEARCH_TIMEOUT_MS = 15000/);
+  assert.match(html, /Promise\.all\(/);
+  assert.match(html, /queueProgressiveSearchRender\(loadToken\)/);
+  assert.match(html, /data-cancel-search/);
+  assert.match(html, /function cancelActiveSearch\(/);
+  assert.match(html, /function recordQueryShardHealth\(/);
+  assert.match(html, /CircuitOpenError/);
+  assert.match(html, /matchingSearchIndexRows\(expandQueryShard\(payload\), needle, controller\.signal\)/);
+  assert.match(html, /if \(signal\?\.aborted\) throw new DOMException\('Search aborted', 'AbortError'\)/);
+  assert.match(html, /state\.searchProgress\.status = 'timed-out';[\s\S]*?state\.searchLoading = false;[\s\S]*?state\.searchLoadInFlight = null;/);
+  assert.match(html, /searchDeadlineTimer/);
+  assert.match(html, /startedAt \+ QUERY_SEARCH_TIMEOUT_MS - Date\.now\(\)/);
+  assert.match(html, /state\.searchProgress\.scopeKey === scopeKey/);
+  assert.match(html, /\['complete', 'timed-out', 'cancelled'\]\.includes\(state\.searchProgress\.status\)/);
+  assert.match(html, /GZIP_DECOMPRESSION_TIMEOUT_MS = 2500/);
+  assert.match(html, /MAX_COMPRESSED_JSON_BYTES = 8 \* 1024 \* 1024/);
+  assert.ok(html.indexOf('window.pako?.ungzip') < html.indexOf("'DecompressionStream' in window"));
+});
+
 test('search input remains mounted and no polling loop is used', () => {
   assert.match(html, /state\.renderLayoutKey !== layoutKey/);
   assert.match(html, /id="vodGrid"/);
