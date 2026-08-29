@@ -1,86 +1,86 @@
-# OKTV iPhone 點播／直播安全與韌性檢測報告
+# 影視 OKTV 搜尋穩定版安全檢查報告
 
-- 檢測日期：2026-07-11
-- 範圍：`docs/iphone/index.html`、點播建置工具、四個 GitHub Actions 更新／監測／驗證工作流
-- 結論：未留下 Critical／High 等級的已知安全漏洞；本次發現的資料完整性、供應鏈與瀏覽器注入風險均已修復。仍有兩項 GitHub Pages／YouTube 嵌入的低風險限制，以及第三方來源可用性的外部限制。
+- 日期：2026-08-30
+- 範圍：`docs/iphone/index.html`、Android Capacitor 專案、npm 相依套件與最終 APK
+- 結論：已修正本次發現的高／中風險項目；程式碼目前沒有未處理的高風險或中風險弱點。保留兩項交付與外部來源的營運風險，詳列於下方。
 
-## 已修復項目
+## 已修正項目
 
-### REL-001 — Critical — 局部索引可覆寫完整 845 萬筆統計
+### OKTV-AVAIL-001 — 高風險 — 相同搜尋在完成後反覆重啟
 
-稀疏更新執行器只取得各來源前 2–10 頁，舊流程卻把局部筆數視為完整筆數，造成公開統計降至約 55 萬。新增雙基準覆蓋守門、每來源 90% 與全域 95% 保留門檻、100 萬絕對下限；不足時保留完整來源並讓不合格發佈直接失敗。
+- 位置：`docs/iphone/index.html:4606`
+- 證據：完成、逾時或取消後若畫面再次 render，舊邏輯會對相同查詢重新啟動；壓力診斷曾觀察同一查詢重啟 556 次。
+- 影響：CPU、網路與記憶體持續消耗，表現為「分析很久、斷線、重新連線」。
+- 修正：將 `scopeKey` 與 `complete`、`timed-out`、`cancelled` 終止狀態一起比對，相同查詢不再重啟。
+- 緩解：搜尋另有 15 秒總期限、6 秒分片期限與明確取消操作。
+- 誤判說明：這是可重現的可用性阻斷，不是單純測試環境延遲。
 
-- `tools/guard-vod-catalog-coverage.mjs:125-243`
-- `tools/build-pages-public-catalog.mjs:28-30,345-436`
-- `.github/workflows/update-lunatv-vod.yml:206-221,359-370`
+### OKTV-AVAIL-002 — 高風險 — 壓縮索引可能造成資源耗盡
 
-### REL-002 — High — 最新影片指向未發佈的漂移詳情頁
+- 位置：`docs/iphone/index.html:1181-1210`
+- 證據：來源索引是外部 gzip；未設上限時，巨大檔案或高壓縮比資料可能長時間解壓或耗盡記憶體。
+- 影響：頁面凍結、WebView 被系統終止，或搜尋斷線。
+- 修正：壓縮輸入上限 8 MiB、解壓後上限 64 MiB、瀏覽器解壓期限 2.5 秒；優先使用已固定版本與 SRI 的 pako。
+- 緩解：分片掃描定期讓出主執行緒並檢查 AbortSignal。
+- 誤判說明：正常索引遠低於限制，不會受影響。
 
-最新項目可能已移到新的分頁，但完整快取仍是舊分頁，導致卡片有集數、點開卻無法播放。工作流現在為每來源最新 12 部直接嵌入完整集數；既有項目則由完整搜尋索引回查正確詳情路徑。
+### OKTV-WEB-003 — 中風險 — 第三方 iframe 權限過寬
 
-- `tools/build-iphone-vod-latest.mjs:24,52-79,109-128`
-- `.github/workflows/update-lunatv-vod.yml:194-200`
-- `docs/iphone/index.html:1398-1444`
+- 位置：`docs/iphone/index.html:1028`
+- 證據：原 sandbox 同時允許 script 與 same-origin，會削弱隔離。
+- 影響：受信任邊界不清楚時，第三方嵌入頁面可能取得較多能力。
+- 修正：移除 `allow-same-origin`，只保留播放所需的 `allow-scripts allow-popups`；嵌入網址另限制為 YouTube embed 主機。
+- 緩解：CSP `frame-src` 只允許 YouTube 與 youtube-nocookie。
+- 誤判說明：此項是預防性強化，未發現已被利用的證據。
 
-### SEC-001 — Medium — 外部媒體／iframe URL 未集中驗證
+### OKTV-MOBILE-004 — 中風險 — Android 備份與明文流量設定
 
-所有圖片、影片、外部開啟與 iframe URL 現在經 HTTPS 驗證並移除帳密；嵌入播放器只接受 YouTube 指定主機與 `/embed/` 路徑。外部視窗使用 `noopener,noreferrer`。
+- 位置：`android/app/src/main/AndroidManifest.xml:6-14`、`capacitor.config.ts:18-19`
+- 證據：預設備份可能帶走 WebView 狀態；明文 HTTP 會遭攔截或竄改。
+- 影響：裝置轉移／雲端備份外洩本機狀態，或媒體與索引遭中間人修改。
+- 修正：`allowBackup=false`、完整 data extraction 排除規則、`usesCleartextTraffic=false`、Capacitor HTTPS scheme 與 `cleartext=false`。
+- 緩解：網頁 `safeHttpUrl` 會把 HTTP 升級為 HTTPS，並拒絕非 HTTPS 協定。
+- 誤判說明：目前 localStorage 只保存來源選擇，但仍採最小資料暴露設定。
 
-- `docs/iphone/index.html:3871-3893,4841,5090-5113`
+### OKTV-SUPPLY-005 — 中風險 — 套件供應鏈版本與已知弱點
 
-### SEC-002 — Medium — 缺少嚴格 CSP、SRI 與安全事件綁定
+- 位置：`package.json:19-34`
+- 證據：初始開發相依含舊版資產工具鏈與稽核警告。
+- 影響：建置環境可能受已知套件弱點影響。
+- 修正：移除未使用的 `@capacitor/assets`，將主要相依固定到精確版本，加入 `uuid 11.1.1` override。
+- 驗證：`npm audit` 與 `npm audit --omit=dev` 均為 0 vulnerabilities。
+- 誤判說明：此項主要影響建置供應鏈，不代表舊 APK 已被入侵。
 
-新增無 `unsafe-inline`／`unsafe-eval` 的雜湊 CSP；hls.js 與 pako 使用固定版本及 SHA-384 SRI；移除 inline event/style attribute，圖片錯誤改由委派事件處理。CSP 雜湊由工具產生並在工作流及測試中驗證。
+### OKTV-XSS-006 — 中風險 — 外部來源文字進入動態 HTML
 
-- `docs/iphone/index.html:5,14-15,1095-1102`
-- `tools/update-iphone-csp.mjs`
-- `tests/iphone-static-security.test.mjs`
+- 位置：`docs/iphone/index.html:3938-3989` 與各 render 函式
+- 證據：片名、簡介、演員、來源名稱與 URL 都由外部資料提供，頁面多處使用 `innerHTML` 組版。
+- 影響：若輸出未編碼，惡意來源可造成 XSS 或危險 URL 導航。
+- 修正：文字統一經 `escapeHtml`／`displayHtml`；來源簡介先以不建立 DOM 的方式轉為純文字；媒體 URL 經 HTTPS 驗證，embed URL 再做主機與路徑 allowlist。
+- 緩解：CSP 禁止 `unsafe-inline`、`unsafe-eval`、object 與 form；測試禁止 inline event handler 與 style attribute。
+- 誤判說明：`innerHTML` 本身不是漏洞；目前可變資料均經輸出編碼或固定模板產生。
 
-### SEC-003 — Medium — GitHub Action 使用可變標籤
+## 保留風險
 
-四個工作流的 `actions/checkout` 已固定至完整 commit SHA，避免上游標籤遭替換造成供應鏈風險。
+### OKTV-REL-001 — 中風險 — 本次 APK 使用 Debug 憑證
 
-- `.github/workflows/check-public-freshness.yml:22`
-- `.github/workflows/update-lunatv-vod.yml:24`
-- `.github/workflows/update-youtube-live.yml:37`
-- `.github/workflows/validate-oktv-integrity.yml:34`
+- 證據：APK Signature Scheme v2 驗證成功，憑證為 `CN=Android Debug`。
+- 影響：適合私人側載測試，不適合 Play Store 或正式公開散布；Debug key 不能作為長期身分保證。
+- 建議：公開發佈前建立離線保管的 release keystore、啟用 v2/v3 簽章並保存升級金鑰。
+- 誤判說明：這不影響本次私人安裝的完整性驗證，但屬正式發佈阻擋項。
 
-### REL-003 — Medium — 無變更時工作流誤判失敗／反覆觸發
+### OKTV-NET-002 — 低風險 — 媒體／資料來源允許任意 HTTPS 主機
 
-PowerShell 現在明確保存 `git diff --cached --quiet` 結束碼；直播更新寫入最後嘗試時間；新鮮度監測分開判斷 VOD／Live，只補觸發真正過期的工作流，不再用故意失敗表示已補救。
+- 證據：影音聚合器必須讀取多個 HTTPS 來源，因此 CSP 的 `connect-src`、`media-src` 與 `img-src` 保留 `https:`。
+- 影響：第三方來源仍可記錄使用者 IP，來源失效、追蹤或 CORS 限制也不受本程式控制。
+- 建議：若轉為公開服務，改用已簽章來源清單與網域 allowlist，並提供來源隱私揭露。
+- 現有緩解：不執行遠端 JAR、DEX、Python、Spider 或任意 script；外部資料只作索引、圖片與媒體用途。
 
-- `.github/workflows/update-lunatv-vod.yml:303-309,379-385`
-- `.github/workflows/update-youtube-live.yml:158,179-185,232-238`
-- `tools/check-public-freshness.mjs:48,79-90`
-- `.github/workflows/check-public-freshness.yml:45-66`
+## 驗證摘要
 
-### REL-004 — Medium — PR 沒有自動完整度與安全回歸檢查
-
-新增唯讀、稀疏 checkout 的 PR／main CI；自動執行 11 項測試、Node 語法、CSP 雜湊、100 萬筆絕對下限及 catalog 加總一致性檢查。
-
-- `.github/workflows/validate-oktv-integrity.yml`
-
-## 保留風險與外部限制
-
-### LOW-001 — GitHub Pages 僅能使用 meta CSP
-
-GitHub Pages 無法由此儲存庫自訂完整 HTTP 安全標頭，因此 `frame-ancestors`、CSP reporting 等只能由反向代理或自訂網域前端補強。現有 meta CSP 仍封鎖 object、base、form，並限制 script/frame 來源。
-
-### LOW-002 — YouTube iframe 需要 `allow-scripts` 與 `allow-same-origin`
-
-Chrome 會顯示一般性 sandbox 警告，但缺少 `allow-same-origin` 時 YouTube Cache API 會失效、播放器無法初始化。風險由 `frame-src` 指定主機、`safeEmbedUrl()` 路徑白名單、跨來源隔離及 sandbox 其他限制共同降低。
-
-- `docs/iphone/index.html:5,991,3886-3893`
-
-### OPS-001 — 第三方來源健康度不是本儲存庫可完全控制
-
-候選檢測中 78 個點播來源有 73 個 API 正常、5 個受 403／防護頁／格式錯誤影響；系統會保留其最後完整快取，不再因一次失敗刪除數百萬筆資料。直播清單為 58／58 可呈現與播放。
-
-## 驗證紀錄
-
-- Node 測試：11／11 通過（完整度守門、局部索引保護、CSP/SRI、URL 白名單、最新集數嵌入）。
-- YAML：Prettier 3.6.2 `--debug-check` 四個工作流通過。
-- SRI：即時下載 hls.js 1.6.15、pako 2.1.0 後重新計算 SHA-384，兩者完全相符。
-- 資料樹：78／78 `vod-index`、78／78 `vod-search`；總數 8,458,047、可播放 8,445,444。
-- 手機瀏覽器：390×844 實測完整計數、搜尋、詳情索引回查、2,831 集分頁、VOD 播放器與 YouTube iframe；YouTube 畫面成功渲染，無 JavaScript error。
-- 機密掃描：變更檔與新增程式未發現 API key、密碼、Bearer token 或私鑰；`YOUTUBE_COOKIES_B64` 僅以 GitHub Secret 名稱引用。
+- 網頁測試：17/17 通過；CSP hash current；`git diff --check` 通過。
+- 真實瀏覽器：搜尋、取消、詳情補載、集數、播放器開啟、來源失敗提示、390px 無溢位均通過；最終無 CSP 違規。
+- Android：單元測試 1/1；App Lint 0 issue；Gradle clean build 成功。
+- 套件：`npm audit` 0 vulnerabilities。
+- APK：簽章驗證成功；只要求 INTERNET 與 Android 自動產生的 non-exported receiver 權限。
+- 排除範圍：未執行或植入使用者指定 `config.bin` 內的不明 Spider、遠端 JAR、Python 或解析站程式碼。
