@@ -292,7 +292,6 @@ jobs:
             "docs/data/iphone-vod-catalog-report.json",
             "docs/data/iphone-health-check-latest.json",
             "docs/data/iphone-health-check-latest.csv",
-            "docs/data/lunatv-vod-update-state.json",
             "docs/iphone/index.html"
           )
           $existingPaths = @($paths | Where-Object { Test-Path -LiteralPath $_ })
@@ -385,55 +384,56 @@ jobs:
             --maxSignalsPerTitle 0 `
             --maxGroupsPerPrefix 0
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          Push-Location $pages
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config http.postBuffer 524288000
-          git config http.version HTTP/1.1
-          git add .gitattributes docs/iphone docs/assets
-          git add docs/data/*.json docs/data/*.csv
-          if (Test-Path -LiteralPath "docs\data\vod-index") {
-            git add docs/data/vod-index
-          }
-          $mainRoot = (Resolve-Path -LiteralPath $env:GITHUB_WORKSPACE).Path
-          $changedDetailPaths = @(
-            Get-ChildItem -LiteralPath (Join-Path $mainRoot "docs\data\vod-detail") -File -Recurse -ErrorAction SilentlyContinue |
-              ForEach-Object { $_.FullName.Substring($mainRoot.Length + 1).Replace('\', '/') }
-          )
-          for ($offset = 0; $offset -lt $changedDetailPaths.Count; $offset += 100) {
-            $last = [Math]::Min($offset + 99, $changedDetailPaths.Count - 1)
-            $batch = @($changedDetailPaths[$offset..$last])
-            git add --sparse -- $batch
+          & .\tools\publish-gh-pages-batched.ps1 `
+            -RepositoryRoot $pages `
+            -RunId "${{ github.run_id }}" `
+            -RunAttempt "${{ github.run_attempt }}"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Clean temporary Pages upload branch
+        if: always() && steps.gate.outputs.should_run == 'true'
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          $branch = "oktv-pages-upload-${{ github.run_id }}-${{ github.run_attempt }}"
+          git ls-remote --exit-code --heads origin "refs/heads/$branch" | Out-Null
+          $probeExit = $LASTEXITCODE
+          if ($probeExit -eq 0) {
+            git push origin --delete $branch
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          } elseif ($probeExit -eq 2) {
+            Write-Host "No temporary Pages upload branch remains."
+          } else {
+            throw "Unable to inspect temporary Pages upload branch."
           }
-          if (Test-Path -LiteralPath "docs\data\vod-query") {
-            git add docs/data/vod-query
-          }
+
+      - name: Commit successful public update state
+        if: success() && steps.gate.outputs.should_run == 'true'
+        shell: pwsh
+        run: |
+          git add -- .\docs\data\lunatv-vod-update-state.json
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           git diff --cached --quiet
           $diffExit = $LASTEXITCODE
-          $hasChanges = $diffExit -eq 1
           if ($diffExit -gt 1) { exit $diffExit }
-          if (-not $hasChanges) {
-            Write-Host "No GitHub Pages public data changes."
-          } else {
-            git commit -m "Publish auto refreshed OKTV data"
+          if ($diffExit -eq 0) {
+            Write-Host "Public update state is already current."
+            exit 0
+          }
+          git commit -m "Mark LunaTV VOD public update successful"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $pushed = $false
+          for ($attempt = 1; $attempt -le 3; $attempt++) {
+            git push
+            if ($LASTEXITCODE -eq 0) {
+              $pushed = $true
+              break
+            }
+            Write-Warning "State push failed on attempt $attempt; rebasing onto origin/main before retry."
+            git pull --rebase --autostash origin main
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-            $pushed = $false
-            for ($attempt = 1; $attempt -le 3; $attempt++) {
-              git push origin HEAD:gh-pages
-              if ($LASTEXITCODE -eq 0) {
-                $pushed = $true
-                break
-              }
-              Write-Warning "gh-pages push failed on attempt $attempt; rebasing onto origin/gh-pages before retry."
-              git status --short
-              git pull --rebase --autostash origin gh-pages
-              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-              git status --short
-              Start-Sleep -Seconds (30 * $attempt)
-            }
-            if (-not $pushed) {
-              throw "gh-pages push failed after 3 attempts."
-            }
+            Start-Sleep -Seconds (15 * $attempt)
+          }
+          if (-not $pushed) {
+            throw "Public update state push failed after 3 attempts."
           }
