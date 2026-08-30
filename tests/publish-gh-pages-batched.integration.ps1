@@ -57,10 +57,18 @@ try {
 
   & git clone --branch gh-pages $remote $pages | Out-Host
   if ($LASTEXITCODE -ne 0) { throw 'Unable to clone the temporary Pages repository.' }
+  Invoke-TestGit -Repository $pages -Arguments @('config', 'core.quotepath', 'true')
 
   [IO.File]::WriteAllText((Join-Path $pages 'docs\data\manifest.json'), '{"version":2}')
   [IO.File]::WriteAllText((Join-Path $pages 'docs\data\vod-detail\page.json'), '{"items":[1]}')
   [IO.File]::WriteAllText((Join-Path $pages 'docs\data\vod-index\source.json.gz'), 'updated-index')
+  $unicodeDirName = -join @([char]0x611B, [char]0x5947, [char]0x85DD, [char]0x6E2C, [char]0x8A66)
+  $unicodeFileName = (-join @([char]0x7B2C, '1', [char]0x9801)) + '.json'
+  $unicodeTitle = -join @([char]0x7661, [char]0x8FF7)
+  $unicodeJson = '{"title":"' + $unicodeTitle + '"}'
+  $unicodeDetailDir = Join-Path $pages "docs\data\vod-detail\$unicodeDirName"
+  $null = New-Item -ItemType Directory -Force -Path $unicodeDetailDir
+  [IO.File]::WriteAllText((Join-Path $unicodeDetailDir $unicodeFileName), $unicodeJson)
   0..599 | ForEach-Object {
     $longName = 'page-{0:D4}-{1}.json' -f $_, ('x' * 55)
     [IO.File]::WriteAllText((Join-Path $pages "docs\data\vod-detail\$longName"), "{`"id`":$_}")
@@ -83,6 +91,11 @@ try {
   $remoteManifest = (& git -C $pages show 'origin/gh-pages:docs/data/manifest.json').Trim()
   if ($remoteManifest -ne '{"version":2}') {
     throw 'The atomic gh-pages update did not publish the expected metadata.'
+  }
+  $unicodeGitPath = "origin/gh-pages:docs/data/vod-detail/$unicodeDirName/$unicodeFileName"
+  $remoteUnicodeDetail = (& git -C $pages show $unicodeGitPath).Trim()
+  if ($LASTEXITCODE -ne 0 -or $remoteUnicodeDetail -ne $unicodeJson) {
+    throw 'The NUL pathspec did not publish the expected Unicode detail path.'
   }
   $tempBranch = @(& git -C $pages ls-remote --heads origin 'oktv-pages-upload-*')
   if ($LASTEXITCODE -ne 0) { throw 'Unable to inspect temporary upload branches.' }
