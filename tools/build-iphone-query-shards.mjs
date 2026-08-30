@@ -32,13 +32,18 @@ const outputRoot = path.resolve(repoRoot, argValue('--outputRoot', 'docs/data/vo
 const iphoneHtmlPath = path.resolve(repoRoot, argValue('--iphoneHtml', 'docs/iphone/index.html'));
 const bucketCount = Math.max(16, Number(argValue('--bucketCount', DEFAULT_BUCKET_COUNT)));
 const minQueryLength = Math.max(2, Number(argValue('--minQueryLength', DEFAULT_MIN_QUERY_LENGTH)));
-const maxSignalsPerTitle = Math.max(
-  1,
-  Number(argValue('--maxSignalsPerTitle', DEFAULT_MAX_SIGNALS_PER_TITLE)),
+function nonNegativeLimit(value, fallback) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? Math.max(0, Math.floor(parsed)) : fallback;
+}
+
+const maxSignalsPerTitle = nonNegativeLimit(
+  argValue('--maxSignalsPerTitle', DEFAULT_MAX_SIGNALS_PER_TITLE),
+  DEFAULT_MAX_SIGNALS_PER_TITLE,
 );
-const maxGroupsPerPrefix = Math.max(
-  100,
-  Number(argValue('--maxGroupsPerPrefix', DEFAULT_MAX_GROUPS_PER_PREFIX)),
+const maxGroupsPerPrefix = nonNegativeLimit(
+  argValue('--maxGroupsPerPrefix', DEFAULT_MAX_GROUPS_PER_PREFIX),
+  DEFAULT_MAX_GROUPS_PER_PREFIX,
 );
 const workerCount = Math.max(
   1,
@@ -109,6 +114,7 @@ function appendRow(scope, bucket, prefix, item) {
 }
 
 const inputReport = [];
+const fallbackItems = [];
 let totalInputItems = 0;
 let totalIndexedRows = 0;
 
@@ -122,6 +128,9 @@ for (const source of sources) {
     file: path.relative(repoRoot, file).replaceAll(path.sep, '/'),
     ok: false,
     items: 0,
+    searchableItems: 0,
+    embeddedFallbackItems: 0,
+    skippedItems: 0,
     indexedRows: 0,
     error: '',
   };
@@ -132,13 +141,28 @@ for (const source of sources) {
     const payload = readGzipJson(file);
     const items = Array.isArray(payload?.items) ? payload.items : [];
     row.items = items.length;
+    const expectedItems = Number(source?.itemCount || 0);
+    if (expectedItems > 0 && items.length !== expectedItems) {
+      throw new Error(`source index count mismatch: expected ${expectedItems}, got ${items.length}`);
+    }
     totalInputItems += items.length;
     for (const rawItem of items) {
       const itemSource = sourceById.get(rawItem?.sourceId) || source;
       const item = leanQueryItem(rawItem, itemSource);
-      if (!item.id || !item.title || !item.detailPath || !item.playable || item.episodeCount < 1) continue;
+      if (!item.id || !item.title || !item.detailPath || !item.playable || item.episodeCount < 1) {
+        row.skippedItems += 1;
+        continue;
+      }
+      const prefixes = queryPrefixesForItem(item, normalizer, minQueryLength);
+      if (!prefixes.length) {
+        fallbackItems.push(item);
+        row.searchableItems += 1;
+        row.embeddedFallbackItems += 1;
+        continue;
+      }
+      row.searchableItems += 1;
       const scope = item.adult ? 'adult' : 'normal';
-      for (const prefix of queryPrefixesForItem(item, normalizer, minQueryLength)) {
+      for (const prefix of prefixes) {
         const bucket = bucketForPrefix(prefix, bucketCount);
         appendRow(scope, bucket, prefix, item);
         row.indexedRows += 1;
@@ -150,10 +174,25 @@ for (const source of sources) {
     row.error = error?.message || String(error);
   }
   inputReport.push(row);
-  console.log(`${row.ok ? 'OK' : 'FAIL'} ${row.name || row.id}: ${row.items} items, ${row.indexedRows} shard rows`);
+  console.log(
+    `${row.ok ? 'OK' : 'FAIL'} ${row.name || row.id}: ${row.items} items, ${row.searchableItems} searchable, ${row.skippedItems} skipped, ${row.indexedRows} shard rows${row.error ? ` (${row.error})` : ''}`,
+  );
 }
 
 flushLargestBuffers(0);
+
+const failedInputs = inputReport.filter((row) => !row.ok);
+if (failedInputs.length) {
+  throw new Error(`Refusing to publish query shards: ${failedInputs.length} source index inputs failed validation.`);
+}
+const totalSearchableItems = inputReport.reduce((sum, row) => sum + Number(row.searchableItems || 0), 0);
+const totalSkippedItems = inputReport.reduce((sum, row) => sum + Number(row.skippedItems || 0), 0);
+const declaredPlayableItems = Number(catalog?.totals?.playableItems || 0);
+if (declaredPlayableItems > 0 && totalSearchableItems !== declaredPlayableItems) {
+  throw new Error(
+    `Refusing to publish query shards: catalog declares ${declaredPlayableItems} playable items, but ${totalSearchableItems} are searchable.`,
+  );
+}
 
 const manifest = {
   version: QUERY_SHARD_VERSION,
@@ -170,6 +209,7 @@ const manifest = {
     chineseMapSize: normalizer.mapSize,
   },
   titleAliases: titleAliases.groups,
+  fallbackItems,
   scopes: {
     normal: {
       path: 'vod-query/normal/b-{bucket}.json.gz',
@@ -194,6 +234,9 @@ const manifest = {
     sources: inputReport.length,
     okSources: inputReport.filter((row) => row.ok).length,
     items: totalInputItems,
+    searchableItems: totalSearchableItems,
+    skippedItems: totalSkippedItems,
+    playableCoverage: declaredPlayableItems > 0 ? totalSearchableItems / declaredPlayableItems : 1,
     indexedRows: totalIndexedRows,
   },
   sourceReport: inputReport,
@@ -234,7 +277,6 @@ const workerResults = (
               iphoneHtmlPath,
               maxGroupsPerPrefix,
               maxSignalsPerTitle,
-              generatedAt: manifest.generatedAt,
               version: QUERY_SHARD_VERSION,
             },
           });
@@ -271,13 +313,11 @@ for (const scope of ['normal', 'adult']) {
 fs.rmSync(buildRoot, { recursive: true, force: true });
 fs.writeFileSync(path.join(outputRoot, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
 
-const failed = inputReport.filter((row) => !row.ok);
 console.log(
   JSON.stringify({
     inputs: manifest.inputs,
     normal: manifest.scopes.normal,
     adult: manifest.scopes.adult,
-    failedSources: failed.length,
+    failedSources: failedInputs.length,
   }),
 );
-if (failed.length) process.exitCode = 1;

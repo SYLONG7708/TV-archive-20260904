@@ -374,20 +374,17 @@ jobs:
             --minSourceIndexRetention 0.90 `
             --minCatalogRetention 0.95 `
             --minExpectedItems 1000000
-          $queryManifest = Join-Path $pages "docs\data\vod-query\manifest.json"
-          if (Test-Path -LiteralPath $queryManifest) {
-            node .\tools\merge-iphone-query-shards.mjs `
-              --repoRoot . `
-              --catalog .\docs\data\iphone-vod-catalog.json `
-              --latest .\docs\data\iphone-vod-latest.json `
-              --outputRoot (Join-Path $pages "docs\data\vod-query") `
-              --iphoneHtml .\docs\iphone\index.html `
-              --titleAliases .\sources\title-aliases.json `
-              --maxSignalsPerTitle 128
-            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          } else {
-            Write-Warning "Query shard manifest is missing on gh-pages; preserving the existing public search fallback."
-          }
+          node .\tools\build-iphone-query-shards.mjs `
+            --repoRoot $pages `
+            --catalog docs\data\iphone-vod-catalog.json `
+            --searchRoot docs\data\vod-index `
+            --inputPathField indexPath `
+            --outputRoot docs\data\vod-query `
+            --iphoneHtml (Join-Path $pages "docs\iphone\index.html") `
+            --titleAliases (Join-Path $env:GITHUB_WORKSPACE "sources\title-aliases.json") `
+            --maxSignalsPerTitle 0 `
+            --maxGroupsPerPrefix 0
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           Push-Location $pages
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
