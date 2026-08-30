@@ -189,6 +189,7 @@ Invoke-GitChecked -Arguments @('config', 'user.email', 'github-actions[bot]@user
 Invoke-GitChecked -Arguments @('config', 'http.version', 'HTTP/1.1')
 Invoke-GitChecked -Arguments @('config', 'core.autocrlf', 'false')
 Invoke-GitChecked -Arguments @('config', 'core.eol', 'lf')
+Invoke-GitChecked -Arguments @('config', 'core.quotepath', 'false')
 
 $pagesBase = Get-GitValue -Arguments @('rev-parse', 'HEAD')
 
