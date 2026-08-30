@@ -110,6 +110,33 @@ function Get-ChangedPaths {
   return @($tracked + $untracked | Where-Object { $_ } | Sort-Object -Unique)
 }
 
+function Add-PathsChecked {
+  param(
+    [Parameter(Mandatory = $true)]
+    [string[]]$Paths
+  )
+
+  if ($Paths.Count -eq 0) {
+    return
+  }
+
+  $pathspecFile = Join-Path ([IO.Path]::GetTempPath()) ("oktv-git-pathspec-" + [guid]::NewGuid().ToString('N'))
+  try {
+    $pathspecPayload = [string]::Join([char]0, $Paths) + [char]0
+    [IO.File]::WriteAllText($pathspecFile, $pathspecPayload, [Text.UTF8Encoding]::new($false))
+    Invoke-GitChecked -Arguments @(
+      'add', '--sparse',
+      "--pathspec-from-file=$pathspecFile",
+      '--pathspec-file-nul'
+    )
+  }
+  finally {
+    if (Test-Path -LiteralPath $pathspecFile) {
+      Remove-Item -LiteralPath $pathspecFile -Force
+    }
+  }
+}
+
 function Publish-PathBatches {
   param(
     [Parameter(Mandatory = $true)]
@@ -140,7 +167,7 @@ function Publish-PathBatches {
 
     if ($batch.Count -gt 0 -and ($batchBytes + $fileBytes) -gt $MaxBatchBytes) {
       $batchNumber++
-      Invoke-GitChecked -Arguments (@('add', '--sparse', '--') + $batch.ToArray())
+      Add-PathsChecked -Paths $batch.ToArray()
       $null = Commit-And-UploadStaged -Message "Publish $Label batch $batchNumber for run $RunId"
       $batch.Clear()
       $batchBytes = 0
@@ -152,7 +179,7 @@ function Publish-PathBatches {
 
   if ($batch.Count -gt 0) {
     $batchNumber++
-    Invoke-GitChecked -Arguments (@('add', '--sparse', '--') + $batch.ToArray())
+    Add-PathsChecked -Paths $batch.ToArray()
     $null = Commit-And-UploadStaged -Message "Publish $Label batch $batchNumber for run $RunId"
   }
 }
