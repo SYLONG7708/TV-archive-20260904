@@ -1,0 +1,123 @@
+[CmdletBinding()]
+param()
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
+$testRoot = Join-Path ([IO.Path]::GetTempPath()) ("oktv-pages-batched-test-" + [guid]::NewGuid().ToString('N'))
+$publisher = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..\tools\publish-gh-pages-batched.ps1')).Path
+$testFailure = $null
+
+function Invoke-TestGit {
+  param(
+    [Parameter(Mandatory = $true)]
+    [string]$Repository,
+
+    [Parameter(Mandatory = $true)]
+    [string[]]$Arguments
+  )
+
+  & git -C $Repository @Arguments | Out-Host
+  if ($LASTEXITCODE -ne 0) {
+    throw "git $($Arguments -join ' ') failed with exit code $LASTEXITCODE."
+  }
+}
+
+try {
+  $null = New-Item -ItemType Directory -Path $testRoot
+  $remote = Join-Path $testRoot 'remote.git'
+  $seed = Join-Path $testRoot 'seed'
+  $pages = Join-Path $testRoot 'pages'
+
+  & git init --bare $remote | Out-Host
+  if ($LASTEXITCODE -ne 0) { throw 'Unable to create the temporary bare repository.' }
+  & git init -b gh-pages $seed | Out-Host
+  if ($LASTEXITCODE -ne 0) { throw 'Unable to create the seed repository.' }
+
+  $null = New-Item -ItemType Directory -Force -Path `
+    (Join-Path $seed 'docs\iphone'), `
+    (Join-Path $seed 'docs\assets'), `
+    (Join-Path $seed 'docs\data\vod-detail'), `
+    (Join-Path $seed 'docs\data\vod-index'), `
+    (Join-Path $seed 'docs\data\vod-query\normal')
+  [IO.File]::WriteAllText((Join-Path $seed '.gitattributes'), "* text=auto`n")
+  [IO.File]::WriteAllText((Join-Path $seed 'docs\iphone\index.html'), '<!doctype html>')
+  [IO.File]::WriteAllText((Join-Path $seed 'docs\assets\app.svg'), '<svg/>')
+  [IO.File]::WriteAllText((Join-Path $seed 'docs\data\manifest.json'), '{"version":1}')
+  [IO.File]::WriteAllText((Join-Path $seed 'docs\data\vod-detail\page.json'), '{"items":[]}')
+  [IO.File]::WriteAllText((Join-Path $seed 'docs\data\vod-index\source.json.gz'), 'seed-index')
+  [IO.File]::WriteAllText((Join-Path $seed 'docs\data\vod-query\normal\b-0.json.gz'), 'seed-query')
+
+  Invoke-TestGit -Repository $seed -Arguments @('config', 'user.name', 'test')
+  Invoke-TestGit -Repository $seed -Arguments @('config', 'user.email', 'test@example.invalid')
+  Invoke-TestGit -Repository $seed -Arguments @('add', '.')
+  Invoke-TestGit -Repository $seed -Arguments @('commit', '-m', 'seed')
+  Invoke-TestGit -Repository $seed -Arguments @('remote', 'add', 'origin', $remote)
+  Invoke-TestGit -Repository $seed -Arguments @('push', '-u', 'origin', 'gh-pages')
+
+  & git clone --branch gh-pages $remote $pages | Out-Host
+  if ($LASTEXITCODE -ne 0) { throw 'Unable to clone the temporary Pages repository.' }
+
+  [IO.File]::WriteAllText((Join-Path $pages 'docs\data\manifest.json'), '{"version":2}')
+  [IO.File]::WriteAllText((Join-Path $pages 'docs\data\vod-detail\page.json'), '{"items":[1]}')
+  [IO.File]::WriteAllText((Join-Path $pages 'docs\data\vod-index\source.json.gz'), 'updated-index')
+  0..5 | ForEach-Object {
+    $bytes = [byte[]]::new(1048576)
+    [Random]::new($_ + 100).NextBytes($bytes)
+    [IO.File]::WriteAllBytes((Join-Path $pages "docs\data\vod-query\normal\b-$_.json.gz"), $bytes)
+  }
+
+  & $publisher `
+    -RepositoryRoot $pages `
+    -RunId '999' `
+    -RunAttempt '1' `
+    -MaxBatchBytes 2097152 `
+    -PushAttempts 2
+  if ($LASTEXITCODE -ne 0) { throw "Publisher exited with code $LASTEXITCODE." }
+
+  Invoke-TestGit -Repository $pages -Arguments @('fetch', 'origin', 'gh-pages')
+  $remoteManifest = (& git -C $pages show 'origin/gh-pages:docs/data/manifest.json').Trim()
+  if ($remoteManifest -ne '{"version":2}') {
+    throw 'The atomic gh-pages update did not publish the expected metadata.'
+  }
+  $tempBranch = @(& git -C $pages ls-remote --heads origin 'oktv-pages-upload-*')
+  if ($LASTEXITCODE -ne 0) { throw 'Unable to inspect temporary upload branches.' }
+  if ($tempBranch.Count -ne 0) {
+    throw 'The temporary upload branch was not removed after success.'
+  }
+
+  $beforeNoop = (& git -C $pages rev-parse 'origin/gh-pages').Trim()
+  & $publisher `
+    -RepositoryRoot $pages `
+    -RunId '999' `
+    -RunAttempt '2' `
+    -MaxBatchBytes 2097152 `
+    -PushAttempts 2
+  if ($LASTEXITCODE -ne 0) { throw "No-op publisher exited with code $LASTEXITCODE." }
+  Invoke-TestGit -Repository $pages -Arguments @('fetch', 'origin', 'gh-pages')
+  $afterNoop = (& git -C $pages rev-parse 'origin/gh-pages').Trim()
+  if ($afterNoop -ne $beforeNoop) {
+    throw 'A no-op publish unexpectedly changed gh-pages.'
+  }
+
+  Write-Host 'PASS publish-gh-pages-batched integration test'
+}
+catch {
+  $testFailure = $_
+}
+finally {
+  if (Test-Path -LiteralPath $testRoot) {
+    $resolvedTestRoot = (Resolve-Path -LiteralPath $testRoot).Path
+    $resolvedTemp = (Resolve-Path -LiteralPath ([IO.Path]::GetTempPath())).Path
+    if (-not $resolvedTestRoot.StartsWith($resolvedTemp, [StringComparison]::OrdinalIgnoreCase) -or
+        -not (Split-Path -Leaf $resolvedTestRoot).StartsWith('oktv-pages-batched-test-', [StringComparison]::Ordinal)) {
+      throw "Refusing to remove unexpected test path: $resolvedTestRoot"
+    }
+    Remove-Item -LiteralPath $resolvedTestRoot -Recurse -Force
+  }
+}
+
+if ($null -ne $testFailure) {
+  Write-Error $testFailure
+  exit 1
+}
