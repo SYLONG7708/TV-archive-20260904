@@ -4,6 +4,7 @@ import zlib from 'node:zlib';
 import { promisify } from 'node:util';
 
 const gunzip = promisify(zlib.gunzip);
+const gzip = promisify(zlib.gzip);
 
 const args = new Map();
 for (let i = 2; i < process.argv.length; i += 1) {
@@ -177,12 +178,51 @@ async function copyFileIfExists(from, to) {
   return true;
 }
 
+function vodItemKey(item) {
+  return String(item?.vodId || item?.id || `${item?.title || ''}\u001f${item?.poster || ''}`);
+}
+
+async function mergeIndexFileIfExists(from, to) {
+  let current;
+  let previous;
+  try {
+    [current, previous] = await Promise.all([readMaybeGzipJson(from), readMaybeGzipJson(to)]);
+  } catch {
+    return null;
+  }
+  const currentItems = Array.isArray(current?.items) ? current.items : [];
+  const previousItems = Array.isArray(previous?.items) ? previous.items : [];
+  if (!currentItems.length || !previousItems.length) return null;
+  const byKey = new Map(previousItems.map((item) => [vodItemKey(item), item]));
+  for (const item of currentItems) byKey.set(vodItemKey(item), item);
+  const items = [...byKey.values()].sort(
+    (left, right) => String(right?.updatedAt || '').localeCompare(String(left?.updatedAt || '')),
+  );
+  const payload = {
+    ...previous,
+    ...current,
+    generatedAt: new Date().toISOString(),
+    itemCount: items.length,
+    merge: {
+      mode: 'incremental-id-upsert',
+      previousItems: previousItems.length,
+      refreshItems: currentItems.length,
+      mergedItems: items.length,
+    },
+    items,
+  };
+  await fs.mkdir(path.dirname(to), { recursive: true });
+  await fs.writeFile(to, await gzip(Buffer.from(JSON.stringify(payload), 'utf8'), { level: 9 }));
+  return payload.merge;
+}
+
 async function publishIndexedSourceData(fullCatalog, pagesDataRoot) {
   const repoDataRoot = path.join(tvRoot, 'docs', 'data');
   let detailDirs = 0;
   let indexFiles = 0;
   let searchFiles = 0;
   let preservedIndexFiles = 0;
+  let mergedIndexFiles = 0;
   for (const source of fullCatalog.sources || []) {
     if (!source.indexed || !source.detailPathPattern) continue;
     const slug = detailDirFromPattern(source.detailPathPattern) || sourceSlug(source);
@@ -193,6 +233,11 @@ async function publishIndexedSourceData(fullCatalog, pagesDataRoot) {
       const indexFile = path.basename(source.indexPath);
       if (sourceCoverageWasPreserved(source)) {
         preservedIndexFiles += 1;
+        const merged = await mergeIndexFileIfExists(
+          path.join(repoDataRoot, 'vod-index', indexFile),
+          path.join(pagesDataRoot, 'vod-index', indexFile),
+        );
+        if (merged) mergedIndexFiles += 1;
       } else if (
         await copyFileIfExists(
           path.join(repoDataRoot, 'vod-index', indexFile),
@@ -210,7 +255,7 @@ async function publishIndexedSourceData(fullCatalog, pagesDataRoot) {
       }
     }
   }
-  return { detailDirs, indexFiles, searchFiles, preservedIndexFiles };
+  return { detailDirs, indexFiles, searchFiles, preservedIndexFiles, mergedIndexFiles };
 }
 
 const fullCatalog = await readJson(catalogPath);
@@ -253,7 +298,7 @@ const sources = (fullCatalog.sources || []).map((source) => {
   const searchIndexFile = searchIndexPath ? path.basename(searchIndexPath) : '';
   const hasSearchIndex = Boolean(
     searchIndexFile &&
-      (publishedSearchFiles.has(searchIndexFile) || (trustPreviousPublicSource && previousPublicSource.searchIndexPath)),
+      publishedSearchFiles.has(searchIndexFile),
   );
   if (previousPublicSource) usedPreviousPublicSourceIds.add(previousPublicSource.id);
 
@@ -345,12 +390,6 @@ let classifiedItems = 0;
 let protectedPartialIndexes = 0;
 for (const source of sources) {
   if (!source.indexed) continue;
-  if (sourceCoverageWasPreserved(source)) {
-    indexedItems += Number(source.itemCount || 0);
-    playableItems += Number(source.playableCount || source.itemCount || 0);
-    protectedPartialIndexes += 1;
-    continue;
-  }
   if (source.indexPath) {
     try {
       const payload = await readMaybeGzipJson(path.join(pagesDataRoot, source.indexPath));
@@ -368,7 +407,9 @@ for (const source of sources) {
       }
       source.itemCount = items.length;
       source.playableCount = items.filter((item) => item.playable !== false).length;
-      source.indexCoverageStatus = 'verified-index';
+      source.indexCoverageStatus = sourceCoverageWasPreserved(source)
+        ? 'merged-incremental-index'
+        : 'verified-index';
       indexedItems += source.itemCount;
       playableItems += source.playableCount;
       for (const item of items) {

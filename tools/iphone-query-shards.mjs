@@ -5,7 +5,10 @@ import zlib from 'node:zlib';
 export const QUERY_SHARD_VERSION = 2;
 export const DEFAULT_BUCKET_COUNT = 2048;
 export const DEFAULT_MIN_QUERY_LENGTH = 2;
-export const DEFAULT_MAX_SIGNALS_PER_TITLE = 8;
+// The public catalog currently has fewer than 100 source definitions. Keeping
+// 128 signals prevents a valid source from disappearing merely because eight
+// higher-ranked mirrors share the same title.
+export const DEFAULT_MAX_SIGNALS_PER_TITLE = 128;
 export const DEFAULT_MAX_GROUPS_PER_PREFIX = 1200;
 export const DEFAULT_MAX_EMBEDDED_EPISODES = 2000;
 
@@ -78,7 +81,8 @@ export function createQueryNormalizer(iphoneHtmlPath) {
 export function queryPrefixesForItem(item, normalizer, minQueryLength = DEFAULT_MIN_QUERY_LENGTH) {
   const minimum = Math.max(1, Number(minQueryLength) || DEFAULT_MIN_QUERY_LENGTH);
   const prefixes = new Set();
-  for (const value of [item?.title, item?.originalName]) {
+  const aliases = Array.isArray(item?.titleAliases) ? item.titleAliases : [];
+  for (const value of [item?.title, item?.originalName, ...aliases]) {
     const compact = normalizer.compact(value);
     const characters = [...compact];
     if (characters.length < minimum) continue;

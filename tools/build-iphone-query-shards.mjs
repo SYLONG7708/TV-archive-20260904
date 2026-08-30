@@ -26,6 +26,8 @@ function argValue(name, fallback = '') {
 const repoRoot = path.resolve(argValue('--repoRoot', process.cwd()));
 const catalogPath = path.resolve(repoRoot, argValue('--catalog', 'docs/data/iphone-vod-catalog.json'));
 const searchRoot = path.resolve(repoRoot, argValue('--searchRoot', 'docs/data/vod-search'));
+const inputPathField = argValue('--inputPathField', 'searchIndexPath');
+const aliasPath = path.resolve(repoRoot, argValue('--titleAliases', 'sources/title-aliases.json'));
 const outputRoot = path.resolve(repoRoot, argValue('--outputRoot', 'docs/data/vod-query'));
 const iphoneHtmlPath = path.resolve(repoRoot, argValue('--iphoneHtml', 'docs/iphone/index.html'));
 const bucketCount = Math.max(16, Number(argValue('--bucketCount', DEFAULT_BUCKET_COUNT)));
@@ -59,6 +61,10 @@ const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
 const sources = Array.isArray(catalog.sources) ? catalog.sources : [];
 const sourceById = new Map(sources.map((source) => [source.id, source]));
 const normalizer = createQueryNormalizer(iphoneHtmlPath);
+const titleAliases = fs.existsSync(aliasPath)
+  ? JSON.parse(fs.readFileSync(aliasPath, 'utf8'))
+  : { version: 1, groups: [] };
+if (!Array.isArray(titleAliases.groups)) throw new Error(`Invalid title alias registry: ${aliasPath}`);
 
 fs.rmSync(outputRoot, { recursive: true, force: true });
 fs.mkdirSync(outputRoot, { recursive: true });
@@ -107,7 +113,7 @@ let totalInputItems = 0;
 let totalIndexedRows = 0;
 
 for (const source of sources) {
-  const searchPath = source?.searchIndexPath;
+  const searchPath = source?.[inputPathField];
   if (!searchPath) continue;
   const file = path.resolve(repoRoot, 'docs', 'data', searchPath);
   const row = {
@@ -163,6 +169,7 @@ const manifest = {
     chinese: 'simplified-character-map',
     chineseMapSize: normalizer.mapSize,
   },
+  titleAliases: titleAliases.groups,
   scopes: {
     normal: {
       path: 'vod-query/normal/b-{bucket}.json.gz',

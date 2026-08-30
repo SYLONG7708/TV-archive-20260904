@@ -45,6 +45,8 @@ const keepPartialPages = args.get('keepPartialPages') === 'true';
 const includeEmptySeedSources = args.get('includeEmptySeedSources') === 'true';
 const refreshLeadingPages = Math.max(0, Number(args.get('refreshLeadingPages') || 0));
 const maxFailedPages = Math.max(0, Number(args.get('maxFailedPages') || 0));
+const validateExistingPages = args.get('validateExistingPages') === 'true';
+const pruneObsoletePages = args.get('pruneObsoletePages') === 'true';
 
 const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36 OKTV/1.0';
@@ -446,25 +448,50 @@ async function writeDetailPage(source, sourceSlug, pageResult, pagecount) {
   return items;
 }
 
-async function listExistingDetailPages(sourceDir) {
+async function listExistingDetailPages(sourceDir, validate = false) {
   try {
     const files = await fs.readdir(sourceDir);
-    return new Set(
-      files
-        .map((file) => Number(file.match(/^page-(\d+)\.json(?:\.gz)?$/i)?.[1] || 0))
-        .filter((page) => page > 0),
-    );
+    const pages = new Set();
+    for (const file of files) {
+      const page = Number(file.match(/^page-(\d+)\.json(?:\.gz)?$/i)?.[1] || 0);
+      if (page < 1) continue;
+      if (validate) {
+        try {
+          const data = await fs.readFile(path.join(sourceDir, file));
+          const text = /\.gz$/i.test(file) ? zlib.gunzipSync(data).toString('utf8') : data.toString('utf8');
+          const payload = JSON.parse(text);
+          if (Number(payload?.page || page) !== page || !Array.isArray(payload?.items)) continue;
+        } catch {
+          continue;
+        }
+      }
+      pages.add(page);
+    }
+    return pages;
   } catch {
     return new Set();
   }
 }
 
-async function countDetailFiles(sourceDir) {
-  try {
-    const files = await fs.readdir(sourceDir);
-    return files.filter((file) => /^page-\d+\.json(?:\.gz)?$/i.test(file)).length;
-  } catch {
-    return 0;
+async function detailCoverage(sourceDir, expectedPages, validate = false) {
+  const pages = await listExistingDetailPages(sourceDir, validate);
+  const missingPages = [];
+  for (let page = 1; page <= expectedPages; page += 1) {
+    if (!pages.has(page)) missingPages.push(page);
+  }
+  return {
+    pageCount: expectedPages - missingPages.length,
+    fileCount: pages.size,
+    missingPages,
+    extraPages: [...pages].filter((page) => page > expectedPages),
+    complete: expectedPages > 0 && missingPages.length === 0,
+  };
+}
+
+async function pruneDetailPages(sourceDir, pages) {
+  for (const page of pages) {
+    await fs.rm(path.join(sourceDir, `page-${String(page).padStart(4, '0')}.json.gz`), { force: true });
+    await fs.rm(path.join(sourceDir, `page-${String(page).padStart(4, '0')}.json`), { force: true });
   }
 }
 
@@ -484,7 +511,9 @@ async function indexSource(source) {
   let lastPage = endPage > 0 ? Math.min(fullPagecount, endPage) : fullPagecount;
   if (maxPagesPerSource > 0) lastPage = Math.min(lastPage, startPage + maxPagesPerSource - 1);
   const requestedPages = Array.from({ length: Math.max(0, lastPage - startPage + 1) }, (_, index) => startPage + index);
-  const existingPages = appendDetailPages && skipExistingPages ? await listExistingDetailPages(sourceDir) : new Set();
+  const existingPages = appendDetailPages && skipExistingPages
+    ? await listExistingDetailPages(sourceDir, validateExistingPages)
+    : new Set();
   let targetPages = [];
   for (const page of requestedPages) {
     if (appendDetailPages && skipExistingPages && page > refreshLeadingPages && existingPages.has(page)) continue;
@@ -499,15 +528,15 @@ async function indexSource(source) {
   }
 
   if (targetPages.length === 0) {
-    const detailFileCount = await countDetailFiles(sourceDir);
+    const coverage = await detailCoverage(sourceDir, fullPagecount, validateExistingPages);
     console.log(`${source.name}: no missing pages in requested range ${startPage}-${lastPage}`);
     return {
       source: {
         ...source,
         indexed: true,
-        complete: detailFileCount >= fullPagecount,
+        complete: coverage.complete,
         detailMode: 'chunked-json-gzip',
-        detailPageCount: detailFileCount,
+        detailPageCount: coverage.pageCount,
         detailExpectedPages: fullPagecount,
         detailPathPattern: `vod-detail/${sourceSlug}/page-{page}.json.gz`,
         checks: [
@@ -515,9 +544,10 @@ async function indexSource(source) {
             label: 'full-latest-pages',
             ok: true,
             count: 0,
-            pages: detailFileCount,
+            pages: coverage.pageCount,
             pagecount: fullPagecount,
             total: first.total,
+            missingPages: coverage.missingPages.length,
           },
         ],
         error: '',
@@ -587,7 +617,12 @@ async function indexSource(source) {
     await fs.rename(tempDir, sourceDir);
   }
 
-  const detailFileCount = await countDetailFiles(sourceDir);
+  let coverage = await detailCoverage(sourceDir, fullPagecount, validateExistingPages);
+  const refreshedCompleteRange = startPage === 1 && lastPage === fullPagecount && candidatePageCount === targetPages.length;
+  if (pruneObsoletePages && refreshedCompleteRange && failures.length === 0 && coverage.complete && coverage.extraPages.length) {
+    await pruneDetailPages(sourceDir, coverage.extraPages);
+    coverage = await detailCoverage(sourceDir, fullPagecount, validateExistingPages);
+  }
   console.log(`${source.name}: ${compact.length}/${total || compact.length} items, ${pages.length} pages`);
   if (failures.length > 0) {
     throw new Error(`partial range saved; failed pages: ${failures.map((failure) => `${failure.page} ${failure.error}`).join(', ')}`);
@@ -599,9 +634,9 @@ async function indexSource(source) {
       playableCount,
       sourceTotalCount: total || compact.length,
       indexed: compact.length > 0,
-      complete: detailFileCount >= fullPagecount,
+      complete: coverage.complete,
       detailMode: 'chunked-json-gzip',
-      detailPageCount: detailFileCount,
+      detailPageCount: coverage.pageCount,
       detailExpectedPages: fullPagecount,
       detailPathPattern: `vod-detail/${sourceSlug}/page-{page}.json.gz`,
       checks: [
@@ -609,9 +644,10 @@ async function indexSource(source) {
           label: 'full-latest-pages',
           ok: true,
           count: compact.length,
-          pages: detailFileCount,
+          pages: coverage.pageCount,
           pagecount: fullPagecount,
           total: total || compact.length,
+          missingPages: coverage.missingPages.length,
         },
       ],
       error: '',

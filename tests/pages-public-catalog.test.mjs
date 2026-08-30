@@ -60,9 +60,25 @@ async function runFixture({ guarded }) {
   const previous = makeCatalog();
   await fs.writeFile(path.join(tvData, 'iphone-vod-catalog.json'), `${JSON.stringify(current)}\n`);
   await fs.writeFile(path.join(pagesData, 'iphone-vod-catalog.json'), `${JSON.stringify(previous)}\n`);
+  if (guarded) {
+    await fs.mkdir(path.join(pagesData, 'vod-index'), { recursive: true });
+    const previousItems = Array.from({ length: 1_000 }, (_, index) => ({
+      id: `alpha-${index}`,
+      sourceId: 'alpha',
+      vodId: String(index),
+      title: `Previous ${index}`,
+      playable: true,
+      kind: 'movie',
+    }));
+    await fs.writeFile(
+      path.join(pagesData, 'vod-index', 'alpha.json.gz'),
+      await gzip(JSON.stringify({ sourceId: 'alpha', itemCount: previousItems.length, items: previousItems })),
+    );
+  }
   const partialItems = Array.from({ length: 10 }, (_, index) => ({
     id: `alpha-${index}`,
     sourceId: 'alpha',
+    vodId: String(index),
     title: `Item ${index}`,
     playable: true,
     kind: 'movie',
@@ -106,9 +122,11 @@ async function runFixture({ guarded }) {
 test('does not copy a partial index when the coverage guard preserved the complete source', async () => {
   const { output, report } = await runFixture({ guarded: true });
   assert.equal(output.totals.items, 1_000);
-  assert.equal(output.totals.playableItems, 990);
-  assert.equal(report.publicationGuard.protectedPartialIndexes, 1);
+  assert.equal(output.totals.playableItems, 1_000);
+  assert.equal(output.sources[0].indexCoverageStatus, 'merged-incremental-index');
+  assert.equal(report.publicationGuard.protectedPartialIndexes, 0);
   assert.equal(report.publishedIndexedData.preservedIndexFiles, 1);
+  assert.equal(report.publishedIndexedData.mergedIndexFiles, 1);
 });
 
 test('detects a partial local index before it can lower public catalog totals', async () => {

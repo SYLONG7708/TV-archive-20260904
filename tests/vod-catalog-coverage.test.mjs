@@ -53,8 +53,21 @@ test('preserves a complete baseline when a refresh only contains leading pages',
   assert.equal(result.catalog.totals.playableItems, 1_470);
   assert.equal(result.catalog.sources.length, 2);
   assert.equal(result.catalog.sources[0].coverageGuard.status, 'preserved-baseline');
+  assert.equal(result.catalog.sources[0].complete, false);
   assert.equal(result.catalog.sources[1].coverageGuard.status, 'preserved-missing-source');
   assert.equal(result.report.status, 'protected');
+});
+
+test('keeps the real observed count across consecutive baseline guards', () => {
+  const baseline = catalog([source('alpha', 1_000, 990)]);
+  const partial = catalog([source('alpha', 100, 98)]);
+  const first = guardCatalogCoverage({ catalog: partial, baseline, minTotalItems: 0 });
+  const second = guardCatalogCoverage({ catalog: first.catalog, baseline, minTotalItems: 0 });
+
+  assert.equal(second.catalog.sources[0].itemCount, 1_000);
+  assert.equal(second.catalog.sources[0].coverageGuard.status, 'preserved-baseline');
+  assert.equal(second.catalog.sources[0].coverageGuard.observedItemCount, 100);
+  assert.equal(second.catalog.sources[0].coverageGuard.servingBaseline, true);
 });
 
 test('keeps a healthy growing catalog without lowering it to the baseline', () => {

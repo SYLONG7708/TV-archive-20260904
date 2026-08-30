@@ -22,6 +22,7 @@ const reportPath = path.resolve(args.get('report') || path.join(tvRoot, 'docs', 
 const detailRoot = path.resolve(args.get('detailRoot') || path.join(tvRoot, 'docs', 'data', 'vod-detail'));
 const indexRoot = path.resolve(args.get('indexRoot') || path.join(tvRoot, 'docs', 'data', 'vod-index'));
 const dropEmptySources = args.get('dropEmptySources') === 'true';
+const sourceMatch = normalizeText(args.get('sourceMatch')).toLowerCase();
 
 function normalizeText(value, fallback = '') {
   return String(value ?? fallback)
@@ -74,10 +75,14 @@ function sourceCheck(source) {
     adult: source.adult,
     indexable: source.indexable,
     indexed: source.indexed,
+    complete: source.complete,
     itemCount: source.itemCount,
     playableCount: source.playableCount,
     sourceTotalCount: source.sourceTotalCount,
+    detailPageCount: source.detailPageCount,
+    detailExpectedPages: source.detailExpectedPages,
     indexPath: source.indexPath,
+    searchIndexPath: source.searchIndexPath,
     detailPathPattern: source.detailPathPattern,
     error: source.error,
     checks: source.checks,
@@ -112,7 +117,7 @@ function buildFilters(sets) {
 }
 
 const catalog = await readJson(catalogPath);
-await fs.rm(indexRoot, { recursive: true, force: true });
+if (!sourceMatch) await fs.rm(indexRoot, { recursive: true, force: true });
 await fs.mkdir(indexRoot, { recursive: true });
 
 const processedIds = new Set();
@@ -128,6 +133,15 @@ for (const item of catalog.items || []) {
 }
 
 for (const source of catalog.sources || []) {
+  const matchesSource = !sourceMatch || normalizeText(
+    [source.id, source.key, source.name, source.api, source.host, source.origin].join(' '),
+  ).toLowerCase().includes(sourceMatch);
+  if (!matchesSource) {
+    updatedSources.push(source);
+    indexedItemsTotal += Number(source.itemCount || 0);
+    playableItemsTotal += Number(source.playableCount || 0);
+    continue;
+  }
   const slug = sourceSlug(source);
   const sourceDir = path.join(detailRoot, slug);
   let files = [];
@@ -154,9 +168,11 @@ for (const source of catalog.sources || []) {
   const compact = [];
   const seen = new Set();
   let total = 0;
+  let expectedPages = 0;
   for (const file of files) {
     const detail = await readJson(path.join(sourceDir, file));
     total = Math.max(total, Number(detail.total || 0));
+    expectedPages = Math.max(expectedPages, Number(detail.pagecount || 0));
     for (const item of detail.items || []) {
       const key = item.vodId || `${item.title}|${item.poster}`;
       if (seen.has(key)) continue;
@@ -188,6 +204,9 @@ for (const source of catalog.sources || []) {
     itemCount: compact.length,
     playableCount: compact.filter((item) => item.playable).length,
     sourceTotalCount: total || compact.length,
+    complete: expectedPages > 0 && files.length >= expectedPages,
+    detailPageCount: files.length,
+    detailExpectedPages: expectedPages || files.length,
     indexed: compact.length > 0,
     indexMode: 'chunked-json-gzip',
     indexPath: `vod-index/${indexFileName}`,
@@ -238,12 +257,13 @@ const totals = {
   indexedSources: publishedSources.filter((source) => source.indexed).length,
   items: indexedItemsTotal + inlineItems.length,
   playableItems: playableItemsTotal + inlinePlayable,
-  movies: kindTotals.movie,
-  series: kindTotals.series,
-  variety: kindTotals.variety,
-  anime: kindTotals.anime,
-  short: kindTotals.short,
-  adult: kindTotals.adult,
+  movies: sourceMatch ? Number(catalog.totals?.movies || 0) : kindTotals.movie,
+  series: sourceMatch ? Number(catalog.totals?.series || 0) : kindTotals.series,
+  variety: sourceMatch ? Number(catalog.totals?.variety || 0) : kindTotals.variety,
+  anime: sourceMatch ? Number(catalog.totals?.anime || 0) : kindTotals.anime,
+  short: sourceMatch ? Number(catalog.totals?.short || 0) : kindTotals.short,
+  adult: sourceMatch ? Number(catalog.totals?.adult || 0) : kindTotals.adult,
+  other: Number(catalog.totals?.other || 0),
 };
 
 const nextCatalog = {
@@ -256,7 +276,7 @@ const nextCatalog = {
     indexRoot: 'docs/data/vod-index',
   },
   totals,
-  filters: buildFilters(filterSets),
+  filters: sourceMatch ? catalog.filters : buildFilters(filterSets),
   sources: publishedSources,
   items: inlineItems,
 };

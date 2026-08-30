@@ -147,12 +147,20 @@ export function guardCatalogCoverage({
   for (const source of current.sources) {
     const baselineSource = findSource(source, baselineMaps);
     if (baselineSource?.id) matchedBaselineIds.add(baselineSource.id);
-    const observedItemCount = number(source.itemCount);
-    const observedPlayableCount = number(source.playableCount);
+    const priorGuard = source?.coverageGuard || {};
+    const priorPreserved = /^preserved-/i.test(text(priorGuard.status));
+    const observedItemCount = priorPreserved
+      ? number(priorGuard.observedItemCount, number(source.itemCount))
+      : number(source.itemCount);
+    const observedPlayableCount = priorPreserved
+      ? number(priorGuard.observedPlayableCount, number(source.playableCount))
+      : number(source.playableCount);
     const baselineItemCount = number(baselineSource?.itemCount);
     const baselinePlayableCount = number(baselineSource?.playableCount);
     const retention = baselineItemCount > 0 ? observedItemCount / baselineItemCount : 1;
-    const shouldPreserve = Boolean(baselineSource && baselineItemCount > 0 && retention < minSourceRetention);
+    const shouldPreserve = Boolean(
+      baselineSource && baselineItemCount > 0 && (priorPreserved || retention < minSourceRetention),
+    );
     const next = { ...(baselineSource || {}), ...source };
 
     if (shouldPreserve) {
@@ -165,7 +173,9 @@ export function guardCatalogCoverage({
         number(baselineSource.detailExpectedPages),
       );
       next.indexed = Boolean(source.indexed || baselineSource.indexed);
-      next.complete = Boolean(source.complete || baselineSource.complete);
+      // The last complete snapshot remains served, but the current refresh is
+      // partial. Do not report the refresh itself as complete.
+      next.complete = false;
       for (const key of SOURCE_PATH_FIELDS) next[key] = source[key] || baselineSource[key] || '';
       next.coverageGuard = {
         status: 'preserved-baseline',
@@ -175,6 +185,7 @@ export function guardCatalogCoverage({
         baselineItemCount,
         baselinePlayableCount,
         retention,
+        servingBaseline: true,
       };
       preserved.push({ id: next.id, name: next.name, observedItemCount, baselineItemCount, retention });
     } else {

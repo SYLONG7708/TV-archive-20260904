@@ -25,6 +25,7 @@ const latestPath = path.resolve(repoRoot, argValue('--latest', 'docs/data/iphone
 const outputRoot = path.resolve(repoRoot, argValue('--outputRoot', 'docs/data/vod-query'));
 const manifestPath = path.resolve(outputRoot, 'manifest.json');
 const iphoneHtmlPath = path.resolve(repoRoot, argValue('--iphoneHtml', 'docs/iphone/index.html'));
+const aliasPath = path.resolve(repoRoot, argValue('--titleAliases', 'sources/title-aliases.json'));
 
 if (!fs.existsSync(manifestPath)) {
   throw new Error(`Query shard manifest not found: ${manifestPath}`);
@@ -37,9 +38,18 @@ const sourceById = new Map((catalog.sources || []).map((source) => [source.id, s
 const normalizer = createQueryNormalizer(iphoneHtmlPath);
 const bucketCount = Number(manifest.bucketCount);
 const minQueryLength = Number(manifest.minQueryLength);
-const maxSignalsPerTitle = Number(manifest.maxSignalsPerTitle || DEFAULT_MAX_SIGNALS_PER_TITLE);
+const maxSignalsPerTitle = Math.max(
+  Number(manifest.maxSignalsPerTitle || 0),
+  Number(argValue('--maxSignalsPerTitle', DEFAULT_MAX_SIGNALS_PER_TITLE)),
+);
 const byTarget = new Map();
 let changedBuckets = 0;
+if (fs.existsSync(aliasPath)) {
+  const titleAliases = JSON.parse(fs.readFileSync(aliasPath, 'utf8'));
+  if (!Array.isArray(titleAliases.groups)) throw new Error(`Invalid title alias registry: ${aliasPath}`);
+  manifest.titleAliases = titleAliases.groups;
+}
+manifest.maxSignalsPerTitle = maxSignalsPerTitle;
 
 for (const rawItem of latest.items || []) {
   const source = sourceById.get(rawItem?.sourceId) || {};
