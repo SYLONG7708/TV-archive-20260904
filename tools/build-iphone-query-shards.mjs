@@ -66,9 +66,8 @@ const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
 const sources = Array.isArray(catalog.sources) ? catalog.sources : [];
 const sourceById = new Map(sources.map((source) => [source.id, source]));
 const normalizer = createQueryNormalizer(iphoneHtmlPath);
-const titleAliases = fs.existsSync(aliasPath)
-  ? JSON.parse(fs.readFileSync(aliasPath, 'utf8'))
-  : { version: 1, groups: [] };
+if (!fs.existsSync(aliasPath)) throw new Error(`Title alias registry not found: ${aliasPath}`);
+const titleAliases = JSON.parse(fs.readFileSync(aliasPath, 'utf8'));
 if (!Array.isArray(titleAliases.groups)) throw new Error(`Invalid title alias registry: ${aliasPath}`);
 
 fs.rmSync(outputRoot, { recursive: true, force: true });

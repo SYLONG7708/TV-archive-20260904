@@ -166,6 +166,15 @@ test('fails a full query build when a declared source index is incomplete', asyn
         return true;
       },
     );
+
+    await fs.rm(path.join(root, 'sources', 'title-aliases.json'));
+    await assert.rejects(
+      run(process.execPath, [path.join(repoRoot, 'tools', 'build-iphone-query-shards.mjs'), '--repoRoot', root]),
+      (error) => {
+        assert.match(String(error.stderr || ''), /Title alias registry not found/);
+        return true;
+      },
+    );
   } finally {
     await fs.rm(root, { recursive: true, force: true });
   }
