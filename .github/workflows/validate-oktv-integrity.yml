@@ -7,6 +7,7 @@ on:
       - ".github/workflows/*.yml"
       - "docs/iphone/**"
       - "docs/data/iphone-vod-catalog.json"
+      - "sources/title-aliases.json"
       - "tests/**"
       - "tools/*.mjs"
   push:
@@ -16,6 +17,7 @@ on:
       - ".github/workflows/*.yml"
       - "docs/iphone/**"
       - "docs/data/iphone-vod-catalog.json"
+      - "sources/title-aliases.json"
       - "tests/**"
       - "tools/*.mjs"
 
@@ -41,6 +43,7 @@ jobs:
             .github/workflows/*.yml
             docs/iphone/index.html
             docs/data/iphone-vod-catalog.json
+            /sources/title-aliases.json
             tests/*
             tools/*.mjs
 
