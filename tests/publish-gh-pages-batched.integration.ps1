@@ -61,6 +61,10 @@ try {
   [IO.File]::WriteAllText((Join-Path $pages 'docs\data\manifest.json'), '{"version":2}')
   [IO.File]::WriteAllText((Join-Path $pages 'docs\data\vod-detail\page.json'), '{"items":[1]}')
   [IO.File]::WriteAllText((Join-Path $pages 'docs\data\vod-index\source.json.gz'), 'updated-index')
+  0..599 | ForEach-Object {
+    $longName = 'page-{0:D4}-{1}.json' -f $_, ('x' * 55)
+    [IO.File]::WriteAllText((Join-Path $pages "docs\data\vod-detail\$longName"), "{`"id`":$_}")
+  }
   0..5 | ForEach-Object {
     $bytes = [byte[]]::new(1048576)
     [Random]::new($_ + 100).NextBytes($bytes)
