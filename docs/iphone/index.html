@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" data-oktv-csp content="default-src 'self'; script-src 'self' 'sha256-d/ZrFvC2ndJN1FjyEUcxzPPrJ+Rl80u25VJrZk9QnEY=' https://cdn.jsdelivr.net; style-src 'self' 'sha256-q02F97qqlOr202beJ5VnHrLJYWm/Qm53QwnFgiZg0VQ='; img-src 'self' data: https:; media-src 'self' blob: https:; connect-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; worker-src 'self' blob:; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'" />
+    <meta http-equiv="Content-Security-Policy" data-oktv-csp content="default-src 'self'; script-src 'self' 'sha256-VnYtSIqhgtUBoziq3TOQUcyk/2D1VfTnlf2Tlkq6IfE=' https://cdn.jsdelivr.net; style-src 'self' 'sha256-q02F97qqlOr202beJ5VnHrLJYWm/Qm53QwnFgiZg0VQ='; img-src 'self' data: https:; media-src 'self' blob: https:; connect-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; worker-src 'self' blob:; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -4017,6 +4017,15 @@
 
       function searchAliasQueries(query, compact) {
         const aliases = [];
+        for (const group of state.queryIndex.manifest?.titleAliases || []) {
+          const variants = uniqueSearchValues([group?.canonicalTraditional, ...(group?.aliases || [])]);
+          for (const variant of variants) {
+            if (!query.includes(variant)) continue;
+            for (const replacement of variants) {
+              if (replacement !== variant) aliases.push(query.replaceAll(variant, replacement));
+            }
+          }
+        }
         if (query.includes('特務')) aliases.push(query.replaceAll('特務', '特工'));
         if (query.includes('特工')) aliases.push(query.replaceAll('特工', '特務'));
         if (/金(?:牌)?特(?:務|工)|kingsman/i.test(compact)) {

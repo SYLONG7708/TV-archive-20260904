@@ -8,10 +8,12 @@ import zlib from 'node:zlib';
 import { promisify } from 'node:util';
 
 import {
+  DEFAULT_MAX_SIGNALS_PER_TITLE,
   bucketForPrefix,
   bucketName,
   createQueryNormalizer,
   expandQueryGroups,
+  mergeItemsIntoGroups,
 } from '../tools/iphone-query-shards.mjs';
 
 const run = promisify(execFile);
@@ -25,6 +27,11 @@ test('builds compact query shards, separates adult results, and groups title spa
     const iphoneRoot = path.join(root, 'docs', 'iphone');
     await fs.mkdir(searchRoot, { recursive: true });
     await fs.mkdir(iphoneRoot, { recursive: true });
+    await fs.mkdir(path.join(root, 'sources'), { recursive: true });
+    await fs.writeFile(
+      path.join(root, 'sources', 'title-aliases.json'),
+      JSON.stringify({ version: 1, groups: [{ canonicalTraditional: '至死不渝', aliases: ['痴迷', '癡迷'] }] }),
+    );
     await fs.writeFile(
       path.join(iphoneRoot, 'index.html'),
       '<script>const ZH_CHAR_MAP = { 剧: "劇", 单: "單" };</script>',
@@ -72,6 +79,8 @@ test('builds compact query shards, separates adult results, and groups title spa
 
     const manifest = JSON.parse(await fs.readFile(path.join(dataRoot, 'vod-query', 'manifest.json'), 'utf8'));
     assert.equal(manifest.version, 2);
+    assert.equal(manifest.maxSignalsPerTitle, DEFAULT_MAX_SIGNALS_PER_TITLE);
+    assert.deepEqual(manifest.titleAliases[0].aliases, ['痴迷', '癡迷']);
     assert.equal(manifest.scopes.normal.signals, 2);
     assert.equal(manifest.scopes.adult.signals, 1);
 
@@ -100,4 +109,22 @@ test('builds compact query shards, separates adult results, and groups title spa
   } finally {
     await fs.rm(root, { recursive: true, force: true });
   }
+});
+
+test('retains every source signal beyond the historical eight-source cap', () => {
+  const normalizer = createQueryNormalizer(path.join(repoRoot, 'docs', 'iphone', 'index.html'));
+  const items = Array.from({ length: 20 }, (_, index) => ({
+    id: `item-${index}`,
+    sourceId: `source-${index}`,
+    sourceName: `Source ${index}`,
+    vodId: String(index),
+    title: '痴迷',
+    episodeCount: 1,
+    playable: true,
+    detailPath: `vod-detail/source-${index}/page-0001.json.gz`,
+  }));
+  const groups = mergeItemsIntoGroups([], items, { normalizer });
+
+  assert.equal(groups.length, 1);
+  assert.equal(groups[0].signals.length, 20);
 });
