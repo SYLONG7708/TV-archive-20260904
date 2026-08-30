@@ -38,10 +38,12 @@ const sourceById = new Map((catalog.sources || []).map((source) => [source.id, s
 const normalizer = createQueryNormalizer(iphoneHtmlPath);
 const bucketCount = Number(manifest.bucketCount);
 const minQueryLength = Number(manifest.minQueryLength);
-const maxSignalsPerTitle = Math.max(
-  Number(manifest.maxSignalsPerTitle || 0),
-  Number(argValue('--maxSignalsPerTitle', DEFAULT_MAX_SIGNALS_PER_TITLE)),
+const requestedMaxSignals = Number(
+  argValue('--maxSignalsPerTitle', manifest.maxSignalsPerTitle ?? DEFAULT_MAX_SIGNALS_PER_TITLE),
 );
+const maxSignalsPerTitle = Number.isFinite(requestedMaxSignals)
+  ? Math.max(0, Math.floor(requestedMaxSignals))
+  : DEFAULT_MAX_SIGNALS_PER_TITLE;
 const byTarget = new Map();
 let changedBuckets = 0;
 if (fs.existsSync(aliasPath)) {

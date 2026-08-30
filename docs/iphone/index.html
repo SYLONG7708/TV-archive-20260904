@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" data-oktv-csp content="default-src 'self'; script-src 'self' 'sha256-VnYtSIqhgtUBoziq3TOQUcyk/2D1VfTnlf2Tlkq6IfE=' https://cdn.jsdelivr.net; style-src 'self' 'sha256-q02F97qqlOr202beJ5VnHrLJYWm/Qm53QwnFgiZg0VQ='; img-src 'self' data: https:; media-src 'self' blob: https:; connect-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; worker-src 'self' blob:; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'" />
+    <meta http-equiv="Content-Security-Policy" data-oktv-csp content="default-src 'self'; script-src 'self' 'sha256-upMX9tLelAwoT7Db2uhWNUJXTBXGh4fT5piu40lNmrA=' https://cdn.jsdelivr.net; style-src 'self' 'sha256-q02F97qqlOr202beJ5VnHrLJYWm/Qm53QwnFgiZg0VQ='; img-src 'self' data: https:; media-src 'self' blob: https:; connect-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; worker-src 'self' blob:; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -5757,10 +5757,14 @@
       await loadQuantumManifest();
       const initialCatalogItems = Array.isArray(state.catalog.items) ? state.catalog.items : [];
       const latestCatalogItems = Array.isArray(state.latest.items) ? state.latest.items : [];
+      const fallbackQueryItems = Array.isArray(state.queryIndex.manifest?.fallbackItems)
+        ? state.queryIndex.manifest.fallbackItems
+        : [];
       state.catalog.items = [];
       state.itemById.clear();
       registerCatalogItems(initialCatalogItems);
       registerCatalogItems(latestCatalogItems);
+      registerCatalogItems(fallbackQueryItems);
       state.seedItemIds = new Set(state.itemById.keys());
       markLatestPagesLoaded(latestCatalogItems);
       applyHealthIndex({ failed: [] });

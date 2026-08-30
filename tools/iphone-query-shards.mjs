@@ -5,11 +5,10 @@ import zlib from 'node:zlib';
 export const QUERY_SHARD_VERSION = 2;
 export const DEFAULT_BUCKET_COUNT = 2048;
 export const DEFAULT_MIN_QUERY_LENGTH = 2;
-// The public catalog currently has fewer than 100 source definitions. Keeping
-// 128 signals prevents a valid source from disappearing merely because eight
-// higher-ranked mirrors share the same title.
-export const DEFAULT_MAX_SIGNALS_PER_TITLE = 128;
-export const DEFAULT_MAX_GROUPS_PER_PREFIX = 1200;
+// Zero means unlimited. Search completeness is more important than silently
+// dropping a valid source or a less-popular title from a crowded prefix.
+export const DEFAULT_MAX_SIGNALS_PER_TITLE = 0;
+export const DEFAULT_MAX_GROUPS_PER_PREFIX = 0;
 export const DEFAULT_MAX_EMBEDDED_EPISODES = 2000;
 
 const COMPACT_RE = /[\s\-_.:：/\\|,，。！!？?·'"()[\]{}]+/g;
@@ -35,6 +34,11 @@ export function bucketPadWidth(bucketCount = DEFAULT_BUCKET_COUNT) {
 
 export function bucketName(bucket, bucketCount = DEFAULT_BUCKET_COUNT) {
   return `b-${String(bucket).padStart(bucketPadWidth(bucketCount), '0')}.json.gz`;
+}
+
+export function limitQueryGroups(groups, maxGroupsPerPrefix = DEFAULT_MAX_GROUPS_PER_PREFIX) {
+  const rows = Array.isArray(groups) ? groups : [];
+  return maxGroupsPerPrefix > 0 ? rows.slice(0, maxGroupsPerPrefix) : rows;
 }
 
 export function readGzipJson(file) {
@@ -241,7 +245,7 @@ export function mergeItemsIntoGroups(
   const output = [...groups.values()];
   for (const group of output) {
     group.signals.sort((left, right) => itemQuality(right) - itemQuality(left));
-    if (group.signals.length > maxSignalsPerTitle) {
+    if (maxSignalsPerTitle > 0 && group.signals.length > maxSignalsPerTitle) {
       group.signals = group.signals.slice(0, maxSignalsPerTitle);
     }
     delete group._quality;

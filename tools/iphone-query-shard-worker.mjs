@@ -3,6 +3,7 @@ import { parentPort, workerData } from 'node:worker_threads';
 
 import {
   createQueryNormalizer,
+  limitQueryGroups,
   mergeItemsIntoGroups,
   writeGzipJson,
 } from './iphone-query-shards.mjs';
@@ -22,17 +23,15 @@ try {
     }
     const groups = [];
     for (const items of byPrefix.values()) {
-      groups.push(
-        ...mergeItemsIntoGroups([], items, {
-          normalizer,
-          maxSignalsPerTitle: workerData.maxSignalsPerTitle,
-        }).slice(0, workerData.maxGroupsPerPrefix),
-      );
+      const prefixGroups = mergeItemsIntoGroups([], items, {
+        normalizer,
+        maxSignalsPerTitle: workerData.maxSignalsPerTitle,
+      });
+      groups.push(...limitQueryGroups(prefixGroups, workerData.maxGroupsPerPrefix));
     }
     const signals = groups.reduce((sum, group) => sum + group.signals.length, 0);
     const gzipBytes = writeGzipJson(job.outputFile, {
       version: workerData.version,
-      generatedAt: workerData.generatedAt,
       scope: job.scope,
       bucket: job.bucket,
       groups,
