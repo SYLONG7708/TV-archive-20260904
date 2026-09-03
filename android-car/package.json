@@ -1,0 +1,13 @@
+{
+  "name": "yingshi-car-compat-builder",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:compat": "node tools/build-compat-page.mjs",
+    "verify:bundle": "node tools/verify-bundled-page.mjs"
+  },
+  "devDependencies": {
+    "@babel/core": "7.29.7",
+    "@babel/preset-env": "7.29.7"
+  }
+}
